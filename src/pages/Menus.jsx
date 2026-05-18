@@ -12,7 +12,7 @@ function MenusHero() {
   return (
     <section
       className="relative flex items-end overflow-hidden bg-botic-black pt-24"
-      style={{ minHeight: '65vh' }}
+      style={{ minHeight: '72vh' }}
       aria-label="Menús de Bo.TiC"
     >
       {/* Fotografia de fons */}
@@ -29,8 +29,8 @@ function MenusHero() {
         className="absolute inset-0"
         style={{
           background: [
-            'linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.20) 100%)',
-            'linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 55%, rgba(0,0,0,0) 100%)',
+            'linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.40) 50%, rgba(0,0,0,0.18) 100%)',
+            'linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.40) 42%, rgba(0,0,0,0.10) 72%, rgba(0,0,0,0) 100%)',
           ].join(', '),
         }}
       />
@@ -50,7 +50,7 @@ function MenusHero() {
           Menús
         </h1>
         <p
-          className="menus-hero-sub font-serif italic font-light text-botic-cream/55
+          className="menus-hero-sub font-serif italic font-light text-botic-cream/78
                      leading-relaxed max-w-xl mt-5"
           style={{ fontSize: 'clamp(16px, 1.8vw, 20px)' }}
         >

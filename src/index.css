@@ -1927,17 +1927,20 @@ footer.botic-footer {
 
 /* Animació entrada */
 .menus-hero-label {
-  animation: fadeUp 0.6s ease both;
-  animation-delay: 0.4s;
+  color: #C9A46A;
+  text-shadow: 0 2px 14px rgba(0,0,0,0.80);
+  animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
+  animation-delay: 0.35s;
 }
 .menus-hero-title {
-  animation: fadeUp 0.9s ease both;
-  animation-delay: 0.55s;
-  text-shadow: 0 0 120px rgba(154,42,42,0.12), 0 2px 40px rgba(0,0,0,0.6);
+  animation: fadeUp 1.0s cubic-bezier(0.4,0,0.2,1) both;
+  animation-delay: 0.50s;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.75), 0 0 80px rgba(0,0,0,0.35);
 }
 .menus-hero-sub {
-  animation: fadeUp 0.8s ease both;
-  animation-delay: 0.75s;
+  animation: fadeUp 0.8s cubic-bezier(0.4,0,0.2,1) both;
+  animation-delay: 0.72s;
+  text-shadow: 0 1px 10px rgba(0,0,0,0.60);
 }
 
 /* Punt de llum daurat baix-esquerra (on apareix el text) */
@@ -2044,17 +2047,17 @@ footer.botic-footer {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 20px 12px;
+  gap: 10px;
+  padding: 26px 16px;
   background: transparent;
   border: none;
-  border-right: 1px solid rgba(46,43,39,0.8);
+  border-right: 1px solid rgba(46,43,39,0.6);
   border-bottom: 2px solid transparent;
   cursor: pointer;
   text-align: center;
   position: relative;
   overflow: hidden;
-  transition: border-bottom-color 0.4s ease;
+  transition: border-bottom-color 0.35s ease;
 }
 .mnu-tab:last-child { border-right: none; }
 
@@ -2087,7 +2090,7 @@ footer.botic-footer {
 }
 .mnu-tab.active::after { opacity: 1; }
 
-.mnu-tab.active  { border-bottom-color: #9a2a2a; }
+.mnu-tab.active  { border-bottom-color: #c94040; }
 .mnu-tab:focus-visible {
   outline: 1px solid rgba(154,42,42,0.6);
   outline-offset: -2px;
@@ -2095,14 +2098,14 @@ footer.botic-footer {
 
 .mnu-tab-title {
   font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.25em;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: rgba(138,130,120,0.7);
+  color: rgba(190,182,172,0.80);
   font-weight: 400;
-  transition: color 0.35s ease;
+  transition: color 0.30s ease;
   white-space: nowrap;
-  position: relative; /* sobre el shimmer */
+  position: relative;
 }
 .mnu-tab.active .mnu-tab-title,
 .mnu-tab:hover .mnu-tab-title { color: #EDE8DC; }
@@ -2116,15 +2119,15 @@ footer.botic-footer {
 .mnu-tab-price-value {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: 24px;
-  color: rgba(154,42,42,0.6);
+  font-size: 26px;
+  color: rgba(201,164,106,0.65);
   line-height: 1;
-  transition: color 0.35s ease, text-shadow 0.35s ease;
+  transition: color 0.30s ease, text-shadow 0.30s ease;
 }
 .mnu-tab.active .mnu-tab-price-value,
 .mnu-tab:hover  .mnu-tab-price-value {
-  color: #9a2a2a;
-  text-shadow: 0 0 24px rgba(154,42,42,0.45);
+  color: #C9A46A;
+  text-shadow: 0 0 20px rgba(201,164,106,0.35);
 }
 
 /* ── Àrea de contingut ── */
@@ -2263,9 +2266,9 @@ footer.botic-footer {
   font-weight: 300;
   font-size: 30px;
   letter-spacing: -0.01em;
-  color: rgba(138,130,120,0.6);
+  color: rgba(200,192,182,0.80);
   flex: 1;
-  transition: color 0.3s ease;
+  transition: color 0.28s ease;
 }
 .mnu-section-trigger:hover .mnu-section-title,
 .mnu-section-trigger[aria-expanded="true"] .mnu-section-title {
@@ -2280,49 +2283,49 @@ footer.botic-footer {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 0.2em;
-  color: rgba(154,42,42,0.3);
+  color: rgba(201,164,106,0.45);
   font-weight: 400;
-  padding: 3px 8px;
-  border: 1px solid rgba(154,42,42,0.12);
-  transition: color 0.3s ease, border-color 0.3s ease;
+  padding: 3px 9px;
+  border: 1px solid rgba(201,164,106,0.18);
+  transition: color 0.28s ease, border-color 0.28s ease;
 }
 .mnu-section-trigger[aria-expanded="true"] .mnu-section-count {
-  color: rgba(154,42,42,0.65);
-  border-color: rgba(154,42,42,0.3);
+  color: rgba(201,164,106,0.80);
+  border-color: rgba(201,164,106,0.38);
 }
 
 /* Icona +/− */
 .mnu-section-icon {
-  width: 28px; height: 28px;
+  width: 30px; height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(154,42,42,0.25);
-  color: rgba(154,42,42,0.6);
-  font-size: 16px;
+  border: 1px solid rgba(154,42,42,0.38);
+  color: rgba(201,164,106,0.75);
+  font-size: 17px;
   font-weight: 300;
   font-family: 'Inter', sans-serif;
   flex-shrink: 0;
-  transition: border-color 0.3s ease, background 0.3s ease,
-              color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.28s ease, background 0.28s ease,
+              color 0.28s ease, transform 0.28s ease;
   line-height: 1;
 }
 .mnu-section-trigger:hover .mnu-section-icon {
-  border-color: rgba(154,42,42,0.5);
-  background: rgba(154,42,42,0.06);
-  color: #9a2a2a;
+  border-color: rgba(201,164,106,0.55);
+  background: rgba(201,164,106,0.07);
+  color: #C9A46A;
 }
 .mnu-section-trigger[aria-expanded="true"] .mnu-section-icon {
-  border-color: rgba(154,42,42,0.5);
-  background: rgba(154,42,42,0.08);
-  color: rgba(154,42,42,0.8);
+  border-color: rgba(201,164,106,0.50);
+  background: rgba(201,164,106,0.08);
+  color: #C9A46A;
 }
 
 /* Grid expand */
 .mnu-section-body {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows 0.5s cubic-bezier(.2,.8,.2,1);
+  transition: grid-template-rows 0.42s cubic-bezier(0.34, 1.02, 0.64, 1);
 }
 .mnu-section-body.open { grid-template-rows: 1fr; }
 .mnu-section-inner {
@@ -2343,18 +2346,18 @@ footer.botic-footer {
 }
 
 /* ── Plats ── */
-.mnu-dish-list { list-style: none; padding: 4px 0 36px; }
+.mnu-dish-list { list-style: none; padding: 4px 0 40px; }
 .mnu-dish {
   display: grid;
   grid-template-columns: 44px 1fr;
   gap: 16px;
-  padding: 18px 0;
-  border-bottom: 1px solid rgba(46,43,39,0.5);
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(46,43,39,0.65);
   align-items: start;
   opacity: 0;
-  animation: mnu-dish-in 0.4s ease both;
+  animation: mnu-dish-in 0.45s cubic-bezier(0.4,0,0.2,1) both;
   position: relative;
-  transition: padding-left 0.3s ease;
+  transition: padding-left 0.28s ease;
 }
 .mnu-dish:last-child { border-bottom: none; }
 
@@ -2377,13 +2380,13 @@ footer.botic-footer {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 0.18em;
-  color: rgba(154,42,42,0.25);
+  color: rgba(201,164,106,0.40);
   font-weight: 400;
   padding-top: 5px;
   text-align: right;
-  transition: color 0.3s ease;
+  transition: color 0.28s ease;
 }
-.mnu-dish:hover .mnu-dish-num { color: rgba(154,42,42,0.55); }
+.mnu-dish:hover .mnu-dish-num { color: rgba(201,164,106,0.75); }
 
 /* Nom i descripció */
 .mnu-dish-content { display: flex; flex-direction: column; gap: 5px; }
@@ -2456,9 +2459,9 @@ footer.botic-footer {
     scrollbar-width: none;
   }
   .mnu-selector::-webkit-scrollbar { display: none; }
-  .mnu-tab            { min-width: 110px; padding: 14px 10px; flex-shrink: 0; }
-  .mnu-tab-title      { font-size: 9px; letter-spacing: 0.13em; }
-  .mnu-tab-price-value { font-size: 20px; }
+  .mnu-tab            { min-width: 120px; padding: 18px 12px; flex-shrink: 0; }
+  .mnu-tab-title      { font-size: 9px; letter-spacing: 0.12em; }
+  .mnu-tab-price-value { font-size: 22px; }
   .mnu-section-title  { font-size: 24px; }
   .mnu-dish-name      { font-size: 20px; }
   .mnu-content        { padding: 36px 0 52px; }
