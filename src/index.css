@@ -2458,7 +2458,7 @@ footer.botic-footer {
 .wine-photo-wrap {
   position: absolute;
   right: 0; top: 0; bottom: 0;
-  width: 55%;
+  width: 50%;
   z-index: 0;
 }
 .wine-photo-img {
@@ -2467,7 +2467,7 @@ footer.botic-footer {
   object-fit: cover;
   object-position: center;
   display: block;
-  filter: brightness(0.82) contrast(1.12) saturate(0.88);
+  filter: brightness(0.85) contrast(1.10) saturate(0.90);
 }
 .wine-photo-overlay {
   position: absolute;
@@ -2475,15 +2475,15 @@ footer.botic-footer {
   background:
     linear-gradient(90deg,
       #0e0c09 0%,
-      rgba(14,12,9,0.97) 5%,
-      rgba(14,12,9,0.80) 25%,
-      rgba(14,12,9,0.38) 54%,
-      rgba(14,12,9,0.14) 78%,
-      rgba(14,12,9,0.06) 100%),
+      rgba(14,12,9,0.97) 4%,
+      rgba(14,12,9,0.78) 22%,
+      rgba(14,12,9,0.42) 50%,
+      rgba(14,12,9,0.18) 75%,
+      rgba(14,12,9,0.08) 100%),
     linear-gradient(0deg,
-      rgba(14,12,9,0.50) 0%,
-      transparent 30%,
-      rgba(14,12,9,0.20) 100%);
+      rgba(14,12,9,0.45) 0%,
+      transparent 28%,
+      rgba(14,12,9,0.16) 100%);
 }
 
 .wine-bg-texture {
@@ -2500,7 +2500,7 @@ footer.botic-footer {
   z-index: 2;
 }
 .wine-col-left {
-  max-width: min(48%, 640px);
+  max-width: min(52%, 700px);
   opacity: 0;
   animation: fadeUp 0.85s cubic-bezier(0.4,0,0.2,1) 0.18s both;
 }
@@ -2511,7 +2511,7 @@ footer.botic-footer {
   font-weight: 500;
   letter-spacing: 0.38em;
   text-transform: uppercase;
-  color: rgba(201,164,106,0.70);
+  color: rgba(201,164,106,0.82);
   margin-bottom: 28px;
 }
 .wine-stat {
@@ -2543,7 +2543,7 @@ footer.botic-footer {
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(190,182,172,0.72);
+  color: rgba(205,198,188,0.85);
   margin-top: 12px;
 }
 .wine-divider {
@@ -2588,18 +2588,18 @@ footer.botic-footer {
   font-weight: 300;
   font-size: clamp(19px, 2.1vw, 25px);
   font-style: italic;
-  color: rgba(237,232,220,0.92);
-  line-height: 1.55;
+  color: rgba(237,232,220,0.96);
+  line-height: 1.60;
   margin-bottom: 28px;
   padding-bottom: 28px;
-  border-bottom: 1px solid rgba(201,164,106,0.14);
+  border-bottom: 1px solid rgba(201,164,106,0.18);
 }
 .wine-body {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  font-size: clamp(13px, 1.15vw, 14px);
-  color: rgba(205,198,188,0.82);
-  line-height: 1.92;
+  font-size: clamp(13px, 1.15vw, 14.5px);
+  color: rgba(220,214,204,0.90);
+  line-height: 1.95;
   margin-bottom: 18px;
 }
 .wine-body:last-child { margin-bottom: 0; }
@@ -2612,12 +2612,12 @@ footer.botic-footer {
 .info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(201,164,106,0.30);
+  border-top: 1px solid rgba(201,164,106,0.35);
 }
 .info-card {
-  padding: 56px 48px 60px;
-  background: rgba(255,248,230,0.038);
-  border-right: 1px solid rgba(70,64,55,0.85);
+  padding: 60px 52px 64px;
+  background: rgba(255,248,225,0.055);
+  border-right: 1px solid rgba(80,72,60,0.80);
   position: relative;
   opacity: 0;
   animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
@@ -2630,8 +2630,8 @@ footer.botic-footer {
   top: 0; left: 0; right: 0;
   height: 2px;
   background: linear-gradient(90deg,
-    rgba(201,164,106,0.85) 0%,
-    rgba(201,164,106,0.32) 55%,
+    rgba(201,164,106,0.90) 0%,
+    rgba(201,164,106,0.35) 50%,
     transparent 100%);
   transform: scaleX(0);
   transform-origin: left;
@@ -2639,26 +2639,26 @@ footer.botic-footer {
 }
 .info-card:hover::before { transform: scaleX(1); }
 .info-card:hover {
-  background: rgba(201,164,106,0.062);
+  background: rgba(201,164,106,0.08);
 }
 .info-num {
   display: block;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: 72px;
+  font-size: 76px;
   line-height: 1;
-  color: rgba(201,164,106,0.42);
+  color: rgba(201,164,106,0.55);
   letter-spacing: -0.03em;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   user-select: none;
 }
 .info-text {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  font-size: 13.5px;
-  color: rgba(228,222,212,0.95);
-  line-height: 1.85;
-  letter-spacing: 0.01em;
+  font-size: 14px;
+  color: rgba(232,226,216,0.96);
+  line-height: 1.88;
+  letter-spacing: 0.005em;
 }
 
 /* Keyframe d'entrada dels plats */
@@ -2671,7 +2671,7 @@ footer.botic-footer {
 @media (max-width: 1024px) {
   .mnu-selector { padding: 0 32px; }
   .mnu-section.is-open { margin-left: -12px; padding-left: 12px; }
-  .wine-col-left { max-width: min(56%, 640px); }
+  .wine-col-left { max-width: min(58%, 700px); }
   .wine-title   { font-size: clamp(36px, 6vw, 56px); }
   .wine-stat-num { font-size: clamp(72px, 12vw, 104px); }
   .info-card    { padding: 40px 32px 44px; }
@@ -2703,17 +2703,20 @@ footer.botic-footer {
   .wine-photo-wrap    { width: 100%; }
   .wine-photo-overlay {
     background:
-      rgba(14,12,9,0.78),
-      linear-gradient(0deg, rgba(14,12,9,0.70) 0%, transparent 50%, rgba(14,12,9,0.30) 100%);
+      linear-gradient(0deg,
+        rgba(14,12,9,0.92) 0%,
+        rgba(14,12,9,0.82) 25%,
+        rgba(14,12,9,0.65) 55%,
+        rgba(14,12,9,0.45) 100%);
   }
   .wine-col-left      { max-width: 100%; }
   .wine-title         { font-size: clamp(32px, 9vw, 48px); }
   .wine-stat-num      { font-size: clamp(64px, 18vw, 96px); }
   .info-grid          { grid-template-columns: 1fr; }
-  .info-card          { border-right: none; border-bottom: 1px solid rgba(70,64,55,0.70);
-                        padding: 44px 0 48px; background: transparent; }
+  .info-card          { border-right: none; border-bottom: 1px solid rgba(80,72,60,0.65);
+                        padding: 48px 0 52px; background: transparent; }
   .info-card:last-child { border-bottom: none; }
-  .info-num           { font-size: 56px; }
+  .info-num           { font-size: 60px; }
 }
 
 /* Accessibilitat */
