@@ -75,15 +75,17 @@ export default function Home() {
 
       {/* ── Feature cards ── */}
       <section className="features-section" ref={featuresRef} aria-label="Descobreix Bo.TiC">
-        <div className="features-grid">
-          {FEATURES.map(({ tag, title, body, to, label }, i) => (
-            <Link key={to} to={to} className="feature-card" style={{ '--i': i }}>
-              <span className="feature-tag">{tag}</span>
-              <h3 className="feature-title">{title}</h3>
-              <p className="feature-body">{body}</p>
-              <span className="feature-cta">{label} →</span>
-            </Link>
-          ))}
+        <div className="container-max">
+          <div className="features-grid">
+            {FEATURES.map(({ tag, title, body, to, label }, i) => (
+              <Link key={to} to={to} className="feature-card" style={{ '--i': i }}>
+                <span className="feature-tag">{tag}</span>
+                <h3 className="feature-title">{title}</h3>
+                <p className="feature-body">{body}</p>
+                <span className="feature-cta">{label} →</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
 

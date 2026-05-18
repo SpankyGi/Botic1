@@ -310,8 +310,11 @@ nav.main.scrolled {
   position: relative;
   z-index: 5;
   width: 100%;
-  max-width: 100%;
-  padding: 0 max(48px, 8vw);
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 48px;
+  padding-right: 48px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -350,6 +353,7 @@ nav.main.scrolled {
   z-index: 5;
   pointer-events: none;
   max-width: 600px;
+  margin-left: var(--editorial-left);
 }
 .hero-eyebrow {
   display: inline-block;
@@ -1882,8 +1886,8 @@ footer.botic-footer {
   .topbar { display: none; }
   nav.main { top: 0; padding: 0 24px; }
   .hero { margin-top: 88px; padding: 60px 0 100px; }
-  .hero-content-wrap { padding: 0 24px; }
-  .hero-text { max-width: 100%; }
+  .hero-content-wrap { padding-left: 24px; padding-right: 24px; }
+  .hero-text { max-width: 100%; margin-left: 0; }
   .hero-eyebrow { font-size: 11px; letter-spacing: 0.14em; padding: 6px 14px; margin-bottom: 20px; }
   .hero-sub { font-size: 13px; margin-top: 18px; max-width: 100%; }
   .hero-ctas { margin-top: 28px; gap: 12px; }
@@ -2134,11 +2138,12 @@ footer.botic-footer {
 /* Feature cards (pàgina d'inici portal) */
 .features-section {
   background: #0C0B09;
+  border-top: 1px solid rgba(201,164,106,0.14);
+  border-bottom: 1px solid rgba(201,164,106,0.08);
 }
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(201,164,106,0.14);
 }
 
 /* Scroll reveal: opac fins que la secció sigui visible */
