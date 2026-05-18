@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import AtmosphericParticles from './AtmosphericParticles'
 
 const BG_VIDEO_SRC    = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1779093224/hero-botic_krjc0b.webm'
@@ -72,14 +73,29 @@ export default function Hero() {
 
       <div className="hero-content-wrap">
         <div className="hero-text">
-          <div className="hero-eyebrow">★★ Michelin · Corçà · Empordà</div>
+
+          {/* Claim superior — càpsula champagne */}
+          <div className="hero-eyebrow">
+            Michelin · Corçà · Empordà
+          </div>
+
+          {/* Titular en dues línies */}
           <h1 className="hero-title">
             <span className="word"><span>Sentimiento</span></span>
-            {' '}
-            <span className="word"><span>y</span></span>
-            {' '}
-            <span className="word"><span>pasión</span></span>
+            <span className="word"><span>y pasión</span></span>
           </h1>
+
+          {/* Subtext molt curt */}
+          <p className="hero-sub">
+            Alta gastronomía en el corazón del Empordà.
+          </p>
+
+          {/* CTA */}
+          <div className="hero-ctas">
+            <Link to="/reserves" className="hero-btn-primary">Reservar</Link>
+            <Link to="/menus"    className="hero-btn-secondary">Ver menús</Link>
+          </div>
+
         </div>
       </div>
 
