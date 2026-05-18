@@ -2457,7 +2457,8 @@ footer.botic-footer {
 /* Foto de bodega — panel dret amb transició gradual ampla */
 .wine-photo-wrap {
   position: absolute;
-  right: 0; top: 0; bottom: 0;
+  left: 50%; top: 0; bottom: 0;
+  transform: translateX(-50%);
   width: 58%;
   z-index: 0;
 }
@@ -2475,12 +2476,12 @@ footer.botic-footer {
   background:
     linear-gradient(90deg,
       #0e0c09 0%,
-      rgba(14,12,9,0.98) 8%,
-      rgba(14,12,9,0.88) 25%,
-      rgba(14,12,9,0.68) 45%,
+      rgba(14,12,9,0.92) 12%,
+      rgba(14,12,9,0.38) 35%,
+      rgba(14,12,9,0.10) 50%,
       rgba(14,12,9,0.38) 65%,
-      rgba(14,12,9,0.14) 82%,
-      rgba(14,12,9,0.05) 100%),
+      rgba(14,12,9,0.92) 88%,
+      #0e0c09 100%),
     linear-gradient(0deg,
       rgba(14,12,9,0.55) 0%,
       transparent 32%,
