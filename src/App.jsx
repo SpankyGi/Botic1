@@ -12,6 +12,7 @@ import Gastronomia   from './pages/Gastronomia'
 import Experiencia   from './pages/Experiencia'
 import Menus         from './pages/Menus'
 import Reserves      from './pages/Reserves'
+import Horaris       from './pages/Horaris'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/menus"        element={<Menus />} />
           <Route path="/experiencia" element={<Experiencia />} />
           <Route path="/reserves"    element={<Reserves />} />
+          <Route path="/horaris"     element={<Horaris />} />
         </Routes>
       </main>
       <Footer />

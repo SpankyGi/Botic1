@@ -7,6 +7,7 @@ const LINKS = [
   { to: '/menus',       label: 'Menús'       },
   { to: '/experiencia', label: 'Experiència' },
   { to: '/reserves',    label: 'Reserves'    },
+  { to: '/horaris',    label: 'Horaris'     },
 ]
 
 const navLinkClass = ({ isActive }) =>

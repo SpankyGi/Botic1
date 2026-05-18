@@ -3392,4 +3392,429 @@ footer.botic-footer {
   .mnu-tab::before,
   .mnu-section-trigger::after,
   .mnu-dish::before     { transition: none; }
+  .hor-card             { opacity: 1; transform: none; transition: none; }
+  .hor-hero-img         { animation: none; transform: none; }
+}
+
+/* ====== PÀGINA HORARIS ====== */
+
+/* ── Hero ── */
+.hor-hero {
+  position: relative;
+  min-height: min(92vh, 820px);
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  background: #0a0806;
+  margin-top: 124px; /* topbar 36px + nav 88px */
+}
+.hor-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 42%;
+  display: block;
+  filter: brightness(0.72) contrast(1.05) saturate(0.85);
+  animation: hor-ken-burns 20s ease-out both;
+}
+@keyframes hor-ken-burns {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1.00); }
+}
+.hor-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg,
+      rgba(10,8,6,0.95)  0%,
+      rgba(10,8,6,0.68) 32%,
+      rgba(10,8,6,0.30) 62%,
+      rgba(10,8,6,0.08) 100%),
+    linear-gradient(90deg,
+      rgba(10,8,6,0.52) 0%,
+      transparent       55%);
+}
+.hor-hero-inner {
+  position: relative;
+  z-index: 1;
+  padding-top: 160px;
+  padding-bottom: 88px;
+}
+.hor-hero-content {
+  max-width: min(55%, 620px);
+  margin-left: var(--editorial-left);
+}
+.hor-hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(201,164,106,0.80);
+  margin-bottom: 28px;
+  animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.20s both;
+}
+.hor-hero-line {
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: rgba(201,164,106,0.55);
+  flex-shrink: 0;
+}
+.hor-hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(54px, 8vw, 118px);
+  color: var(--white);
+  line-height: 0.94;
+  letter-spacing: -0.012em;
+  margin-bottom: 28px;
+  text-shadow: 0 2px 40px rgba(0,0,0,0.65);
+  animation: fadeUp 1.0s cubic-bezier(0.4,0,0.2,1) 0.36s both;
+}
+.hor-hero-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.2vw, 15px);
+  color: rgba(218,212,202,0.72);
+  line-height: 1.82;
+  font-weight: 300;
+  margin-bottom: 40px;
+  animation: fadeUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.52s both;
+}
+.hor-hero-cta {
+  animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.66s both;
+}
+
+/* ── Schedule Section (cream) ── */
+.hor-schedule {
+  background: #f5f1ea;
+  padding: 120px 0 140px;
+}
+.hor-schedule-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.hor-schedule-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 14px;
+}
+.hor-schedule-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(40px, 5vw, 72px);
+  color: #1A1612;
+  line-height: 1.0;
+  letter-spacing: -0.015em;
+  margin-bottom: 22px;
+}
+.hor-schedule-intro {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(30,26,20,0.62);
+  line-height: 1.85;
+  font-weight: 300;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* Cards */
+.hor-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(30,26,20,0.12);
+}
+.hor-card {
+  background: #f5f1ea;
+  padding: 52px 44px 60px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity  0.70s cubic-bezier(0.4,0,0.2,1) calc(0.10s + var(--i, 0) * 0.16s),
+    transform 0.70s cubic-bezier(0.4,0,0.2,1) calc(0.10s + var(--i, 0) * 0.16s);
+}
+.hor-schedule.visible .hor-card {
+  opacity: 1;
+  transform: none;
+}
+.hor-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(154,42,42,0.80) 0%,
+    rgba(154,42,42,0.15) 100%);
+}
+.hor-card-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: clamp(52px, 6vw, 88px);
+  font-weight: 300;
+  color: rgba(154,42,42,0.10);
+  line-height: 1;
+  margin-bottom: -10px;
+  display: block;
+  user-select: none;
+}
+.hor-card-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  color: var(--burgundy);
+  margin-bottom: 8px;
+  display: block;
+}
+.hor-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(26px, 2.8vw, 40px);
+  color: #1A1612;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+.hor-card-sep {
+  width: 36px;
+  height: 1px;
+  background: rgba(154,42,42,0.35);
+  margin-bottom: 28px;
+}
+.hor-card-rows {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.hor-card-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  gap: 2px 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(30,26,20,0.10);
+}
+.hor-card-row:last-child { border-bottom: none; }
+.hor-card-row.tancat { opacity: 0.38; }
+.hor-row-days {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: rgba(30,26,20,0.60);
+  grid-column: 1;
+  grid-row: 1;
+}
+.hor-row-service {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 18px;
+  font-weight: 400;
+  font-style: italic;
+  color: #1A1612;
+  grid-column: 1;
+  grid-row: 2;
+}
+.hor-row-time {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(154,42,42,0.80);
+  grid-column: 2;
+  grid-row: 1 / 3;
+  align-self: center;
+  white-space: nowrap;
+}
+
+/* ── Calendar Section (dark) ── */
+.hor-calendar {
+  background: #0e0c09;
+  padding: 120px 0 140px;
+  border-top: 1px solid rgba(201,164,106,0.10);
+}
+.hor-cal-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.hor-cal-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  color: rgba(201,164,106,0.60);
+  margin-bottom: 10px;
+}
+.hor-cal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(64px, 9vw, 120px);
+  color: #EDE8DC;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+  margin-bottom: 36px;
+}
+.hor-cal-legend {
+  display: inline-flex;
+  align-items: center;
+  gap: 28px;
+  padding: 12px 28px;
+  border: 1px solid rgba(201,164,106,0.16);
+}
+.hor-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.hor-legend-item.s0 { color: rgba(154,42,42,0.75); }
+.hor-legend-item.s1 { color: rgba(237,232,220,0.68); }
+.hor-legend-item.s2 { color: rgba(201,164,106,0.92); }
+.hor-legend-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.hor-legend-item.s0 .hor-legend-dot { background: rgba(154,42,42,0.75); }
+.hor-legend-item.s1 .hor-legend-dot { background: rgba(237,232,220,0.60); }
+.hor-legend-item.s2 .hor-legend-dot { background: rgba(201,164,106,0.90); }
+
+/* Months grid */
+.hor-months-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(201,164,106,0.08);
+}
+.hor-month {
+  background: #0e0c09;
+  padding: 32px 28px 36px;
+}
+.hor-month-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 21px;
+  color: rgba(237,232,220,0.88);
+  letter-spacing: 0.01em;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(201,164,106,0.14);
+}
+.hor-day-headers {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  margin-bottom: 5px;
+}
+.hor-day-headers span {
+  font-family: 'Inter', sans-serif;
+  font-size: 8px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(201,164,106,0.38);
+  text-align: center;
+  padding: 4px 0;
+}
+.hor-day-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+.hor-day {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 300;
+  text-align: center;
+  padding: 5px 2px;
+  line-height: 1;
+  border-radius: 1px;
+}
+.hor-day.empty { background: transparent; }
+.hor-day.s0 {
+  color: rgba(154,42,42,0.58);
+  background: rgba(154,42,42,0.06);
+}
+.hor-day.s1 {
+  color: rgba(237,232,220,0.78);
+  background: rgba(237,232,220,0.05);
+}
+.hor-day.s2 {
+  color: rgba(201,164,106,0.92);
+  background: rgba(201,164,106,0.09);
+}
+
+/* ── CTA Reserva ── */
+.hor-cta-section {
+  background: #111009;
+  padding: 96px 48px;
+  text-align: center;
+  border-top: 1px solid rgba(201,164,106,0.10);
+}
+.hor-cta-eyebrow {
+  color: rgba(201,164,106,0.68) !important;
+  letter-spacing: 0.38em;
+}
+.hor-cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(36px, 4.5vw, 62px);
+  color: #EDE8DC;
+  line-height: 1.08;
+  letter-spacing: -0.014em;
+  margin: 16px 0 20px;
+}
+.hor-cta-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: rgba(168,160,148,0.88);
+  line-height: 1.80;
+  font-weight: 300;
+  max-width: 440px;
+  margin: 0 auto 36px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .hor-months-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .hor-hero { margin-top: 88px; min-height: min(88vh, 680px); }
+  .hor-hero-content { max-width: 100%; margin-left: 0; }
+  .hor-hero-inner   { padding-top: 100px; padding-bottom: 60px; }
+  .hor-hero-title   { font-size: clamp(46px, 13vw, 72px); }
+  .hor-cards-grid   { grid-template-columns: 1fr; gap: 2px; }
+  .hor-card         { padding: 40px 24px 48px; }
+  .hor-months-grid  { grid-template-columns: repeat(2, 1fr); }
+  .hor-month        { padding: 22px 16px 26px; }
+  .hor-day          { font-size: 10px; padding: 4px 1px; }
+  .hor-schedule     { padding: 80px 0 100px; }
+  .hor-calendar     { padding: 80px 0 100px; }
+  .hor-cta-section  { padding: 72px 24px; }
+}
+@media (max-width: 480px) {
+  .hor-months-grid  { grid-template-columns: 1fr; }
 }
