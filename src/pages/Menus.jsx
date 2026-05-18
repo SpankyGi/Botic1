@@ -143,12 +143,21 @@ function SectionAccordion({ section, menuId }) {
 function WineSection() {
   return (
     <section className="wine-section" aria-labelledby="wine-heading">
-      {/* Trama puntejada de fons */}
+
+      {/* Foto de fons — panel dret */}
+      <div className="wine-photo-wrap" aria-hidden="true">
+        <img
+          src="/images/restaurant-emporda-botic-michelin.webp"
+          alt=""
+          className="wine-photo-img"
+        />
+        <div className="wine-photo-overlay" />
+      </div>
+
+      {/* Trama atmosfèrica */}
       <div className="wine-bg-texture" aria-hidden="true" />
 
       <div className="container-max wine-inner">
-
-        {/* Columna esquerra — dada protagonista + títol */}
         <div className="wine-col-left">
           <span className="wine-label">Maridatge · Bodega</span>
 
@@ -168,10 +177,7 @@ function WineSection() {
             <span className="wine-orn-glyph">◈</span>
             <span className="wine-orn-line" />
           </div>
-        </div>
 
-        {/* Columna dreta — text */}
-        <div className="wine-col-right">
           <p className="wine-lead">
             Tenemos una amplia carta de vinos con más de 900 referencias de diferentes países.
           </p>
@@ -186,7 +192,6 @@ function WineSection() {
             una de ellas con una fuerte personalidad.
           </p>
         </div>
-
       </div>
     </section>
   )
