@@ -299,6 +299,7 @@ nav.main.scrolled {
   width: 80%; height: 100%;
   opacity: 0.4;
   pointer-events: none;
+  z-index: 3;
 }
 .steam-blob {
   position: absolute;
@@ -379,6 +380,37 @@ nav.main.scrolled {
   font-size: 9px; letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--grey);
+}
+
+/* ====== HERO BG VIDEO ====== */
+.hero-bg-video-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+.hero-bg-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+.hero-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to bottom,
+      rgba(12,11,9,0.60) 0%,
+      rgba(12,11,9,0.28) 35%,
+      rgba(12,11,9,0.38) 65%,
+      rgba(12,11,9,0.80) 100%
+    ),
+    radial-gradient(ellipse at 50% 40%, rgba(154,42,42,0.12) 0%, transparent 65%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-video { display: none; }
 }
 
 /* ====== HERO VIDEO FRAME (9:16) ====== */
@@ -1550,6 +1582,16 @@ footer.botic-footer {
   .foot-bottom { flex-direction: column; gap: 12px; }
   .video-side-text { display: none; }
   .hero-video-frame { max-width: 280px; }
+  .hero-bg-video { object-position: 60% center; }
+  .hero-bg-overlay {
+    background:
+      linear-gradient(to bottom,
+        rgba(12,11,9,0.70) 0%,
+        rgba(12,11,9,0.38) 35%,
+        rgba(12,11,9,0.48) 65%,
+        rgba(12,11,9,0.88) 100%
+      );
+  }
 }
 
 /* ====== ACCESSIBILITAT ====== */

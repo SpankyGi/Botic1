@@ -1,6 +1,39 @@
 import { useState, useEffect, useRef } from 'react'
 
-const VIDEO_SRC = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1778375551/loop_ps82z2.mp4'
+const VIDEO_SRC     = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1778375551/loop_ps82z2.mp4'
+const BG_VIDEO_SRC  = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1779093224/hero-botic_krjc0b.webm'
+const BG_VIDEO_POSTER = '/images/hero-botic-poster.jpg'
+
+function BgVideo() {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (mq.matches) return
+    video.play().catch(() => {})
+  }, [])
+
+  return (
+    <div className="hero-bg-video-wrap" aria-hidden="true">
+      <video
+        ref={videoRef}
+        className="hero-bg-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={BG_VIDEO_POSTER}
+        tabIndex="-1"
+      >
+        <source src={BG_VIDEO_SRC} type="video/webm" />
+      </video>
+      <div className="hero-bg-overlay" />
+    </div>
+  )
+}
 
 function SteamBlobs() {
   return (
@@ -82,6 +115,7 @@ export default function Hero() {
   return (
     <section className="hero">
       <div className="hero-bg" />
+      <BgVideo />
       <SteamBlobs />
 
       <div className="hero-content-wrap">
