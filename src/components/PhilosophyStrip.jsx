@@ -9,10 +9,17 @@ export default function PhilosophyStrip() {
 
       {/* Foto de fons — full bleed */}
       <div className="philo-photo-wrap" aria-hidden="true">
+        {/* Desktop: nova foto horitzontal amb xef visible */}
+        <img
+          src="/images/albert-sastregener-cuina-emporda-girona.webp"
+          alt=""
+          className="philo-photo-img philo-photo-desktop"
+        />
+        {/* Mobile: foto original */}
         <img
           src="/images/albert-sastregener-cuina-emporda.webp"
           alt=""
-          className="philo-photo-img"
+          className="philo-photo-img philo-photo-mobile"
         />
         <div className="philo-overlay" />
       </div>

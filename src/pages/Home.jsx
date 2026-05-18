@@ -3,6 +3,7 @@ import Hero            from '../components/Hero'
 import MarqueeStrip    from '../components/MarqueeStrip'
 import PhilosophyStrip from '../components/PhilosophyStrip'
 import SEO             from '../components/SEO'
+import { useReveal }   from '../hooks/useReveal'
 
 const FEATURES = [
   {
@@ -29,6 +30,8 @@ const FEATURES = [
 ]
 
 export default function Home() {
+  const ctaRef = useReveal(0.18)
+
   return (
     <>
       <SEO
@@ -86,14 +89,14 @@ export default function Home() {
       <PhilosophyStrip />
 
       {/* ── CTA Reserva ── */}
-      <section className="bg-botic-dark py-24 md:py-32 text-center">
-        <div className="container-max">
+      <section className="home-reserva-cta">
+        <div className="container-max reveal" ref={ctaRef}>
           <span className="label block">Reserva</span>
           <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl
                          text-botic-cream leading-tight tracking-tight mt-4 mb-6">
             Assegureu la vostra taula
           </h2>
-          <p className="font-sans text-sm md:text-base text-botic-muted leading-relaxed
+          <p className="font-sans text-sm md:text-base leading-relaxed
                         max-w-md mx-auto mb-10">
             L'aforament del restaurant és reduït. Us recomanem reservar amb antelació.
           </p>
