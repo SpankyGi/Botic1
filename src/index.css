@@ -690,7 +690,7 @@ nav.main.scrolled {
 /* ====== MARQUEE STRIP ====== */
 .marquee {
   background: var(--beige);
-  padding: 28px 0;
+  padding: 14px 0;
   overflow: hidden;
   user-select: none;
   border-top: 1px solid rgba(0,0,0,0.06);
@@ -705,7 +705,7 @@ nav.main.scrolled {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: 28px;
+  font-size: 20px;
   will-change: transform;
 }
 .marquee-copy {
@@ -716,12 +716,12 @@ nav.main.scrolled {
 .marquee-item {
   display: inline-flex;
   align-items: center;
-  gap: 36px;
-  padding-right: 36px;
+  gap: 26px;
+  padding-right: 26px;
 }
 .marquee-dot {
   color: var(--burgundy);
-  font-size: 32px;
+  font-size: 22px;
   line-height: 1;
   flex-shrink: 0;
 }
@@ -2068,23 +2068,22 @@ footer.botic-footer {
   object-fit: cover;
   object-position: center;
   display: block;
-  filter: brightness(0.78) contrast(1.10) saturate(0.88);
+  filter: brightness(0.88) contrast(1.06) saturate(0.90);
 }
 .home-intro-overlay {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(90deg,
-      rgba(14,12,9,0.97) 0%,
-      rgba(14,12,9,0.90) 18%,
-      rgba(14,12,9,0.55) 38%,
-      rgba(14,12,9,0.16) 60%,
-      rgba(14,12,9,0.04) 80%,
-      transparent        100%),
+      rgba(14,12,9,0.88) 0%,
+      rgba(14,12,9,0.78) 18%,
+      rgba(14,12,9,0.38) 42%,
+      rgba(14,12,9,0.08) 62%,
+      transparent        80%),
     linear-gradient(0deg,
-      rgba(14,12,9,0.35) 0%,
+      rgba(14,12,9,0.22) 0%,
       transparent        25%,
-      rgba(14,12,9,0.08) 100%);
+      rgba(14,12,9,0.04) 100%);
 }
 .home-intro-inner {
   position: relative;
