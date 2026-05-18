@@ -1,4 +1,4 @@
-import { useState, useId, useRef } from 'react'
+import { useState, useId, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import { menus } from '../data/menus'
@@ -139,8 +139,48 @@ function SectionAccordion({ section, menuId }) {
   )
 }
 
+/* ── Hook count-up ─────────────────────────────────────────── */
+function useCountUp(target, duration = 1200) {
+  const [count, setCount] = useState(0)
+  const hasRun  = useRef(false)
+  const ref     = useRef(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reduced) { setCount(target); return }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || hasRun.current) return
+        hasRun.current = true
+        observer.disconnect()
+
+        const start = performance.now()
+        const tick  = (now) => {
+          const t     = Math.min((now - start) / duration, 1)
+          const eased = 1 - Math.pow(1 - t, 3)   // cubic ease-out
+          setCount(Math.round(eased * target))
+          if (t < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+      },
+      { threshold: 0.35 }
+    )
+
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  return { count, ref }
+}
+
 /* ── Carta de Vinos ─────────────────────────────────────────── */
 function WineSection() {
+  const { count, ref: statRef } = useCountUp(900, 1250)
+
   return (
     <section className="wine-section" aria-labelledby="wine-heading">
 
@@ -161,9 +201,20 @@ function WineSection() {
         <div className="wine-col-left">
           <span className="wine-label">Maridatge · Bodega</span>
 
-          <div className="wine-stat">
-            <span className="wine-stat-num">900<span className="wine-stat-plus">+</span></span>
-            <span className="wine-stat-desc">referencias de todo el mundo</span>
+          <div className="wine-stat" ref={statRef}>
+            <span className="wine-stat-num" aria-label="Más de 900 referencias">
+              {count}<span className="wine-stat-plus" aria-hidden="true">+</span>
+            </span>
+            <span
+              className="wine-stat-desc"
+              style={{
+                opacity:    count > 0 ? 1 : 0,
+                transform:  count > 0 ? 'translateY(0)' : 'translateY(6px)',
+                transition: 'opacity 0.5s ease 1.05s, transform 0.5s ease 1.05s',
+              }}
+            >
+              referencias de todo el mundo
+            </span>
           </div>
 
           <div className="wine-divider" aria-hidden="true" />
