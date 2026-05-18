@@ -2135,6 +2135,7 @@ footer.botic-footer {
 
 /* ── Àrea de contingut ── */
 .mnu-content-wrap {
+  scroll-margin-top: 220px; /* nav 124px + selector ~80px + marge */
   background: #0C0B09;
   /* Trama molt subtil per a textura */
   background-image: radial-gradient(rgba(46,43,39,0.4) 1px, transparent 1px);

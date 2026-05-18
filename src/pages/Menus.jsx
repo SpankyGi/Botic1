@@ -1,4 +1,4 @@
-import { useState, useId } from 'react'
+import { useState, useId, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import { menus } from '../data/menus'
@@ -249,6 +249,14 @@ function Ornament() {
 export default function Menus() {
   const [activeId, setActiveId] = useState('degustacion')
   const active = menus.find(m => m.id === activeId) ?? menus[0]
+  const contentRef = useRef(null)
+
+  const selectMenu = (id) => {
+    setActiveId(id)
+    setTimeout(() => {
+      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 0)
+  }
 
   return (
     <>
@@ -272,7 +280,7 @@ export default function Menus() {
             <button
               key={m.id}
               className={`mnu-tab${m.id === activeId ? ' active' : ''}`}
-              onClick={() => setActiveId(m.id)}
+              onClick={() => selectMenu(m.id)}
               aria-pressed={m.id === activeId}
             >
               <span className="mnu-tab-title">{m.title}</span>
@@ -286,6 +294,7 @@ export default function Menus() {
 
       {/* ── Contingut del menú actiu ── */}
       <section
+        ref={contentRef}
         className="mnu-content-wrap"
         aria-label={active.title}
         key={activeId}
