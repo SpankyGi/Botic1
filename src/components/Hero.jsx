@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import AtmosphericParticles from './AtmosphericParticles'
 
 const BG_VIDEO_SRC    = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1779093224/hero-botic_krjc0b.webm'
 const BG_VIDEO_POSTER = '/images/hero-botic-poster.jpg'
@@ -59,6 +60,7 @@ export default function Hero() {
       <div className="hero-bg" />
       <BgVideo />
       <SteamBlobs />
+      <AtmosphericParticles />
 
       <div className="hero-content-wrap">
         <div className="hero-text">

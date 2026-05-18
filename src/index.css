@@ -413,6 +413,45 @@ nav.main.scrolled {
   .hero-bg-video { display: none; }
 }
 
+/* ====== ATMOSPHERIC PARTICLES ====== */
+/*
+  Per ajustar la intensitat:
+  - .atm-particles { opacity }  →  0 = invisible, 0.5 = més visible
+  - @keyframes atm-float  →  translateY final controla quant puja cada partícula
+  - .atm-particle { filter: blur() }  →  més blur = més difuminat
+*/
+.atm-particles {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.28;          /* ← INTENSITAT GLOBAL — ajusta aquí */
+}
+.atm-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(237, 232, 220, 0.80);
+  filter: blur(0.7px);
+  animation: atm-float linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes atm-float {
+  0%   { transform: translateY(0px)   translateX(0px);  opacity: 0;    }
+  10%  {                                                 opacity: 1;    }
+  88%  {                                                 opacity: 0.75; }
+  100% { transform: translateY(-65px) translateX(6px);  opacity: 0;    }
+}
+
+@media (max-width: 768px) {
+  .atm-particles { opacity: 0.14; }  /* menys intens a mòbil */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atm-particles { display: none; }
+}
+
 /* ====== HERO VIDEO FRAME (9:16) ====== */
 .hero-video-frame {
   position: relative;
