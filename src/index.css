@@ -17,6 +17,7 @@
   --burgundy: #9a2a2a;
   --burgundy-dark: #7a1f1f;
   --grey: #888;
+  --editorial-left: 4%;
 }
 
 html { scroll-behavior: smooth; }
@@ -1592,7 +1593,7 @@ nav.main.scrolled {
 .philo-inner {
   position: relative;
   max-width: min(44%, 560px);
-  margin-left: 4%;
+  margin-left: var(--editorial-left);
   padding: 16px 0;
   text-align: left;
 }
@@ -2088,7 +2089,7 @@ footer.botic-footer {
 }
 .home-intro-content {
   max-width: min(50%, 560px);
-  margin-left: 20%;
+  margin-left: var(--editorial-left);
 }
 .home-intro-label {
   display: block;
