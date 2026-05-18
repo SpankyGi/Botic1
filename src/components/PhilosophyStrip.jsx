@@ -1,20 +1,17 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, Fragment } from 'react'
 import { useReveal } from '../hooks/useReveal'
 
-// Cada paraula és una unitat d'animació independent
-const WORDS = [
-  { t: '"La' },      { t: 'cocina' },  { t: 'es' },      { t: 'un' },
-  { t: 'viaje.' },   { t: 'Una' },     { t: 'manera' },  { t: 'de' },
-  { t: 'emocionar,', accent: true },
-  { t: 'de' },       { t: 'hacer' },   { t: 'sentir,' },
-  { t: 'de' },       { t: 'contar' },  { t: 'quiénes' },
-  { t: 'somos' },    { t: 'a' },       { t: 'través' },
-  { t: 'de' },       { t: 'un' },      { t: 'plato."' },
+const FRAGS = [
+  { t: '“La cocina es un viaje.' },
+  { t: 'Una manera de emocionar,', accent: true },
+  { t: 'de hacer sentir,' },
+  { t: 'de contar quiénes somos' },
+  { t: 'a través de un plato.”' },
 ]
 
-const STEP = 0.11 // segons entre paraules
+const STEP = 0.55 // seconds between fragments
 
-function useWordReveal(threshold = 0.30) {
+function useFragReveal(threshold = 0.30) {
   const reduced =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -39,7 +36,7 @@ function useWordReveal(threshold = 0.30) {
 }
 
 export default function PhilosophyStrip() {
-  const [quoteRef, quoteActive] = useWordReveal(0.30)
+  const [quoteRef, quoteActive] = useFragReveal(0.30)
   const authorRef = useReveal()
 
   return (
@@ -64,16 +61,18 @@ export default function PhilosophyStrip() {
       <div className="container-max philo-container">
         <div className="philo-inner">
 
-          {/* Cita amb reveal paraula per paraula */}
+          {/* Cita amb reveal fragment per fragment */}
           <p className="philo-quote" ref={quoteRef}>
-            {WORDS.map(({ t, accent }, i) => (
-              <span
-                key={i}
-                className={`philo-word${accent ? ' accent' : ''}${quoteActive ? ' in' : ''}`}
-                style={{ '--d': `${(i * STEP).toFixed(2)}s` }}
-              >
-                {t}{' '}
-              </span>
+            {FRAGS.map(({ t, accent }, i) => (
+              <Fragment key={i}>
+                <span
+                  className={`philo-frag${accent ? ' accent' : ''}${quoteActive ? ' in' : ''}`}
+                  style={{ '--d': `${(i * STEP).toFixed(2)}s` }}
+                >
+                  {t}
+                </span>
+                {' '}
+              </Fragment>
             ))}
           </p>
 

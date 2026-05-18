@@ -1625,7 +1625,7 @@ nav.main.scrolled {
   z-index: 1;
   text-shadow: 0 2px 28px rgba(14,12,9,0.55);
 }
-.philo-quote .accent { color: #C9A46A; font-weight: 300; }
+.philo-frag.accent { color: #C9A46A; font-weight: 300; }
 
 /* Línia separadora, alineada a l'esquerra */
 .philo-sep {
@@ -1647,17 +1647,17 @@ nav.main.scrolled {
   text-shadow: 0 0 20px rgba(154,42,42,0.38);
 }
 
-/* Word-by-word reveal */
-.philo-word {
+/* Fragment reveal */
+.philo-frag {
   display: inline-block;
   vertical-align: baseline;
   opacity: 0;
-  transform: translateY(5px);
+  transform: translateY(6px);
   transition:
-    opacity  0.50s ease var(--d, 0s),
-    transform 0.50s cubic-bezier(0.4, 0, 0.2, 1) var(--d, 0s);
+    opacity  0.60s ease var(--d, 0s),
+    transform 0.60s cubic-bezier(0.4, 0, 0.2, 1) var(--d, 0s);
 }
-.philo-word.in { opacity: 1; transform: none; }
+.philo-frag.in { opacity: 1; transform: none; }
 
 /* Attribution reveal — after last word */
 .philo-attribution.reveal {
@@ -1954,7 +1954,7 @@ footer.botic-footer {
   }
   .reveal { opacity: 1; transform: none; }
   .marquee-track { animation-play-state: paused; }
-  .philo-word { opacity: 1; transform: none; transition: none; }
+  .philo-frag { opacity: 1; transform: none; transition: none; }
   .philo-attribution.reveal { transition: none; }
 }
 
