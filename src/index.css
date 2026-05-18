@@ -1527,9 +1527,11 @@ nav.main.scrolled {
 
 /* ====== FOOTER ====== */
 footer.botic-footer {
-  background: var(--black);
-  padding: 80px 48px 32px;
+  background: #0a0908;
+  padding: 96px 48px 40px;
   color: var(--grey);
+  border-top: 1px solid rgba(201,164,106,0.14);
+  position: relative;
 }
 .foot-grid {
   display: grid;
@@ -1550,35 +1552,35 @@ footer.botic-footer {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 16px;
-  color: var(--grey);
+  color: rgba(160,153,143,0.85);
 }
 .foot-col h4 {
   font-size: 10px;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: var(--white);
-  margin-bottom: 20px;
-  font-weight: 400;
+  color: rgba(237,232,220,0.90);
+  margin-bottom: 22px;
+  font-weight: 500;
 }
 .foot-col p,
 .foot-col a {
   font-size: 13px;
-  color: var(--grey);
-  line-height: 1.9;
+  color: rgba(160,153,143,0.85);
+  line-height: 2.0;
   text-decoration: none;
   display: block;
   transition: color 0.3s;
 }
-.foot-col a:hover { color: var(--burgundy); }
+.foot-col a:hover { color: #C9A46A; }
 .foot-bottom {
   max-width: 1400px;
-  margin: 60px auto 0;
-  padding-top: 24px;
-  border-top: 1px solid rgba(255,255,255,0.06);
+  margin: 64px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.10);
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,0.45);
 }
 
 /* ====== EXPANDABLE DISH ====== */
@@ -1731,7 +1733,7 @@ footer.botic-footer {
   .mesa-detail { padding: 60px 24px; }
   .mesa-detail-grid { grid-template-columns: 1fr; gap: 40px; }
   .philosophy { padding: 80px 24px; }
-  footer.botic-footer { padding: 60px 24px 24px; }
+  footer.botic-footer { padding: 72px 24px 32px; }
   .foot-grid { grid-template-columns: 1fr; gap: 32px; }
   .foot-bottom { flex-direction: column; gap: 12px; }
   .video-side-text { display: none; }
@@ -2420,22 +2422,24 @@ footer.botic-footer {
 
 /* ── CTA final ── */
 .mnu-cta-section {
-  background: linear-gradient(180deg, #0C0B09 0%, #161511 40%, #0C0B09 100%);
-  padding: 96px 0 88px;
+  background: linear-gradient(180deg, #0e0c09 0%, #17150f 45%, #0e0c09 100%);
+  padding: 120px 0 112px;
   text-align: center;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(154,42,42,0.1);
+  border-top: 1px solid rgba(201,164,106,0.20);
 }
-/* Glow radial daurat al centre */
+/* Glow radial càlid darrere del títol */
 .mnu-cta-glow {
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
-  width: 600px; height: 400px;
-  background: radial-gradient(ellipse,
-    rgba(154,42,42,0.07) 0%,
-    transparent 65%);
+  width: 900px; height: 560px;
+  background:
+    radial-gradient(ellipse at 50% 45%,
+      rgba(201,164,106,0.10) 0%,
+      rgba(154,42,42,0.06) 42%,
+      transparent 70%);
   pointer-events: none;
 }
 .mnu-cta-content { position: relative; z-index: 1; }
@@ -2454,7 +2458,7 @@ footer.botic-footer {
 .wine-photo-wrap {
   position: absolute;
   right: 0; top: 0; bottom: 0;
-  width: 60%;
+  width: 55%;
   z-index: 0;
 }
 .wine-photo-img {
@@ -2471,15 +2475,15 @@ footer.botic-footer {
   background:
     linear-gradient(90deg,
       #0e0c09 0%,
-      rgba(14,12,9,0.96) 8%,
-      rgba(14,12,9,0.76) 28%,
-      rgba(14,12,9,0.32) 58%,
-      rgba(14,12,9,0.06) 85%,
-      rgba(14,12,9,0.0) 100%),
+      rgba(14,12,9,0.97) 5%,
+      rgba(14,12,9,0.80) 25%,
+      rgba(14,12,9,0.38) 54%,
+      rgba(14,12,9,0.14) 78%,
+      rgba(14,12,9,0.06) 100%),
     linear-gradient(0deg,
-      rgba(14,12,9,0.55) 0%,
-      transparent 32%,
-      rgba(14,12,9,0.18) 100%);
+      rgba(14,12,9,0.50) 0%,
+      transparent 30%,
+      rgba(14,12,9,0.20) 100%);
 }
 
 .wine-bg-texture {
@@ -2496,7 +2500,7 @@ footer.botic-footer {
   z-index: 2;
 }
 .wine-col-left {
-  max-width: min(50%, 560px);
+  max-width: min(48%, 640px);
   opacity: 0;
   animation: fadeUp 0.85s cubic-bezier(0.4,0,0.2,1) 0.18s both;
 }
@@ -2603,17 +2607,17 @@ footer.botic-footer {
 /* ── Informació pràctica ── */
 .info-section {
   background: #0e0c09;
-  padding: 0 0 108px;
+  padding: 0 0 120px;
 }
 .info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(201,164,106,0.22);
+  border-top: 1px solid rgba(201,164,106,0.30);
 }
 .info-card {
-  padding: 48px 44px 52px;
-  background: rgba(255,248,235,0.022);
-  border-right: 1px solid rgba(60,55,48,0.80);
+  padding: 56px 48px 60px;
+  background: rgba(255,248,230,0.038);
+  border-right: 1px solid rgba(70,64,55,0.85);
   position: relative;
   opacity: 0;
   animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
@@ -2626,8 +2630,8 @@ footer.botic-footer {
   top: 0; left: 0; right: 0;
   height: 2px;
   background: linear-gradient(90deg,
-    rgba(201,164,106,0.80) 0%,
-    rgba(201,164,106,0.28) 55%,
+    rgba(201,164,106,0.85) 0%,
+    rgba(201,164,106,0.32) 55%,
     transparent 100%);
   transform: scaleX(0);
   transform-origin: left;
@@ -2635,25 +2639,25 @@ footer.botic-footer {
 }
 .info-card:hover::before { transform: scaleX(1); }
 .info-card:hover {
-  background: rgba(201,164,106,0.048);
+  background: rgba(201,164,106,0.062);
 }
 .info-num {
   display: block;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: 68px;
+  font-size: 72px;
   line-height: 1;
-  color: rgba(201,164,106,0.28);
+  color: rgba(201,164,106,0.42);
   letter-spacing: -0.03em;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
   user-select: none;
 }
 .info-text {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
-  font-size: 13px;
-  color: rgba(215,208,198,0.92);
-  line-height: 1.82;
+  font-size: 13.5px;
+  color: rgba(228,222,212,0.95);
+  line-height: 1.85;
   letter-spacing: 0.01em;
 }
 
@@ -2667,7 +2671,7 @@ footer.botic-footer {
 @media (max-width: 1024px) {
   .mnu-selector { padding: 0 32px; }
   .mnu-section.is-open { margin-left: -12px; padding-left: 12px; }
-  .wine-col-left { max-width: min(55%, 560px); }
+  .wine-col-left { max-width: min(56%, 640px); }
   .wine-title   { font-size: clamp(36px, 6vw, 56px); }
   .wine-stat-num { font-size: clamp(72px, 12vw, 104px); }
   .info-card    { padding: 40px 32px 44px; }
@@ -2706,10 +2710,10 @@ footer.botic-footer {
   .wine-title         { font-size: clamp(32px, 9vw, 48px); }
   .wine-stat-num      { font-size: clamp(64px, 18vw, 96px); }
   .info-grid          { grid-template-columns: 1fr; }
-  .info-card          { border-right: none; border-bottom: 1px solid rgba(60,55,48,0.70);
-                        padding: 36px 0 40px; background: transparent; }
+  .info-card          { border-right: none; border-bottom: 1px solid rgba(70,64,55,0.70);
+                        padding: 44px 0 48px; background: transparent; }
   .info-card:last-child { border-bottom: none; }
-  .info-num           { font-size: 52px; }
+  .info-num           { font-size: 56px; }
 }
 
 /* Accessibilitat */
