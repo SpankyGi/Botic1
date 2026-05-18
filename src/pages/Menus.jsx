@@ -21,7 +21,7 @@ function MenusHero() {
         alt=""
         aria-hidden="true"
         className="absolute inset-0 w-full h-full object-cover object-center"
-        style={{ objectPosition: '60% center' }}
+        style={{ objectPosition: '60% 20%' }}
       />
 
       {/* Overlay cinematogràfic: fosc baix + lateral esquerra */}
