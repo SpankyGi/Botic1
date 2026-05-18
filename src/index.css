@@ -2463,7 +2463,7 @@ footer.botic-footer {
   object-fit: cover;
   object-position: center;
   display: block;
-  filter: brightness(0.70) contrast(1.08) saturate(0.85);
+  filter: brightness(0.82) contrast(1.12) saturate(0.88);
 }
 .wine-photo-overlay {
   position: absolute;
@@ -2472,22 +2472,23 @@ footer.botic-footer {
     linear-gradient(90deg,
       #0e0c09 0%,
       rgba(14,12,9,0.96) 8%,
-      rgba(14,12,9,0.82) 28%,
-      rgba(14,12,9,0.45) 55%,
-      rgba(14,12,9,0.12) 82%,
-      rgba(14,12,9,0.04) 100%),
+      rgba(14,12,9,0.76) 28%,
+      rgba(14,12,9,0.32) 58%,
+      rgba(14,12,9,0.06) 85%,
+      rgba(14,12,9,0.0) 100%),
     linear-gradient(0deg,
-      rgba(14,12,9,0.65) 0%,
-      transparent 35%,
-      rgba(14,12,9,0.25) 100%);
+      rgba(14,12,9,0.55) 0%,
+      transparent 32%,
+      rgba(14,12,9,0.18) 100%);
 }
 
 .wine-bg-texture {
   position: absolute; inset: 0;
   z-index: 1;
   background:
-    radial-gradient(ellipse at 6% 55%, rgba(201,164,106,0.06) 0%, transparent 38%),
-    radial-gradient(ellipse at 18% 20%, rgba(154,42,42,0.05) 0%, transparent 32%);
+    radial-gradient(ellipse at 5% 60%,  rgba(201,164,106,0.09) 0%, transparent 40%),
+    radial-gradient(ellipse at 15% 15%,  rgba(154,42,42,0.07)  0%, transparent 35%),
+    radial-gradient(ellipse at 38% 90%,  rgba(201,164,106,0.04) 0%, transparent 28%);
   pointer-events: none;
 }
 .wine-inner {
@@ -2513,32 +2514,33 @@ footer.botic-footer {
   display: flex;
   flex-direction: column;
   gap: 6px;
-  margin-bottom: 32px;
+  margin-bottom: 40px;
 }
 .wine-stat-num {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: clamp(80px, 10vw, 128px);
-  line-height: 0.88;
+  font-size: clamp(90px, 11vw, 140px);
+  line-height: 0.86;
   color: #C9A46A;
   letter-spacing: -0.04em;
   text-shadow:
-    0 0 60px rgba(201,164,106,0.40),
-    0 0 120px rgba(201,164,106,0.18);
+    0 0 50px rgba(201,164,106,0.50),
+    0 0 100px rgba(201,164,106,0.22),
+    0 0 180px rgba(201,164,106,0.10);
 }
 .wine-stat-plus {
-  font-size: 0.42em;
+  font-size: 0.40em;
   vertical-align: super;
   line-height: 1;
-  color: rgba(201,164,106,0.72);
+  color: rgba(201,164,106,0.80);
 }
 .wine-stat-desc {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: rgba(190,182,172,0.55);
-  margin-top: 10px;
+  color: rgba(190,182,172,0.72);
+  margin-top: 12px;
 }
 .wine-divider {
   width: 100%;
@@ -2592,8 +2594,8 @@ footer.botic-footer {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: clamp(13px, 1.15vw, 14px);
-  color: rgba(190,182,172,0.72);
-  line-height: 1.85;
+  color: rgba(205,198,188,0.82);
+  line-height: 1.92;
   margin-bottom: 18px;
 }
 .wine-body:last-child { margin-bottom: 0; }
@@ -2606,11 +2608,12 @@ footer.botic-footer {
 .info-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid rgba(201,164,106,0.14);
+  border-top: 1px solid rgba(201,164,106,0.22);
 }
 .info-card {
   padding: 48px 44px 52px;
-  border-right: 1px solid rgba(46,43,39,0.55);
+  background: rgba(255,248,235,0.022);
+  border-right: 1px solid rgba(60,55,48,0.80);
   position: relative;
   opacity: 0;
   animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
@@ -2623,8 +2626,8 @@ footer.botic-footer {
   top: 0; left: 0; right: 0;
   height: 2px;
   background: linear-gradient(90deg,
-    rgba(201,164,106,0.70) 0%,
-    rgba(201,164,106,0.20) 55%,
+    rgba(201,164,106,0.80) 0%,
+    rgba(201,164,106,0.28) 55%,
     transparent 100%);
   transform: scaleX(0);
   transform-origin: left;
@@ -2632,15 +2635,15 @@ footer.botic-footer {
 }
 .info-card:hover::before { transform: scaleX(1); }
 .info-card:hover {
-  background: rgba(201,164,106,0.03);
+  background: rgba(201,164,106,0.048);
 }
 .info-num {
   display: block;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: 64px;
+  font-size: 68px;
   line-height: 1;
-  color: rgba(201,164,106,0.14);
+  color: rgba(201,164,106,0.28);
   letter-spacing: -0.03em;
   margin-bottom: 22px;
   user-select: none;
@@ -2649,8 +2652,8 @@ footer.botic-footer {
   font-family: 'Inter', sans-serif;
   font-weight: 300;
   font-size: 13px;
-  color: rgba(190,182,172,0.88);
-  line-height: 1.78;
+  color: rgba(215,208,198,0.92);
+  line-height: 1.82;
   letter-spacing: 0.01em;
 }
 
@@ -2703,8 +2706,8 @@ footer.botic-footer {
   .wine-title         { font-size: clamp(32px, 9vw, 48px); }
   .wine-stat-num      { font-size: clamp(64px, 18vw, 96px); }
   .info-grid          { grid-template-columns: 1fr; }
-  .info-card          { border-right: none; border-bottom: 1px solid rgba(46,43,39,0.55);
-                        padding: 36px 0 40px; }
+  .info-card          { border-right: none; border-bottom: 1px solid rgba(60,55,48,0.70);
+                        padding: 36px 0 40px; background: transparent; }
   .info-card:last-child { border-bottom: none; }
   .info-num           { font-size: 52px; }
 }
