@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom'
 import Hero            from '../components/Hero'
 import MarqueeStrip    from '../components/MarqueeStrip'
-import PhilosophyStrip from '../components/PhilosophyStrip'
-import ChefStrip       from '../components/ChefStrip'
+import SoulSection    from '../components/SoulSection'
 import SEO             from '../components/SEO'
 import { useReveal }   from '../hooks/useReveal'
 
@@ -90,8 +89,7 @@ export default function Home() {
         </div>
       </section>
 
-      <PhilosophyStrip />
-      <ChefStrip />
+      <SoulSection />
 
       {/* ── CTA Reserva ── */}
       <section className="home-reserva-cta">
