@@ -10,6 +10,7 @@ import Home          from './pages/Home'
 import Restaurant    from './pages/Restaurant'
 import Gastronomia   from './pages/Gastronomia'
 import Experiencia   from './pages/Experiencia'
+import Menus         from './pages/Menus'
 import Reserves      from './pages/Reserves'
 
 function ScrollToTop() {
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/"            element={<Home />} />
           <Route path="/restaurant"  element={<Restaurant />} />
           <Route path="/gastronomia" element={<Gastronomia />} />
+          <Route path="/menus"        element={<Menus />} />
           <Route path="/experiencia" element={<Experiencia />} />
           <Route path="/reserves"    element={<Reserves />} />
         </Routes>

@@ -1698,6 +1698,16 @@ footer.botic-footer {
 }
 .feature-card:hover .feature-cta { letter-spacing: 0.38em; }
 
+/* btn-dark sobre fons clar (pàgina Menús, secció ivori) */
+.btn-dark.menus-btn-dark {
+  color: #1A1814;
+  border-color: #1A1814;
+}
+.btn-dark.menus-btn-dark:hover {
+  background: #1A1814;
+  color: #EDE8DC;
+}
+
 /* Responsive multi-page */
 @media (max-width: 768px) {
   .container-max { padding-left: 24px; padding-right: 24px; }
