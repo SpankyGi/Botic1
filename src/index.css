@@ -1698,6 +1698,183 @@ nav.main.scrolled {
     transform 0.75s cubic-bezier(0.4, 0, 0.2, 1) 3.00s;
 }
 
+/* ====== CHEF STRIP ====== */
+.chef-section {
+  position: relative;
+  background: #0e0c09;
+  min-height: 540px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-top: 1px solid rgba(201,164,106,0.10);
+}
+
+/* Imatge — posicionada a la dreta, full-height */
+.chef-photo-wrap {
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 52%;
+  z-index: 0;
+  opacity: 0;
+  transform: translateX(20px);
+  transition:
+    opacity  1.0s cubic-bezier(0.4, 0, 0.2, 1) 0.28s,
+    transform 1.0s cubic-bezier(0.4, 0, 0.2, 1) 0.28s;
+}
+.chef-photo-wrap.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.chef-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 22%;
+  display: block;
+  /* tractament editorial: desaturat càlid, lleuger sepia */
+  filter: brightness(0.80) contrast(1.10) saturate(0.50) sepia(0.18);
+}
+
+.chef-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(270deg,
+      transparent             38%,
+      rgba(14,12,9,0.52)      68%,
+      rgba(14,12,9,0.94)     100%),
+    linear-gradient(0deg,
+      rgba(14,12,9,0.30)  0%,
+      transparent         22%),
+    linear-gradient(180deg,
+      rgba(14,12,9,0.18)  0%,
+      transparent         18%);
+}
+
+/* Text — esquerra, dins container-max */
+.chef-container {
+  position: relative;
+  z-index: 2;
+}
+
+.chef-content {
+  max-width: min(46%, 500px);
+  margin-left: var(--editorial-left);
+  padding: 96px 0;
+}
+
+.chef-eyebrow {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.40em;
+  text-transform: uppercase;
+  color: rgba(154,42,42,0.80);
+  margin-bottom: 20px;
+}
+
+.chef-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(30px, 3.4vw, 50px);
+  color: #EDE8DC;
+  line-height: 1.18;
+  letter-spacing: -0.01em;
+  margin-bottom: 28px;
+}
+
+.chef-sep {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(to right,
+    rgba(201,164,106,0.65) 0%,
+    rgba(201,164,106,0.06) 100%);
+  margin-bottom: 24px;
+}
+
+.chef-body {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(13px, 1.05vw, 14px);
+  color: rgba(218,212,202,0.70);
+  line-height: 1.92;
+  font-weight: 300;
+  max-width: 400px;
+  margin-bottom: 36px;
+}
+
+.chef-cta {
+  display: inline-block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: rgba(201,164,106,0.88);
+  text-decoration: none;
+  padding-bottom: 7px;
+  border-bottom: 1px solid rgba(201,164,106,0.32);
+  transition:
+    color          0.32s ease,
+    border-color   0.32s ease,
+    letter-spacing 0.32s ease;
+}
+.chef-cta:hover {
+  color: #C9A46A;
+  border-color: rgba(201,164,106,0.65);
+  letter-spacing: 0.40em;
+}
+
+/* Chef — mòbil: text a sobre, imatge a sota */
+@media (max-width: 768px) {
+  .chef-section {
+    flex-direction: column;
+    min-height: unset;
+  }
+  .chef-photo-wrap {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: 380px;
+    order: 2;
+    transform: none;
+    opacity: 0;
+    transition:
+      opacity  1.0s cubic-bezier(0.4, 0, 0.2, 1) 0.20s,
+      transform 0s;
+  }
+  .chef-photo-wrap.visible {
+    opacity: 1;
+  }
+  .chef-photo-img {
+    object-position: center 18%;
+  }
+  .chef-photo-overlay {
+    background:
+      linear-gradient(to bottom,
+        rgba(14,12,9,0.22) 0%,
+        transparent        28%,
+        transparent        70%,
+        rgba(14,12,9,0.38) 100%);
+  }
+  .chef-container {
+    order: 1;
+    background: #0e0c09;
+  }
+  .chef-content {
+    max-width: 100%;
+    margin-left: 0;
+    padding: 52px 0 40px;
+  }
+  .chef-body { max-width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chef-photo-wrap { opacity: 1; transform: none; transition: none; }
+}
+
 /* ====== HOME RESERVA CTA ====== */
 .home-reserva-cta {
   position: relative;

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import Hero            from '../components/Hero'
 import MarqueeStrip    from '../components/MarqueeStrip'
 import PhilosophyStrip from '../components/PhilosophyStrip'
+import ChefStrip       from '../components/ChefStrip'
 import SEO             from '../components/SEO'
 import { useReveal }   from '../hooks/useReveal'
 
@@ -90,6 +91,7 @@ export default function Home() {
       </section>
 
       <PhilosophyStrip />
+      <ChefStrip />
 
       {/* ── CTA Reserva ── */}
       <section className="home-reserva-cta">
