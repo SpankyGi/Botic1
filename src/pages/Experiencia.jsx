@@ -217,7 +217,7 @@ export default function Experiencia() {
         eyebrow="Reserva"
         heading="Reserveu la vostra experiència"
         body="Cada servei és un espai limitat. No espereu l'últim moment."
-        linkTo="/contacte"
+        linkTo="/reserves"
         linkLabel="Reservar taula"
         theme="dark"
       />

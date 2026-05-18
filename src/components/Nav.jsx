@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
+import { NavLink, Link } from 'react-router-dom'
 
 const LINKS = [
-  { href: '#',        label: 'Restaurante'   },
-  { href: '#menu',    label: 'Menús'         },
-  { href: '#mesa-chef', label: 'Mesa del Chef' },
-  { href: '#',        label: 'Horarios'      },
-  { href: '#',        label: 'Vídeos'        },
+  { to: '/restaurant',  label: 'Restaurant'  },
+  { to: '/gastronomia', label: 'Gastronomia' },
+  { to: '/experiencia', label: 'Experiència' },
+  { to: '/reserves',    label: 'Reserves'    },
 ]
+
+const navLinkClass = ({ isActive }) =>
+  isActive ? 'active' : undefined
 
 export default function Nav() {
   const [scrolled,  setScrolled]  = useState(false)
@@ -26,12 +29,14 @@ export default function Nav() {
   return (
     <>
       <nav className={`main${scrolled ? ' scrolled' : ''}`} id="mainNav">
-        <a href="#" className="logo">Bo<span className="dot">.</span>TiC</a>
+        <Link to="/" className="logo">Bo<span className="dot">.</span>TiC</Link>
 
         <ul className="nav-menu">
-          {LINKS.map(({ href, label }) => (
-            <li key={label}>
-              <a href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+          {LINKS.map(({ to, label }) => (
+            <li key={to}>
+              <NavLink to={to} className={navLinkClass} onClick={() => setMenuOpen(false)}>
+                {label}
+              </NavLink>
             </li>
           ))}
         </ul>
@@ -46,10 +51,11 @@ export default function Nav() {
         </button>
       </nav>
 
-      {/* Mobile overlay */}
       <div className={`nav-mobile-overlay${menuOpen ? ' open' : ''}`} aria-hidden={!menuOpen}>
-        {LINKS.map(({ href, label }) => (
-          <a key={label} href={href} onClick={() => setMenuOpen(false)}>{label}</a>
+        {LINKS.map(({ to, label }) => (
+          <NavLink key={to} to={to} className={navLinkClass} onClick={() => setMenuOpen(false)}>
+            {label}
+          </NavLink>
         ))}
       </div>
     </>

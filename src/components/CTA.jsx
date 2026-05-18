@@ -8,7 +8,7 @@ export default function CTA({
   eyebrow,
   heading,
   body,
-  linkTo = '/contacte',
+  linkTo = '/reserves',
   linkLabel = 'Reservar taula',
   theme = 'dark',
   secondaryLink,

@@ -218,7 +218,7 @@ export default function Gastronomia() {
         eyebrow="El menú"
         heading="Viviu l'experiència completa"
         body="El menú degustació de Bo.TiC és el format que millor expressa la nostra cuina. Reserveu amb antelació."
-        linkTo="/contacte"
+        linkTo="/reserves"
         linkLabel="Reservar taula"
         secondaryLink="/experiencia"
         secondaryLabel="L'experiència"

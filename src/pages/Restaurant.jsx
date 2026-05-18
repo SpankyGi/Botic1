@@ -187,7 +187,7 @@ export default function Restaurant() {
         eyebrow="Reserva"
         heading="Assegureu la vostra taula"
         body="L'aforament del restaurant és reduït. Us recomanem reservar amb antelació."
-        linkTo="/contacte"
+        linkTo="/reserves"
         linkLabel="Reservar"
         theme="dark"
       />

@@ -1561,3 +1561,151 @@ footer.botic-footer {
   }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* ====== MULTI-PAGE COMPONENTS ====== */
+
+/* Contenidor centrat per a les pàgines interiors */
+.container-max {
+  max-width: 1280px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 48px;
+  padding-right: 48px;
+}
+
+/* Labels tipogràfics */
+.label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C4A96A;
+  font-weight: 400;
+}
+.label-light {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #C4A96A;
+  font-weight: 400;
+}
+
+/* Nav active state */
+.nav-menu a.active::after { width: 100%; }
+.nav-mobile-overlay a.active { color: var(--burgundy); }
+
+/* Botons */
+.btn-dark,
+.btn-gold,
+.btn-cream {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  font-weight: 400;
+  padding: 16px 32px;
+  text-decoration: none;
+  border: 1px solid;
+  cursor: pointer;
+  transition: color 0.4s ease, background-color 0.4s ease, border-color 0.4s ease;
+}
+.btn-dark {
+  color: #EDE8DC;
+  border-color: #2E2B27;
+  background: transparent;
+}
+.btn-dark:hover {
+  background: #EDE8DC;
+  color: #0C0B09;
+  border-color: #EDE8DC;
+}
+.btn-gold {
+  color: #0C0B09;
+  border-color: #C4A96A;
+  background: #C4A96A;
+}
+.btn-gold:hover {
+  background: transparent;
+  color: #C4A96A;
+  border-color: #C4A96A;
+}
+.btn-cream {
+  color: #EDE8DC;
+  border-color: #EDE8DC;
+  background: transparent;
+}
+.btn-cream:hover {
+  background: #EDE8DC;
+  color: #0C0B09;
+}
+
+/* Feature cards (pàgina d'inici portal) */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+.feature-card {
+  padding: 64px 48px;
+  border-right: 1px solid #2E2B27;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: background 0.4s ease;
+  position: relative;
+}
+.feature-card:last-child { border-right: none; }
+.feature-card:hover { background: #161511; }
+.feature-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: #C4A96A;
+  font-weight: 400;
+}
+.feature-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(22px, 2.2vw, 32px);
+  color: #EDE8DC;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-top: 8px;
+}
+.feature-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  color: #8A8278;
+  line-height: 1.75;
+  font-weight: 300;
+  flex: 1;
+}
+.feature-cta {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #C4A96A;
+  font-weight: 400;
+  margin-top: 8px;
+  transition: letter-spacing 0.3s ease;
+}
+.feature-card:hover .feature-cta { letter-spacing: 0.38em; }
+
+/* Responsive multi-page */
+@media (max-width: 768px) {
+  .container-max { padding-left: 24px; padding-right: 24px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .feature-card {
+    border-right: none;
+    border-bottom: 1px solid #2E2B27;
+    padding: 48px 24px;
+  }
+  .feature-card:last-child { border-bottom: none; }
+}
