@@ -1501,28 +1501,88 @@ nav.main.scrolled {
 
 /* ====== PHILOSOPHY ====== */
 .philosophy {
-  padding: 140px 48px;
-  background: var(--beige);
-  color: var(--black);
-  text-align: center;
   position: relative;
+  overflow: hidden;
+  min-height: 680px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 140px 48px;
+  background: #0e0c09;
+  text-align: center;
+}
+
+/* Foto full bleed */
+.philo-photo-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.philo-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: brightness(0.58) contrast(1.10) saturate(0.85);
+  transform-origin: center;
+  animation: philo-ken-burns 20s ease-out both;
+}
+@keyframes philo-ken-burns {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1.00); }
+}
+
+/* Vignette: fosc als marges, llum al centre on hi ha el text */
+.philo-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 50%,
+      rgba(14,12,9,0.08) 0%,
+      rgba(14,12,9,0.52) 52%,
+      rgba(14,12,9,0.92) 100%),
+    linear-gradient(0deg,
+      rgba(14,12,9,0.75) 0%,
+      rgba(14,12,9,0.10) 35%,
+      rgba(14,12,9,0.10) 65%,
+      rgba(14,12,9,0.60) 100%);
+}
+
+/* Contingut */
+.philo-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
 }
 .philo-quote {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: clamp(28px, 3.5vw, 48px);
-  line-height: 1.4;
-  max-width: 900px;
-  margin: 0 auto 32px;
-  color: var(--black);
+  font-size: clamp(24px, 3.2vw, 46px);
+  line-height: 1.50;
+  margin-bottom: 36px;
+  color: rgba(237,232,220,0.96);
 }
-.philo-quote .accent { color: var(--burgundy); font-weight: 300; }
+.philo-quote .accent { color: #C9A46A; font-weight: 300; }
+
+/* Línia separadora entre cita i autor */
+.philo-sep {
+  width: 48px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(201,164,106,0.60) 50%,
+    transparent 100%);
+  margin: 0 auto 28px;
+}
 .philo-author {
+  font-family: 'Inter', sans-serif;
   font-size: 10px;
-  letter-spacing: 0.5em;
+  letter-spacing: 0.50em;
   text-transform: uppercase;
-  color: var(--grey);
+  color: rgba(201,164,106,0.75);
 }
 
 /* ====== FOOTER ====== */
@@ -1732,7 +1792,7 @@ footer.botic-footer {
   .cta-circle.small { width: 52px; height: 52px; font-size: 8px; }
   .mesa-detail { padding: 60px 24px; }
   .mesa-detail-grid { grid-template-columns: 1fr; gap: 40px; }
-  .philosophy { padding: 80px 24px; }
+  .philosophy { padding: 100px 28px; min-height: 520px; }
   footer.botic-footer { padding: 72px 24px 32px; }
   .foot-grid { grid-template-columns: 1fr; gap: 32px; }
   .foot-bottom { flex-direction: column; gap: 12px; }
@@ -2847,6 +2907,7 @@ footer.botic-footer {
   .wine-divider,
   .wine-divider.in-view          { transform: scaleX(1); transition: none; }
   .mnu-hero-img                  { animation: none; transform: none; }
+  .philo-photo-img               { animation: none; transform: none; }
   .mnu-section-body              { transition: none; }
   .mnu-tab::before,
   .mnu-section-trigger::after,
