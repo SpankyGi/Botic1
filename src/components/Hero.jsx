@@ -10,9 +10,17 @@ function BgVideo() {
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
+
     const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (mq.matches) return
-    video.play().catch(() => {})
+
+    const signalReady = () => {
+      window.dispatchEvent(new Event('hero-video-ready'))
+    }
+    video.addEventListener('canplay', signalReady, { once: true })
+
+    if (!mq.matches) video.play().catch(() => {})
+
+    return () => video.removeEventListener('canplay', signalReady)
   }, [])
 
   return (
