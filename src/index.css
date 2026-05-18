@@ -1719,3 +1719,276 @@ footer.botic-footer {
   }
   .feature-card:last-child { border-bottom: none; }
 }
+
+/* ====== PÀGINA MENÚS ====== */
+
+/* Hero — entrada animada */
+.menus-hero-label {
+  animation: fadeUp 0.6s ease both;
+  animation-delay: 0.4s;
+}
+.menus-hero-title {
+  animation: fadeUp 0.9s ease both;
+  animation-delay: 0.55s;
+}
+.menus-hero-sub {
+  animation: fadeUp 0.8s ease both;
+  animation-delay: 0.75s;
+}
+
+/* Sticky selector */
+.mnu-selector-wrap {
+  position: sticky;
+  top: 124px; /* 36px topbar + 88px nav */
+  z-index: 40;
+  background: #161511;
+  border-bottom: 1px solid #2E2B27;
+}
+.mnu-selector {
+  display: flex;
+  align-items: stretch;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+/* Tabs del selector */
+.mnu-tab {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 18px 12px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid #2E2B27;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  text-align: center;
+  transition: background 0.3s ease, border-bottom-color 0.3s ease;
+}
+.mnu-tab:last-child { border-right: none; }
+.mnu-tab:hover { background: rgba(196,169,106,0.04); }
+.mnu-tab.active {
+  background: rgba(196,169,106,0.06);
+  border-bottom-color: #C4A96A;
+}
+.mnu-tab:focus-visible {
+  outline: 1px solid rgba(196,169,106,0.6);
+  outline-offset: -2px;
+}
+.mnu-tab-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #8A8278;
+  font-weight: 400;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+}
+.mnu-tab.active .mnu-tab-title,
+.mnu-tab:hover .mnu-tab-title { color: #EDE8DC; }
+.mnu-tab-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 22px;
+  color: #C4A96A;
+  line-height: 1;
+}
+
+/* Àrea de contingut */
+.mnu-content-wrap {
+  background: #0C0B09;
+  min-height: 50vh;
+}
+.mnu-content {
+  padding: 52px 0 80px;
+  animation: fadeUp 0.4s ease both;
+}
+
+/* Nota del menú (disponibilitat, etc.) */
+.mnu-note {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 15px;
+  color: #8A8278;
+  border-left: 2px solid rgba(154,42,42,0.35);
+  padding: 10px 0 10px 18px;
+  margin-bottom: 52px;
+  max-width: 600px;
+  line-height: 1.65;
+}
+.mnu-note-icon {
+  color: rgba(154,42,42,0.4);
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* Accordion — contenidor de seccions */
+.mnu-sections { border-top: 1px solid #2E2B27; }
+.mnu-section  { border-bottom: 1px solid #2E2B27; }
+
+/* Botó d'accordion */
+.mnu-section-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 26px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+.mnu-section-trigger:focus-visible {
+  outline: 1px solid rgba(196,169,106,0.5);
+  outline-offset: 4px;
+}
+
+/* Títol de secció */
+.mnu-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 30px;
+  letter-spacing: -0.01em;
+  color: rgba(138,130,120,0.65);
+  flex: 1;
+  transition: color 0.3s ease;
+}
+.mnu-section-trigger:hover .mnu-section-title,
+.mnu-section-trigger[aria-expanded="true"] .mnu-section-title { color: #EDE8DC; }
+
+/* Badge amb el nombre de plats */
+.mnu-section-count {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: rgba(196,169,106,0.32);
+  font-weight: 400;
+  padding: 3px 8px;
+  border: 1px solid rgba(196,169,106,0.14);
+}
+
+/* Icona +/− */
+.mnu-section-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(196,169,106,0.28);
+  color: #C4A96A;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+  flex-shrink: 0;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  line-height: 1;
+}
+.mnu-section-trigger:hover .mnu-section-icon,
+.mnu-section-trigger[aria-expanded="true"] .mnu-section-icon {
+  border-color: rgba(196,169,106,0.55);
+  background: rgba(196,169,106,0.07);
+}
+
+/* Accordion body — grid expand (mateixa tècnica que .dish-expand) */
+.mnu-section-body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.5s cubic-bezier(.2,.8,.2,1);
+}
+.mnu-section-body.open { grid-template-rows: 1fr; }
+.mnu-section-inner { overflow: hidden; }
+
+/* Llista de plats */
+.mnu-dish-list { list-style: none; padding: 4px 0 36px; }
+.mnu-dish {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid rgba(46,43,39,0.55);
+  align-items: start;
+  opacity: 0;
+  animation: mnu-dish-in 0.4s ease both;
+}
+.mnu-dish:last-child { border-bottom: none; }
+
+/* Número ordinal del plat */
+.mnu-dish-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  color: rgba(196,169,106,0.28);
+  font-weight: 400;
+  padding-top: 5px;
+  text-align: right;
+}
+
+/* Nom i descripció */
+.mnu-dish-content { display: flex; flex-direction: column; gap: 5px; }
+.mnu-dish-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 22px;
+  color: #EDE8DC;
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+}
+.mnu-dish-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 14px;
+  color: rgba(138,130,120,0.62);
+  line-height: 1.55;
+}
+
+/* Keyframe entrada dels plats */
+@keyframes mnu-dish-in {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Responsive Menús ── */
+@media (max-width: 1024px) {
+  .mnu-selector { padding: 0 32px; }
+}
+@media (max-width: 768px) {
+  .mnu-selector-wrap { top: 88px; } /* mobile: no topbar */
+  .mnu-selector {
+    padding: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .mnu-selector::-webkit-scrollbar { display: none; }
+  .mnu-tab {
+    min-width: 110px;
+    padding: 14px 10px;
+    flex-shrink: 0;
+  }
+  .mnu-tab-title  { font-size: 9px; letter-spacing: 0.15em; }
+  .mnu-tab-price  { font-size: 18px; }
+  .mnu-section-title { font-size: 24px; }
+  .mnu-dish-name  { font-size: 20px; }
+  .mnu-content    { padding: 36px 0 56px; }
+  .mnu-note       { margin-bottom: 36px; }
+}
+
+/* Accessibilitat */
+@media (prefers-reduced-motion: reduce) {
+  .menus-hero-label,
+  .menus-hero-title,
+  .menus-hero-sub,
+  .mnu-content,
+  .mnu-dish { animation: none; opacity: 1; transform: none; }
+  .mnu-section-body { transition: none; }
+}

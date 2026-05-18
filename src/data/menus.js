@@ -1,112 +1,105 @@
 export const menus = [
   {
-    id: 'esencia',
-    variant: 'esencia',
-    tag: 'Mediodía',
-    title: 'Esencia',
-    price: '90€',
-    aperitivoGroups: [
-      {
-        cat: 'Bar',
-        items: ['Mojito y escabeche', 'Cacahuete', 'Pez con burrida', 'Tortita de patatas', 'Calamar a la romana'],
-      },
-    ],
-    platos: [
-      { num: 'I',   name: 'Bacalao' },
-      { num: 'II',  name: 'Raya'    },
-      { num: 'III', name: 'Pato'    },
-    ],
-    postres: [
-      { num: 'IV', name: 'Brújula' },
-    ],
-  },
-  {
     id: 'degustacion',
-    variant: '',
-    tag: 'Tasting',
-    title: 'Degustación',
-    price: '190€',
-    aperitivoGroups: [
+    title: 'Menú Degustación',
+    price: '190 €',
+    note: '',
+    sections: [
       {
-        cat: 'Bar',
-        items: ['Mojito y escabeche', 'Cacahuete', 'Pez con burrida', 'Tortita de patatas', 'Calamar a la romana'],
-      },
-      {
-        cat: 'Estación',
-        items: ['Rebanada de "calçada"', 'Habas con calderetas', 'Mandonguilles doradas', 'Diente blanco de Palamós', 'Algodón de hierba y miel'],
-      },
-      {
-        cat: 'Guisos',
-        items: ['Canelón', 'Suquet de pescado', 'Arroz del Empordà'],
-      },
-      {
-        cat: 'Pastelería',
-        items: ['Crepe de bonito', 'Gelée de Brioxs con trufa', 'Buñuelo de cala'],
-      },
-    ],
-    platos: [
-      {
-        num: 'I',
-        name: 'Ensalada de berberechos',
-        description: [
-          'Berberechos escaldados con su agua',
-          'Licuado de tomate y vodka',
-          'Sorbete de tomate y cebolla encurtida',
-          'Granizado Thai y crema de suero de parmesano',
-          'Hojas de lechugas',
+        title: 'Snacks',
+        items: [
+          { name: 'Bar',        description: '[pendent de revisar]' },
+          { name: 'Estación',   description: '[pendent de revisar]' },
+          { name: 'Guisos',     description: '[pendent de revisar]' },
+          { name: 'Pastelería', description: '[pendent de revisar]' },
         ],
       },
-      { num: 'II',   name: 'Buey de mar'             },
-      { num: 'III',  name: 'Espárrago blanco'         },
-      { num: 'IV',   name: 'Merluza'                  },
-      { num: 'V',    name: 'Cordero'                  },
-    ],
-    postres: [
-      { num: 'VI',   name: 'Cítricos' },
-      { num: 'VII',  name: 'Fresa'    },
-      { num: 'VIII', name: 'Galleta'  },
+      {
+        title: 'Menú',
+        items: [
+          { name: 'Ensalada de berberechos', description: '[pendent de revisar]' },
+          { name: 'Lirio de mar',            description: '[pendent de revisar]' },
+          { name: 'Espárrago blanco',        description: '[pendent de revisar]' },
+          { name: 'Merluza',                 description: '[pendent de revisar]' },
+          { name: 'Cordero',                 description: '[pendent de revisar]' },
+        ],
+      },
+      {
+        title: 'Postres',
+        items: [
+          { name: 'Cítricos', description: '[pendent de revisar]' },
+          { name: 'Fresa',    description: '[pendent de revisar]' },
+          { name: 'Galleta',  description: '[pendent de revisar]' },
+        ],
+      },
     ],
   },
   {
     id: 'chef',
-    variant: '',
-    tag: 'Signature',
-    title: 'del Chef',
-    price: '250€',
-    aperitivoGroups: [
+    title: 'Menú del Chef',
+    price: '250 €',
+    note: '',
+    sections: [
       {
-        cat: 'Bar',
-        items: ['Mojito y escabeche', 'Cacahuete', 'Pez con burrida', 'Tortita de patatas', 'Calamar a la romana'],
+        title: 'Snacks',
+        items: [
+          { name: 'Bar',        description: '[pendent de revisar]' },
+          { name: 'Estación',   description: '[pendent de revisar]' },
+          { name: 'Guisos',     description: '[pendent de revisar]' },
+          { name: 'Pastelería', description: '[pendent de revisar]' },
+        ],
       },
       {
-        cat: 'Estación',
-        items: ['Rebanada de "calçada"', 'Habas con calderetas', 'Mandonguilles doradas', 'Diente blanco de Palamós', 'Algodón de hierba y miel'],
+        title: 'Menú',
+        items: [
+          { name: 'Ostra',                   description: '[pendent de revisar]' },
+          { name: 'Erizo de mar',            description: '[pendent de revisar]' },
+          { name: 'Gamba',                   description: '[pendent de revisar]' },
+          { name: 'Tartar de ternera y su jugo', description: '[pendent de revisar]' },
+          { name: 'Tendones de ternera',     description: '[pendent de revisar]' },
+          { name: 'Tomate',                  description: '[pendent de revisar]' },
+          { name: 'Nero',                    description: '[pendent de revisar]' },
+          { name: 'Pollo y bogavante',       description: '[pendent de revisar]' },
+          { name: 'Colmenillas',             description: '[pendent de revisar]' },
+        ],
       },
       {
-        cat: 'Guisos',
-        items: ['Canelón', 'Suquet de pescado', 'Arroz del Empordà'],
-      },
-      {
-        cat: 'Pastelería',
-        items: ['Crepe de bonito', 'Gelée de Brioxs con trufa', 'Buñuelo de cala'],
+        title: 'Postres',
+        items: [
+          { name: 'Labios',      description: '[pendent de revisar]' },
+          { name: 'Manzana',     description: '[pendent de revisar]' },
+          { name: 'El Goloso',   description: '[pendent de revisar]' },
+          { name: 'Bo.Ti 2026',  description: '[pendent de revisar]' },
+        ],
       },
     ],
-    platos: [
-      { num: 'I',    name: 'Ostra'              },
-      { num: 'II',   name: 'Erizo de mar'       },
-      { num: 'III',  name: 'Gamba'              },
-      { num: 'IV',   name: 'Tártar de ternera'  },
-      { num: 'V',    name: 'Tendones de ternera'},
-      { num: 'VI',   name: 'Tomate'             },
-      { num: 'VII',  name: 'Mero'               },
-      { num: 'VIII', name: 'Pollo y bogavante'  },
-      { num: 'IX',   name: 'Colmenillas'        },
-    ],
-    postres: [
-      { num: 'X',    name: 'Labios'      },
-      { num: 'XI',   name: 'Manzana'     },
-      { num: 'XII',  name: 'El Goloso'   },
-      { num: 'XIII', name: 'Bo.TiC 2024' },
+  },
+  {
+    id: 'esencia',
+    title: 'Menú Esencia',
+    price: '90 €',
+    note: 'Disponible al mediodía de miércoles a viernes excepto festivos y vísperas.',
+    sections: [
+      {
+        title: 'Snacks',
+        items: [
+          { name: 'Bar', description: '[pendent de revisar]' },
+        ],
+      },
+      {
+        title: 'Menú',
+        items: [
+          { name: 'Bacalao', description: '[pendent de revisar]' },
+          { name: 'Raya',    description: '[pendent de revisar]' },
+          { name: 'Pato',    description: '[pendent de revisar]' },
+        ],
+      },
+      {
+        title: 'Postres',
+        items: [
+          { name: 'Brioche', description: '[pendent de revisar]' },
+        ],
+      },
     ],
   },
 ]
