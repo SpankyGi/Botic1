@@ -2105,7 +2105,7 @@ footer.botic-footer {
 .home-intro-photo {
   position: absolute;
   right: 0; top: 0; bottom: 0;
-  width: 70%;
+  width: 100%;
   z-index: 0;
 }
 .home-intro-img {
@@ -2121,13 +2121,13 @@ footer.botic-footer {
   inset: 0;
   background:
     linear-gradient(90deg,
-      rgba(14,12,9,0.92) 0%,
-      rgba(14,12,9,0.82) 16%,
-      rgba(14,12,9,0.60) 28%,
-      rgba(14,12,9,0.36) 42%,
-      rgba(14,12,9,0.14) 58%,
-      rgba(14,12,9,0.04) 72%,
-      transparent        86%),
+      rgba(14,12,9,1.00) 0%,
+      rgba(14,12,9,0.96) 12%,
+      rgba(14,12,9,0.82) 24%,
+      rgba(14,12,9,0.52) 40%,
+      rgba(14,12,9,0.18) 56%,
+      rgba(14,12,9,0.04) 70%,
+      transparent        84%),
     linear-gradient(0deg,
       rgba(14,12,9,0.28) 0%,
       transparent        26%,
