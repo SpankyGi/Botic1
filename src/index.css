@@ -2440,6 +2440,178 @@ footer.botic-footer {
 }
 .mnu-cta-content { position: relative; z-index: 1; }
 
+/* ── Carta de Vinos ── */
+.wine-section {
+  background: #0C0B09;
+  padding: 100px 0 88px;
+  border-top: 1px solid rgba(46,43,39,0.7);
+  position: relative;
+  overflow: hidden;
+}
+.wine-bg-texture {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 85% 40%, rgba(154,42,42,0.05) 0%, transparent 55%),
+    radial-gradient(ellipse at 15% 60%, rgba(201,164,106,0.04) 0%, transparent 50%);
+  pointer-events: none;
+}
+.wine-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 80px;
+  align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+/* Columna esquerra */
+.wine-col-left {
+  position: sticky;
+  top: 180px;
+  opacity: 0;
+  animation: fadeUp 0.8s cubic-bezier(0.4,0,0.2,1) 0.15s both;
+}
+.wine-label {
+  display: block;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #C9A46A;
+  margin-bottom: 22px;
+}
+.wine-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(42px, 5.5vw, 72px);
+  color: #EDE8DC;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+}
+.wine-ornament {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 36px;
+}
+.wine-orn-line {
+  width: 40px; height: 1px;
+  background: linear-gradient(90deg, rgba(154,42,42,0.5), rgba(154,42,42,0.08));
+}
+.wine-ornament .wine-orn-line:last-child {
+  background: linear-gradient(90deg, rgba(154,42,42,0.08), rgba(154,42,42,0.5));
+}
+.wine-orn-glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  color: rgba(154,42,42,0.55);
+  flex-shrink: 0;
+}
+.wine-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.wine-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 52px;
+  line-height: 1;
+  color: rgba(201,164,106,0.55);
+  letter-spacing: -0.03em;
+}
+.wine-stat-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(138,130,120,0.65);
+}
+
+/* Columna dreta */
+.wine-col-right {
+  opacity: 0;
+  animation: fadeUp 0.9s cubic-bezier(0.4,0,0.2,1) 0.32s both;
+}
+.wine-lead {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(18px, 2vw, 24px);
+  font-style: italic;
+  color: rgba(237,232,220,0.88);
+  line-height: 1.55;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid rgba(46,43,39,0.65);
+}
+.wine-body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: clamp(13px, 1.25vw, 15px);
+  color: rgba(138,130,120,0.82);
+  line-height: 1.80;
+  margin-bottom: 18px;
+}
+.wine-body:last-child { margin-bottom: 0; }
+
+/* ── Informació pràctica ── */
+.info-section {
+  background: #0C0B09;
+  padding: 0 0 100px;
+}
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(46,43,39,0.65);
+}
+.info-card {
+  padding: 44px 40px 48px;
+  border-right: 1px solid rgba(46,43,39,0.65);
+  position: relative;
+  opacity: 0;
+  animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
+  transition: background 0.3s ease;
+}
+.info-card:last-child { border-right: none; }
+.info-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(154,42,42,0.55) 0%,
+    rgba(154,42,42,0.15) 50%,
+    transparent 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.info-card:hover::before { transform: scaleX(1); }
+.info-card:hover {
+  background: rgba(154,42,42,0.025);
+}
+.info-num {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 1;
+  color: rgba(154,42,42,0.08);
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+  user-select: none;
+}
+.info-text {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  color: rgba(190,182,172,0.78);
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
 /* Keyframe d'entrada dels plats */
 @keyframes mnu-dish-in {
   from { opacity: 0; transform: translateX(-10px); }
@@ -2450,6 +2622,10 @@ footer.botic-footer {
 @media (max-width: 1024px) {
   .mnu-selector { padding: 0 32px; }
   .mnu-section.is-open { margin-left: -12px; padding-left: 12px; }
+  .wine-inner   { grid-template-columns: 1fr; gap: 44px; }
+  .wine-col-left { position: static; }
+  .wine-title   { font-size: clamp(36px, 6vw, 56px); }
+  .info-card    { padding: 36px 28px 40px; }
 }
 @media (max-width: 768px) {
   .mnu-selector-wrap   { top: 88px; }
@@ -2473,6 +2649,17 @@ footer.botic-footer {
   .mnu-hero-corner.tl { top: 96px; left: 24px; }
   .mnu-hero-corner.br { right: 24px; }
   .mnu-cta-section    { padding: 72px 0 64px; }
+  /* Wine i Info en mòbil */
+  .wine-section       { padding: 72px 0 60px; }
+  .wine-inner         { grid-template-columns: 1fr; gap: 36px; }
+  .wine-col-left      { position: static; }
+  .wine-title         { font-size: clamp(32px, 9vw, 48px); }
+  .wine-stat-num      { font-size: 40px; }
+  .info-grid          { grid-template-columns: 1fr; }
+  .info-card          { border-right: none; border-bottom: 1px solid rgba(46,43,39,0.65);
+                        padding: 32px 0 36px; }
+  .info-card:last-child { border-bottom: none; }
+  .info-num           { font-size: 44px; }
 }
 
 /* Accessibilitat */
@@ -2481,7 +2668,10 @@ footer.botic-footer {
   .menus-hero-title,
   .menus-hero-sub,
   .mnu-content,
-  .mnu-dish             { animation: none; opacity: 1; transform: none; }
+  .mnu-dish,
+  .wine-col-left,
+  .wine-col-right,
+  .info-card            { animation: none; opacity: 1; transform: none; }
   .mnu-section-body     { transition: none; }
   .mnu-tab::before,
   .mnu-section-trigger::after,

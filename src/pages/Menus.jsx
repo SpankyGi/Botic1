@@ -139,6 +139,91 @@ function SectionAccordion({ section, menuId }) {
   )
 }
 
+/* ── Carta de Vinos ─────────────────────────────────────────── */
+function WineSection() {
+  return (
+    <section className="wine-section" aria-labelledby="wine-heading">
+      {/* Trama puntejada de fons */}
+      <div className="wine-bg-texture" aria-hidden="true" />
+
+      <div className="container-max wine-inner">
+
+        {/* Columna esquerra — títol editorial */}
+        <div className="wine-col-left">
+          <span className="wine-label">Maridatge</span>
+          <h2 id="wine-heading" className="wine-title">
+            Carta<br />de vinos
+          </h2>
+          <div className="wine-ornament" aria-hidden="true">
+            <span className="wine-orn-line" />
+            <span className="wine-orn-glyph">◈</span>
+            <span className="wine-orn-line" />
+          </div>
+          <p className="wine-stat">
+            <span className="wine-stat-num">900+</span>
+            <span className="wine-stat-desc">referències de tot el món</span>
+          </p>
+        </div>
+
+        {/* Columna dreta — text */}
+        <div className="wine-col-right">
+          <p className="wine-lead">
+            Tenemos una amplia carta de vinos con más de 900 referencias de diferentes países.
+          </p>
+          <p className="wine-body">
+            España, Portugal, Francia, Italia, Alemania, Austria, Grecia, Líbano, Moldavia,
+            Australia, Sudáfrica, Argentina, Chile, Uruguay, Bolivia, Estados Unidos y Nueva
+            Zelanda, siempre en busca de los mejores vinos con el objetivo de configurar
+            nuestra bodega.
+          </p>
+          <p className="wine-body">
+            Una bodega versátil con numerosas D.O. y con referencias de todas partes, cada
+            una de ellas con una fuerte personalidad.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+/* ── Informació pràctica ─────────────────────────────────────── */
+const INFO_ITEMS = [
+  {
+    num: '01',
+    text: 'Los menús no incluyen la bebida.',
+  },
+  {
+    num: '02',
+    text: 'Los menús se servirán a mesas completas.',
+  },
+  {
+    num: '03',
+    text: 'Los menús se pueden modificar según mercado o novedad, pero respetando su estructura.',
+  },
+]
+
+function InfoSection() {
+  return (
+    <section className="info-section" aria-label="Informació pràctica dels menús">
+      <div className="container-max">
+        <div className="info-grid">
+          {INFO_ITEMS.map(({ num, text }, i) => (
+            <div
+              key={num}
+              className="info-card"
+              style={{ animationDelay: `${0.10 + i * 0.14}s` }}
+            >
+              <span className="info-num" aria-hidden="true">{num}</span>
+              <p className="info-text">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 /* ── Ornament separador reutilitzable ───────────────────────── */
 function Ornament() {
   return (
@@ -223,6 +308,10 @@ export default function Menus() {
           </div>
         </div>
       </section>
+
+      {/* ── Carta de vinos + info pràctica ── */}
+      <WineSection />
+      <InfoSection />
 
       {/* ── CTA final ── */}
       <section
