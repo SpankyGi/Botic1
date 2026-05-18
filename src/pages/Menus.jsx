@@ -20,7 +20,7 @@ function MenusHero() {
         src={HERO_IMG}
         alt=""
         aria-hidden="true"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="mnu-hero-img absolute inset-0 w-full h-full object-cover object-center"
         style={{ objectPosition: '60% 20%' }}
       />
 
@@ -139,6 +139,30 @@ function SectionAccordion({ section, menuId }) {
   )
 }
 
+/* ── Hook reveal per IntersectionObserver ──────────────────── */
+function useReveal(threshold = 0.15) {
+  const reduced = typeof window !== 'undefined' &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const [visible, setVisible] = useState(reduced)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (reduced) return
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { setVisible(true); observer.disconnect() }
+      },
+      { threshold }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
+
+  return [ref, visible]
+}
+
 /* ── Hook count-up ─────────────────────────────────────────── */
 function useCountUp(target, duration = 1200) {
   const [count, setCount] = useState(0)
@@ -180,6 +204,8 @@ function useCountUp(target, duration = 1200) {
 /* ── Carta de Vinos ─────────────────────────────────────────── */
 function WineSection() {
   const { count, ref: statRef } = useCountUp(900, 1250)
+  const [colRef,  colVisible]   = useReveal(0.12)
+  const [divRef,  divVisible]   = useReveal(0.50)
 
   return (
     <section className="wine-section" aria-labelledby="wine-heading">
@@ -198,7 +224,7 @@ function WineSection() {
       <div className="wine-bg-texture" aria-hidden="true" />
 
       <div className="container-max wine-inner">
-        <div className="wine-col-left">
+        <div className={`wine-col-left${colVisible ? ' is-visible' : ''}`} ref={colRef}>
           <span className="wine-label">Maridatge · Bodega</span>
 
           <div className="wine-stat" ref={statRef}>
@@ -217,7 +243,7 @@ function WineSection() {
             </span>
           </div>
 
-          <div className="wine-divider" aria-hidden="true" />
+          <div className={`wine-divider${divVisible ? ' in-view' : ''}`} ref={divRef} aria-hidden="true" />
 
           <h2 id="wine-heading" className="wine-title">
             Carta<br />de vinos
@@ -265,15 +291,17 @@ const INFO_ITEMS = [
 ]
 
 function InfoSection() {
+  const [gridRef, gridVisible] = useReveal(0.15)
+
   return (
     <section className="info-section" aria-label="Informació pràctica dels menús">
       <div className="container-max">
-        <div className="info-grid">
+        <div className={`info-grid${gridVisible ? ' revealed' : ''}`} ref={gridRef}>
           {INFO_ITEMS.map(({ num, text }, i) => (
             <div
               key={num}
               className="info-card"
-              style={{ animationDelay: `${0.10 + i * 0.14}s` }}
+              style={{ '--i': i }}
             >
               <span className="info-num" aria-hidden="true">{num}</span>
               <p className="info-text">{text}</p>

@@ -1927,6 +1927,16 @@ footer.botic-footer {
 
 /* ── Hero ── */
 
+/* Ken-burns molt lent a la foto de fons */
+.mnu-hero-img {
+  transform-origin: 60% 20%;
+  animation: mnu-ken-burns 18s ease-out both;
+}
+@keyframes mnu-ken-burns {
+  from { transform: scale(1.06); }
+  to   { transform: scale(1.00); }
+}
+
 /* Animació entrada */
 .menus-hero-label {
   color: #C9A46A;
@@ -2506,7 +2516,9 @@ footer.botic-footer {
 .wine-col-left {
   max-width: min(50%, 660px);
   opacity: 0;
-  animation: fadeUp 0.85s cubic-bezier(0.4,0,0.2,1) 0.18s both;
+}
+.wine-col-left.is-visible {
+  animation: fadeUp 0.85s cubic-bezier(0.4,0,0.2,1) 0.10s both;
 }
 .wine-label {
   display: block;
@@ -2558,6 +2570,12 @@ footer.botic-footer {
     rgba(201,164,106,0.12) 60%,
     transparent 100%);
   margin-bottom: 32px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.90s cubic-bezier(0.4,0,0.2,1) 0.35s;
+}
+.wine-divider.in-view {
+  transform: scaleX(1);
 }
 .wine-title {
   font-family: 'Cormorant Garamond', serif;
@@ -2624,8 +2642,11 @@ footer.botic-footer {
   border-right: 1px solid rgba(80,72,60,0.80);
   position: relative;
   opacity: 0;
-  animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
   transition: background 0.35s ease;
+}
+.info-grid.revealed .info-card {
+  animation: fadeUp 0.65s cubic-bezier(0.4,0,0.2,1) both;
+  animation-delay: calc(0.06s + var(--i, 0) * 0.14s);
 }
 .info-card:last-child { border-right: none; }
 .info-card::before {
@@ -2731,8 +2752,13 @@ footer.botic-footer {
   .mnu-content,
   .mnu-dish,
   .wine-col-left,
-  .info-card            { animation: none; opacity: 1; transform: none; }
-  .mnu-section-body     { transition: none; }
+  .wine-col-left.is-visible,
+  .info-card,
+  .info-grid.revealed .info-card { animation: none; opacity: 1; transform: none; }
+  .wine-divider,
+  .wine-divider.in-view          { transform: scaleX(1); transition: none; }
+  .mnu-hero-img                  { animation: none; transform: none; }
+  .mnu-section-body              { transition: none; }
   .mnu-tab::before,
   .mnu-section-trigger::after,
   .mnu-dish::before     { transition: none; }
