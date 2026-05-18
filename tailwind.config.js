@@ -10,7 +10,7 @@ export default {
         'botic-border':  '#2E2B27',
         'botic-cream':   '#EDE8DC',
         'botic-muted':   '#8A8278',
-        'botic-gold':    '#C4A96A',
+        'botic-gold':    '#9a2a2a',
         'botic-ivory':   '#F7F3EE',
         'botic-stone':   '#DDD8CF',
         'botic-text':    '#1A1814',

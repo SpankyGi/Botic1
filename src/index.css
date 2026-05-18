@@ -1580,7 +1580,7 @@ footer.botic-footer {
   font-size: 11px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #C4A96A;
+  color: #9a2a2a;
   font-weight: 400;
 }
 .label-light {
@@ -1588,7 +1588,7 @@ footer.botic-footer {
   font-size: 11px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #C4A96A;
+  color: #9a2a2a;
   font-weight: 400;
 }
 
@@ -1626,13 +1626,13 @@ footer.botic-footer {
 }
 .btn-gold {
   color: #0C0B09;
-  border-color: #C4A96A;
-  background: #C4A96A;
+  border-color: #9a2a2a;
+  background: #9a2a2a;
 }
 .btn-gold:hover {
   background: transparent;
-  color: #C4A96A;
-  border-color: #C4A96A;
+  color: #9a2a2a;
+  border-color: #9a2a2a;
 }
 .btn-cream {
   color: #EDE8DC;
@@ -1666,7 +1666,7 @@ footer.botic-footer {
   font-size: 10px;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: #C4A96A;
+  color: #9a2a2a;
   font-weight: 400;
 }
 .feature-title {
@@ -1691,7 +1691,7 @@ footer.botic-footer {
   font-size: 11px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #C4A96A;
+  color: #9a2a2a;
   font-weight: 400;
   margin-top: 8px;
   transition: letter-spacing 0.3s ease;
@@ -1732,7 +1732,7 @@ footer.botic-footer {
 .menus-hero-title {
   animation: fadeUp 0.9s ease both;
   animation-delay: 0.55s;
-  text-shadow: 0 0 120px rgba(196,169,106,0.12), 0 2px 40px rgba(0,0,0,0.6);
+  text-shadow: 0 0 120px rgba(154,42,42,0.12), 0 2px 40px rgba(0,0,0,0.6);
 }
 .menus-hero-sub {
   animation: fadeUp 0.8s ease both;
@@ -1745,8 +1745,8 @@ footer.botic-footer {
   bottom: -80px; left: 40px;
   width: 600px; height: 500px;
   background: radial-gradient(ellipse at center,
-    rgba(196,169,106,0.10) 0%,
-    rgba(196,169,106,0.04) 40%,
+    rgba(154,42,42,0.10) 0%,
+    rgba(154,42,42,0.04) 40%,
     transparent 70%);
   pointer-events: none;
 }
@@ -1767,8 +1767,8 @@ footer.botic-footer {
   height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(196,169,106,0.35) 20%,
-    rgba(196,169,106,0.35) 80%,
+    rgba(154,42,42,0.35) 20%,
+    rgba(154,42,42,0.35) 80%,
     transparent 100%);
 }
 
@@ -1781,8 +1781,8 @@ footer.botic-footer {
 }
 .mnu-hero-corner.tl {
   top: 108px; left: 48px;
-  border-top: 1px solid rgba(196,169,106,0.25);
-  border-left: 1px solid rgba(196,169,106,0.25);
+  border-top: 1px solid rgba(154,42,42,0.25);
+  border-left: 1px solid rgba(154,42,42,0.25);
 }
 .mnu-hero-corner.br {
   bottom: 20px; right: 48px;
@@ -1803,18 +1803,18 @@ footer.botic-footer {
   max-width: 80px;
   height: 1px;
   background: linear-gradient(90deg,
-    rgba(196,169,106,0.5),
-    rgba(196,169,106,0.1));
+    rgba(154,42,42,0.5),
+    rgba(154,42,42,0.1));
 }
 .mnu-ornament .mnu-orn-line:last-child {
   background: linear-gradient(90deg,
-    rgba(196,169,106,0.1),
-    rgba(196,169,106,0.5));
+    rgba(154,42,42,0.1),
+    rgba(154,42,42,0.5));
 }
 .mnu-orn-glyph {
   font-family: 'Cormorant Garamond', serif;
   font-size: 11px;
-  color: rgba(196,169,106,0.55);
+  color: rgba(154,42,42,0.55);
   flex-shrink: 0;
 }
 
@@ -1824,7 +1824,7 @@ footer.botic-footer {
   top: 124px; /* 36px topbar + 88px nav */
   z-index: 40;
   background: linear-gradient(180deg, #1c1a16 0%, #161511 100%);
-  border-bottom: 1px solid rgba(196,169,106,0.12);
+  border-bottom: 1px solid rgba(154,42,42,0.12);
   /* Ombra cap avall suau */
   box-shadow: 0 4px 24px rgba(0,0,0,0.5);
 }
@@ -1863,8 +1863,8 @@ footer.botic-footer {
   position: absolute;
   inset: 0;
   background: linear-gradient(180deg,
-    rgba(196,169,106,0.11) 0%,
-    rgba(196,169,106,0.04) 100%);
+    rgba(154,42,42,0.11) 0%,
+    rgba(154,42,42,0.04) 100%);
   transform: translateY(100%);
   transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
 }
@@ -1879,16 +1879,16 @@ footer.botic-footer {
   height: 1px;
   background: linear-gradient(90deg,
     transparent,
-    rgba(196,169,106,0.6),
+    rgba(154,42,42,0.6),
     transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
 .mnu-tab.active::after { opacity: 1; }
 
-.mnu-tab.active  { border-bottom-color: #C4A96A; }
+.mnu-tab.active  { border-bottom-color: #9a2a2a; }
 .mnu-tab:focus-visible {
-  outline: 1px solid rgba(196,169,106,0.6);
+  outline: 1px solid rgba(154,42,42,0.6);
   outline-offset: -2px;
 }
 
@@ -1916,14 +1916,14 @@ footer.botic-footer {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
   font-size: 24px;
-  color: rgba(196,169,106,0.6);
+  color: rgba(154,42,42,0.6);
   line-height: 1;
   transition: color 0.35s ease, text-shadow 0.35s ease;
 }
 .mnu-tab.active .mnu-tab-price-value,
 .mnu-tab:hover  .mnu-tab-price-value {
-  color: #C4A96A;
-  text-shadow: 0 0 24px rgba(196,169,106,0.45);
+  color: #9a2a2a;
+  text-shadow: 0 0 24px rgba(154,42,42,0.45);
 }
 
 /* ── Àrea de contingut ── */
@@ -1946,7 +1946,7 @@ footer.botic-footer {
   justify-content: space-between;
   padding-bottom: 32px;
   margin-bottom: 8px;
-  border-bottom: 1px solid rgba(196,169,106,0.1);
+  border-bottom: 1px solid rgba(154,42,42,0.1);
   gap: 20px;
 }
 .mnu-content-title {
@@ -1961,10 +1961,10 @@ footer.botic-footer {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
   font-size: clamp(24px, 3vw, 36px);
-  color: #C4A96A;
+  color: #9a2a2a;
   letter-spacing: 0.02em;
   flex-shrink: 0;
-  text-shadow: 0 0 30px rgba(196,169,106,0.3);
+  text-shadow: 0 0 30px rgba(154,42,42,0.3);
 }
 
 /* Nota de disponibilitat */
@@ -2028,7 +2028,7 @@ footer.botic-footer {
   width: 100%;
   background: linear-gradient(90deg,
     rgba(154,42,42,0.5) 0%,
-    rgba(196,169,106,0.3) 30%,
+    rgba(154,42,42,0.3) 30%,
     transparent 70%);
   transform: scaleX(0);
   transform-origin: left;
@@ -2038,7 +2038,7 @@ footer.botic-footer {
 .mnu-section-trigger[aria-expanded="true"]::after { transform: scaleX(1); }
 
 .mnu-section-trigger:focus-visible {
-  outline: 1px solid rgba(196,169,106,0.5);
+  outline: 1px solid rgba(154,42,42,0.5);
   outline-offset: 4px;
 }
 
@@ -2079,15 +2079,15 @@ footer.botic-footer {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 0.2em;
-  color: rgba(196,169,106,0.3);
+  color: rgba(154,42,42,0.3);
   font-weight: 400;
   padding: 3px 8px;
-  border: 1px solid rgba(196,169,106,0.12);
+  border: 1px solid rgba(154,42,42,0.12);
   transition: color 0.3s ease, border-color 0.3s ease;
 }
 .mnu-section-trigger[aria-expanded="true"] .mnu-section-count {
-  color: rgba(196,169,106,0.65);
-  border-color: rgba(196,169,106,0.3);
+  color: rgba(154,42,42,0.65);
+  border-color: rgba(154,42,42,0.3);
 }
 
 /* Icona +/− */
@@ -2096,8 +2096,8 @@ footer.botic-footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(196,169,106,0.25);
-  color: rgba(196,169,106,0.6);
+  border: 1px solid rgba(154,42,42,0.25);
+  color: rgba(154,42,42,0.6);
   font-size: 16px;
   font-weight: 300;
   font-family: 'Inter', sans-serif;
@@ -2107,9 +2107,9 @@ footer.botic-footer {
   line-height: 1;
 }
 .mnu-section-trigger:hover .mnu-section-icon {
-  border-color: rgba(196,169,106,0.5);
-  background: rgba(196,169,106,0.06);
-  color: #C4A96A;
+  border-color: rgba(154,42,42,0.5);
+  background: rgba(154,42,42,0.06);
+  color: #9a2a2a;
 }
 .mnu-section-trigger[aria-expanded="true"] .mnu-section-icon {
   border-color: rgba(154,42,42,0.5);
@@ -2164,7 +2164,7 @@ footer.botic-footer {
   left: -20px; /* alineat amb l'accent de la secció */
   top: 18px; bottom: 18px;
   width: 2px;
-  background: linear-gradient(180deg, #C4A96A, rgba(196,169,106,0.3));
+  background: linear-gradient(180deg, #9a2a2a, rgba(154,42,42,0.3));
   transform: scaleY(0);
   transform-origin: center;
   transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
@@ -2176,13 +2176,13 @@ footer.botic-footer {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 0.18em;
-  color: rgba(196,169,106,0.25);
+  color: rgba(154,42,42,0.25);
   font-weight: 400;
   padding-top: 5px;
   text-align: right;
   transition: color 0.3s ease;
 }
-.mnu-dish:hover .mnu-dish-num { color: rgba(196,169,106,0.55); }
+.mnu-dish:hover .mnu-dish-num { color: rgba(154,42,42,0.55); }
 
 /* Nom i descripció */
 .mnu-dish-content { display: flex; flex-direction: column; gap: 5px; }
@@ -2220,7 +2220,7 @@ footer.botic-footer {
   text-align: center;
   position: relative;
   overflow: hidden;
-  border-top: 1px solid rgba(196,169,106,0.1);
+  border-top: 1px solid rgba(154,42,42,0.1);
 }
 /* Glow radial daurat al centre */
 .mnu-cta-glow {
@@ -2229,7 +2229,7 @@ footer.botic-footer {
   transform: translate(-50%, -50%);
   width: 600px; height: 400px;
   background: radial-gradient(ellipse,
-    rgba(196,169,106,0.07) 0%,
+    rgba(154,42,42,0.07) 0%,
     transparent 65%);
   pointer-events: none;
 }

@@ -28,7 +28,7 @@ function MenusHero() {
         className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            'radial-gradient(circle, rgba(196,169,106,1) 1px, transparent 1px)',
+            'radial-gradient(circle, rgba(154,42,42,1) 1px, transparent 1px)',
           backgroundSize: '44px 44px',
         }}
       />
