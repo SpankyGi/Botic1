@@ -726,6 +726,33 @@ nav.main.scrolled {
   flex-shrink: 0;
 }
 
+/* Marquee desktop — refinament premium */
+@media (min-width: 769px) {
+  .marquee {
+    background: linear-gradient(180deg,
+      #d9d0c0 0%,
+      #ede6da 28%,
+      #ede6da 72%,
+      #d9d0c0 100%);
+    padding: 16px 0;
+    border-top-color:    rgba(0,0,0,0.13);
+    border-bottom-color: rgba(0,0,0,0.13);
+  }
+  .marquee-track {
+    font-size: 17px;
+    letter-spacing: 0.07em;
+    color: rgba(28,22,16,0.68);
+  }
+  .marquee-item {
+    gap: 34px;
+    padding-right: 34px;
+  }
+  .marquee-dot {
+    font-size: 15px;
+    color: rgba(154,42,42,0.62);
+  }
+}
+
 /* ====== MENU SECTION ====== */
 .menu-section {
   background:
