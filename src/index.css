@@ -1935,7 +1935,8 @@ footer.botic-footer {
 .menus-hero-title {
   animation: fadeUp 1.0s cubic-bezier(0.4,0,0.2,1) both;
   animation-delay: 0.50s;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.75), 0 0 80px rgba(0,0,0,0.35);
+  text-shadow: 0 2px 32px rgba(0,0,0,0.80), 0 0 60px rgba(0,0,0,0.40);
+  letter-spacing: -0.01em;
 }
 .menus-hero-sub {
   animation: fadeUp 0.8s cubic-bezier(0.4,0,0.2,1) both;

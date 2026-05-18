@@ -39,22 +39,25 @@ function MenusHero() {
       <div className="absolute bottom-0 left-0 right-0 mnu-hero-border-line" />
 
       <div className="relative z-10 container-max w-full pb-14 md:pb-20">
-        <span className="menus-hero-label label block mb-5">
-          Proposta gastronòmica
+        <span className="menus-hero-label label block mb-6">
+          Menús
         </span>
         <h1
-          className="menus-hero-title font-serif font-light leading-[0.92] tracking-tight
-                     text-botic-cream"
-          style={{ fontSize: 'clamp(68px, 11vw, 130px)' }}
-        >
-          Menús
-        </h1>
-        <p
-          className="menus-hero-sub font-serif italic font-light text-botic-cream/78
-                     leading-relaxed max-w-xl mt-5"
-          style={{ fontSize: 'clamp(16px, 1.8vw, 20px)' }}
+          className="menus-hero-title font-serif font-light italic text-botic-cream"
+          style={{
+            fontSize:  'clamp(26px, 4.2vw, 58px)',
+            lineHeight: 1.18,
+            maxWidth:   '560px',
+          }}
         >
           Tres maneres d'apropar-se a l'univers gastronòmic de Bo.TiC.
+        </h1>
+        <p
+          className="menus-hero-sub font-sans font-light text-botic-cream/65
+                     mt-5"
+          style={{ fontSize: 'clamp(11px, 1.2vw, 13px)', letterSpacing: '0.20em' }}
+        >
+          DEGUSTACIÓ · CHEF · ESSÈNCIA
         </p>
 
         {/* Ornament sota el subtítol */}
