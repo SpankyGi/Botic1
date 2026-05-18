@@ -41,18 +41,32 @@ export default function Home() {
       <MarqueeStrip />
 
       {/* ── Intro ── */}
-      <section className="bg-botic-ivory py-20 md:py-28 lg:py-32">
-        <div className="container-max text-center" style={{ maxWidth: '640px' }}>
-          <span className="label-light block">Bo.TiC · Corçà · Empordà</span>
-          <h2 className="font-serif font-light text-3xl md:text-5xl text-botic-text
-                         leading-tight tracking-tight mt-4">
-            Cuina amb arrel.<br />Experiència sense igual.
-          </h2>
-          <p className="mt-6 font-sans text-sm md:text-base text-botic-text/65 leading-relaxed">
-            Bo.TiC és un restaurant gastronòmic de referència a l'Empordà. Dos estels Michelin,
-            una masia rehabilitada i una cuina que entén el territori com a primera matèria.
-          </p>
+      <section className="home-intro">
+
+        {/* Foto — panel dret */}
+        <div className="home-intro-photo" aria-hidden="true">
+          <img
+            src="/images/restaurant-emporda-michelin-girona.webp"
+            alt=""
+            className="home-intro-img"
+          />
+          <div className="home-intro-overlay" />
         </div>
+
+        {/* Text — esquerra */}
+        <div className="container-max home-intro-inner">
+          <div className="home-intro-content">
+            <span className="home-intro-label">Bo.TiC · Corçà · Empordà</span>
+            <h2 className="font-serif font-light leading-tight tracking-tight home-intro-title">
+              Cuina amb arrel.<br />Experiència sense igual.
+            </h2>
+            <p className="font-sans home-intro-body">
+              Bo.TiC és un restaurant gastronòmic de referència a l'Empordà. Dos estels Michelin,
+              una masia rehabilitada i una cuina que entén el territori com a primera matèria.
+            </p>
+          </div>
+        </div>
+
       </section>
 
       {/* ── Feature cards ── */}
