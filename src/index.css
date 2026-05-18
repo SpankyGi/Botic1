@@ -1701,27 +1701,73 @@ nav.main.scrolled {
 /* ====== HOME RESERVA CTA ====== */
 .home-reserva-cta {
   position: relative;
-  background: linear-gradient(180deg, #0e0c09 0%, #161511 35%, #161511 100%);
-  padding: 112px 0 128px;
+  background: linear-gradient(180deg, #0e0c09 0%, #131108 40%, #161511 100%);
+  padding: 76px 0 88px;
   text-align: center;
   overflow: hidden;
 }
+
+/* Glow radial daurat — més present */
 .home-reserva-cta::before {
   content: '';
   position: absolute;
-  top: -60px; left: 50%; transform: translateX(-50%);
-  width: 900px; height: 520px;
-  background: radial-gradient(ellipse at 50% 28%,
-    rgba(201,164,106,0.08) 0%,
-    rgba(154,42,42,0.04) 42%,
+  top: -30px; left: 50%; transform: translateX(-50%);
+  width: 820px; height: 460px;
+  background: radial-gradient(ellipse at 50% 34%,
+    rgba(201,164,106,0.16) 0%,
+    rgba(201,164,106,0.07) 30%,
+    rgba(154,42,42,0.05) 54%,
     transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
-.home-reserva-cta .container-max { position: relative; z-index: 1; }
-.home-reserva-cta .label { letter-spacing: 0.28em; }
-.home-reserva-cta h2 { text-shadow: 0 0 80px rgba(201,164,106,0.06); }
-.home-reserva-cta p  { color: rgba(138,130,120,0.88); }
+
+/* Línia vertical d'entrada des de la part superior */
+.home-reserva-cta::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%; transform: translateX(-50%);
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, transparent, rgba(201,164,106,0.42));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.home-reserva-cta .container-max {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ornament horitzontal sobre el label */
+.home-reserva-cta .container-max::before {
+  content: '';
+  display: block;
+  width: 44px; height: 1px;
+  background: linear-gradient(to right,
+    transparent, rgba(201,164,106,0.48), transparent);
+  margin: 0 auto 20px;
+}
+
+.home-reserva-cta .label {
+  letter-spacing: 0.36em;
+  font-size: 9px;
+  color: rgba(201,164,106,0.72);
+}
+.home-reserva-cta h2 {
+  color: #EDE8DC;
+  text-shadow:
+    0 0 56px rgba(201,164,106,0.18),
+    0 2px 24px rgba(14,12,9,0.55);
+}
+.home-reserva-cta p { color: rgba(168,160,148,0.92); }
+
+/* Botó principal amb més pes en aquest context */
+.home-reserva-cta .btn-gold {
+  padding: 14px 44px;
+  letter-spacing: 0.22em;
+  font-size: 11px;
+  box-shadow: 0 0 32px rgba(154,42,42,0.22);
+}
 
 /* ====== FOOTER ====== */
 footer.botic-footer {
