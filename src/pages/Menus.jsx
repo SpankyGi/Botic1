@@ -5,69 +5,96 @@ import { menus } from '../data/menus'
 
 const PENDING = '[pendent de revisar]'
 
-/* ── Hero ───────────────────────────────────────────────── */
+/* ── Hero ───────────────────────────────────────────────────── */
 function MenusHero() {
   return (
     <section
       className="relative flex items-end overflow-hidden bg-botic-black pt-24"
-      style={{ minHeight: '52vh' }}
+      style={{ minHeight: '55vh' }}
       aria-label="Menús de Bo.TiC"
     >
-      {/* Fons degradat */}
+      {/* Gradient principal fosc */}
       <div className="absolute inset-0 bg-gradient-to-br
                       from-botic-black via-botic-dark to-botic-surface" />
-      {/* Textura puntejada */}
+
+      {/* Punt de llum daurat — centrat baix, on es llegeix el text */}
+      <div className="mnu-hero-glow-gold" />
+
+      {/* Toc de borgonya a dalt-dreta */}
+      <div className="mnu-hero-glow-burg" />
+
+      {/* Trama puntejada daurada */}
       <div
-        className="absolute inset-0 opacity-[0.035]"
+        className="absolute inset-0 opacity-[0.03]"
         style={{
           backgroundImage:
-            'radial-gradient(circle, rgba(196,169,106,0.9) 1px, transparent 1px)',
+            'radial-gradient(circle, rgba(196,169,106,1) 1px, transparent 1px)',
           backgroundSize: '44px 44px',
         }}
       />
-      {/* Línia decorativa horitzontal */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-botic-border opacity-40" />
+
+      {/* Línia horitzontal inferior */}
+      <div className="absolute bottom-0 left-0 right-0 mnu-hero-border-line" />
+
+      {/* Cantonades decoratives */}
+      <span className="mnu-hero-corner tl" />
+      <span className="mnu-hero-corner br" />
 
       <div className="relative z-10 container-max w-full pb-12 md:pb-16">
         <span className="menus-hero-label label block mb-5">
           Proposta gastronòmica
         </span>
-        <h1 className="menus-hero-title font-serif font-light leading-[0.95] tracking-tight
-                       text-botic-cream"
-            style={{ fontSize: 'clamp(64px, 10vw, 120px)' }}>
+        <h1
+          className="menus-hero-title font-serif font-light leading-[0.92] tracking-tight
+                     text-botic-cream"
+          style={{ fontSize: 'clamp(68px, 11vw, 130px)' }}
+        >
           Menús
         </h1>
-        <p className="menus-hero-sub font-serif italic font-light text-botic-cream/55
-                      leading-relaxed max-w-xl mt-5"
-           style={{ fontSize: 'clamp(16px, 1.8vw, 20px)' }}>
+        <p
+          className="menus-hero-sub font-serif italic font-light text-botic-cream/55
+                     leading-relaxed max-w-xl mt-5"
+          style={{ fontSize: 'clamp(16px, 1.8vw, 20px)' }}
+        >
           Tres maneres d'apropar-se a l'univers gastronòmic de Bo.TiC.
         </p>
+
+        {/* Ornament sota el subtítol */}
+        <div className="menus-hero-ornament">
+          <span className="mnu-orn-line" />
+          <span className="mnu-orn-glyph">✦</span>
+          <span className="mnu-orn-line" />
+        </div>
       </div>
     </section>
   )
 }
 
-/* ── Accordion de secció ─────────────────────────────────── */
+/* ── Accordion de secció ────────────────────────────────────── */
 function SectionAccordion({ section, menuId }) {
-  const [open, setOpen]     = useState(false)
+  const [open, setOpen]       = useState(false)
   const [openKey, setOpenKey] = useState(0)
-  const id    = useId()
+  const id     = useId()
   const bodyId = `${id}-body`
 
   const toggle = () => {
-    if (!open) setOpenKey(k => k + 1)   // remount dishes → re-trigger stagger
+    if (!open) setOpenKey(k => k + 1)
     setOpen(o => !o)
   }
 
   return (
-    <div className="mnu-section">
+    <div className={`mnu-section${open ? ' is-open' : ''}`}>
       <button
         className="mnu-section-trigger"
         onClick={toggle}
         aria-expanded={open}
         aria-controls={bodyId}
       >
+        {/* Punt decoratiu borgonya */}
+        <span className="mnu-section-dot" aria-hidden="true" />
+
         <span className="mnu-section-title">{section.title}</span>
+
         <span className="mnu-section-count" aria-hidden="true">
           {section.items.length}
         </span>
@@ -83,6 +110,9 @@ function SectionAccordion({ section, menuId }) {
         aria-labelledby={`${id}-trigger`}
       >
         <div className="mnu-section-inner">
+          {/* Accent borgonya lateral quan és obert */}
+          <div className="mnu-section-accent" aria-hidden="true" />
+
           <ul key={openKey} className="mnu-dish-list">
             {section.items.map((item, i) => (
               <li
@@ -95,7 +125,6 @@ function SectionAccordion({ section, menuId }) {
                 </span>
                 <div className="mnu-dish-content">
                   <h4 className="mnu-dish-name">{item.name}</h4>
-                  {/* description only shown when real content is added */}
                   {item.description !== PENDING && (
                     <p className="mnu-dish-desc">{item.description}</p>
                   )}
@@ -109,7 +138,18 @@ function SectionAccordion({ section, menuId }) {
   )
 }
 
-/* ── Pàgina principal ────────────────────────────────────── */
+/* ── Ornament separador reutilitzable ───────────────────────── */
+function Ornament() {
+  return (
+    <div className="mnu-ornament" aria-hidden="true">
+      <span className="mnu-orn-line" />
+      <span className="mnu-orn-glyph">✦</span>
+      <span className="mnu-orn-line" />
+    </div>
+  )
+}
+
+/* ── Pàgina principal ───────────────────────────────────────── */
 export default function Menus() {
   const [activeId, setActiveId] = useState('degustacion')
   const active = menus.find(m => m.id === activeId) ?? menus[0]
@@ -126,7 +166,11 @@ export default function Menus() {
       <MenusHero />
 
       {/* ── Selector de menús ── */}
-      <div className="mnu-selector-wrap" role="navigation" aria-label="Selecciona un menú">
+      <div
+        className="mnu-selector-wrap"
+        role="navigation"
+        aria-label="Selecciona un menú"
+      >
         <div className="mnu-selector">
           {menus.map((m) => (
             <button
@@ -136,7 +180,9 @@ export default function Menus() {
               aria-pressed={m.id === activeId}
             >
               <span className="mnu-tab-title">{m.title}</span>
-              <span className="mnu-tab-price">{m.price}</span>
+              <span className="mnu-tab-price">
+                <span className="mnu-tab-price-value">{m.price}</span>
+              </span>
             </button>
           ))}
         </div>
@@ -146,11 +192,17 @@ export default function Menus() {
       <section
         className="mnu-content-wrap"
         aria-label={active.title}
-        key={activeId}          /* remount on switch → fadeUp re-triggers */
+        key={activeId}
       >
         <div className="container-max mnu-content">
 
-          {/* Nota del menú (ex. Esencia: disponibilitat migdia) */}
+          {/* Capçalera del menú actiu */}
+          <div className="mnu-content-header">
+            <h2 className="mnu-content-title">{active.title}</h2>
+            <span className="mnu-content-price">{active.price}</span>
+          </div>
+
+          {/* Nota de disponibilitat (Menú Esencia) */}
           {active.note && (
             <p className="mnu-note" role="note">
               <span className="mnu-note-icon" aria-hidden="true">◈</span>
@@ -172,10 +224,17 @@ export default function Menus() {
       </section>
 
       {/* ── CTA final ── */}
-      <section className="bg-botic-dark py-24 md:py-32 text-center"
-               aria-labelledby="menus-cta-heading">
-        <div className="container-max">
-          <span className="label block mb-4">Reserva</span>
+      <section
+        className="mnu-cta-section"
+        aria-labelledby="menus-cta-heading"
+      >
+        {/* Glow radial daurat al centre */}
+        <div className="mnu-cta-glow" aria-hidden="true" />
+
+        <div className="container-max mnu-cta-content">
+          <Ornament />
+
+          <span className="label block mt-8 mb-4">Reserva</span>
           <h2
             id="menus-cta-heading"
             className="font-serif font-light text-4xl md:text-5xl lg:text-6xl

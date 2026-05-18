@@ -1720,9 +1720,11 @@ footer.botic-footer {
   .feature-card:last-child { border-bottom: none; }
 }
 
-/* ====== PÀGINA MENÚS ====== */
+/* ====== PÀGINA MENÚS — PREMIUM ====== */
 
-/* Hero — entrada animada */
+/* ── Hero ── */
+
+/* Animació entrada */
 .menus-hero-label {
   animation: fadeUp 0.6s ease both;
   animation-delay: 0.4s;
@@ -1730,19 +1732,101 @@ footer.botic-footer {
 .menus-hero-title {
   animation: fadeUp 0.9s ease both;
   animation-delay: 0.55s;
+  text-shadow: 0 0 120px rgba(196,169,106,0.12), 0 2px 40px rgba(0,0,0,0.6);
 }
 .menus-hero-sub {
   animation: fadeUp 0.8s ease both;
   animation-delay: 0.75s;
 }
 
-/* Sticky selector */
+/* Punt de llum daurat baix-esquerra (on apareix el text) */
+.mnu-hero-glow-gold {
+  position: absolute;
+  bottom: -80px; left: 40px;
+  width: 600px; height: 500px;
+  background: radial-gradient(ellipse at center,
+    rgba(196,169,106,0.10) 0%,
+    rgba(196,169,106,0.04) 40%,
+    transparent 70%);
+  pointer-events: none;
+}
+
+/* Toc de calor borgonya a dalt-dreta */
+.mnu-hero-glow-burg {
+  position: absolute;
+  top: 0; right: 0;
+  width: 40%; height: 60%;
+  background: radial-gradient(ellipse at top right,
+    rgba(154,42,42,0.07) 0%,
+    transparent 65%);
+  pointer-events: none;
+}
+
+/* Línia inferior amb gradient daurat */
+.mnu-hero-border-line {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(196,169,106,0.35) 20%,
+    rgba(196,169,106,0.35) 80%,
+    transparent 100%);
+}
+
+/* Cantonades decoratives del hero */
+.mnu-hero-corner {
+  position: absolute;
+  width: 40px; height: 40px;
+  pointer-events: none;
+  z-index: 5;
+}
+.mnu-hero-corner.tl {
+  top: 108px; left: 48px;
+  border-top: 1px solid rgba(196,169,106,0.25);
+  border-left: 1px solid rgba(196,169,106,0.25);
+}
+.mnu-hero-corner.br {
+  bottom: 20px; right: 48px;
+  border-bottom: 1px solid rgba(154,42,42,0.2);
+  border-right: 1px solid rgba(154,42,42,0.2);
+}
+
+/* Ornament separador (✦ entre línies) */
+.menus-hero-ornament,
+.mnu-ornament {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 28px;
+}
+.mnu-orn-line {
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    rgba(196,169,106,0.5),
+    rgba(196,169,106,0.1));
+}
+.mnu-ornament .mnu-orn-line:last-child {
+  background: linear-gradient(90deg,
+    rgba(196,169,106,0.1),
+    rgba(196,169,106,0.5));
+}
+.mnu-orn-glyph {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 11px;
+  color: rgba(196,169,106,0.55);
+  flex-shrink: 0;
+}
+
+/* ── Selector sticky ── */
 .mnu-selector-wrap {
   position: sticky;
   top: 124px; /* 36px topbar + 88px nav */
   z-index: 40;
-  background: #161511;
-  border-bottom: 1px solid #2E2B27;
+  background: linear-gradient(180deg, #1c1a16 0%, #161511 100%);
+  border-bottom: 1px solid rgba(196,169,106,0.12);
+  /* Ombra cap avall suau */
+  box-shadow: 0 4px 24px rgba(0,0,0,0.5);
 }
 .mnu-selector {
   display: flex;
@@ -1752,64 +1836,138 @@ footer.botic-footer {
   padding: 0 48px;
 }
 
-/* Tabs del selector */
+/* Tabs */
 .mnu-tab {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
-  padding: 18px 12px;
+  gap: 8px;
+  padding: 20px 12px;
   background: transparent;
   border: none;
-  border-right: 1px solid #2E2B27;
+  border-right: 1px solid rgba(46,43,39,0.8);
   border-bottom: 2px solid transparent;
   cursor: pointer;
   text-align: center;
-  transition: background 0.3s ease, border-bottom-color 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  transition: border-bottom-color 0.4s ease;
 }
 .mnu-tab:last-child { border-right: none; }
-.mnu-tab:hover { background: rgba(196,169,106,0.04); }
-.mnu-tab.active {
-  background: rgba(196,169,106,0.06);
-  border-bottom-color: #C4A96A;
+
+/* Shimmer de fons que puja cap amunt en hover/actiu */
+.mnu-tab::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(196,169,106,0.11) 0%,
+    rgba(196,169,106,0.04) 100%);
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
 }
+.mnu-tab:hover::before,
+.mnu-tab.active::before { transform: translateY(0); }
+
+/* Línia daura a dalt de l'actiu */
+.mnu-tab::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(196,169,106,0.6),
+    transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.mnu-tab.active::after { opacity: 1; }
+
+.mnu-tab.active  { border-bottom-color: #C4A96A; }
 .mnu-tab:focus-visible {
   outline: 1px solid rgba(196,169,106,0.6);
   outline-offset: -2px;
 }
+
 .mnu-tab-title {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #8A8278;
+  color: rgba(138,130,120,0.7);
   font-weight: 400;
-  transition: color 0.3s ease;
+  transition: color 0.35s ease;
   white-space: nowrap;
+  position: relative; /* sobre el shimmer */
 }
 .mnu-tab.active .mnu-tab-title,
 .mnu-tab:hover .mnu-tab-title { color: #EDE8DC; }
+
 .mnu-tab-price {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.mnu-tab-price-value {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
-  font-size: 22px;
-  color: #C4A96A;
+  font-size: 24px;
+  color: rgba(196,169,106,0.6);
   line-height: 1;
+  transition: color 0.35s ease, text-shadow 0.35s ease;
+}
+.mnu-tab.active .mnu-tab-price-value,
+.mnu-tab:hover  .mnu-tab-price-value {
+  color: #C4A96A;
+  text-shadow: 0 0 24px rgba(196,169,106,0.45);
 }
 
-/* Àrea de contingut */
+/* ── Àrea de contingut ── */
 .mnu-content-wrap {
   background: #0C0B09;
+  /* Trama molt subtil per a textura */
+  background-image: radial-gradient(rgba(46,43,39,0.4) 1px, transparent 1px);
+  background-size: 32px 32px;
   min-height: 50vh;
 }
 .mnu-content {
   padding: 52px 0 80px;
-  animation: fadeUp 0.4s ease both;
+  animation: fadeUp 0.45s ease both;
 }
 
-/* Nota del menú (disponibilitat, etc.) */
+/* Capçalera del menú actiu */
+.mnu-content-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 32px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid rgba(196,169,106,0.1);
+  gap: 20px;
+}
+.mnu-content-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 44px);
+  color: #EDE8DC;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+.mnu-content-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(24px, 3vw, 36px);
+  color: #C4A96A;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+  text-shadow: 0 0 30px rgba(196,169,106,0.3);
+}
+
+/* Nota de disponibilitat */
 .mnu-note {
   display: flex;
   align-items: baseline;
@@ -1818,24 +1976,37 @@ footer.botic-footer {
   font-style: italic;
   font-weight: 300;
   font-size: 15px;
-  color: #8A8278;
-  border-left: 2px solid rgba(154,42,42,0.35);
+  color: rgba(138,130,120,0.7);
+  border-left: 2px solid rgba(154,42,42,0.45);
   padding: 10px 0 10px 18px;
-  margin-bottom: 52px;
+  margin-top: 20px;
+  margin-bottom: 40px;
   max-width: 600px;
   line-height: 1.65;
+  background: linear-gradient(90deg, rgba(154,42,42,0.04) 0%, transparent 60%);
 }
 .mnu-note-icon {
-  color: rgba(154,42,42,0.4);
+  color: rgba(154,42,42,0.5);
   font-size: 11px;
   flex-shrink: 0;
 }
 
-/* Accordion — contenidor de seccions */
+/* ── Accordion ── */
 .mnu-sections { border-top: 1px solid #2E2B27; }
-.mnu-section  { border-bottom: 1px solid #2E2B27; }
+.mnu-section  { border-bottom: 1px solid rgba(46,43,39,0.8); }
 
-/* Botó d'accordion */
+/* Quan la secció és oberta, accent borgonya esquerra */
+.mnu-section.is-open {
+  border-left: 2px solid rgba(154,42,42,0.3);
+  padding-left: 20px;
+  margin-left: -20px;
+  background: linear-gradient(90deg,
+    rgba(154,42,42,0.03) 0%,
+    transparent 40%);
+  transition: background 0.4s ease;
+}
+
+/* Trigger */
 .mnu-section-trigger {
   width: 100%;
   display: flex;
@@ -1846,10 +2017,43 @@ footer.botic-footer {
   border: none;
   cursor: pointer;
   text-align: left;
+  position: relative;
 }
+/* Línia daura que creix cap a la dreta en hover/open */
+.mnu-section-trigger::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg,
+    rgba(154,42,42,0.5) 0%,
+    rgba(196,169,106,0.3) 30%,
+    transparent 70%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.45s cubic-bezier(.2,.8,.2,1);
+}
+.mnu-section-trigger:hover::after,
+.mnu-section-trigger[aria-expanded="true"]::after { transform: scaleX(1); }
+
 .mnu-section-trigger:focus-visible {
   outline: 1px solid rgba(196,169,106,0.5);
   outline-offset: 4px;
+}
+
+/* Punt borgonya decoratiu */
+.mnu-section-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(154,42,42,0.4);
+  flex-shrink: 0;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.mnu-section-trigger:hover .mnu-section-dot,
+.mnu-section-trigger[aria-expanded="true"] .mnu-section-dot {
+  background: var(--burgundy);
+  transform: scale(1.5);
 }
 
 /* Títol de secció */
@@ -1858,79 +2062,127 @@ footer.botic-footer {
   font-weight: 300;
   font-size: 30px;
   letter-spacing: -0.01em;
-  color: rgba(138,130,120,0.65);
+  color: rgba(138,130,120,0.6);
   flex: 1;
   transition: color 0.3s ease;
 }
 .mnu-section-trigger:hover .mnu-section-title,
-.mnu-section-trigger[aria-expanded="true"] .mnu-section-title { color: #EDE8DC; }
+.mnu-section-trigger[aria-expanded="true"] .mnu-section-title {
+  color: #EDE8DC;
+}
+.mnu-section-trigger[aria-expanded="true"] .mnu-section-title {
+  font-style: italic; /* el títol s'italitza quan és obert */
+}
 
-/* Badge amb el nombre de plats */
+/* Badge nombre de plats */
 .mnu-section-count {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 0.2em;
-  color: rgba(196,169,106,0.32);
+  color: rgba(196,169,106,0.3);
   font-weight: 400;
   padding: 3px 8px;
-  border: 1px solid rgba(196,169,106,0.14);
+  border: 1px solid rgba(196,169,106,0.12);
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+.mnu-section-trigger[aria-expanded="true"] .mnu-section-count {
+  color: rgba(196,169,106,0.65);
+  border-color: rgba(196,169,106,0.3);
 }
 
 /* Icona +/− */
 .mnu-section-icon {
-  width: 28px;
-  height: 28px;
+  width: 28px; height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(196,169,106,0.28);
-  color: #C4A96A;
+  border: 1px solid rgba(196,169,106,0.25);
+  color: rgba(196,169,106,0.6);
   font-size: 16px;
   font-weight: 300;
   font-family: 'Inter', sans-serif;
   flex-shrink: 0;
-  transition: border-color 0.3s ease, background 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease,
+              color 0.3s ease, transform 0.3s ease;
   line-height: 1;
 }
-.mnu-section-trigger:hover .mnu-section-icon,
+.mnu-section-trigger:hover .mnu-section-icon {
+  border-color: rgba(196,169,106,0.5);
+  background: rgba(196,169,106,0.06);
+  color: #C4A96A;
+}
 .mnu-section-trigger[aria-expanded="true"] .mnu-section-icon {
-  border-color: rgba(196,169,106,0.55);
-  background: rgba(196,169,106,0.07);
+  border-color: rgba(154,42,42,0.5);
+  background: rgba(154,42,42,0.08);
+  color: rgba(154,42,42,0.8);
 }
 
-/* Accordion body — grid expand (mateixa tècnica que .dish-expand) */
+/* Grid expand */
 .mnu-section-body {
   display: grid;
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.5s cubic-bezier(.2,.8,.2,1);
 }
 .mnu-section-body.open { grid-template-rows: 1fr; }
-.mnu-section-inner { overflow: hidden; }
+.mnu-section-inner {
+  overflow: hidden;
+  position: relative;
+}
 
-/* Llista de plats */
+/* Accent borgonya vertical dins el cos obert */
+.mnu-section-accent {
+  position: absolute;
+  top: 0; bottom: 0; left: 0;
+  width: 1px;
+  background: linear-gradient(180deg,
+    rgba(154,42,42,0.5) 0%,
+    rgba(154,42,42,0.15) 60%,
+    transparent 100%);
+  pointer-events: none;
+}
+
+/* ── Plats ── */
 .mnu-dish-list { list-style: none; padding: 4px 0 36px; }
 .mnu-dish {
   display: grid;
   grid-template-columns: 44px 1fr;
   gap: 16px;
   padding: 18px 0;
-  border-bottom: 1px solid rgba(46,43,39,0.55);
+  border-bottom: 1px solid rgba(46,43,39,0.5);
   align-items: start;
   opacity: 0;
   animation: mnu-dish-in 0.4s ease both;
+  position: relative;
+  transition: padding-left 0.3s ease;
 }
 .mnu-dish:last-child { border-bottom: none; }
 
-/* Número ordinal del plat */
+/* Barra daurada que apareix per l'esquerra en hover */
+.mnu-dish::before {
+  content: '';
+  position: absolute;
+  left: -20px; /* alineat amb l'accent de la secció */
+  top: 18px; bottom: 18px;
+  width: 2px;
+  background: linear-gradient(180deg, #C4A96A, rgba(196,169,106,0.3));
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(.2,.8,.2,1);
+}
+.mnu-dish:hover::before { transform: scaleY(1); }
+
+/* Número ordinal */
 .mnu-dish-num {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   letter-spacing: 0.18em;
-  color: rgba(196,169,106,0.28);
+  color: rgba(196,169,106,0.25);
   font-weight: 400;
   padding-top: 5px;
   text-align: right;
+  transition: color 0.3s ease;
 }
+.mnu-dish:hover .mnu-dish-num { color: rgba(196,169,106,0.55); }
 
 /* Nom i descripció */
 .mnu-dish-content { display: flex; flex-direction: column; gap: 5px; }
@@ -1941,7 +2193,9 @@ footer.botic-footer {
   color: #EDE8DC;
   letter-spacing: -0.005em;
   line-height: 1.2;
+  transition: color 0.3s ease;
 }
+.mnu-dish:hover .mnu-dish-name { color: #F8F3E8; }
 .mnu-dish-desc {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
@@ -1951,18 +2205,49 @@ footer.botic-footer {
   line-height: 1.55;
 }
 
-/* Keyframe entrada dels plats */
+/* ── Ornament separador ── */
+.mnu-ornament {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+}
+
+/* ── CTA final ── */
+.mnu-cta-section {
+  background: linear-gradient(180deg, #0C0B09 0%, #161511 40%, #0C0B09 100%);
+  padding: 96px 0 88px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid rgba(196,169,106,0.1);
+}
+/* Glow radial daurat al centre */
+.mnu-cta-glow {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px; height: 400px;
+  background: radial-gradient(ellipse,
+    rgba(196,169,106,0.07) 0%,
+    transparent 65%);
+  pointer-events: none;
+}
+.mnu-cta-content { position: relative; z-index: 1; }
+
+/* Keyframe d'entrada dels plats */
 @keyframes mnu-dish-in {
   from { opacity: 0; transform: translateX(-10px); }
   to   { opacity: 1; transform: translateX(0); }
 }
 
-/* ── Responsive Menús ── */
+/* ── Responsive ── */
 @media (max-width: 1024px) {
   .mnu-selector { padding: 0 32px; }
+  .mnu-section.is-open { margin-left: -12px; padding-left: 12px; }
 }
 @media (max-width: 768px) {
-  .mnu-selector-wrap { top: 88px; } /* mobile: no topbar */
+  .mnu-selector-wrap   { top: 88px; }
   .mnu-selector {
     padding: 0;
     overflow-x: auto;
@@ -1970,17 +2255,19 @@ footer.botic-footer {
     scrollbar-width: none;
   }
   .mnu-selector::-webkit-scrollbar { display: none; }
-  .mnu-tab {
-    min-width: 110px;
-    padding: 14px 10px;
-    flex-shrink: 0;
-  }
-  .mnu-tab-title  { font-size: 9px; letter-spacing: 0.15em; }
-  .mnu-tab-price  { font-size: 18px; }
-  .mnu-section-title { font-size: 24px; }
-  .mnu-dish-name  { font-size: 20px; }
-  .mnu-content    { padding: 36px 0 56px; }
-  .mnu-note       { margin-bottom: 36px; }
+  .mnu-tab            { min-width: 110px; padding: 14px 10px; flex-shrink: 0; }
+  .mnu-tab-title      { font-size: 9px; letter-spacing: 0.13em; }
+  .mnu-tab-price-value { font-size: 20px; }
+  .mnu-section-title  { font-size: 24px; }
+  .mnu-dish-name      { font-size: 20px; }
+  .mnu-content        { padding: 36px 0 52px; }
+  .mnu-note           { margin-bottom: 32px; }
+  .mnu-content-header { flex-direction: column; gap: 4px; padding-bottom: 20px; }
+  .mnu-section.is-open { margin-left: 0; padding-left: 0;
+    border-left: none; border-top: 2px solid rgba(154,42,42,0.3); }
+  .mnu-hero-corner.tl { top: 96px; left: 24px; }
+  .mnu-hero-corner.br { right: 24px; }
+  .mnu-cta-section    { padding: 72px 0 64px; }
 }
 
 /* Accessibilitat */
@@ -1989,6 +2276,9 @@ footer.botic-footer {
   .menus-hero-title,
   .menus-hero-sub,
   .mnu-content,
-  .mnu-dish { animation: none; opacity: 1; transform: none; }
-  .mnu-section-body { transition: none; }
+  .mnu-dish             { animation: none; opacity: 1; transform: none; }
+  .mnu-section-body     { transition: none; }
+  .mnu-tab::before,
+  .mnu-section-trigger::after,
+  .mnu-dish::before     { transition: none; }
 }
