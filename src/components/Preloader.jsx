@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 
-const MIN_MS  = 1800   // temps mínim visible
-const MAX_MS  = 4000   // seguretat: màxim d'espera del vídeo
-const FADE_MS =  650   // durada del fade-out
+const MIN_MS  = 2500   // temps mínim visible
+const MAX_MS  = 5000   // seguretat: màxim d'espera del vídeo
+const FADE_MS =  700   // durada del fade-out
 
 const alreadySeen = () =>
   typeof sessionStorage !== 'undefined' &&
