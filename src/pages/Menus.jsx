@@ -148,21 +148,26 @@ function WineSection() {
 
       <div className="container-max wine-inner">
 
-        {/* Columna esquerra — títol editorial */}
+        {/* Columna esquerra — dada protagonista + títol */}
         <div className="wine-col-left">
-          <span className="wine-label">Maridatge</span>
+          <span className="wine-label">Maridatge · Bodega</span>
+
+          <div className="wine-stat">
+            <span className="wine-stat-num">900<span className="wine-stat-plus">+</span></span>
+            <span className="wine-stat-desc">referencias de todo el mundo</span>
+          </div>
+
+          <div className="wine-divider" aria-hidden="true" />
+
           <h2 id="wine-heading" className="wine-title">
             Carta<br />de vinos
           </h2>
+
           <div className="wine-ornament" aria-hidden="true">
             <span className="wine-orn-line" />
             <span className="wine-orn-glyph">◈</span>
             <span className="wine-orn-line" />
           </div>
-          <p className="wine-stat">
-            <span className="wine-stat-num">900+</span>
-            <span className="wine-stat-desc">referències de tot el món</span>
-          </p>
         </div>
 
         {/* Columna dreta — text */}
