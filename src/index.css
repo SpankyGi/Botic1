@@ -2141,6 +2141,10 @@ footer.botic-footer {
   border-top: 1px solid rgba(201,164,106,0.14);
   border-bottom: 1px solid rgba(201,164,106,0.08);
 }
+.features-section .container-max {
+  padding-left: 0;
+  padding-right: 0;
+}
 .features-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -2161,7 +2165,7 @@ footer.botic-footer {
 }
 
 .feature-card {
-  padding: 80px 52px 68px;
+  padding: 72px 44px 60px;
   border-right: 1px solid rgba(46,43,39,0.75);
   text-decoration: none;
   display: flex;
