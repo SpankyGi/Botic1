@@ -5,42 +5,40 @@ import { menus } from '../data/menus'
 
 const PENDING = '[pendent de revisar]'
 
+const HERO_IMG = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
+
 /* ── Hero ───────────────────────────────────────────────────── */
 function MenusHero() {
   return (
     <section
       className="relative flex items-end overflow-hidden bg-botic-black pt-24"
-      style={{ minHeight: '55vh' }}
+      style={{ minHeight: '65vh' }}
       aria-label="Menús de Bo.TiC"
     >
-      {/* Gradient principal fosc */}
-      <div className="absolute inset-0 bg-gradient-to-br
-                      from-botic-black via-botic-dark to-botic-surface" />
+      {/* Fotografia de fons */}
+      <img
+        src={HERO_IMG}
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover object-center"
+        style={{ objectPosition: '60% center' }}
+      />
 
-      {/* Punt de llum daurat — centrat baix, on es llegeix el text */}
-      <div className="mnu-hero-glow-gold" />
-
-      {/* Toc de borgonya a dalt-dreta */}
-      <div className="mnu-hero-glow-burg" />
-
-      {/* Trama puntejada daurada */}
+      {/* Overlay cinematogràfic: fosc baix + lateral esquerra */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0"
         style={{
-          backgroundImage:
-            'radial-gradient(circle, rgba(154,42,42,1) 1px, transparent 1px)',
-          backgroundSize: '44px 44px',
+          background: [
+            'linear-gradient(0deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.20) 100%)',
+            'linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.30) 55%, rgba(0,0,0,0) 100%)',
+          ].join(', '),
         }}
       />
 
       {/* Línia horitzontal inferior */}
       <div className="absolute bottom-0 left-0 right-0 mnu-hero-border-line" />
 
-      {/* Cantonades decoratives */}
-      <span className="mnu-hero-corner tl" />
-      <span className="mnu-hero-corner br" />
-
-      <div className="relative z-10 container-max w-full pb-12 md:pb-16">
+      <div className="relative z-10 container-max w-full pb-14 md:pb-20">
         <span className="menus-hero-label label block mb-5">
           Proposta gastronòmica
         </span>

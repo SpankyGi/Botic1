@@ -76,7 +76,7 @@ export default function Hero() {
 
           {/* Claim superior — càpsula champagne */}
           <div className="hero-eyebrow">
-            Michelin · Corçà · Empordà
+            ★★ Michelin · Corçà · Empordà
           </div>
 
           {/* Titular en dues línies */}
