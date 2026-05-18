@@ -30,7 +30,8 @@ const FEATURES = [
 ]
 
 export default function Home() {
-  const ctaRef = useReveal(0.18)
+  const ctaRef      = useReveal(0.18)
+  const featuresRef = useReveal(0.12)
 
   return (
     <>
@@ -73,10 +74,10 @@ export default function Home() {
       </section>
 
       {/* ── Feature cards ── */}
-      <section className="bg-botic-black" aria-label="Descobreix Bo.TiC">
+      <section className="features-section" ref={featuresRef} aria-label="Descobreix Bo.TiC">
         <div className="features-grid">
-          {FEATURES.map(({ tag, title, body, to, label }) => (
-            <Link key={to} to={to} className="feature-card">
+          {FEATURES.map(({ tag, title, body, to, label }, i) => (
+            <Link key={to} to={to} className="feature-card" style={{ '--i': i }}>
               <span className="feature-tag">{tag}</span>
               <h3 className="feature-title">{title}</h3>
               <p className="feature-body">{body}</p>
