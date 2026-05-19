@@ -3408,7 +3408,7 @@ footer.botic-footer {
   align-items: flex-end;
   overflow: hidden;
   background: #0a0806;
-  margin-top: 124px; /* topbar 36px + nav 88px */
+  margin-top: 124px;
 }
 .hor-hero-img {
   position: absolute;
@@ -3418,11 +3418,11 @@ footer.botic-footer {
   object-fit: cover;
   object-position: center 42%;
   display: block;
-  filter: brightness(0.72) contrast(1.05) saturate(0.85);
+  filter: brightness(0.84) contrast(1.04) saturate(0.88);
   animation: hor-ken-burns 20s ease-out both;
 }
 @keyframes hor-ken-burns {
-  from { transform: scale(1.06); }
+  from { transform: scale(1.055); }
   to   { transform: scale(1.00); }
 }
 .hor-hero-overlay {
@@ -3430,19 +3430,19 @@ footer.botic-footer {
   inset: 0;
   background:
     linear-gradient(0deg,
-      rgba(10,8,6,0.95)  0%,
-      rgba(10,8,6,0.68) 32%,
-      rgba(10,8,6,0.30) 62%,
-      rgba(10,8,6,0.08) 100%),
+      rgba(10,8,6,0.92)  0%,
+      rgba(10,8,6,0.58) 30%,
+      rgba(10,8,6,0.20) 60%,
+      rgba(10,8,6,0.04) 100%),
     linear-gradient(90deg,
-      rgba(10,8,6,0.52) 0%,
-      transparent       55%);
+      rgba(10,8,6,0.44) 0%,
+      transparent       52%);
 }
 .hor-hero-inner {
   position: relative;
   z-index: 1;
   padding-top: 160px;
-  padding-bottom: 88px;
+  padding-bottom: 92px;
 }
 .hor-hero-content {
   max-width: min(55%, 620px);
@@ -3457,7 +3457,7 @@ footer.botic-footer {
   font-weight: 400;
   letter-spacing: 0.38em;
   text-transform: uppercase;
-  color: rgba(201,164,106,0.80);
+  color: rgba(201,164,106,0.88);
   margin-bottom: 28px;
   animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.20s both;
 }
@@ -3465,7 +3465,7 @@ footer.botic-footer {
   display: block;
   width: 32px;
   height: 1px;
-  background: rgba(201,164,106,0.55);
+  background: rgba(201,164,106,0.60);
   flex-shrink: 0;
 }
 .hor-hero-title {
@@ -3473,17 +3473,17 @@ footer.botic-footer {
   font-style: italic;
   font-weight: 300;
   font-size: clamp(54px, 8vw, 118px);
-  color: var(--white);
+  color: #fff;
   line-height: 0.94;
   letter-spacing: -0.012em;
   margin-bottom: 28px;
-  text-shadow: 0 2px 40px rgba(0,0,0,0.65);
+  text-shadow: 0 2px 48px rgba(0,0,0,0.55), 0 0 80px rgba(0,0,0,0.25);
   animation: fadeUp 1.0s cubic-bezier(0.4,0,0.2,1) 0.36s both;
 }
 .hor-hero-sub {
   font-family: 'Inter', sans-serif;
   font-size: clamp(13px, 1.2vw, 15px);
-  color: rgba(218,212,202,0.72);
+  color: rgba(228,222,212,0.88);
   line-height: 1.82;
   font-weight: 300;
   margin-bottom: 40px;
@@ -3496,11 +3496,25 @@ footer.botic-footer {
 /* ── Schedule Section (cream) ── */
 .hor-schedule {
   background: #f5f1ea;
-  padding: 120px 0 140px;
+  padding: 88px 0 96px;
+  position: relative;
+}
+/* Editorial bottom divider — transició cap al calendari */
+.hor-schedule::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 48px; right: 48px;
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(154,42,42,0.28) 18%,
+    rgba(201,164,106,0.40) 50%,
+    rgba(154,42,42,0.28) 82%,
+    transparent 100%);
 }
 .hor-schedule-header {
   text-align: center;
-  margin-bottom: 72px;
+  margin-bottom: 52px;
 }
 .hor-schedule-label {
   display: block;
@@ -3520,15 +3534,15 @@ footer.botic-footer {
   color: #1A1612;
   line-height: 1.0;
   letter-spacing: -0.015em;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
 }
 .hor-schedule-intro {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: rgba(30,26,20,0.62);
+  color: rgba(30,26,20,0.68);
   line-height: 1.85;
   font-weight: 300;
-  max-width: 520px;
+  max-width: 500px;
   margin: 0 auto;
 }
 
@@ -3537,11 +3551,11 @@ footer.botic-footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
-  background: rgba(30,26,20,0.12);
+  background: rgba(30,26,20,0.14);
 }
 .hor-card {
   background: #f5f1ea;
-  padding: 52px 44px 60px;
+  padding: 44px 40px 52px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -3561,17 +3575,17 @@ footer.botic-footer {
   top: 0; left: 0; right: 0;
   height: 2px;
   background: linear-gradient(90deg,
-    rgba(154,42,42,0.80) 0%,
-    rgba(154,42,42,0.15) 100%);
+    rgba(154,42,42,0.88) 0%,
+    rgba(154,42,42,0.12) 100%);
 }
 .hor-card-num {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: clamp(52px, 6vw, 88px);
+  font-size: clamp(44px, 5.5vw, 72px);
   font-weight: 300;
-  color: rgba(154,42,42,0.10);
+  color: rgba(154,42,42,0.20);
   line-height: 1;
-  margin-bottom: -10px;
+  margin-bottom: -6px;
   display: block;
   user-select: none;
 }
@@ -3592,13 +3606,13 @@ footer.botic-footer {
   color: #1A1612;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  margin-bottom: 28px;
+  margin-bottom: 22px;
 }
 .hor-card-sep {
   width: 36px;
   height: 1px;
-  background: rgba(154,42,42,0.35);
-  margin-bottom: 28px;
+  background: rgba(154,42,42,0.55);
+  margin-bottom: 22px;
 }
 .hor-card-rows {
   list-style: none;
@@ -3610,24 +3624,24 @@ footer.botic-footer {
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto auto;
-  gap: 2px 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(30,26,20,0.10);
+  gap: 3px 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(30,26,20,0.18);
 }
 .hor-card-row:last-child { border-bottom: none; }
-.hor-card-row.tancat { opacity: 0.38; }
+.hor-card-row.tancat { opacity: 0.28; }
 .hor-row-days {
   font-family: 'Inter', sans-serif;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 400;
-  letter-spacing: 0.04em;
-  color: rgba(30,26,20,0.60);
+  letter-spacing: 0.03em;
+  color: rgba(30,26,20,0.72);
   grid-column: 1;
   grid-row: 1;
 }
 .hor-row-service {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 400;
   font-style: italic;
   color: #1A1612;
@@ -3637,23 +3651,43 @@ footer.botic-footer {
 .hor-row-time {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
+  font-weight: 500;
   letter-spacing: 0.06em;
-  color: rgba(154,42,42,0.80);
+  color: rgba(154,42,42,0.95);
   grid-column: 2;
   grid-row: 1 / 3;
   align-self: center;
   white-space: nowrap;
 }
 
+/* ── Pont editorial cream → dark ── */
+.hor-bridge {
+  height: 56px;
+  background: linear-gradient(to bottom,
+    #f5f1ea 0%,
+    #d4c9b8 30%,
+    #6b5a42 65%,
+    #0e0c09 100%);
+  position: relative;
+}
+.hor-bridge::after {
+  content: '◆';
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 7px;
+  color: rgba(201,164,106,0.55);
+  line-height: 1;
+}
+
 /* ── Calendar Section (dark) ── */
 .hor-calendar {
   background: #0e0c09;
-  padding: 120px 0 140px;
-  border-top: 1px solid rgba(201,164,106,0.10);
+  padding: 108px 0 130px;
 }
 .hor-cal-header {
   text-align: center;
-  margin-bottom: 72px;
+  margin-bottom: 60px;
 }
 .hor-cal-label {
   display: block;
@@ -3662,7 +3696,7 @@ footer.botic-footer {
   font-weight: 400;
   letter-spacing: 0.44em;
   text-transform: uppercase;
-  color: rgba(201,164,106,0.60);
+  color: rgba(201,164,106,0.75);
   margin-bottom: 10px;
 }
 .hor-cal-title {
@@ -3678,65 +3712,65 @@ footer.botic-footer {
 .hor-cal-legend {
   display: inline-flex;
   align-items: center;
-  gap: 28px;
-  padding: 12px 28px;
-  border: 1px solid rgba(201,164,106,0.16);
+  gap: 24px;
+  padding: 13px 28px;
+  border: 1px solid rgba(201,164,106,0.28);
 }
 .hor-legend-item {
   display: inline-flex;
   align-items: center;
   gap: 9px;
   font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  letter-spacing: 0.24em;
+  font-size: 11px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   font-weight: 400;
 }
-.hor-legend-item.s0 { color: rgba(154,42,42,0.75); }
-.hor-legend-item.s1 { color: rgba(237,232,220,0.68); }
-.hor-legend-item.s2 { color: rgba(201,164,106,0.92); }
+.hor-legend-item.s0 { color: rgba(154,42,42,0.90); }
+.hor-legend-item.s1 { color: rgba(237,232,220,0.82); }
+.hor-legend-item.s2 { color: rgba(201,164,106,0.96); }
 .hor-legend-dot {
-  width: 7px; height: 7px;
+  width: 8px; height: 8px;
   border-radius: 50%;
   flex-shrink: 0;
 }
-.hor-legend-item.s0 .hor-legend-dot { background: rgba(154,42,42,0.75); }
-.hor-legend-item.s1 .hor-legend-dot { background: rgba(237,232,220,0.60); }
-.hor-legend-item.s2 .hor-legend-dot { background: rgba(201,164,106,0.90); }
+.hor-legend-item.s0 .hor-legend-dot { background: rgba(154,42,42,0.88); }
+.hor-legend-item.s1 .hor-legend-dot { background: rgba(237,232,220,0.72); }
+.hor-legend-item.s2 .hor-legend-dot { background: rgba(201,164,106,0.94); }
 
 /* Months grid */
 .hor-months-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: rgba(201,164,106,0.08);
+  gap: 3px;
+  background: rgba(201,164,106,0.14);
 }
 .hor-month {
   background: #0e0c09;
-  padding: 32px 28px 36px;
+  padding: 36px 28px 40px;
 }
 .hor-month-name {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-weight: 300;
-  font-size: 21px;
-  color: rgba(237,232,220,0.88);
+  font-size: 23px;
+  color: rgba(237,232,220,0.96);
   letter-spacing: 0.01em;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(201,164,106,0.14);
+  border-bottom: 1px solid rgba(201,164,106,0.24);
 }
 .hor-day-headers {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  margin-bottom: 5px;
+  margin-bottom: 6px;
 }
 .hor-day-headers span {
   font-family: 'Inter', sans-serif;
-  font-size: 8px;
-  letter-spacing: 0.10em;
+  font-size: 9px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(201,164,106,0.38);
+  color: rgba(201,164,106,0.55);
   text-align: center;
   padding: 4px 0;
 }
@@ -3747,36 +3781,75 @@ footer.botic-footer {
 }
 .hor-day {
   font-family: 'Inter', sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 300;
   text-align: center;
-  padding: 5px 2px;
+  padding: 6px 2px;
   line-height: 1;
   border-radius: 1px;
 }
 .hor-day.empty { background: transparent; }
 .hor-day.s0 {
-  color: rgba(154,42,42,0.58);
-  background: rgba(154,42,42,0.06);
+  color: rgba(154,42,42,0.78);
+  background: rgba(154,42,42,0.08);
 }
 .hor-day.s1 {
-  color: rgba(237,232,220,0.78);
-  background: rgba(237,232,220,0.05);
+  color: rgba(237,232,220,0.90);
+  background: rgba(237,232,220,0.06);
 }
 .hor-day.s2 {
-  color: rgba(201,164,106,0.92);
-  background: rgba(201,164,106,0.09);
+  color: rgba(201,164,106,0.96);
+  background: rgba(201,164,106,0.10);
 }
 
 /* ── CTA Reserva ── */
 .hor-cta-section {
   background: #111009;
-  padding: 96px 48px;
+  padding: 108px 48px 112px;
   text-align: center;
-  border-top: 1px solid rgba(201,164,106,0.10);
+  border-top: 1px solid rgba(201,164,106,0.14);
+  position: relative;
+  overflow: hidden;
+}
+/* Glow radial de fons */
+.hor-cta-section::before {
+  content: '';
+  position: absolute;
+  top: -40px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 400px;
+  background: radial-gradient(ellipse at 50% 30%,
+    rgba(201,164,106,0.10) 0%,
+    rgba(201,164,106,0.04) 38%,
+    rgba(154,42,42,0.04) 58%,
+    transparent 72%);
+  pointer-events: none;
+}
+/* Línia vertical d'entrada */
+.hor-cta-section::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 1px; height: 44px;
+  background: linear-gradient(to bottom, transparent, rgba(201,164,106,0.38));
+  pointer-events: none;
+}
+.hor-cta-section .container-max {
+  position: relative;
+  z-index: 1;
+}
+/* Ornament horitzontal sobre l'eyebrow */
+.hor-cta-section .container-max::before {
+  content: '';
+  display: block;
+  width: 36px; height: 1px;
+  background: linear-gradient(to right,
+    transparent, rgba(201,164,106,0.44), transparent);
+  margin: 0 auto 20px;
 }
 .hor-cta-eyebrow {
-  color: rgba(201,164,106,0.68) !important;
+  color: rgba(201,164,106,0.72) !important;
   letter-spacing: 0.38em;
 }
 .hor-cta-title {
@@ -3788,15 +3861,19 @@ footer.botic-footer {
   line-height: 1.08;
   letter-spacing: -0.014em;
   margin: 16px 0 20px;
+  text-shadow: 0 0 48px rgba(201,164,106,0.14), 0 2px 20px rgba(0,0,0,0.50);
 }
 .hor-cta-body {
   font-family: 'Inter', sans-serif;
   font-size: 14px;
-  color: rgba(168,160,148,0.88);
+  color: rgba(168,160,148,0.90);
   line-height: 1.80;
   font-weight: 300;
-  max-width: 440px;
-  margin: 0 auto 36px;
+  max-width: 420px;
+  margin: 0 auto 40px;
+}
+.hor-cta-section .btn-gold {
+  box-shadow: 0 0 28px rgba(154,42,42,0.18);
 }
 
 /* ── Responsive ── */
@@ -3804,21 +3881,29 @@ footer.botic-footer {
   .hor-months-grid { grid-template-columns: repeat(2, 1fr); }
 }
 @media (max-width: 768px) {
-  .hor-hero { margin-top: 88px; min-height: min(88vh, 680px); }
+  .hor-hero { margin-top: 88px; min-height: min(88vh, 640px); }
   .hor-hero-content { max-width: 100%; margin-left: 0; }
-  .hor-hero-inner   { padding-top: 100px; padding-bottom: 60px; }
+  .hor-hero-inner   { padding-top: 96px; padding-bottom: 64px; }
   .hor-hero-title   { font-size: clamp(46px, 13vw, 72px); }
+  .hor-hero-sub     { color: rgba(228,222,212,0.90); }
+  .hor-schedule     { padding: 72px 0 80px; }
+  .hor-schedule::after { left: 24px; right: 24px; }
   .hor-cards-grid   { grid-template-columns: 1fr; gap: 2px; }
-  .hor-card         { padding: 40px 24px 48px; }
+  .hor-card         { padding: 36px 22px 44px; }
+  .hor-bridge       { height: 44px; }
+  .hor-calendar     { padding: 80px 0 96px; }
   .hor-months-grid  { grid-template-columns: repeat(2, 1fr); }
-  .hor-month        { padding: 22px 16px 26px; }
-  .hor-day          { font-size: 10px; padding: 4px 1px; }
-  .hor-schedule     { padding: 80px 0 100px; }
-  .hor-calendar     { padding: 80px 0 100px; }
-  .hor-cta-section  { padding: 72px 24px; }
+  .hor-month        { padding: 24px 16px 28px; }
+  .hor-month-name   { font-size: 20px; }
+  .hor-day          { font-size: 11px; padding: 5px 1px; }
+  .hor-day-headers span { font-size: 8px; }
+  .hor-cal-legend   { gap: 16px; padding: 11px 18px; }
+  .hor-legend-item  { font-size: 10px; gap: 7px; }
+  .hor-cta-section  { padding: 80px 24px 88px; }
 }
 @media (max-width: 480px) {
   .hor-months-grid  { grid-template-columns: 1fr; }
+  .hor-day          { font-size: 10px; padding: 5px 1px; }
 }
 
 /* ====== SOUL SECTION (Home — seccions fusionades) ====== */

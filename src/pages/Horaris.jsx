@@ -139,6 +139,9 @@ export default function Horaris() {
         </div>
       </section>
 
+      {/* ── Transició editorial ── */}
+      <div className="hor-bridge" aria-hidden="true" />
+
       {/* ── Calendari 2026 ── */}
       <section className="hor-calendar reveal" ref={calRef}>
         <div className="container-max">
