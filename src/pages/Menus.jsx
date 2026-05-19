@@ -313,6 +313,106 @@ function InfoSection() {
   )
 }
 
+/* ── FAQ Section ────────────────────────────────────────────── */
+const FAQS = [
+  {
+    q: '¿Los menús incluyen la bebida?',
+    a: 'No, los menús no incluyen la bebida. La bebida y el maridaje se pueden elegir aparte según la experiencia deseada.',
+  },
+  {
+    q: '¿Los menús se sirven a mesa completa?',
+    a: 'Sí, los menús se sirven a mesa completa para mantener el ritmo y la coherencia de la experiencia gastronómica.',
+  },
+  {
+    q: '¿El menú puede cambiar?',
+    a: 'Sí, la propuesta puede variar según temporada, mercado o novedades del restaurante, siempre respetando la estructura del menú.',
+  },
+  {
+    q: '¿Es necesario reservar?',
+    a: 'Sí, recomendamos reservar con antelación para asegurar disponibilidad y preparar la experiencia con el máximo cuidado.',
+  },
+  {
+    q: '¿Dónde está ubicado Bo.TiC?',
+    a: 'Bo.TiC está situado en Corçà, en el Empordà, en una masía rehabilitada donde conviven territorio, cocina de autor y hospitalidad.',
+  },
+  {
+    q: '¿Hay opción de maridaje?',
+    a: 'La experiencia puede acompañarse con una selección de vinos de nuestra bodega, con más de 900 referencias de diferentes países.',
+  },
+  {
+    q: '¿Cuál es la diferencia entre los menús?',
+    a: 'Cada menú propone una manera distinta de acercarse al universo gastronómico de Bo.TiC: desde una experiencia más esencial hasta una propuesta más completa y gastronómica.',
+  },
+]
+
+function FaqSection() {
+  const [openIdx, setOpenIdx] = useState(null)
+
+  // Schema.org FAQPage
+  useEffect(() => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: FAQS.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a },
+      })),
+    }
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.id = 'faq-schema'
+    script.textContent = JSON.stringify(schema)
+    document.head.appendChild(script)
+    return () => { document.getElementById('faq-schema')?.remove() }
+  }, [])
+
+  const toggle = (i) => setOpenIdx(prev => prev === i ? null : i)
+
+  return (
+    <section className="faq-section" aria-labelledby="faq-heading">
+      <div className="container-max">
+
+        <header className="faq-header">
+          <span className="faq-eyebrow">Información Práctica</span>
+          <h2 id="faq-heading" className="faq-title">Antes de reservar</h2>
+          <p className="faq-subtitle">
+            Algunos detalles para disfrutar la experiencia con calma.
+          </p>
+        </header>
+
+        <dl className="faq-list">
+          {FAQS.map(({ q, a }, i) => {
+            const isOpen = openIdx === i
+            const answerId = `faq-ans-${i}`
+            return (
+              <div key={i} className={`faq-item${isOpen ? ' open' : ''}`}>
+                <dt>
+                  <button
+                    className="faq-question"
+                    aria-expanded={isOpen}
+                    aria-controls={answerId}
+                    onClick={() => toggle(i)}
+                  >
+                    <span className="faq-q-text">{q}</span>
+                    <span className="faq-icon" aria-hidden="true" />
+                  </button>
+                </dt>
+                <dd id={answerId} className="faq-answer" role="region">
+                  <div className="faq-answer-inner">
+                    <p className="faq-answer-text">{a}</p>
+                  </div>
+                </dd>
+              </div>
+            )
+          })}
+        </dl>
+
+      </div>
+    </section>
+  )
+}
+
 /* ── Ornament separador reutilitzable ───────────────────────── */
 function Ornament() {
   return (
@@ -410,6 +510,9 @@ export default function Menus() {
       {/* ── Carta de vinos + info pràctica ── */}
       <WineSection />
       <InfoSection />
+
+      {/* ── FAQ ── */}
+      <FaqSection />
 
       {/* ── CTA final ── */}
       <section
