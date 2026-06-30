@@ -523,17 +523,27 @@ body {
   color: rgba(255, 255, 255, 0.2);
   font-size: 12px;
 }
-.nav-fs-lang {
+.nav-fs-langs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-fs-lang-btn {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.38);
-  cursor: pointer;
+  color: rgba(255, 255, 255, 0.35);
+  text-decoration: none;
   transition: color 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
-.nav-fs-lang:hover { color: rgba(255, 255, 255, 0.72); }
+.nav-fs-lang-btn:hover  { color: rgba(255, 255, 255, 0.72); }
+.nav-fs-lang-btn.is-active { color: rgba(201, 164, 106, 0.90); }
 .nav-fs-reserva {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
@@ -558,7 +568,7 @@ body {
 .nav-fs-link:focus-visible,
 .nav-fs-footer-link:focus-visible,
 .nav-fs-reserva:focus-visible,
-.nav-fs-lang:focus-visible {
+.nav-fs-lang-btn:focus-visible {
   outline: 1px solid rgba(201, 164, 106, 0.65);
   outline-offset: 4px;
   border-radius: 1px;

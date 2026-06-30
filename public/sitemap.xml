@@ -1,33 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
   <url>
-    <loc>https://www.bo-tic.com/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
+    <loc>https://www.bo-tic.com/ca</loc>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.bo-tic.com/ca"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.bo-tic.com/es"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.bo-tic.com/fr"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bo-tic.com/en"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bo-tic.com/ca"/>
+    <changefreq>monthly</changefreq><priority>1.0</priority>
   </url>
+  <url><loc>https://www.bo-tic.com/es</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.bo-tic.com/fr</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://www.bo-tic.com/en</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+
+  <!-- Restaurant -->
   <url>
-    <loc>https://www.bo-tic.com/restaurant</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.bo-tic.com/ca/restaurant</loc>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.bo-tic.com/ca/restaurant"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.bo-tic.com/es/restaurante"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.bo-tic.com/fr/restaurant"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bo-tic.com/en/restaurant"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bo-tic.com/ca/restaurant"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
   </url>
+  <url><loc>https://www.bo-tic.com/es/restaurante</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bo-tic.com/fr/restaurant</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bo-tic.com/en/restaurant</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Gastronomia -->
   <url>
-    <loc>https://www.bo-tic.com/gastronomia</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.bo-tic.com/ca/gastronomia</loc>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.bo-tic.com/ca/gastronomia"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.bo-tic.com/es/gastronomia"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.bo-tic.com/fr/gastronomie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bo-tic.com/en/gastronomy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bo-tic.com/ca/gastronomia"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
   </url>
+  <url><loc>https://www.bo-tic.com/es/gastronomia</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bo-tic.com/fr/gastronomie</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bo-tic.com/en/gastronomy</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Menus -->
   <url>
-    <loc>https://www.bo-tic.com/menus</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.bo-tic.com/ca/menus</loc>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.bo-tic.com/ca/menus"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.bo-tic.com/es/menus"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.bo-tic.com/fr/menus"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bo-tic.com/en/menus"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bo-tic.com/ca/menus"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
   </url>
+  <url><loc>https://www.bo-tic.com/es/menus</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bo-tic.com/fr/menus</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bo-tic.com/en/menus</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Experiencia -->
   <url>
-    <loc>https://www.bo-tic.com/experiencia</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://www.bo-tic.com/ca/experiencia</loc>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.bo-tic.com/ca/experiencia"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.bo-tic.com/es/experiencia"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.bo-tic.com/fr/experience"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bo-tic.com/en/experience"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bo-tic.com/ca/experiencia"/>
+    <changefreq>monthly</changefreq><priority>0.8</priority>
   </url>
+  <url><loc>https://www.bo-tic.com/es/experiencia</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bo-tic.com/fr/experience</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bo-tic.com/en/experience</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+
+  <!-- Reserves -->
   <url>
-    <loc>https://www.bo-tic.com/reserves</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://www.bo-tic.com/ca/reserves</loc>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.bo-tic.com/ca/reserves"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.bo-tic.com/es/reservas"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.bo-tic.com/fr/reservations"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bo-tic.com/en/reservations"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bo-tic.com/ca/reserves"/>
+    <changefreq>monthly</changefreq><priority>0.9</priority>
   </url>
+  <url><loc>https://www.bo-tic.com/es/reservas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bo-tic.com/fr/reservations</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bo-tic.com/en/reservations</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Horaris -->
+  <url>
+    <loc>https://www.bo-tic.com/ca/horaris</loc>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://www.bo-tic.com/ca/horaris"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.bo-tic.com/es/horarios"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.bo-tic.com/fr/horaires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bo-tic.com/en/hours"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bo-tic.com/ca/horaris"/>
+    <changefreq>monthly</changefreq><priority>0.7</priority>
+  </url>
+  <url><loc>https://www.bo-tic.com/es/horarios</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.bo-tic.com/fr/horaires</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.bo-tic.com/en/hours</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
 </urlset>

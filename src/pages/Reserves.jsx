@@ -1,13 +1,6 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO.jsx'
-
-const HOURS = [
-  { day: 'Dimecres',  lunch: '13:00 – 15:00', dinner: '20:30 – 22:00' },
-  { day: 'Dijous',    lunch: '13:00 – 15:00', dinner: '20:30 – 22:00' },
-  { day: 'Divendres', lunch: '13:00 – 15:00', dinner: '20:30 – 22:00' },
-  { day: 'Dissabte',  lunch: '13:00 – 15:00', dinner: '20:30 – 22:00' },
-  { day: 'Diumenge',  lunch: '13:00 – 15:00', dinner: '—'              },
-]
 
 function ContactItem({ label, children }) {
   return (
@@ -24,6 +17,7 @@ function ContactItem({ label, children }) {
 }
 
 export default function Reserves() {
+  const { t } = useTranslation()
   const [sent, setSent] = useState(false)
   const [form, setForm] = useState({
     nom: '', email: '', telefon: '', persones: '2', data: '', missatge: '',
@@ -41,36 +35,41 @@ export default function Reserves() {
     font-sans text-sm px-4 py-3 focus:outline-none focus:border-botic-gold
     transition-colors duration-300 placeholder:text-botic-muted`
 
+  const HOURS = [
+    { day: t('reserves.days.Dimecres'), lunch: '13:00 – 15:00', dinner: '20:30 – 22:00' },
+    { day: t('reserves.days.Dijous'),   lunch: '13:00 – 15:00', dinner: '20:30 – 22:00' },
+    { day: t('reserves.days.Divendres'),lunch: '13:00 – 15:00', dinner: '20:30 – 22:00' },
+    { day: t('reserves.days.Dissabte'), lunch: '13:00 – 15:00', dinner: '20:30 – 22:00' },
+    { day: t('reserves.days.Diumenge'), lunch: '13:00 – 15:00', dinner: '—' },
+  ]
+
   return (
     <>
       <SEO
-        title="Reserves · Bo.TiC · Restaurant Gastronòmic Corçà"
-        description="Reserveu taula al restaurant Bo.TiC de Corçà, Girona. Telèfon, email, adreça i horaris. Restaurant gastronòmic Michelin a l'Empordà."
-        canonical="https://www.bo-tic.com/reserves"
+        title={t('seo.reserves.title')}
+        description={t('seo.reserves.description')}
+        pageKey="reserves"
       />
 
-      {/* ── Header de pàgina ── */}
       <section className="bg-botic-black pt-36 md:pt-44 pb-16 md:pb-20">
         <div className="container-max">
-          <span className="label block mb-4">Reserves</span>
+          <span className="label block mb-4">{t('reserves.heroLabel')}</span>
           <h1 className="font-serif font-light text-5xl md:text-6xl lg:text-7xl
                          text-botic-cream leading-[1.05] tracking-tight max-w-2xl">
-            Veniu a taula
+            {t('reserves.heroHeading')}
           </h1>
         </div>
       </section>
 
-      {/* ── Contingut ── */}
       <section className="bg-botic-black pb-20 md:pb-28">
         <div className="container-max">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
-            {/* Informació de contacte */}
             <div>
-              <ContactItem label="Adreça">
+              <ContactItem label={t('reserves.addressLabel')}>
                 <address className="not-italic">
-                  <p>Carrer dels Forns, 7</p>
-                  <p>17121 Corçà (Girona)</p>
+                  <p>{t('reserves.addressLine1')}</p>
+                  <p>{t('reserves.addressLine2')}</p>
                   <a
                     href="https://maps.google.com/?q=Carrer+dels+Forns+7,+Corçà,+Girona"
                     target="_blank"
@@ -78,30 +77,24 @@ export default function Reserves() {
                     className="inline-block mt-3 text-[11px] tracking-[0.2em] uppercase
                                text-botic-gold hover:text-botic-cream transition-colors duration-300"
                   >
-                    Veure al mapa →
+                    {t('reserves.mapLink')}
                   </a>
                 </address>
               </ContactItem>
 
-              <ContactItem label="Telèfon">
-                <a
-                  href="tel:+34972630869"
-                  className="hover:text-botic-cream transition-colors duration-300"
-                >
+              <ContactItem label={t('reserves.phoneLabel')}>
+                <a href="tel:+34972630869" className="hover:text-botic-cream transition-colors duration-300">
                   +34 972 630 869
                 </a>
               </ContactItem>
 
-              <ContactItem label="Correu electrònic">
-                <a
-                  href="mailto:reserves@bo-tic.com"
-                  className="hover:text-botic-cream transition-colors duration-300"
-                >
+              <ContactItem label={t('reserves.emailLabel')}>
+                <a href="mailto:reserves@bo-tic.com" className="hover:text-botic-cream transition-colors duration-300">
                   reserves@bo-tic.com
                 </a>
               </ContactItem>
 
-              <ContactItem label="Horaris d'obertura">
+              <ContactItem label={t('reserves.hoursLabel')}>
                 <div className="space-y-2">
                   {HOURS.map(({ day, lunch, dinner }) => (
                     <div key={day} className="grid grid-cols-3 gap-2 text-xs">
@@ -111,53 +104,39 @@ export default function Reserves() {
                     </div>
                   ))}
                   <p className="text-xs text-botic-border mt-4 pt-4 border-t border-botic-border">
-                    Dilluns i dimarts: tancat
+                    {t('reserves.closedNote')}
                   </p>
                 </div>
               </ContactItem>
 
               <div className="mt-8">
-                <div
-                  className="bg-botic-surface h-48 flex items-center justify-center
-                             border border-botic-border"
-                  aria-label="Mapa de localització del restaurant Bo.TiC"
-                >
+                <div className="bg-botic-surface h-48 flex items-center justify-center border border-botic-border">
                   <a
                     href="https://maps.google.com/?q=Carrer+dels+Forns+7,+Corçà,+Girona"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-gold"
                   >
-                    Obrir Google Maps
+                    {t('reserves.openMaps')}
                   </a>
                 </div>
-                <p className="mt-2 text-xs text-botic-muted">
-                  A 15 min de Girona · A 30 min de Figueres · A 20 min de Palamós
-                </p>
+                <p className="mt-2 text-xs text-botic-muted">{t('reserves.distanceNote')}</p>
               </div>
             </div>
 
-            {/* Formulari de reserves */}
             <div>
-              <h2 className="font-serif font-light text-3xl md:text-4xl
-                             text-botic-cream tracking-tight mb-2">
-                Sol·licitud de reserva
+              <h2 className="font-serif font-light text-3xl md:text-4xl text-botic-cream tracking-tight mb-2">
+                {t('reserves.formHeading')}
               </h2>
               <p className="font-sans text-sm text-botic-muted leading-relaxed mb-8">
-                Empleneu el formulari i us contactarem per confirmar la disponibilitat.
-                Per a reserves urgents, truqueu directament al restaurant.
+                {t('reserves.formIntro')}
               </p>
 
               {sent ? (
                 <div className="border border-botic-gold p-8 text-center">
-                  <span className="font-serif text-4xl text-botic-gold block mb-4">✦</span>
-                  <h3 className="font-serif font-light text-2xl text-botic-cream mb-3">
-                    Sol·licitud rebuda
-                  </h3>
-                  <p className="font-sans text-sm text-botic-muted">
-                    Us contactarem en les pròximes hores per confirmar
-                    la vostra reserva. Gràcies per triar Bo.TiC.
-                  </p>
+                  <span className="font-serif text-4xl text-botic-gold block mb-4">{t('reserves.confirmGlyph')}</span>
+                  <h3 className="font-serif font-light text-2xl text-botic-cream mb-3">{t('reserves.confirmHeading')}</h3>
+                  <p className="font-sans text-sm text-botic-muted">{t('reserves.confirmBody')}</p>
                 </div>
               ) : (
                 <form
@@ -166,146 +145,88 @@ export default function Reserves() {
                   method="POST"
                   data-netlify="true"
                   className="space-y-4"
-                  aria-label="Formulari de reserva Bo.TiC"
+                  aria-label={t('reserves.formAria')}
                 >
                   <input type="hidden" name="form-name" value="reserves" />
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="nom" className="text-[11px] tracking-[0.2em] uppercase
-                                                      text-botic-muted font-sans block mb-1.5">
-                        Nom i cognoms *
+                      <label htmlFor="nom" className="text-[11px] tracking-[0.2em] uppercase text-botic-muted font-sans block mb-1.5">
+                        {t('reserves.fieldName')}
                       </label>
-                      <input
-                        id="nom"
-                        name="nom"
-                        type="text"
-                        required
-                        value={form.nom}
-                        onChange={handleChange}
-                        placeholder="Joan Garcia"
-                        className={inputClass}
-                      />
+                      <input id="nom" name="nom" type="text" required value={form.nom}
+                        onChange={handleChange} placeholder={t('reserves.placeholderName')} className={inputClass} />
                     </div>
                     <div>
-                      <label htmlFor="telefon" className="text-[11px] tracking-[0.2em] uppercase
-                                                          text-botic-muted font-sans block mb-1.5">
-                        Telèfon *
+                      <label htmlFor="telefon" className="text-[11px] tracking-[0.2em] uppercase text-botic-muted font-sans block mb-1.5">
+                        {t('reserves.fieldPhone')}
                       </label>
-                      <input
-                        id="telefon"
-                        name="telefon"
-                        type="tel"
-                        required
-                        value={form.telefon}
-                        onChange={handleChange}
-                        placeholder="+34 600 000 000"
-                        className={inputClass}
-                      />
+                      <input id="telefon" name="telefon" type="tel" required value={form.telefon}
+                        onChange={handleChange} placeholder={t('reserves.placeholderPhone')} className={inputClass} />
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="text-[11px] tracking-[0.2em] uppercase
-                                                      text-botic-muted font-sans block mb-1.5">
-                      Correu electrònic *
+                    <label htmlFor="email" className="text-[11px] tracking-[0.2em] uppercase text-botic-muted font-sans block mb-1.5">
+                      {t('reserves.fieldEmail')}
                     </label>
-                    <input
-                      id="email"
-                      name="email"
-                      type="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="joan@exemple.com"
-                      className={inputClass}
-                    />
+                    <input id="email" name="email" type="email" required value={form.email}
+                      onChange={handleChange} placeholder={t('reserves.placeholderEmail')} className={inputClass} />
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                      <label htmlFor="data" className="text-[11px] tracking-[0.2em] uppercase
-                                                       text-botic-muted font-sans block mb-1.5">
-                        Data preferida *
+                      <label htmlFor="data" className="text-[11px] tracking-[0.2em] uppercase text-botic-muted font-sans block mb-1.5">
+                        {t('reserves.fieldDate')}
                       </label>
-                      <input
-                        id="data"
-                        name="data"
-                        type="date"
-                        required
-                        value={form.data}
-                        onChange={handleChange}
-                        className={`${inputClass} [color-scheme:dark]`}
-                      />
+                      <input id="data" name="data" type="date" required value={form.data}
+                        onChange={handleChange} className={`${inputClass} [color-scheme:dark]`} />
                     </div>
                     <div>
-                      <label htmlFor="persones" className="text-[11px] tracking-[0.2em] uppercase
-                                                           text-botic-muted font-sans block mb-1.5">
-                        Nombre de persones
+                      <label htmlFor="persones" className="text-[11px] tracking-[0.2em] uppercase text-botic-muted font-sans block mb-1.5">
+                        {t('reserves.fieldGuests')}
                       </label>
-                      <select
-                        id="persones"
-                        name="persones"
-                        value={form.persones}
-                        onChange={handleChange}
-                        className={`${inputClass} [color-scheme:dark] cursor-pointer`}
-                      >
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
+                      <select id="persones" name="persones" value={form.persones}
+                        onChange={handleChange} className={`${inputClass} [color-scheme:dark] cursor-pointer`}>
+                        {[1,2,3,4,5,6,7,8].map((n) => (
                           <option key={n} value={n}>
-                            {n} {n === 1 ? 'persona' : 'persones'}
+                            {n} {n === 1 ? t('common.person') : t('common.persons')}
                           </option>
                         ))}
-                        <option value="9+">Grup (9+)</option>
+                        <option value="9+">{t('common.group')}</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="missatge" className="text-[11px] tracking-[0.2em] uppercase
-                                                         text-botic-muted font-sans block mb-1.5">
-                      Missatge (opcional)
+                    <label htmlFor="missatge" className="text-[11px] tracking-[0.2em] uppercase text-botic-muted font-sans block mb-1.5">
+                      {t('reserves.fieldMessage')}
                     </label>
-                    <textarea
-                      id="missatge"
-                      name="missatge"
-                      rows={4}
-                      value={form.missatge}
-                      onChange={handleChange}
-                      placeholder="Al·lèrgies, intoleràncies, celebracions especials..."
-                      className={`${inputClass} resize-none`}
-                    />
+                    <textarea id="missatge" name="missatge" rows={4} value={form.missatge}
+                      onChange={handleChange} placeholder={t('reserves.placeholderMessage')}
+                      className={`${inputClass} resize-none`} />
                   </div>
 
-                  <button
-                    type="submit"
-                    className="btn-gold w-full text-center"
-                    style={{ padding: '16px', justifyContent: 'center' }}
-                  >
-                    Enviar sol·licitud
+                  <button type="submit" className="btn-gold w-full text-center"
+                    style={{ padding: '16px', justifyContent: 'center' }}>
+                    {t('reserves.submitBtn')}
                   </button>
 
-                  <p className="text-xs text-botic-muted leading-relaxed">
-                    La reserva es confirmarà per telèfon o correu en un termini de
-                    24 hores. Consulteu la política d'anul·lació abans de reservar.
-                  </p>
+                  <p className="text-xs text-botic-muted leading-relaxed">{t('reserves.formNote')}</p>
                 </form>
               )}
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* ── Final ── */}
       <section className="bg-botic-ivory py-16 md:py-20">
         <div className="container-max text-center">
-          <h2 className="font-serif font-light text-3xl md:text-4xl text-botic-text
-                         tracking-tight mb-4">
-            Us esperem a Corçà
+          <h2 className="font-serif font-light text-3xl md:text-4xl text-botic-text tracking-tight mb-4">
+            {t('reserves.footerHeading')}
           </h2>
           <p className="font-sans text-sm text-botic-text/60 max-w-md mx-auto leading-relaxed">
-            Bo.TiC és a 15 minuts de Girona, al centre de l'Empordà.
-            Un destí en si mateix.
+            {t('reserves.footerBody')}
           </p>
         </div>
       </section>

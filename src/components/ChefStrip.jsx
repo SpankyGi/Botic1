@@ -1,9 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useReveal } from '../hooks/useReveal'
+import { useLangRoutes } from '../i18n/LangContext'
 
 export default function ChefStrip() {
-  const textRef = useReveal(0.15)
-  const imgRef  = useReveal(0.08)
+  const { t }    = useTranslation()
+  const routes   = useLangRoutes()
+  const textRef  = useReveal(0.15)
+  const imgRef   = useReveal(0.08)
 
   return (
     <section className="chef-section">
@@ -12,7 +16,7 @@ export default function ChefStrip() {
       <div className="chef-photo-wrap" ref={imgRef}>
         <img
           src="/images/cristina-albert-botic-emporda-michelin.webp"
-          alt="Albert Sastregener i Cristina Torrent, chef i sommelier de Bo.TiC"
+          alt={t('soul.portraitAlt')}
           className="chef-photo-img"
         />
         <div className="chef-photo-overlay" aria-hidden="true" />
@@ -22,22 +26,20 @@ export default function ChefStrip() {
       <div className="container-max chef-container">
         <div className="chef-content reveal" ref={textRef}>
 
-          <span className="chef-eyebrow">Dos Estrellas Michelin</span>
+          <span className="chef-eyebrow">{t('soul.eyebrow')}</span>
 
           <h2 className="chef-title">
-            Nos apasiona<br />lo que hacemos
+            {t('soul.title').split('\n').map((line, i, arr) => (
+              <span key={i}>{line}{i < arr.length - 1 && <br />}</span>
+            ))}
           </h2>
 
           <div className="chef-sep" aria-hidden="true" />
 
-          <p className="chef-body">
-            Albert Sastregener y Cristina Torrent, chef y sumiller respectivamente,
-            ofrecen desde 2007 una propuesta gastronómica de autor y creativa,
-            comprometida con la esencia de la cocina tradicional catalana.
-          </p>
+          <p className="chef-body">{t('soul.body')}</p>
 
-          <Link to="/restaurant" className="chef-cta">
-            Saber más
+          <Link to={routes.restaurant} className="chef-cta">
+            {t('soul.cta')}
           </Link>
 
         </div>

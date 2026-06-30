@@ -1,59 +1,41 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { useLang, useLangRoutes, useSwitchLang } from '../i18n/LangContext'
+import { LANGS } from '../i18n/routes'
 
-const NAV_ITEMS = [
-  {
-    to: '/restaurant',
-    label: 'Restaurant',
-    idx: '01',
-    img: '/images/restaurant-emporda-botic-michelin.webp',
-    desc: "L'espai. La cuina. El territori.",
-  },
-  {
-    to: '/gastronomia',
-    label: 'Gastronomia',
-    idx: '02',
-    img: '/images/albert-sastregener-cuina-emporda-girona.webp',
-    desc: 'Producte, tècnica i memòria.',
-  },
-  {
-    to: '/menus',
-    label: 'Menús',
-    idx: '03',
-    img: '/images/Albert Sastregener-empordà-botic-restaurant.webp',
-    desc: "L'experiència completa a taula.",
-  },
-  {
-    to: '/experiencia',
-    label: 'Experiència',
-    idx: '04',
-    img: '/images/cristina-albert-botic-emporda-michelin.webp',
-    desc: 'Albert i Cristina. El projecte.',
-  },
-  {
-    to: '/reserves',
-    label: 'Reserves',
-    idx: '05',
-    img: '/images/restaurant-emporda-michelin-girona.webp',
-    desc: 'Reserveu la vostra taula.',
-  },
-  {
-    to: '/horaris',
-    label: 'Horaris',
-    idx: '06',
-    img: '/images/restaurant-emporda-botic-michelin.webp',
-    desc: 'Consulta la nostra disponibilitat.',
-  },
+const NAV_KEYS = ['restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves', 'horaris']
+const NAV_IMGS = [
+  '/images/restaurant-emporda-botic-michelin.webp',
+  '/images/albert-sastregener-cuina-emporda-girona.webp',
+  '/images/Albert Sastregener-empordà-botic-restaurant.webp',
+  '/images/cristina-albert-botic-emporda-michelin.webp',
+  '/images/restaurant-emporda-michelin-girona.webp',
+  '/images/restaurant-emporda-botic-michelin.webp',
 ]
+const NAV_IDX = ['01', '02', '03', '04', '05', '06']
 
 export default function Nav() {
-  const [scrolled,   setScrolled]   = useState(false)
-  const [menuOpen,   setMenuOpen]   = useState(false)
-  const [activeImg,  setActiveImg]  = useState(null)
-  const openBtnRef  = useRef(null)
+  const { t }         = useTranslation()
+  const lang          = useLang()
+  const routes        = useLangRoutes()
+  const switchLang    = useSwitchLang()
+  const location      = useLocation()
+
+  const [scrolled,    setScrolled]   = useState(false)
+  const [menuOpen,    setMenuOpen]   = useState(false)
+  const [activeImg,   setActiveImg]  = useState(null)
+  const openBtnRef   = useRef(null)
   const firstLinkRef = useRef(null)
   const menuRef      = useRef(null)
-  const location     = useLocation()
+
+  const navItems = NAV_KEYS.map((key, i) => ({
+    to:    routes[key],
+    label: t(`nav.items.${key}.label`),
+    desc:  t(`nav.items.${key}.desc`),
+    idx:   NAV_IDX[i],
+    img:   NAV_IMGS[i],
+  }))
 
   // Close on route change
   useEffect(() => { setMenuOpen(false) }, [location.pathname])
@@ -115,7 +97,7 @@ export default function Nav() {
         className={`nav-header${scrolled ? ' nav-scrolled' : ''}${menuOpen ? ' nav-menu-is-open' : ''}`}
         role="banner"
       >
-        <Link to="/" className="nav-logo" onClick={handleClose}>
+        <Link to={routes.home} className="nav-logo" onClick={handleClose}>
           Bo<span className="nav-logo-dot">.</span>TiC
         </Link>
 
@@ -123,12 +105,12 @@ export default function Nav() {
           ref={openBtnRef}
           className={`nav-toggle${menuOpen ? ' is-open' : ''}`}
           onClick={() => setMenuOpen(o => !o)}
-          aria-label={menuOpen ? 'Tancar menú' : 'Obrir menú'}
+          aria-label={menuOpen ? t('nav.ariaClose') : t('nav.ariaOpen')}
           aria-expanded={menuOpen}
           aria-controls="nav-fullscreen"
         >
           <span className="nav-toggle-label" aria-hidden="true">
-            {menuOpen ? 'Tanca' : 'Menú'}
+            {menuOpen ? t('nav.close') : t('nav.menu')}
           </span>
           <span className="nav-toggle-lines" aria-hidden="true">
             <span className="nav-toggle-line nav-toggle-line-1" />
@@ -144,7 +126,7 @@ export default function Nav() {
         className={`nav-fs${menuOpen ? ' is-open' : ''}`}
         aria-hidden={!menuOpen}
         role="dialog"
-        aria-label="Menú principal"
+        aria-label={t('nav.ariaDialog')}
         aria-modal="true"
       >
         <div className="nav-fs-bg" aria-hidden="true" />
@@ -152,9 +134,9 @@ export default function Nav() {
         <div className="nav-fs-layout">
 
           {/* LEFT — navigation list */}
-          <nav className="nav-fs-left" aria-label="Navegació principal">
+          <nav className="nav-fs-left" aria-label={t('nav.ariaNav')}>
             <ul className="nav-fs-list">
-              {NAV_ITEMS.map((item, i) => (
+              {navItems.map((item, i) => (
                 <li
                   key={item.to}
                   className={`nav-fs-item${activeImg !== null && activeImg !== i ? ' is-sibling' : ''}`}
@@ -187,18 +169,16 @@ export default function Nav() {
           {/* RIGHT — image panels */}
           <div className="nav-fs-right" aria-hidden="true">
             <div className="nav-fs-img-wrap">
-              {/* default: first image when nothing hovered */}
               <div className={`nav-fs-img-panel${activeImg === null ? ' is-active' : ''}`}>
                 <img
-                  src={NAV_ITEMS[0].img}
+                  src={navItems[0].img}
                   alt=""
                   className="nav-fs-img"
                   fetchpriority="high"
                 />
                 <div className="nav-fs-img-overlay" />
               </div>
-              {/* per-item images */}
-              {NAV_ITEMS.map((item, i) => (
+              {navItems.map((item, i) => (
                 <div
                   key={item.to}
                   className={`nav-fs-img-panel${activeImg === i ? ' is-active' : ''}`}
@@ -218,10 +198,10 @@ export default function Nav() {
         </div>
 
         {/* BOTTOM footer */}
-        <footer className="nav-fs-footer" aria-label="Informació de contacte">
+        <footer className="nav-fs-footer" aria-label={t('nav.ariaFooter')}>
           <div className="nav-fs-footer-inner">
             <div className="nav-fs-footer-col">
-              <span className="nav-fs-footer-label">Corçà · Empordà</span>
+              <span className="nav-fs-footer-label">{t('nav.location')}</span>
               <a
                 href="tel:+34972630869"
                 className="nav-fs-footer-link"
@@ -241,18 +221,32 @@ export default function Nav() {
                 Instagram
               </a>
               <span className="nav-fs-sep" aria-hidden="true">·</span>
-              <span className="nav-fs-lang" tabIndex={menuOpen ? 0 : -1}>
-                Español
-              </span>
+
+              {/* Language switcher */}
+              <div className="nav-fs-langs">
+                {LANGS.map((l) => (
+                  <Link
+                    key={l}
+                    to={switchLang(l, location.pathname)}
+                    onClick={handleClose}
+                    tabIndex={menuOpen ? 0 : -1}
+                    className={`nav-fs-lang-btn${l === lang ? ' is-active' : ''}`}
+                    aria-current={l === lang ? 'true' : undefined}
+                    lang={l}
+                  >
+                    {l.toUpperCase()}
+                  </Link>
+                ))}
+              </div>
             </div>
             <div className="nav-fs-footer-col nav-fs-footer-col--right">
               <Link
-                to="/reserves"
+                to={routes.reserves}
                 onClick={handleClose}
                 className="nav-fs-reserva"
                 tabIndex={menuOpen ? 0 : -1}
               >
-                Reservar
+                {t('nav.book')}
               </Link>
             </div>
           </div>

@@ -1,44 +1,48 @@
 import { Link } from 'react-router-dom'
-import Hero            from '../components/Hero'
-import MarqueeStrip    from '../components/MarqueeStrip'
-import SoulSection    from '../components/SoulSection'
-import SEO             from '../components/SEO'
-import { useReveal }   from '../hooks/useReveal'
-
-const FEATURES = [
-  {
-    tag:   'El Restaurant',
-    title: 'Un espai pensat per a la taula',
-    body:  'Una masia del segle XVIII al nucli de Corçà. Pedra, fusta i llum natural al servei de la gastronomia.',
-    to:    '/restaurant',
-    label: 'Descobrir',
-  },
-  {
-    tag:   'Gastronomia',
-    title: 'El producte és la primera decisió',
-    body:  "La cuina de Bo.TiC neix de l'Empordà. Temporada, tècnica i memòria en cada plat.",
-    to:    '/gastronomia',
-    label: 'La cuina',
-  },
-  {
-    tag:   "L'Experiència",
-    title: 'Un ritme propi. Un relat complet.',
-    body:  "Menú degustació, sala i hospitalitat. Una experiència que comença amb el primer aperitiu i no s'acaba fins al comiat.",
-    to:    '/experiencia',
-    label: "L'experiència",
-  },
-]
+import { useTranslation } from 'react-i18next'
+import Hero         from '../components/Hero'
+import MarqueeStrip from '../components/MarqueeStrip'
+import SoulSection  from '../components/SoulSection'
+import SEO          from '../components/SEO'
+import { useReveal } from '../hooks/useReveal'
+import { useLangRoutes } from '../i18n/LangContext'
 
 export default function Home() {
+  const { t }       = useTranslation()
+  const routes      = useLangRoutes()
   const ctaRef      = useReveal(0.18)
   const featuresRef = useReveal(0.12)
+
+  const FEATURES = [
+    {
+      tag:   t('home.featRestaurantTag'),
+      title: t('home.featRestaurantTitle'),
+      body:  t('home.featRestaurantBody'),
+      to:    routes.restaurant,
+      label: t('home.featRestaurantLabel'),
+    },
+    {
+      tag:   t('home.featGastroTag'),
+      title: t('home.featGastroTitle'),
+      body:  t('home.featGastroBody'),
+      to:    routes.gastronomia,
+      label: t('home.featGastroLabel'),
+    },
+    {
+      tag:   t('home.featExpTag'),
+      title: t('home.featExpTitle'),
+      body:  t('home.featExpBody'),
+      to:    routes.experiencia,
+      label: t('home.featExpLabel'),
+    },
+  ]
 
   return (
     <>
       <SEO
-        title="Bo.TiC · Restaurant Gastronòmic · Corçà · Empordà"
-        description="Bo.TiC, restaurant gastronòmic de 2 estrelles Michelin a Corçà (Girona). Cuina d'arrel, producte local i experiència gastronòmica única a l'Empordà."
-        canonical="https://www.bo-tic.com/"
+        title={t('seo.home.title')}
+        description={t('seo.home.description')}
+        pageKey="home"
       />
 
       <Hero />
@@ -46,8 +50,6 @@ export default function Home() {
 
       {/* ── Intro ── */}
       <section className="home-intro">
-
-        {/* Foto — panel dret */}
         <div className="home-intro-photo" aria-hidden="true">
           <img
             src="/images/restaurant-emporda-michelin-girona.webp"
@@ -57,24 +59,23 @@ export default function Home() {
           <div className="home-intro-overlay" />
         </div>
 
-        {/* Text — esquerra */}
         <div className="container-max home-intro-inner">
           <div className="home-intro-content">
-            <span className="home-intro-label">Bo.TiC · Corçà · Empordà</span>
+            <span className="home-intro-label">{t('home.introLabel')}</span>
             <h2 className="font-serif font-light leading-tight tracking-tight home-intro-title">
-              Cuina amb arrel.<br />Experiència sense igual.
+              {t('home.introHeading').split('\n').map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
             </h2>
             <p className="font-sans home-intro-body">
-              Bo.TiC és un restaurant gastronòmic de referència a l'Empordà. Dos estels Michelin,
-              una masia rehabilitada i una cuina que entén el territori com a primera matèria.
+              {t('home.introBody')}
             </p>
           </div>
         </div>
-
       </section>
 
       {/* ── Feature cards ── */}
-      <section className="features-section" ref={featuresRef} aria-label="Descobreix Bo.TiC">
+      <section className="features-section" ref={featuresRef} aria-label={t('home.featuresAria')}>
         <div className="container-max">
           <div className="features-grid">
             {FEATURES.map(({ tag, title, body, to, label }, i) => (
@@ -94,16 +95,16 @@ export default function Home() {
       {/* ── CTA Reserva ── */}
       <section className="home-reserva-cta">
         <div className="container-max reveal" ref={ctaRef}>
-          <span className="label block">Reserva</span>
+          <span className="label block">{t('home.ctaLabel')}</span>
           <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl
                          text-botic-cream leading-tight tracking-tight mt-4 mb-6">
-            Assegureu la vostra taula
+            {t('home.ctaHeading')}
           </h2>
           <p className="font-sans text-sm md:text-base leading-relaxed
                         max-w-md mx-auto mb-10">
-            L'aforament del restaurant és reduït. Us recomanem reservar amb antelació.
+            {t('home.ctaBody')}
           </p>
-          <Link to="/reserves" className="btn-gold">Reservar ara</Link>
+          <Link to={routes.reserves} className="btn-gold">{t('home.ctaBtn')}</Link>
         </div>
       </section>
     </>

@@ -1,22 +1,24 @@
-import { Link } from 'react-router-dom'
-import SEO from '../components/SEO.jsx'
+import { useTranslation } from 'react-i18next'
+import SEO          from '../components/SEO.jsx'
 import SectionTitle from '../components/SectionTitle.jsx'
-import CTA from '../components/CTA.jsx'
+import CTA          from '../components/CTA.jsx'
+import { useLangRoutes } from '../i18n/LangContext'
 
-function PageHero({ img, alt, eyebrow, heading }) {
+function PageHero({ eyebrow, heading, imgAlt, aria }) {
   return (
     <section
-      className="relative flex items-end min-h-[60vh] md:min-h-[65vh] overflow-hidden bg-botic-dark pt-20"
-      aria-label={eyebrow}
+      className="relative flex items-end min-h-[60vh] md:min-h-[65vh] overflow-hidden
+                 bg-botic-dark pt-20"
+      aria-label={aria}
     >
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${img})` }}
+        style={{ backgroundImage: 'url(/images/restaurant-hero.jpg)' }}
         role="img"
-        aria-label={alt}
+        aria-label={imgAlt}
       />
       <div className="absolute inset-0 bg-gradient-to-t
-                      from-botic-black via-botic-black/60 to-botic-black/20" />
+                      from-botic-black via-botic-black/55 to-botic-black/15" />
       <div className="relative z-10 container-max w-full pb-14 md:pb-20">
         <span className="label">{eyebrow}</span>
         <h1 className="font-serif font-light text-4xl md:text-6xl lg:text-7xl
@@ -29,57 +31,53 @@ function PageHero({ img, alt, eyebrow, heading }) {
 }
 
 export default function Restaurant() {
+  const { t }  = useTranslation()
+  const routes = useLangRoutes()
+
+  const GALLERY = [
+    { src: '/images/sala-2.jpg',   alt: t('restaurant.galleryAlt1') },
+    { src: '/images/exterior.jpg', alt: t('restaurant.galleryAlt2') },
+    { src: '/images/detall.jpg',   alt: t('restaurant.galleryAlt3') },
+  ]
+
   return (
     <>
       <SEO
-        title="El Restaurant · Bo.TiC Corçà · Espai i Concepte"
-        description="Bo.TiC és un restaurant gastronòmic a Corçà, Girona. Una masia del segle XVIII rehabilitada, amb una proposta culinària basada en el producte local de l'Empordà."
-        canonical="https://www.bo-tic.com/restaurant"
+        title={t('seo.restaurant.title')}
+        description={t('seo.restaurant.description')}
+        pageKey="restaurant"
       />
 
       <PageHero
-        img="/images/restaurant-hero.jpg"
-        alt="Façana del restaurant Bo.TiC a Corçà"
-        eyebrow="El restaurant"
-        heading="Un lloc on tot es cuida"
+        aria={t('restaurant.heroAria')}
+        imgAlt={t('restaurant.heroImgAlt')}
+        eyebrow={t('restaurant.heroEyebrow')}
+        heading={t('restaurant.heroHeading')}
       />
 
       {/* ── El concepte ── */}
-      <section className="bg-botic-ivory py-20 md:py-28 lg:py-32" aria-labelledby="concepte-heading">
+      <section className="bg-botic-ivory py-20 md:py-28 lg:py-32" aria-labelledby="concept-heading">
         <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
             <div>
               <SectionTitle
                 theme="light"
-                eyebrow="El concepte"
+                eyebrow={t('restaurant.conceptEyebrow')}
                 as="h2"
-                heading="Bo.TiC neix d'una premissa senzilla"
+                heading={t('restaurant.conceptHeading')}
               />
               <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                              text-botic-text/70 leading-relaxed max-w-lg">
-                <p>
-                  Bo.TiC és, per damunt de tot, un lloc. Un espai on la cuina
-                  pren forma de territori, de producte i de temps. Una proposta
-                  gastronòmica que no renuncia a la memòria ni a la tècnica.
-                </p>
-                <p>
-                  El xef Albert Sastregener ha construït al llarg dels anys una
-                  cuina reconeixible, arrelada al paisatge de l'Empordà i oberta
-                  als cicles naturals de cada temporada.
-                </p>
-                <p>
-                  No es tracta de reinventar. Es tracta de cuinar amb criteri,
-                  d'escollir bé i d'oferir a l'hoste una experiència que tingui
-                  sentit des del primer plat fins a l'últim.
-                </p>
+                              text-botic-text/68 leading-relaxed">
+                <p>{t('restaurant.conceptP1')}</p>
+                <p>{t('restaurant.conceptP2')}</p>
+                <p>{t('restaurant.conceptP3')}</p>
               </div>
             </div>
 
-            {/* Image */}
-            <div className="relative h-96 md:h-[500px] overflow-hidden bg-botic-stone">
+            <div className="h-96 md:h-[520px] overflow-hidden bg-botic-stone">
               <img
-                src="/images/chef.jpg"
-                alt="El xef Albert Sastregener a la cuina de Bo.TiC"
+                src="/images/concept.jpg"
+                alt={t('restaurant.heroImgAlt')}
                 loading="lazy"
                 className="w-full h-full object-cover"
                 onError={(e) => { e.target.style.opacity = '0' }}
@@ -90,105 +88,73 @@ export default function Restaurant() {
       </section>
 
       {/* ── L'espai ── */}
-      <section className="bg-botic-black py-20 md:py-28" aria-labelledby="espai-heading">
+      <section className="bg-botic-black py-20 md:py-28" aria-labelledby="space-heading">
         <div className="container-max">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Image — esquerra en desktop */}
-            <div className="order-2 lg:order-1 h-96 md:h-[520px] overflow-hidden bg-botic-surface">
-              <img
-                src="/images/sala-1.jpg"
-                alt="Sala principal del restaurant Bo.TiC"
-                loading="lazy"
-                className="w-full h-full object-cover"
-                onError={(e) => { e.target.style.opacity = '0' }}
-              />
-            </div>
-
-            <div className="order-1 lg:order-2">
+            <div>
               <SectionTitle
                 theme="dark"
-                eyebrow="L'espai"
+                eyebrow={t('restaurant.spaceEyebrow')}
                 as="h2"
-                heading="Pedra, fusta i llum natural"
+                heading={t('restaurant.spaceHeading')}
               />
               <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                              text-botic-muted leading-relaxed max-w-lg">
-                <p>
-                  L'espai és una masia rehabilitada del segle XVIII, al nucli
-                  antic de Corçà. La reforma ha respectat l'essència de la
-                  construcció original: les pedres vistes, les bigues de fusta
-                  i la relació de les estances amb la llum de l'Empordà.
-                </p>
-                <p>
-                  Menjador petit, taules ben espaiades, ambient silenciós.
-                  Un lloc preparat per a la concentració gastronòmica i per a
-                  la conversa pausada.
-                </p>
-                <p>
-                  L'atmosfera acompanya la cuina sense competir-hi.
-                  Tot suma en la mateixa direcció.
-                </p>
+                              text-botic-muted leading-relaxed">
+                <p>{t('restaurant.spaceP1')}</p>
+                <p>{t('restaurant.spaceP2')}</p>
+                <p>{t('restaurant.spaceP3')}</p>
               </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-2 h-[480px]">
+              <div className="overflow-hidden bg-botic-surface row-span-2">
+                <img
+                  src={GALLERY[0].src}
+                  alt={GALLERY[0].alt}
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  onError={(e) => { e.target.style.opacity = '0' }}
+                />
+              </div>
+              {GALLERY.slice(1).map(({ src, alt }) => (
+                <div key={src} className="overflow-hidden bg-botic-surface">
+                  <img
+                    src={src}
+                    alt={alt}
+                    loading="lazy"
+                    className="w-full h-full object-cover"
+                    onError={(e) => { e.target.style.opacity = '0' }}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── Galeria d'espai ── */}
-      <section className="bg-botic-dark" aria-label="Galeria del restaurant">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-0.5">
-          {[
-            { src: '/images/sala-2.jpg',  alt: 'Detall de la sala de Bo.TiC' },
-            { src: '/images/exterior.jpg', alt: 'Exterior del restaurant Bo.TiC a Corçà' },
-            { src: '/images/detall.jpg',  alt: 'Detall decoratiu del restaurant Bo.TiC' },
-          ].map(({ src, alt }) => (
-            <div key={src} className="h-64 md:h-80 overflow-hidden bg-botic-surface">
-              <img
-                src={src}
-                alt={alt}
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform
-                           duration-700 hover:scale-105"
-                onError={(e) => { e.target.style.opacity = '0' }}
-              />
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── El servei ── */}
-      <section className="bg-botic-ivory py-20 md:py-28" aria-labelledby="servei-heading">
-        <div className="container-max max-w-2xl mx-auto text-center">
-          <span className="label-light text-center block">El servei</span>
-          <h2
-            id="servei-heading"
-            className="font-serif font-light text-3xl md:text-4xl lg:text-5xl
-                       text-botic-text leading-tight tracking-tight mt-4 mb-8"
-          >
-            L'hospitalitat és part del plat
-          </h2>
-          <p className="font-sans text-sm md:text-base text-botic-text/65 leading-relaxed mb-5">
-            A Bo.TiC entenem el servei com una extensió natural de la cuina.
-            L'equip de sala coneix cada ingredient, cada tècnica i cada decisió
-            que hi ha darrere de cada plat.
-          </p>
-          <p className="font-sans text-sm md:text-base text-botic-text/65 leading-relaxed mb-10">
-            La relació amb l'hoste és directa, propera i sense distàncies
-            innecessàries. Volem que cada visita es recordi per allò que s'ha
-            sentit, no només pel que s'ha menjat.
-          </p>
-          <Link to="/experiencia" className="btn-dark">
-            L'experiència completa
-          </Link>
+      <section className="bg-botic-dark py-20 md:py-28" aria-labelledby="service-heading">
+        <div className="container-max max-w-2xl">
+          <SectionTitle
+            theme="dark"
+            eyebrow={t('restaurant.serviceEyebrow')}
+            as="h2"
+            heading={t('restaurant.serviceHeading')}
+          />
+          <div className="mt-8 space-y-5 font-sans text-sm md:text-base
+                          text-botic-muted leading-relaxed">
+            <p>{t('restaurant.serviceP1')}</p>
+            <p>{t('restaurant.serviceP2')}</p>
+          </div>
         </div>
       </section>
 
       <CTA
-        eyebrow="Reserva"
-        heading="Assegureu la vostra taula"
-        body="L'aforament del restaurant és reduït. Us recomanem reservar amb antelació."
-        linkTo="/reserves"
-        linkLabel="Reservar"
+        eyebrow={t('restaurant.ctaEyebrow')}
+        heading={t('restaurant.ctaHeading')}
+        body={t('restaurant.ctaBody')}
+        linkTo={routes.reserves}
+        linkLabel={t('restaurant.ctaBtn')}
         theme="dark"
       />
     </>

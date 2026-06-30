@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const MIN_MS  = 2500   // temps mínim visible
 const MAX_MS  = 5000   // seguretat: màxim d'espera del vídeo
@@ -9,6 +10,7 @@ const alreadySeen = () =>
   sessionStorage.getItem('botic_preloader_done') === '1'
 
 export default function Preloader() {
+  const { t }   = useTranslation()
   const [phase, setPhase] = useState(() => alreadySeen() ? 'done' : 'visible')
   const startRef = useRef(Date.now())
 
@@ -56,7 +58,7 @@ export default function Preloader() {
         <div className="pre-bar" />
       </div>
 
-      <p className="pre-claim">Sentimiento y pasión</p>
+      <p className="pre-claim">{t('footer.tagline')}</p>
     </div>
   )
 }

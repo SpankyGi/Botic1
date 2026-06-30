@@ -1,5 +1,10 @@
 Options -MultiViews
 RewriteEngine On
+
+# Redirect bare root to /ca/
+RewriteRule ^$ /ca/ [R=301,L]
+
+# SPA fallback: serve index.html for all non-file, non-directory requests
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^ index.html [QSA,L]
+RewriteRule ^ /index.html [QSA,L]

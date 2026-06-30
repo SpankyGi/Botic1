@@ -1,21 +1,36 @@
 import { useState, useId, useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
-import { menus } from '../data/menus'
+import { useLangRoutes } from '../i18n/LangContext'
 
 const PENDING = '[pendent de revisar]'
-
 const HERO_IMG = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
 
-/* ── Hero ───────────────────────────────────────────────────── */
-function MenusHero() {
+// Menus data — titles come from translations via t(), IDs and prices are language-neutral
+const MENU_IDS = [
+  { id: 'degustacion', price: '190 €', titleKey: 'menus.degustacioTitle', noteKey: null },
+  { id: 'chef',        price: '250 €', titleKey: 'menus.chefTitle',       noteKey: null },
+  { id: 'esencia',     price: '90 €',  titleKey: 'menus.esenciaTitle',    noteKey: 'menus.esenciaNote' },
+]
+
+// Section title key mapping (data key → translation key)
+const SECTION_KEY_MAP = {
+  'Snacks':  'menus.sectionSnacks',
+  'Menú':    'menus.sectionMenu',
+  'Postres': 'menus.sectionPostres',
+}
+
+import { menus as menusData } from '../data/menus'
+
+/* ── Hero ─────────────────────────────────────────────────── */
+function MenusHero({ t }) {
   return (
     <section
       className="relative flex items-end overflow-hidden bg-botic-black pt-24"
       style={{ minHeight: '72vh' }}
-      aria-label="Menús de Bo.TiC"
+      aria-label={t('menus.heroAria')}
     >
-      {/* Fotografia de fons */}
       <img
         src={HERO_IMG}
         alt=""
@@ -23,8 +38,6 @@ function MenusHero() {
         className="mnu-hero-img absolute inset-0 w-full h-full object-cover object-center"
         style={{ objectPosition: '60% 20%' }}
       />
-
-      {/* Overlay cinematogràfic: fosc baix + lateral esquerra */}
       <div
         className="absolute inset-0"
         style={{
@@ -34,45 +47,32 @@ function MenusHero() {
           ].join(', '),
         }}
       />
-
-      {/* Línia horitzontal inferior */}
       <div className="absolute bottom-0 left-0 right-0 mnu-hero-border-line" />
 
       <div className="relative z-10 container-max w-full pb-14 md:pb-20">
-        <span className="menus-hero-label label block mb-6">
-          Menús
-        </span>
+        <span className="menus-hero-label label block mb-6">{t('menus.heroLabel')}</span>
         <h1
           className="menus-hero-title font-serif font-light italic text-botic-cream"
-          style={{
-            fontSize:  'clamp(26px, 4.2vw, 58px)',
-            lineHeight: 1.18,
-            maxWidth:   '560px',
-          }}
+          style={{ fontSize: 'clamp(26px, 4.2vw, 58px)', lineHeight: 1.18, maxWidth: '560px' }}
         >
-          Tres maneres d'apropar-se a l'univers gastronòmic de Bo.TiC.
+          {t('menus.heroTitle')}
         </h1>
         <p
-          className="menus-hero-sub font-sans font-light text-botic-cream/65
-                     mt-5"
+          className="menus-hero-sub font-sans font-light text-botic-cream/65 mt-5"
           style={{ fontSize: 'clamp(11px, 1.2vw, 13px)', letterSpacing: '0.20em' }}
         >
-          DEGUSTACIÓ · CHEF · ESSÈNCIA
+          {t('menus.heroSub')}
         </p>
-
-        {/* Ornament sota el subtítol */}
         <div className="menus-hero-ornament">
-          <span className="mnu-orn-line" />
-          <span className="mnu-orn-glyph">✦</span>
-          <span className="mnu-orn-line" />
+          <span className="mnu-orn-line" /><span className="mnu-orn-glyph">✦</span><span className="mnu-orn-line" />
         </div>
       </div>
     </section>
   )
 }
 
-/* ── Accordion de secció ────────────────────────────────────── */
-function SectionAccordion({ section, menuId }) {
+/* ── Accordion de secció ──────────────────────────────────── */
+function SectionAccordion({ section, menuId, t }) {
   const [open, setOpen]       = useState(false)
   const [openKey, setOpenKey] = useState(0)
   const id     = useId()
@@ -83,6 +83,8 @@ function SectionAccordion({ section, menuId }) {
     setOpen(o => !o)
   }
 
+  const sectionTitle = t(SECTION_KEY_MAP[section.title] || section.title)
+
   return (
     <div className={`mnu-section${open ? ' is-open' : ''}`}>
       <button
@@ -91,17 +93,10 @@ function SectionAccordion({ section, menuId }) {
         aria-expanded={open}
         aria-controls={bodyId}
       >
-        {/* Punt decoratiu borgonya */}
         <span className="mnu-section-dot" aria-hidden="true" />
-
-        <span className="mnu-section-title">{section.title}</span>
-
-        <span className="mnu-section-count" aria-hidden="true">
-          {section.items.length}
-        </span>
-        <span className="mnu-section-icon" aria-hidden="true">
-          {open ? '−' : '+'}
-        </span>
+        <span className="mnu-section-title">{sectionTitle}</span>
+        <span className="mnu-section-count" aria-hidden="true">{section.items.length}</span>
+        <span className="mnu-section-icon" aria-hidden="true">{open ? '−' : '+'}</span>
       </button>
 
       <div
@@ -111,9 +106,7 @@ function SectionAccordion({ section, menuId }) {
         aria-labelledby={`${id}-trigger`}
       >
         <div className="mnu-section-inner">
-          {/* Accent borgonya lateral quan és obert */}
           <div className="mnu-section-accent" aria-hidden="true" />
-
           <ul key={openKey} className="mnu-dish-list">
             {section.items.map((item, i) => (
               <li
@@ -139,7 +132,7 @@ function SectionAccordion({ section, menuId }) {
   )
 }
 
-/* ── Hook reveal per IntersectionObserver ──────────────────── */
+/* ── useReveal ─────────────────────────────────────────────── */
 function useReveal(threshold = 0.15) {
   const reduced = typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -163,37 +156,33 @@ function useReveal(threshold = 0.15) {
   return [ref, visible]
 }
 
-/* ── Hook count-up ─────────────────────────────────────────── */
+/* ── useCountUp ────────────────────────────────────────────── */
 function useCountUp(target, duration = 1200) {
   const [count, setCount] = useState(0)
-  const hasRun  = useRef(false)
-  const ref     = useRef(null)
+  const hasRun = useRef(false)
+  const ref    = useRef(null)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
-
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (reduced) { setCount(target); return }
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting || hasRun.current) return
         hasRun.current = true
         observer.disconnect()
-
         const start = performance.now()
         const tick  = (now) => {
-          const t     = Math.min((now - start) / duration, 1)
-          const eased = 1 - Math.pow(1 - t, 3)   // cubic ease-out
+          const t2    = Math.min((now - start) / duration, 1)
+          const eased = 1 - Math.pow(1 - t2, 3)
           setCount(Math.round(eased * target))
-          if (t < 1) requestAnimationFrame(tick)
+          if (t2 < 1) requestAnimationFrame(tick)
         }
         requestAnimationFrame(tick)
       },
       { threshold: 0.35 }
     )
-
     observer.observe(el)
     return () => observer.disconnect()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
@@ -201,16 +190,14 @@ function useCountUp(target, duration = 1200) {
   return { count, ref }
 }
 
-/* ── Carta de Vinos ─────────────────────────────────────────── */
-function WineSection() {
+/* ── WineSection ───────────────────────────────────────────── */
+function WineSection({ t }) {
   const { count, ref: statRef } = useCountUp(900, 1250)
   const [colRef,  colVisible]   = useReveal(0.12)
   const [divRef,  divVisible]   = useReveal(0.50)
 
   return (
     <section className="wine-section" aria-labelledby="wine-heading">
-
-      {/* Foto de fons — panel dret */}
       <div className="wine-photo-wrap" aria-hidden="true">
         <img
           src="/images/restaurant-emporda-botic-michelin.webp"
@@ -219,16 +206,14 @@ function WineSection() {
         />
         <div className="wine-photo-overlay" />
       </div>
-
-      {/* Trama atmosfèrica */}
       <div className="wine-bg-texture" aria-hidden="true" />
 
       <div className="container-max wine-inner">
         <div className={`wine-col-left${colVisible ? ' is-visible' : ''}`} ref={colRef}>
-          <span className="wine-label">Maridatge · Bodega</span>
+          <span className="wine-label">{t('menus.wineLabel')}</span>
 
           <div className="wine-stat" ref={statRef}>
-            <span className="wine-stat-num" aria-label="Más de 900 referencias">
+            <span className="wine-stat-num" aria-label={`${t('menus.wineStatDesc').replace('$1', '900+')}`}>
               {count}<span className="wine-stat-plus" aria-hidden="true">+</span>
             </span>
             <span
@@ -239,70 +224,47 @@ function WineSection() {
                 transition: 'opacity 0.5s ease 1.05s, transform 0.5s ease 1.05s',
               }}
             >
-              referencias de todo el mundo
+              {t('menus.wineStatDesc')}
             </span>
           </div>
 
           <div className={`wine-divider${divVisible ? ' in-view' : ''}`} ref={divRef} aria-hidden="true" />
 
           <h2 id="wine-heading" className="wine-title">
-            Carta<br />de vinos
+            {t('menus.wineTitle').split('\n').map((line, i) => (
+              <span key={i}>{line}{i === 0 && <br />}</span>
+            ))}
           </h2>
 
           <div className="wine-ornament" aria-hidden="true">
-            <span className="wine-orn-line" />
-            <span className="wine-orn-glyph">◈</span>
-            <span className="wine-orn-line" />
+            <span className="wine-orn-line" /><span className="wine-orn-glyph">◈</span><span className="wine-orn-line" />
           </div>
 
-          <p className="wine-lead">
-            Tenemos una amplia carta de vinos con más de 900 referencias de diferentes países.
-          </p>
-          <p className="wine-body">
-            España, Portugal, Francia, Italia, Alemania, Austria, Grecia, Líbano, Moldavia,
-            Australia, Sudáfrica, Argentina, Chile, Uruguay, Bolivia, Estados Unidos y Nueva
-            Zelanda, siempre en busca de los mejores vinos con el objetivo de configurar
-            nuestra bodega.
-          </p>
-          <p className="wine-body">
-            Una bodega versátil con numerosas D.O. y con referencias de todas partes, cada
-            una de ellas con una fuerte personalidad.
-          </p>
+          <p className="wine-lead">{t('menus.wineLead')}</p>
+          <p className="wine-body">{t('menus.wineBody1')}</p>
+          <p className="wine-body">{t('menus.wineBody2')}</p>
         </div>
       </div>
     </section>
   )
 }
 
-/* ── Informació pràctica ─────────────────────────────────────── */
-const INFO_ITEMS = [
-  {
-    num: '01',
-    text: 'Los menús no incluyen la bebida.',
-  },
-  {
-    num: '02',
-    text: 'Los menús se servirán a mesas completas.',
-  },
-  {
-    num: '03',
-    text: 'Los menús se pueden modificar según mercado o novedad, pero respetando su estructura.',
-  },
-]
-
-function InfoSection() {
+/* ── InfoSection ───────────────────────────────────────────── */
+function InfoSection({ t }) {
   const [gridRef, gridVisible] = useReveal(0.15)
 
+  const INFO_ITEMS = [
+    { num: '01', text: t('menus.info01') },
+    { num: '02', text: t('menus.info02') },
+    { num: '03', text: t('menus.info03') },
+  ]
+
   return (
-    <section className="info-section" aria-label="Informació pràctica dels menús">
+    <section className="info-section" aria-label={t('menus.infoAria')}>
       <div className="container-max">
         <div className={`info-grid${gridVisible ? ' revealed' : ''}`} ref={gridRef}>
           {INFO_ITEMS.map(({ num, text }, i) => (
-            <div
-              key={num}
-              className="info-card"
-              style={{ '--i': i }}
-            >
+            <div key={num} className="info-card" style={{ '--i': i }}>
               <span className="info-num" aria-hidden="true">{num}</span>
               <p className="info-text">{text}</p>
             </div>
@@ -313,42 +275,20 @@ function InfoSection() {
   )
 }
 
-/* ── FAQ Section ────────────────────────────────────────────── */
-const FAQS = [
-  {
-    q: '¿Los menús incluyen la bebida?',
-    a: 'No, los menús no incluyen la bebida. La bebida y el maridaje se pueden elegir aparte según la experiencia deseada.',
-  },
-  {
-    q: '¿Los menús se sirven a mesa completa?',
-    a: 'Sí, los menús se sirven a mesa completa para mantener el ritmo y la coherencia de la experiencia gastronómica.',
-  },
-  {
-    q: '¿El menú puede cambiar?',
-    a: 'Sí, la propuesta puede variar según temporada, mercado o novedades del restaurante, siempre respetando la estructura del menú.',
-  },
-  {
-    q: '¿Es necesario reservar?',
-    a: 'Sí, recomendamos reservar con antelación para asegurar disponibilidad y preparar la experiencia con el máximo cuidado.',
-  },
-  {
-    q: '¿Dónde está ubicado Bo.TiC?',
-    a: 'Bo.TiC está situado en Corçà, en el Empordà, en una masía rehabilitada donde conviven territorio, cocina de autor y hospitalidad.',
-  },
-  {
-    q: '¿Hay opción de maridaje?',
-    a: 'La experiencia puede acompañarse con una selección de vinos de nuestra bodega, con más de 900 referencias de diferentes países.',
-  },
-  {
-    q: '¿Cuál es la diferencia entre los menús?',
-    a: 'Cada menú propone una manera distinta de acercarse al universo gastronómico de Bo.TiC: desde una experiencia más esencial hasta una propuesta más completa y gastronómica.',
-  },
-]
-
-function FaqSection() {
+/* ── FaqSection ────────────────────────────────────────────── */
+function FaqSection({ t }) {
   const [openIdx, setOpenIdx] = useState(null)
 
-  // Schema.org FAQPage
+  const FAQS = [
+    { q: t('menus.faqQ1'), a: t('menus.faqA1') },
+    { q: t('menus.faqQ2'), a: t('menus.faqA2') },
+    { q: t('menus.faqQ3'), a: t('menus.faqA3') },
+    { q: t('menus.faqQ4'), a: t('menus.faqA4') },
+    { q: t('menus.faqQ5'), a: t('menus.faqA5') },
+    { q: t('menus.faqQ6'), a: t('menus.faqA6') },
+    { q: t('menus.faqQ7'), a: t('menus.faqA7') },
+  ]
+
   useEffect(() => {
     const schema = {
       '@context': 'https://schema.org',
@@ -365,25 +305,22 @@ function FaqSection() {
     script.textContent = JSON.stringify(schema)
     document.head.appendChild(script)
     return () => { document.getElementById('faq-schema')?.remove() }
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggle = (i) => setOpenIdx(prev => prev === i ? null : i)
 
   return (
     <section className="faq-section" aria-labelledby="faq-heading">
       <div className="container-max">
-
         <header className="faq-header">
-          <span className="faq-eyebrow">Información Práctica</span>
-          <h2 id="faq-heading" className="faq-title">Antes de reservar</h2>
-          <p className="faq-subtitle">
-            Algunos detalles para disfrutar la experiencia con calma.
-          </p>
+          <span className="faq-eyebrow">{t('menus.faqEyebrow')}</span>
+          <h2 id="faq-heading" className="faq-title">{t('menus.faqTitle')}</h2>
+          <p className="faq-subtitle">{t('menus.faqSubtitle')}</p>
         </header>
 
         <dl className="faq-list">
           {FAQS.map(({ q, a }, i) => {
-            const isOpen = openIdx === i
+            const isOpen   = openIdx === i
             const answerId = `faq-ans-${i}`
             return (
               <div key={i} className={`faq-item${isOpen ? ' open' : ''}`}>
@@ -407,28 +344,36 @@ function FaqSection() {
             )
           })}
         </dl>
-
       </div>
     </section>
   )
 }
 
-/* ── Ornament separador reutilitzable ───────────────────────── */
 function Ornament() {
   return (
     <div className="mnu-ornament" aria-hidden="true">
-      <span className="mnu-orn-line" />
-      <span className="mnu-orn-glyph">✦</span>
-      <span className="mnu-orn-line" />
+      <span className="mnu-orn-line" /><span className="mnu-orn-glyph">✦</span><span className="mnu-orn-line" />
     </div>
   )
 }
 
-/* ── Pàgina principal ───────────────────────────────────────── */
+/* ── Pàgina principal ─────────────────────────────────────── */
 export default function Menus() {
+  const { t }   = useTranslation()
+  const routes  = useLangRoutes()
   const [activeId, setActiveId] = useState('degustacion')
-  const active = menus.find(m => m.id === activeId) ?? menus[0]
   const contentRef = useRef(null)
+
+  // Build localized menu list
+  const menus = MENU_IDS.map(({ id, price, titleKey, noteKey }) => ({
+    id,
+    price,
+    title: t(titleKey),
+    note:  noteKey ? t(noteKey) : '',
+    sections: (menusData.find(m => m.id === id)?.sections || []),
+  }))
+
+  const active = menus.find(m => m.id === activeId) ?? menus[0]
 
   const selectMenu = (id) => {
     setActiveId(id)
@@ -440,19 +385,19 @@ export default function Menus() {
   return (
     <>
       <SEO
-        title="Menús | Bo.TiC Restaurant"
-        description="Descobreix els menús de Bo.TiC: Menú Degustación, Menú del Chef i Menú Esencia, tres propostes gastronòmiques a Corçà."
-        canonical="https://www.bo-tic.com/menus"
+        title={t('seo.menus.title')}
+        description={t('seo.menus.description')}
+        pageKey="menus"
         ogImage="https://www.bo-tic.com/og-menus.jpg"
       />
 
-      <MenusHero />
+      <MenusHero t={t} />
 
       {/* ── Selector de menús ── */}
       <div
         className="mnu-selector-wrap"
         role="navigation"
-        aria-label="Selecciona un menú"
+        aria-label={t('menus.selectorAria')}
       >
         <div className="mnu-selector">
           {menus.map((m) => (
@@ -479,14 +424,11 @@ export default function Menus() {
         key={activeId}
       >
         <div className="container-max mnu-content">
-
-          {/* Capçalera del menú actiu */}
           <div className="mnu-content-header">
             <h2 className="mnu-content-title">{active.title}</h2>
             <span className="mnu-content-price">{active.price}</span>
           </div>
 
-          {/* Nota de disponibilitat (Menú Esencia) */}
           {active.note && (
             <p className="mnu-note" role="note">
               <span className="mnu-note-icon" aria-hidden="true">◈</span>
@@ -494,52 +436,43 @@ export default function Menus() {
             </p>
           )}
 
-          {/* Seccions accordion */}
           <div className="mnu-sections">
             {active.sections.map((section) => (
               <SectionAccordion
                 key={`${activeId}-${section.title}`}
                 section={section}
                 menuId={activeId}
+                t={t}
               />
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── Carta de vinos + info pràctica ── */}
-      <WineSection />
-      <InfoSection />
-
-      {/* ── FAQ ── */}
-      <FaqSection />
+      <WineSection t={t} />
+      <InfoSection t={t} />
+      <FaqSection  t={t} />
 
       {/* ── CTA final ── */}
-      <section
-        className="mnu-cta-section"
-        aria-labelledby="menus-cta-heading"
-      >
-        {/* Glow radial daurat al centre */}
+      <section className="mnu-cta-section" aria-labelledby="menus-cta-heading">
         <div className="mnu-cta-glow" aria-hidden="true" />
-
         <div className="container-max mnu-cta-content">
           <Ornament />
-
-          <span className="label block mt-8 mb-4">Reserva</span>
+          <span className="label block mt-8 mb-4">{t('menus.ctaLabel')}</span>
           <h2
             id="menus-cta-heading"
             className="font-serif font-light text-4xl md:text-5xl lg:text-6xl
                        text-botic-cream leading-tight tracking-tight mb-4"
           >
-            Reserva la teva experiència
+            {t('menus.ctaHeading')}
           </h2>
           <p className="font-sans text-sm md:text-base text-botic-muted leading-relaxed
                         max-w-md mx-auto mb-10">
-            Els menús poden variar segons temporada, producte i disponibilitat.
+            {t('menus.ctaBody')}
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Link to="/reserves" className="btn-gold">Reservar taula</Link>
-            <a href="tel:+34972630869" className="btn-cream">Contactar</a>
+            <Link to={routes.reserves} className="btn-gold">{t('menus.ctaBook')}</Link>
+            <a href="tel:+34972630869" className="btn-cream">{t('menus.ctaContact')}</a>
           </div>
         </div>
       </section>

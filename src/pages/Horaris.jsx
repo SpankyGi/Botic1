@@ -1,16 +1,12 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
 import { useReveal } from '../hooks/useReveal'
+import { useLangRoutes } from '../i18n/LangContext'
 
-// ── Calendar helpers ──────────────────────────────────────────────────────────
-const MONTHS_CA = [
-  'Gener','Febrer','Març','Abril','Maig','Juny',
-  'Juliol','Agost','Setembre','Octubre','Novembre','Desembre',
-]
-const DAYS_ABBR = ['Dl','Dm','Dc','Dj','Dv','Ds','Dg']
-
-// 0 = Tancat  1 = Dinar  2 = Dinar + Sopar
-// dow: 0=Dg(Sun) 1=Dl(Mon) 2=Dm(Tue) 3=Dc(Wed) 4=Dj(Thu) 5=Dv(Fri) 6=Ds(Sat)
+// Calendar helpers (logic stays language-neutral; labels come from t())
+// 0 = Closed  1 = Lunch  2 = Lunch + Dinner
+// dow: 0=Sun 1=Mon 2=Tue 3=Wed 4=Thu 5=Fri 6=Sat
 function getDayStatus(month, dow) {
   if (dow === 1 || dow === 2) return 0                         // Mon/Tue: always closed
   if (month === 6 || month === 7) return 1                     // Jul/Aug: lunch only
@@ -31,51 +27,37 @@ function buildMonth(year, month) {
   return cells
 }
 
-// ── Schedule data ─────────────────────────────────────────────────────────────
-const SEASONS = [
-  {
-    num: '01',
-    tag: 'Juliol · Agost',
-    title: 'Estiu',
-    rows: [
-      { days: 'Dimecres — Diumenge', service: 'Dinar', time: '13:00 – 15:30' },
-      { days: 'Dilluns · Dimarts',   service: 'Tancat', time: null },
-    ],
-  },
-  {
-    num: '02',
-    tag: 'Juny · Setembre',
-    title: 'Mitja Temporada',
-    rows: [
-      { days: 'Dimecres — Dissabte', service: 'Dinar',        time: '13:00 – 15:30' },
-      { days: 'Diumenge',            service: 'Dinar + Sopar', time: '13:00 / 20:30' },
-      { days: 'Dilluns · Dimarts',   service: 'Tancat',        time: null },
-    ],
-  },
-  {
-    num: '03',
-    tag: 'Octubre — Maig',
-    title: 'Temporada Baixa',
-    rows: [
-      { days: 'Divendres · Dissabte',        service: 'Dinar',        time: '13:00 – 15:30' },
-      { days: 'Dimecres · Dijous · Diumenge', service: 'Dinar + Sopar', time: '13:00 / 20:30' },
-      { days: 'Dilluns · Dimarts',            service: 'Tancat',        time: null },
-    ],
-  },
-]
-
-// ── Component ─────────────────────────────────────────────────────────────────
 export default function Horaris() {
+  const { t }       = useTranslation()
+  const routes      = useLangRoutes()
   const scheduleRef = useReveal(0.10)
   const calRef      = useReveal(0.06)
   const ctaRef      = useReveal(0.18)
 
+  const MONTHS  = t('horaris.months', { returnObjects: true })
+  const DAYS    = t('horaris.days',   { returnObjects: true })
+
+  const SEASONS_DATA = [
+    {
+      num: '01',
+      ...t('horaris.seasons.summer', { returnObjects: true }),
+    },
+    {
+      num: '02',
+      ...t('horaris.seasons.midSeason', { returnObjects: true }),
+    },
+    {
+      num: '03',
+      ...t('horaris.seasons.lowSeason', { returnObjects: true }),
+    },
+  ]
+
   return (
     <>
       <SEO
-        title="Horaris i Calendari · Bo.TiC · Restaurant Gastronòmic · Corçà"
-        description="Consulta els horaris i el calendari d'obertura de Bo.TiC, restaurant de 2 estrelles Michelin a Corçà (Girona). Reserva taula amb antelació."
-        canonical="https://www.bo-tic.com/horaris"
+        title={t('seo.horaris.title')}
+        description={t('seo.horaris.description')}
+        pageKey="horaris"
       />
 
       {/* ── Hero ── */}
@@ -90,17 +72,20 @@ export default function Horaris() {
           <div className="hor-hero-content">
             <span className="hor-hero-eyebrow">
               <span className="hor-hero-line" aria-hidden="true" />
-              Horaris i Calendari
+              {t('horaris.heroEyebrow')}
             </span>
             <h1 className="hor-hero-title">
-              Quan us<br />esperem
+              {t('horaris.heroTitle').split('\n').map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
             </h1>
             <p className="hor-hero-sub">
-              Dos serveis gastronòmics al llarg de l'any.<br />
-              Consulta quan et podem acollir a la nostra taula.
+              {t('horaris.heroSub').split('\n').map((line, i) => (
+                <span key={i}>{line}{i === 0 && <br />}</span>
+              ))}
             </p>
-            <Link to="/reserves" className="btn-cream hor-hero-cta">
-              Reservar taula
+            <Link to={routes.reserves} className="btn-cream hor-hero-cta">
+              {t('horaris.heroBtn')}
             </Link>
           </div>
         </div>
@@ -110,15 +95,12 @@ export default function Horaris() {
       <section className="hor-schedule" ref={scheduleRef}>
         <div className="container-max">
           <div className="hor-schedule-header">
-            <span className="hor-schedule-label">Horaris</span>
-            <h2 className="hor-schedule-title">Temporades</h2>
-            <p className="hor-schedule-intro">
-              Bo.TiC adapta el ritme del servei al calendari gastronòmic de l'Empordà.
-              Cada temporada té la seva cadència pròpia.
-            </p>
+            <span className="hor-schedule-label">{t('horaris.scheduleLabel')}</span>
+            <h2 className="hor-schedule-title">{t('horaris.scheduleTitle')}</h2>
+            <p className="hor-schedule-intro">{t('horaris.scheduleIntro')}</p>
           </div>
           <div className="hor-cards-grid">
-            {SEASONS.map(({ num, tag, title, rows }, i) => (
+            {SEASONS_DATA.map(({ num, tag, title, rows }, i) => (
               <div key={num} className="hor-card" style={{ '--i': i }}>
                 <span className="hor-card-num" aria-hidden="true">{num}</span>
                 <span className="hor-card-tag">{tag}</span>
@@ -126,7 +108,7 @@ export default function Horaris() {
                 <div className="hor-card-sep" aria-hidden="true" />
                 <ul className="hor-card-rows">
                   {rows.map(({ days, service, time }, j) => (
-                    <li key={j} className={`hor-card-row${service === 'Tancat' ? ' tancat' : ''}`}>
+                    <li key={j} className={`hor-card-row${service === t('common.closed') || service === 'Cerrado' || service === 'Fermé' || service === 'Closed' || service === 'Tancat' ? ' tancat' : ''}`}>
                       <span className="hor-row-days">{days}</span>
                       <span className="hor-row-service">{service}</span>
                       {time && <span className="hor-row-time">{time}</span>}
@@ -139,36 +121,35 @@ export default function Horaris() {
         </div>
       </section>
 
-      {/* ── Transició editorial ── */}
       <div className="hor-bridge" aria-hidden="true" />
 
       {/* ── Calendari 2026 ── */}
       <section className="hor-calendar reveal" ref={calRef}>
         <div className="container-max">
           <div className="hor-cal-header">
-            <span className="hor-cal-label">Calendari</span>
+            <span className="hor-cal-label">{t('horaris.calLabel')}</span>
             <h2 className="hor-cal-title">2026</h2>
-            <div className="hor-cal-legend" role="list" aria-label="Llegenda del calendari">
+            <div className="hor-cal-legend" role="list" aria-label={t('horaris.legendAria')}>
               <span className="hor-legend-item s0" role="listitem">
-                <span className="hor-legend-dot" aria-hidden="true" />Tancat
+                <span className="hor-legend-dot" aria-hidden="true" />{t('horaris.legendClosed')}
               </span>
               <span className="hor-legend-item s1" role="listitem">
-                <span className="hor-legend-dot" aria-hidden="true" />Dinar
+                <span className="hor-legend-dot" aria-hidden="true" />{t('horaris.legendLunch')}
               </span>
               <span className="hor-legend-item s2" role="listitem">
-                <span className="hor-legend-dot" aria-hidden="true" />Dinar + Sopar
+                <span className="hor-legend-dot" aria-hidden="true" />{t('horaris.legendLunchDinner')}
               </span>
             </div>
           </div>
 
           <div className="hor-months-grid">
-            {MONTHS_CA.map((name, m) => {
+            {MONTHS.map((name, m) => {
               const cells = buildMonth(2026, m)
               return (
                 <div key={m} className="hor-month">
                   <h3 className="hor-month-name">{name}</h3>
                   <div className="hor-day-headers" aria-hidden="true">
-                    {DAYS_ABBR.map(d => <span key={d}>{d}</span>)}
+                    {DAYS.map(d => <span key={d}>{d}</span>)}
                   </div>
                   <div className="hor-day-grid">
                     {cells.map((cell, idx) =>
@@ -177,7 +158,7 @@ export default function Horaris() {
                         : <span
                             key={idx}
                             className={`hor-day s${cell.status}`}
-                            aria-label={`${cell.d} de ${name}`}
+                            aria-label={`${cell.d} ${name}`}
                           >{cell.d}</span>
                     )}
                   </div>
@@ -191,12 +172,10 @@ export default function Horaris() {
       {/* ── CTA Reserva ── */}
       <section className="hor-cta-section">
         <div className="container-max reveal" ref={ctaRef}>
-          <span className="label block hor-cta-eyebrow">Reserva</span>
-          <h2 className="hor-cta-title">Assegureu la vostra taula</h2>
-          <p className="hor-cta-body">
-            L'aforament del restaurant és reduït. Us recomanem reservar amb antelació.
-          </p>
-          <Link to="/reserves" className="btn-gold">Reservar ara</Link>
+          <span className="label block hor-cta-eyebrow">{t('horaris.ctaEyebrow')}</span>
+          <h2 className="hor-cta-title">{t('horaris.ctaHeading')}</h2>
+          <p className="hor-cta-body">{t('horaris.ctaBody')}</p>
+          <Link to={routes.reserves} className="btn-gold">{t('horaris.ctaBtn')}</Link>
         </div>
       </section>
     </>

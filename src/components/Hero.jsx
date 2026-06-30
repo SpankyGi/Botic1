@@ -1,6 +1,8 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import AtmosphericParticles from './AtmosphericParticles'
+import { useLangRoutes } from '../i18n/LangContext'
 
 const BG_VIDEO_SRC    = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1779093224/hero-botic_krjc0b.webm'
 const BG_VIDEO_POSTER = '/images/hero-botic-poster.jpg'
@@ -64,6 +66,9 @@ function ScrollHint() {
 }
 
 export default function Hero() {
+  const { t }  = useTranslation()
+  const routes = useLangRoutes()
+
   return (
     <section className="hero">
       <div className="hero-bg" />
@@ -81,19 +86,19 @@ export default function Hero() {
 
           {/* Titular en dues línies */}
           <h1 className="hero-title">
-            <span className="word"><span>Sentimiento</span></span>
-            <span className="word"><span>y pasión</span></span>
+            <span className="word"><span>{t('hero.word1')}</span></span>
+            <span className="word"><span>{t('hero.word2')}</span></span>
           </h1>
 
           {/* Subtext molt curt */}
           <p className="hero-sub">
-            Alta gastronomía en el corazón del Empordà.
+            {t('hero.sub')}
           </p>
 
           {/* CTA */}
           <div className="hero-ctas">
-            <Link to="/reserves" className="hero-btn-primary">Reservar</Link>
-            <Link to="/menus"    className="hero-btn-secondary">Ver menús</Link>
+            <Link to={routes.reserves} className="hero-btn-primary">{t('hero.btnPrimary')}</Link>
+            <Link to={routes.menus}    className="hero-btn-secondary">{t('hero.btnSecondary')}</Link>
           </div>
 
         </div>
