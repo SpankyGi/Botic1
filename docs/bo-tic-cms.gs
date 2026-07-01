@@ -56,14 +56,15 @@ var PESTANYES_VIGILADES = [PESTANYES.MENUS, PESTANYES.SECCIONS, PESTANYES.GRUPS,
 function onOpen() {
   SpreadsheetApp.getUi()
     .createMenu('Bo.TiC · Menús')
-    .addItem('⚙️  Configurar CMS',        'configurar_cms_menus')
+    .addItem('⚙️  Configurar CMS',              'configurar_cms_menus')
+    .addItem('🏗️  Migrar estructura de seccions', 'migrar_afegir_seccions')
     .addSeparator()
-    .addItem('✅  Validar dades',          'validar_dades')
-    .addItem('🔄  Actualitzar versió',     'actualitzar_versio')
-    .addItem('👁️  Previsualitzar JSON',    'previsualitzar_json')
+    .addItem('✅  Validar dades',                'validar_dades')
+    .addItem('🔄  Actualitzar versió',           'actualitzar_versio')
+    .addItem('👁️  Previsualitzar JSON',          'previsualitzar_json')
     .addSeparator()
-    .addItem('📋  Obrir instruccions',     'obrir_instruccions')
-    .addItem('🔍  Comprovar errors',       'comprovar_errors')
+    .addItem('📋  Obrir instruccions',           'obrir_instruccions')
+    .addItem('🔍  Comprovar errors',             'comprovar_errors')
     .addToUi();
 }
 
@@ -121,6 +122,173 @@ function configurar_cms_menus() {
     '1. Publica aquest script com a Aplicació web (veure instruccions)\n' +
     '2. Copia la URL acabada en /exec\n' +
     '3. Enganxa-la a public/config.json de la web',
+    ui.ButtonSet.OK
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MIGRACIÓ NO DESTRUCTIVA
+// ─────────────────────────────────────────────────────────────────────────────
+
+/**
+ * Afegeix la pestanya "seccions" i adapta "grups" sense esborrar cap dada.
+ * Segur d'executar múltiples vegades (idempotent).
+ */
+function migrar_afegir_seccions() {
+  var ui = SpreadsheetApp.getUi();
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+
+  var resp = ui.alert(
+    '🏗️ Migrar estructura de seccions',
+    'Aquesta migració és COMPLETAMENT NO DESTRUCTIVA:\n\n' +
+    '✅ Crea la pestanya "seccions" si no existeix\n' +
+    '✅ Afegeix les files inicials (aperitius, menu) si no hi són\n' +
+    '✅ Afegeix la columna "seccio_id" a "grups" si no existeix\n' +
+    '✅ Assigna "aperitius" al grup "bar" si té seccio_id buit\n' +
+    '✅ Actualitza la versió i la data\n\n' +
+    '❌ NO esborra cap pestanya\n' +
+    '❌ NO reinicia cap dada\n' +
+    '❌ NO modifica plats, menús, configuració ni instruccions\n\n' +
+    'Vols continuar?',
+    ui.ButtonSet.YES_NO
+  );
+
+  if (resp !== ui.Button.YES) {
+    ui.alert('Cancel·lat', 'No s\'ha modificat res.', ui.ButtonSet.OK);
+    return;
+  }
+
+  var log = [];
+
+  // ── 1. Pestanya "seccions" ────────────────────────────────────────────────
+  var sheetSeccions = ss.getSheetByName(PESTANYES.SECCIONS);
+  if (!sheetSeccions) {
+    sheetSeccions = ss.insertSheet(PESTANYES.SECCIONS);
+
+    // Capçaleres
+    var rangeCaps = sheetSeccions.getRange(1, 1, 1, COL_SECCIONS.length);
+    rangeCaps.setValues([COL_SECCIONS]);
+    rangeCaps.setFontWeight('bold')
+             .setFontColor(C.TEXT_BLANC)
+             .setBackground(C.TEC_FOSC);
+
+    // Congelar primera fila
+    sheetSeccions.setFrozenRows(1);
+    sheetSeccions.setColumnWidth(1, 120);  // id
+    sheetSeccions.setColumnWidth(2, 120);  // menu_id
+    sheetSeccions.setColumnWidth(3, 70);   // ordre
+    sheetSeccions.setColumnWidth(4, 70);   // actiu
+    for (var c = 5; c <= COL_SECCIONS.length; c++) {
+      sheetSeccions.setColumnWidth(c, 150);
+    }
+
+    log.push('✅ Pestanya "seccions" creada');
+  } else {
+    log.push('ℹ️ Pestanya "seccions" ja existia');
+  }
+
+  // ── 2. Files inicials a "seccions" ────────────────────────────────────────
+  var secData  = sheetSeccions.getDataRange().getValues();
+  var secCaps  = secData.length > 0 ? secData[0].map(function(h) { return String(h).trim(); }) : COL_SECCIONS;
+  var iSecId   = secCaps.indexOf('id');
+  if (iSecId < 0) iSecId = 0;  // fallback columna A
+
+  var existingSecIds = {};
+  for (var r = 1; r < secData.length; r++) {
+    var sid = String(secData[r][iSecId] || '').trim();
+    if (sid) existingSecIds[sid] = true;
+  }
+
+  var filesSeccions = [
+    ['aperitius', 'degustacio', 1, 'CERT', 'Aperitius',  'Aperitivos', 'Amuse-bouches', 'Appetisers'],
+    ['menu',      'degustacio', 2, 'CERT', 'Menú',       'Menú',       'Menu',           'Menu']
+  ];
+
+  var secAfegides = 0;
+  filesSeccions.forEach(function(fila) {
+    var fid = String(fila[0]).trim();
+    if (!existingSecIds[fid]) {
+      var nextRow = sheetSeccions.getLastRow() + 1;
+      sheetSeccions.getRange(nextRow, 1, 1, fila.length).setValues([fila]);
+      secAfegides++;
+    }
+  });
+
+  if (secAfegides > 0) {
+    log.push('✅ ' + secAfegides + ' fila(es) afegida(es) a "seccions"');
+  } else {
+    log.push('ℹ️ Les seccions inicials ja existien, no s\'han duplicat');
+  }
+
+  // ── 3. Columna "seccio_id" a "grups" ─────────────────────────────────────
+  var sheetGrups = ss.getSheetByName(PESTANYES.GRUPS);
+  if (!sheetGrups) {
+    log.push('⚠️ No s\'ha trobat la pestanya "grups" — omès');
+  } else {
+    var grupsData = sheetGrups.getDataRange().getValues();
+    var capsG     = grupsData.length > 0
+                    ? grupsData[0].map(function(h) { return String(h).trim(); })
+                    : [];
+
+    var colSeccioId = capsG.indexOf('seccio_id');
+
+    if (colSeccioId < 0) {
+      // Inserir columna "seccio_id" en posició 3 (després de id i menu_id)
+      sheetGrups.insertColumnAfter(2);
+      sheetGrups.getRange(1, 3).setValue('seccio_id')
+                                .setFontWeight('bold')
+                                .setFontColor(C.TEXT_BLANC)
+                                .setBackground(C.TEC_FOSC);
+      sheetGrups.setColumnWidth(3, 120);
+
+      // Re-llegir dades amb la nova columna
+      grupsData = sheetGrups.getDataRange().getValues();
+      capsG     = grupsData[0].map(function(h) { return String(h).trim(); });
+      colSeccioId = capsG.indexOf('seccio_id');
+
+      log.push('✅ Columna "seccio_id" afegida a "grups" (posició 3)');
+    } else {
+      log.push('ℹ️ Columna "seccio_id" ja existia a "grups" (posició ' + (colSeccioId + 1) + ')');
+    }
+
+    // ── 4. Assignar "aperitius" al grup "bar" si seccio_id és buit ─────────
+    var colGrupId   = capsG.indexOf('id');
+    if (colGrupId < 0) colGrupId = 0;
+    var grupsActualitzats = 0;
+
+    for (var gr = 1; gr < grupsData.length; gr++) {
+      var gid       = String(grupsData[gr][colGrupId]   || '').trim();
+      var curSecId  = String(grupsData[gr][colSeccioId] || '').trim();
+      if (gid === 'bar' && curSecId === '') {
+        sheetGrups.getRange(gr + 1, colSeccioId + 1).setValue('aperitius');
+        grupsActualitzats++;
+      }
+    }
+
+    if (grupsActualitzats > 0) {
+      log.push('✅ Assignat "aperitius" al grup "bar" com a seccio_id');
+    } else {
+      log.push('ℹ️ Grup "bar" ja tenia seccio_id — no modificat');
+    }
+  }
+
+  // ── 5. Actualitzar versió ─────────────────────────────────────────────────
+  var configSheet = ss.getSheetByName(PESTANYES.CONFIG);
+  if (configSheet) {
+    actualitzar_versio_interna_(configSheet);
+    log.push('✅ Versió i data actualitzades a "configuracio"');
+  }
+
+  // ── Navegar a "seccions" per comoditat ────────────────────────────────────
+  if (sheetSeccions) ss.setActiveSheet(sheetSeccions);
+
+  ui.alert(
+    '✅ Migració completada',
+    log.join('\n') + '\n\n' +
+    'Properes passes:\n' +
+    '1. Revisa la pestanya "seccions" i afegeix les seccions que necessitis\n' +
+    '2. A "grups", omple la columna "seccio_id" per a cada grup\n' +
+    '3. Desplega l\'Apps Script com a nova versió (mateix URL, sense canviar config.json)',
     ui.ButtonSet.OK
   );
 }
