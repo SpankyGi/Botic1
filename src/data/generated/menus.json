@@ -5,16 +5,27 @@
     { "id": "chef",        "order": 2, "active": true, "price": "250 €", "note_ca": "", "note_es": "", "note_fr": "", "note_en": "" },
     { "id": "esencia",     "order": 3, "active": true, "price": "90 €",  "note_ca": "", "note_es": "", "note_fr": "", "note_en": "" }
   ],
+  "sections": [
+    { "id": "snacks-deg",   "menu_id": "degustacio", "order": 1, "active": true, "name_ca": "Snacks",  "name_es": "Snacks",   "name_fr": "Snacks",    "name_en": "Snacks" },
+    { "id": "menu-deg",     "menu_id": "degustacio", "order": 2, "active": true, "name_ca": "Menú",    "name_es": "Menú",     "name_fr": "Menu",      "name_en": "Menu" },
+    { "id": "postres-deg",  "menu_id": "degustacio", "order": 3, "active": true, "name_ca": "Postres", "name_es": "Postres",  "name_fr": "Desserts",  "name_en": "Desserts" },
+    { "id": "snacks-chef",  "menu_id": "chef",        "order": 1, "active": true, "name_ca": "Snacks",  "name_es": "Snacks",   "name_fr": "Snacks",    "name_en": "Snacks" },
+    { "id": "menu-chef",    "menu_id": "chef",        "order": 2, "active": true, "name_ca": "Menú",    "name_es": "Menú",     "name_fr": "Menu",      "name_en": "Menu" },
+    { "id": "postres-chef", "menu_id": "chef",        "order": 3, "active": true, "name_ca": "Postres", "name_es": "Postres",  "name_fr": "Desserts",  "name_en": "Desserts" },
+    { "id": "snacks-ese",   "menu_id": "esencia",     "order": 1, "active": true, "name_ca": "Snacks",  "name_es": "Snacks",   "name_fr": "Snacks",    "name_en": "Snacks" },
+    { "id": "menu-ese",     "menu_id": "esencia",     "order": 2, "active": true, "name_ca": "Menú",    "name_es": "Menú",     "name_fr": "Menu",      "name_en": "Menu" },
+    { "id": "postres-ese",  "menu_id": "esencia",     "order": 3, "active": true, "name_ca": "Postres", "name_es": "Postres",  "name_fr": "Desserts",  "name_en": "Desserts" }
+  ],
   "groups": [
-    { "id": "deg-snacks",   "menu_id": "degustacio", "order": 1, "active": true, "name_ca": "Snacks",  "name_es": "Snacks",   "name_fr": "Snacks",    "name_en": "Snacks" },
-    { "id": "deg-menu",     "menu_id": "degustacio", "order": 2, "active": true, "name_ca": "Menú",    "name_es": "Menú",     "name_fr": "Menu",      "name_en": "Menu" },
-    { "id": "deg-postres",  "menu_id": "degustacio", "order": 3, "active": true, "name_ca": "Postres", "name_es": "Postres",  "name_fr": "Desserts",  "name_en": "Desserts" },
-    { "id": "chef-snacks",  "menu_id": "chef",        "order": 1, "active": true, "name_ca": "Snacks",  "name_es": "Snacks",   "name_fr": "Snacks",    "name_en": "Snacks" },
-    { "id": "chef-menu",    "menu_id": "chef",        "order": 2, "active": true, "name_ca": "Menú",    "name_es": "Menú",     "name_fr": "Menu",      "name_en": "Menu" },
-    { "id": "chef-postres", "menu_id": "chef",        "order": 3, "active": true, "name_ca": "Postres", "name_es": "Postres",  "name_fr": "Desserts",  "name_en": "Desserts" },
-    { "id": "ese-snacks",   "menu_id": "esencia",     "order": 1, "active": true, "name_ca": "Snacks",  "name_es": "Snacks",   "name_fr": "Snacks",    "name_en": "Snacks" },
-    { "id": "ese-menu",     "menu_id": "esencia",     "order": 2, "active": true, "name_ca": "Menú",    "name_es": "Menú",     "name_fr": "Menu",      "name_en": "Menu" },
-    { "id": "ese-postres",  "menu_id": "esencia",     "order": 3, "active": true, "name_ca": "Postres", "name_es": "Postres",  "name_fr": "Desserts",  "name_en": "Desserts" }
+    { "id": "deg-snacks",   "menu_id": "degustacio", "section_id": "snacks-deg",   "order": 1, "active": true, "name_ca": "Snacks",  "name_es": "Snacks",   "name_fr": "Snacks",    "name_en": "Snacks" },
+    { "id": "deg-menu",     "menu_id": "degustacio", "section_id": "menu-deg",     "order": 2, "active": true, "name_ca": "Menú",    "name_es": "Menú",     "name_fr": "Menu",      "name_en": "Menu" },
+    { "id": "deg-postres",  "menu_id": "degustacio", "section_id": "postres-deg",  "order": 3, "active": true, "name_ca": "Postres", "name_es": "Postres",  "name_fr": "Desserts",  "name_en": "Desserts" },
+    { "id": "chef-snacks",  "menu_id": "chef",        "section_id": "snacks-chef",  "order": 1, "active": true, "name_ca": "Snacks",  "name_es": "Snacks",   "name_fr": "Snacks",    "name_en": "Snacks" },
+    { "id": "chef-menu",    "menu_id": "chef",        "section_id": "menu-chef",    "order": 2, "active": true, "name_ca": "Menú",    "name_es": "Menú",     "name_fr": "Menu",      "name_en": "Menu" },
+    { "id": "chef-postres", "menu_id": "chef",        "section_id": "postres-chef", "order": 3, "active": true, "name_ca": "Postres", "name_es": "Postres",  "name_fr": "Desserts",  "name_en": "Desserts" },
+    { "id": "ese-snacks",   "menu_id": "esencia",     "section_id": "snacks-ese",   "order": 1, "active": true, "name_ca": "Snacks",  "name_es": "Snacks",   "name_fr": "Snacks",    "name_en": "Snacks" },
+    { "id": "ese-menu",     "menu_id": "esencia",     "section_id": "menu-ese",     "order": 2, "active": true, "name_ca": "Menú",    "name_es": "Menú",     "name_fr": "Menu",      "name_en": "Menu" },
+    { "id": "ese-postres",  "menu_id": "esencia",     "section_id": "postres-ese",  "order": 3, "active": true, "name_ca": "Postres", "name_es": "Postres",  "name_fr": "Desserts",  "name_en": "Desserts" }
   ],
   "dishes": [
     { "id": "deg-s1", "menu_id": "degustacio", "group_id": "deg-snacks", "order": 1, "active": true, "name_ca": "Bar",        "name_es": "Bar",        "name_fr": "Bar",        "name_en": "Bar",        "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
@@ -47,10 +58,10 @@
     { "id": "chef-m8", "menu_id": "chef", "group_id": "chef-menu", "order": 8, "active": true, "name_ca": "Pollastre i llamàntol",            "name_es": "Pollo y bogavante",             "name_fr": "Poulet et homard",             "name_en": "Chicken and lobster",          "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
     { "id": "chef-m9", "menu_id": "chef", "group_id": "chef-menu", "order": 9, "active": true, "name_ca": "Múrgoles",                         "name_es": "Colmenillas",                   "name_fr": "Morilles",                     "name_en": "Morels",                       "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
 
-    { "id": "chef-p1", "menu_id": "chef", "group_id": "chef-postres", "order": 1, "active": true, "name_ca": "Llavis",    "name_es": "Labios",    "name_fr": "Lèvres",   "name_en": "Lips",        "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
-    { "id": "chef-p2", "menu_id": "chef", "group_id": "chef-postres", "order": 2, "active": true, "name_ca": "Poma",      "name_es": "Manzana",   "name_fr": "Pomme",    "name_en": "Apple",       "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
-    { "id": "chef-p3", "menu_id": "chef", "group_id": "chef-postres", "order": 3, "active": true, "name_ca": "El Golós",  "name_es": "El Goloso", "name_fr": "Le Gourmand", "name_en": "The Greedy", "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
-    { "id": "chef-p4", "menu_id": "chef", "group_id": "chef-postres", "order": 4, "active": true, "name_ca": "Bo.TiC 2026","name_es": "Bo.Ti 2026","name_fr": "Bo.TiC 2026","name_en": "Bo.TiC 2026","description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
+    { "id": "chef-p1", "menu_id": "chef", "group_id": "chef-postres", "order": 1, "active": true, "name_ca": "Llavis",    "name_es": "Labios",    "name_fr": "Lèvres",    "name_en": "Lips",        "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
+    { "id": "chef-p2", "menu_id": "chef", "group_id": "chef-postres", "order": 2, "active": true, "name_ca": "Poma",      "name_es": "Manzana",   "name_fr": "Pomme",     "name_en": "Apple",       "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
+    { "id": "chef-p3", "menu_id": "chef", "group_id": "chef-postres", "order": 3, "active": true, "name_ca": "El Golós",  "name_es": "El Goloso", "name_fr": "Le Gourmand","name_en": "The Greedy",  "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
+    { "id": "chef-p4", "menu_id": "chef", "group_id": "chef-postres", "order": 4, "active": true, "name_ca": "Bo.TiC 2026","name_es": "Bo.TiC 2026","name_fr": "Bo.TiC 2026","name_en": "Bo.TiC 2026","description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
 
     { "id": "ese-s1", "menu_id": "esencia", "group_id": "ese-snacks", "order": 1, "active": true, "name_ca": "Bar",    "name_es": "Bar",    "name_fr": "Bar",    "name_en": "Bar",    "description_ca": "", "description_es": "", "description_fr": "", "description_en": "", "allergens": "", "supplement": "" },
 

@@ -12,14 +12,16 @@
 
 var PESTANYES = {
   MENUS:        'menus',
+  SECCIONS:     'seccions',
   GRUPS:        'grups',
   PLATS:        'plats',
   CONFIG:       'configuracio',
   INSTRUCCIONS: 'instruccions'
 };
 
-var COL_MENUS  = ['id', 'ordre', 'preu', 'actiu', 'nom_ca', 'nom_es', 'nom_fr', 'nom_en'];
-var COL_GRUPS  = ['id', 'menu_id', 'seccio_id', 'ordre', 'actiu', 'nom_ca', 'nom_es', 'nom_fr', 'nom_en'];
+var COL_MENUS    = ['id', 'ordre', 'preu', 'actiu', 'nom_ca', 'nom_es', 'nom_fr', 'nom_en'];
+var COL_SECCIONS = ['id', 'menu_id', 'ordre', 'actiu', 'nom_ca', 'nom_es', 'nom_fr', 'nom_en'];
+var COL_GRUPS    = ['id', 'menu_id', 'seccio_id', 'ordre', 'actiu', 'nom_ca', 'nom_es', 'nom_fr', 'nom_en'];
 var COL_PLATS  = ['id', 'menu_id', 'grup_id', 'ordre', 'actiu', 'nom_ca', 'nom_es', 'nom_fr', 'nom_en',
                   'descripcio_ca', 'descripcio_es', 'descripcio_fr', 'descripcio_en',
                   'allergens', 'suplement', 'actualitzat_el'];
@@ -45,7 +47,7 @@ var C = {
 };
 
 // Pestanyes que disparen actualització de versió quan s'editen
-var PESTANYES_VIGILADES = [PESTANYES.MENUS, PESTANYES.GRUPS, PESTANYES.PLATS];
+var PESTANYES_VIGILADES = [PESTANYES.MENUS, PESTANYES.SECCIONS, PESTANYES.GRUPS, PESTANYES.PLATS];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // MENÚ PERSONALITZAT
@@ -93,6 +95,7 @@ function configurar_cms_menus() {
   }
 
   crear_pestanya_menus_(ss);
+  crear_pestanya_seccions_(ss);
   crear_pestanya_grups_(ss);
   crear_pestanya_plats_(ss);
   crear_pestanya_configuracio_(ss);
@@ -101,7 +104,7 @@ function configurar_cms_menus() {
   // Elimina el full per defecte si és buit i no és cap de les nostres pestanyes
   ['Full 1', 'Sheet1', 'Hoja 1', 'Feuille 1'].forEach(function(nom) {
     var f = ss.getSheetByName(nom);
-    if (f && ss.getSheets().length > 5) {
+    if (f && ss.getSheets().length > 6) {
       try { ss.deleteSheet(f); } catch (e) {}
     }
   });
@@ -113,7 +116,7 @@ function configurar_cms_menus() {
   ui.alert(
     '✅  CMS configurat correctament',
     'S\'han creat les pestanyes:\n' +
-    '  • menus\n  • grups\n  • plats\n  • configuracio\n  • instruccions\n\n' +
+    '  • menus\n  • seccions\n  • grups\n  • plats\n  • configuracio\n  • instruccions\n\n' +
     'Propera passa:\n' +
     '1. Publica aquest script com a Aplicació web (veure instruccions)\n' +
     '2. Copia la URL acabada en /exec\n' +
@@ -166,6 +169,46 @@ function crear_pestanya_menus_(ss) {
   sheet.setFrozenRows(1);
   sheet.getRange(1, 1, sheet.getLastRow(), COL_MENUS.length).createFilter();
   aplicar_format_condicional_buit_(sheet, [1, 5], 2, 100);
+}
+
+function crear_pestanya_seccions_(ss) {
+  var sheet = crear_o_reiniciar_pestanya_(ss, PESTANYES.SECCIONS, COL_SECCIONS);
+
+  var notes = {
+    'id':     'Identificador únic de la secció. EXEMPLE: aperitius, plats-principals. NO canviar.',
+    'menu_id':'Ha de coincidir exactament amb un id de la pestanya "menus". NO canviar.',
+    'ordre':  'Nombre enter positiu. Ordre dins del menú (1 = primer).',
+    'actiu':  'Marca la casella per mostrar la secció a la web.',
+    'nom_ca': '★ OBLIGATORI. Nom en català.',
+    'nom_es': 'Nom en castellà.',
+    'nom_fr': 'Nom en francès.',
+    'nom_en': 'Nom en anglès.'
+  };
+  afegir_notes_(sheet, COL_SECCIONS, notes);
+
+  var dades = [
+    ['aperitius', 'degustacio', 1, 'CERT', 'Aperitius',   'Aperitivos',    'Amuse-bouches',    'Appetisers'],
+    ['menu',      'degustacio', 2, 'CERT', 'Menú',        'Menú',          'Menu',             'Menu']
+  ];
+  sheet.getRange(2, 1, dades.length, COL_SECCIONS.length).setValues(dades);
+
+  var hColors = [C.TEC_FOSC, C.TEC_FOSC, C.TEC_FOSC, C.TEC_FOSC,
+                 C.EDIT_BLAU, C.EDIT_CLAR, C.EDIT_CLAR, C.EDIT_CLAR];
+  aplicar_colors_capçalera_(sheet, COL_SECCIONS.length, hColors);
+
+  var dFons = [C.F_TEC, C.F_TEC, C.F_SEMI, C.F_SEMI,
+               C.F_BLANC, C.F_CLAR, C.F_CLAR, C.F_CLAR];
+  aplicar_fons_dades_(sheet, COL_SECCIONS.length, dFons, 200);
+
+  aplicar_checkbox_actiu_(sheet, 4, 200);
+  aplicar_validacio_nombre_positiu_(sheet, 3, 200);  // ordre
+
+  var amples = [140, 140, 70, 70, 200, 200, 200, 200];
+  aplicar_amplades_(sheet, amples);
+
+  sheet.setFrozenRows(1);
+  sheet.getRange(1, 1, Math.max(sheet.getLastRow(), 1), COL_SECCIONS.length).createFilter();
+  aplicar_format_condicional_buit_(sheet, [1, 5], 2, 200);
 }
 
 function crear_pestanya_grups_(ss) {
@@ -537,16 +580,18 @@ function sanititzar_(val) {
 // ─────────────────────────────────────────────────────────────────────────────
 
 function construir_json_menus_() {
-  var cfg    = llegir_config_();
-  var menus  = llegir_dades_pestanya_(PESTANYES.MENUS);
-  var grups  = llegir_dades_pestanya_(PESTANYES.GRUPS);
-  var plats  = llegir_dades_pestanya_(PESTANYES.PLATS);
+  var cfg      = llegir_config_();
+  var menus    = llegir_dades_pestanya_(PESTANYES.MENUS);
+  var seccions = llegir_dades_pestanya_(PESTANYES.SECCIONS);
+  var grups    = llegir_dades_pestanya_(PESTANYES.GRUPS);
+  var plats    = llegir_dades_pestanya_(PESTANYES.PLATS);
 
   function ord(a, b) { return (Number(a['ordre']) || 0) - (Number(b['ordre']) || 0); }
 
-  var menusActius = menus.filter(function(m) { return es_actiu_(m['actiu']); }).sort(ord);
-  var grupsActius = grups.filter(function(g) { return es_actiu_(g['actiu']); }).sort(ord);
-  var platsActius = plats.filter(function(p) { return es_actiu_(p['actiu']); }).sort(ord);
+  var menusActius    = menus   .filter(function(m) { return es_actiu_(m['actiu']); }).sort(ord);
+  var seccionsActives = seccions.filter(function(s) { return es_actiu_(s['actiu']); }).sort(ord);
+  var grupsActius    = grups   .filter(function(g) { return es_actiu_(g['actiu']); }).sort(ord);
+  var platsActius    = plats   .filter(function(p) { return es_actiu_(p['actiu']); }).sort(ord);
 
   var menuIds = new Set(menusActius.map(function(m) { return sanititzar_(m['id']); }));
 
@@ -569,6 +614,22 @@ function construir_json_menus_() {
     };
   });
 
+  // Seccions (claus Catalan → English per al frontend)
+  var seccionsOut = seccionsActives
+    .filter(function(s) { return menuIds.has(sanititzar_(s['menu_id'])); })
+    .map(function(s) {
+      return {
+        id:      sanititzar_(s['id']),
+        menu_id: sanititzar_(s['menu_id']),
+        order:   Number(s['ordre']) || 0,
+        active:  true,
+        name_ca: sanititzar_(s['nom_ca']),
+        name_es: sanititzar_(s['nom_es'] || ''),
+        name_fr: sanititzar_(s['nom_fr'] || ''),
+        name_en: sanititzar_(s['nom_en'] || '')
+      };
+    });
+
   var grupsVàlids = grupsActius.filter(function(g) {
     return menuIds.has(sanititzar_(g['menu_id']));
   });
@@ -576,15 +637,15 @@ function construir_json_menus_() {
 
   var grupsOut = grupsVàlids.map(function(g) {
     return {
-      id:        sanititzar_(g['id']),
-      menu_id:   sanititzar_(g['menu_id']),
-      seccio_id: sanititzar_(g['seccio_id'] || ''),
-      order:     Number(g['ordre']) || 0,
-      active:    true,
-      name_ca:   sanititzar_(g['nom_ca']),
-      name_es:   sanititzar_(g['nom_es'] || ''),
-      name_fr:   sanititzar_(g['nom_fr'] || ''),
-      name_en:   sanititzar_(g['nom_en'] || '')
+      id:         sanititzar_(g['id']),
+      menu_id:    sanititzar_(g['menu_id']),
+      section_id: sanititzar_(g['seccio_id'] || ''),  // seccio_id (Catalan) → section_id (English)
+      order:      Number(g['ordre']) || 0,
+      active:     true,
+      name_ca:    sanititzar_(g['nom_ca']),
+      name_es:    sanititzar_(g['nom_es'] || ''),
+      name_fr:    sanititzar_(g['nom_fr'] || ''),
+      name_en:    sanititzar_(g['nom_en'] || '')
     };
   });
 
@@ -618,9 +679,10 @@ function construir_json_menus_() {
     version:              String(cfg['versio'] || '1'),
     ultima_actualitzacio: String(cfg['ultima_actualitzacio'] || ''),
     temps_cache_minuts:   Number(cfg['temps_cache_minuts']) || 10,
-    menus:   menusOut,
-    groups:  grupsOut,
-    dishes:  platsOut
+    menus:    menusOut,
+    sections: seccionsOut,
+    groups:   grupsOut,
+    dishes:   platsOut
   };
 }
 
@@ -689,11 +751,12 @@ function previsualitzar_json() {
     var json = construir_json_menus_();
     var text = JSON.stringify(json, null, 2);
     var resum =
-      'Menús actius: '   + json.menus.length   + '\n' +
-      'Grups actius: '   + json.groups.length  + '\n' +
-      'Plats actius: '   + json.dishes.length  + '\n' +
-      'Versió: '         + json.version        + '\n' +
-      'Mida JSON: '      + Math.round(text.length / 1024 * 10) / 10 + ' KB\n\n';
+      'Menús actius: '     + json.menus.length              + '\n' +
+      'Seccions actives: ' + (json.sections || []).length   + '\n' +
+      'Grups actius: '     + json.groups.length             + '\n' +
+      'Plats actius: '     + json.dishes.length             + '\n' +
+      'Versió: '           + json.version                   + '\n' +
+      'Mida JSON: '        + Math.round(text.length / 1024 * 10) / 10 + ' KB\n\n';
 
     var preview = text.length > 4000
       ? text.substring(0, 4000) + '\n\n... [JSON truncat a 4000 caràcters per a la previsualització]'
@@ -784,9 +847,10 @@ function actualitzar_versio_interna_(configSheet) {
 function obtenir_errors_() {
   var errors = [];
 
-  var menus  = llegir_dades_pestanya_(PESTANYES.MENUS);
-  var grups  = llegir_dades_pestanya_(PESTANYES.GRUPS);
-  var plats  = llegir_dades_pestanya_(PESTANYES.PLATS);
+  var menus    = llegir_dades_pestanya_(PESTANYES.MENUS);
+  var seccions = llegir_dades_pestanya_(PESTANYES.SECCIONS);
+  var grups    = llegir_dades_pestanya_(PESTANYES.GRUPS);
+  var plats    = llegir_dades_pestanya_(PESTANYES.PLATS);
 
   // Validació menus
   var idsMenus = new Set();
@@ -804,6 +868,23 @@ function obtenir_errors_() {
     if (m['ordre'] !== '' && isNaN(Number(m['ordre']))) errors.push('menus · fila ' + f + ': "ordre" ha de ser un nombre');
   });
 
+  // Validació seccions
+  var idsSeccions = new Set();
+  seccions.forEach(function(s, i) {
+    var f = i + 2;
+    var id = String(s['id'] || '').trim();
+    if (!id) {
+      errors.push('seccions · fila ' + f + ': falta el camp "id"');
+    } else if (idsSeccions.has(id)) {
+      errors.push('seccions · fila ' + f + ': id duplicat "' + id + '"');
+    } else {
+      idsSeccions.add(id);
+    }
+    var mId = String(s['menu_id'] || '').trim();
+    if (!idsMenus.has(mId)) errors.push('seccions · fila ' + f + ': menu_id "' + mId + '" no existeix a la pestanya "menus"');
+    if (!String(s['nom_ca'] || '').trim()) errors.push('seccions · fila ' + f + ': falta "nom_ca"');
+  });
+
   // Validació grups
   var idsGrups = new Set();
   grups.forEach(function(g, i) {
@@ -818,6 +899,10 @@ function obtenir_errors_() {
     }
     var mId = String(g['menu_id'] || '').trim();
     if (!idsMenus.has(mId)) errors.push('grups · fila ' + f + ': menu_id "' + mId + '" no existeix a la pestanya "menus"');
+    var secId = String(g['seccio_id'] || '').trim();
+    if (secId && idsSeccions.size > 0 && !idsSeccions.has(secId)) {
+      errors.push('grups · fila ' + f + ': seccio_id "' + secId + '" no existeix a la pestanya "seccions"');
+    }
     if (!String(g['nom_ca'] || '').trim()) errors.push('grups · fila ' + f + ': falta "nom_ca"');
   });
 

@@ -62,7 +62,62 @@ function MenusHero({ t }) {
   )
 }
 
-/* ── Accordion de secció ──────────────────────────────────── */
+/* ── Accordion de grup (nivell 2 — quan hi ha seccions reals) ── */
+function GroupAccordion({ group, sectionId, menuId }) {
+  const [open, setOpen]       = useState(false)
+  const [openKey, setOpenKey] = useState(0)
+  const id     = useId()
+  const bodyId = `${id}-body`
+
+  const toggle = () => {
+    if (!open) setOpenKey(k => k + 1)
+    setOpen(o => !o)
+  }
+
+  return (
+    <div className={`mnu-section mnu-group${open ? ' is-open' : ''}`}>
+      <button
+        className="mnu-section-trigger"
+        onClick={toggle}
+        aria-expanded={open}
+        aria-controls={bodyId}
+      >
+        <span className="mnu-section-dot" aria-hidden="true" />
+        <span className="mnu-section-title">{group.title}</span>
+        <span className="mnu-section-count" aria-hidden="true">{group.items.length}</span>
+        <span className="mnu-section-icon" aria-hidden="true">{open ? '−' : '+'}</span>
+      </button>
+      <div
+        id={bodyId}
+        className={`mnu-section-body${open ? ' open' : ''}`}
+        role="region"
+      >
+        <div className="mnu-section-inner">
+          <div className="mnu-section-accent" aria-hidden="true" />
+          <ul key={openKey} className="mnu-dish-list">
+            {group.items.map((item, i) => (
+              <li
+                key={`${menuId}-${sectionId}-${group.id}-${i}`}
+                className="mnu-dish"
+                style={{ animationDelay: `${60 + i * 55}ms` }}
+              >
+                <span className="mnu-dish-num" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="mnu-dish-content">
+                  <h4 className="mnu-dish-name">{item.name}</h4>
+                  {item.description && <p className="mnu-dish-desc">{item.description}</p>}
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ── Accordion de secció (nivell 1) ──────────────────────────────────── */
 function SectionAccordion({ section, menuId, t }) {
   const [open, setOpen]       = useState(false)
   const [openKey, setOpenKey] = useState(0)
@@ -74,10 +129,15 @@ function SectionAccordion({ section, menuId, t }) {
     setOpen(o => !o)
   }
 
-  // section.title already in the correct language from useMenusData; pass through t() for
-  // any legacy keys that map to i18n (e.g. 'Snacks' → 'menus.sectionSnacks'), otherwise use as-is
+  // Compatibilitat amb noms llegats del fallback (Snacks/Menú/Postres → i18n)
   const SECTION_KEY_MAP = { 'Snacks': 'menus.sectionSnacks', 'Menú': 'menus.sectionMenu', 'Postres': 'menus.sectionPostres' }
   const sectionTitle = t(SECTION_KEY_MAP[section.title] || section.title)
+
+  // flat: secció amb un sol grup del mateix nom → mostra plats directament sense accordion de grup
+  const flatItems  = section.flat ? (section.groups[0]?.items ?? []) : []
+  const totalCount = section.flat
+    ? flatItems.length
+    : section.groups.reduce((s, g) => s + g.items.length, 0)
 
   return (
     <div className={`mnu-section${open ? ' is-open' : ''}`}>
@@ -89,7 +149,7 @@ function SectionAccordion({ section, menuId, t }) {
       >
         <span className="mnu-section-dot" aria-hidden="true" />
         <span className="mnu-section-title">{sectionTitle}</span>
-        <span className="mnu-section-count" aria-hidden="true">{section.items.length}</span>
+        <span className="mnu-section-count" aria-hidden="true">{totalCount}</span>
         <span className="mnu-section-icon" aria-hidden="true">{open ? '−' : '+'}</span>
       </button>
 
@@ -101,25 +161,34 @@ function SectionAccordion({ section, menuId, t }) {
       >
         <div className="mnu-section-inner">
           <div className="mnu-section-accent" aria-hidden="true" />
-          <ul key={openKey} className="mnu-dish-list">
-            {section.items.map((item, i) => (
-              <li
-                key={`${menuId}-${section.title}-${i}`}
-                className="mnu-dish"
-                style={{ animationDelay: `${60 + i * 55}ms` }}
-              >
-                <span className="mnu-dish-num" aria-hidden="true">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <div className="mnu-dish-content">
-                  <h4 className="mnu-dish-name">{item.name}</h4>
-                  {item.description && (
-                    <p className="mnu-dish-desc">{item.description}</p>
-                  )}
-                </div>
-              </li>
-            ))}
-          </ul>
+          {section.flat ? (
+            <ul key={openKey} className="mnu-dish-list">
+              {flatItems.map((item, i) => (
+                <li
+                  key={`${menuId}-${section.id}-${i}`}
+                  className="mnu-dish"
+                  style={{ animationDelay: `${60 + i * 55}ms` }}
+                >
+                  <span className="mnu-dish-num" aria-hidden="true">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <div className="mnu-dish-content">
+                    <h4 className="mnu-dish-name">{item.name}</h4>
+                    {item.description && <p className="mnu-dish-desc">{item.description}</p>}
+                  </div>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            section.groups.map(group => (
+              <GroupAccordion
+                key={group.id}
+                group={group}
+                sectionId={section.id}
+                menuId={menuId}
+              />
+            ))
+          )}
         </div>
       </div>
     </div>
@@ -441,7 +510,7 @@ export default function Menus() {
           <div className="mnu-sections">
             {active.sections.map((section) => (
               <SectionAccordion
-                key={`${activeId}-${section.title}`}
+                key={`${activeId}-${section.id}`}
                 section={section}
                 menuId={activeId}
                 t={t}

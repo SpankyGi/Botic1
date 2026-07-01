@@ -120,7 +120,7 @@ Si crees una nova implementació (URL nova):
 
 ## 10. Estructura del Google Sheet
 
-El document té **cinc pestanyes**:
+El document té **sis pestanyes**:
 
 ### Pestanya `menus`
 
@@ -128,11 +128,22 @@ El document té **cinc pestanyes**:
 |----|-------|------|-------|--------|--------|--------|--------|
 | degustacio | 1 | 190 | CERT | Menú Degustació | Menú Degustación | Menu Dégustation | Tasting Menu |
 
+### Pestanya `seccions` *(nova)*
+
+Agrupa els grups en seccions de nivell superior. **Cada grup ha de tenir un `seccio_id` que correspongui a un `id` d'aquesta pestanya.**
+
+| id | menu_id | ordre | actiu | nom_ca | nom_es | nom_fr | nom_en |
+|----|---------|-------|-------|--------|--------|--------|--------|
+| aperitius | degustacio | 1 | CERT | Aperitius | Aperitivos | Amuse-bouches | Appetisers |
+| menu | degustacio | 2 | CERT | Menú | Menú | Menu | Menu |
+
 ### Pestanya `grups`
 
 | id | menu_id | seccio_id | ordre | actiu | nom_ca | … |
 |----|---------|-----------|-------|-------|--------|---|
 | bar | degustacio | aperitius | 1 | CERT | Bar | … |
+
+> `seccio_id` ha de coincidir amb un `id` de la pestanya `seccions`.
 
 ### Pestanya `plats`
 
@@ -153,7 +164,7 @@ El document té **cinc pestanyes**:
 
 ## 11. Format de la resposta de l'API
 
-L'endpoint retorna JSON compatible amb el frontend (claus en anglès):
+L'endpoint retorna JSON compatible amb el frontend (claus en anglès). La jerarquia és **3 nivells**: secció → grup → plats.
 
 ```json
 {
@@ -165,8 +176,13 @@ L'endpoint retorna JSON compatible amb el frontend (claus en anglès):
       "name_ca": "Menú Degustació", "name_es": "Menú Degustación",
       "name_fr": "Menu Dégustation", "name_en": "Tasting Menu" }
   ],
+  "sections": [
+    { "id": "aperitius", "menu_id": "degustacio", "order": 1, "active": true,
+      "name_ca": "Aperitius", "name_es": "Aperitivos",
+      "name_fr": "Amuse-bouches", "name_en": "Appetisers" }
+  ],
   "groups": [
-    { "id": "bar", "menu_id": "degustacio", "seccio_id": "aperitius",
+    { "id": "bar", "menu_id": "degustacio", "section_id": "aperitius",
       "order": 1, "active": true,
       "name_ca": "Bar", "name_es": "Bar", "name_fr": "Bar", "name_en": "Bar" }
   ],
@@ -180,6 +196,8 @@ L'endpoint retorna JSON compatible amb el frontend (claus en anglès):
   ]
 }
 ```
+
+> **Compatibilitat enrere:** si `sections` és absent o buit, el frontend usa els grups directament com a seccions (comportament 2 nivells). Cap pantalla buida.
 
 ---
 
