@@ -230,36 +230,41 @@ function parseSheet(sheet) {
 5. Clic a **Desplegar**
 6. Copieu l'URL que apareix (té la forma `https://script.google.com/macros/s/ABC.../exec`)
 
-### Pas 3: Configurar la variable d'entorn
+### Pas 3: Configurar `config.json`
 
-`VITE_MENUS_API_URL` és una **variable de build-time**: Vite la incrusta al bundle durant `npm run build`. No és una variable de servidor en temps d'execució. Si no s'estableix abans del build, la web usa el fallback JSON inclòs en el bundle.
+La URL de l'API es llegeix en **runtime** des del fitxer `public/config.json` (copiat a `dist/config.json` durant el build). No és una variable de compilació: es pot modificar directament al servidor sense recompilar ni fer cap deploy del codi.
+
+#### Editar el fitxer
+
+Obriu `public/config.json` i substituïu `SCRIPT_ID` per l'ID real del vostre script:
+
+```json
+{
+  "menusApiUrl": "https://script.google.com/macros/s/ABC.../exec"
+}
+```
+
+**Característiques del fitxer:**
+- És un fitxer **públic** — no pot contenir secrets ni claus privades
+- L'endpoint ha de ser de **només lectura** (Google Apps Script amb `doGet`)
+- Es pot editar directament a Hostinger (File Manager) sense recompilar la web
+- Si el fitxer no existeix o l'URL no és vàlida, la web usa el fallback JSON automàticament
 
 #### Per a desenvolupament local
 
-Crea un fitxer `.env.local` a l'arrel del projecte (no es commiteja a git):
+Editeu `public/config.json` amb la URL del vostre script de proves. El fitxer és servit per Vite dev server a `http://localhost:5173/config.json`.
 
-```
-VITE_MENUS_API_URL=https://script.google.com/macros/s/ABC.../exec
-```
+#### Per al deploy via GitHub Actions
 
-#### Per al deploy a Hostinger via GitHub Actions
+No cal cap secret de GitHub. El fitxer `public/config.json` es commiteja al repositori (conté una URL pública, no un secret), i es desplega automàticament com a part del `dist/`.
 
-La URL s'ha d'injectar com a **secret de GitHub** durant el pas de build del CI:
+#### Canviar la URL a Hostinger sense redeployar
 
-1. Ves a **GitHub → SpankyGi/Botic1 → Settings → Secrets and variables → Actions**
-2. Crea un secret nou: nom `VITE_MENUS_API_URL`, valor = la URL completa del script
-3. Edita el fitxer de workflow (`.github/workflows/deploy.yml`) i afegeix la variable al pas de build:
+1. Accediu a **Hostinger → File Manager → public_html/config.json**
+2. Editeu el valor de `menusApiUrl`
+3. Deseu — el canvi és immediat per als nous visitants
 
-```yaml
-- name: Build
-  run: npm run build
-  env:
-    VITE_MENUS_API_URL: ${{ secrets.VITE_MENUS_API_URL }}
-```
-
-Sense aquest secret al CI, el bundle es genera sense la URL i la web mostra el fallback JSON (contingut estàtic del build anterior) fins que es fa un nou deploy amb la variable correcta.
-
-**Important:** cada vegada que modifiqueu el codi del script, heu de crear una **nova implementació** (no "gestionar implementació"). La URL canvia — caldrà actualitzar el secret de GitHub.
+**Important:** cada vegada que modifiqueu el codi del script d'Apps Script, heu de crear una **nova implementació** (no "gestionar implementació"). La URL canvia — caldrà actualitzar `config.json`.
 
 ---
 

@@ -1,9 +1,8 @@
 import { useState, useEffect, useMemo } from 'react'
 import { useLang } from '../i18n/LangContext'
 import { getCachedMenus, setCachedMenus } from '../services/menusCache'
+import { loadConfig } from '../services/config'
 import fallback from '../data/generated/menus.json'
-
-const API_URL = import.meta.env.VITE_MENUS_API_URL || ''
 
 // Module-level flag: prevents React 18 StrictMode from firing two concurrent fetches
 let fetchInProgress = false
@@ -73,31 +72,36 @@ export function useMenusData() {
   const [rawData, setRawData] = useState(() => getCachedMenus() || fallback)
 
   useEffect(() => {
-    if (!API_URL) return
     if (getCachedMenus()) return   // cache fresh — skip fetch entirely
     if (fetchInProgress) return    // StrictMode guard — only one fetch at a time
 
     fetchInProgress = true
+    let cancelled = false
     const ctrl  = new AbortController()
     const timer = setTimeout(() => ctrl.abort(), 8000)
 
-    fetch(API_URL, { signal: ctrl.signal, cache: 'no-store' })
-      .then(r => {
-        if (!r.ok) throw new Error(`HTTP ${r.status}`)
-        // Reject HTML error pages (Apps Script redirects / auth errors return text/html)
-        const ct = r.headers.get('content-type') || ''
-        if (ct.includes('text/html')) throw new Error(`Resposta HTML rebuda de l'API`)
-        return r.json()
-      })
-      .then(data => {
-        // Apps Script may return {error:true, message:"..."} with HTTP 200 + JSON
-        if (data?.error === true) throw new Error(data.message || 'Error a l\'API de menús')
-        validateApiData(data)
-        setCachedMenus(data)
-        setRawData(data)
+    loadConfig()
+      .then(cfg => {
+        if (cancelled || !cfg?.menusApiUrl) return  // no URL → keep fallback
+        return fetch(cfg.menusApiUrl, { signal: ctrl.signal, cache: 'no-store' })
+          .then(r => {
+            if (!r.ok) throw new Error(`HTTP ${r.status}`)
+            // Reject HTML error pages (Apps Script redirects / auth errors)
+            const ct = r.headers.get('content-type') || ''
+            if (ct.includes('text/html')) throw new Error(`Resposta HTML rebuda de l'API`)
+            return r.json()
+          })
+          .then(data => {
+            if (cancelled) return
+            // Apps Script may return {error:true, message:"..."} with HTTP 200 + JSON
+            if (data?.error === true) throw new Error(data.message || "Error a l'API de menús")
+            validateApiData(data)
+            setCachedMenus(data)
+            setRawData(data)
+          })
       })
       .catch(err => {
-        if (import.meta.env.DEV) {
+        if (import.meta.env.DEV && !ctrl.signal.aborted) {
           console.warn('[useMenusData] No s\'ha pogut carregar l\'API de menús:', err.message)
         }
         // Keep current rawData (cache or fallback) — no UI error shown
@@ -108,6 +112,7 @@ export function useMenusData() {
       })
 
     return () => {
+      cancelled = true
       ctrl.abort()
       clearTimeout(timer)
       fetchInProgress = false
