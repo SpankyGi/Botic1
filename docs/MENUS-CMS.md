@@ -1,303 +1,208 @@
 # Bo.TiC · Gestió de Menús via Google Sheets
 
-El client pot editar els menús directament des de Google Sheets. Els canvis apareixen a la web en un màxim de **10 minuts** (TTL de la caché), sense cap deploy ni recompilació.
+El client pot editar els menús directament des de Google Sheets. Els canvis apareixen a la web en un màxim de **10 minuts** (TTL de la memòria cau), sense cap deploy ni recompilació.
 
 ---
 
-## 1. Estructura del Google Sheet
+## Endpoint actual
 
-El document ha de tenir **tres pestanyes** amb exactament aquests noms:
+```
+https://script.google.com/macros/s/AKfycbxpz3KxrjMNR67wivgmb-NvxqmircFUacEKfdpBO9P6Bg12ya4Mj618zEVWfxZEejMWng/exec
+```
 
-### Pestanya `menus`
-
-| id | order | active | price | note_ca | note_es | note_fr | note_en | updated_at |
-|----|-------|--------|-------|---------|---------|---------|---------|------------|
-| degustacion | 1 | TRUE | 190 € | | | | | 2026-07-01 |
-| chef | 2 | TRUE | 250 € | | | | | 2026-07-01 |
-| esencia | 3 | TRUE | 90 € | Disponible al migdia de dimecres a divendres excepte festius. | Disponible al mediodía de miércoles a viernes excepto festivos. | Disponible le midi du mercredi au vendredi sauf jours fériés. | Available at lunch Wednesday to Friday except holidays. | 2026-07-01 |
-
-### Pestanya `groups`
-
-| id | menu_id | order | active | name_ca | name_es | name_fr | name_en |
-|----|---------|-------|--------|---------|---------|---------|---------|
-| deg-snacks | degustacion | 1 | TRUE | Snacks | Snacks | Snacks | Snacks |
-| deg-menu | degustacion | 2 | TRUE | Menú | Menú | Menu | Menu |
-| deg-postres | degustacion | 3 | TRUE | Postres | Postres | Desserts | Desserts |
-| chef-snacks | chef | 1 | TRUE | Snacks | Snacks | Snacks | Snacks |
-| chef-menu | chef | 2 | TRUE | Menú | Menú | Menu | Menu |
-| chef-postres | chef | 3 | TRUE | Postres | Postres | Desserts | Desserts |
-| ese-snacks | esencia | 1 | TRUE | Snacks | Snacks | Snacks | Snacks |
-| ese-menu | esencia | 2 | TRUE | Menú | Menú | Menu | Menu |
-| ese-postres | esencia | 3 | TRUE | Postres | Postres | Desserts | Desserts |
-
-### Pestanya `dishes`
-
-| id | menu_id | group_id | order | active | name_ca | name_es | name_fr | name_en | description_ca | description_es | description_fr | description_en | allergens | supplement | updated_at |
-|----|---------|----------|-------|--------|---------|---------|---------|---------|----------------|----------------|----------------|----------------|-----------|------------|------------|
-| deg-m1 | degustacion | deg-menu | 1 | TRUE | Lluç | Merluza | Merlu | Hake | | | | | gluten, peix | | 2026-07-01 |
+Configurat a `public/config.json`. La web el llegeix en runtime — cap variable de compilació.
 
 ---
 
-## 2. Com editar plats
+## 1. Com editar plats
 
-1. Obre el Google Sheet
-2. Ves a la pestanya **`dishes`**
-3. Edita les columnes `name_ca`, `name_es`, `name_fr`, `name_en`
-4. Opcionalment afegeix descripció a `description_ca`, etc.
+1. Obre el Google Sheet del CMS
+2. Ves a la pestanya **`plats`**
+3. Edita les columnes `nom_ca`, `nom_es`, `nom_fr`, `nom_en`
+4. Opcionalment edita `descripcio_ca`, etc.
 5. Desa (Ctrl+S)
-6. **Els canvis apareixen a la web en un màxim de 10 minuts**
+6. **Màxim 10 minuts per veure el canvi a la web**
 
 ---
 
-## 3. Com activar / desactivar un plat
+## 2. Com activar o desactivar un plat
 
-- Columna `active`: escriu `TRUE` per mostrar, `FALSE` per amagar
+- Columna **`actiu`**: marca la casella ✓ per mostrar, desmarca per amagar
 - El plat desapareix de la web sense eliminar la fila
+- **Mai eliminis una fila** si pots simplement desactivar-la
 
 ---
 
-## 4. Com afegir un plat nou
+## 3. Com canviar l'ordre dels plats
 
-1. Afegeix una fila nova a la pestanya `dishes`
-2. Omple **obligatòriament**: `id` (únic, sense espais), `menu_id`, `group_id`, `order`, `active`, `name_ca`
-3. L'`id` ha de ser únic (ex: `deg-m6`, `chef-m10`)
-4. El `menu_id` ha de coincidir amb un `id` de la pestanya `menus`
-5. El `group_id` ha de coincidir amb un `id` de la pestanya `groups`
-6. La columna `order` controla l'ordre de presentació (números enters, de menor a major)
+- Columna **`ordre`**: escriu el número de posició (1 = primer, 2 = segon…)
+- Pots usar 10, 20, 30… per deixar marge per a plats futurs
+- Els plats s'ordenen de menor a major
 
 ---
 
-## 5. Com canviar el preu d'un menú
+## 4. Com canviar el preu d'un menú
 
 1. Ves a la pestanya **`menus`**
-2. Edita la columna `price` (ex: `195 €`)
+2. Edita la columna `preu` (exemple: `195`)
 3. Desa
 
 ---
 
-## 6. Com reordenar plats
-
-- Canvia el número de la columna `order`
-- Els plats s'ordenen de menor a major
-- No cal que siguin consecutius (podeu usar 10, 20, 30... per deixar marge)
-
----
-
-## 7. Com afegir traduccions
+## 5. Com editar traduccions
 
 Cada plat té camps per a cada idioma:
-- `name_ca` — Català *(obligatori)*
-- `name_es` — Castellà
-- `name_fr` — Francès
-- `name_en` — Anglès
-- `description_ca` / `description_es` / `description_fr` / `description_en`
+- `nom_ca` — Català *(obligatori)*
+- `nom_es` — Castellà
+- `nom_fr` — Francès
+- `nom_en` — Anglès
+- `descripcio_ca` / `descripcio_es` / `descripcio_fr` / `descripcio_en`
 
 Si un camp de traducció és buit, la web usa el **català com a fallback**.
 
 ---
 
-## 8. Columnes que NO s'han de tocar
+## 6. TTL de la memòria cau
 
-- `id` — identificador únic, **mai canviar-lo**
-- `menu_id` — ha de coincidir exactament amb la pestanya `menus`
-- `group_id` — ha de coincidir exactament amb la pestanya `groups`
+La web guarda les dades durant **10 minuts** a `localStorage` (clau: `botic_menus_v1`).
 
----
-
-## 9. Quant tarda a reflectir-se el canvi
-
-La web té una caché de **10 minuts**. Això vol dir:
-
-- Si un usuari ja té la pàgina oberta, veurà el canvi en recarregar
-- Si un usuari entra per primera vegada, veurà les dades actuals de l'API
-- En el pitjor cas, el canvi tarda **10 minuts** a ser visible per a tothom
-
-Per veure el canvi immediatament al vostre navegador: obre la pàgina en mode incògnit, o esborra la caché del navegador.
+- Nous visitants: veuen les dades actualitzades des de l'API
+- Visitants amb caché activa: veuen el canvi quan expiri la caché (màxim 10 min)
 
 ---
 
-## 10. Google Apps Script — configuració inicial
+## 7. Com forçar una prova immediata
 
-### Pas 1: Crear el Script
+**Opció 1 — Finestra d'incògnit:**
+Obre la pàgina de menús en mode incògnit. No hi ha caché prèvia.
 
-1. Al Google Sheet, ves a **Extensions → Apps Script**
-2. Esborra el contingut existent i enganxa el codi següent:
-
+**Opció 2 — Consola del navegador (F12):**
 ```javascript
-const SPREADSHEET_ID = SpreadsheetApp.getActiveSpreadsheet().getId()
-
-function doGet() {
-  try {
-    const ss = SpreadsheetApp.openById(SPREADSHEET_ID)
-    const menusSheet  = ss.getSheetByName('menus')
-    const groupsSheet = ss.getSheetByName('groups')
-    const dishesSheet = ss.getSheetByName('dishes')
-
-    if (!menusSheet || !groupsSheet || !dishesSheet) {
-      throw new Error('Falten pestanyes: menus, groups o dishes')
-    }
-
-    const menus  = parseSheet(menusSheet)
-    const groups = parseSheet(groupsSheet)
-    const dishes = parseSheet(dishesSheet)
-
-    // Filtrar inactius
-    const activeMenus  = menus .filter(r => isActive(r.active))
-    const activeGroups = groups.filter(r => isActive(r.active))
-    const activeDishes = dishes.filter(r => isActive(r.active))
-
-    // Ordenar
-    activeMenus .sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
-    activeGroups.sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
-    activeDishes.sort((a, b) => (Number(a.order) || 0) - (Number(b.order) || 0))
-
-    // Validar relacions
-    const menuIds  = new Set(activeMenus .map(m => m.id))
-    const groupIds = new Set(activeGroups.map(g => g.id))
-    const validGroups = activeGroups.filter(g => menuIds .has(g.menu_id))
-    const validDishes = activeDishes.filter(d => menuIds .has(d.menu_id) && groupIds.has(d.group_id))
-
-    const response = {
-      version:  new Date().toISOString(),
-      menus:    activeMenus .map(sanitize),
-      groups:   validGroups .map(sanitize),
-      dishes:   validDishes .map(sanitize),
-    }
-
-    return ContentService
-      .createTextOutput(JSON.stringify(response))
-      .setMimeType(ContentService.MimeType.JSON)
-
-  } catch (err) {
-    const errorResponse = { error: true, message: err.message }
-    return ContentService
-      .createTextOutput(JSON.stringify(errorResponse))
-      .setMimeType(ContentService.MimeType.JSON)
-  }
-}
-
-function isActive(val) {
-  if (val === true || val === 1) return true
-  if (typeof val === 'string') return val.toUpperCase() === 'TRUE'
-  return false
-}
-
-function sanitize(obj) {
-  const out = {}
-  for (const [k, v] of Object.entries(obj)) {
-    if (typeof v === 'string') {
-      // Elimina HTML per evitar XSS
-      out[k] = v.replace(/<[^>]*>/g, '').trim()
-    } else if (typeof v === 'boolean' || typeof v === 'number') {
-      out[k] = v
-    } else {
-      out[k] = String(v ?? '').trim()
-    }
-  }
-  return out
-}
-
-function parseSheet(sheet) {
-  const data = sheet.getDataRange().getValues()
-  if (data.length < 2) return []
-  const headers = data[0].map(h => String(h).trim().toLowerCase().replace(/\s+/g, '_'))
-  return data
-    .slice(1)
-    .filter(row => row.some(cell => cell !== '' && cell !== null))
-    .map(row => {
-      const obj = {}
-      headers.forEach((key, i) => {
-        const val = row[i]
-        if (key === 'active') {
-          obj[key] = isActive(val)
-        } else if (key === 'order' || key === 'supplement') {
-          obj[key] = Number(val) || 0
-        } else {
-          obj[key] = (val === null || val === undefined) ? '' : String(val)
-        }
-      })
-      return obj
-    })
-}
+localStorage.removeItem('botic_menus_v1')
 ```
+Recarrega la pàgina. La web farà fetch immediat de l'API.
 
-### Pas 2: Desplegar com a Web App
-
-1. Clic a **Desplegar → Nova implementació**
-2. Tipus: **Aplicació web**
-3. Executar com: **Jo (el vostre compte)**
-4. Qui té accés: **Tothom** *(necessari perquè la web pugui llegir-ho sense autenticació)*
-5. Clic a **Desplegar**
-6. Copieu l'URL que apareix (té la forma `https://script.google.com/macros/s/ABC.../exec`)
-
-### Pas 3: Configurar `config.json`
-
-La URL de l'API es llegeix en **runtime** des del fitxer `public/config.json` (copiat a `dist/config.json` durant el build). No és una variable de compilació: es pot modificar directament al servidor sense recompilar ni fer cap deploy del codi.
-
-#### Editar el fitxer
-
-Obriu `public/config.json` i substituïu `SCRIPT_ID` per l'ID real del vostre script:
-
-```json
-{
-  "menusApiUrl": "https://script.google.com/macros/s/ABC.../exec"
-}
-```
-
-**Característiques del fitxer:**
-- És un fitxer **públic** — no pot contenir secrets ni claus privades
-- L'endpoint ha de ser de **només lectura** (Google Apps Script amb `doGet`)
-- Es pot editar directament a Hostinger (File Manager) sense recompilar la web
-- Si el fitxer no existeix o l'URL no és vàlida, la web usa el fallback JSON automàticament
-
-#### Per a desenvolupament local
-
-Editeu `public/config.json` amb la URL del vostre script de proves. El fitxer és servit per Vite dev server a `http://localhost:5173/config.json`.
-
-#### Per al deploy via GitHub Actions
-
-No cal cap secret de GitHub. El fitxer `public/config.json` es commiteja al repositori (conté una URL pública, no un secret), i es desplega automàticament com a part del `dist/`.
-
-#### Canviar la URL a Hostinger sense redeployar
-
-1. Accediu a **Hostinger → File Manager → public_html/config.json**
-2. Editeu el valor de `menusApiUrl`
-3. Deseu — el canvi és immediat per als nous visitants
-
-**Important:** cada vegada que modifiqueu el codi del script d'Apps Script, heu de crear una **nova implementació** (no "gestionar implementació"). La URL canvia — caldrà actualitzar `config.json`.
+**Opció 3 — Menú del CMS (al Google Sheet):**
+Bo.TiC · Menús → Actualitzar versió (força que tots els visitants recarreguin)
 
 ---
 
-## 11. Provar els canvis
+## 8. Com actualitzar el codi de l'Apps Script mantenint la mateixa URL
 
-### Prova bàsica (sense deploy)
-1. Feu un canvi al Sheet (ex: canvieu el nom d'un plat)
-2. Espereu uns 30 segons (el script actualitza)
-3. Obriu un **mode incògnit** i aneu a `https://bo-tic.com/ca/menus`
-4. Verifiqueu que el canvi és visible
+> ⚠️ Important: si crees una **nova implementació** al Apps Script, la URL canvia.
+> Has d'actualitzar `public/config.json` i fer deploy de la web.
 
-### Forçar actualització immediata (per a proves)
-1. Obriu les DevTools del navegador (F12)
-2. A la consola, executeu: `localStorage.removeItem('botic_menus_v1')`
-3. Recarregueu la pàgina
-4. La web farà fetch immediat de l'API
+Per actualitzar el codi **sense canviar la URL**:
+1. Al editor d'Apps Script → **Desplegar → Gestionar implementacions**
+2. Clic a l'engranatge (⚙️) de la implementació activa
+3. Selecciona **Versió: Nova versió**
+4. Clic a **Desplegar**
 
-### Verificar que l'API funciona
-Obriu directament la URL del script al navegador. Heu de veure un JSON com:
+La URL acaba en `/exec` i roman igual. ✓
+
+---
+
+## 9. Com modificar config.json si canvia l'endpoint
+
+Si crees una nova implementació (URL nova):
+
+**Opció A — Directament a Hostinger (sense redeploy):**
+1. Hostinger → File Manager → `public_html/config.json`
+2. Substitueix la URL per la nova
+3. Desa — el canvi és immediat
+
+**Opció B — Via repositori (amb redeploy):**
+1. Edita `public/config.json` al projecte local
+2. `npm run build`
+3. Desplega `dist/` a Hostinger
+
+---
+
+## 10. Estructura del Google Sheet
+
+El document té **cinc pestanyes**:
+
+### Pestanya `menus`
+
+| id | ordre | preu | actiu | nom_ca | nom_es | nom_fr | nom_en |
+|----|-------|------|-------|--------|--------|--------|--------|
+| degustacio | 1 | 190 | CERT | Menú Degustació | Menú Degustación | Menu Dégustation | Tasting Menu |
+
+### Pestanya `grups`
+
+| id | menu_id | seccio_id | ordre | actiu | nom_ca | … |
+|----|---------|-----------|-------|-------|--------|---|
+| bar | degustacio | aperitius | 1 | CERT | Bar | … |
+
+### Pestanya `plats`
+
+| id | menu_id | grup_id | ordre | actiu | nom_ca | nom_es | … | allergens | suplement | actualitzat_el |
+|----|---------|---------|-------|-------|--------|--------|---|-----------|-----------|----------------|
+| deg-b1 | degustacio | bar | 1 | CERT | Musclo i escabetx | … | | | | 01/07/2026 |
+
+### Pestanya `configuracio`
+
+| clau | valor | descripcio |
+|------|-------|-----------|
+| versio | 1 | Número de versió (s'incrementa automàticament) |
+| ultima_actualitzacio | 01/07/2026 00:00:00 | Data de l'última modificació |
+| api_activa | CERT | CERT = API activa, FALS = usa fallback estàtic |
+| temps_cache_minuts | 10 | TTL de la memòria cau del navegador |
+
+---
+
+## 11. Format de la resposta de l'API
+
+L'endpoint retorna JSON compatible amb el frontend (claus en anglès):
+
 ```json
 {
-  "version": "2026-07-01T10:00:00.000Z",
-  "menus": [...],
-  "groups": [...],
-  "dishes": [...]
+  "version": "1",
+  "ultima_actualitzacio": "Wed Jul 01 2026 21:25:00 GMT+0200",
+  "temps_cache_minuts": 10,
+  "menus": [
+    { "id": "degustacio", "order": 1, "price": "190 €", "active": true,
+      "name_ca": "Menú Degustació", "name_es": "Menú Degustación",
+      "name_fr": "Menu Dégustation", "name_en": "Tasting Menu" }
+  ],
+  "groups": [
+    { "id": "bar", "menu_id": "degustacio", "seccio_id": "aperitius",
+      "order": 1, "active": true,
+      "name_ca": "Bar", "name_es": "Bar", "name_fr": "Bar", "name_en": "Bar" }
+  ],
+  "dishes": [
+    { "id": "deg-b1", "menu_id": "degustacio", "group_id": "bar",
+      "order": 1, "active": true,
+      "name_ca": "Musclo i escabetx", "name_es": "Mejillón en escabeche",
+      "name_fr": "Moule en escabèche", "name_en": "Pickled mussel",
+      "description_ca": "", "description_es": "", "description_fr": "", "description_en": "",
+      "allergens": "", "supplement": "" }
+  ]
 }
 ```
 
 ---
 
-## 12. Fallback i robustesa
+## 12. Fallback local
 
-- Si l'API no respon, la web mostra les dades incloses en el build (última versió compilada)
-- Si la caché és vàlida, la web no fa cap petició a l'API
-- Cap error tècnic és visible per a l'usuari final
-- Els quatre idiomes funcionen sempre, amb català com a fallback si falta una traducció
+Si l'API no respon, la web usa `src/data/generated/menus.json` (inclòs al bundle).
+
+Cadena de prioritat:
+1. Memòria cau localStorage (si TTL vigent)
+2. API de Google Sheets (si `config.json` conté URL vàlida)
+3. Fallback estàtic JSON (sempre disponible al bundle)
+
+L'usuari **mai** veu una pantalla buida.
+
+---
+
+## 13. Eines del menú "Bo.TiC · Menús" (al Google Sheet)
+
+| Opció | Funció |
+|-------|--------|
+| ⚙️ Configurar CMS | Crea o reinicia totes les pestanyes |
+| ✅ Validar dades | Comprova ids duplicats, camps buits, relacions |
+| 🔄 Actualitzar versió | Incrementa `versio` manualment |
+| 👁️ Previsualitzar JSON | Mostra el JSON que retorna l'API |
+| 📋 Obrir instruccions | Navega a la pestanya d'instruccions |
+| 🔍 Comprovar errors | Detecta problemes (ids, menu_id, grup_id) |

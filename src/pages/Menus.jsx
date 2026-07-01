@@ -9,7 +9,7 @@ const HERO_IMG = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
 
 // i18n metadata per menu — titles and notes come from translations
 const MENU_META = [
-  { id: 'degustacion', titleKey: 'menus.degustacioTitle', noteKey: null,             fallbackPrice: '190 €' },
+  { id: 'degustacio',  titleKey: 'menus.degustacioTitle', noteKey: null,             fallbackPrice: '190 €' },
   { id: 'chef',        titleKey: 'menus.chefTitle',       noteKey: null,             fallbackPrice: '250 €' },
   { id: 'esencia',     titleKey: 'menus.esenciaTitle',    noteKey: 'menus.esenciaNote', fallbackPrice: '90 €' },
 ]
@@ -355,7 +355,7 @@ function Ornament() {
 export default function Menus() {
   const { t }   = useTranslation()
   const routes  = useLangRoutes()
-  const [activeId, setActiveId] = useState('degustacion')
+  const [activeId, setActiveId] = useState('degustacio')
   const contentRef = useRef(null)
 
   // API/cache/fallback data — hook handles fetch, TTL, and language
