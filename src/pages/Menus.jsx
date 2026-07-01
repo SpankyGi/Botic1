@@ -1,27 +1,18 @@
-import { useState, useId, useRef, useEffect } from 'react'
+import { useState, useId, useRef, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
 import { useLangRoutes } from '../i18n/LangContext'
+import { useMenusData } from '../hooks/useMenusData'
 
-const PENDING = '[pendent de revisar]'
 const HERO_IMG = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
 
-// Menus data — titles come from translations via t(), IDs and prices are language-neutral
-const MENU_IDS = [
-  { id: 'degustacion', price: '190 €', titleKey: 'menus.degustacioTitle', noteKey: null },
-  { id: 'chef',        price: '250 €', titleKey: 'menus.chefTitle',       noteKey: null },
-  { id: 'esencia',     price: '90 €',  titleKey: 'menus.esenciaTitle',    noteKey: 'menus.esenciaNote' },
+// i18n metadata per menu — titles and notes come from translations
+const MENU_META = [
+  { id: 'degustacion', titleKey: 'menus.degustacioTitle', noteKey: null,             fallbackPrice: '190 €' },
+  { id: 'chef',        titleKey: 'menus.chefTitle',       noteKey: null,             fallbackPrice: '250 €' },
+  { id: 'esencia',     titleKey: 'menus.esenciaTitle',    noteKey: 'menus.esenciaNote', fallbackPrice: '90 €' },
 ]
-
-// Section title key mapping (data key → translation key)
-const SECTION_KEY_MAP = {
-  'Snacks':  'menus.sectionSnacks',
-  'Menú':    'menus.sectionMenu',
-  'Postres': 'menus.sectionPostres',
-}
-
-import { menus as menusData } from '../data/menus'
 
 /* ── Hero ─────────────────────────────────────────────────── */
 function MenusHero({ t }) {
@@ -83,6 +74,9 @@ function SectionAccordion({ section, menuId, t }) {
     setOpen(o => !o)
   }
 
+  // section.title already in the correct language from useMenusData; pass through t() for
+  // any legacy keys that map to i18n (e.g. 'Snacks' → 'menus.sectionSnacks'), otherwise use as-is
+  const SECTION_KEY_MAP = { 'Snacks': 'menus.sectionSnacks', 'Menú': 'menus.sectionMenu', 'Postres': 'menus.sectionPostres' }
   const sectionTitle = t(SECTION_KEY_MAP[section.title] || section.title)
 
   return (
@@ -119,7 +113,7 @@ function SectionAccordion({ section, menuId, t }) {
                 </span>
                 <div className="mnu-dish-content">
                   <h4 className="mnu-dish-name">{item.name}</h4>
-                  {item.description !== PENDING && (
+                  {item.description && (
                     <p className="mnu-dish-desc">{item.description}</p>
                   )}
                 </div>
@@ -364,14 +358,22 @@ export default function Menus() {
   const [activeId, setActiveId] = useState('degustacion')
   const contentRef = useRef(null)
 
-  // Build localized menu list
-  const menus = MENU_IDS.map(({ id, price, titleKey, noteKey }) => ({
-    id,
-    price,
-    title: t(titleKey),
-    note:  noteKey ? t(noteKey) : '',
-    sections: (menusData.find(m => m.id === id)?.sections || []),
-  }))
+  // API/cache/fallback data — hook handles fetch, TTL, and language
+  const rawMenus = useMenusData()
+
+  // Merge API data with i18n metadata (titles, notes stay in i18n)
+  const menus = useMemo(() =>
+    MENU_META.map(({ id, titleKey, noteKey, fallbackPrice }) => {
+      const raw = rawMenus.find(m => m.id === id) || {}
+      return {
+        id,
+        price:    raw.price || fallbackPrice,
+        title:    t(titleKey),
+        note:     noteKey ? t(noteKey) : '',
+        sections: raw.sections || [],
+      }
+    }),
+  [rawMenus, t])
 
   const active = menus.find(m => m.id === activeId) ?? menus[0]
 
