@@ -1,44 +1,394 @@
+import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import SEO          from '../components/SEO.jsx'
-import SectionTitle from '../components/SectionTitle.jsx'
-import CTA          from '../components/CTA.jsx'
+import SEO from '../components/SEO'
+import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
-function PageHero({ eyebrow, heading, imgAlt, aria }) {
+const BASE_URL = 'https://www.bo-tic.com'
+
+/* Scroll progress (0→1 durant el primer viewport) per al parallax del hero.
+   Es manté com a variable CSS; no s'activa si l'usuari prefereix menys moviment. */
+function useHeroScrollProgress() {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let raf = null
+    const update = () => {
+      raf = null
+      const p = Math.min(Math.max(window.scrollY / window.innerHeight, 0), 1)
+      el.style.setProperty('--p', p.toFixed(3))
+    }
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update) }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    update()
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [])
+
+  return ref
+}
+
+/* ── 1. Hero — cinematogràfic, immersiu, tipografia partida ──── */
+function RestaurantHero({ t, routes }) {
+  const heroRef = useHeroScrollProgress()
+  const words = t('restaurant.heroHeading').split(' ')
+
   return (
-    <section
-      className="relative flex items-end min-h-[60vh] md:min-h-[65vh] overflow-hidden
-                 bg-botic-dark pt-20"
-      aria-label={aria}
-    >
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/restaurant-hero.jpg)' }}
-        role="img"
-        aria-label={imgAlt}
+    <section className="rst-hero" ref={heroRef} aria-label={t('restaurant.heroAria')}>
+      <div className="rst-hero-media">
+        <img
+          src="/images/cristina-albert-botic-emporda-michelin.webp"
+          alt={t('restaurant.heroImgAlt')}
+          className="rst-hero-img"
+        />
+      </div>
+      <div className="rst-hero-overlay" aria-hidden="true" />
+
+      <span className="rst-hero-vert" aria-hidden="true">{t('restaurant.heroEyebrow')}</span>
+
+      <div className="rst-hero-inner">
+        <div className="container-max rst-hero-inner-max">
+          <h1 className="rst-hero-title">
+            {words.map((w, i) => (
+              <span className="rst-hw" key={i} style={{ '--i': i }}><span>{w}</span></span>
+            ))}
+          </h1>
+          <p className="rst-hero-sub">{t('restaurant.heroSub')}</p>
+          <div className="rst-hero-ctas">
+            <Link to={routes.reserves} className="btn-gold">{t('restaurant.bookBtn')}</Link>
+            <a href="#origin" className="rst-hero-secondary">{t('restaurant.heroCtaSecondary')}</a>
+          </div>
+        </div>
+      </div>
+
+      <div className="rst-hero-scroll" aria-hidden="true"><span /></div>
+    </section>
+  )
+}
+
+/* ── 2. "Bo.TiC a Corçà" — foto a sang + targeta flotant ──────── */
+function OriginSection({ t }) {
+  const cardRef = useReveal(0.2)
+
+  return (
+    <section id="origin" className="rst-origin" aria-labelledby="origin-heading">
+      <img
+        src="/images/restaurant-emporda-michelin-girona.webp"
+        alt={t('restaurant.originImgAlt')}
+        className="rst-origin-bg"
+        loading="lazy"
       />
-      <div className="absolute inset-0 bg-gradient-to-t
-                      from-botic-black via-botic-black/55 to-botic-black/15" />
-      <div className="relative z-10 container-max w-full pb-14 md:pb-20">
-        <span className="label">{eyebrow}</span>
-        <h1 className="font-serif font-light text-4xl md:text-6xl lg:text-7xl
-                       text-botic-cream leading-[1.05] tracking-tight max-w-2xl">
-          {heading}
-        </h1>
+      <div className="rst-origin-overlay" aria-hidden="true" />
+      <span className="rst-origin-numeral" aria-hidden="true">I</span>
+
+      <div className="container-max">
+        <div className="rst-origin-card" ref={cardRef}>
+          <span className="rst-eyebrow">{t('restaurant.originEyebrow')}</span>
+          <h2 id="origin-heading" className="rst-origin-title">{t('restaurant.originHeading')}</h2>
+          <div className="rst-sep" aria-hidden="true" />
+          <p className="rst-origin-body">{t('restaurant.originP1')}</p>
+          <p className="rst-origin-body">{t('restaurant.originP2')}</p>
+          <p className="rst-origin-body">{t('restaurant.originP3')}</p>
+        </div>
       </div>
     </section>
   )
 }
 
+/* ── 3. Arquitectura i espais — 3 fotogrames a sang, no caixes ── */
+function ArchFrame({ num, img, alt, title, body, align }) {
+  const ref = useReveal(0.22)
+
+  return (
+    <div className={`rst-arch-frame align-${align}`} ref={ref}>
+      <img src={img} alt={alt} className="rst-arch-img" loading="lazy" />
+      <div className="rst-arch-overlay" aria-hidden="true" />
+      <span className="rst-arch-num" aria-hidden="true">{num}</span>
+      <div className="rst-arch-caption">
+        <h3 className="rst-arch-title">{title}</h3>
+        <p className="rst-arch-body">{body}</p>
+      </div>
+    </div>
+  )
+}
+
+function ArchitectureSection({ t }) {
+  const headerRef = useReveal(0.2)
+
+  const ROOMS = [
+    {
+      num: '01',
+      img: '/images/cristina-albert-botic-emporda-michelin.webp',
+      alt: t('restaurant.archRoom1ImgAlt'),
+      title: t('restaurant.archRoom1Title'),
+      body: t('restaurant.archRoom1Body'),
+      align: 'left',
+    },
+    {
+      num: '02',
+      img: '/images/Albert Sastregener-empordà-botic-restaurant.webp',
+      alt: t('restaurant.archRoom2ImgAlt'),
+      title: t('restaurant.archRoom2Title'),
+      body: t('restaurant.archRoom2Body'),
+      align: 'right',
+    },
+    {
+      num: '03',
+      img: '/images/restaurant-emporda-botic-michelin.webp',
+      alt: t('restaurant.archRoom3ImgAlt'),
+      title: t('restaurant.archRoom3Title'),
+      body: t('restaurant.archRoom3Body'),
+      align: 'center',
+    },
+  ]
+
+  return (
+    <section className="rst-arch" aria-labelledby="arch-heading">
+      <div className="rst-arch-header reveal" ref={headerRef}>
+        <span className="rst-eyebrow">{t('restaurant.archEyebrow')}</span>
+        <h2 id="arch-heading" className="rst-arch-heading">{t('restaurant.archHeading')}</h2>
+      </div>
+      {ROOMS.map((room) => <ArchFrame key={room.num} {...room} />)}
+    </section>
+  )
+}
+
+/* ── 4. Galeria — filmstrip horitzontal, secció icònica ───────── */
+function GallerySection({ t }) {
+  const headerRef = useReveal(0.15)
+  const trackRef  = useRef(null)
+
+  // Permet desplaçar la galeria horitzontalment amb la roda vertical del ratolí
+  useEffect(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    const el = trackRef.current
+    if (!el) return
+    const onWheel = (e) => {
+      if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return
+      el.scrollLeft += e.deltaY
+      e.preventDefault()
+    }
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => el.removeEventListener('wheel', onWheel)
+  }, [])
+
+  const IMAGES = [
+    { src: '/images/Albert Sastregener-empordà-botic-restaurant.webp', alt: t('restaurant.galleryAlt1') },
+    { src: '/images/albert-sastregener-cuina-emporda-girona.webp',     alt: t('restaurant.galleryAlt2') },
+    { src: '/images/cristina-albert-botic-emporda-michelin.webp',     alt: t('restaurant.galleryAlt3') },
+    { src: '/images/restaurant-emporda-botic-michelin.webp',          alt: t('restaurant.galleryAlt4') },
+    { src: '/images/restaurant-emporda-michelin-girona.webp',         alt: t('restaurant.galleryAlt5') },
+  ]
+
+  return (
+    <section className="rst-gallery" aria-labelledby="gallery-heading">
+      <div className="rst-gallery-label reveal" ref={headerRef}>
+        <span className="rst-eyebrow">{t('restaurant.galleryEyebrow')}</span>
+        <h2 id="gallery-heading" className="rst-gallery-heading">{t('restaurant.galleryHeading')}</h2>
+      </div>
+      <div className="rst-gallery-track" ref={trackRef}>
+        {IMAGES.map((img, i) => (
+          <div key={img.src} className={`rst-gallery-item item-${i + 1}`}>
+            <img src={img.src} alt={img.alt} className="rst-gallery-img" loading="lazy" />
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+/* ── 5. Reserva i informació pràctica — partició en diagonal ─── */
+function ReserveSection({ t, routes }) {
+  const contentRef = useReveal(0.12)
+
+  return (
+    <section className="rst-reserve" aria-labelledby="reserve-heading">
+      <div className="rst-reserve-photo">
+        <img
+          src="/images/restaurant-emporda-botic-michelin.webp"
+          alt={t('restaurant.reserveImgAlt')}
+          className="rst-reserve-img"
+          loading="lazy"
+        />
+      </div>
+      <div className="rst-reserve-content reveal" ref={contentRef}>
+        <span className="rst-eyebrow">{t('restaurant.reserveEyebrow')}</span>
+        <h2 id="reserve-heading" className="rst-reserve-heading">{t('restaurant.reserveHeading')}</h2>
+
+        <div className="rst-reserve-block">
+          <h3 className="rst-reserve-block-title">{t('restaurant.reserveImportantTitle')}</h3>
+          <p className="rst-reserve-block-body">{t('restaurant.reserveImportantBody')}</p>
+        </div>
+
+        <div className="rst-reserve-block">
+          <h3 className="rst-reserve-block-title">{t('restaurant.reservePolicyTitle')}</h3>
+          <ul className="rst-reserve-list">
+            <li>{t('restaurant.reservePolicy1')}</li>
+            <li>{t('restaurant.reservePolicy2')}</li>
+            <li>{t('restaurant.reservePolicy3')}</li>
+            <li>{t('restaurant.reservePolicy4')}</li>
+            <li>{t('restaurant.reservePolicy5')}</li>
+          </ul>
+        </div>
+
+        <div className="rst-reserve-block">
+          <h3 className="rst-reserve-block-title">{t('restaurant.reserveTaxiTitle')}</h3>
+          <p className="rst-reserve-block-body">{t('restaurant.reserveTaxiBody')}</p>
+        </div>
+
+        <Link to={routes.reserves} className="btn-gold rst-reserve-btn">{t('restaurant.bookBtn')}</Link>
+      </div>
+    </section>
+  )
+}
+
+/* ── 6. Equip — asimètric, tipografia que trepitja la foto ────── */
+function TeamSection({ t }) {
+  const headerRef  = useReveal(0.15)
+  const kitchenRef = useReveal(0.15)
+  const salaRef    = useReveal(0.15)
+
+  return (
+    <section className="rst-team" aria-labelledby="team-heading">
+      <div className="container-max">
+        <div className="rst-team-header reveal" ref={headerRef}>
+          <span className="rst-eyebrow">{t('restaurant.teamEyebrow')}</span>
+          <h2 id="team-heading" className="rst-team-heading">{t('restaurant.teamHeading')}</h2>
+          <p className="rst-team-sub">{t('restaurant.teamSub')}</p>
+        </div>
+
+        <div className="rst-team-grid">
+          <div className="rst-team-block kitchen reveal" ref={kitchenRef}>
+            <div className="rst-team-photo">
+              <img
+                src="/images/albert-sastregener-cuina-emporda-girona.webp"
+                alt={t('restaurant.kitchenImgAlt')}
+                className="rst-team-img"
+                loading="lazy"
+              />
+            </div>
+            <span className="rst-team-label">{t('restaurant.kitchenLabel')}</span>
+            <h3 className="rst-team-name">{t('restaurant.kitchenName')}</h3>
+            <p className="rst-team-body">{t('restaurant.kitchenBody')}</p>
+          </div>
+
+          <div className="rst-team-block sala reveal" ref={salaRef}>
+            <div className="rst-team-photo sala">
+              <img
+                src="/images/cristina-albert-botic-emporda-michelin.webp"
+                alt={t('restaurant.salaImgAlt')}
+                className="rst-team-img"
+                loading="lazy"
+              />
+            </div>
+            <span className="rst-team-label">{t('restaurant.salaLabel')}</span>
+            <h3 className="rst-team-name">{t('restaurant.salaName')}</h3>
+            <p className="rst-team-body">{t('restaurant.salaBody')}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+/* ── 7. CTA final — ticker de moviment + estil ja existent ────── */
+function FinalTicker({ t }) {
+  const words = [
+    t('restaurant.heroEyebrow'),
+    t('restaurant.originEyebrow'),
+    t('restaurant.archEyebrow'),
+    t('restaurant.galleryEyebrow'),
+    t('restaurant.teamEyebrow'),
+  ]
+  const line = words.join('   ·   ') + '   ·   '
+
+  return (
+    <div className="rst-ticker" aria-hidden="true">
+      <div className="rst-ticker-track">
+        <span>{line}</span>
+        <span>{line}</span>
+      </div>
+    </div>
+  )
+}
+
+function FinalCTA({ t, routes }) {
+  const ref = useReveal(0.18)
+
+  return (
+    <>
+      <FinalTicker t={t} />
+      <section className="home-reserva-cta">
+        <div className="container-max reveal" ref={ref}>
+          <span className="label block">{t('restaurant.finalEyebrow')}</span>
+          <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl
+                         text-botic-cream leading-tight tracking-tight mt-4 mb-6">
+            {t('restaurant.finalHeading')}
+          </h2>
+          <p className="font-sans text-sm md:text-base leading-relaxed max-w-md mx-auto mb-10">
+            {t('restaurant.finalBody')}
+          </p>
+          <div className="rst-final-ctas">
+            <Link to={routes.reserves} className="btn-gold">{t('restaurant.bookBtn')}</Link>
+            <Link to={routes.menus} className="btn-cream">{t('restaurant.finalBtnMenus')}</Link>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}
+
+/* ── Pàgina principal ─────────────────────────────────────────── */
 export default function Restaurant() {
   const { t }  = useTranslation()
   const routes = useLangRoutes()
 
-  const GALLERY = [
-    { src: '/images/sala-2.jpg',   alt: t('restaurant.galleryAlt1') },
-    { src: '/images/exterior.jpg', alt: t('restaurant.galleryAlt2') },
-    { src: '/images/detall.jpg',   alt: t('restaurant.galleryAlt3') },
-  ]
+  // Schema.org: Restaurant + BreadcrumbList (dades reals ja usades a Footer/Reserves)
+  useEffect(() => {
+    const schema = {
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'Restaurant',
+          name: 'Bo.TiC',
+          image: `${BASE_URL}/images/cristina-albert-botic-emporda-michelin.webp`,
+          url: `${BASE_URL}${routes.restaurant}`,
+          telephone: '+34972630869',
+          email: 'restaurant@bo-tic.com',
+          priceRange: '€€€€',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Carrer dels Forns, 7',
+            addressLocality: 'Corçà',
+            postalCode: '17121',
+            addressRegion: 'Girona',
+            addressCountry: 'ES',
+          },
+        },
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Bo.TiC', item: `${BASE_URL}${routes.home}` },
+            { '@type': 'ListItem', position: 2, name: t('restaurant.heroEyebrow'), item: `${BASE_URL}${routes.restaurant}` },
+          ],
+        },
+      ],
+    }
+    const script = document.createElement('script')
+    script.type = 'application/ld+json'
+    script.id = 'restaurant-schema'
+    script.textContent = JSON.stringify(schema)
+    document.head.appendChild(script)
+    return () => { document.getElementById('restaurant-schema')?.remove() }
+  }, [t, routes])
 
   return (
     <>
@@ -46,117 +396,16 @@ export default function Restaurant() {
         title={t('seo.restaurant.title')}
         description={t('seo.restaurant.description')}
         pageKey="restaurant"
+        ogImage={`${BASE_URL}/images/cristina-albert-botic-emporda-michelin.webp`}
       />
 
-      <PageHero
-        aria={t('restaurant.heroAria')}
-        imgAlt={t('restaurant.heroImgAlt')}
-        eyebrow={t('restaurant.heroEyebrow')}
-        heading={t('restaurant.heroHeading')}
-      />
-
-      {/* ── El concepte ── */}
-      <section className="bg-botic-ivory py-20 md:py-28 lg:py-32" aria-labelledby="concept-heading">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-            <div>
-              <SectionTitle
-                theme="light"
-                eyebrow={t('restaurant.conceptEyebrow')}
-                as="h2"
-                heading={t('restaurant.conceptHeading')}
-              />
-              <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                              text-botic-text/68 leading-relaxed">
-                <p>{t('restaurant.conceptP1')}</p>
-                <p>{t('restaurant.conceptP2')}</p>
-                <p>{t('restaurant.conceptP3')}</p>
-              </div>
-            </div>
-
-            <div className="h-96 md:h-[520px] overflow-hidden bg-botic-stone">
-              <img
-                src="/images/concept.jpg"
-                alt={t('restaurant.heroImgAlt')}
-                loading="lazy"
-                className="w-full h-full object-cover"
-                onError={(e) => { e.target.style.opacity = '0' }}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── L'espai ── */}
-      <section className="bg-botic-black py-20 md:py-28" aria-labelledby="space-heading">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <SectionTitle
-                theme="dark"
-                eyebrow={t('restaurant.spaceEyebrow')}
-                as="h2"
-                heading={t('restaurant.spaceHeading')}
-              />
-              <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                              text-botic-muted leading-relaxed">
-                <p>{t('restaurant.spaceP1')}</p>
-                <p>{t('restaurant.spaceP2')}</p>
-                <p>{t('restaurant.spaceP3')}</p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2 h-[480px]">
-              <div className="overflow-hidden bg-botic-surface row-span-2">
-                <img
-                  src={GALLERY[0].src}
-                  alt={GALLERY[0].alt}
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                  onError={(e) => { e.target.style.opacity = '0' }}
-                />
-              </div>
-              {GALLERY.slice(1).map(({ src, alt }) => (
-                <div key={src} className="overflow-hidden bg-botic-surface">
-                  <img
-                    src={src}
-                    alt={alt}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                    onError={(e) => { e.target.style.opacity = '0' }}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── El servei ── */}
-      <section className="bg-botic-dark py-20 md:py-28" aria-labelledby="service-heading">
-        <div className="container-max max-w-2xl">
-          <SectionTitle
-            theme="dark"
-            eyebrow={t('restaurant.serviceEyebrow')}
-            as="h2"
-            heading={t('restaurant.serviceHeading')}
-          />
-          <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                          text-botic-muted leading-relaxed">
-            <p>{t('restaurant.serviceP1')}</p>
-            <p>{t('restaurant.serviceP2')}</p>
-          </div>
-        </div>
-      </section>
-
-      <CTA
-        eyebrow={t('restaurant.ctaEyebrow')}
-        heading={t('restaurant.ctaHeading')}
-        body={t('restaurant.ctaBody')}
-        linkTo={routes.reserves}
-        linkLabel={t('restaurant.ctaBtn')}
-        theme="dark"
-      />
+      <RestaurantHero t={t} routes={routes} />
+      <OriginSection t={t} />
+      <ArchitectureSection t={t} />
+      <GallerySection t={t} />
+      <ReserveSection t={t} routes={routes} />
+      <TeamSection t={t} />
+      <FinalCTA t={t} routes={routes} />
     </>
   )
 }
