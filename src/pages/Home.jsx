@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import Hero         from '../components/Hero'
-import MarqueeStrip from '../components/MarqueeStrip'
-import SoulSection  from '../components/SoulSection'
-import SEO          from '../components/SEO'
+import Hero             from '../components/Hero'
+import MarqueeStrip     from '../components/MarqueeStrip'
+import ProjecteSection  from '../components/ProjecteSection'
+import ChefSection      from '../components/ChefSection'
+import SEO              from '../components/SEO'
 import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
@@ -46,9 +47,12 @@ export default function Home() {
       />
 
       <Hero />
+
+      <ProjecteSection />
+
       <MarqueeStrip />
 
-      {/* ── Intro ── */}
+      {/* ── Marquee / paisatge / contingut central ── */}
       <section className="home-intro">
         <div className="home-intro-photo" aria-hidden="true">
           <img
@@ -90,7 +94,7 @@ export default function Home() {
         </div>
       </section>
 
-      <SoulSection />
+      <ChefSection />
 
       {/* ── CTA Reserva ── */}
       <section className="home-reserva-cta">

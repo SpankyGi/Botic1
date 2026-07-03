@@ -4591,73 +4591,16 @@ footer.botic-footer {
 
 /* ====== SOUL SECTION (Home — seccions fusionades) ====== */
 
-.soul-section {
+/* ── La mirada del xef / El projecte ──
+   Dues seccions independents (abans pestanyes d'una mateixa SoulSection).
+   Comparteixen l'estructura foto+overlay+text però ja no es creuen (crossfade):
+   cadascuna és sempre visible en el seu propi lloc de la pàgina. */
+.mirada-xef-section,
+.projecte-section {
+  position: relative;
   background: #111009;
   border-top: 1px solid rgba(201,164,106,0.08);
 }
-
-/* ── Tab selector ── */
-.soul-tabs-wrap {
-  background: #111009;
-  border-bottom: 1px solid rgba(201,164,106,0.13);
-  position: relative;
-  z-index: 2;
-}
-.soul-tabs {
-  display: flex;
-  align-items: stretch;
-  padding-left: var(--editorial-left);
-}
-.soul-tab {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 22px 44px 22px 0;
-  background: none;
-  border: none;
-  border-bottom: 2px solid transparent;
-  margin-bottom: -1px;
-  cursor: pointer;
-  transition: border-color 0.38s ease;
-}
-.soul-tab:focus-visible {
-  outline: 1px solid rgba(201,164,106,0.50);
-  outline-offset: -3px;
-}
-.soul-tab.active {
-  border-bottom-color: rgba(201,164,106,0.52);
-}
-.soul-tab-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-weight: 300;
-  font-size: 14px;
-  color: rgba(201,164,106,0.38);
-  line-height: 1;
-  transition: color 0.38s ease;
-}
-.soul-tab.active .soul-tab-num { color: rgba(201,164,106,0.80); }
-.soul-tab-label {
-  font-family: 'Inter', sans-serif;
-  font-size: 10px;
-  font-weight: 400;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  color: rgba(237,232,220,0.28);
-  transition: color 0.38s ease;
-}
-.soul-tab.active .soul-tab-label  { color: rgba(237,232,220,0.85); }
-.soul-tab:hover .soul-tab-label   { color: rgba(237,232,220,0.52); }
-
-/* ── Panels container ── */
-/* Mobile-first: panels stack normally, inactive hidden */
-.soul-panels { position: relative; }
-
-.soul-panel {
-  display: none;
-  width: 100%;
-}
-.soul-panel.active { display: block; }
 
 /* ── Photo (mobile: relative, desktop: absolute) ── */
 .soul-photo-wrap {
@@ -4808,26 +4751,13 @@ footer.botic-footer {
 }
 .soul-cta:hover::after { transform: translateX(5px); }
 
-/* ── Desktop layout (full-bleed photo + text overlay) ── */
+/* ── Desktop layout (full-bleed photo + text overlay) ──
+   Cada secció ("La mirada del xef" / "El projecte") ocupa el seu propi
+   bloc a la pàgina, sempre visible (ja no hi ha crossfade entre pestanyes). */
 @media (min-width: 769px) {
-  .soul-panels {
+  .mirada-xef-section,
+  .projecte-section {
     min-height: 680px;
-  }
-  /* Crossfade: absolute stack, opacity transition */
-  .soul-panel {
-    display: block;
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(6px);
-    transition: opacity 0.55s ease, transform 0.55s ease;
-    min-height: 680px;
-  }
-  .soul-panel.active {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
   }
   /* Photo: absolute full-bleed */
   .soul-photo-wrap {
