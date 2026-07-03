@@ -3197,18 +3197,7 @@ footer.botic-footer {
 .mnu-sections { border-top: 1px solid #2E2B27; }
 .mnu-section  { border-bottom: 1px solid rgba(46,43,39,0.8); }
 
-/* Quan la secció és oberta, accent borgonya esquerra */
-.mnu-section.is-open {
-  border-left: 2px solid rgba(154,42,42,0.3);
-  padding-left: 20px;
-  margin-left: -20px;
-  background: linear-gradient(90deg,
-    rgba(154,42,42,0.03) 0%,
-    transparent 40%);
-  transition: background 0.4s ease;
-}
-
-/* Trigger */
+/* Trigger — base compartida (mides pròpies es sobreescriuen per nivell) */
 .mnu-section-trigger {
   width: 100%;
   display: flex;
@@ -3221,7 +3210,7 @@ footer.botic-footer {
   text-align: left;
   position: relative;
 }
-/* Línia daura que creix cap a la dreta en hover/open */
+/* Línia que creix cap a la dreta en hover/open */
 .mnu-section-trigger::after {
   content: '';
   position: absolute;
@@ -3244,21 +3233,27 @@ footer.botic-footer {
   outline-offset: 4px;
 }
 
-/* Punt borgonya decoratiu */
+/* Punt decoratiu — base */
 .mnu-section-dot {
   width: 5px; height: 5px;
   border-radius: 50%;
   background: rgba(154,42,42,0.4);
   flex-shrink: 0;
-  transition: background 0.3s ease, transform 0.3s ease;
-}
-.mnu-section-trigger:hover .mnu-section-dot,
-.mnu-section-trigger[aria-expanded="true"] .mnu-section-dot {
-  background: var(--burgundy);
-  transform: scale(1.5);
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Títol de secció */
+/* Bloc títol (+ etiqueta opcional de nivell 1) */
+.mnu-section-titlewrap { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+.mnu-section-eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(154,42,42,0.55);
+}
+
+/* Títol de secció — base */
 .mnu-section-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
@@ -3266,17 +3261,14 @@ footer.botic-footer {
   letter-spacing: -0.01em;
   color: rgba(200,192,182,0.80);
   flex: 1;
-  transition: color 0.28s ease;
+  transition: color 0.28s ease, font-size 0.2s ease;
 }
 .mnu-section-trigger:hover .mnu-section-title,
 .mnu-section-trigger[aria-expanded="true"] .mnu-section-title {
   color: #EDE8DC;
 }
-.mnu-section-trigger[aria-expanded="true"] .mnu-section-title {
-  font-style: italic; /* el títol s'italitza quan és obert */
-}
 
-/* Badge nombre de plats */
+/* Badge nombre de plats — base */
 .mnu-section-count {
   font-family: 'Inter', sans-serif;
   font-size: 10px;
@@ -3292,7 +3284,7 @@ footer.botic-footer {
   border-color: rgba(201,164,106,0.38);
 }
 
-/* Icona +/− */
+/* Icona +/− — base */
 .mnu-section-icon {
   width: 30px; height: 30px;
   display: flex;
@@ -3305,7 +3297,7 @@ footer.botic-footer {
   font-family: 'Inter', sans-serif;
   flex-shrink: 0;
   transition: border-color 0.28s ease, background 0.28s ease,
-              color 0.28s ease, transform 0.28s ease;
+              color 0.28s ease, transform 0.28s ease, width 0.2s ease, height 0.2s ease;
   line-height: 1;
 }
 .mnu-section-trigger:hover .mnu-section-icon {
@@ -3331,7 +3323,7 @@ footer.botic-footer {
   position: relative;
 }
 
-/* Accent borgonya vertical dins el cos obert */
+/* Accent vertical dins el cos obert — base */
 .mnu-section-accent {
   position: absolute;
   top: 0; bottom: 0; left: 0;
@@ -3343,7 +3335,164 @@ footer.botic-footer {
   pointer-events: none;
 }
 
-/* ── Plats ── */
+/* ============================================================
+   NIVELL 1 — SECCIÓ PRINCIPAL (Aperitius, Menú, Postres…)
+   Ha de llegir-se com el nivell dominant: més mida, més pes,
+   més respiració i un accent borgonya inequívoc.
+   ============================================================ */
+.mnu-section:not(.mnu-group) { border-bottom: 1px solid rgba(154,42,42,0.20); }
+
+.mnu-section:not(.mnu-group).is-open {
+  border-left: 3px solid var(--burgundy);
+  padding-left: 24px;
+  margin-left: -24px;
+  background: linear-gradient(90deg,
+    rgba(154,42,42,0.05) 0%,
+    transparent 45%);
+  transition: background 0.4s ease, border-color 0.4s ease;
+}
+
+.mnu-section:not(.mnu-group) > .mnu-section-trigger {
+  padding: 36px 0;
+  gap: 22px;
+}
+.mnu-section:not(.mnu-group) > .mnu-section-trigger::after {
+  background: linear-gradient(90deg,
+    rgba(154,42,42,0.65) 0%,
+    rgba(154,42,42,0.35) 35%,
+    transparent 75%);
+}
+
+.mnu-section:not(.mnu-group) > .mnu-section-trigger .mnu-section-title {
+  font-size: clamp(28px, 3vw, 34px);
+  color: rgba(210,202,192,0.88);
+}
+.mnu-section:not(.mnu-group) > .mnu-section-trigger[aria-expanded="true"] .mnu-section-title {
+  font-style: italic; /* signatura visual exclusiva del nivell 1 */
+  color: #F8F3E8;
+}
+
+.mnu-section:not(.mnu-group) > .mnu-section-trigger .mnu-section-dot {
+  width: 7px; height: 7px;
+  background: var(--burgundy);
+}
+.mnu-section:not(.mnu-group) > .mnu-section-trigger:hover .mnu-section-dot,
+.mnu-section:not(.mnu-group) > .mnu-section-trigger[aria-expanded="true"] .mnu-section-dot {
+  transform: scale(1.4);
+  box-shadow: 0 0 12px rgba(154,42,42,0.5);
+}
+
+.mnu-section:not(.mnu-group) > .mnu-section-trigger .mnu-section-count {
+  font-size: 11px;
+  padding: 4px 11px;
+  color: rgba(201,164,106,0.6);
+  border-color: rgba(201,164,106,0.28);
+}
+
+.mnu-section:not(.mnu-group) > .mnu-section-trigger .mnu-section-icon {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.mnu-section:not(.mnu-group) > .mnu-section-body .mnu-section-accent {
+  width: 2px;
+  background: linear-gradient(180deg,
+    var(--burgundy) 0%,
+    rgba(154,42,42,0.2) 65%,
+    transparent 100%);
+}
+
+/* ============================================================
+   NIVELL 2 — GRUP (p.ex. "Bar") — clarament subordinat
+   Indentació real + connector vertical + tipografia i accents
+   deliberadament més apagats que el nivell 1.
+   ============================================================ */
+.mnu-groups {
+  position: relative;
+  padding-left: 40px;
+  margin-top: -4px;
+}
+.mnu-groups::before {
+  content: '';
+  position: absolute;
+  top: 6px; bottom: 22px; left: 12px;
+  width: 1px;
+  background: linear-gradient(180deg,
+    rgba(154,42,42,0.24) 0%,
+    rgba(154,42,42,0.08) 80%,
+    transparent 100%);
+}
+
+.mnu-group { border-bottom: 1px dashed rgba(46,43,39,0.55); }
+.mnu-group:last-child { border-bottom: none; }
+
+.mnu-group.is-open {
+  border-left: 1px solid rgba(201,164,106,0.28);
+  padding-left: 16px;
+  margin-left: -16px;
+  background: none;
+}
+
+.mnu-group > .mnu-section-trigger { padding: 16px 0; gap: 14px; }
+.mnu-group .mnu-section-trigger::after {
+  background: linear-gradient(90deg, rgba(201,164,106,0.35) 0%, transparent 60%);
+}
+
+.mnu-group .mnu-section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-style: normal; /* serif regular, mai cursiva, al nivell 2 */
+  font-size: 19px;
+  color: rgba(190,182,172,0.62);
+}
+.mnu-group .mnu-section-trigger:hover .mnu-section-title,
+.mnu-group .mnu-section-trigger[aria-expanded="true"] .mnu-section-title {
+  color: rgba(230,224,214,0.88);
+  font-style: normal;
+}
+
+.mnu-group .mnu-section-dot {
+  width: 3px; height: 3px;
+  border-radius: 1px;
+  background: rgba(201,164,106,0.4);
+}
+.mnu-group .mnu-section-trigger:hover .mnu-section-dot,
+.mnu-group .mnu-section-trigger[aria-expanded="true"] .mnu-section-dot {
+  background: rgba(201,164,106,0.7);
+  transform: none;
+  box-shadow: none;
+}
+
+.mnu-group .mnu-section-count {
+  font-size: 9px;
+  padding: 2px 7px;
+  color: rgba(190,182,172,0.4);
+  border-color: rgba(190,182,172,0.16);
+}
+.mnu-group .mnu-section-trigger[aria-expanded="true"] .mnu-section-count {
+  color: rgba(190,182,172,0.55);
+  border-color: rgba(190,182,172,0.25);
+}
+
+.mnu-group .mnu-section-icon {
+  width: 22px; height: 22px;
+  border-radius: 0;
+  font-size: 13px;
+  border-color: rgba(190,182,172,0.28);
+  color: rgba(190,182,172,0.6);
+}
+.mnu-group .mnu-section-trigger:hover .mnu-section-icon,
+.mnu-group .mnu-section-trigger[aria-expanded="true"] .mnu-section-icon {
+  border-color: rgba(201,164,106,0.4);
+  color: #C9A46A;
+  background: none;
+}
+
+.mnu-group .mnu-section-accent { display: none; } /* el connector el dona .mnu-groups::before */
+.mnu-group .mnu-section-inner  { padding-left: 4px; }
+
+/* ── Plats (nivell 3) — base, per a seccions "flat" sense grup ── */
 .mnu-dish-list { list-style: none; padding: 4px 0 40px; }
 .mnu-dish {
   display: grid;
@@ -3406,6 +3555,20 @@ footer.botic-footer {
   color: rgba(138,130,120,0.62);
   line-height: 1.55;
 }
+
+/* Plats dins d'un grup (nivell 3 real, p.ex. sota "Bar") —
+   una mica més endins i deliberadament més discrets que el grup */
+.mnu-group .mnu-dish-list { padding: 0 0 26px 22px; }
+.mnu-group .mnu-dish {
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid rgba(46,43,39,0.4);
+}
+.mnu-group .mnu-dish::before { left: -12px; top: 12px; bottom: 12px; width: 1px; }
+.mnu-group .mnu-dish-num  { font-size: 9px; padding-top: 3px; color: rgba(201,164,106,0.32); }
+.mnu-group .mnu-dish-name { font-size: 17px; color: rgba(220,214,204,0.88); }
+.mnu-group .mnu-dish-desc { font-size: 13px; }
 
 /* ── Ornament separador ── */
 .mnu-ornament {
@@ -3679,7 +3842,9 @@ footer.botic-footer {
 /* ── Responsive ── */
 @media (max-width: 1024px) {
   .mnu-selector { padding: 0 32px; }
-  .mnu-section.is-open { margin-left: -12px; padding-left: 12px; }
+  .mnu-section:not(.mnu-group).is-open { margin-left: -16px; padding-left: 16px; }
+  .mnu-groups { padding-left: 34px; }
+  .mnu-groups::before { left: 10px; }
   .wine-col-left { max-width: min(60%, 660px); }
   .wine-title   { font-size: clamp(36px, 6vw, 56px); }
   .wine-stat-num { font-size: clamp(72px, 12vw, 104px); }
@@ -3697,13 +3862,21 @@ footer.botic-footer {
   .mnu-tab            { min-width: 120px; padding: 18px 12px; flex-shrink: 0; }
   .mnu-tab-title      { font-size: 9px; letter-spacing: 0.12em; }
   .mnu-tab-price-value { font-size: 22px; }
-  .mnu-section-title  { font-size: 24px; }
+  .mnu-section:not(.mnu-group) > .mnu-section-trigger .mnu-section-title { font-size: 26px; }
+  .mnu-group .mnu-section-title { font-size: 17px; }
   .mnu-dish-name      { font-size: 20px; }
+  .mnu-group .mnu-dish-name { font-size: 15px; }
+  .mnu-groups         { padding-left: 26px; }
+  .mnu-groups::before { left: 8px; }
+  .mnu-section:not(.mnu-group) > .mnu-section-trigger { padding: 28px 0; gap: 16px; }
+  .mnu-group > .mnu-section-trigger { padding: 13px 0; gap: 10px; }
   .mnu-content        { padding: 36px 0 52px; }
   .mnu-note           { margin-bottom: 32px; }
   .mnu-content-header { flex-direction: column; gap: 4px; padding-bottom: 20px; }
-  .mnu-section.is-open { margin-left: 0; padding-left: 0;
+  .mnu-section:not(.mnu-group).is-open { margin-left: 0; padding-left: 0;
     border-left: none; border-top: 2px solid rgba(154,42,42,0.3); }
+  .mnu-group.is-open { margin-left: 0; padding-left: 10px;
+    border-left: 1px solid rgba(201,164,106,0.3); }
   .mnu-hero-corner.tl { top: 96px; left: 24px; }
   .mnu-hero-corner.br { right: 24px; }
   .mnu-cta-section    { padding: 72px 0 64px; }

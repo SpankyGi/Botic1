@@ -148,7 +148,10 @@ function SectionAccordion({ section, menuId, t }) {
         aria-controls={bodyId}
       >
         <span className="mnu-section-dot" aria-hidden="true" />
-        <span className="mnu-section-title">{sectionTitle}</span>
+        <span className="mnu-section-titlewrap">
+          <span className="mnu-section-eyebrow" aria-hidden="true">{t('menus.sectionEyebrow')}</span>
+          <span className="mnu-section-title">{sectionTitle}</span>
+        </span>
         <span className="mnu-section-count" aria-hidden="true">{totalCount}</span>
         <span className="mnu-section-icon" aria-hidden="true">{open ? '−' : '+'}</span>
       </button>
@@ -180,14 +183,16 @@ function SectionAccordion({ section, menuId, t }) {
               ))}
             </ul>
           ) : (
-            section.groups.map(group => (
-              <GroupAccordion
-                key={group.id}
-                group={group}
-                sectionId={section.id}
-                menuId={menuId}
-              />
-            ))
+            <div className="mnu-groups">
+              {section.groups.map(group => (
+                <GroupAccordion
+                  key={group.id}
+                  group={group}
+                  sectionId={section.id}
+                  menuId={menuId}
+                />
+              ))}
+            </div>
           )}
         </div>
       </div>
