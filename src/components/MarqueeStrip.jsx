@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { MARQUEE_ITEMS } from '../data/marqueeWords'
+import { useMemo } from 'react'
+import { useTranslation } from 'react-i18next'
 
 function shuffle(arr) {
   const a = [...arr]
@@ -24,7 +24,11 @@ function Track({ items }) {
 }
 
 export default function MarqueeStrip() {
-  const [items] = useState(() => shuffle(MARQUEE_ITEMS))
+  const { t, i18n } = useTranslation()
+  const items = useMemo(
+    () => shuffle(t('marquee.items', { returnObjects: true })),
+    [i18n.language, t],
+  )
   // ~5s per item keeps the same premium pace regardless of list length
   const duration = `${items.length * 5}s`
 

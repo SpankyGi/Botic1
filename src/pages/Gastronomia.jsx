@@ -58,7 +58,7 @@ function ProductManifest({ t }) {
 
   return (
     <section className="gst-manifest" aria-labelledby="gst-product-title">
-      <div className="gst-manifest-word" aria-hidden="true">MATÈRIA</div>
+      <div className="gst-manifest-word" aria-hidden="true">{t('gastronomia.producteGhost')}</div>
       <div className="gst-manifest-inner reveal" ref={revealRef}>
         <header className="gst-section-head">
           <span className="gst-kicker">{t('gastronomia.producteEyebrow')}</span>
@@ -91,7 +91,7 @@ function TerritorySection({ t }) {
           <p>{t('gastronomia.territorP2')}</p>
         </div>
       </div>
-      <div className="gst-territory-line" aria-hidden="true"><span>PALAMÓS</span><i /><span>CORÇÀ</span><i /><span>EMPORDÀ</span></div>
+      <div className="gst-territory-line" aria-hidden="true">{t('gastronomia.territoryLine')}</div>
     </section>
   )
 }
@@ -145,7 +145,7 @@ function TechniqueSection({ t }) {
             <span>{String(galleryTotal).padStart(2, '0')}</span>
           </figcaption>
         </figure>
-        <span className="gst-technique-ghost" aria-hidden="true">GEST</span>
+        <span className="gst-technique-ghost" aria-hidden="true">{t('gastronomia.tecnicaGhost')}</span>
         </div>
         <div className="gst-technique-copy reveal" ref={revealRef}>
           <span className="gst-kicker">{t('gastronomia.tecnicaEyebrow')}</span>

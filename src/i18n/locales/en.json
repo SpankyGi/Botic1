@@ -21,7 +21,8 @@
   "topbar": {
     "repsol": "Repsol Guide",
     "nacional": "National Award",
-    "premisG": "Premis G!"
+    "premisG": "Premis G!",
+    "languageNav": "Language selector"
   },
   "footer": {
     "tagline": "Feeling and passion, since 2007",
@@ -49,6 +50,9 @@
     "person": "person",
     "persons": "people",
     "group": "Group (9+)"
+  },
+  "marquee": {
+    "items": ["Author's cuisine", "Local produce", "Evolving tradition", "Empordà", "Costa Brava", "Corçà", "Fine dining", "Two Michelin Stars", "Territory", "Seasonality", "Tasting menu", "Dining room and hospitality", "Wine cellar and pairings", "Contemporary Catalan cuisine", "Restaurant in Corçà", "Fine dining in Girona"]
   },
   "seo": {
     "home": {
@@ -178,7 +182,8 @@
     "heroHeading": "The product is the first decision",
     "heroSub": "Everything that arrives in the kitchen carries an address, a farmer and a season.",
     "producteEyebrow": "The produce",
-    "producteHeading": "The raw material commands",
+      "producteHeading": "The raw material commands",
+      "producteGhost": "MATTER",
     "producteP1": "We work with local producers with whom we have built a relationship of trust over the years. We know where every ingredient comes from, how it was raised or grown, and at what point in its cycle it is at its best.",
     "producteP2": "The season is not a trend: it is a way of understanding cuisine. The menu changes when what the land offers changes, not when some external expert's calendar changes.",
     "producteP3": "Market garden vegetables, fish from the Palamós fish market, native-breed meats, autumn mushrooms, arbequina olive oil from the Alt Empordà. Ingredients that need no explanation because they speak for themselves.",
@@ -187,7 +192,8 @@
     "territorHeading": "The Empordà as a larder",
     "territorP1": "The Empordà is our larder and our horizon. A territory of exceptional agri-food richness: irrigated vegetables, vineyards, olive groves, artisanal fishing, mushrooms and a culinary tradition accumulating centuries of know-how.",
     "territorP2": "Bo.TiC could not exist anywhere else. Its cuisine is a child of this landscape, this climate and these people. The restaurant is, ultimately, a way of paying homage to all of this.",
-    "territorImgAlt": "Empordà landscape, Bo.TiC restaurant's territory",
+      "territorImgAlt": "Empordà landscape, Bo.TiC restaurant's territory",
+      "territoryLine": "PALAMÓS · CORÇÀ · EMPORDÀ",
     "galleryAlt1": "Seasonal dish at Bo.TiC",
     "galleryAlt2": "Culinary preparation at Bo.TiC restaurant",
     "galleryAlt3": "Main course from Bo.TiC's menu",
@@ -196,7 +202,8 @@
     "galleryPrev": "Previous photograph",
     "galleryNext": "Next photograph",
     "tecnicaEyebrow": "The technique",
-    "tecnicaHeading": "Applied with measure",
+      "tecnicaHeading": "Applied with measure",
+      "tecnicaGhost": "GESTURE",
     "tecnicaP1": "Technique is not an end in itself. At Bo.TiC, technique is a means: a way of expressing better what the product already carries within it. Modern cuisine has given us extraordinary tools, but the only criterion for using them is whether or not they improve what we want to put on the plate.",
     "tecnicaP2": "There is no gratuitous technical ostentation. Every preparation must make sense in the context of the menu, the season and the main ingredient. Apparent simplicity is, almost always, the most demanding technical resolution.",
     "ctaEyebrow": "The menu",
@@ -258,7 +265,8 @@
     "heroAria": "The experience at Bo.TiC",
     "heroImgAlt": "Bo.TiC dining room during service",
     "heroEyebrow": "The experience",
-    "heroHeading": "A pace of its own. A complete story.",
+      "heroHeading": "A pace of its own. A complete story.",
+      "heroWhisper": "TIME · RHYTHM · HOSPITALITY",
     "ritmeEyebrow": "The rhythm of the table",
     "ritmeHeading": "No rush. With intensity.",
     "ritmeP1": "A table at Bo.TiC follows its own rhythm. There is no rush. The tasting menu is conceived as a story that begins, establishes itself, surprises and concludes.",
@@ -277,7 +285,8 @@
     "moment04Text": "Small preparations that extend the pleasure. A final memory of the menu to take home.",
     "menuNote": "The menu may vary according to season and product availability.",
     "equipEyebrow": "The team",
-    "equipHeading": "Small, trained and committed",
+      "equipHeading": "Small, trained and committed",
+      "equipGhost": "GESTURE",
     "equipImgAlt": "Bo.TiC restaurant team",
     "equipP1": "Albert Sastregener has led the kitchen since the restaurant's founding. Alongside him, a small team that understands that hospitality is as important as what arrives on the plate.",
     "equipP2": "The dining room is led by a team with deep knowledge of the menu, the wines and the producers. The complicity between kitchen and dining room is felt in every service.",
@@ -417,7 +426,10 @@
     "word2": "and passion",
     "sub": "Fine dining at the heart of the Empordà.",
     "btnPrimary": "Reserve",
-    "btnSecondary": "View menus"
+      "btnSecondary": "View menus",
+      "awardLine": "★★ Michelin · Corçà · Empordà",
+      "michelinCaption": "2 · MICHELIN GUIDE",
+      "scroll": "Scroll"
   },
   "soul": {
     "frags": ["\"Cooking is a journey.", "A way to move people,", "to make them feel,", "to tell who we are", "through a dish.\""],

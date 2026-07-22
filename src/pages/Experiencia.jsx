@@ -21,7 +21,7 @@ function ExperienceHero({ t }) {
       <div className="exp-hero-clock" aria-hidden="true">
         <span /><i /><b />
       </div>
-      <span className="exp-hero-whisper" aria-hidden="true">TEMPS · RITME · HOSPITALITAT</span>
+      <span className="exp-hero-whisper" aria-hidden="true">{t('experiencia.heroWhisper')}</span>
     </section>
   )
 }
@@ -84,7 +84,7 @@ function HospitalitySection({ t }) {
       <div className="exp-hospitality-images">
         <figure className="exp-hospitality-main"><img src={TEAM} alt={t('experiencia.equipImgAlt')} loading="lazy" /></figure>
         <figure className="exp-hospitality-detail"><img src={PORTRAIT} alt="" loading="lazy" /></figure>
-        <span aria-hidden="true">GEST</span>
+        <span aria-hidden="true">{t('experiencia.equipGhost')}</span>
       </div>
       <div className="exp-hospitality-copy reveal" ref={revealRef}>
         <span className="exp-kicker">{t('experiencia.equipEyebrow')}</span>

@@ -1,4 +1,4 @@
-export const LANGS = ['ca', 'es', 'fr', 'en']
+export const LANGS = ['ca', 'es', 'en', 'fr']
 
 export const DEFAULT_LANG = 'ca'
 

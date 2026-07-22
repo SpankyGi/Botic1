@@ -57,11 +57,11 @@ function SteamBlobs() {
   )
 }
 
-function ScrollHint() {
+function ScrollHint({ t }) {
   return (
     <div className="scroll-hint">
       <div className="scroll-line" />
-      <span className="scroll-text">Scroll</span>
+      <span className="scroll-text">{t('hero.scroll')}</span>
     </div>
   )
 }
@@ -82,9 +82,7 @@ export default function Hero() {
         <div className="hero-text">
 
           {/* Claim superior — càpsula champagne */}
-          <div className="hero-eyebrow">
-            ★★ Michelin · Corçà · Empordà
-          </div>
+          <div className="hero-eyebrow">{t('hero.awardLine')}</div>
 
           {/* Titular en dues línies */}
           <h1 className="hero-title">
@@ -106,7 +104,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <ScrollHint />
+      <ScrollHint t={t} />
     </section>
   )
 }

@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next'
+
 function MichelinRosette({ x, delayClass, delay }) {
   return (
     <g className={`hero-michelin-star-wrap ${delayClass}`} transform={`translate(${x} 202)`}>
@@ -11,6 +13,8 @@ function MichelinRosette({ x, delayClass, delay }) {
 }
 
 export default function MichelinStarsAnimation() {
+  const { t } = useTranslation()
+
   return (
     <div className="hero-michelin-art" aria-hidden="true">
       <svg className="hero-michelin-svg" viewBox="0 0 560 420" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +68,7 @@ export default function MichelinStarsAnimation() {
         <path className="hero-michelin-flare" d="M142 278L430 120" />
 
         <path className="hero-michelin-caption-rule" pathLength="1" d="M184 292H388" />
-        <text className="hero-michelin-caption" x="286" y="309" textAnchor="middle">2 · MICHELIN GUIDE</text>
+        <text className="hero-michelin-caption" x="286" y="309" textAnchor="middle">{t('hero.michelinCaption')}</text>
       </svg>
     </div>
   )

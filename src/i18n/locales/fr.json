@@ -21,7 +21,8 @@
   "topbar": {
     "repsol": "Guide Repsol",
     "nacional": "Prix National",
-    "premisG": "Premis G!"
+    "premisG": "Premis G!",
+    "languageNav": "Sélecteur de langue"
   },
   "footer": {
     "tagline": "Sentiment et passion, depuis 2007",
@@ -49,6 +50,9 @@
     "person": "personne",
     "persons": "personnes",
     "group": "Groupe (9+)"
+  },
+  "marquee": {
+    "items": ["Cuisine d'auteur", "Produit de proximité", "Tradition en mouvement", "Empordà", "Costa Brava", "Corçà", "Haute gastronomie", "Deux étoiles Michelin", "Territoire", "Saisonnalité", "Menu dégustation", "Salle et hospitalité", "Cave et accords", "Cuisine catalane contemporaine", "Restaurant à Corçà", "Haute cuisine à Gérone"]
   },
   "seo": {
     "home": {
@@ -178,7 +182,8 @@
     "heroHeading": "Le produit est la première décision",
     "heroSub": "Tout ce qui arrive en cuisine porte une adresse, un producteur et une saison.",
     "producteEyebrow": "Le produit",
-    "producteHeading": "La matière première commande",
+      "producteHeading": "La matière première commande",
+      "producteGhost": "MATIÈRE",
     "producteP1": "Nous travaillons avec des producteurs de proximité avec qui nous avons construit une relation de confiance au fil des années. Nous savons d'où vient chaque ingrédient, comment il a été élevé ou cultivé, et à quel moment de son cycle il est le meilleur.",
     "producteP2": "La saison n'est pas une tendance : c'est une façon de comprendre la cuisine. Le menu change quand change ce qu'offre la terre, pas quand change le calendrier d'un expert extérieur.",
     "producteP3": "Légumes de maraîcher, poisson de la criée de Palamós, viandes de races autochtones, champignons d'automne, huile d'olive arbequina de l'Alt Empordà. Des ingrédients qui n'ont pas besoin d'explication car ils parlent d'eux-mêmes.",
@@ -187,7 +192,8 @@
     "territorHeading": "L'Empordà comme garde-manger",
     "territorP1": "L'Empordà est notre garde-manger et notre horizon. Un territoire d'une richesse agroalimentaire exceptionnelle : légumes irrigués, vignes, oliviers, pêche artisanale, champignons et une tradition culinaire qui accumule des siècles de savoir-faire.",
     "territorP2": "Bo.TiC ne pourrait pas exister ailleurs. Sa cuisine est fille de ce paysage, de ce climat et de ces gens. Le restaurant est, en définitive, une façon de leur rendre hommage.",
-    "territorImgAlt": "Paysage de l'Empordà, territoire du restaurant Bo.TiC",
+      "territorImgAlt": "Paysage de l'Empordà, territoire du restaurant Bo.TiC",
+      "territoryLine": "PALAMÓS · CORÇÀ · EMPORDÀ",
     "galleryAlt1": "Plat de saison de Bo.TiC",
     "galleryAlt2": "Préparation culinaire au restaurant Bo.TiC",
     "galleryAlt3": "Plat principal du menu de Bo.TiC",
@@ -196,7 +202,8 @@
     "galleryPrev": "Photo précédente",
     "galleryNext": "Photo suivante",
     "tecnicaEyebrow": "La technique",
-    "tecnicaHeading": "Appliquée avec mesure",
+      "tecnicaHeading": "Appliquée avec mesure",
+      "tecnicaGhost": "GESTE",
     "tecnicaP1": "La technique n'est pas une fin en soi. Chez Bo.TiC, la technique est un moyen : une façon d'exprimer mieux ce que le produit porte déjà en lui. La cuisine moderne nous a donné des outils extraordinaires, mais le seul critère pour les utiliser est de savoir s'ils améliorent ou non ce que nous voulons mettre dans l'assiette.",
     "tecnicaP2": "Il n'y a pas d'ostentation technique gratuite. Chaque préparation doit avoir un sens dans le contexte du menu, de la saison et de l'ingrédient principal. La simplicité apparente est, presque toujours, la résolution technique la plus exigeante.",
     "ctaEyebrow": "Le menu",
@@ -258,7 +265,8 @@
     "heroAria": "L'expérience chez Bo.TiC",
     "heroImgAlt": "Salle du restaurant Bo.TiC pendant le service",
     "heroEyebrow": "L'expérience",
-    "heroHeading": "Un rythme propre. Un récit complet.",
+      "heroHeading": "Un rythme propre. Un récit complet.",
+      "heroWhisper": "TEMPS · RYTHME · HOSPITALITÉ",
     "ritmeEyebrow": "Le rythme de la table",
     "ritmeHeading": "Sans hâte. Avec intensité.",
     "ritmeP1": "Une table chez Bo.TiC suit son propre rythme. Il n'y a pas de hâte. Le menu dégustation se conçoit comme un récit qui commence, s'établit, surprend et se conclut.",
@@ -277,7 +285,8 @@
     "moment04Text": "De petites préparations qui prolongent le plaisir. Un dernier souvenir du menu à emporter chez soi.",
     "menuNote": "Le menu peut varier selon la saison et la disponibilité des produits.",
     "equipEyebrow": "L'équipe",
-    "equipHeading": "Petite, formée et engagée",
+      "equipHeading": "Petite, formée et engagée",
+      "equipGhost": "GESTE",
     "equipImgAlt": "Équipe du restaurant Bo.TiC",
     "equipP1": "Albert Sastregener dirige la cuisine depuis la fondation du restaurant. À ses côtés, une équipe réduite qui comprend que l'hospitalité est aussi importante que ce qui arrive dans l'assiette.",
     "equipP2": "La salle est dirigée par une équipe ayant une connaissance approfondie de la carte, des vins et des producteurs. La complicité entre la cuisine et la salle se ressent à chaque service.",
@@ -417,7 +426,10 @@
     "word2": "et passion",
     "sub": "Haute gastronomie au cœur de l'Empordà.",
     "btnPrimary": "Réserver",
-    "btnSecondary": "Voir les menus"
+      "btnSecondary": "Voir les menus",
+      "awardLine": "★★ Michelin · Corçà · Empordà",
+      "michelinCaption": "2 · GUIDE MICHELIN",
+      "scroll": "Défiler"
   },
   "soul": {
     "frags": ["\"La cuisine est un voyage.", "Une façon d'émouvoir,", "de faire ressentir,", "de raconter qui nous sommes", "à travers un plat.\""],

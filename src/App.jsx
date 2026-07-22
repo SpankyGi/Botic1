@@ -49,7 +49,7 @@ function LangRoutes({ lang }) {
   )
 }
 
-export default function App() {
+function AppContent() {
   return (
     <>
       <ScrollToTop />
@@ -74,5 +74,17 @@ export default function App() {
       </main>
       <Footer />
     </>
+  )
+}
+
+export default function App() {
+  const { pathname } = useLocation()
+  const currentLang = pathname.split('/').filter(Boolean)[0]
+  const lang = LANGS.includes(currentLang) ? currentLang : DEFAULT_LANG
+
+  return (
+    <LangProvider lang={lang}>
+      <AppContent />
+    </LangProvider>
   )
 }

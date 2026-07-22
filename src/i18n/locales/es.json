@@ -21,7 +21,8 @@
   "topbar": {
     "repsol": "Guía Repsol",
     "nacional": "Premio Nacional",
-    "premisG": "Premis G!"
+    "premisG": "Premis G!",
+    "languageNav": "Selector de idioma"
   },
   "footer": {
     "tagline": "Sentimiento y pasión, desde 2007",
@@ -49,6 +50,9 @@
     "person": "persona",
     "persons": "personas",
     "group": "Grupo (9+)"
+  },
+  "marquee": {
+    "items": ["Cocina de autor", "Producto de proximidad", "Tradición evolucionada", "Empordà", "Costa Brava", "Corçà", "Alta gastronomía", "Dos estrellas Michelin", "Territorio", "Temporada", "Menú degustación", "Sala y hospitalidad", "Bodega y maridaje", "Cocina catalana contemporánea", "Restaurante en Corçà", "Alta cocina en Girona"]
   },
   "seo": {
     "home": {
@@ -178,7 +182,8 @@
     "heroHeading": "El producto es la primera decisión",
     "heroSub": "Todo lo que llega a la cocina lleva una dirección, un agricultor y una temporada.",
     "producteEyebrow": "El producto",
-    "producteHeading": "La materia prima manda",
+      "producteHeading": "La materia prima manda",
+      "producteGhost": "MATERIA",
     "producteP1": "Trabajamos con productores de proximidad con quienes hemos construido una relación de confianza a lo largo de los años. Sabemos de dónde viene cada ingrediente, cómo se ha criado o cultivado, y en qué momento de su ciclo es mejor.",
     "producteP2": "La temporada no es una tendencia: es una manera de entender la cocina. El menú cambia cuando cambia lo que ofrece la tierra, no cuando cambia el calendario de algún experto externo.",
     "producteP3": "Verdura de huerta, pescado de la lonja de Palamós, carnes de raza autóctona, setas de otoño, aceite de oliva arbequina del Alt Empordà. Ingredientes que no necesitan explicación porque hablan por sí mismos.",
@@ -187,7 +192,8 @@
     "territorHeading": "El Empordà como despensa",
     "territorP1": "El Empordà es nuestra despensa y nuestro horizonte. Un territorio de una riqueza agroalimentaria excepcional: hortalizas de regadío, viñas, olivos, pesca artesanal, setas y una tradición culinaria que acumula siglos de saber.",
     "territorP2": "Bo.TiC no podría existir en ningún otro lugar. Su cocina es hija de este paisaje, de este clima y de esta gente. El restaurante es, en última instancia, una manera de rendir homenaje a todo ello.",
-    "territorImgAlt": "Paisaje del Empordà, territorio del restaurante Bo.TiC",
+      "territorImgAlt": "Paisaje del Empordà, territorio del restaurante Bo.TiC",
+      "territoryLine": "PALAMÓS · CORÇÀ · EMPORDÀ",
     "galleryAlt1": "Plato de temporada de Bo.TiC",
     "galleryAlt2": "Preparación culinaria en el restaurante Bo.TiC",
     "galleryAlt3": "Plato principal del menú de Bo.TiC",
@@ -196,7 +202,8 @@
     "galleryPrev": "Fotografía anterior",
     "galleryNext": "Fotografía siguiente",
     "tecnicaEyebrow": "La técnica",
-    "tecnicaHeading": "Aplicada con medida",
+      "tecnicaHeading": "Aplicada con medida",
+      "tecnicaGhost": "GESTO",
     "tecnicaP1": "La técnica no es un fin en sí misma. En Bo.TiC la técnica es un medio: una manera de expresar mejor lo que el producto ya lleva dentro. La cocina moderna nos ha dado herramientas extraordinarias, pero el único criterio para aplicarlas es si mejoran o no lo que queremos poner en el plato.",
     "tecnicaP2": "No hay ostentación técnica gratuita. Cada preparación debe tener sentido en el contexto del menú, de la temporada y del ingrediente principal. La sencillez aparente es, casi siempre, la resolución técnica más exigente.",
     "ctaEyebrow": "El menú",
@@ -258,7 +265,8 @@
     "heroAria": "La experiencia en Bo.TiC",
     "heroImgAlt": "Sala del restaurante Bo.TiC durante el servicio",
     "heroEyebrow": "La experiencia",
-    "heroHeading": "Un ritmo propio. Un relato completo.",
+      "heroHeading": "Un ritmo propio. Un relato completo.",
+      "heroWhisper": "TIEMPO · RITMO · HOSPITALIDAD",
     "ritmeEyebrow": "El ritmo de la mesa",
     "ritmeHeading": "Sin prisa. Con intensidad.",
     "ritmeP1": "Una mesa en Bo.TiC sigue su propio ritmo. No hay prisa. El menú degustación se entiende como un relato que comienza, se establece, sorprende y concluye.",
@@ -277,7 +285,8 @@
     "moment04Text": "Pequeñas elaboraciones que alargan el placer. Un último recuerdo del menú para llevarse a casa.",
     "menuNote": "El menú puede variar según la temporada y la disponibilidad del producto.",
     "equipEyebrow": "El equipo",
-    "equipHeading": "Pequeño, formado y comprometido",
+      "equipHeading": "Pequeño, formado y comprometido",
+      "equipGhost": "GESTO",
     "equipImgAlt": "Equipo del restaurante Bo.TiC",
     "equipP1": "Albert Sastregener lidera la cocina desde la fundación del restaurante. A su lado, un equipo reducido que entiende que la hospitalidad es tan importante como lo que llega al plato.",
     "equipP2": "La sala la dirige un equipo con un profundo conocimiento de la carta, los vinos y los productores. La complicidad entre cocina y sala se percibe en cada servicio.",
@@ -417,7 +426,10 @@
     "word2": "y pasión",
     "sub": "Alta gastronomía en el corazón del Empordà.",
     "btnPrimary": "Reservar",
-    "btnSecondary": "Ver menús"
+      "btnSecondary": "Ver menús",
+      "awardLine": "★★ Michelin · Corçà · Empordà",
+      "michelinCaption": "2 · GUÍA MICHELIN",
+      "scroll": "Desplázate"
   },
   "soul": {
     "frags": ["\"La cocina es un viaje.", "Una manera de emocionar,", "de hacer sentir,", "de contar quiénes somos", "a través de un plato.\""],
