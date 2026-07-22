@@ -7,7 +7,17 @@ import { useReveal } from '../hooks/useReveal.js'
 const CHEF_ACTION = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
 const CHEF_PORTRAIT = '/images/albert-sastregener-cuina-emporda-girona.webp'
 const TERRITORY = '/images/restaurant-emporda-michelin-girona.webp'
-const CELLAR = '/images/restaurant-emporda-botic-michelin.webp'
+const DISH_IMAGE_ROOT = '/images/botic-maig-2026-webp'
+const TECHNIQUE_ACTION = `${DISH_IMAGE_ROOT}/xef-acabant-plat-restaurant-botic.webp`
+
+const DISH_SEQUENCE = [
+  { file: 'presentacio-aperitiu-botic-costa-brava.webp', alt: 'galleryAlt2', shape: 'portrait' },
+  { file: 'amanida-gastronomica-herbes-botic-emporda.webp', alt: 'galleryAlt1', shape: 'landscape' },
+  { file: 'plat-peix-costa-brava-emporda-botic.webp', alt: 'galleryAlt3', shape: 'feature' },
+  { file: 'tonyina-mar-costa-brava-alta-cuina-botic.webp', alt: 'galleryAlt3', shape: 'dark' },
+  { file: 'plat-carn-fruits-vermells-botic.webp', alt: 'galleryAlt3', shape: 'landscape' },
+  { file: 'postres-maduixes-menu-degustacio-botic.webp', alt: 'galleryAlt4', shape: 'portrait' },
+]
 
 function GastronomyHero({ t, routes }) {
   return (
@@ -81,10 +91,10 @@ function TechniqueSection({ t }) {
     <section className="gst-technique" aria-labelledby="gst-technique-title">
       <div className="gst-technique-canvas">
         <figure className="gst-technique-main">
-          <img src={CHEF_ACTION} alt={t('gastronomia.galleryAlt2')} loading="lazy" />
+          <img src={TECHNIQUE_ACTION} alt={t('gastronomia.galleryAlt2')} loading="lazy" />
         </figure>
         <figure className="gst-technique-detail" aria-hidden="true">
-          <img src={CELLAR} alt="" loading="lazy" />
+          <img src={`${DISH_IMAGE_ROOT}/xef-servint-brou-plat-peix-botic.webp`} alt="" loading="lazy" />
         </figure>
         <span className="gst-technique-ghost" aria-hidden="true">GEST</span>
       </div>
@@ -95,6 +105,28 @@ function TechniqueSection({ t }) {
         <p>{t('gastronomia.tecnicaP2')}</p>
       </div>
       <img className="gst-technique-signature" src={CHEF_PORTRAIT} alt={t('gastronomia.producteImgAlt')} loading="lazy" />
+    </section>
+  )
+}
+
+function DishSequence({ t }) {
+  return (
+    <section className="gst-dishes" aria-label={t('gastronomia.galleryAria')}>
+      <div className="gst-dishes-intro" aria-hidden="true">
+        <span>01</span><i /><span>06</span>
+      </div>
+      <div className="gst-dishes-grid">
+        {DISH_SEQUENCE.map((dish, index) => (
+          <figure className={`gst-dish gst-dish-${dish.shape}`} key={dish.file}>
+            <img
+              src={`${DISH_IMAGE_ROOT}/${dish.file}`}
+              alt={t(`gastronomia.${dish.alt}`)}
+              loading="lazy"
+            />
+            <figcaption aria-hidden="true">{String(index + 1).padStart(2, '0')}</figcaption>
+          </figure>
+        ))}
+      </div>
     </section>
   )
 }
@@ -128,6 +160,7 @@ export default function Gastronomia() {
       <ProductManifest t={t} />
       <TerritorySection t={t} />
       <TechniqueSection t={t} />
+      <DishSequence t={t} />
       <GastronomyCTA t={t} routes={routes} />
     </>
   )
