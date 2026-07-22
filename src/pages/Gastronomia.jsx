@@ -89,43 +89,43 @@ function TechniqueSection({ t }) {
   const revealRef = useReveal(0.1)
   return (
     <section className="gst-technique" aria-labelledby="gst-technique-title">
-      <div className="gst-technique-canvas">
+      <div className="gst-technique-stage">
+        <div className="gst-technique-canvas">
         <figure className="gst-technique-main">
           <img src={TECHNIQUE_ACTION} alt={t('gastronomia.galleryAlt2')} loading="lazy" />
         </figure>
-        <figure className="gst-technique-detail" aria-hidden="true">
-          <img src={`${DISH_IMAGE_ROOT}/xef-servint-brou-plat-peix-botic.webp`} alt="" loading="lazy" />
-        </figure>
-        <span className="gst-technique-ghost" aria-hidden="true">GEST</span>
-      </div>
-      <div className="gst-technique-copy reveal" ref={revealRef}>
-        <span className="gst-kicker">{t('gastronomia.tecnicaEyebrow')}</span>
-        <h2 id="gst-technique-title">{t('gastronomia.tecnicaHeading')}</h2>
-        <p>{t('gastronomia.tecnicaP1')}</p>
-        <p>{t('gastronomia.tecnicaP2')}</p>
-      </div>
-      <img className="gst-technique-signature" src={CHEF_PORTRAIT} alt={t('gastronomia.producteImgAlt')} loading="lazy" />
-    </section>
-  )
-}
-
-function DishSequence({ t }) {
-  return (
-    <section className="gst-dishes" aria-label={t('gastronomia.galleryAria')}>
-      <div className="gst-dishes-intro" aria-hidden="true">
-        <span>01</span><i /><span>06</span>
-      </div>
-      <div className="gst-dishes-grid">
-        {DISH_SEQUENCE.map((dish, index) => (
-          <figure className={`gst-dish gst-dish-${dish.shape}`} key={dish.file}>
+        <figure className="gst-technique-detail" aria-label={t('gastronomia.galleryAria')}>
+          {[{ file: 'xef-servint-brou-plat-peix-botic.webp', alt: 'galleryAlt2' }, ...DISH_SEQUENCE].map((dish, index) => (
             <img
+              key={dish.file}
               src={`${DISH_IMAGE_ROOT}/${dish.file}`}
               alt={t(`gastronomia.${dish.alt}`)}
               loading="lazy"
+              style={{ '--gst-slide': index }}
             />
-            <figcaption aria-hidden="true">{String(index + 1).padStart(2, '0')}</figcaption>
-          </figure>
-        ))}
+          ))}
+          <figcaption aria-hidden="true"><span>01</span><i /><span>07</span></figcaption>
+        </figure>
+        <span className="gst-technique-ghost" aria-hidden="true">GEST</span>
+        </div>
+        <div className="gst-technique-copy reveal" ref={revealRef}>
+          <span className="gst-kicker">{t('gastronomia.tecnicaEyebrow')}</span>
+          <h2 id="gst-technique-title">{t('gastronomia.tecnicaHeading')}</h2>
+          <p>{t('gastronomia.tecnicaP1')}</p>
+          <p>{t('gastronomia.tecnicaP2')}</p>
+        </div>
+        <img className="gst-technique-signature" src={CHEF_PORTRAIT} alt={t('gastronomia.producteImgAlt')} loading="lazy" />
+      </div>
+      <div className="gst-dishes gst-dishes-mobile" aria-label={t('gastronomia.galleryAria')}>
+        <div className="gst-dishes-intro" aria-hidden="true"><span>01</span><i /><span>06</span></div>
+        <div className="gst-dishes-grid">
+          {DISH_SEQUENCE.map((dish, index) => (
+            <figure className="gst-dish" key={dish.file}>
+              <img src={`${DISH_IMAGE_ROOT}/${dish.file}`} alt={t(`gastronomia.${dish.alt}`)} loading="lazy" />
+              <figcaption aria-hidden="true">{String(index + 1).padStart(2, '0')}</figcaption>
+            </figure>
+          ))}
+        </div>
       </div>
     </section>
   )
@@ -160,7 +160,6 @@ export default function Gastronomia() {
       <ProductManifest t={t} />
       <TerritorySection t={t} />
       <TechniqueSection t={t} />
-      <DishSequence t={t} />
       <GastronomyCTA t={t} routes={routes} />
     </>
   )

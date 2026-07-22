@@ -786,35 +786,40 @@ body {
 }
 .gst-territory-line i { flex: 1; height: 1px; background: rgba(215,177,112,.24); }
 
-.gst-technique { position: relative; min-height: 115svh; overflow: hidden; background: #080706; color: #f5efe4; }
+.gst-technique { position: relative; overflow: hidden; background: #080706; color: #f5efe4; }
+.gst-technique-stage { position: relative; min-height: 108svh; overflow: hidden; }
 .gst-technique-canvas { position: absolute; inset: 0; }
 .gst-technique-main { position: absolute; top: 8vh; right: 0; width: 67vw; height: 82vh; overflow: hidden; }
 .gst-technique-main img { width: 100%; height: 100%; object-fit: cover; object-position: 68% center; transition: transform 1.4s cubic-bezier(.2,.7,.2,1); }
 .gst-technique:hover .gst-technique-main img { transform: scale(1.025); }
-.gst-technique-detail { position: absolute; right: 5vw; bottom: 3vh; width: 18vw; height: 30vh; overflow: hidden; border: 1px solid rgba(215,177,112,.28); }
-.gst-technique-detail img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.7) brightness(.72); }
+.gst-technique-detail { position: absolute; right: 4vw; bottom: 0; width: min(30vw, 520px); height: min(44vh, 470px); overflow: hidden; border: 1px solid rgba(215,177,112,.28); z-index: 5; background:#0b0908; }
+.gst-technique-detail img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; filter:saturate(.82) brightness(.82); animation:gstTechniqueGallery 35s cubic-bezier(.4,0,.2,1) infinite; animation-delay:calc(var(--gst-slide) * -5s); }
+.gst-technique-detail figcaption { position:absolute; z-index:3; left:20px; right:20px; bottom:16px; display:flex; align-items:center; gap:12px; color:rgba(255,255,255,.72); font:500 8px/1 'Inter',sans-serif; letter-spacing:.28em; text-shadow:0 1px 8px rgba(0,0,0,.8); }
+.gst-technique-detail figcaption i { flex:1; height:1px; background:rgba(215,177,112,.55); }
+.gst-technique-detail:hover img { animation-play-state:paused; }
 .gst-technique-ghost { position: absolute; left: -2vw; top: 4vh; color: transparent; -webkit-text-stroke: 1px rgba(215,177,112,.10); font: 300 25vw/.8 'Cormorant Garamond', serif; }
 .gst-technique-copy { position: relative; z-index: 3; width: min(530px, 39vw); padding: clamp(170px, 24vh, 260px) 0 100px clamp(28px, 7vw, 112px); }
 .gst-technique-copy h2 { margin: 18px 0 32px; font: italic 300 clamp(62px, 8vw, 116px)/.86 'Cormorant Garamond', serif; letter-spacing: -.035em; }
 .gst-technique-copy p { margin-top: 17px; color: rgba(237,231,219,.7); font: 300 14px/1.8 'Inter', sans-serif; }
 .gst-technique-signature { display: none; }
 
-.gst-dishes { position: relative; overflow: hidden; padding: 20px clamp(22px, 5vw, 78px) clamp(86px, 9vw, 138px); background: #080706; }
+.gst-dishes { position: relative; overflow: hidden; margin-top: -1px; padding: clamp(48px, 7vw, 104px) clamp(22px, 5vw, 78px) clamp(86px, 9vw, 138px); background: #080706; }
+.gst-dishes-mobile { display:none; }
 .gst-dishes::before { content: ''; position: absolute; top: 0; left: 5vw; right: 5vw; height: 1px; background: linear-gradient(90deg, transparent, rgba(215,177,112,.35), transparent); }
 .gst-dishes-intro { display: flex; align-items: center; gap: 18px; width: min(560px, 48vw); margin: 0 0 clamp(28px, 4vw, 54px) auto; color: rgba(237,231,219,.42); font: 500 8px/1 'Inter', sans-serif; letter-spacing: .3em; }
 .gst-dishes-intro i { flex: 1; height: 1px; background: rgba(215,177,112,.3); transform-origin: left; animation: gstDishLine 1.8s cubic-bezier(.2,.7,.2,1) both; }
-.gst-dishes-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(18px, 2.2vw, 34px); align-items: start; }
+.gst-dishes-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
 .gst-dish { position: relative; overflow: hidden; margin: 0; background: #11100e; }
 .gst-dish img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s cubic-bezier(.2,.7,.2,1), filter 1.2s ease; }
 .gst-dish:hover img { transform: scale(1.035); }
 .gst-dish figcaption { position: absolute; right: 16px; bottom: 14px; color: rgba(255,255,255,.72); font: 500 8px/1 'Inter', sans-serif; letter-spacing: .28em; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
-.gst-dish-portrait { grid-column: span 4; aspect-ratio: 2 / 3; }
-.gst-dish-landscape { grid-column: span 8; aspect-ratio: 3 / 2; margin-top: clamp(22px, 3vw, 44px); }
-.gst-dish-feature { grid-column: 1 / -1; aspect-ratio: 2.15 / 1; margin: clamp(26px, 4vw, 58px) calc(clamp(22px, 5vw, 78px) * -1); }
-.gst-dish-feature img { object-position: center 48%; }
-.gst-dish-dark { grid-column: 1 / span 7; aspect-ratio: 3 / 2; margin-top: clamp(12px, 2vw, 30px); }
-.gst-dish-dark + .gst-dish-landscape { grid-column: 8 / span 5; margin-top: clamp(42px, 6vw, 86px); }
-.gst-dish:last-child { grid-column: 4 / span 6; margin-top: clamp(28px, 4vw, 58px); }
+.gst-dish { aspect-ratio:4 / 5; }
+
+@keyframes gstTechniqueGallery {
+  0%, 10% { opacity:1; transform:scale(1); }
+  14%, 96% { opacity:0; transform:scale(.985); }
+  100% { opacity:1; transform:scale(1.045); }
+}
 
 @keyframes gstDishLine { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
 
@@ -858,7 +863,8 @@ body {
   .gst-territory-copy p { font-size: 12px; line-height: 1.65; }
   .gst-territory-line { left: 22px; right: 22px; gap: 8px; letter-spacing: .16em; }
 
-  .gst-technique { min-height: auto; padding-bottom: 76px; }
+  .gst-technique { min-height: auto; }
+  .gst-technique-stage { min-height: auto; padding-bottom: 76px; }
   .gst-technique-canvas { position: relative; height: 62svh; }
   .gst-technique-main { top: 0; right: 0; width: 100%; height: 100%; }
   .gst-technique-main img { object-position: 66% center; }
@@ -867,14 +873,13 @@ body {
   .gst-technique-copy h2 { font-size: clamp(56px, 17vw, 78px); }
   .gst-technique-copy p { font-size: 13px; line-height: 1.7; }
 
+  .gst-dishes-mobile { display:block; }
   .gst-dishes { padding: 24px 18px 94px; }
   .gst-dishes::before { left: 18px; right: 18px; }
   .gst-dishes-intro { width: 62vw; margin: 0 0 42px auto; }
-  .gst-dishes-grid { display: block; }
-  .gst-dish, .gst-dish-dark, .gst-dish-dark + .gst-dish-landscape, .gst-dish:last-child { width: 100%; margin: 0 0 18px; aspect-ratio: 4 / 5; }
-  .gst-dish-feature { width: auto; margin: 42px -18px; aspect-ratio: 4 / 3; }
-  .gst-dish-feature img { object-position: center; }
-  .gst-dish:nth-child(2), .gst-dish:nth-child(4), .gst-dish:nth-child(5) { aspect-ratio: 4 / 3; }
+  .gst-dishes-grid { display:grid; }
+  .gst-dish { width:100%; margin:0; aspect-ratio:4 / 5; }
+  .gst-dish:nth-child(3), .gst-dish:nth-child(6) { grid-column:1 / -1; aspect-ratio:16 / 10; }
   .gst-dish figcaption { right: 12px; bottom: 12px; }
 
   .gst-cta { padding: 88px 22px; }
@@ -886,6 +891,8 @@ body {
   .gst-hero-img, .gst-scroll-cue span { animation: none; }
   .gst-territory > img, .gst-technique-main img, .gst-dish img { transition: none; }
   .gst-dishes-intro i { animation: none; }
+  .gst-technique-detail img { animation:none; opacity:0; }
+  .gst-technique-detail img:first-child { opacity:1; }
 }
 .float-ctas.is-hidden {
   opacity: 0;
