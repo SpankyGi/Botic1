@@ -758,19 +758,62 @@ body {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  animation: hero-michelin-star-reveal 1.25s var(--star-delay) cubic-bezier(.16,.84,.28,1) forwards;
+  animation: hero-michelin-star-reveal 1.35s var(--star-delay) cubic-bezier(.12,.88,.22,1) forwards;
 }
-.hero-michelin-reference {
+.hero-michelin-rosette { filter: drop-shadow(0 0 5px rgba(224,0,27,.48)); }
+.hero-michelin-petal {
+  fill: rgba(224,0,27,.06);
+  stroke: #e0001b;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  vector-effect: non-scaling-stroke;
+  animation: hero-michelin-petal-draw 1.05s calc(var(--star-delay) + .08s) cubic-bezier(.55,0,.15,1) forwards;
+}
+.hero-michelin-core-flash {
+  fill: url(#michelin-impact);
   opacity: 0;
-  filter: drop-shadow(0 0 6px rgba(224,0,27,0.36));
-  animation: hero-michelin-reference-in 0.9s calc(var(--star-delay) + 0.12s) cubic-bezier(.2,.8,.2,1) forwards;
+  transform-origin: center;
+  animation: hero-michelin-core-flash .9s calc(var(--star-delay) + .7s) ease-out forwards;
+}
+.hero-michelin-glint-orbit {
+  fill: none;
+  stroke: rgba(255,241,212,.9);
+  stroke-width: 1.4;
+  stroke-linecap: round;
+  stroke-dasharray: .025 .975;
+  stroke-dashoffset: 0;
+  opacity: 0;
+  transform-origin: center;
+  animation: hero-michelin-orbit 1.35s calc(var(--star-delay) + .62s) cubic-bezier(.2,.7,.2,1) forwards;
 }
 .hero-michelin-stars-glow {
-  fill: rgba(224,0,27,0.08);
+  fill: rgba(224,0,27,0.10);
   opacity: 0;
   filter: blur(22px);
   animation: hero-michelin-glow-in 1.6s 3.55s ease forwards;
 }
+.hero-michelin-impact {
+  fill: url(#michelin-impact);
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-michelin-impact .95s 4.05s ease-out forwards;
+}
+.hero-michelin-shockwave {
+  fill: none;
+  stroke: rgba(232,199,142,.72);
+  stroke-width: 1;
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: hero-michelin-shockwave 1.35s 4.02s cubic-bezier(.1,.65,.2,1) forwards;
+}
+.hero-michelin-shockwave.wave-two { animation-delay: 4.18s; }
+.hero-michelin-sparks { opacity: 0; animation: hero-michelin-sparks 1s 4.12s ease-out forwards; }
+.hero-michelin-sparks path { stroke: rgba(255,239,204,.88); stroke-width: 1.2; stroke-linecap: round; }
 .hero-michelin-flare {
   fill: none;
   stroke: url(#michelin-flare);
@@ -806,14 +849,16 @@ body {
 }
 @keyframes hero-michelin-draw { to { stroke-dashoffset: 0; } }
 @keyframes hero-michelin-star-reveal {
-  0%   { opacity: 0; transform: scale(0.68) rotate(-8deg); filter: blur(8px); }
-  68%  { opacity: 1; transform: scale(1.045) rotate(1deg); filter: blur(0); }
+  0%   { opacity: 0; transform: scale(0.42) rotate(-20deg); filter: blur(5px); }
+  58%  { opacity: 1; transform: scale(1.10) rotate(2deg); filter: blur(0); }
   100% { opacity: 1; transform: scale(1); }
 }
-@keyframes hero-michelin-reference-in {
-  from { opacity: 0; clip-path: inset(50% 50% 50% 50%); }
-  to { opacity: 1; clip-path: inset(0 0 0 0); }
-}
+@keyframes hero-michelin-petal-draw { to { stroke-dashoffset: 0; fill: rgba(224,0,27,.10); } }
+@keyframes hero-michelin-core-flash { 0% { opacity: 0; transform: scale(.2); } 30% { opacity: .95; } 100% { opacity: 0; transform: scale(3.8); } }
+@keyframes hero-michelin-orbit { 0% { opacity: 0; transform: rotate(-90deg); } 18% { opacity: 1; } 100% { opacity: 0; transform: rotate(250deg); } }
+@keyframes hero-michelin-impact { 0% { opacity: 0; transform: scale(.2); } 25% { opacity: .7; } 100% { opacity: 0; transform: scale(2); } }
+@keyframes hero-michelin-shockwave { 0% { opacity: .8; transform: scale(.55); } 100% { opacity: 0; transform: scale(2.15); } }
+@keyframes hero-michelin-sparks { 0% { opacity: 0; transform: scale(.55); transform-origin: center; } 35% { opacity: 1; } 100% { opacity: 0; transform: scale(1.5); transform-origin: center; } }
 @keyframes hero-michelin-glow-in {
   from { opacity: 0; }
   to { opacity: 1; }
@@ -843,7 +888,12 @@ body {
   .hero-michelin-gesture,
   .hero-michelin-gesture-secondary,
   .hero-michelin-star,
-  .hero-michelin-reference,
+  .hero-michelin-petal,
+  .hero-michelin-core-flash,
+  .hero-michelin-glint-orbit,
+  .hero-michelin-impact,
+  .hero-michelin-shockwave,
+  .hero-michelin-sparks,
   .hero-michelin-stars-glow,
   .hero-michelin-flare,
   .hero-michelin-caption-rule,
@@ -852,13 +902,17 @@ body {
   }
   .hero-michelin-gesture,
   .hero-michelin-gesture-secondary,
-  .hero-michelin-reference,
+  .hero-michelin-petal,
   .hero-michelin-caption-rule { stroke-dashoffset: 0; }
   .hero-michelin-star,
   .hero-michelin-stars-glow,
-  .hero-michelin-reference,
   .hero-michelin-caption { opacity: 1; }
-  .hero-michelin-flare { opacity: 0; }
+  .hero-michelin-flare,
+  .hero-michelin-core-flash,
+  .hero-michelin-glint-orbit,
+  .hero-michelin-impact,
+  .hero-michelin-shockwave,
+  .hero-michelin-sparks { opacity: 0; }
 }
 
 /* Scroll indicator */
