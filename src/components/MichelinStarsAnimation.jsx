@@ -1,74 +1,67 @@
+function MichelinRosette({ x, delayClass }) {
+  const rotations = [0, 60, 120, 180, 240, 300]
+
+  return (
+    <g className={`hero-michelin-star ${delayClass}`} transform={`translate(${x} 202)`}>
+      <g className="hero-michelin-rosette">
+        {rotations.map((rotation) => (
+          <path
+            key={rotation}
+            pathLength="1"
+            transform={`rotate(${rotation})`}
+            d="M0-8C-17-18-22-42-9-57C-4-63 4-63 9-57C22-42 17-18 0-8Z"
+          />
+        ))}
+      </g>
+    </g>
+  )
+}
+
 export default function MichelinStarsAnimation() {
   return (
     <div className="hero-michelin-art" aria-hidden="true">
       <svg
         className="hero-michelin-svg"
-        viewBox="0 0 720 720"
+        viewBox="0 0 560 420"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <defs>
-          <linearGradient id="michelin-copper" x1="98" y1="104" x2="624" y2="630" gradientUnits="userSpaceOnUse">
-            <stop stopColor="#E1C18B" stopOpacity="0.2" />
-            <stop offset="0.48" stopColor="#C9A46A" stopOpacity="0.92" />
-            <stop offset="1" stopColor="#8F2727" stopOpacity="0.45" />
+          <linearGradient id="michelin-copper" x1="46" y1="65" x2="519" y2="337" gradientUnits="userSpaceOnUse">
+            <stop stopColor="#E7C990" stopOpacity="0" />
+            <stop offset="0.36" stopColor="#D2AB69" stopOpacity="0.72" />
+            <stop offset="0.78" stopColor="#A97943" stopOpacity="0.42" />
+            <stop offset="1" stopColor="#A97943" stopOpacity="0" />
           </linearGradient>
-          <radialGradient id="michelin-glow">
-            <stop stopColor="#E7C991" stopOpacity="0.45" />
-            <stop offset="1" stopColor="#E7C991" stopOpacity="0" />
-          </radialGradient>
-          <filter id="michelin-soft-glow" x="-80%" y="-80%" width="260%" height="260%">
-            <feGaussianBlur stdDeviation="7" />
+          <filter id="michelin-red-glow" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
-          <g id="michelin-rosette">
-            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" />
-            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(60)" />
-            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(120)" />
-            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(180)" />
-            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(240)" />
-            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(300)" />
-            <circle r="10" />
-          </g>
         </defs>
 
-        <circle className="hero-michelin-halo" cx="360" cy="360" r="274" />
-        <circle className="hero-michelin-orbit orbit-a" cx="360" cy="360" r="226" />
-        <circle className="hero-michelin-orbit orbit-b" cx="360" cy="360" r="178" />
-
         <path
-          className="hero-michelin-stroke stroke-main"
+          className="hero-michelin-gesture"
           pathLength="1"
-          d="M109 419C173 533 320 592 445 548C558 509 625 397 595 291C566 189 464 123 357 139C260 153 181 228 172 321C164 409 223 489 310 511C389 532 477 494 511 420C541 356 519 279 460 242C408 209 336 217 295 262C257 304 259 370 299 407C336 442 396 441 432 407"
+          d="M44 255C86 92 252 35 405 80C480 102 527 158 522 224C516 299 445 344 351 350"
         />
         <path
-          className="hero-michelin-stroke stroke-gesture"
+          className="hero-michelin-gesture-secondary"
           pathLength="1"
-          d="M72 475C177 579 334 627 478 577C581 542 653 458 666 357"
-        />
-        <path
-          className="hero-michelin-stroke stroke-axis"
-          pathLength="1"
-          d="M360 76V126M360 594V644M76 360H126M594 360H644"
+          d="M90 292C175 354 327 368 438 314"
         />
 
-        <g className="hero-michelin-stars">
-          <circle className="hero-michelin-star-glow star-one" cx="310" cy="342" r="72" />
-          <circle className="hero-michelin-star-glow star-two" cx="424" cy="342" r="72" />
-          <g className="hero-michelin-star star-one" transform="translate(310 342) scale(.72)">
-            <use href="#michelin-rosette" />
-          </g>
-          <g className="hero-michelin-star star-two" transform="translate(424 342) scale(.72)">
-            <use href="#michelin-rosette" />
-          </g>
-          <path className="hero-michelin-stars-rule" pathLength="1" d="M275 419H459" />
-          <text className="hero-michelin-stars-label" x="367" y="442" textAnchor="middle">
-            MICHELIN GUIDE · DEUX ÉTOILES
-          </text>
+        <g className="hero-michelin-stars-glow">
+          <ellipse cx="238" cy="202" rx="60" ry="60" />
+          <ellipse cx="334" cy="202" rx="60" ry="60" />
         </g>
 
-        <circle className="hero-michelin-point point-a" cx="172" cy="321" r="3" />
-        <circle className="hero-michelin-point point-b" cx="511" cy="420" r="3" />
-        <circle className="hero-michelin-point point-c" cx="595" cy="291" r="2" />
+        <MichelinRosette x="238" delayClass="star-one" />
+        <MichelinRosette x="334" delayClass="star-two" />
+
+        <path className="hero-michelin-caption-rule" pathLength="1" d="M202 282H370" />
+        <text className="hero-michelin-caption" x="286" y="305" textAnchor="middle">
+          2 · MICHELIN GUIDE
+        </text>
       </svg>
     </div>
   )
