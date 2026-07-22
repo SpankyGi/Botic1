@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import AtmosphericParticles from './AtmosphericParticles'
+import MichelinStarsAnimation from './MichelinStarsAnimation'
 import { useLangRoutes } from '../i18n/LangContext'
 
 const BG_VIDEO_SRC    = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1779093224/hero-botic_krjc0b.webm'
@@ -75,6 +76,7 @@ export default function Hero() {
       <BgVideo />
       <SteamBlobs />
       <AtmosphericParticles />
+      <MichelinStarsAnimation />
 
       <div className="hero-content-wrap">
         <div className="hero-text">
