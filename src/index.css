@@ -5136,8 +5136,8 @@ footer.botic-footer {
 }
 .rst-hero-media {
   position: absolute;
-  inset: -6%;
-  transform: scale(calc(1.16 - var(--p) * 0.10)) translateY(calc(var(--p) * -60px));
+  inset: 0;
+  transform: translateY(calc(var(--p) * -22px)) scale(1.01);
   will-change: transform;
 }
 .rst-hero-img {
@@ -5145,11 +5145,12 @@ footer.botic-footer {
   height: 100%;
   object-fit: cover;
   object-position: center 58%;
-  filter: brightness(1.10) saturate(1.18) contrast(1.04);
+  image-rendering: auto;
+  filter: brightness(1.09) saturate(1.14);
   animation: rst-hero-kb 11s cubic-bezier(.25,.1,.25,1) both;
 }
 @keyframes rst-hero-kb {
-  from { transform: scale(1.1) translateY(10px); }
+  from { transform: scale(1.025) translateY(3px); }
   to   { transform: scale(1) translateY(0); }
 }
 .rst-hero-overlay {
@@ -5676,8 +5677,8 @@ footer.botic-footer {
 /* ── Mòbil ── */
 @media (max-width: 768px) {
   .rst-hero { height: 92vh; min-height: 560px; }
-  .rst-hero-media { inset: -3%; }
-  .rst-hero-img { object-position: 51% 58%; filter: brightness(1.08) saturate(1.16) contrast(1.03); }
+  .rst-hero-media { inset: 0; transform: translateY(calc(var(--p) * -12px)); }
+  .rst-hero-img { object-position: 51% 58%; filter: brightness(1.08) saturate(1.13); }
   .rst-hero-overlay {
     background:
       radial-gradient(ellipse 88% 48% at 42% 72%,
