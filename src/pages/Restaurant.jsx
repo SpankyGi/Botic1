@@ -218,6 +218,7 @@ function ScrollArchitectureSection({ t }) {
       alt: t('restaurant.originImgAlt'),
       title: t('restaurant.originHeading'),
       body: [t('restaurant.originP1'), t('restaurant.originP2'), t('restaurant.originP3')],
+      layout: 'split-right',
     },
     {
       num: '02',
@@ -225,6 +226,7 @@ function ScrollArchitectureSection({ t }) {
       alt: t('restaurant.archRoom1ImgAlt'),
       title: t('restaurant.archRoom1Title'),
       body: t('restaurant.archRoom1Body'),
+      layout: 'split-left',
     },
     {
       num: '03',
@@ -232,6 +234,7 @@ function ScrollArchitectureSection({ t }) {
       alt: t('restaurant.archRoom2ImgAlt'),
       title: t('restaurant.archRoom2Title'),
       body: t('restaurant.archRoom2Body'),
+      layout: 'fullscreen',
     },
     {
       num: '04',
@@ -239,6 +242,7 @@ function ScrollArchitectureSection({ t }) {
       alt: t('restaurant.archRoom3ImgAlt'),
       title: t('restaurant.archRoom3Title'),
       body: t('restaurant.archRoom3Body'),
+      layout: 'portrait-right',
     },
     {
       num: '05',
@@ -246,6 +250,7 @@ function ScrollArchitectureSection({ t }) {
       alt: t('restaurant.archRoom4ImgAlt'),
       title: t('restaurant.archRoom4Title'),
       body: t('restaurant.archRoom4Body'),
+      layout: 'cinematic-end',
     },
   ]
 
@@ -285,7 +290,7 @@ function ScrollArchitectureSection({ t }) {
             {scenes.map((scene, index) => (
               <article
                 key={scene.num}
-                className={`rst-story-scene${index === activeScene ? ' is-active' : ''}${index < activeScene ? ' is-past' : ''}`}
+                className={`rst-story-scene layout-${scene.layout}${index === activeScene ? ' is-active' : ''}${index < activeScene ? ' is-past' : ''}`}
               >
                 <img src={scene.img} alt={scene.alt} className="rst-story-img" loading={index === 0 ? 'eager' : 'lazy'} />
                 <div className="rst-story-shade" aria-hidden="true" />
