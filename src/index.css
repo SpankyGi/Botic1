@@ -5144,7 +5144,8 @@ footer.botic-footer {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 26%;
+  object-position: center 58%;
+  filter: brightness(1.10) saturate(1.18) contrast(1.04);
   animation: rst-hero-kb 11s cubic-bezier(.25,.1,.25,1) both;
 }
 @keyframes rst-hero-kb {
@@ -5155,8 +5156,15 @@ footer.botic-footer {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(0deg, rgba(5,4,3,0.97) 0%, rgba(5,4,3,0.36) 58%, rgba(5,4,3,0.08) 100%),
-    linear-gradient(100deg, rgba(5,4,3,0.62) 0%, transparent 58%);
+    radial-gradient(ellipse 46% 45% at 47% 67%,
+      rgba(5,4,3,0.56) 0%,
+      rgba(5,4,3,0.38) 42%,
+      rgba(5,4,3,0.12) 72%,
+      transparent 100%),
+    linear-gradient(0deg,
+      rgba(5,4,3,0.42) 0%,
+      rgba(5,4,3,0.08) 24%,
+      transparent 52%);
 }
 .rst-hero-vert {
   position: absolute;
@@ -5183,7 +5191,22 @@ footer.botic-footer {
   opacity: calc(1 - var(--p) * 1.6);
   transform: translateY(calc(var(--p) * 70px));
 }
-.rst-hero-inner-max { padding-bottom: 96px; max-width: 1060px; }
+.rst-hero-inner::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: min(920px, 76vw);
+  height: 520px;
+  transform: translateX(-50%);
+  background: radial-gradient(ellipse at 50% 62%,
+    rgba(201,164,106,0.13) 0%,
+    rgba(201,164,106,0.055) 34%,
+    transparent 70%);
+  filter: blur(10px);
+  pointer-events: none;
+}
+.rst-hero-inner-max { position: relative; z-index: 1; padding-bottom: 96px; max-width: 1060px; }
 .rst-hero-title {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
@@ -5653,6 +5676,18 @@ footer.botic-footer {
 /* ── Mòbil ── */
 @media (max-width: 768px) {
   .rst-hero { height: 92vh; min-height: 560px; }
+  .rst-hero-media { inset: -3%; }
+  .rst-hero-img { object-position: 51% 58%; filter: brightness(1.08) saturate(1.16) contrast(1.03); }
+  .rst-hero-overlay {
+    background:
+      radial-gradient(ellipse 88% 48% at 42% 72%,
+        rgba(5,4,3,.68) 0%,
+        rgba(5,4,3,.42) 48%,
+        rgba(5,4,3,.08) 82%,
+        transparent 100%),
+      linear-gradient(0deg, rgba(5,4,3,.40) 0%, transparent 42%);
+  }
+  .rst-hero-inner::before { left: 42%; bottom: 6px; width: 118vw; height: 430px; opacity: .75; }
   .rst-hero-inner-max { padding-bottom: 64px; padding-left: 46px; }
   .rst-hero-vert { left: 14px; font-size: 9px; }
 
