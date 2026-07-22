@@ -1,45 +1,136 @@
 import { useTranslation } from 'react-i18next'
-import SEO          from '../components/SEO.jsx'
-import SectionTitle from '../components/SectionTitle.jsx'
-import CTA          from '../components/CTA.jsx'
+import { Link } from 'react-router-dom'
+import SEO from '../components/SEO.jsx'
 import { useLangRoutes } from '../i18n/LangContext'
+import { useReveal } from '../hooks/useReveal.js'
 
-function PageHero({ eyebrow, heading, aria, imgAlt }) {
+const CELLAR = '/images/restaurant-emporda-botic-michelin.webp'
+const CHEF = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
+const PORTRAIT = '/images/albert-sastregener-cuina-emporda-girona.webp'
+const TEAM = '/images/cristina-albert-botic-emporda-michelin.webp'
+
+function ExperienceHero({ t }) {
   return (
-    <section
-      className="relative flex items-end min-h-[60vh] md:min-h-[65vh] overflow-hidden
-                 bg-botic-dark pt-20"
-      aria-label={aria}
-    >
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: 'url(/images/experiencia-hero.jpg)' }}
-        role="img"
-        aria-label={imgAlt}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t
-                      from-botic-black via-botic-black/55 to-botic-black/15" />
-      <div className="relative z-10 container-max w-full pb-14 md:pb-20">
-        <span className="label">{eyebrow}</span>
-        <h1 className="font-serif font-light text-4xl md:text-6xl lg:text-7xl
-                       text-botic-cream leading-[1.05] tracking-tight max-w-2xl">
-          {heading}
-        </h1>
+    <section className="exp-hero" aria-labelledby="exp-hero-title">
+      <img src={CELLAR} alt={t('experiencia.vinsHeading')} className="exp-hero-img" />
+      <div className="exp-hero-shade" aria-hidden="true" />
+      <div className="exp-hero-copy">
+        <span className="exp-kicker">{t('experiencia.heroEyebrow')}</span>
+        <h1 id="exp-hero-title">{t('experiencia.heroHeading')}</h1>
+      </div>
+      <div className="exp-hero-clock" aria-hidden="true">
+        <span /><i /><b />
+      </div>
+      <span className="exp-hero-whisper" aria-hidden="true">TEMPS · RITME · HOSPITALITAT</span>
+    </section>
+  )
+}
+
+function MenuNarrative({ t }) {
+  const revealRef = useReveal(0.06)
+  const moments = [
+    { num: '01', label: t('experiencia.moment01Label'), text: t('experiencia.moment01Text') },
+    { num: '02', label: t('experiencia.moment02Label'), text: t('experiencia.moment02Text') },
+    { num: '03', label: t('experiencia.moment03Label'), text: t('experiencia.moment03Text') },
+    { num: '04', label: t('experiencia.moment04Label'), text: t('experiencia.moment04Text') },
+  ]
+
+  return (
+    <section className="exp-narrative" aria-labelledby="exp-menu-title">
+      <header className="exp-narrative-head reveal" ref={revealRef}>
+        <span className="exp-kicker">{t('experiencia.menuEyebrow')}</span>
+        <h2 id="exp-menu-title">{t('experiencia.menuHeading')}</h2>
+        <p>{t('experiencia.menuNote')}</p>
+      </header>
+      <div className="exp-timeline">
+        <div className="exp-timeline-axis" aria-hidden="true"><span /></div>
+        {moments.map((moment, index) => (
+          <article className="exp-moment" key={moment.num}>
+            <span className="exp-moment-num">{moment.num}</span>
+            <div className="exp-moment-copy">
+              <h3>{moment.label}</h3>
+              <p>{moment.text}</p>
+            </div>
+            <span className="exp-moment-orbit" style={{ '--orbit-scale': 1 + index * .16 }} aria-hidden="true" />
+          </article>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+function PaceSection({ t }) {
+  const revealRef = useReveal(0.12)
+  return (
+    <section className="exp-pace" aria-labelledby="exp-pace-title">
+      <div className="exp-pace-time" aria-hidden="true">—</div>
+      <div className="exp-pace-inner reveal" ref={revealRef}>
+        <span className="exp-kicker">{t('experiencia.ritmeEyebrow')}</span>
+        <h2 id="exp-pace-title">{t('experiencia.ritmeHeading')}</h2>
+        <div className="exp-pace-copy">
+          <p>{t('experiencia.ritmeP1')}</p>
+          <p>{t('experiencia.ritmeP2')}</p>
+          <p>{t('experiencia.ritmeP3')}</p>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function HospitalitySection({ t }) {
+  const revealRef = useReveal(0.1)
+  return (
+    <section className="exp-hospitality" aria-labelledby="exp-team-title">
+      <div className="exp-hospitality-images">
+        <figure className="exp-hospitality-main"><img src={TEAM} alt={t('experiencia.equipImgAlt')} loading="lazy" /></figure>
+        <figure className="exp-hospitality-detail"><img src={PORTRAIT} alt="" loading="lazy" /></figure>
+        <span aria-hidden="true">GEST</span>
+      </div>
+      <div className="exp-hospitality-copy reveal" ref={revealRef}>
+        <span className="exp-kicker">{t('experiencia.equipEyebrow')}</span>
+        <h2 id="exp-team-title">{t('experiencia.equipHeading')}</h2>
+        <p>{t('experiencia.equipP1')}</p>
+        <p>{t('experiencia.equipP2')}</p>
+        <p>{t('experiencia.equipP3')}</p>
+      </div>
+    </section>
+  )
+}
+
+function CellarSection({ t }) {
+  const revealRef = useReveal(0.12)
+  return (
+    <section className="exp-cellar" aria-labelledby="exp-cellar-title">
+      <img src={CELLAR} alt={t('experiencia.vinsHeading')} loading="lazy" />
+      <div className="exp-cellar-shade" aria-hidden="true" />
+      <div className="exp-cellar-copy reveal" ref={revealRef}>
+        <span className="exp-kicker">{t('experiencia.vinsEyebrow')}</span>
+        <h2 id="exp-cellar-title">{t('experiencia.vinsHeading')}</h2>
+        <p>{t('experiencia.vinsP1')}</p>
+        <p>{t('experiencia.vinsP2')}</p>
+      </div>
+    </section>
+  )
+}
+
+function ExperienceCTA({ t, routes }) {
+  return (
+    <section className="exp-cta">
+      <img src={CHEF} alt="" aria-hidden="true" loading="lazy" />
+      <div className="exp-cta-shade" aria-hidden="true" />
+      <div className="exp-cta-copy">
+        <span className="exp-kicker">{t('experiencia.ctaEyebrow')}</span>
+        <h2>{t('experiencia.ctaHeading')}</h2>
+        <p>{t('experiencia.ctaBody')}</p>
+        <Link className="btn-gold" to={routes.reserves}>{t('experiencia.ctaBtn')}</Link>
       </div>
     </section>
   )
 }
 
 export default function Experiencia() {
-  const { t }  = useTranslation()
+  const { t } = useTranslation()
   const routes = useLangRoutes()
-
-  const MENU_MOMENTS = [
-    { num: '01', label: t('experiencia.moment01Label'), text: t('experiencia.moment01Text') },
-    { num: '02', label: t('experiencia.moment02Label'), text: t('experiencia.moment02Text') },
-    { num: '03', label: t('experiencia.moment03Label'), text: t('experiencia.moment03Text') },
-    { num: '04', label: t('experiencia.moment04Label'), text: t('experiencia.moment04Text') },
-  ]
 
   return (
     <>
@@ -48,145 +139,12 @@ export default function Experiencia() {
         description={t('seo.experiencia.description')}
         pageKey="experiencia"
       />
-
-      <PageHero
-        aria={t('experiencia.heroAria')}
-        imgAlt={t('experiencia.heroImgAlt')}
-        eyebrow={t('experiencia.heroEyebrow')}
-        heading={t('experiencia.heroHeading')}
-      />
-
-      {/* ── El ritme ── */}
-      <section className="bg-botic-ivory py-20 md:py-28 lg:py-32" aria-labelledby="ritme-heading">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-center">
-            <div>
-              <SectionTitle
-                theme="light"
-                eyebrow={t('experiencia.ritmeEyebrow')}
-                as="h2"
-                heading={t('experiencia.ritmeHeading')}
-              />
-              <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                              text-botic-text/68 leading-relaxed">
-                <p>{t('experiencia.ritmeP1')}</p>
-                <p>{t('experiencia.ritmeP2')}</p>
-                <p>{t('experiencia.ritmeP3')}</p>
-              </div>
-            </div>
-
-            <div className="h-96 md:h-[520px] overflow-hidden bg-botic-stone">
-              <img
-                src="/images/sala-1.jpg"
-                alt={t('experiencia.salaImgAlt')}
-                loading="lazy"
-                className="w-full h-full object-cover"
-                onError={(e) => { e.target.style.opacity = '0' }}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Estructura del menú ── */}
-      <section className="bg-botic-black py-20 md:py-28" aria-labelledby="menu-heading">
-        <div className="container-max">
-          <div className="max-w-xl mb-14">
-            <SectionTitle
-              theme="dark"
-              eyebrow={t('experiencia.menuEyebrow')}
-              as="h2"
-              heading={t('experiencia.menuHeading')}
-            />
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-0.5">
-            {MENU_MOMENTS.map(({ num, label, text }) => (
-              <div
-                key={num}
-                className="border border-botic-border p-8 md:p-10
-                           hover:border-botic-gold/40 transition-colors duration-300"
-              >
-                <span className="font-serif text-5xl font-light text-botic-surface
-                                 block mb-4 leading-none">
-                  {num}
-                </span>
-                <h3 className="font-serif font-light text-xl text-botic-cream
-                               mb-3 tracking-tight">
-                  {label}
-                </h3>
-                <p className="font-sans text-sm text-botic-muted leading-relaxed">
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <p className="mt-10 font-sans text-xs text-botic-muted tracking-[0.15em] uppercase">
-            {t('experiencia.menuNote')}
-          </p>
-        </div>
-      </section>
-
-      {/* ── L'equip ── */}
-      <section className="bg-botic-dark py-20 md:py-28" aria-labelledby="equip-heading">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="h-80 md:h-[480px] overflow-hidden bg-botic-surface">
-              <img
-                src="/images/equip.jpg"
-                alt={t('experiencia.equipImgAlt')}
-                loading="lazy"
-                className="w-full h-full object-cover"
-                onError={(e) => { e.target.style.opacity = '0' }}
-              />
-            </div>
-
-            <div>
-              <SectionTitle
-                theme="dark"
-                eyebrow={t('experiencia.equipEyebrow')}
-                as="h2"
-                heading={t('experiencia.equipHeading')}
-              />
-              <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                              text-botic-muted leading-relaxed">
-                <p>{t('experiencia.equipP1')}</p>
-                <p>{t('experiencia.equipP2')}</p>
-                <p>{t('experiencia.equipP3')}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Els vins ── */}
-      <section className="bg-botic-black py-16 md:py-20">
-        <div className="container-max max-w-3xl text-center">
-          <span className="label block text-center">{t('experiencia.vinsEyebrow')}</span>
-          <h2
-            className="font-serif font-light text-3xl md:text-4xl lg:text-5xl
-                       text-botic-cream leading-tight tracking-tight mt-4 mb-8"
-          >
-            {t('experiencia.vinsHeading')}
-          </h2>
-          <p className="font-sans text-sm md:text-base text-botic-muted leading-relaxed mb-5">
-            {t('experiencia.vinsP1')}
-          </p>
-          <p className="font-sans text-sm md:text-base text-botic-muted leading-relaxed mb-10">
-            {t('experiencia.vinsP2')}
-          </p>
-        </div>
-      </section>
-
-      <CTA
-        eyebrow={t('experiencia.ctaEyebrow')}
-        heading={t('experiencia.ctaHeading')}
-        body={t('experiencia.ctaBody')}
-        linkTo={routes.reserves}
-        linkLabel={t('experiencia.ctaBtn')}
-        theme="dark"
-      />
+      <ExperienceHero t={t} />
+      <MenuNarrative t={t} />
+      <PaceSection t={t} />
+      <HospitalitySection t={t} />
+      <CellarSection t={t} />
+      <ExperienceCTA t={t} routes={routes} />
     </>
   )
 }
