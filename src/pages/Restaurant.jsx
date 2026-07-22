@@ -214,27 +214,34 @@ function ScrollArchitectureSection({ t }) {
   const scenes = [
     {
       num: '01',
+      img: '/images/restaurant-emporda-michelin-girona.webp',
+      alt: t('restaurant.originImgAlt'),
+      title: t('restaurant.originHeading'),
+      body: [t('restaurant.originP1'), t('restaurant.originP2'), t('restaurant.originP3')],
+    },
+    {
+      num: '02',
       img: '/images/restaurant-botic-corca-emporda-exterior-nit.webp',
       alt: t('restaurant.archRoom1ImgAlt'),
       title: t('restaurant.archRoom1Title'),
       body: t('restaurant.archRoom1Body'),
     },
     {
-      num: '02',
+      num: '03',
       img: '/images/restaurant-emporda-botic-michelin.webp',
       alt: t('restaurant.archRoom2ImgAlt'),
       title: t('restaurant.archRoom2Title'),
       body: t('restaurant.archRoom2Body'),
     },
     {
-      num: '03',
+      num: '04',
       img: '/images/cristina-albert-botic-emporda-michelin.webp',
       alt: t('restaurant.archRoom3ImgAlt'),
       title: t('restaurant.archRoom3Title'),
       body: t('restaurant.archRoom3Body'),
     },
     {
-      num: '04',
+      num: '05',
       img: '/images/Albert Sastregener-empordà-botic-restaurant.webp',
       alt: t('restaurant.archRoom4ImgAlt'),
       title: t('restaurant.archRoom4Title'),
@@ -289,7 +296,9 @@ function ScrollArchitectureSection({ t }) {
                 <div className="rst-story-copy">
                   <span className="rst-story-number">{scene.num}</span>
                   <h3>{scene.title}</h3>
-                  <p>{scene.body}</p>
+                  {(Array.isArray(scene.body) ? scene.body : [scene.body]).map((paragraph, paragraphIndex) => (
+                    <p key={paragraphIndex}>{paragraph}</p>
+                  ))}
                 </div>
               </article>
             ))}
@@ -298,7 +307,7 @@ function ScrollArchitectureSection({ t }) {
           <div className="rst-story-chrome" aria-hidden="true">
             <span>{String(activeScene + 1).padStart(2, '0')}</span>
             <div className="rst-story-rail"><span style={{ height: `${((activeScene + 1) / scenes.length) * 100}%` }} /></div>
-            <span>04</span>
+            <span>{String(scenes.length).padStart(2, '0')}</span>
           </div>
         </div>
       </div>
@@ -524,7 +533,6 @@ export default function Restaurant() {
       />
 
       <RestaurantHero t={t} routes={routes} />
-      <OriginSection t={t} />
       <ScrollArchitectureSection t={t} />
       <GalleryEpilogue t={t} />
       <ReserveSection t={t} routes={routes} />

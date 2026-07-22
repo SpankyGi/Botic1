@@ -5438,7 +5438,7 @@ footer.botic-footer {
 /* ── 4. Galeria — filmstrip horitzontal, secció icònica ── */
 .rst-story { background: #050403; position: relative; }
 .rst-story .rst-arch-header { padding-top: 112px; padding-bottom: 68px; }
-.rst-story-scroll { position: relative; height: 400vh; background: #050403; }
+.rst-story-scroll { position: relative; height: 500vh; background: #050403; }
 .rst-story-stage {
   position: sticky; top: 0; height: 100vh; min-height: 620px;
   overflow: hidden; background: #050403;
@@ -5458,10 +5458,11 @@ footer.botic-footer {
   transition: transform 5.5s cubic-bezier(.18,.72,.2,1), filter 1.1s ease;
 }
 .rst-story-scene.is-active .rst-story-img { transform: scale(1.01); filter: saturate(1) brightness(.92); }
-.rst-story-scene:nth-child(1) .rst-story-img { object-position: center 58%; }
-.rst-story-scene:nth-child(2) .rst-story-img { object-position: center 55%; }
-.rst-story-scene:nth-child(3) .rst-story-img { object-position: center 40%; }
-.rst-story-scene:nth-child(4) .rst-story-img { object-position: 68% center; }
+.rst-story-scene:nth-child(1) .rst-story-img { object-position: center 52%; }
+.rst-story-scene:nth-child(2) .rst-story-img { object-position: center 58%; }
+.rst-story-scene:nth-child(3) .rst-story-img { object-position: center 55%; }
+.rst-story-scene:nth-child(4) .rst-story-img { object-position: center 40%; }
+.rst-story-scene:nth-child(5) .rst-story-img { object-position: 68% center; }
 .rst-story-shade {
   position: absolute; inset: 0;
   background: linear-gradient(90deg, rgba(5,4,3,.92) 0%, rgba(5,4,3,.70) 25%, rgba(5,4,3,.16) 58%, transparent 78%), linear-gradient(0deg, rgba(5,4,3,.64) 0%, transparent 42%);
@@ -5481,10 +5482,13 @@ footer.botic-footer {
   margin: 18px 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 7.2vw, 104px);
   font-weight: 300; font-style: italic; line-height: .92; color: #F7F1E6; text-shadow: 0 10px 48px rgba(0,0,0,.55);
 }
+.rst-story-scene:first-child .rst-story-copy { width: min(650px, 56vw); }
+.rst-story-scene:first-child .rst-story-copy h3 { font-size: clamp(44px, 5.8vw, 82px); line-height: .98; }
 .rst-story-copy p {
   max-width: 440px; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8;
   font-weight: 300; color: rgba(237,231,219,.78);
 }
+.rst-story-copy p + p { margin-top: 8px; }
 .rst-story-chrome {
   position: absolute; z-index: 5; right: clamp(28px, 3.5vw, 64px); top: 50%; transform: translateY(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 14px;
@@ -5787,12 +5791,16 @@ footer.botic-footer {
     left: 24px; right: 24px; bottom: 46px; width: auto; opacity: 1; transform: none; transition: none;
   }
   .rst-story-copy h3 { font-size: clamp(44px, 14vw, 64px); margin: 14px 0; }
+  .rst-story-scene:first-child .rst-story-copy { width: auto; }
+  .rst-story-scene:first-child .rst-story-copy h3 { font-size: clamp(38px, 11vw, 52px); line-height: 1; }
+  .rst-story-scene:first-child .rst-story-copy p { font-size: 12px; line-height: 1.55; }
   .rst-story-copy p { font-size: 13px; line-height: 1.7; }
   .rst-story-chrome { display: none; }
-  .rst-story-scene:nth-child(1) .rst-story-img { object-position: 55% center; }
-  .rst-story-scene:nth-child(2) .rst-story-img { object-position: center 58%; }
-  .rst-story-scene:nth-child(3) .rst-story-img { object-position: 60% center; }
-  .rst-story-scene:nth-child(4) .rst-story-img { object-position: 72% center; }
+  .rst-story-scene:nth-child(1) .rst-story-img { object-position: center 52%; }
+  .rst-story-scene:nth-child(2) .rst-story-img { object-position: 55% center; }
+  .rst-story-scene:nth-child(3) .rst-story-img { object-position: center 58%; }
+  .rst-story-scene:nth-child(4) .rst-story-img { object-position: 60% center; }
+  .rst-story-scene:nth-child(5) .rst-story-img { object-position: 72% center; }
 
   .rst-gallery--epilogue { padding-bottom: 72px; }
   .rst-gallery-epilogue { grid-template-columns: 1fr; gap: 12px; padding: 0 20px; }
