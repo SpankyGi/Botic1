@@ -1,21 +1,9 @@
-const petals = [0, 60, 120, 180, 240, 300]
-
 function MichelinRosette({ x, delayClass, delay }) {
   return (
     <g className={`hero-michelin-star-wrap ${delayClass}`} transform={`translate(${x} 202)`}>
       <g className="hero-michelin-star" style={{ '--star-delay': delay }}>
         <circle className="hero-michelin-core-flash" r="23" />
-        <g className="hero-michelin-rosette">
-          {petals.map((rotation) => (
-            <path
-              key={rotation}
-              className="hero-michelin-petal"
-              d="M-14-12C-32-25-27-59 0-68C27-59 32-25 14-12"
-              transform={`rotate(${rotation})`}
-              pathLength="1"
-            />
-          ))}
-        </g>
+        <use className="hero-michelin-reference" href="#michelin-star-original" x="-61" y="-67" width="122" height="134" />
         <circle className="hero-michelin-glint-orbit" r="57" pathLength="1" />
       </g>
     </g>
@@ -47,6 +35,9 @@ export default function MichelinStarsAnimation() {
             <feGaussianBlur stdDeviation="7" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
+          <symbol id="michelin-star-original" viewBox="0 0 2560 2795" preserveAspectRatio="xMidYMid meet">
+            <image href="/images/michelin-star-original.png" width="2560" height="2795" />
+          </symbol>
         </defs>
 
         <path className="hero-michelin-gesture" pathLength="1" d="M44 255C86 92 252 35 405 80C480 102 527 158 522 224C516 299 445 344 351 350" />

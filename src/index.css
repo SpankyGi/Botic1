@@ -760,17 +760,12 @@ body {
   transform-origin: center;
   animation: hero-michelin-star-reveal 1.35s var(--star-delay) cubic-bezier(.12,.88,.22,1) forwards;
 }
-.hero-michelin-rosette { filter: drop-shadow(0 0 5px rgba(224,0,27,.48)); }
-.hero-michelin-petal {
-  fill: rgba(224,0,27,.06);
-  stroke: #e0001b;
-  stroke-width: 7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  vector-effect: non-scaling-stroke;
-  animation: hero-michelin-petal-draw 1.05s calc(var(--star-delay) + .08s) cubic-bezier(.55,0,.15,1) forwards;
+.hero-michelin-reference {
+  opacity: 0;
+  image-rendering: auto;
+  filter: drop-shadow(0 0 5px rgba(224,0,27,.48));
+  clip-path: circle(0 at 50% 50%);
+  animation: hero-michelin-original-reveal 1.05s calc(var(--star-delay) + .08s) cubic-bezier(.2,.85,.2,1) forwards;
 }
 .hero-michelin-core-flash {
   fill: url(#michelin-impact);
@@ -853,7 +848,11 @@ body {
   58%  { opacity: 1; transform: scale(1.10) rotate(2deg); filter: blur(0); }
   100% { opacity: 1; transform: scale(1); }
 }
-@keyframes hero-michelin-petal-draw { to { stroke-dashoffset: 0; fill: rgba(224,0,27,.10); } }
+@keyframes hero-michelin-original-reveal {
+  0% { opacity: 0; clip-path: circle(0 at 50% 50%); filter: brightness(2) drop-shadow(0 0 16px rgba(255,20,45,.9)); }
+  62% { opacity: 1; clip-path: circle(72% at 50% 50%); filter: brightness(1.35) drop-shadow(0 0 10px rgba(224,0,27,.75)); }
+  100% { opacity: 1; clip-path: circle(72% at 50% 50%); filter: brightness(1) drop-shadow(0 0 5px rgba(224,0,27,.48)); }
+}
 @keyframes hero-michelin-core-flash { 0% { opacity: 0; transform: scale(.2); } 30% { opacity: .95; } 100% { opacity: 0; transform: scale(3.8); } }
 @keyframes hero-michelin-orbit { 0% { opacity: 0; transform: rotate(-90deg); } 18% { opacity: 1; } 100% { opacity: 0; transform: rotate(250deg); } }
 @keyframes hero-michelin-impact { 0% { opacity: 0; transform: scale(.2); } 25% { opacity: .7; } 100% { opacity: 0; transform: scale(2); } }
@@ -888,7 +887,7 @@ body {
   .hero-michelin-gesture,
   .hero-michelin-gesture-secondary,
   .hero-michelin-star,
-  .hero-michelin-petal,
+  .hero-michelin-reference,
   .hero-michelin-core-flash,
   .hero-michelin-glint-orbit,
   .hero-michelin-impact,
@@ -902,10 +901,10 @@ body {
   }
   .hero-michelin-gesture,
   .hero-michelin-gesture-secondary,
-  .hero-michelin-petal,
   .hero-michelin-caption-rule { stroke-dashoffset: 0; }
   .hero-michelin-star,
   .hero-michelin-stars-glow,
+  .hero-michelin-reference,
   .hero-michelin-caption { opacity: 1; }
   .hero-michelin-flare,
   .hero-michelin-core-flash,
