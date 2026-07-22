@@ -20,6 +20,15 @@ export default function MichelinStarsAnimation() {
           <filter id="michelin-soft-glow" x="-80%" y="-80%" width="260%" height="260%">
             <feGaussianBlur stdDeviation="7" />
           </filter>
+          <g id="michelin-rosette">
+            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" />
+            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(60)" />
+            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(120)" />
+            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(180)" />
+            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(240)" />
+            <path d="M0-8C-13-17-18-43 0-61C18-43 13-17 0-8Z" transform="rotate(300)" />
+            <circle r="10" />
+          </g>
         </defs>
 
         <circle className="hero-michelin-halo" cx="360" cy="360" r="274" />
@@ -43,18 +52,18 @@ export default function MichelinStarsAnimation() {
         />
 
         <g className="hero-michelin-stars">
-          <circle className="hero-michelin-star-glow star-one" cx="324" cy="342" r="54" />
-          <circle className="hero-michelin-star-glow star-two" cx="405" cy="342" r="54" />
-          <path
-            className="hero-michelin-star star-one"
-            pathLength="1"
-            d="M324 305L334 329L360 331L340 348L346 374L324 360L302 374L308 348L288 331L314 329L324 305Z"
-          />
-          <path
-            className="hero-michelin-star star-two"
-            pathLength="1"
-            d="M405 305L415 329L441 331L421 348L427 374L405 360L383 374L389 348L369 331L395 329L405 305Z"
-          />
+          <circle className="hero-michelin-star-glow star-one" cx="310" cy="342" r="72" />
+          <circle className="hero-michelin-star-glow star-two" cx="424" cy="342" r="72" />
+          <g className="hero-michelin-star star-one" transform="translate(310 342) scale(.72)">
+            <use href="#michelin-rosette" />
+          </g>
+          <g className="hero-michelin-star star-two" transform="translate(424 342) scale(.72)">
+            <use href="#michelin-rosette" />
+          </g>
+          <path className="hero-michelin-stars-rule" pathLength="1" d="M275 419H459" />
+          <text className="hero-michelin-stars-label" x="367" y="442" textAnchor="middle">
+            MICHELIN GUIDE · DEUX ÉTOILES
+          </text>
         </g>
 
         <circle className="hero-michelin-point point-a" cx="172" cy="321" r="3" />
