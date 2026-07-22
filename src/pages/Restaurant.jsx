@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
@@ -206,6 +206,130 @@ function GallerySection({ t }) {
 }
 
 /* ── 5. Reserva i informació pràctica — partició en diagonal ─── */
+function ScrollArchitectureSection({ t }) {
+  const headerRef = useReveal(0.2)
+  const storyRef = useRef(null)
+  const [activeScene, setActiveScene] = useState(0)
+
+  const scenes = [
+    {
+      num: '01',
+      img: '/images/restaurant-botic-corca-emporda-exterior-nit.webp',
+      alt: t('restaurant.archRoom1ImgAlt'),
+      title: t('restaurant.archRoom1Title'),
+      body: t('restaurant.archRoom1Body'),
+    },
+    {
+      num: '02',
+      img: '/images/restaurant-emporda-botic-michelin.webp',
+      alt: t('restaurant.archRoom2ImgAlt'),
+      title: t('restaurant.archRoom2Title'),
+      body: t('restaurant.archRoom2Body'),
+    },
+    {
+      num: '03',
+      img: '/images/cristina-albert-botic-emporda-michelin.webp',
+      alt: t('restaurant.archRoom3ImgAlt'),
+      title: t('restaurant.archRoom3Title'),
+      body: t('restaurant.archRoom3Body'),
+    },
+    {
+      num: '04',
+      img: '/images/Albert Sastregener-empordà-botic-restaurant.webp',
+      alt: t('restaurant.archRoom4ImgAlt'),
+      title: t('restaurant.archRoom4Title'),
+      body: t('restaurant.archRoom4Body'),
+    },
+  ]
+
+  useEffect(() => {
+    const el = storyRef.current
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
+
+    let raf = null
+    const update = () => {
+      raf = null
+      if (window.innerWidth <= 768) return
+      const rect = el.getBoundingClientRect()
+      const distance = Math.max(el.offsetHeight - window.innerHeight, 1)
+      const progress = Math.min(Math.max(-rect.top / distance, 0), 1)
+      const nextScene = Math.min(scenes.length - 1, Math.floor(progress * scenes.length))
+      setActiveScene((current) => current === nextScene ? current : nextScene)
+      el.style.setProperty('--story-progress', progress.toFixed(3))
+    }
+    const onScroll = () => { if (!raf) raf = requestAnimationFrame(update) }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    update()
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (raf) cancelAnimationFrame(raf)
+    }
+  }, [scenes.length])
+
+  return (
+    <section className="rst-story" aria-labelledby="story-heading">
+      <div className="rst-arch-header reveal" ref={headerRef}>
+        <span className="rst-eyebrow">{t('restaurant.archEyebrow')}</span>
+        <h2 id="story-heading" className="rst-arch-heading">{t('restaurant.archHeading')}</h2>
+      </div>
+
+      <div className="rst-story-scroll" ref={storyRef}>
+        <div className="rst-story-stage">
+          <div className="rst-story-scenes">
+            {scenes.map((scene, index) => (
+              <article
+                key={scene.num}
+                className={`rst-story-scene${index === activeScene ? ' is-active' : ''}${index < activeScene ? ' is-past' : ''}`}
+              >
+                <img src={scene.img} alt={scene.alt} className="rst-story-img" loading={index === 0 ? 'eager' : 'lazy'} />
+                <div className="rst-story-shade" aria-hidden="true" />
+                <div className="rst-story-copy">
+                  <span className="rst-story-number">{scene.num}</span>
+                  <h3>{scene.title}</h3>
+                  <p>{scene.body}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="rst-story-chrome" aria-hidden="true">
+            <span>{String(activeScene + 1).padStart(2, '0')}</span>
+            <div className="rst-story-rail"><span style={{ height: `${((activeScene + 1) / scenes.length) * 100}%` }} /></div>
+            <span>04</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function GalleryEpilogue({ t }) {
+  const headerRef = useReveal(0.15)
+  const images = [
+    { src: '/images/albert-sastregener-cuina-emporda-girona.webp', alt: t('restaurant.galleryAlt2') },
+    { src: '/images/restaurant-emporda-michelin-girona.webp', alt: t('restaurant.galleryAlt5') },
+  ]
+
+  return (
+    <section className="rst-gallery rst-gallery--epilogue" aria-labelledby="gallery-epilogue-heading">
+      <div className="rst-gallery-label reveal" ref={headerRef}>
+        <span className="rst-eyebrow">{t('restaurant.galleryEyebrow')}</span>
+        <h2 id="gallery-epilogue-heading" className="rst-gallery-heading">{t('restaurant.galleryHeading')}</h2>
+      </div>
+      <div className="rst-gallery-epilogue">
+        {images.map((image, index) => (
+          <figure className={`rst-gallery-epilogue-item item-${index + 1}`} key={image.src}>
+            <img src={image.src} alt={image.alt} loading="lazy" />
+          </figure>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 function ReserveSection({ t, routes }) {
   const contentRef = useReveal(0.12)
 
@@ -401,8 +525,8 @@ export default function Restaurant() {
 
       <RestaurantHero t={t} routes={routes} />
       <OriginSection t={t} />
-      <ArchitectureSection t={t} />
-      <GallerySection t={t} />
+      <ScrollArchitectureSection t={t} />
+      <GalleryEpilogue t={t} />
       <ReserveSection t={t} routes={routes} />
       <TeamSection t={t} />
       <FinalCTA t={t} routes={routes} />
