@@ -1,51 +1,121 @@
 import { useTranslation } from 'react-i18next'
-import SEO          from '../components/SEO.jsx'
-import SectionTitle from '../components/SectionTitle.jsx'
-import CTA          from '../components/CTA.jsx'
+import { Link } from 'react-router-dom'
+import SEO from '../components/SEO.jsx'
 import { useLangRoutes } from '../i18n/LangContext'
+import { useReveal } from '../hooks/useReveal.js'
 
-function PageHero({ img, alt, eyebrow, heading, subheading }) {
+const CHEF_ACTION = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
+const CHEF_PORTRAIT = '/images/albert-sastregener-cuina-emporda-girona.webp'
+const TERRITORY = '/images/restaurant-emporda-michelin-girona.webp'
+const CELLAR = '/images/restaurant-emporda-botic-michelin.webp'
+
+function GastronomyHero({ t, routes }) {
   return (
-    <section
-      className="relative flex items-end min-h-[60vh] md:min-h-[70vh] overflow-hidden
-                 bg-botic-dark pt-20"
-      aria-label={eyebrow}
-    >
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${img})` }}
-        role="img"
-        aria-label={alt}
-      />
-      <div className="absolute inset-0 bg-gradient-to-t
-                      from-botic-black via-botic-black/55 to-botic-black/15" />
-      <div className="relative z-10 container-max w-full pb-14 md:pb-20 max-w-3xl">
-        <span className="label">{eyebrow}</span>
-        <h1 className="font-serif font-light text-4xl md:text-6xl lg:text-7xl
-                       text-botic-cream leading-[1.05] tracking-tight">
-          {heading}
-        </h1>
-        {subheading && (
-          <p className="mt-5 font-sans text-sm md:text-base text-botic-stone/75
-                        leading-relaxed max-w-lg">
-            {subheading}
-          </p>
-        )}
+    <section className="gst-hero" aria-labelledby="gst-hero-title">
+      <img className="gst-hero-img" src={CHEF_ACTION} alt={t('gastronomia.heroImgAlt')} />
+      <div className="gst-hero-shade" aria-hidden="true" />
+      <div className="gst-hero-grain" aria-hidden="true" />
+      <div className="gst-hero-copy">
+        <span className="gst-kicker">{t('gastronomia.heroEyebrow')}</span>
+        <h1 id="gst-hero-title">{t('gastronomia.heroHeading')}</h1>
+        <p>{t('gastronomia.heroSub')}</p>
+        <Link className="gst-text-link" to={routes.experiencia}>{t('gastronomia.ctaSecondary')}</Link>
+      </div>
+      <span className="gst-hero-index" aria-hidden="true">01 / 04</span>
+      <div className="gst-scroll-cue" aria-hidden="true"><span /></div>
+    </section>
+  )
+}
+
+function ProductManifest({ t }) {
+  const revealRef = useReveal(0.08)
+  const principles = [
+    { number: '01', text: t('gastronomia.producteP1') },
+    { number: '02', text: t('gastronomia.producteP2') },
+    { number: '03', text: t('gastronomia.producteP3') },
+  ]
+
+  return (
+    <section className="gst-manifest" aria-labelledby="gst-product-title">
+      <div className="gst-manifest-word" aria-hidden="true">MATÈRIA</div>
+      <div className="gst-manifest-inner reveal" ref={revealRef}>
+        <header className="gst-section-head">
+          <span className="gst-kicker">{t('gastronomia.producteEyebrow')}</span>
+          <h2 id="gst-product-title">{t('gastronomia.producteHeading')}</h2>
+        </header>
+        <div className="gst-principles">
+          {principles.map((principle) => (
+            <article className="gst-principle" key={principle.number}>
+              <span>{principle.number}</span>
+              <p>{principle.text}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+function TerritorySection({ t }) {
+  const revealRef = useReveal(0.12)
+  return (
+    <section className="gst-territory" aria-labelledby="gst-territory-title">
+      <img src={TERRITORY} alt={t('gastronomia.territorImgAlt')} loading="lazy" />
+      <div className="gst-territory-shade" aria-hidden="true" />
+      <div className="gst-territory-copy reveal" ref={revealRef}>
+        <span className="gst-kicker">{t('gastronomia.territorEyebrow')}</span>
+        <h2 id="gst-territory-title">{t('gastronomia.territorHeading')}</h2>
+        <div>
+          <p>{t('gastronomia.territorP1')}</p>
+          <p>{t('gastronomia.territorP2')}</p>
+        </div>
+      </div>
+      <div className="gst-territory-line" aria-hidden="true"><span>PALAMÓS</span><i /><span>CORÇÀ</span><i /><span>EMPORDÀ</span></div>
+    </section>
+  )
+}
+
+function TechniqueSection({ t }) {
+  const revealRef = useReveal(0.1)
+  return (
+    <section className="gst-technique" aria-labelledby="gst-technique-title">
+      <div className="gst-technique-canvas">
+        <figure className="gst-technique-main">
+          <img src={CHEF_ACTION} alt={t('gastronomia.galleryAlt2')} loading="lazy" />
+        </figure>
+        <figure className="gst-technique-detail" aria-hidden="true">
+          <img src={CELLAR} alt="" loading="lazy" />
+        </figure>
+        <span className="gst-technique-ghost" aria-hidden="true">GEST</span>
+      </div>
+      <div className="gst-technique-copy reveal" ref={revealRef}>
+        <span className="gst-kicker">{t('gastronomia.tecnicaEyebrow')}</span>
+        <h2 id="gst-technique-title">{t('gastronomia.tecnicaHeading')}</h2>
+        <p>{t('gastronomia.tecnicaP1')}</p>
+        <p>{t('gastronomia.tecnicaP2')}</p>
+      </div>
+      <img className="gst-technique-signature" src={CHEF_PORTRAIT} alt={t('gastronomia.producteImgAlt')} loading="lazy" />
+    </section>
+  )
+}
+
+function GastronomyCTA({ t, routes }) {
+  return (
+    <section className="gst-cta">
+      <span className="gst-kicker">{t('gastronomia.ctaEyebrow')}</span>
+      <h2>{t('gastronomia.ctaHeading')}</h2>
+      <p>{t('gastronomia.ctaBody')}</p>
+      <div className="gst-cta-actions">
+        <Link className="btn-gold" to={routes.reserves}>{t('gastronomia.ctaBtn')}</Link>
+        <Link className="gst-cta-secondary" to={routes.experiencia}>{t('gastronomia.ctaSecondary')}</Link>
       </div>
     </section>
   )
 }
 
 export default function Gastronomia() {
-  const { t }  = useTranslation()
+  const { t } = useTranslation()
   const routes = useLangRoutes()
-
-  const GALLERY = [
-    { src: '/images/plat-1.jpg', alt: t('gastronomia.galleryAlt1') },
-    { src: '/images/plat-2.jpg', alt: t('gastronomia.galleryAlt2') },
-    { src: '/images/plat-3.jpg', alt: t('gastronomia.galleryAlt3') },
-    { src: '/images/plat-4.jpg', alt: t('gastronomia.galleryAlt4') },
-  ]
 
   return (
     <>
@@ -54,141 +124,11 @@ export default function Gastronomia() {
         description={t('seo.gastronomia.description')}
         pageKey="gastronomia"
       />
-
-      <PageHero
-        img="/images/gastronomia-hero.jpg"
-        alt={t('gastronomia.heroImgAlt')}
-        eyebrow={t('gastronomia.heroEyebrow')}
-        heading={t('gastronomia.heroHeading')}
-        subheading={t('gastronomia.heroSub')}
-      />
-
-      {/* ── El producte ── */}
-      <section className="bg-botic-ivory py-20 md:py-28 lg:py-32" aria-labelledby="producte-heading">
-        <div className="container-max">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
-            <div>
-              <SectionTitle
-                theme="light"
-                eyebrow={t('gastronomia.producteEyebrow')}
-                as="h2"
-                heading={t('gastronomia.producteHeading')}
-              />
-              <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                              text-botic-text/68 leading-relaxed">
-                <p>{t('gastronomia.producteP1')}</p>
-                <p>{t('gastronomia.producteP2')}</p>
-                <p>{t('gastronomia.producteP3')}</p>
-              </div>
-            </div>
-
-            <div className="h-96 md:h-[520px] overflow-hidden bg-botic-stone">
-              <img
-                src="/images/producte.jpg"
-                alt={t('gastronomia.producteImgAlt')}
-                loading="lazy"
-                className="w-full h-full object-cover"
-                onError={(e) => { e.target.style.opacity = '0' }}
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── El territori ── */}
-      <section className="bg-botic-black" aria-labelledby="territori-heading">
-        <div className="h-72 md:h-[480px] overflow-hidden bg-botic-surface">
-          <img
-            src="/images/territori.jpg"
-            alt={t('gastronomia.territorImgAlt')}
-            loading="lazy"
-            className="w-full h-full object-cover"
-            onError={(e) => { e.target.style.opacity = '0' }}
-          />
-        </div>
-
-        <div className="container-max py-16 md:py-24">
-          <div className="max-w-2xl">
-            <SectionTitle
-              theme="dark"
-              eyebrow={t('gastronomia.territorEyebrow')}
-              as="h2"
-              heading={t('gastronomia.territorHeading')}
-            />
-            <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                            text-botic-muted leading-relaxed">
-              <p>{t('gastronomia.territorP1')}</p>
-              <p>{t('gastronomia.territorP2')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Galeria editorial ── */}
-      <section className="bg-botic-dark" aria-label={t('gastronomia.galleryAria')}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0.5">
-          <div className="h-72 md:h-auto md:row-span-2 overflow-hidden bg-botic-surface">
-            <img
-              src={GALLERY[0].src}
-              alt={GALLERY[0].alt}
-              loading="lazy"
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-              onError={(e) => { e.target.style.opacity = '0' }}
-            />
-          </div>
-          {GALLERY.slice(1, 3).map(({ src, alt }) => (
-            <div key={src} className="h-56 md:h-auto overflow-hidden bg-botic-surface">
-              <img
-                src={src}
-                alt={alt}
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                onError={(e) => { e.target.style.opacity = '0' }}
-              />
-            </div>
-          ))}
-        </div>
-        <div className="h-64 md:h-96 overflow-hidden bg-botic-surface mt-0.5">
-          <img
-            src={GALLERY[3].src}
-            alt={GALLERY[3].alt}
-            loading="lazy"
-            className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-            onError={(e) => { e.target.style.opacity = '0' }}
-          />
-        </div>
-      </section>
-
-      {/* ── La tècnica ── */}
-      <section className="bg-botic-ivory py-20 md:py-28" aria-labelledby="tecnica-heading">
-        <div className="container-max">
-          <div className="max-w-2xl mx-auto text-center">
-            <SectionTitle
-              theme="light"
-              eyebrow={t('gastronomia.tecnicaEyebrow')}
-              as="h2"
-              heading={t('gastronomia.tecnicaHeading')}
-              align="center"
-            />
-            <div className="mt-8 space-y-5 font-sans text-sm md:text-base
-                            text-botic-text/65 leading-relaxed">
-              <p>{t('gastronomia.tecnicaP1')}</p>
-              <p>{t('gastronomia.tecnicaP2')}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <CTA
-        eyebrow={t('gastronomia.ctaEyebrow')}
-        heading={t('gastronomia.ctaHeading')}
-        body={t('gastronomia.ctaBody')}
-        linkTo={routes.reserves}
-        linkLabel={t('gastronomia.ctaBtn')}
-        secondaryLink={routes.experiencia}
-        secondaryLabel={t('gastronomia.ctaSecondary')}
-        theme="dark"
-      />
+      <GastronomyHero t={t} routes={routes} />
+      <ProductManifest t={t} />
+      <TerritorySection t={t} />
+      <TechniqueSection t={t} />
+      <GastronomyCTA t={t} routes={routes} />
     </>
   )
 }
