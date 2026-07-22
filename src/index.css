@@ -577,16 +577,30 @@ body {
 /* ====== FLOATING CTAs ====== */
 .float-ctas {
   position: fixed;
-  right: 32px; bottom: 32px;
+  right: 28px; bottom: 28px;
   z-index: 90;
   display: flex; flex-direction: column;
-  gap: 16px;
+  gap: 8px;
+  padding: 6px;
+  border: 1px solid rgba(201,164,106,.20);
+  background: rgba(10,9,8,.72);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: opacity .35s ease, transform .45s cubic-bezier(.2,.8,.2,1), visibility .35s;
+}
+.float-ctas.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px);
+  pointer-events: none;
 }
 .cta-circle {
-  width: 88px; height: 88px;
+  width: 72px; height: 72px;
   background: var(--burgundy);
-  border-radius: 50%;
+  border-radius: 0;
   display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
+  gap: 5px;
   color: var(--white);
   text-decoration: none;
   font-size: 11px; letter-spacing: 0.18em;
@@ -594,7 +608,7 @@ body {
   font-weight: 400;
   cursor: pointer;
   transition: transform 0.4s cubic-bezier(.2,.8,.2,1), background 0.3s;
-  box-shadow: 0 8px 32px rgba(154,42,42,0.3);
+  box-shadow: 0 8px 28px rgba(154,42,42,0.18);
   position: relative;
   overflow: hidden;
 }
@@ -602,15 +616,17 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  border-radius: 50%;
+  border-radius: 0;
   background: var(--burgundy-dark);
   transform: scale(0);
   transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
 }
-.cta-circle:hover { transform: scale(1.1); }
+.cta-circle:hover { transform: translateY(-2px); }
 .cta-circle:hover::before { transform: scale(1); }
 .cta-circle span { position: relative; z-index: 2; }
-.cta-circle.small { width: 64px; height: 64px; font-size: 9px; }
+.cta-circle.small { width: 72px; height: 48px; font-size: 8px; background: rgba(255,255,255,.035); }
+.cta-symbol { font-size: 9px; line-height: 1; color: rgba(245,220,176,.86); }
+.cta-circle > span:last-child { position: relative; z-index: 2; }
 
 /* ====== HERO ====== */
 .hero {
@@ -724,7 +740,7 @@ body {
   z-index: 4;
   top: 50%;
   right: clamp(18px, 4vw, 86px);
-  width: min(41vw, 590px);
+  width: min(35vw, 510px);
   aspect-ratio: 4 / 3;
   transform: translateY(-45%);
   pointer-events: none;
@@ -2351,7 +2367,7 @@ body {
 .chef-body {
   font-family: 'Inter', sans-serif;
   font-size: clamp(13px, 1.05vw, 14px);
-  color: rgba(218,212,202,0.74);
+  color: rgba(226,220,209,0.80);
   line-height: 2.0;
   font-weight: 300;
   max-width: 400px;
@@ -2432,7 +2448,7 @@ body {
 .home-reserva-cta {
   position: relative;
   background: linear-gradient(180deg, #0e0c09 0%, #131108 40%, #161511 100%);
-  padding: 76px 0 88px;
+  padding: 92px 0 104px;
   text-align: center;
   overflow: hidden;
 }
@@ -2442,7 +2458,7 @@ body {
   content: '';
   position: absolute;
   top: -30px; left: 50%; transform: translateX(-50%);
-  width: 820px; height: 460px;
+  width: min(920px, 92vw); height: 500px;
   background: radial-gradient(ellipse at 50% 34%,
     rgba(201,164,106,0.16) 0%,
     rgba(201,164,106,0.07) 30%,
@@ -2484,12 +2500,12 @@ body {
   color: rgba(201,164,106,0.72);
 }
 .home-reserva-cta h2 {
-  color: #EDE8DC;
+  color: #F6F0E5;
   text-shadow:
     0 0 56px rgba(201,164,106,0.18),
     0 2px 24px rgba(14,12,9,0.55);
 }
-.home-reserva-cta p { color: rgba(168,160,148,0.92); }
+.home-reserva-cta p { color: rgba(218,211,199,0.78); }
 
 /* Botó principal amb més pes en aquest context */
 .home-reserva-cta .btn-gold {
@@ -2497,12 +2513,14 @@ body {
   letter-spacing: 0.22em;
   font-size: 11px;
   box-shadow: 0 0 32px rgba(154,42,42,0.22);
+  color: #fff;
+  border: 1px solid rgba(232,199,142,.24);
 }
 
 /* ====== FOOTER ====== */
 footer.botic-footer {
-  background: #0a0908;
-  padding: 96px 48px 40px;
+  background: linear-gradient(180deg, #080706 0%, #050504 100%);
+  padding: 104px 48px 42px;
   color: var(--grey);
   border-top: 1px solid rgba(201,164,106,0.14);
   position: relative;
@@ -2513,6 +2531,7 @@ footer.botic-footer {
   gap: 60px;
   max-width: 1400px;
   margin: 0 auto;
+  align-items: start;
 }
 .foot-logo {
   font-family: 'Inter', sans-serif;
@@ -2526,7 +2545,7 @@ footer.botic-footer {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
   font-size: 16px;
-  color: rgba(160,153,143,0.85);
+  color: rgba(205,197,184,0.76);
 }
 .foot-col h4 {
   font-size: 10px;
@@ -2539,7 +2558,7 @@ footer.botic-footer {
 .foot-col p,
 .foot-col a {
   font-size: 13px;
-  color: rgba(160,153,143,0.85);
+  color: rgba(205,197,184,0.72);
   line-height: 2.0;
   text-decoration: none;
   display: block;
@@ -2554,7 +2573,7 @@ footer.botic-footer {
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.58);
 }
 
 /* ====== EXPANDABLE DISH ====== */
@@ -2673,8 +2692,8 @@ footer.botic-footer {
 /* ====== RESPONSIVE ====== */
 @media (max-width: 1024px) {
   .hero-michelin-art {
-    right: -54px;
-    width: min(51vw, 520px);
+    right: -20px;
+    width: min(44vw, 450px);
     opacity: 0;
   }
   .hero-eyebrow { font-size: 12px; letter-spacing: 0.17em; }
@@ -2697,18 +2716,26 @@ footer.botic-footer {
   .hero-content-wrap { padding-left: 24px; padding-right: 24px; }
   .hero-text { max-width: 100%; margin-left: 0; }
   .hero-michelin-art {
-    top: 46%;
-    right: -138px;
-    width: 410px;
+    top: 43%;
+    right: 8px;
+    width: 218px;
     opacity: 0;
   }
-  .hero-michelin-svg { opacity: 0.46; }
+  .hero-michelin-svg { opacity: 0.82; }
+  .hero-michelin-gesture { stroke-width: .8; }
+  .hero-michelin-gesture-secondary,
+  .hero-michelin-sparks { display: none; }
+  .hero-michelin-caption { font-size: 10px; letter-spacing: 2.4px; fill: rgba(245,239,226,.82); }
+  .hero-michelin-caption-rule { stroke: rgba(225,193,139,.62); }
   .hero-eyebrow { font-size: 11px; letter-spacing: 0.14em; padding: 6px 14px; margin-bottom: 20px; }
   .hero-sub { font-size: 13px; margin-top: 18px; max-width: 100%; }
   .hero-ctas { margin-top: 28px; gap: 12px; }
   .hero-btn-primary,
   .hero-btn-secondary { padding: 12px 24px; font-size: 10px; }
   .hero-title   { font-size: clamp(44px, 11vw, 72px); }
+  .home-reserva-cta { padding: 78px 0 84px; }
+  .home-reserva-cta h2 { font-size: clamp(34px, 10vw, 46px); }
+  .home-reserva-cta p { max-width: 310px; }
   .menu-header { padding: 0 24px; }
   .menu-grid { padding: 0 24px; }
   /* nav fullscreen — mobile layout */
@@ -2729,9 +2756,31 @@ footer.botic-footer {
   }
   .nav-fs-footer-col--center { position: static; transform: none; }
   .nav-fs-footer-col--right  { margin-left: 0; }
-  .float-ctas { right: 16px; bottom: 20px; }
-  .cta-circle { width: 72px; height: 72px; font-size: 10px; }
-  .cta-circle.small { width: 52px; height: 52px; font-size: 8px; }
+  .float-ctas {
+    left: 14px;
+    right: 14px;
+    bottom: max(12px, env(safe-area-inset-bottom));
+    height: 54px;
+    padding: 4px;
+    display: grid;
+    grid-template-columns: .82fr 1.18fr;
+    gap: 4px;
+    background: rgba(8,7,6,.88);
+    border-color: rgba(201,164,106,.24);
+  }
+  .float-ctas.is-hidden { transform: translateY(72px); }
+  .cta-circle,
+  .cta-circle.small {
+    width: 100%;
+    height: 44px;
+    border-radius: 0;
+    flex-direction: row;
+    gap: 9px;
+    font-size: 9px;
+    letter-spacing: .2em;
+  }
+  .cta-circle.small { background: rgba(255,255,255,.045); }
+  .cta-symbol { font-size: 8px; }
   .mesa-detail { padding: 60px 24px; }
   .mesa-detail-grid { grid-template-columns: 1fr; gap: 40px; }
   /* Philosophy mòbil — cita a sobre, Albert visible a sota */
@@ -2778,9 +2827,14 @@ footer.botic-footer {
   }
   .philo-sep  { margin: 0 auto 24px; }
   .philo-inner::before { display: none; }
-  footer.botic-footer { padding: 72px 24px 32px; }
-  .foot-grid { grid-template-columns: 1fr; gap: 32px; }
-  .foot-bottom { flex-direction: column; gap: 12px; }
+  footer.botic-footer { padding: 68px 24px 28px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 38px 24px; }
+  .foot-grid > :first-child { grid-column: 1 / -1; padding-bottom: 8px; }
+  .foot-col:last-child { grid-column: 2; }
+  .foot-col h4 { margin-bottom: 14px; letter-spacing: .28em; }
+  .foot-col p,
+  .foot-col a { font-size: 12px; line-height: 1.85; }
+  .foot-bottom { flex-direction: column; gap: 10px; margin-top: 42px; padding-top: 22px; }
   .video-side-text { display: none; }
   .hero-video-frame { max-width: 280px; }
   .hero-bg-video { object-position: 60% center; }
@@ -2963,7 +3017,7 @@ footer.botic-footer {
 }
 .home-intro-body {
   font-size: clamp(13px, 1.2vw, 15px);
-  color: rgba(218,212,202,0.78);
+  color: rgba(232,226,215,0.84);
   line-height: 1.85;
   font-weight: 300;
 }
@@ -2986,17 +3040,19 @@ footer.botic-footer {
 
 /* Feature cards (pàgina d'inici portal) */
 .features-section {
-  background: #0C0B09;
+  background: linear-gradient(180deg, #0C0B09 0%, #090806 100%);
   border-top: 1px solid rgba(201,164,106,0.14);
   border-bottom: 1px solid rgba(201,164,106,0.08);
 }
 .features-section .container-max {
   padding-left: 0;
   padding-right: 0;
+  max-width: 1440px;
 }
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr 1.16fr 1fr;
+  align-items: stretch;
 }
 
 /* Scroll reveal: opac fins que la secció sigui visible */
@@ -3014,7 +3070,8 @@ footer.botic-footer {
 }
 
 .feature-card {
-  padding: 72px 44px 60px;
+  min-height: 440px;
+  padding: 74px 48px 54px;
   border-right: 1px solid rgba(46,43,39,0.75);
   text-decoration: none;
   display: flex;
@@ -3023,6 +3080,22 @@ footer.botic-footer {
   overflow: hidden;
   transition: background 0.45s ease, opacity 0.70s cubic-bezier(0.4,0,0.2,1), transform 0.70s cubic-bezier(0.4,0,0.2,1);
 }
+.feature-card:nth-child(2) {
+  background: linear-gradient(145deg, rgba(201,164,106,.075), rgba(154,42,42,.035));
+  padding-top: 94px;
+}
+.feature-index {
+  position: absolute;
+  right: 28px;
+  top: 20px;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 62px;
+  line-height: 1;
+  color: rgba(201,164,106,.075);
+  transition: color .4s ease, transform .5s cubic-bezier(.2,.8,.2,1);
+}
+.feature-card:hover .feature-index { color: rgba(201,164,106,.18); transform: translateY(-4px); }
 
 /* Accent superior que apareix en hover */
 .feature-card::before {
@@ -3045,7 +3118,7 @@ footer.botic-footer {
   font-size: 10px;
   letter-spacing: 0.40em;
   text-transform: uppercase;
-  color: rgba(154,42,42,0.80);
+  color: rgba(190,69,69,0.92);
   font-weight: 400;
   margin-bottom: 4px;
 }
@@ -3059,7 +3132,7 @@ footer.botic-footer {
   font-family: 'Cormorant Garamond', serif;
   font-weight: 300;
   font-size: clamp(24px, 2.4vw, 36px);
-  color: #EDE8DC;
+  color: #F3EEE3;
   line-height: 1.18;
   letter-spacing: -0.01em;
   margin-top: 16px;
@@ -3069,7 +3142,7 @@ footer.botic-footer {
 .feature-body {
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  color: rgba(138,130,120,0.90);
+  color: rgba(200,192,180,0.74);
   line-height: 1.82;
   font-weight: 300;
   flex: 1;
@@ -3081,7 +3154,7 @@ footer.botic-footer {
   font-size: 10px;
   letter-spacing: 0.30em;
   text-transform: uppercase;
-  color: rgba(154,42,42,0.88);
+  color: rgba(205,91,82,0.94);
   font-weight: 400;
   padding-top: 20px;
   border-top: 1px solid rgba(46,43,39,0.70);
@@ -3109,9 +3182,15 @@ footer.botic-footer {
   .features-grid { grid-template-columns: 1fr; }
   .feature-card {
     border-right: none;
-    border-bottom: 1px solid #2E2B27;
-    padding: 48px 24px;
+    border-bottom: 1px solid rgba(201,164,106,.13);
+    min-height: 0;
+    padding: 44px 24px 38px;
   }
+  .feature-card:nth-child(2) { padding-top: 54px; padding-bottom: 48px; }
+  .feature-index { right: 20px; top: 14px; font-size: 48px; }
+  .feature-title { font-size: clamp(28px, 8vw, 36px); margin-bottom: 14px; max-width: 88%; }
+  .feature-body { margin-bottom: 20px; line-height: 1.72; }
+  .feature-cta { padding-top: 16px; }
   .feature-card:last-child { border-bottom: none; }
 }
 
@@ -4930,7 +5009,7 @@ footer.botic-footer {
 .soul-body {
   font-family: 'Inter', sans-serif;
   font-size: clamp(13px, 1.1vw, 14px);
-  color: rgba(218,212,202,0.72);
+  color: rgba(228,222,211,0.80);
   line-height: 2.0;
   font-weight: 300;
   margin-bottom: 36px;

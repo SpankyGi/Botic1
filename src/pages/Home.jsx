@@ -84,6 +84,7 @@ export default function Home() {
           <div className="features-grid">
             {FEATURES.map(({ tag, title, body, to, label }, i) => (
               <Link key={to} to={to} className="feature-card" style={{ '--i': i }}>
+                <span className="feature-index" aria-hidden="true">0{i + 1}</span>
                 <span className="feature-tag">{tag}</span>
                 <h3 className="feature-title">{title}</h3>
                 <p className="feature-body">{body}</p>
