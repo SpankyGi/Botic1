@@ -536,8 +536,6 @@ export default function Restaurant() {
 
       <RestaurantHero t={t} routes={routes} />
       <ScrollArchitectureSection t={t} />
-      <GalleryEpilogue t={t} />
-      <ReserveSection t={t} routes={routes} />
       <TeamSection t={t} />
       <FinalCTA t={t} routes={routes} />
     </>
