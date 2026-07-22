@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
+import { useLangRoutes } from '../i18n/LangContext'
 
 function ContactItem({ label, children }) {
   return (
@@ -18,6 +20,7 @@ function ContactItem({ label, children }) {
 
 export default function Reserves() {
   const { t } = useTranslation()
+  const routes = useLangRoutes()
   const [sent, setSent] = useState(false)
   const [form, setForm] = useState({
     nom: '', email: '', telefon: '', persones: '2', data: '', missatge: '',
@@ -216,6 +219,82 @@ export default function Reserves() {
                 </form>
               )}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#0b0908] border-y border-botic-border py-20 md:py-28" aria-labelledby="relevant-info-title">
+        <div className="container-max">
+          <header className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-end mb-14 md:mb-20">
+            <span className="label lg:col-span-3">{t('reserves.infoEyebrow')}</span>
+            <h2 id="relevant-info-title" className="font-serif font-light text-4xl md:text-6xl text-botic-cream leading-[1.02] tracking-tight lg:col-span-8">
+              {t('reserves.infoHeading')}
+            </h2>
+          </header>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 border-t border-botic-border">
+            <article className="py-10 md:pr-8 md:border-r border-botic-border">
+              <span className="font-sans text-[10px] tracking-[0.25em] text-botic-gold block mb-8">01</span>
+              <h3 className="font-serif text-3xl text-botic-cream mb-6">{t('reserves.restaurantTitle')}</h3>
+              <div className="space-y-4 font-sans text-sm leading-relaxed text-botic-muted">
+                <p>{t('reserves.restaurantPets')}</p>
+                <p>{t('reserves.restaurantHours')}</p>
+                <p>{t('reserves.restaurantParking')}</p>
+                <a href="https://www.google.com/maps/d/viewer?mid=13ycz7ovNLHKlPEOouM13aNPLOzpPzv4&ll=41.98827961281014%2C3.016173340973789&z=17" target="_blank" rel="noopener noreferrer" className="inline-block text-[11px] tracking-[0.2em] uppercase text-botic-gold hover:text-botic-cream transition-colors">
+                  {t('reserves.restaurantParkingLink')} →
+                </a>
+              </div>
+            </article>
+
+            <article className="py-10 md:px-8 md:border-r border-botic-border border-t md:border-t-0">
+              <span className="font-sans text-[10px] tracking-[0.25em] text-botic-gold block mb-8">02</span>
+              <h3 className="font-serif text-3xl text-botic-cream mb-6">{t('reserves.menusTitle')}</h3>
+              <div className="space-y-4 font-sans text-sm leading-relaxed text-botic-muted">
+                <p>{t('reserves.menusAllergies')}</p>
+                <p>{t('reserves.menusFullTable')}</p>
+                <Link to={routes.menus} className="inline-block text-[11px] tracking-[0.2em] uppercase text-botic-gold hover:text-botic-cream transition-colors">
+                  {t('reserves.menusLink')} →
+                </Link>
+              </div>
+            </article>
+
+            <article className="py-10 md:pl-8 border-t md:border-t-0 border-botic-border">
+              <span className="font-sans text-[10px] tracking-[0.25em] text-botic-gold block mb-8">03</span>
+              <h3 className="font-serif text-3xl text-botic-cream mb-6">{t('reserves.childrenTitle')}</h3>
+              <div className="space-y-4 font-sans text-sm leading-relaxed text-botic-muted">
+                <p>{t('reserves.childrenConduct')}</p>
+                <p>{t('reserves.childrenStroller')}</p>
+                <p>{t('reserves.childrenHighchairs')}</p>
+              </div>
+            </article>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 border-t border-botic-border pt-14 md:pt-20">
+            <div className="lg:col-span-4 space-y-12">
+              <article>
+                <span className="label block mb-4">{t('reserves.importantTitle')}</span>
+                <p className="font-sans text-sm leading-relaxed text-botic-cream/75">{t('reserves.importantConfirm')}</p>
+              </article>
+              <article className="pt-10 border-t border-botic-border">
+                <span className="label block mb-4">{t('reserves.taxiTitle')}</span>
+                <p className="font-sans text-sm leading-relaxed text-botic-muted">{t('reserves.taxiBody')}</p>
+              </article>
+            </div>
+
+            <article className="lg:col-span-8 lg:border-l lg:border-botic-border lg:pl-16">
+              <span className="label block mb-5">{t('reserves.cancellationTitle')}</span>
+              <h3 className="font-serif font-light text-3xl md:text-5xl text-botic-cream leading-tight mb-9">
+                {t('reserves.cancellationNotice')}
+              </h3>
+              <ol className="space-y-0 border-t border-botic-border">
+                {['cancellationGrace', 'cancellationHow', 'cancellationConfirm', 'cancellationCharge'].map((key, index) => (
+                  <li key={key} className="grid grid-cols-[2rem_1fr] md:grid-cols-[3rem_1fr] gap-3 py-5 border-b border-botic-border font-sans text-sm leading-relaxed text-botic-muted">
+                    <span className="text-botic-gold text-[10px] tracking-[0.2em] pt-1">0{index + 1}</span>
+                    <span className={key === 'cancellationCharge' ? 'text-botic-cream' : ''}>{t(`reserves.${key}`)}</span>
+                  </li>
+                ))}
+              </ol>
+            </article>
           </div>
         </div>
       </section>
