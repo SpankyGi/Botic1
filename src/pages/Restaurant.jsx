@@ -207,9 +207,9 @@ function GallerySection({ t }) {
 
 /* ── 5. Reserva i informació pràctica — partició en diagonal ─── */
 function ScrollArchitectureSection({ t }) {
-  const headerRef = useReveal(0.2)
   const storyRef = useRef(null)
   const [activeScene, setActiveScene] = useState(0)
+  const [showStoryIntro, setShowStoryIntro] = useState(true)
 
   const scenes = [
     {
@@ -262,6 +262,7 @@ function ScrollArchitectureSection({ t }) {
       const progress = Math.min(Math.max(-rect.top / distance, 0), 1)
       const nextScene = Math.min(scenes.length - 1, Math.floor(progress * scenes.length))
       setActiveScene((current) => current === nextScene ? current : nextScene)
+      setShowStoryIntro((current) => current === (progress < 0.075) ? current : progress < 0.075)
       el.style.setProperty('--story-progress', progress.toFixed(3))
     }
     const onScroll = () => { if (!raf) raf = requestAnimationFrame(update) }
@@ -277,12 +278,7 @@ function ScrollArchitectureSection({ t }) {
   }, [scenes.length])
 
   return (
-    <section className="rst-story" aria-labelledby="story-heading">
-      <div className="rst-arch-header reveal" ref={headerRef}>
-        <span className="rst-eyebrow">{t('restaurant.archEyebrow')}</span>
-        <h2 id="story-heading" className="rst-arch-heading">{t('restaurant.archHeading')}</h2>
-      </div>
-
+    <section className={`rst-story${showStoryIntro ? ' is-intro' : ''}`} aria-labelledby="story-heading">
       <div className="rst-story-scroll" ref={storyRef}>
         <div className="rst-story-stage">
           <div className="rst-story-scenes">
@@ -302,6 +298,12 @@ function ScrollArchitectureSection({ t }) {
                 </div>
               </article>
             ))}
+          </div>
+
+          <div className="rst-story-intro">
+            <span className="rst-eyebrow">{t('restaurant.archEyebrow')}</span>
+            <h2 id="story-heading" className="rst-arch-heading">{t('restaurant.archHeading')}</h2>
+            <span className="rst-story-intro-line" aria-hidden="true" />
           </div>
 
           <div className="rst-story-chrome" aria-hidden="true">

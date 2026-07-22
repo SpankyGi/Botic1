@@ -5437,7 +5437,6 @@ footer.botic-footer {
 
 /* ── 4. Galeria — filmstrip horitzontal, secció icònica ── */
 .rst-story { background: #050403; position: relative; }
-.rst-story .rst-arch-header { padding-top: 112px; padding-bottom: 68px; }
 .rst-story-scroll { position: relative; height: 500vh; background: #050403; }
 .rst-story-stage {
   position: sticky; top: 0; height: 100vh; min-height: 620px;
@@ -5473,6 +5472,27 @@ footer.botic-footer {
   transition: opacity .7s .22s ease, transform .9s .18s cubic-bezier(.16,.84,.24,1);
 }
 .rst-story-scene.is-active .rst-story-copy { opacity: 1; transform: translateY(0); }
+.rst-story.is-intro .rst-story-scene:first-child .rst-story-copy {
+  opacity: 0; transform: translateY(34px); pointer-events: none;
+}
+.rst-story-intro {
+  position: absolute; z-index: 4; left: 50%; top: 50%; width: min(900px, 74vw);
+  transform: translate(-50%, -46%); text-align: center; opacity: 0; visibility: hidden;
+  transition: opacity .75s ease, transform 1.05s cubic-bezier(.16,.84,.24,1), visibility 0s linear .75s;
+}
+.rst-story.is-intro .rst-story-intro {
+  opacity: 1; visibility: visible; transform: translate(-50%, -50%); transition-delay: .12s, .08s, 0s;
+}
+.rst-story-intro .rst-eyebrow { color: rgba(215,177,112,.86); }
+.rst-story-intro .rst-arch-heading {
+  margin-top: 18px; font-size: clamp(54px, 6.7vw, 106px); line-height: .94;
+  color: #f7f1e6; text-shadow: 0 12px 52px rgba(0,0,0,.58);
+}
+.rst-story-intro-line {
+  display: block; width: 1px; height: 0; margin: 34px auto 0; background: rgba(215,177,112,.72);
+  transition: height .85s .45s cubic-bezier(.2,.8,.2,1);
+}
+.rst-story.is-intro .rst-story-intro-line { height: 62px; }
 .rst-story-number {
   display: inline-flex; align-items: center; gap: 14px; font-family: 'Inter', sans-serif;
   font-size: 10px; letter-spacing: .34em; color: rgba(215,177,112,.82);
@@ -5769,7 +5789,6 @@ footer.botic-footer {
   .rst-hero-inner-max { padding-bottom: 64px; padding-left: 46px; }
   .rst-hero-vert { left: 14px; font-size: 9px; }
 
-  .rst-story .rst-arch-header { padding: 76px 24px 44px; }
   .rst-story-scroll { height: auto; }
   .rst-story-stage { position: relative; height: auto; min-height: 0; overflow: visible; }
   .rst-story-scenes { position: relative; inset: auto; display: grid; }
@@ -5801,6 +5820,16 @@ footer.botic-footer {
   .rst-story-scene:nth-child(3) .rst-story-img { object-position: center 58%; }
   .rst-story-scene:nth-child(4) .rst-story-img { object-position: 60% center; }
   .rst-story-scene:nth-child(5) .rst-story-img { object-position: 72% center; }
+  .rst-story-scene:first-child { min-height: 112svh; }
+  .rst-story-intro,
+  .rst-story.is-intro .rst-story-intro {
+    position: absolute; z-index: 4; left: 24px; right: 24px; top: 86px; width: auto;
+    transform: none; text-align: left; opacity: 1; visibility: visible; transition: none;
+  }
+  .rst-story-intro .rst-arch-heading { margin-top: 12px; font-size: clamp(38px, 11vw, 52px); line-height: 1; }
+  .rst-story-intro-line,
+  .rst-story.is-intro .rst-story-intro-line { width: 48px; height: 1px; margin: 22px 0 0; }
+  .rst-story.is-intro .rst-story-scene:first-child .rst-story-copy { opacity: 1; transform: none; pointer-events: auto; }
 
   .rst-gallery--epilogue { padding-bottom: 72px; }
   .rst-gallery-epilogue { grid-template-columns: 1fr; gap: 12px; padding: 0 20px; }
