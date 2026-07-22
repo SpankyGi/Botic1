@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
@@ -17,6 +18,16 @@ const DISH_SEQUENCE = [
   { file: 'tonyina-mar-costa-brava-alta-cuina-botic.webp', alt: 'galleryAlt3', shape: 'dark' },
   { file: 'plat-carn-fruits-vermells-botic.webp', alt: 'galleryAlt3', shape: 'landscape' },
   { file: 'postres-maduixes-menu-degustacio-botic.webp', alt: 'galleryAlt4', shape: 'portrait' },
+]
+
+const DESKTOP_GALLERY = [
+  { file: 'xef-servint-brou-plat-peix-botic.webp', alt: 'galleryAlt2' },
+  ...DISH_SEQUENCE,
+  { file: 'escamarlans-marisc-restaurant-botic-emporda.webp', alt: 'galleryAlt3' },
+  { file: 'plat-llamantol-restaurant-botic-emporda.webp', alt: 'galleryAlt3' },
+  { file: 'plat-esparrecs-blancs-restaurant-botic.webp', alt: 'galleryAlt1' },
+  { file: 'detall-postres-maduixes-botic-emporda.webp', alt: 'galleryAlt4' },
+  { file: 'alta-cuina-empordanesa-restaurant-botic.webp', alt: 'galleryAlt3' },
 ]
 
 function GastronomyHero({ t, routes }) {
@@ -87,6 +98,17 @@ function TerritorySection({ t }) {
 
 function TechniqueSection({ t }) {
   const revealRef = useReveal(0.1)
+  const [galleryIndex, setGalleryIndex] = useState(0)
+  const [galleryPaused, setGalleryPaused] = useState(false)
+  const galleryTotal = DESKTOP_GALLERY.length
+  const changeGallery = (direction) => setGalleryIndex((current) => (current + direction + galleryTotal) % galleryTotal)
+
+  useEffect(() => {
+    if (galleryPaused) return undefined
+    const timer = window.setInterval(() => changeGallery(1), 5200)
+    return () => window.clearInterval(timer)
+  }, [galleryPaused, galleryTotal])
+
   return (
     <section className="gst-technique" aria-labelledby="gst-technique-title">
       <div className="gst-technique-stage">
@@ -94,17 +116,34 @@ function TechniqueSection({ t }) {
         <figure className="gst-technique-main">
           <img src={TECHNIQUE_ACTION} alt={t('gastronomia.galleryAlt2')} loading="lazy" />
         </figure>
-        <figure className="gst-technique-detail" aria-label={t('gastronomia.galleryAria')}>
-          {[{ file: 'xef-servint-brou-plat-peix-botic.webp', alt: 'galleryAlt2' }, ...DISH_SEQUENCE].map((dish, index) => (
+        <figure
+          className="gst-technique-detail"
+          aria-label={t('gastronomia.galleryAria')}
+          onMouseEnter={() => setGalleryPaused(true)}
+          onMouseLeave={() => setGalleryPaused(false)}
+          onFocusCapture={() => setGalleryPaused(true)}
+          onBlurCapture={() => setGalleryPaused(false)}
+          onKeyDown={(event) => {
+            if (event.key === 'ArrowLeft') changeGallery(-1)
+            if (event.key === 'ArrowRight') changeGallery(1)
+          }}
+        >
+          {DESKTOP_GALLERY.map((dish, index) => (
             <img
               key={dish.file}
+              className={index === galleryIndex ? 'is-active' : ''}
               src={`${DISH_IMAGE_ROOT}/${dish.file}`}
               alt={t(`gastronomia.${dish.alt}`)}
               loading="lazy"
-              style={{ '--gst-slide': index }}
             />
           ))}
-          <figcaption aria-hidden="true"><span>01</span><i /><span>07</span></figcaption>
+          <button className="gst-gallery-arrow gst-gallery-prev" type="button" onClick={() => changeGallery(-1)} aria-label={t('gastronomia.galleryPrev')}><span aria-hidden="true">←</span></button>
+          <button className="gst-gallery-arrow gst-gallery-next" type="button" onClick={() => changeGallery(1)} aria-label={t('gastronomia.galleryNext')}><span aria-hidden="true">→</span></button>
+          <figcaption aria-live="polite">
+            <span>{String(galleryIndex + 1).padStart(2, '0')}</span>
+            <i><b style={{ transform: `scaleX(${(galleryIndex + 1) / galleryTotal})` }} /></i>
+            <span>{String(galleryTotal).padStart(2, '0')}</span>
+          </figcaption>
         </figure>
         <span className="gst-technique-ghost" aria-hidden="true">GEST</span>
         </div>
