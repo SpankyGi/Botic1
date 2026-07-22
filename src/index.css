@@ -730,7 +730,6 @@ body {
   pointer-events: none;
   opacity: 0;
   animation: hero-michelin-enter 1.2s 1.8s cubic-bezier(.2,.8,.2,1) forwards;
-  mix-blend-mode: screen;
 }
 .hero-michelin-svg {
   width: 100%;
@@ -759,30 +758,29 @@ body {
   opacity: 0;
   transform-box: fill-box;
   transform-origin: center;
-  animation: hero-michelin-star-reveal 1.15s cubic-bezier(.2,.8,.2,1) forwards;
+  animation: hero-michelin-star-reveal 1.25s var(--star-delay) cubic-bezier(.16,.84,.28,1) forwards;
 }
-.hero-michelin-rosette {
-  filter: url(#michelin-red-glow);
-}
-.hero-michelin-rosette path {
-  fill: none;
-  stroke: #e30620;
-  stroke-width: 7;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 1;
-  animation: hero-michelin-petal-draw 0.85s cubic-bezier(.55,0,.15,1) forwards;
-}
-.hero-michelin-star.star-one { animation-delay: 3.3s; }
-.hero-michelin-star.star-two { animation-delay: 3.58s; }
-.hero-michelin-star.star-one path { animation-delay: 3.3s; }
-.hero-michelin-star.star-two path { animation-delay: 3.58s; }
-.hero-michelin-stars-glow {
-  fill: rgba(227,6,32,0.1);
+.hero-michelin-reference {
   opacity: 0;
-  filter: blur(18px);
-  animation: hero-michelin-glow-in 1.5s 3.7s ease forwards;
+  filter: drop-shadow(0 0 6px rgba(224,0,27,0.36));
+  animation: hero-michelin-reference-in 0.9s calc(var(--star-delay) + 0.12s) cubic-bezier(.2,.8,.2,1) forwards;
+}
+.hero-michelin-stars-glow {
+  fill: rgba(224,0,27,0.08);
+  opacity: 0;
+  filter: blur(22px);
+  animation: hero-michelin-glow-in 1.6s 3.55s ease forwards;
+}
+.hero-michelin-flare {
+  fill: none;
+  stroke: url(#michelin-flare);
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-dasharray: 34 360;
+  stroke-dashoffset: 290;
+  opacity: 0;
+  filter: drop-shadow(0 0 7px rgba(255,244,219,0.9));
+  animation: hero-michelin-flare-pass 1.25s 4.25s cubic-bezier(.2,.7,.2,1) forwards;
 }
 .hero-michelin-caption-rule {
   fill: none;
@@ -807,11 +805,14 @@ body {
   to   { opacity: 0.94; transform: translateY(-45%) scale(1); }
 }
 @keyframes hero-michelin-draw { to { stroke-dashoffset: 0; } }
-@keyframes hero-michelin-petal-draw { to { stroke-dashoffset: 0; } }
 @keyframes hero-michelin-star-reveal {
-  0%   { opacity: 0; transform: scale(0.82); }
-  70%  { opacity: 1; transform: scale(1.035); }
+  0%   { opacity: 0; transform: scale(0.68) rotate(-8deg); filter: blur(8px); }
+  68%  { opacity: 1; transform: scale(1.045) rotate(1deg); filter: blur(0); }
   100% { opacity: 1; transform: scale(1); }
+}
+@keyframes hero-michelin-reference-in {
+  from { opacity: 0; clip-path: inset(50% 50% 50% 50%); }
+  to { opacity: 1; clip-path: inset(0 0 0 0); }
 }
 @keyframes hero-michelin-glow-in {
   from { opacity: 0; }
@@ -820,6 +821,12 @@ body {
 @keyframes hero-michelin-label-in {
   from { opacity: 0; transform: translateY(5px); }
   to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-michelin-flare-pass {
+  0% { opacity: 0; stroke-dashoffset: 290; }
+  20% { opacity: 0.9; }
+  80% { opacity: 0.9; }
+  100% { opacity: 0; stroke-dashoffset: -88; }
 }
 @keyframes hero-michelin-breathe {
   0%, 100% { transform: translateY(0); opacity: 0.88; }
@@ -836,19 +843,22 @@ body {
   .hero-michelin-gesture,
   .hero-michelin-gesture-secondary,
   .hero-michelin-star,
-  .hero-michelin-rosette path,
+  .hero-michelin-reference,
   .hero-michelin-stars-glow,
+  .hero-michelin-flare,
   .hero-michelin-caption-rule,
   .hero-michelin-caption {
     animation: none;
   }
   .hero-michelin-gesture,
   .hero-michelin-gesture-secondary,
-  .hero-michelin-rosette path,
+  .hero-michelin-reference,
   .hero-michelin-caption-rule { stroke-dashoffset: 0; }
   .hero-michelin-star,
   .hero-michelin-stars-glow,
+  .hero-michelin-reference,
   .hero-michelin-caption { opacity: 1; }
+  .hero-michelin-flare { opacity: 0; }
 }
 
 /* Scroll indicator */

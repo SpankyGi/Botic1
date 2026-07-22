@@ -1,17 +1,15 @@
-function MichelinRosette({ x, delayClass }) {
-  const rotations = [0, 60, 120, 180, 240, 300]
-
+function MichelinRosette({ x, delayClass, delay }) {
   return (
-    <g className={`hero-michelin-star ${delayClass}`} transform={`translate(${x} 202)`}>
-      <g className="hero-michelin-rosette">
-        {rotations.map((rotation) => (
-          <path
-            key={rotation}
-            pathLength="1"
-            transform={`rotate(${rotation})`}
-            d="M0-8C-17-18-22-42-9-57C-4-63 4-63 9-57C22-42 17-18 0-8Z"
-          />
-        ))}
+    <g transform={`translate(${x} 202)`}>
+      <g className={`hero-michelin-star ${delayClass}`} style={{ '--star-delay': delay }}>
+        <use
+          className="hero-michelin-reference"
+          href="#michelin-star-reference"
+          x="-66"
+          y="-67"
+          width="132"
+          height="135"
+        />
       </g>
     </g>
   )
@@ -34,9 +32,31 @@ export default function MichelinStarsAnimation() {
             <stop offset="1" stopColor="#A97943" stopOpacity="0" />
           </linearGradient>
           <filter id="michelin-red-glow" x="-80%" y="-80%" width="260%" height="260%">
-            <feGaussianBlur stdDeviation="5" result="blur" />
+            <feGaussianBlur stdDeviation="3.2" result="blur" />
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
+          <filter id="michelin-cutout" x="-10%" y="-10%" width="120%" height="120%" colorInterpolationFilters="sRGB">
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0.89
+                      0 0 0 0 0
+                      0 0 0 0 0.10
+                      2.2 0 0 0 -0.28"
+            />
+          </filter>
+          <linearGradient id="michelin-flare" x1="0" y1="0" x2="1" y2="0">
+            <stop stopColor="#FFF4DB" stopOpacity="0" />
+            <stop offset="0.5" stopColor="#FFF4DB" stopOpacity="0.95" />
+            <stop offset="1" stopColor="#FFF4DB" stopOpacity="0" />
+          </linearGradient>
+          <symbol id="michelin-star-reference" viewBox="200 155 200 205">
+            <image
+              href="/images/michelin-star-reference.webp"
+              width="600"
+              height="600"
+              filter="url(#michelin-cutout)"
+            />
+          </symbol>
         </defs>
 
         <path
@@ -50,15 +70,17 @@ export default function MichelinStarsAnimation() {
           d="M90 292C175 354 327 368 438 314"
         />
 
-        <g className="hero-michelin-stars-glow">
-          <ellipse cx="238" cy="202" rx="60" ry="60" />
-          <ellipse cx="334" cy="202" rx="60" ry="60" />
+        <g className="hero-michelin-stars-glow" filter="url(#michelin-red-glow)">
+          <ellipse cx="220" cy="202" rx="66" ry="66" />
+          <ellipse cx="352" cy="202" rx="66" ry="66" />
         </g>
 
-        <MichelinRosette x="238" delayClass="star-one" />
-        <MichelinRosette x="334" delayClass="star-two" />
+        <MichelinRosette x="220" delayClass="star-one" delay="3.05s" />
+        <MichelinRosette x="352" delayClass="star-two" delay="3.48s" />
 
-        <path className="hero-michelin-caption-rule" pathLength="1" d="M202 282H370" />
+        <path className="hero-michelin-flare" d="M157 276L415 129" />
+
+        <path className="hero-michelin-caption-rule" pathLength="1" d="M184 292H388" />
         <text className="hero-michelin-caption" x="286" y="305" textAnchor="middle">
           2 · MICHELIN GUIDE
         </text>
