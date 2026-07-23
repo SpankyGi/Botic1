@@ -214,7 +214,7 @@ function ScrollArchitectureSection({ t }) {
   const scenes = [
     {
       num: '01',
-      img: '/images/restaurant-emporda-michelin-girona.webp',
+      img: '/images/restaurant-botic-corca-emporda-interior.webp',
       alt: t('restaurant.originImgAlt'),
       title: t('restaurant.originHeading'),
       body: [t('restaurant.originP1'), t('restaurant.originP2'), t('restaurant.originP3')],
