@@ -635,6 +635,10 @@ body {
 .exp-moment-copy h3 { margin-bottom: 20px; font: italic 300 clamp(58px, 7vw, 98px)/.9 'Cormorant Garamond', serif; letter-spacing: -.035em; }
 .exp-moment-copy p { max-width: 510px; color: rgba(237,231,219,.66); font: 300 14px/1.8 'Inter', sans-serif; }
 .exp-moment:nth-child(even) .exp-moment-copy p { margin-left: auto; }
+.exp-moment.has-image { min-height: 62vh; }
+.exp-moment-media { grid-column: 2; grid-row: 1; width: min(100%, 490px); margin: 0; justify-self: end; overflow: hidden; background: #111; aspect-ratio: 4 / 5; }
+.exp-moment-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
+.exp-moment-media:hover img { transform: scale(1.035); }
 .exp-moment-orbit { position: absolute; left: 50%; top: 50%; width: 84px; height: 84px; border: 1px solid rgba(215,177,112,.22); border-radius: 50%; transform: translate(-50%,-50%) scale(var(--orbit-scale)); }
 .exp-moment-orbit::after { content: ''; position: absolute; left: 50%; top: 50%; width: 5px; height: 5px; border-radius: 50%; background: #a52f2d; transform: translate(-50%,-50%); box-shadow: 0 0 18px rgba(165,47,45,.85); }
 
@@ -696,6 +700,8 @@ body {
   .exp-moment-copy h3 { font-size: clamp(52px, 15vw, 70px); }
   .exp-moment-copy p, .exp-moment:nth-child(even) .exp-moment-copy p { margin-left: 0; font-size: 13px; line-height: 1.7; }
   .exp-moment-orbit { left: 18px; width: 42px; height: 42px; }
+  .exp-moment.has-image { min-height: 0; }
+  .exp-moment-media { width: 100%; margin-top: 34px; aspect-ratio: 4 / 5; }
 
   .exp-pace { padding: 100px 22px 88px; }
   .exp-pace-inner h2 { margin-bottom: 58px; font-size: clamp(62px, 18vw, 84px); }

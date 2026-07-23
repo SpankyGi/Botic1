@@ -31,7 +31,13 @@ function MenuNarrative({ t }) {
   const moments = [
     { num: '01', label: t('experiencia.moment01Label'), text: t('experiencia.moment01Text') },
     { num: '02', label: t('experiencia.moment02Label'), text: t('experiencia.moment02Text') },
-    { num: '03', label: t('experiencia.moment03Label'), text: t('experiencia.moment03Text') },
+    {
+      num: '03',
+      label: t('experiencia.moment03Label'),
+      text: t('experiencia.moment03Text'),
+      image: '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp',
+      imageAlt: t('experiencia.moment03ImgAlt'),
+    },
     { num: '04', label: t('experiencia.moment04Label'), text: t('experiencia.moment04Text') },
   ]
 
@@ -45,12 +51,17 @@ function MenuNarrative({ t }) {
       <div className="exp-timeline">
         <div className="exp-timeline-axis" aria-hidden="true"><span /></div>
         {moments.map((moment, index) => (
-          <article className="exp-moment" key={moment.num}>
+          <article className={`exp-moment${moment.image ? ' has-image' : ''}`} key={moment.num}>
             <span className="exp-moment-num">{moment.num}</span>
             <div className="exp-moment-copy">
               <h3>{moment.label}</h3>
               <p>{moment.text}</p>
             </div>
+            {moment.image && (
+              <figure className="exp-moment-media">
+                <img src={moment.image} alt={moment.imageAlt} loading="lazy" />
+              </figure>
+            )}
             <span className="exp-moment-orbit" style={{ '--orbit-scale': 1 + index * .16 }} aria-hidden="true" />
           </article>
         ))}
