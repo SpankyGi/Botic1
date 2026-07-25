@@ -6252,3 +6252,53 @@ footer.botic-footer {
   .rst-story-copy { opacity: 1; transform: none; transition: none; }
   .rst-story-chrome { display: none; }
 }
+
+/* ── Reequilibri de llum: calidesa editorial sense perdre contrast ── */
+/* Els blocs foscos queden reservats per als moments de màxima intensitat. */
+.exp-hero-img { filter: saturate(.86) brightness(.82); }
+.exp-hero-shade { background: linear-gradient(90deg, rgba(5,4,3,.86) 0%, rgba(5,4,3,.58) 31%, rgba(5,4,3,.08) 68%), linear-gradient(0deg, rgba(5,4,3,.70), transparent 58%); }
+.exp-narrative { background: #eee8dd; color: #18130f; }
+.exp-narrative::before { -webkit-text-stroke-color: rgba(112,83,52,.11); }
+.exp-narrative-head p { color: rgba(43,32,22,.62); }
+.exp-timeline-axis { background: rgba(112,83,52,.24); }
+.exp-moment { border-top-color: rgba(91,67,43,.20); }
+.exp-moment-copy p { color: rgba(43,32,22,.72); }
+.exp-moment-media { background: #cfc5b5; box-shadow: 18px 24px 55px rgba(66,45,27,.12); }
+.exp-hospitality { background: #1a1510; }
+.exp-hospitality-main img { filter: saturate(.86) brightness(.88); }
+.exp-hospitality-detail img { filter: saturate(.8) brightness(.86); }
+.exp-cellar > img { filter: saturate(.9) brightness(.80); }
+.exp-cellar-shade { background: linear-gradient(90deg, rgba(5,4,3,.82), rgba(5,4,3,.22) 58%, rgba(5,4,3,.06)), linear-gradient(0deg, rgba(5,4,3,.68), transparent 52%); }
+.exp-cta > img { filter: saturate(.8) brightness(.62); }
+.exp-cta-shade { background: radial-gradient(circle at center, rgba(5,4,3,.10), rgba(5,4,3,.70) 70%); }
+
+.gst-hero-shade { background: linear-gradient(90deg, rgba(5,4,3,.86) 0%, rgba(5,4,3,.66) 31%, rgba(5,4,3,.14) 65%, rgba(5,4,3,.10) 100%), linear-gradient(0deg, rgba(5,4,3,.60), transparent 48%); }
+.gst-territory-shade { background: linear-gradient(0deg, rgba(5,4,3,.84) 0%, rgba(5,4,3,.34) 42%, rgba(5,4,3,.04) 78%), linear-gradient(90deg, rgba(5,4,3,.30), transparent 56%); }
+.gst-technique { background: #17120e; }
+.gst-technique-detail { background: #282016; }
+.gst-dishes { background: #eee8dd; }
+.gst-dishes::before { background: linear-gradient(90deg, transparent, rgba(132,95,54,.45), transparent); }
+.gst-dishes-intro { color: rgba(54,39,25,.58); }
+.gst-dishes-intro i { background: rgba(132,95,54,.42); }
+.gst-dish { background: #d6ccbd; box-shadow: 0 18px 44px rgba(64,43,24,.12); }
+
+.rst-origin { background: #17120e; }
+.rst-origin-overlay { background: linear-gradient(0deg, rgba(5,4,3,.78) 0%, rgba(5,4,3,.32) 46%, rgba(5,4,3,.05) 100%); }
+.rst-origin-card { background: rgba(24,18,12,.50); }
+.rst-arch { background: #eee8dd; }
+.rst-arch-heading { color: #21180f; }
+.rst-gallery { background: #e7dfd1; }
+.rst-gallery-heading { color: #21180f; }
+.rst-reserve { background: #e9e2d5; }
+.rst-reserve-heading { color: #21180f; }
+.rst-reserve-block { border-top-color: rgba(96,70,42,.20); }
+.rst-reserve-block-title { color: rgba(121,77,37,.88); }
+.rst-reserve-block-body, .rst-reserve-list li { color: rgba(40,29,20,.72); }
+.rst-team { background: #1a1510; }
+.rst-team-photo::after { background: linear-gradient(0deg, rgba(26,21,16,.94) 0%, transparent 100%); }
+
+@media (max-width: 768px) {
+  .exp-hero-shade { background: linear-gradient(0deg, rgba(5,4,3,.84), rgba(5,4,3,.36) 62%, rgba(5,4,3,.10)); }
+  .gst-hero-shade { background: linear-gradient(0deg, rgba(5,4,3,.84) 0%, rgba(5,4,3,.42) 55%, rgba(5,4,3,.12) 100%); }
+  .rst-story-shade { background: linear-gradient(0deg, rgba(5,4,3,.82) 0%, rgba(5,4,3,.42) 42%, rgba(5,4,3,.08) 78%, transparent 100%); }
+}
