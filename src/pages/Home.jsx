@@ -1,14 +1,53 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import Hero             from '../components/Hero'
 import MarqueeStrip     from '../components/MarqueeStrip'
 import ProjecteSection  from '../components/ProjecteSection'
 import ChefSection      from '../components/ChefSection'
 import SEO              from '../components/SEO'
+import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
+
+function useScrollScene() {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const scene = ref.current
+    if (!scene || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let frame
+    const update = () => {
+      const rect = scene.getBoundingClientRect()
+      const distance = Math.max(1, scene.offsetHeight - window.innerHeight)
+      const progress = Math.min(1, Math.max(0, -rect.top / distance))
+      scene.style.setProperty('--scene-p', progress.toFixed(4))
+      frame = undefined
+    }
+    const requestUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', requestUpdate, { passive: true })
+    window.addEventListener('resize', requestUpdate)
+    return () => {
+      window.removeEventListener('scroll', requestUpdate)
+      window.removeEventListener('resize', requestUpdate)
+      if (frame) cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  return ref
+}
 
 export default function Home() {
   const { t }       = useTranslation()
   const routes      = useLangRoutes()
+  const ctaRef      = useReveal(0.18)
+  const featuresRef = useReveal(0.12)
+  const introRef    = useReveal(0.26)
+  const chefSceneRef = useScrollScene()
 
   const FEATURES = [
     {
@@ -17,7 +56,6 @@ export default function Home() {
       body:  t('home.featRestaurantBody'),
       to:    routes.restaurant,
       label: t('home.featRestaurantLabel'),
-      image: '/images/restaurant-emporda-botic-michelin.webp',
     },
     {
       tag:   t('home.featGastroTag'),
@@ -25,7 +63,6 @@ export default function Home() {
       body:  t('home.featGastroBody'),
       to:    routes.gastronomia,
       label: t('home.featGastroLabel'),
-      image: '/images/restaurant-emporda-michelin-girona.webp',
     },
     {
       tag:   t('home.featExpTag'),
@@ -33,7 +70,6 @@ export default function Home() {
       body:  t('home.featExpBody'),
       to:    routes.experiencia,
       label: t('home.featExpLabel'),
-      image: '/images/cristina-albert-botic-emporda-michelin.webp',
     },
   ]
 
@@ -45,27 +81,14 @@ export default function Home() {
         pageKey="home"
       />
 
-      <section className="home-new-hero">
-        <div className="home-new-hero-copy">
-          <span className="home-new-hero-eyebrow">{t('hero.awardLine')}</span>
-          <h1>{t('hero.word1')}<br />{t('hero.word2')}</h1>
-          <p>{t('hero.sub')}</p>
-          <div className="home-new-hero-ctas">
-            <Link to={routes.reserves} className="hero-btn-primary">{t('hero.btnPrimary')}</Link>
-            <Link to={routes.menus} className="hero-btn-secondary">{t('hero.btnSecondary')}</Link>
-          </div>
-        </div>
-        <div className="home-new-hero-media" aria-hidden="true">
-          <img src="/images/restaurant-emporda-michelin-girona.webp" alt="" />
-        </div>
-      </section>
+      <Hero />
 
       <ProjecteSection />
 
       <MarqueeStrip />
 
       {/* ── Marquee / paisatge / contingut central ── */}
-      <section className="home-intro">
+      <section className="home-intro" ref={introRef}>
         <div className="home-intro-photo" aria-hidden="true">
           <img
             src="/images/restaurant-emporda-michelin-girona.webp"
@@ -91,12 +114,11 @@ export default function Home() {
       </section>
 
       {/* ── Feature cards ── */}
-      <section className="features-section" aria-label={t('home.featuresAria')}>
+      <section className="features-section" ref={featuresRef} aria-label={t('home.featuresAria')}>
         <div className="container-max">
           <div className="features-grid">
-            {FEATURES.map(({ tag, title, body, to, label, image }, i) => (
+            {FEATURES.map(({ tag, title, body, to, label }, i) => (
               <Link key={to} to={to} className="feature-card" style={{ '--i': i }}>
-                <span className="feature-media" aria-hidden="true"><img src={image} alt="" /></span>
                 <span className="feature-index" aria-hidden="true">0{i + 1}</span>
                 <span className="feature-tag">{tag}</span>
                 <h3 className="feature-title">{title}</h3>
@@ -108,11 +130,12 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="home-reserve-scene" ref={chefSceneRef}>
       <ChefSection />
 
       {/* ── CTA Reserva ── */}
       <section className="home-reserva-cta">
-        <div className="container-max">
+        <div className="container-max reveal" ref={ctaRef}>
           <span className="label block">{t('home.ctaLabel')}</span>
           <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl
                          text-botic-cream leading-tight tracking-tight mt-4 mb-6">
@@ -125,6 +148,7 @@ export default function Home() {
           <Link to={routes.reserves} className="btn-gold">{t('home.ctaBtn')}</Link>
         </div>
       </section>
+      </div>
     </>
   )
 }
