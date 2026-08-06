@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import Hero             from '../components/Hero'
 import MarqueeStrip     from '../components/MarqueeStrip'
@@ -8,12 +9,45 @@ import SEO              from '../components/SEO'
 import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
+function useScrollScene() {
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const scene = ref.current
+    if (!scene || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    let frame
+    const update = () => {
+      const rect = scene.getBoundingClientRect()
+      const distance = Math.max(1, scene.offsetHeight - window.innerHeight)
+      const progress = Math.min(1, Math.max(0, -rect.top / distance))
+      scene.style.setProperty('--scene-p', progress.toFixed(4))
+      frame = undefined
+    }
+    const requestUpdate = () => {
+      if (!frame) frame = requestAnimationFrame(update)
+    }
+
+    update()
+    window.addEventListener('scroll', requestUpdate, { passive: true })
+    window.addEventListener('resize', requestUpdate)
+    return () => {
+      window.removeEventListener('scroll', requestUpdate)
+      window.removeEventListener('resize', requestUpdate)
+      if (frame) cancelAnimationFrame(frame)
+    }
+  }, [])
+
+  return ref
+}
+
 export default function Home() {
   const { t }       = useTranslation()
   const routes      = useLangRoutes()
   const ctaRef      = useReveal(0.18)
   const featuresRef = useReveal(0.12)
   const introRef    = useReveal(0.26)
+  const chefSceneRef = useScrollScene()
 
   const FEATURES = [
     {
@@ -96,6 +130,7 @@ export default function Home() {
         </div>
       </section>
 
+      <div className="home-reserve-scene" ref={chefSceneRef}>
       <ChefSection />
 
       {/* ── CTA Reserva ── */}
@@ -113,6 +148,7 @@ export default function Home() {
           <Link to={routes.reserves} className="btn-gold">{t('home.ctaBtn')}</Link>
         </div>
       </section>
+      </div>
     </>
   )
 }
