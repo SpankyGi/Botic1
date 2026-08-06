@@ -13,6 +13,7 @@ export default function Home() {
   const routes      = useLangRoutes()
   const ctaRef      = useReveal(0.18)
   const featuresRef = useReveal(0.12)
+  const introRef    = useReveal(0.26)
 
   const FEATURES = [
     {
@@ -53,7 +54,7 @@ export default function Home() {
       <MarqueeStrip />
 
       {/* ── Marquee / paisatge / contingut central ── */}
-      <section className="home-intro">
+      <section className="home-intro" ref={introRef}>
         <div className="home-intro-photo" aria-hidden="true">
           <img
             src="/images/restaurant-emporda-michelin-girona.webp"
@@ -68,7 +69,7 @@ export default function Home() {
             <span className="home-intro-label">{t('home.introLabel')}</span>
             <h2 className="font-serif font-light leading-tight tracking-tight home-intro-title">
               {t('home.introHeading').split('\n').map((line, i) => (
-                <span key={i}>{line}{i === 0 && <br />}</span>
+                <span className="home-intro-title-line" key={i}>{line}{i === 0 && <br />}</span>
               ))}
             </h2>
             <p className="font-sans home-intro-body">
