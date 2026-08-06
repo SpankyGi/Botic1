@@ -6493,78 +6493,92 @@ main { background: var(--paper); color: var(--ink); }
   .home-reserve-scene .home-reserva-cta .container-max { opacity: 1; transform: none; filter: none; }
 }
 
-/* ── Composició editorial: menys franges, més escenes ── */
+/* ── Nova direcció: escenes verticals, no una graella de contingut ── */
 @media (min-width: 769px) {
-  /* Home: les tres portes deixen de ser un bloc regular de targetes. */
-  .home-intro {
-    margin: clamp(44px, 7vw, 116px) clamp(24px, 4vw, 72px) 0 0;
-    min-height: min(780px, 82vh);
-    clip-path: polygon(0 0, 100% 0, 100% 92%, 94% 100%, 0 100%);
+  /* A la Home la fotografia és una atmosfera; les tres portes són tipografia. */
+  .projecte-section { min-height: min(870px, 92vh); margin-top: clamp(36px, 6vw, 100px); }
+  .home-intro { min-height: min(860px, 92vh); margin-top: clamp(76px, 12vw, 180px); border: 0; }
+  .home-intro-content { margin-left: clamp(34px, 12vw, 210px); max-width: min(520px, 42vw); }
+  .home-intro-overlay { background: linear-gradient(90deg, rgba(242,237,227,.98) 0%, rgba(242,237,227,.86) 30%, rgba(242,237,227,.18) 67%, transparent 90%); }
+  .features-section { background: transparent; border: 0; padding: clamp(82px, 12vw, 172px) 0; }
+  .features-section .container-max { max-width: 1180px; padding: 0 clamp(28px, 7vw, 120px); }
+  .features-grid { display: block; }
+  .feature-card, .feature-card:nth-child(2) {
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 100px minmax(240px, .92fr) minmax(280px, 1.35fr) auto;
+    align-items: baseline;
+    gap: 28px;
+    padding: clamp(35px, 4vw, 58px) 0;
+    background: transparent;
+    border: 0;
+    border-top: 1px solid rgba(112,83,52,.22);
+    transform: none;
   }
-  .home-intro-content { margin-left: clamp(28px, 7vw, 128px); }
-  .features-section {
-    position: relative;
-    z-index: 2;
-    width: min(1320px, calc(100% - clamp(32px, 8vw, 156px)));
-    margin: clamp(-72px, -7vw, -38px) 0 clamp(70px, 10vw, 150px) auto;
-    border: 1px solid rgba(112,83,52,.16);
-    box-shadow: 0 22px 54px rgba(70,45,24,.08);
+  .feature-card:last-child { border-bottom: 1px solid rgba(112,83,52,.22); }
+  .feature-card::before { display: none; }
+  .feature-index { grid-column: 1; position: static; }
+  .feature-tag { grid-column: 2; }
+  .feature-title { grid-column: 3; margin: 0; font-size: clamp(40px, 4vw, 66px); }
+  .feature-body { grid-column: 3; max-width: 440px; margin: 10px 0 0; }
+  .feature-cta { grid-column: 4; white-space: nowrap; }
+  .feature-card:hover { background: transparent; padding-left: 18px; }
+
+  /* Gastronomia deixa un sol gest visual per capítol. */
+  .gst-manifest { padding-left: clamp(28px, 9vw, 154px); padding-right: clamp(28px, 9vw, 154px); }
+  .gst-manifest-inner { max-width: 1040px; margin: 0; padding: 0; }
+  .gst-territory { min-height: 100svh; margin-top: clamp(64px, 10vw, 150px); }
+  .gst-technique { margin-top: clamp(96px, 13vw, 190px); background: var(--paper-deep); overflow: visible; }
+  .gst-technique-stage { min-height: auto; padding-bottom: clamp(78px, 10vw, 150px); }
+  .gst-technique-canvas { position: relative; height: min(64vw, 820px); }
+  .gst-technique-main { position: absolute; inset: 0 0 0 12vw; width: auto; height: auto; }
+  .gst-technique-main img { object-position: center 38%; }
+  .gst-technique-detail { width: min(24vw, 390px); height: min(32vw, 470px); right: 6vw; bottom: -11vw; }
+  .gst-technique-copy { width: min(690px, 68vw); padding: clamp(60px, 7vw, 110px) clamp(28px, 8vw, 142px) 0; }
+  .gst-technique-copy h2 { font-size: clamp(72px, 9vw, 138px); max-width: 760px; }
+  .gst-technique-ghost { display: none; }
+  .gst-cta { margin: 0; padding: clamp(120px, 17vw, 240px) 24px; background: #f7f3eb; }
+
+  /* Experiència: text en moviment, fotografia només quan fa avançar el relat. */
+  .exp-narrative { padding: clamp(140px, 18vw, 250px) clamp(28px, 11vw, 190px); }
+  .exp-narrative-head { display: block; max-width: 860px; margin: 0 0 clamp(100px, 13vw, 176px); }
+  .exp-narrative-head p { max-width: 470px; margin-top: 34px; }
+  .exp-timeline { max-width: 980px; margin: 0; }
+  .exp-moment { max-width: 720px; }
+  .exp-moment:nth-of-type(even) { margin-left: clamp(80px, 16vw, 260px); }
+  .exp-moment.has-image { max-width: 900px; margin-left: clamp(20px, 7vw, 120px); }
+  .exp-pace { margin-top: 0; padding: clamp(128px, 17vw, 240px) clamp(28px, 11vw, 190px); }
+  .exp-pace-inner { margin: 0; max-width: 1080px; }
+  .exp-pace-copy { max-width: 840px; grid-template-columns: 1fr 1fr 1fr; }
+  .exp-hospitality { display: block; min-height: 0; background: var(--paper-deep); padding-bottom: clamp(98px, 12vw, 180px); }
+  .exp-hospitality-images { min-height: min(78vw, 940px); }
+  .exp-hospitality-main { top: 0; width: min(76%, 1080px); height: min(72vw, 870px); }
+  .exp-hospitality-detail { width: min(29%, 450px); height: min(34vw, 420px); right: 7vw; bottom: 0; }
+  .exp-hospitality-copy { width: min(660px, 58vw); max-width: none; margin: clamp(-100px, -9vw, -58px) 9vw 0 auto; padding: clamp(56px, 7vw, 112px); background: #f7f3eb; position: relative; z-index: 2; }
+  .exp-cellar { min-height: 100svh; margin-top: clamp(94px, 13vw, 190px); }
+  .exp-cta { min-height: 82svh; }
+
+  /* El Restaurant ja té un scroll narratiu: l'equip deixa de funcionar com dues targetes. */
+  .rst-team { padding: clamp(130px, 17vw, 240px) 0; }
+  .rst-team .container-max { max-width: 1360px; }
+  .rst-team-header { max-width: 760px; margin: 0 0 clamp(80px, 11vw, 160px) clamp(28px, 10vw, 160px); }
+  .rst-team-grid { display: block; }
+  .rst-team-block { width: min(74%, 920px); }
+  .rst-team-block.kitchen { margin-left: 0; }
+  .rst-team-block.sala { margin: clamp(100px, 14vw, 210px) 0 0 auto; }
+  .rst-team-photo { height: min(54vw, 690px); }
+  .rst-team-photo::after {
+    height: 28%;
+    background: linear-gradient(0deg, rgba(229,219,205,.42) 0%, transparent 100%);
   }
-  .features-section .container-max { max-width: none; }
-  .features-grid { grid-template-columns: .92fr 1.22fr .92fr; }
-  .feature-card { min-height: 430px; padding: clamp(48px, 5vw, 82px) clamp(28px, 3.7vw, 58px) 50px; }
-  .feature-card:nth-child(2) { padding-top: clamp(84px, 9vw, 132px); transform: translateY(-42px); }
-  .feature-card:nth-child(3) { padding-top: clamp(66px, 7vw, 108px); }
-  .feature-card::before {
-    content: '';
-    position: absolute;
-    top: 36px;
-    left: clamp(28px, 3.7vw, 58px);
-    width: 38px;
-    height: 1px;
-    background: rgba(140,44,41,.55);
-  }
-  .feature-card:nth-child(2)::before { width: 64px; background: rgba(140,92,48,.7); }
-
-  /* Gastronomia: capes que es trepitgen i una sola imatge protagonista. */
-  .gst-manifest { margin: 0 clamp(24px, 4vw, 72px) 0 0; clip-path: polygon(0 0, 100% 0, 100% 94%, 96% 100%, 0 100%); }
-  .gst-territory { width: calc(100% - clamp(24px, 5vw, 90px)); margin: clamp(-74px, -7vw, -40px) 0 0 auto; min-height: 102svh; }
-  .gst-territory-copy { padding-left: clamp(34px, 7vw, 126px); }
-  .gst-technique { width: min(1440px, calc(100% - clamp(36px, 9vw, 170px))); margin: clamp(56px, 9vw, 140px) auto 0 0; box-shadow: 20px 28px 70px rgba(54,35,19,.12); }
-  .gst-technique-stage { min-height: 96svh; }
-  .gst-technique-main { width: 63vw; top: 5vh; }
-  .gst-technique-detail { right: -3vw; bottom: 7vh; }
-  .gst-technique-copy { padding-left: clamp(30px, 7vw, 116px); }
-  .gst-cta { position: relative; z-index: 2; width: min(1030px, calc(100% - clamp(38px, 10vw, 190px))); margin: clamp(-70px, -6vw, -36px) 0 clamp(80px, 11vw, 160px) auto; box-shadow: 0 28px 64px rgba(54,35,19,.10); }
-
-  /* Experiència: el recorregut respira i alterna massa / silenci. */
-  .exp-narrative { padding-top: clamp(130px, 17vw, 230px); clip-path: polygon(0 0, 100% 0, 100% 96%, 94% 100%, 0 100%); }
-  .exp-narrative-head { margin-left: clamp(0px, 5vw, 82px); }
-  .exp-timeline { width: min(1210px, calc(100% - clamp(42px, 11vw, 190px))); margin: 0 auto 0 0; }
-  .exp-moment:nth-of-type(even) { margin-left: clamp(80px, 14vw, 230px); }
-  .exp-moment:nth-of-type(3) { margin-left: clamp(18px, 6vw, 100px); }
-  .exp-pace { width: calc(100% - clamp(26px, 5vw, 94px)); margin: clamp(-58px, -5vw, -30px) 0 0 auto; z-index: 2; }
-  .exp-pace-inner { max-width: 1080px; }
-  .exp-hospitality { width: min(1460px, calc(100% - clamp(30px, 7vw, 128px))); margin: clamp(62px, 10vw, 150px) auto 0 0; grid-template-columns: 1.06fr .94fr; }
-  .exp-hospitality-main { left: 0; width: 78%; }
-  .exp-hospitality-detail { right: -3%; }
-  .exp-cellar { width: calc(100% - clamp(28px, 6vw, 110px)); margin: clamp(68px, 10vw, 150px) 0 0 auto; min-height: 94svh; }
-  .exp-cta { position: relative; z-index: 2; width: min(1240px, calc(100% - clamp(38px, 9vw, 174px))); margin: clamp(-78px, -7vw, -42px) auto clamp(84px, 11vw, 160px) 0; }
-
-  /* Restaurant: l'equip deixa el tancament més proper i menys simètric. */
-  .rst-team { width: min(1430px, calc(100% - clamp(34px, 7vw, 130px))); margin: clamp(62px, 9vw, 136px) auto 0 0; padding: clamp(90px, 11vw, 160px) clamp(28px, 6vw, 104px); }
-  .rst-team-header { max-width: 720px; margin-left: clamp(0px, 5vw, 78px); margin-bottom: clamp(56px, 8vw, 110px); }
-  .rst-team-grid { gap: clamp(36px, 7vw, 110px); }
-  .rst-team-block.sala { margin-top: clamp(92px, 12vw, 196px); }
-  .rst-team-block:first-child { margin-left: clamp(0px, 4vw, 62px); }
-  .rst-ticker { width: calc(100% - clamp(24px, 5vw, 90px)); margin: clamp(-38px, -3vw, -18px) 0 0 auto; position: relative; z-index: 3; }
+  .rst-team-label, .rst-team-name, .rst-team-body { margin-left: clamp(18px, 4vw, 64px); }
+  .rst-team-label { color: rgba(121,77,37,.9); }
+  .rst-team-name { color: #21180f; text-shadow: none; }
+  .rst-team-body { padding: 0; color: rgba(54,43,32,.78); }
+  .rst-ticker { border: 0; background: #e5dbcd; }
 }
 
 @media (max-width: 768px) {
-  .home-intro, .features-section, .gst-manifest, .gst-territory, .gst-technique,
-  .gst-cta, .exp-pace, .exp-hospitality, .exp-cellar, .exp-cta, .rst-team {
-    width: 100%; margin: 0; clip-path: none; box-shadow: none;
-  }
-  .feature-card:nth-child(2), .feature-card:nth-child(3), .exp-moment:nth-of-type(even),
-  .exp-moment:nth-of-type(3), .rst-team-block.sala, .rst-team-block:first-child { margin-left: 0; transform: none; }
+  .feature-card, .feature-card:nth-child(2) { transform: none; }
+  .gst-technique-canvas { position: relative; }
 }
