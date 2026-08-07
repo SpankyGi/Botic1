@@ -6635,7 +6635,7 @@ main { background: var(--paper); color: var(--ink); }
 .scroll-hint { bottom: 30px; }
 
 .projecte-section,
-.mirada-xef-section { background: #f3ede3; border-color: rgba(77,58,37,.14); }
+.mirada-xef-section { background: #f3ede3; border-color: rgba(77,58,37,.14); overflow: hidden; }
 .projecte-section { min-height: min(82svh, 880px); margin-top: 0; }
 .projecte-section .soul-img-2 { filter: saturate(.68) brightness(.86) contrast(.98); object-position: center 44%; }
 .projecte-section .soul-overlay-2 {
@@ -6656,6 +6656,7 @@ main { background: var(--paper); color: var(--ink); }
   margin-top: clamp(58px, 9vw, 132px);
   background: #191611;
   border: 0;
+  overflow: hidden;
 }
 .home-intro-img { filter: saturate(.72) brightness(.72) contrast(1.02); }
 .home-intro-overlay {
@@ -6667,9 +6668,49 @@ main { background: var(--paper); color: var(--ink); }
 .home-intro-title { color: #f7f2e9; font-size: clamp(48px, 5.6vw, 84px); line-height: .9; }
 .home-intro-body { color: rgba(247,242,233,.74); }
 
+/* Revelació entre capítols: el relat no talla, s'obre. */
+@media (prefers-reduced-motion: no-preference) {
+  .home-scene-reveal {
+    clip-path: inset(0 0 100% 0);
+    transform: translateY(34px);
+    transition: clip-path 1.15s cubic-bezier(.2,.82,.18,1), transform 1.15s cubic-bezier(.2,.82,.18,1);
+  }
+  .home-scene-reveal.visible {
+    clip-path: inset(0 0 0 0);
+    transform: none;
+  }
+  .home-scene-reveal .home-intro-img { transform: scale(1.09) translateY(16px); }
+  .home-scene-reveal.visible .home-intro-img { transform: scale(1); }
+}
+
 .features-section { background: #f3ede3; border: 0; padding: clamp(94px, 13vw, 180px) 0; }
 .features-section .container-max { max-width: 1220px; padding: 0 clamp(28px, 9vw, 150px); }
 .feature-card, .feature-card:nth-child(2) { border-color: rgba(77,58,37,.22); }
+.feature-entry { isolation: isolate; overflow: hidden; }
+.feature-entry > :not(.feature-media) { position: relative; z-index: 1; }
+.feature-media {
+  position: absolute;
+  inset: 0 0 0 47%;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0;
+  clip-path: inset(0 0 0 100%);
+  pointer-events: none;
+  transition: opacity .85s ease, clip-path 1.05s cubic-bezier(.2,.82,.18,1);
+}
+.feature-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #f3ede3 0%, rgba(243,237,227,.76) 18%, rgba(243,237,227,.14) 76%);
+}
+.feature-media img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.65) contrast(1.02); transform: scale(1.07); transition: transform 1.4s cubic-bezier(.2,.82,.18,1); }
+.feature-entry:nth-child(2) .feature-media { inset: 0 47% 0 0; }
+.feature-entry:nth-child(2) .feature-media::after { background: linear-gradient(90deg, rgba(243,237,227,.14) 0%, rgba(243,237,227,.76) 82%, #f3ede3 100%); }
+.feature-entry.visible .feature-media { opacity: .28; clip-path: inset(0); }
+.feature-entry.visible .feature-media img { transform: scale(1); }
+.feature-entry:hover .feature-media,
+.feature-entry:focus-visible .feature-media { opacity: .56; }
 .feature-tag { color: #a52f2d; }
 .feature-title { color: #211a14; }
 .feature-body { color: rgba(45,35,26,.66); }
@@ -6685,6 +6726,14 @@ main { background: var(--paper); color: var(--ink); }
 .mirada-xef-section .soul-panel-content { max-width: min(42%, 500px); margin-left: clamp(28px, 11vw, 176px); }
 .mirada-xef-section .soul-frag.accent { color: #a52f2d; }
 
+/* El xef entra com un canvi de capítol, no com una altra targeta. */
+@media (prefers-reduced-motion: no-preference) {
+  .chef-scene .soul-photo-wrap { clip-path: inset(0 100% 0 0); transition: clip-path 1.25s cubic-bezier(.2,.82,.18,1); }
+  .chef-scene.chef-scene-in .soul-photo-wrap { clip-path: inset(0); }
+  .chef-scene .soul-panel-content { opacity: 0; transform: translateY(28px); transition: opacity .8s .3s ease, transform .8s .3s cubic-bezier(.2,.82,.18,1); }
+  .chef-scene.chef-scene-in .soul-panel-content { opacity: 1; transform: none; }
+}
+
 .home-reserva-cta {
   min-height: 0;
   padding: clamp(86px, 11vw, 142px) 24px;
@@ -6696,6 +6745,18 @@ main { background: var(--paper); color: var(--ink); }
 .home-reserva-cta p { color: rgba(45,35,26,.68); }
 .home-reserva-cta .label { color: #a52f2d; }
 .home-reserva-cta .btn-gold { background: #a52f2d; border-color: #a52f2d; }
+.reserve-word { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  .reserve-word { opacity: 0; transform: translateY(24px); transition: opacity .62s ease, transform .62s cubic-bezier(.2,.82,.18,1); transition-delay: calc(var(--word, 0) * 70ms); }
+  .home-reserva-cta .container-max.visible .reserve-word { opacity: 1; transform: none; }
+  .home-reserva-cta .container-max.visible .reserve-word:nth-child(1) { transition-delay: .04s; }
+  .home-reserva-cta .container-max.visible .reserve-word:nth-child(2) { transition-delay: .12s; }
+  .home-reserva-cta .container-max.visible .reserve-word:nth-child(3) { transition-delay: .20s; }
+  .home-reserva-cta .container-max.visible .reserve-word:nth-child(4) { transition-delay: .28s; }
+  .home-reserva-cta .container-max.visible .reserve-word:nth-child(5) { transition-delay: .36s; }
+  .home-reserva-cta .container-max.visible .reserve-word:nth-child(6) { transition-delay: .44s; }
+  .home-reserva-cta .container-max.visible .reserve-word:nth-child(7) { transition-delay: .52s; }
+}
 
 @media (max-width: 768px) {
   .hero { margin-top: 0; min-height: 92svh; }
@@ -6721,5 +6782,8 @@ main { background: var(--paper); color: var(--ink); }
   .features-section .container-max { padding: 0 24px; }
   .feature-card, .feature-card:nth-child(2) { padding: 34px 0; background: transparent; }
   .feature-title { font-size: clamp(38px, 11vw, 52px); }
+  .feature-media, .feature-entry:nth-child(2) .feature-media { inset: 0; opacity: .08; clip-path: none; }
+  .feature-media::after, .feature-entry:nth-child(2) .feature-media::after { background: linear-gradient(90deg, #f3ede3 0%, rgba(243,237,227,.86) 58%, rgba(243,237,227,.3) 100%); }
+  .feature-entry.visible .feature-media { opacity: .16; }
   .home-reserva-cta { padding: 78px 24px; }
 }

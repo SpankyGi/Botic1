@@ -7,6 +7,35 @@ import SEO              from '../components/SEO'
 import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
+function FeatureEntry({ tag, title, body, to, label, image, index }) {
+  const entryRef = useReveal(0.24)
+
+  return (
+    <Link ref={entryRef} to={to} className="feature-card feature-entry" style={{ '--i': index }}>
+      <span className="feature-media" aria-hidden="true">
+        <img src={image} alt="" />
+      </span>
+      <span className="feature-index" aria-hidden="true">0{index + 1}</span>
+      <span className="feature-tag">{tag}</span>
+      <h3 className="feature-title">{title}</h3>
+      <p className="feature-body">{body}</p>
+      <span className="feature-cta">{label} →</span>
+    </Link>
+  )
+}
+
+function ReserveHeading({ children }) {
+  const words = children.split(' ')
+
+  return (
+    <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl text-botic-cream leading-tight tracking-tight mt-4 mb-6 reserve-title">
+      {words.map((word, index) => (
+        <span key={`${word}-${index}`} className="reserve-word">{word}{index < words.length - 1 && ' '}</span>
+      ))}
+    </h2>
+  )
+}
+
 export default function Home() {
   const { t }       = useTranslation()
   const routes      = useLangRoutes()
@@ -21,6 +50,7 @@ export default function Home() {
       body:  t('home.featRestaurantBody'),
       to:    routes.restaurant,
       label: t('home.featRestaurantLabel'),
+      image: '/images/restaurant-botic-corca-emporda-interior.webp',
     },
     {
       tag:   t('home.featGastroTag'),
@@ -28,6 +58,7 @@ export default function Home() {
       body:  t('home.featGastroBody'),
       to:    routes.gastronomia,
       label: t('home.featGastroLabel'),
+      image: '/images/botic-maig-2026-webp/alta-cuina-empordanesa-restaurant-botic.webp',
     },
     {
       tag:   t('home.featExpTag'),
@@ -35,6 +66,7 @@ export default function Home() {
       body:  t('home.featExpBody'),
       to:    routes.experiencia,
       label: t('home.featExpLabel'),
+      image: '/images/restaurant-botic-corca-emporda-exterior-nit.webp',
     },
   ]
 
@@ -51,7 +83,7 @@ export default function Home() {
       <ProjecteSection />
 
       {/* ── Marquee / paisatge / contingut central ── */}
-      <section className="home-intro" ref={introRef}>
+      <section className="home-intro home-scene-reveal" ref={introRef}>
         <div className="home-intro-photo" aria-hidden="true">
           <img
             src="/images/restaurant-emporda-michelin-girona.webp"
@@ -80,14 +112,8 @@ export default function Home() {
       <section className="features-section" ref={featuresRef} aria-label={t('home.featuresAria')}>
         <div className="container-max">
           <div className="features-grid">
-            {FEATURES.map(({ tag, title, body, to, label }, i) => (
-              <Link key={to} to={to} className="feature-card" style={{ '--i': i }}>
-                <span className="feature-index" aria-hidden="true">0{i + 1}</span>
-                <span className="feature-tag">{tag}</span>
-                <h3 className="feature-title">{title}</h3>
-                <p className="feature-body">{body}</p>
-                <span className="feature-cta">{label} →</span>
-              </Link>
+            {FEATURES.map((feature, i) => (
+              <FeatureEntry key={feature.to} {...feature} index={i} />
             ))}
           </div>
         </div>
@@ -99,10 +125,7 @@ export default function Home() {
       <section className="home-reserva-cta">
         <div className="container-max reveal" ref={ctaRef}>
           <span className="label block">{t('home.ctaLabel')}</span>
-          <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl
-                         text-botic-cream leading-tight tracking-tight mt-4 mb-6">
-            {t('home.ctaHeading')}
-          </h2>
+          <ReserveHeading>{t('home.ctaHeading')}</ReserveHeading>
           <p className="font-sans text-sm md:text-base leading-relaxed
                         max-w-md mx-auto mb-10">
             {t('home.ctaBody')}

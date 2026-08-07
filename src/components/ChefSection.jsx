@@ -28,11 +28,16 @@ function useFragReveal(threshold = 0.25) {
 export default function ChefSection() {
   const { t } = useTranslation()
   const [quoteRef, quoteActive] = useFragReveal(0.22)
+  const [sceneRef, sceneActive] = useFragReveal(0.14)
 
   const frags = t('soul.frags', { returnObjects: true })
 
   return (
-    <section className="mirada-xef-section" aria-label={t('soul.tab1')}>
+    <section
+      ref={sceneRef}
+      className={`mirada-xef-section chef-scene${sceneActive ? ' chef-scene-in' : ''}`}
+      aria-label={t('soul.tab1')}
+    >
       <div className="soul-photo-wrap">
         <img
           src="/images/albert-sastregener-cuina-emporda-girona.webp"
