@@ -30,7 +30,7 @@ function ReserveHeading({ children }) {
   return (
     <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl text-botic-cream leading-tight tracking-tight mt-4 mb-6 reserve-title">
       {words.map((word, index) => (
-        <span key={`${word}-${index}`} className="reserve-word">{word}{index < words.length - 1 && ' '}</span>
+        <span key={`${word}-${index}`} className="reserve-word">{word}</span>
       ))}
     </h2>
   )
