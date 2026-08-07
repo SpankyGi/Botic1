@@ -6412,11 +6412,12 @@ main { background: var(--paper); color: var(--ink); }
 .home-reserve-scene { --scene-p: 0; position: relative; }
 
 @media (min-width: 769px) {
-  .home-reserve-scene { height: 200vh; background: var(--paper-deep); }
+  /* El tancament manté l'efecte d'escena contínua, però amb un ritme més concís. */
+  .home-reserve-scene { height: 130svh; background: var(--paper-deep); }
   .home-reserve-scene .mirada-xef-section {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 68svh;
     min-height: 0;
     overflow: hidden;
     z-index: 1;
@@ -6449,10 +6450,10 @@ main { background: var(--paper); color: var(--ink); }
   }
   .home-reserve-scene .home-reserva-cta {
     position: absolute;
-    top: 100vh;
+    top: 68svh;
     left: 0;
     width: 100%;
-    min-height: 100vh;
+    min-height: 62svh;
     display: flex;
     align-items: center;
     z-index: 2;
@@ -6476,7 +6477,7 @@ main { background: var(--paper); color: var(--ink); }
     transition: none;
     will-change: opacity, transform;
   }
-  .home-reserve-scene .home-reserva-cta h2 { font-size: clamp(52px, 6.3vw, 98px); max-width: 780px; margin-left: auto; margin-right: auto; }
+  .home-reserve-scene .home-reserva-cta h2 { font-size: clamp(42px, 5.1vw, 76px); max-width: 680px; margin-left: auto; margin-right: auto; }
   .home-reserve-scene .home-reserva-cta::after { height: 84px; background: linear-gradient(to bottom, transparent, rgba(123,77,38,.44)); }
 }
 
