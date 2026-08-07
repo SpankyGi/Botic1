@@ -1,8 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import AtmosphericParticles from './AtmosphericParticles'
-import MichelinStarsAnimation from './MichelinStarsAnimation'
 import { useLangRoutes } from '../i18n/LangContext'
 
 const BG_VIDEO_SRC    = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1779093224/hero-botic_krjc0b.webm'
@@ -47,16 +45,6 @@ function BgVideo() {
   )
 }
 
-function SteamBlobs() {
-  return (
-    <div className="steam">
-      <div className="steam-blob" />
-      <div className="steam-blob" />
-      <div className="steam-blob" />
-    </div>
-  )
-}
-
 function ScrollHint({ t }) {
   return (
     <div className="scroll-hint">
@@ -74,9 +62,6 @@ export default function Hero() {
     <section className="hero">
       <div className="hero-bg" />
       <BgVideo />
-      <SteamBlobs />
-      <AtmosphericParticles />
-      <MichelinStarsAnimation />
 
       <div className="hero-content-wrap">
         <div className="hero-text">

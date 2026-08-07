@@ -6583,3 +6583,143 @@ main { background: var(--paper); color: var(--ink); }
   .feature-card, .feature-card:nth-child(2) { transform: none; }
   .gst-technique-canvas { position: relative; }
 }
+
+/* ====== HOME — direcció editorial clara ======
+   Una única narrativa: vídeo, persones, lloc, tres portes i reserva. */
+.hero {
+  min-height: 100svh;
+  margin-top: 36px;
+  padding: 0;
+  display: block;
+  background: #11100e;
+}
+.hero-bg { display: none; }
+.hero-bg-video-wrap { inset: 0; clip-path: none; animation: none; }
+.hero-bg-video { filter: saturate(.76) brightness(.66) contrast(1.03); transform: scale(1.02); }
+.hero-bg-overlay {
+  background:
+    linear-gradient(90deg, rgba(14,12,10,.74) 0%, rgba(14,12,10,.42) 38%, rgba(14,12,10,.08) 72%, rgba(14,12,10,.20) 100%),
+    linear-gradient(0deg, rgba(14,12,10,.54) 0%, transparent 42%);
+}
+.hero-content-wrap {
+  height: 100svh;
+  max-width: none;
+  padding: clamp(120px, 14vh, 168px) clamp(28px, 9vw, 156px) clamp(62px, 10vh, 120px);
+  justify-content: flex-end;
+}
+.hero-text { max-width: min(620px, 54vw); margin: 0; padding: 0; }
+.hero-eyebrow {
+  margin-bottom: 20px;
+  padding: 0;
+  color: rgba(246,239,227,.76);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  font-size: 9px;
+  letter-spacing: .31em;
+}
+.hero-title {
+  color: #f7f2e9;
+  font-size: clamp(70px, 8.8vw, 138px);
+  font-style: italic;
+  font-weight: 300;
+  line-height: .82;
+  letter-spacing: -.055em;
+  text-shadow: 0 3px 34px rgba(0,0,0,.42);
+}
+.hero-sub { color: rgba(247,242,233,.76); max-width: 310px; margin-top: 26px; }
+.hero-ctas { margin-top: 30px; }
+.hero-btn-primary { background: #a52f2d; border-color: #a52f2d; }
+.hero-btn-secondary { color: #f7f2e9; border-color: rgba(247,242,233,.45); background: transparent; }
+.hero-btn-secondary:hover { color: #1b1713; background: #f7f2e9; }
+.scroll-hint { bottom: 30px; }
+
+.projecte-section,
+.mirada-xef-section { background: #f3ede3; border-color: rgba(77,58,37,.14); }
+.projecte-section { min-height: min(82svh, 880px); margin-top: 0; }
+.projecte-section .soul-img-2 { filter: saturate(.68) brightness(.86) contrast(.98); object-position: center 44%; }
+.projecte-section .soul-overlay-2 {
+  background: linear-gradient(90deg, rgba(243,237,227,.97) 0%, rgba(243,237,227,.84) 28%, rgba(243,237,227,.18) 67%, transparent 100%);
+}
+.projecte-section .soul-panel-inner { min-height: min(82svh, 880px); }
+.projecte-section .soul-panel-content { max-width: min(43%, 500px); margin-left: clamp(28px, 11vw, 176px); }
+.projecte-section .soul-eyebrow,
+.mirada-xef-section .soul-eyebrow { color: #a52f2d; }
+.projecte-section .soul-title,
+.projecte-section .soul-body,
+.mirada-xef-section .soul-quote,
+.mirada-xef-section .soul-author { color: #211a14; }
+.projecte-section .soul-cta { color: #8e2827; border-color: rgba(165,47,45,.42); }
+
+.home-intro {
+  min-height: min(88svh, 980px);
+  margin-top: clamp(58px, 9vw, 132px);
+  background: #191611;
+  border: 0;
+}
+.home-intro-img { filter: saturate(.72) brightness(.72) contrast(1.02); }
+.home-intro-overlay {
+  background: linear-gradient(90deg, rgba(20,17,13,.86) 0%, rgba(20,17,13,.56) 34%, rgba(20,17,13,.10) 67%, rgba(20,17,13,.08) 100%);
+}
+.home-intro-inner { padding: 0 clamp(28px, 10vw, 176px); }
+.home-intro-content { max-width: min(43%, 520px); margin: 0; }
+.home-intro-label { color: #d38677; }
+.home-intro-title { color: #f7f2e9; font-size: clamp(48px, 5.6vw, 84px); line-height: .9; }
+.home-intro-body { color: rgba(247,242,233,.74); }
+
+.features-section { background: #f3ede3; border: 0; padding: clamp(94px, 13vw, 180px) 0; }
+.features-section .container-max { max-width: 1220px; padding: 0 clamp(28px, 9vw, 150px); }
+.feature-card, .feature-card:nth-child(2) { border-color: rgba(77,58,37,.22); }
+.feature-tag { color: #a52f2d; }
+.feature-title { color: #211a14; }
+.feature-body { color: rgba(45,35,26,.66); }
+.feature-cta { color: #8e2827; border-color: rgba(77,58,37,.22); }
+.feature-card:hover { color: inherit; background: transparent; padding-left: 14px; }
+
+.mirada-xef-section { min-height: min(78svh, 840px); }
+.mirada-xef-section .soul-img-1 { filter: saturate(.66) brightness(.72) contrast(1.04); }
+.mirada-xef-section .soul-overlay-1 {
+  background: linear-gradient(90deg, rgba(243,237,227,.96) 0%, rgba(243,237,227,.79) 29%, rgba(243,237,227,.14) 65%, transparent 100%);
+}
+.mirada-xef-section .soul-panel-inner { min-height: min(78svh, 840px); }
+.mirada-xef-section .soul-panel-content { max-width: min(42%, 500px); margin-left: clamp(28px, 11vw, 176px); }
+.mirada-xef-section .soul-frag.accent { color: #a52f2d; }
+
+.home-reserva-cta {
+  min-height: 0;
+  padding: clamp(86px, 11vw, 142px) 24px;
+  background: #e5d9c8;
+  color: #211a14;
+}
+.home-reserva-cta::before { background: radial-gradient(ellipse at 50% 30%, rgba(165,47,45,.12), transparent 66%); }
+.home-reserva-cta h2 { max-width: 670px; color: #211a14; font-size: clamp(44px, 5.1vw, 76px); text-shadow: none; }
+.home-reserva-cta p { color: rgba(45,35,26,.68); }
+.home-reserva-cta .label { color: #a52f2d; }
+.home-reserva-cta .btn-gold { background: #a52f2d; border-color: #a52f2d; }
+
+@media (max-width: 768px) {
+  .hero { margin-top: 0; min-height: 92svh; }
+  .hero-content-wrap { height: 92svh; padding: 110px 24px 72px; }
+  .hero-text { max-width: 100%; }
+  .hero-title { font-size: clamp(62px, 17vw, 84px); }
+  .hero-bg-overlay { background: linear-gradient(0deg, rgba(14,12,10,.76), rgba(14,12,10,.12) 72%); }
+  .hero-sub { max-width: 280px; }
+
+  .projecte-section, .mirada-xef-section { min-height: 0; }
+  .projecte-section .soul-photo-wrap, .mirada-xef-section .soul-photo-wrap { position: relative; height: 56svh; }
+  .projecte-section .soul-panel-inner, .mirada-xef-section .soul-panel-inner { min-height: 0; padding: 58px 24px 72px; }
+  .projecte-section .soul-panel-content, .mirada-xef-section .soul-panel-content { max-width: 100%; margin: 0; }
+  .projecte-section .soul-overlay-2, .mirada-xef-section .soul-overlay-1 { background: linear-gradient(0deg, rgba(243,237,227,.30), transparent 62%); }
+
+  .home-intro { min-height: 76svh; margin-top: 0; align-items: flex-end; }
+  .home-intro-inner { padding: 62px 24px; }
+  .home-intro-content { max-width: 100%; }
+  .home-intro-overlay { background: linear-gradient(0deg, rgba(20,17,13,.92), rgba(20,17,13,.15) 76%); }
+  .home-intro-title { font-size: clamp(44px, 13vw, 62px); }
+
+  .features-section { padding: 74px 0; }
+  .features-section .container-max { padding: 0 24px; }
+  .feature-card, .feature-card:nth-child(2) { padding: 34px 0; background: transparent; }
+  .feature-title { font-size: clamp(38px, 11vw, 52px); }
+  .home-reserva-cta { padding: 78px 24px; }
+}
