@@ -7019,3 +7019,18 @@ main { background: var(--paper); color: var(--ink); }
     transform: translate(-28%, -34%);
   }
 }
+
+
+/* SVG de marca servit com a arxiu propi del web. */
+.botic-divider-logo-window { display: none; }
+.botic-section-divider > .botic-divider-logo {
+  display: block;
+  width: clamp(190px, 21vw, 280px);
+  height: auto;
+  max-width: none;
+  flex: 0 0 auto;
+  transform: none;
+}
+@media (max-width: 768px) {
+  .botic-section-divider > .botic-divider-logo { width: min(190px, 52vw); }
+}
