@@ -6850,3 +6850,53 @@ main { background: var(--paper); color: var(--ink); }
     transition-duration: 0.01ms;
   }
 }
+
+
+/* ====== HOME — RELAT D'OBERTURA I MOVIMENT SUTIL ====== */
+.soul-passion {
+  display: block;
+  min-height: 1.4em;
+  overflow: hidden;
+}
+.soul-passion-letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(0.7em);
+  transition: opacity .46s ease, transform .68s cubic-bezier(.22, 1, .36, 1);
+  transition-delay: calc(var(--letter) * 24ms);
+}
+.soul-passion.visible .soul-passion-letter {
+  opacity: 1;
+  transform: translateY(0);
+}
+@supports (animation-timeline: view()) {
+  .projecte-section .soul-photo-img {
+    animation: botic-portrait-drift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+  .features-section .feature-entry:nth-child(2) {
+    animation: botic-feature-shift linear both;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+  @keyframes botic-portrait-drift {
+    from { transform: scale(1.08) translateY(-2%); }
+    to { transform: scale(1.01) translateY(2%); }
+  }
+  @keyframes botic-feature-shift {
+    from { transform: translateX(-2.5vw); }
+    to { transform: translateX(2.5vw); }
+  }
+}
+@media (max-width: 768px), (prefers-reduced-motion: reduce) {
+  .soul-passion-letter {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .projecte-section .soul-photo-img,
+  .features-section .feature-entry:nth-child(2) {
+    animation: none;
+  }
+}
