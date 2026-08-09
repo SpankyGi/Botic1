@@ -147,6 +147,75 @@ body {
   font-size: 11px;
   color: rgba(247,242,233,0.72);
 }
+
+/* ====== EXPERIÈNCIA — GALERIA DE MOMENTS ====== */
+body .exp-narrative {
+  background: #f4efe6;
+  color: #211a14;
+  padding: clamp(110px, 13vw, 190px) clamp(24px, 7vw, 112px) clamp(94px, 11vw, 160px);
+}
+body .exp-narrative::before { display: none; }
+body .exp-narrative-head { display: grid; grid-template-columns: minmax(160px, .46fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 92px); max-width: 1280px; margin: 0 auto clamp(64px, 8vw, 110px); }
+body .exp-narrative-head h2 { margin: -14px 0 0; font-size: clamp(58px, 7.2vw, 108px); color: #211a14; }
+body .exp-narrative-head p { grid-column: 2; max-width: 460px; color: rgba(54,43,32,.62); }
+.exp-gallery-shell { display: grid; grid-template-columns: minmax(150px, .28fr) minmax(0, 1fr); column-gap: clamp(36px, 6vw, 94px); row-gap: 26px; max-width: 1280px; margin: 0 auto; }
+.exp-gallery-nav { display: flex; flex-direction: column; align-self: start; border-top: 1px solid rgba(77,58,37,.22); }
+.exp-gallery-nav button { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: baseline; width: 100%; padding: 17px 0; border: 0; border-bottom: 1px solid rgba(77,58,37,.15); background: none; color: rgba(54,43,32,.45); cursor: pointer; text-align: left; transition: color .35s ease, padding-left .45s cubic-bezier(.2,.8,.2,1); }
+.exp-gallery-nav button span { color: #a52f2d; font: 500 8px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .18em; }
+.exp-gallery-nav button b { font: 300 clamp(18px, 1.7vw, 25px)/1 'Plus Jakarta Sans', sans-serif; font-weight: 300; }
+.exp-gallery-nav button:hover, .exp-gallery-nav button.is-active { color: #211a14; padding-left: 12px; }
+.exp-gallery-nav button.is-active { background: linear-gradient(90deg, rgba(165,47,45,.09), transparent); }
+.exp-gallery-stage { position: relative; min-height: clamp(520px, 48vw, 650px); }
+.exp-gallery-slide { position: absolute; inset: 0; display: grid; grid-template-columns: minmax(0, 1.14fr) minmax(230px, .72fr); gap: clamp(30px, 5vw, 76px); align-items: center; opacity: 0; transform: translateY(22px); pointer-events: none; transition: opacity .65s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
+.exp-gallery-slide.is-active { opacity: 1; transform: none; pointer-events: auto; }
+.exp-gallery-images { position: relative; height: clamp(440px, 43vw, 590px); }
+.exp-gallery-images figure { position: absolute; margin: 0; overflow: hidden; background: #ded3c4; }
+.exp-gallery-images img { display: block; width: 100%; height: 100%; object-fit: cover; filter: saturate(.78) contrast(1.02); transition: transform 1.35s cubic-bezier(.2,.8,.2,1), filter .7s ease; }
+.exp-gallery-slide.is-active .exp-gallery-main img { animation: expGalleryImageIn 1.05s cubic-bezier(.2,.8,.2,1) both; }
+.exp-gallery-main { left: 0; top: 0; width: 73%; height: 86%; }
+.exp-gallery-main img { object-position: center 62%; }
+.exp-gallery-side { right: 0; top: 7%; width: 43%; height: 48%; border: 1px solid rgba(247,242,233,.82); }
+.exp-gallery-side img { object-position: center; }
+.exp-gallery-detail { right: 10%; bottom: 0; width: 49%; height: 39%; border: 8px solid #f4efe6; box-shadow: 0 18px 42px rgba(49,34,20,.15); }
+.exp-gallery-detail img { object-position: center 65%; }
+.exp-gallery-images:hover img { filter: saturate(.96) contrast(1.04); }
+.exp-gallery-images:hover .exp-gallery-main img { transform: scale(1.04); }
+.exp-gallery-images:hover .exp-gallery-side img, .exp-gallery-images:hover .exp-gallery-detail img { transform: scale(1.07); }
+.exp-gallery-count { position: absolute; left: 0; bottom: -25px; color: rgba(119,78,46,.62); font: 500 8px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .32em; }
+.exp-gallery-copy { align-self: center; }
+.exp-gallery-number { display: block; margin-bottom: 18px; color: #a52f2d; font: 500 9px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .32em; }
+.exp-gallery-copy h3 { margin: 0 0 22px; font: 300 clamp(48px, 5vw, 76px)/.9 'Plus Jakarta Sans', sans-serif; letter-spacing: -.05em; }
+.exp-gallery-copy p { max-width: 360px; color: rgba(54,43,32,.72); font: 300 14px/1.75 'Plus Jakarta Sans', sans-serif; }
+.exp-gallery-controls { grid-column: 2; display: flex; align-items: center; gap: 16px; margin-top: 8px; }
+.exp-gallery-controls button { width: 42px; height: 42px; border: 1px solid rgba(77,58,37,.30); border-radius: 50%; background: transparent; color: #211a14; font-size: 19px; cursor: pointer; transition: color .3s ease, background .3s ease, transform .3s ease; }
+.exp-gallery-controls button:hover { background: #a52f2d; border-color: #a52f2d; color: #fff; transform: scale(1.06); }
+.exp-gallery-controls span { display: flex; align-items: center; gap: 10px; color: rgba(54,43,32,.58); font: 500 8px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .25em; }
+.exp-gallery-controls i { display: block; width: 42px; height: 1px; background: rgba(77,58,37,.28); }
+@keyframes expGalleryImageIn { from { transform: scale(1.09); } to { transform: scale(1); } }
+
+@media (max-width: 768px) {
+  body .exp-narrative { padding: 86px 22px 72px; }
+  body .exp-narrative-head { display: block; margin-bottom: 52px; }
+  body .exp-narrative-head h2 { margin: 16px 0 24px; font-size: clamp(54px, 15vw, 76px); }
+  body .exp-narrative-head p { margin: 0; }
+  .exp-gallery-shell { display: block; }
+  .exp-gallery-nav { flex-direction: row; overflow-x: auto; margin: 0 -22px 30px; padding: 0 22px; border-top: 0; scrollbar-width: none; }
+  .exp-gallery-nav::-webkit-scrollbar { display: none; }
+  .exp-gallery-nav button { flex: 0 0 auto; display: flex; gap: 7px; width: auto; padding: 10px 16px 13px 0; border-bottom: 1px solid rgba(77,58,37,.16); }
+  .exp-gallery-nav button b { font-size: 16px; white-space: nowrap; }
+  .exp-gallery-nav button:hover, .exp-gallery-nav button.is-active { padding-left: 0; }
+  .exp-gallery-stage { min-height: 0; }
+  .exp-gallery-slide { position: absolute; display: block; transform: translateX(18px); }
+  .exp-gallery-slide.is-active { position: relative; transform: none; }
+  .exp-gallery-images { height: min(106vw, 500px); }
+  .exp-gallery-main { width: 76%; height: 88%; }
+  .exp-gallery-side { width: 45%; height: 45%; }
+  .exp-gallery-detail { right: 4%; width: 50%; height: 36%; border-width: 5px; }
+  .exp-gallery-copy { margin-top: 54px; }
+  .exp-gallery-copy h3 { font-size: clamp(48px, 15vw, 70px); }
+  .exp-gallery-copy p { font-size: 13px; }
+  .exp-gallery-controls { display: flex; margin-top: 42px; }
+}
 .topbar a { color: inherit; text-decoration: none; }
 .topbar-left { display: flex; gap: 32px; align-items: center; }
 .lang-switch {

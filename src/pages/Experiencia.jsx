@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
@@ -27,61 +28,88 @@ function ExperienceHero({ t }) {
 }
 
 function MenuNarrative({ t }) {
-  const revealRef = useReveal(0.06)
+  const [activeMoment, setActiveMoment] = useState(0)
   const moments = [
     {
       num: '01', label: t('experiencia.moment01Label'), text: t('experiencia.moment01Text'),
-      image: '/images/botic-maig-2026-webp/plat-esparrecs-blancs-restaurant-botic.webp',
-      detail: '/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic.webp',
+      images: [
+        '/images/botic-maig-2026-webp/plat-esparrecs-blancs-restaurant-botic.webp',
+        '/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic.webp',
+        '/images/botic-maig-2026-webp/escamarlans-marisc-restaurant-botic-emporda.webp',
+      ],
     },
     {
       num: '02', label: t('experiencia.moment02Label'), text: t('experiencia.moment02Text'),
-      image: '/images/botic-maig-2026-webp/plat-llamantol-restaurant-botic-emporda.webp',
-      detail: '/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp',
+      images: [
+        '/images/botic-maig-2026-webp/plat-llamantol-restaurant-botic-emporda.webp',
+        '/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp',
+        '/images/plat-cenital-botic.jpg',
+      ],
     },
     {
       num: '03',
       label: t('experiencia.moment03Label'),
       text: t('experiencia.moment03Text'),
-      image: '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp',
-      detail: '/images/botic-maig-2026-webp/plat-carn-fruits-vermells-botic.webp',
-      imageAlt: t('experiencia.moment03ImgAlt'),
+      images: [
+        '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp',
+        '/images/botic-maig-2026-webp/plat-carn-fruits-vermells-botic.webp',
+        '/images/botic-maig-2026-webp/alta-cuina-empordanesa-restaurant-botic.webp',
+      ],
     },
     {
       num: '04', label: t('experiencia.moment04Label'), text: t('experiencia.moment04Text'),
-      image: '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp',
-      detail: '/images/restaurant-botic-corca-emporda-sala-gastronomica.webp',
+      images: [
+        '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp',
+        '/images/restaurant-botic-corca-emporda-sala-gastronomica.webp',
+        '/images/restaurant-botic-corca-emporda-interior.webp',
+      ],
     },
   ]
+  const goToMoment = (index) => setActiveMoment((index + moments.length) % moments.length)
 
   return (
     <section className="exp-narrative" aria-labelledby="exp-menu-title">
-      <header className="exp-narrative-head reveal" ref={revealRef}>
+      <header className="exp-narrative-head">
         <span className="exp-kicker">{t('experiencia.menuEyebrow')}</span>
         <h2 id="exp-menu-title">{t('experiencia.menuHeading')}</h2>
         <p>{t('experiencia.menuNote')}</p>
       </header>
-      <div className="exp-timeline">
-        <div className="exp-timeline-axis" aria-hidden="true"><span /></div>
+      <div className="exp-gallery-shell">
+        <nav className="exp-gallery-nav" aria-label={t('experiencia.menuHeading')}>
+          {moments.map((moment, index) => (
+            <button
+              type="button"
+              key={moment.num}
+              className={index === activeMoment ? 'is-active' : ''}
+              onClick={() => goToMoment(index)}
+              aria-current={index === activeMoment ? 'step' : undefined}
+            >
+              <span>{moment.num}</span><b>{moment.label}</b>
+            </button>
+          ))}
+        </nav>
+        <div className="exp-gallery-stage" aria-live="polite">
         {moments.map((moment, index) => (
-          <article className={`exp-moment${index % 2 ? ' is-reversed' : ''}`} key={moment.num}>
-            <span className="exp-moment-num">{moment.num}</span>
-            <div className="exp-moment-copy">
+          <article className={`exp-gallery-slide${index === activeMoment ? ' is-active' : ''}`} key={moment.num} aria-hidden={index !== activeMoment}>
+            <div className="exp-gallery-images">
+              <figure className="exp-gallery-main"><img src={moment.images[0]} alt={moment.label} loading={index === 0 ? 'eager' : 'lazy'} /></figure>
+              <figure className="exp-gallery-side"><img src={moment.images[1]} alt="" loading="lazy" /></figure>
+              <figure className="exp-gallery-detail"><img src={moment.images[2]} alt="" loading="lazy" /></figure>
+              <span className="exp-gallery-count" aria-hidden="true">{moment.num} / 04</span>
+            </div>
+            <div className="exp-gallery-copy">
+              <span className="exp-gallery-number">{moment.num}</span>
               <h3>{moment.label}</h3>
               <p>{moment.text}</p>
             </div>
-            <figure className="exp-moment-gallery">
-              <div className="exp-moment-primary">
-                <img src={moment.image} alt={moment.imageAlt || moment.label} loading="lazy" />
-              </div>
-              <div className="exp-moment-detail" aria-hidden="true">
-                <img src={moment.detail} alt="" loading="lazy" />
-              </div>
-              <figcaption>0{index + 1} / 04</figcaption>
-            </figure>
-            <span className="exp-moment-orbit" style={{ '--orbit-scale': 1 + index * .16 }} aria-hidden="true" />
           </article>
         ))}
+        </div>
+        <div className="exp-gallery-controls">
+          <button type="button" onClick={() => goToMoment(activeMoment - 1)} aria-label="Anterior">←</button>
+          <span>{String(activeMoment + 1).padStart(2, '0')} <i /> 04</span>
+          <button type="button" onClick={() => goToMoment(activeMoment + 1)} aria-label="Següent">→</button>
+        </div>
       </div>
     </section>
   )
