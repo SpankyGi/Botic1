@@ -4,6 +4,7 @@ export default function CustomCursor() {
   const dotRef = useRef(null)
   const outRef = useRef(null)
   const pos    = useRef({ mx: 0, my: 0, ox: 0, oy: 0 })
+  const started = useRef(false)
 
   useEffect(() => {
     const dot = dotRef.current
@@ -11,6 +12,11 @@ export default function CustomCursor() {
     if (!dot || !out) return
 
     const onMove = (e) => {
+      if (!started.current) {
+        pos.current = { mx: e.clientX, my: e.clientY, ox: e.clientX, oy: e.clientY }
+        started.current = true
+        document.body.classList.add('has-custom-cursor')
+      }
       pos.current.mx = e.clientX
       pos.current.my = e.clientY
     }
@@ -39,6 +45,7 @@ export default function CustomCursor() {
     return () => {
       document.removeEventListener('mousemove', onMove)
       document.removeEventListener('mouseover', onOver)
+      document.body.classList.remove('has-custom-cursor')
       cancelAnimationFrame(rafId)
     }
   }, [])
