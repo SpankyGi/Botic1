@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Hero             from '../components/Hero'
-import ProjecteSection  from '../components/ProjecteSection'
 import ChefSection      from '../components/ChefSection'
 import SEO              from '../components/SEO'
 import { useReveal } from '../hooks/useReveal'
