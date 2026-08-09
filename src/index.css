@@ -1,10 +1,10 @@
-@tailwind base;
+﻿@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ====================================================
-   BO.TIC — GLOBAL STYLES
-   Portant fidelment l'Artifact a producció.
+   BO.TIC â€” GLOBAL STYLES
+   Portant fidelment l'Artifact a producciÃ³.
    Totes les animacions i efectes visuals originals.
    ==================================================== */
 
@@ -24,7 +24,7 @@ html { scroll-behavior: smooth; }
 
 body {
   background: var(--black);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   color: var(--white);
   overflow-x: hidden;
   font-weight: 200;
@@ -76,7 +76,7 @@ body {
 
 /* Logo */
 .pre-logo {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 200;
   font-size: 76px;
   color: #fff;
@@ -106,7 +106,7 @@ body {
 
 /* Claim subtil */
 .pre-claim {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 9px;
   letter-spacing: 0.55em;
   text-transform: uppercase;
@@ -149,7 +149,7 @@ body {
   cursor: pointer;
 }
 .lang-switch::after {
-  content: '▾'; font-size: 9px; opacity: 0.7;
+  content: 'â–¾'; font-size: 9px; opacity: 0.7;
 }
 .topbar-right {
   display: flex; gap: 22px; align-items: center;
@@ -175,7 +175,7 @@ body {
   border-left: 1px solid rgba(255,255,255,0.14);
 }
 .topbar-languages a {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 9px;
   font-weight: 400;
   letter-spacing: 0.14em;
@@ -210,7 +210,7 @@ body {
 
 /* Logo */
 .nav-logo {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 200;
   font-size: 22px;
   letter-spacing: 0.08em;
@@ -234,7 +234,7 @@ body {
   z-index: 1;
 }
 .nav-toggle-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.22em;
@@ -350,7 +350,7 @@ body {
   transform: translateY(0);
 }
 .nav-fs-idx {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.12em;
@@ -361,9 +361,9 @@ body {
   padding-top: 6px;
 }
 .nav-fs-name {
-  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-family: 'Plus Jakarta Sans', Georgia, serif;
   font-weight: 300;
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(42px, 5.2vw, 76px);
   line-height: 1.08;
   color: rgba(255, 255, 255, 0.78);
@@ -418,7 +418,7 @@ body {
   color: rgba(255, 255, 255, 0.92);
 }
 
-/* RIGHT — image zone */
+/* RIGHT â€” image zone */
 .nav-fs-right {
   display: flex;
   align-items: center;
@@ -457,7 +457,7 @@ body {
 .nav-fs-img-desc {
   position: absolute;
   bottom: 22px; left: 24px; right: 24px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.18em;
@@ -519,7 +519,7 @@ body {
   margin-left: auto;
 }
 .nav-fs-footer-label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.14em;
@@ -527,7 +527,7 @@ body {
   color: rgba(255, 255, 255, 0.3);
 }
 .nav-fs-footer-link {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.14em;
@@ -547,7 +547,7 @@ body {
   gap: 10px;
 }
 .nav-fs-lang-btn {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.14em;
@@ -563,7 +563,7 @@ body {
 .nav-fs-lang-btn:hover  { color: rgba(255, 255, 255, 0.72); }
 .nav-fs-lang-btn.is-active { color: rgba(201, 164, 106, 0.90); }
 .nav-fs-reserva {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 300;
   letter-spacing: 0.22em;
@@ -602,15 +602,15 @@ body {
   transition: opacity .35s ease, transform .45s cubic-bezier(.2,.8,.2,1), visibility .35s;
 }
 
-/* ═══════════════════════════════════════════════════════════
-   EXPERIÈNCIA — el temps, el ritme i l'hospitalitat
-   ═══════════════════════════════════════════════════════════ */
-.exp-kicker { display: block; color: #b33936; font: 500 10px/1 'Inter', sans-serif; letter-spacing: .34em; text-transform: uppercase; }
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   EXPERIÃˆNCIA â€” el temps, el ritme i l'hospitalitat
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
+.exp-kicker { display: block; color: #b33936; font: 500 10px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .34em; text-transform: uppercase; }
 .exp-hero { position: relative; min-height: 100svh; overflow: hidden; background: #050403; display: flex; align-items: flex-end; isolation: isolate; }
 .exp-hero-img { position: absolute; z-index: -3; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 43%; transform: scale(1.08); filter: saturate(.72) brightness(.62); animation: expHeroIn 2.8s cubic-bezier(.16,.8,.2,1) forwards; }
 .exp-hero-shade { position: absolute; z-index: -2; inset: 0; background: linear-gradient(90deg, rgba(5,4,3,.96) 0%, rgba(5,4,3,.76) 30%, rgba(5,4,3,.12) 68%), linear-gradient(0deg, rgba(5,4,3,.88), transparent 58%); }
 .exp-hero-copy { width: min(820px, 68vw); margin: 0 0 clamp(84px, 12vh, 140px) clamp(30px, 7vw, 116px); }
-.exp-hero-copy h1 { max-width: 820px; margin: 20px 0 0; color: #f4eee3; font: italic 300 clamp(68px, 9vw, 136px)/.86 'Cormorant Garamond', serif; letter-spacing: -.045em; }
+.exp-hero-copy h1 { max-width: 820px; margin: 20px 0 0; color: #f4eee3; font: 300 clamp(68px, 9vw, 136px)/.86 'Plus Jakarta Sans', serif; letter-spacing: -.045em; }
 .exp-hero-clock { position: absolute; right: clamp(38px, 7vw, 112px); top: 50%; width: clamp(150px, 18vw, 270px); aspect-ratio: 1; border: 1px solid rgba(215,177,112,.28); border-radius: 50%; transform: translateY(-50%); }
 .exp-hero-clock::before, .exp-hero-clock::after { content: ''; position: absolute; inset: 14%; border: 1px solid rgba(215,177,112,.15); border-radius: 50%; }
 .exp-hero-clock::after { inset: 31%; }
@@ -618,22 +618,22 @@ body {
 .exp-hero-clock span { height: 34%; transform: rotate(32deg); animation: expHand 9s cubic-bezier(.4,0,.2,1) infinite alternate; }
 .exp-hero-clock i { height: 23%; transform: rotate(138deg); opacity: .62; }
 .exp-hero-clock b { position: absolute; left: 50%; top: 50%; width: 7px; height: 7px; border-radius: 50%; background: #a52f2d; transform: translate(-50%,-50%); box-shadow: 0 0 24px rgba(165,47,45,.9); }
-.exp-hero-whisper { position: absolute; right: clamp(32px, 6vw, 96px); bottom: 32px; color: rgba(237,231,219,.4); font: 500 8px/1 'Inter', sans-serif; letter-spacing: .3em; }
+.exp-hero-whisper { position: absolute; right: clamp(32px, 6vw, 96px); bottom: 32px; color: rgba(237,231,219,.4); font: 500 8px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .3em; }
 
 .exp-narrative { position: relative; overflow: hidden; background: #080706; color: #f4eee3; padding: clamp(110px, 14vw, 190px) clamp(24px, 7vw, 112px); }
-.exp-narrative::before { content: 'RITME'; position: absolute; top: 4vw; right: -2vw; color: transparent; -webkit-text-stroke: 1px rgba(215,177,112,.08); font: 300 clamp(140px, 24vw, 380px)/.8 'Cormorant Garamond', serif; pointer-events: none; }
+.exp-narrative::before { content: 'RITME'; position: absolute; top: 4vw; right: -2vw; color: transparent; -webkit-text-stroke: 1px rgba(215,177,112,.08); font: 300 clamp(140px, 24vw, 380px)/.8 'Plus Jakarta Sans', serif; pointer-events: none; }
 .exp-narrative-head { position: relative; z-index: 2; display: grid; grid-template-columns: .55fr 1.2fr; gap: 50px; max-width: 1260px; margin: 0 auto clamp(90px, 12vw, 160px); }
-.exp-narrative-head h2 { margin-top: -14px; font: italic 300 clamp(62px, 8vw, 112px)/.88 'Cormorant Garamond', serif; letter-spacing: -.04em; }
-.exp-narrative-head p { grid-column: 2; max-width: 520px; color: rgba(237,231,219,.5); font: 400 10px/1.6 'Inter', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+.exp-narrative-head h2 { margin-top: -14px; font: 300 clamp(62px, 8vw, 112px)/.88 'Plus Jakarta Sans', serif; letter-spacing: -.04em; }
+.exp-narrative-head p { grid-column: 2; max-width: 520px; color: rgba(237,231,219,.5); font: 400 10px/1.6 'Plus Jakarta Sans', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
 .exp-timeline { position: relative; max-width: 1260px; margin: 0 auto; }
 .exp-timeline-axis { position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: rgba(215,177,112,.16); }
 .exp-timeline-axis span { display: block; width: 1px; height: 46%; background: linear-gradient(#a52f2d,#d7b170); }
 .exp-moment { position: relative; min-height: 54vh; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 11vw; border-top: 1px solid rgba(255,255,255,.09); }
 .exp-moment:nth-child(odd) .exp-moment-copy { grid-column: 2; }
 .exp-moment:nth-child(even) .exp-moment-copy { grid-column: 1; grid-row: 1; text-align: right; }
-.exp-moment-num { position: absolute; left: 50%; top: 34px; transform: translateX(-50%); color: #b33936; font: 500 9px/1 'Inter', sans-serif; letter-spacing: .28em; }
-.exp-moment-copy h3 { margin-bottom: 20px; font: italic 300 clamp(58px, 7vw, 98px)/.9 'Cormorant Garamond', serif; letter-spacing: -.035em; }
-.exp-moment-copy p { max-width: 510px; color: rgba(237,231,219,.66); font: 300 14px/1.8 'Inter', sans-serif; }
+.exp-moment-num { position: absolute; left: 50%; top: 34px; transform: translateX(-50%); color: #b33936; font: 500 9px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .28em; }
+.exp-moment-copy h3 { margin-bottom: 20px; font: 300 clamp(58px, 7vw, 98px)/.9 'Plus Jakarta Sans', serif; letter-spacing: -.035em; }
+.exp-moment-copy p { max-width: 510px; color: rgba(237,231,219,.66); font: 300 14px/1.8 'Plus Jakarta Sans', sans-serif; }
 .exp-moment:nth-child(even) .exp-moment-copy p { margin-left: auto; }
 .exp-moment.has-image { min-height: 62vh; }
 .exp-moment-media { grid-column: 2; grid-row: 1; width: min(100%, 490px); margin: 0; justify-self: end; overflow: hidden; background: #111; aspect-ratio: 4 / 5; }
@@ -645,9 +645,9 @@ body {
 .exp-pace { position: relative; overflow: hidden; background: #ece5d9; color: #17120e; padding: clamp(110px, 15vw, 210px) 24px; }
 .exp-pace-time { position: absolute; left: 50%; top: 58%; width: min(880px, 70vw); height: 1px; overflow: hidden; transform: translateX(-50%); color: transparent; background: rgba(120,88,55,.12); }
 .exp-pace-inner { position: relative; max-width: 1180px; margin: 0 auto; }
-.exp-pace-inner h2 { max-width: 980px; margin: 22px 0 clamp(64px, 9vw, 108px); font: italic 300 clamp(70px, 10vw, 142px)/.84 'Cormorant Garamond', serif; letter-spacing: -.05em; }
+.exp-pace-inner h2 { max-width: 980px; margin: 22px 0 clamp(64px, 9vw, 108px); font: 300 clamp(70px, 10vw, 142px)/.84 'Plus Jakarta Sans', serif; letter-spacing: -.05em; }
 .exp-pace-copy { display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 5vw, 76px); border-top: 1px solid rgba(70,52,34,.24); padding-top: 34px; }
-.exp-pace-copy p { color: rgba(34,27,20,.68); font: 300 14px/1.8 'Inter', sans-serif; }
+.exp-pace-copy p { color: rgba(34,27,20,.68); font: 300 14px/1.8 'Plus Jakarta Sans', sans-serif; }
 
 .exp-hospitality { position: relative; min-height: 112svh; overflow: hidden; background: #0a0806; color: #f4eee3; display: grid; grid-template-columns: 1.15fr .85fr; }
 .exp-hospitality-images { position: relative; min-height: 112svh; }
@@ -656,25 +656,25 @@ body {
 .exp-hospitality:hover .exp-hospitality-main img { transform: scale(1.025); }
 .exp-hospitality-detail { position: absolute; right: 4%; bottom: 5vh; width: 42%; height: 42vh; overflow: hidden; border: 1px solid rgba(215,177,112,.25); }
 .exp-hospitality-detail img { width: 100%; height: 100%; object-fit: cover; object-position: 72% center; filter: saturate(.72) brightness(.7); }
-.exp-hospitality-images > span { position: absolute; left: 2vw; bottom: 0; color: transparent; -webkit-text-stroke: 1px rgba(215,177,112,.10); font: 300 18vw/.8 'Cormorant Garamond', serif; }
+.exp-hospitality-images > span { position: absolute; left: 2vw; bottom: 0; color: transparent; -webkit-text-stroke: 1px rgba(215,177,112,.10); font: 300 18vw/.8 'Plus Jakarta Sans', serif; }
 .exp-hospitality-copy { align-self: center; max-width: 540px; padding: 100px clamp(28px, 7vw, 110px) 100px 20px; }
-.exp-hospitality-copy h2 { margin: 20px 0 34px; font: italic 300 clamp(60px, 7vw, 106px)/.88 'Cormorant Garamond', serif; letter-spacing: -.04em; }
-.exp-hospitality-copy p { margin-top: 16px; color: rgba(237,231,219,.68); font: 300 14px/1.78 'Inter', sans-serif; }
+.exp-hospitality-copy h2 { margin: 20px 0 34px; font: 300 clamp(60px, 7vw, 106px)/.88 'Plus Jakarta Sans', serif; letter-spacing: -.04em; }
+.exp-hospitality-copy p { margin-top: 16px; color: rgba(237,231,219,.68); font: 300 14px/1.78 'Plus Jakarta Sans', sans-serif; }
 
 .exp-cellar { position: relative; min-height: 108svh; overflow: hidden; background: #050403; display: flex; align-items: flex-end; }
 .exp-cellar > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: saturate(.8) brightness(.64); transform: scale(1.04); transition: transform 1.8s cubic-bezier(.2,.7,.2,1); }
 .exp-cellar:hover > img { transform: scale(1.01); }
 .exp-cellar-shade { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(5,4,3,.94), rgba(5,4,3,.30) 58%, rgba(5,4,3,.12)), linear-gradient(0deg, rgba(5,4,3,.82), transparent 52%); }
 .exp-cellar-copy { position: relative; z-index: 2; width: min(720px, 58vw); margin: 0 0 clamp(80px, 12vh, 130px) clamp(28px, 7vw, 112px); }
-.exp-cellar-copy h2 { margin: 20px 0 32px; font: italic 300 clamp(64px, 8vw, 118px)/.86 'Cormorant Garamond', serif; letter-spacing: -.04em; }
-.exp-cellar-copy p { max-width: 560px; margin-top: 16px; color: rgba(237,231,219,.72); font: 300 14px/1.78 'Inter', sans-serif; }
+.exp-cellar-copy h2 { margin: 20px 0 32px; font: 300 clamp(64px, 8vw, 118px)/.86 'Plus Jakarta Sans', serif; letter-spacing: -.04em; }
+.exp-cellar-copy p { max-width: 560px; margin-top: 16px; color: rgba(237,231,219,.72); font: 300 14px/1.78 'Plus Jakarta Sans', sans-serif; }
 
 .exp-cta { position: relative; min-height: 82svh; overflow: hidden; background: #050403; display: flex; align-items: center; justify-content: center; text-align: center; }
 .exp-cta > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 68% center; filter: saturate(.65) brightness(.45); }
 .exp-cta-shade { position: absolute; inset: 0; background: radial-gradient(circle at center, rgba(5,4,3,.25), rgba(5,4,3,.88) 70%); }
 .exp-cta-copy { position: relative; z-index: 2; max-width: 900px; padding: 90px 24px; }
-.exp-cta-copy h2 { margin: 20px auto 24px; font: italic 300 clamp(68px, 9vw, 132px)/.86 'Cormorant Garamond', serif; letter-spacing: -.045em; color: #f4eee3; }
-.exp-cta-copy p { max-width: 560px; margin: 0 auto 38px; color: rgba(237,231,219,.68); font: 300 15px/1.7 'Inter', sans-serif; }
+.exp-cta-copy h2 { margin: 20px auto 24px; font: 300 clamp(68px, 9vw, 132px)/.86 'Plus Jakarta Sans', serif; letter-spacing: -.045em; color: #f4eee3; }
+.exp-cta-copy p { max-width: 560px; margin: 0 auto 38px; color: rgba(237,231,219,.68); font: 300 15px/1.7 'Plus Jakarta Sans', sans-serif; }
 
 @keyframes expHeroIn { to { transform: scale(1.015); filter: saturate(.9) brightness(.76); } }
 @keyframes expHand { to { transform: rotate(188deg); } }
@@ -732,11 +732,11 @@ body {
   .exp-hospitality-main img, .exp-cellar > img { transition: none; }
 }
 
-/* ═══════════════════════════════════════════════════════════
-   GASTRONOMIA — direcció editorial
-   ═══════════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   GASTRONOMIA â€” direcciÃ³ editorial
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 .gst-kicker {
-  display: block; font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500;
+  display: block; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 500;
   line-height: 1; letter-spacing: .34em; text-transform: uppercase; color: #b33936;
 }
 .gst-hero {
@@ -758,31 +758,31 @@ body {
 }
 .gst-hero-copy { width: min(790px, 62vw); margin: 0 0 clamp(76px, 10vh, 118px) clamp(34px, 7vw, 118px); }
 .gst-hero-copy h1 {
-  max-width: 760px; margin: 20px 0 22px; font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(64px, 8.1vw, 124px); font-weight: 300; font-style: italic;
+  max-width: 760px; margin: 20px 0 22px; font-family: 'Plus Jakarta Sans', serif;
+  font-size: clamp(64px, 8.1vw, 124px); font-weight: 300; font-style: normal;
   line-height: .86; letter-spacing: -.035em; color: #f5efe4;
 }
-.gst-hero-copy p { max-width: 480px; color: rgba(237,231,219,.74); font: 300 15px/1.75 'Inter', sans-serif; }
+.gst-hero-copy p { max-width: 480px; color: rgba(237,231,219,.74); font: 300 15px/1.75 'Plus Jakarta Sans', sans-serif; }
 .gst-text-link {
   display: inline-flex; align-items: center; gap: 18px; margin-top: 30px; color: #d7b170;
-  font: 500 10px/1 'Inter', sans-serif; letter-spacing: .26em; text-transform: uppercase;
+  font: 500 10px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .26em; text-transform: uppercase;
 }
 .gst-text-link::after { content: ''; width: 54px; height: 1px; background: currentColor; transition: width .35s ease; }
 .gst-text-link:hover::after { width: 82px; }
-.gst-hero-index { position: absolute; right: 40px; bottom: 38px; color: rgba(237,231,219,.45); font: 500 9px/1 'Inter', sans-serif; letter-spacing: .22em; }
+.gst-hero-index { position: absolute; right: 40px; bottom: 38px; color: rgba(237,231,219,.45); font: 500 9px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .22em; }
 .gst-scroll-cue { position: absolute; left: 50%; bottom: 0; width: 1px; height: 72px; background: rgba(255,255,255,.15); }
 .gst-scroll-cue span { display: block; width: 1px; height: 28px; background: #b33936; animation: gstScroll 2.2s ease-in-out infinite; }
 
 .gst-manifest { position: relative; overflow: hidden; background: #eee8dd; color: #16120e; padding: clamp(108px, 14vw, 200px) 0 clamp(96px, 12vw, 170px); }
 .gst-manifest-word {
   position: absolute; top: -4vw; left: 50%; transform: translateX(-50%); white-space: nowrap;
-  font: 300 clamp(140px, 25vw, 390px)/.8 'Cormorant Garamond', serif; letter-spacing: -.07em;
+  font: 300 clamp(140px, 25vw, 390px)/.8 'Plus Jakarta Sans', serif; letter-spacing: -.07em;
   color: transparent; -webkit-text-stroke: 1px rgba(94,72,48,.09); pointer-events: none;
 }
 .gst-manifest-inner { position: relative; max-width: 1320px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 76px); }
 .gst-section-head { display: grid; grid-template-columns: .52fr 1fr; align-items: start; gap: 40px; margin-bottom: clamp(68px, 9vw, 118px); }
 .gst-section-head h2 {
-  margin-top: -14px; max-width: 800px; font: italic 300 clamp(58px, 8vw, 112px)/.9 'Cormorant Garamond', serif;
+  margin-top: -14px; max-width: 800px; font: 300 clamp(58px, 8vw, 112px)/.9 'Plus Jakarta Sans', serif;
   letter-spacing: -.035em; color: #17120e;
 }
 .gst-principles { border-top: 1px solid rgba(70,52,34,.24); }
@@ -790,8 +790,8 @@ body {
   display: grid; grid-template-columns: .5fr 1.5fr; gap: 40px; padding: 34px 0;
   border-bottom: 1px solid rgba(70,52,34,.18); align-items: start;
 }
-.gst-principle > span { color: #a52f2d; font: 500 10px/1 'Inter', sans-serif; letter-spacing: .26em; }
-.gst-principle p { max-width: 760px; color: rgba(34,27,20,.72); font: 300 clamp(15px, 1.3vw, 18px)/1.8 'Inter', sans-serif; }
+.gst-principle > span { color: #a52f2d; font: 500 10px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .26em; }
+.gst-principle p { max-width: 760px; color: rgba(34,27,20,.72); font: 300 clamp(15px, 1.3vw, 18px)/1.8 'Plus Jakarta Sans', sans-serif; }
 
 .gst-territory { position: relative; min-height: 110svh; overflow: hidden; background: #080604; display: flex; align-items: flex-end; }
 .gst-territory > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 3s cubic-bezier(.2,.7,.2,1); }
@@ -800,13 +800,13 @@ body {
 .gst-territory-copy { position: relative; z-index: 2; width: 100%; padding: 0 clamp(28px, 7vw, 116px) clamp(110px, 15vh, 160px); }
 .gst-territory-copy h2 {
   max-width: 920px; margin: 18px 0 38px; color: #f5efe4;
-  font: italic 300 clamp(64px, 9vw, 132px)/.86 'Cormorant Garamond', serif; letter-spacing: -.04em;
+  font: 300 clamp(64px, 9vw, 132px)/.86 'Plus Jakarta Sans', serif; letter-spacing: -.04em;
 }
 .gst-territory-copy > div { display: grid; grid-template-columns: repeat(2, minmax(0, 430px)); gap: clamp(28px, 6vw, 92px); }
-.gst-territory-copy p { color: rgba(237,231,219,.76); font: 300 14px/1.8 'Inter', sans-serif; }
+.gst-territory-copy p { color: rgba(237,231,219,.76); font: 300 14px/1.8 'Plus Jakarta Sans', sans-serif; }
 .gst-territory-line {
   position: absolute; z-index: 3; left: clamp(28px, 7vw, 116px); right: clamp(28px, 7vw, 116px); bottom: 34px;
-  display: flex; align-items: center; gap: 18px; color: rgba(237,231,219,.46); font: 500 8px/1 'Inter', sans-serif; letter-spacing: .28em;
+  display: flex; align-items: center; gap: 18px; color: rgba(237,231,219,.46); font: 500 8px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .28em;
 }
 .gst-territory-line i { flex: 1; height: 1px; background: rgba(215,177,112,.24); }
 
@@ -819,40 +819,40 @@ body {
 .gst-technique-detail { position: absolute; right: 4vw; bottom: 0; width: min(30vw, 520px); height: min(44vh, 470px); overflow: hidden; border: 1px solid rgba(215,177,112,.28); z-index: 5; background:#0b0908; }
 .gst-technique-detail img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; filter:saturate(.82) brightness(.82); transform:scale(1.035); transition:opacity 1s ease,transform 5.8s cubic-bezier(.2,.7,.2,1); }
 .gst-technique-detail img.is-active { opacity:1; transform:scale(1); }
-.gst-technique-detail figcaption { position:absolute; z-index:3; left:20px; right:20px; bottom:16px; display:flex; align-items:center; gap:12px; color:rgba(255,255,255,.72); font:500 8px/1 'Inter',sans-serif; letter-spacing:.28em; text-shadow:0 1px 8px rgba(0,0,0,.8); }
+.gst-technique-detail figcaption { position:absolute; z-index:3; left:20px; right:20px; bottom:16px; display:flex; align-items:center; gap:12px; color:rgba(255,255,255,.72); font:500 8px/1 'Plus Jakarta Sans',sans-serif; letter-spacing:.28em; text-shadow:0 1px 8px rgba(0,0,0,.8); }
 .gst-technique-detail figcaption i { flex:1; height:1px; background:rgba(255,255,255,.22); overflow:hidden; }
 .gst-technique-detail figcaption b { display:block; width:100%; height:100%; background:#d7b170; transform-origin:left; transition:transform .65s cubic-bezier(.2,.7,.2,1); }
 .gst-gallery-arrow { position:absolute; z-index:4; top:50%; width:44px; height:44px; padding:0; border:1px solid rgba(255,255,255,.35); border-radius:50%; background:rgba(8,7,6,.42); color:#fff; backdrop-filter:blur(8px); transform:translateY(-50%); cursor:pointer; opacity:.72; transition:opacity .25s ease,background .25s ease,transform .25s ease; }
 .gst-gallery-arrow:hover,.gst-gallery-arrow:focus-visible { opacity:1; background:rgba(8,7,6,.72); transform:translateY(-50%) scale(1.06); outline:none; }
 .gst-gallery-prev { left:16px; }
 .gst-gallery-next { right:16px; }
-.gst-technique-ghost { position: absolute; left: -2vw; top: 4vh; color: transparent; -webkit-text-stroke: 1px rgba(215,177,112,.10); font: 300 25vw/.8 'Cormorant Garamond', serif; }
+.gst-technique-ghost { position: absolute; left: -2vw; top: 4vh; color: transparent; -webkit-text-stroke: 1px rgba(215,177,112,.10); font: 300 25vw/.8 'Plus Jakarta Sans', serif; }
 .gst-technique-copy { position: relative; z-index: 3; width: min(530px, 39vw); padding: clamp(170px, 24vh, 260px) 0 100px clamp(28px, 7vw, 112px); }
-.gst-technique-copy h2 { margin: 18px 0 32px; font: italic 300 clamp(62px, 8vw, 116px)/.86 'Cormorant Garamond', serif; letter-spacing: -.035em; }
-.gst-technique-copy p { margin-top: 17px; color: rgba(237,231,219,.7); font: 300 14px/1.8 'Inter', sans-serif; }
+.gst-technique-copy h2 { margin: 18px 0 32px; font: 300 clamp(62px, 8vw, 116px)/.86 'Plus Jakarta Sans', serif; letter-spacing: -.035em; }
+.gst-technique-copy p { margin-top: 17px; color: rgba(237,231,219,.7); font: 300 14px/1.8 'Plus Jakarta Sans', sans-serif; }
 .gst-technique-signature { display: none; }
 
 .gst-dishes { position: relative; overflow: hidden; margin-top: -1px; padding: clamp(48px, 7vw, 104px) clamp(22px, 5vw, 78px) clamp(86px, 9vw, 138px); background: #080706; }
 .gst-dishes-mobile { display:none; }
 .gst-dishes::before { content: ''; position: absolute; top: 0; left: 5vw; right: 5vw; height: 1px; background: linear-gradient(90deg, transparent, rgba(215,177,112,.35), transparent); }
-.gst-dishes-intro { display: flex; align-items: center; gap: 18px; width: min(560px, 48vw); margin: 0 0 clamp(28px, 4vw, 54px) auto; color: rgba(237,231,219,.42); font: 500 8px/1 'Inter', sans-serif; letter-spacing: .3em; }
+.gst-dishes-intro { display: flex; align-items: center; gap: 18px; width: min(560px, 48vw); margin: 0 0 clamp(28px, 4vw, 54px) auto; color: rgba(237,231,219,.42); font: 500 8px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .3em; }
 .gst-dishes-intro i { flex: 1; height: 1px; background: rgba(215,177,112,.3); transform-origin: left; animation: gstDishLine 1.8s cubic-bezier(.2,.7,.2,1) both; }
 .gst-dishes-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
 .gst-dish { position: relative; overflow: hidden; margin: 0; background: #11100e; }
 .gst-dish img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 1.4s cubic-bezier(.2,.7,.2,1), filter 1.2s ease; }
 .gst-dish:hover img { transform: scale(1.035); }
-.gst-dish figcaption { position: absolute; right: 16px; bottom: 14px; color: rgba(255,255,255,.72); font: 500 8px/1 'Inter', sans-serif; letter-spacing: .28em; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
+.gst-dish figcaption { position: absolute; right: 16px; bottom: 14px; color: rgba(255,255,255,.72); font: 500 8px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .28em; text-shadow: 0 1px 8px rgba(0,0,0,.8); }
 .gst-dish { aspect-ratio:4 / 5; }
 
 @keyframes gstDishLine { from { transform: scaleX(0); opacity: 0; } to { transform: scaleX(1); opacity: 1; } }
 
 .gst-cta { padding: clamp(94px, 12vw, 160px) 24px; background: #e9e2d5; text-align: center; }
-.gst-cta h2 { max-width: 920px; margin: 20px auto 24px; color: #17120e; font: italic 300 clamp(58px, 8vw, 110px)/.9 'Cormorant Garamond', serif; letter-spacing: -.035em; }
-.gst-cta p { max-width: 580px; margin: 0 auto; color: rgba(34,27,20,.65); font: 300 15px/1.75 'Inter', sans-serif; }
+.gst-cta h2 { max-width: 920px; margin: 20px auto 24px; color: #17120e; font: 300 clamp(58px, 8vw, 110px)/.9 'Plus Jakarta Sans', serif; letter-spacing: -.035em; }
+.gst-cta p { max-width: 580px; margin: 0 auto; color: rgba(34,27,20,.65); font: 300 15px/1.75 'Plus Jakarta Sans', sans-serif; }
 .gst-cta-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 38px; }
 .gst-cta-secondary {
   display: inline-flex; align-items: center; padding: 16px 32px; border: 1px solid rgba(23,18,14,.48);
-  color: #17120e; font: 400 11px/1 'Inter', sans-serif; letter-spacing: .3em; text-transform: uppercase;
+  color: #17120e; font: 400 11px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .3em; text-transform: uppercase;
   transition: color .35s ease, background-color .35s ease, border-color .35s ease;
 }
 .gst-cta-secondary:hover { color: #eee8dd; background: #17120e; border-color: #17120e; }
@@ -1038,7 +1038,7 @@ body {
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.65);
 }
 .hero-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: clamp(58px, 7.5vw, 112px);
   color: var(--white);
@@ -1175,7 +1175,7 @@ body {
 }
 .hero-michelin-caption {
   fill: rgba(237,232,220,0.68);
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 3px;
@@ -1292,7 +1292,7 @@ body {
 
 /* Hero subtext */
 .hero-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(13px, 1.35vw, 16px);
   font-weight: 300;
   color: rgba(237, 232, 220, 0.60);
@@ -1319,7 +1319,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 13px 30px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.18em;
@@ -1386,9 +1386,9 @@ body {
 /* ====== ATMOSPHERIC PARTICLES ====== */
 /*
   Per ajustar la intensitat:
-  - .atm-particles { opacity }  →  0 = invisible, 0.5 = més visible
-  - @keyframes atm-float  →  translateY final controla quant puja cada partícula
-  - .atm-particle { filter: blur() }  →  més blur = més difuminat
+  - .atm-particles { opacity }  â†’  0 = invisible, 0.5 = mÃ©s visible
+  - @keyframes atm-float  â†’  translateY final controla quant puja cada partÃ­cula
+  - .atm-particle { filter: blur() }  â†’  mÃ©s blur = mÃ©s difuminat
 */
 .atm-particles {
   position: absolute;
@@ -1396,7 +1396,7 @@ body {
   z-index: 4;
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.28;          /* ← INTENSITAT GLOBAL — ajusta aquí */
+  opacity: 0.28;          /* â† INTENSITAT GLOBAL â€” ajusta aquÃ­ */
 }
 .atm-particle {
   position: absolute;
@@ -1415,14 +1415,14 @@ body {
 }
 
 @media (max-width: 768px) {
-  .atm-particles { opacity: 0.14; }  /* menys intens a mòbil */
+  .atm-particles { opacity: 0.14; }  /* menys intens a mÃ²bil */
 }
 
 @media (prefers-reduced-motion: reduce) {
   .atm-particles { display: none; }
 }
 
-/* Nav — reduced motion */
+/* Nav â€” reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .nav-fs {
     clip-path: none !important;
@@ -1495,8 +1495,8 @@ body {
   font-size: 9px;
 }
 .video-error em {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-size: 14px;
   color: rgba(255,255,255,0.6);
 }
@@ -1586,8 +1586,8 @@ body {
   align-items: center;
   animation: scroll-left 40s linear infinite;
   color: var(--black);
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 20px;
   will-change: transform;
@@ -1610,7 +1610,7 @@ body {
   flex-shrink: 0;
 }
 
-/* Marquee desktop — refinament premium */
+/* Marquee desktop â€” refinament premium */
 @media (min-width: 769px) {
   .marquee {
     background: linear-gradient(180deg,
@@ -1665,8 +1665,8 @@ body {
   position: absolute;
   top: 80px; left: 50%;
   transform: translateX(-50%);
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(140px, 20vw, 320px);
   color: rgba(212,175,110,0.04);
@@ -1712,7 +1712,7 @@ body {
   background: var(--burgundy);
 }
 .menu-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 200;
   font-size: clamp(42px, 5.5vw, 84px);
   color: var(--white);
@@ -1720,8 +1720,8 @@ body {
   line-height: 1;
 }
 .menu-title em {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   color: var(--burgundy);
   position: relative;
@@ -1831,8 +1831,8 @@ body {
   font-weight: 400;
 }
 .card-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 42px;
   color: var(--white);
@@ -1863,8 +1863,8 @@ body {
 .section-label {
   text-align: center;
   margin: 24px 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 18px;
   color: rgba(212,175,110,0.85);
@@ -1896,8 +1896,8 @@ body {
 }
 .snack-group ul { list-style: none; }
 .snack-group li {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 14px;
   color: rgba(255,255,255,0.65);
@@ -1928,8 +1928,8 @@ body {
 .dish:last-child::before { display: none; }
 .dish:hover { padding-left: 16px; }
 .dish-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 16px;
   color: var(--burgundy);
@@ -1938,8 +1938,8 @@ body {
 }
 .dish:hover .dish-num { color: rgba(212,175,110,0.9); transform: scale(1.1); }
 .dish-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 22px;
   color: var(--white);
@@ -1986,8 +1986,8 @@ body {
 .price-ring-outer::after  { bottom: -2px; left: 50%; transform: translateX(-50%); }
 .price-ring-inner { inset: 10px; border-color: rgba(212,175,110,0.4); }
 .price-value {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 26px;
   color: rgba(212,175,110,0.95);
@@ -2001,8 +2001,8 @@ body {
 .menu-card:hover .price-ring-inner  { border-color: rgba(212,175,110,0.7); }
 .menu-card:hover .price-value       { color: rgba(232,200,140,1); }
 .card-signature {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 15px;
   color: rgba(255,255,255,0.35);
@@ -2020,7 +2020,7 @@ body {
   overflow: hidden;
 }
 
-/* Part 1 — Cinematic Hero */
+/* Part 1 â€” Cinematic Hero */
 .mesa-hero {
   position: relative;
   height: 85vh;
@@ -2109,8 +2109,8 @@ body {
   align-items: flex-end;
 }
 .mesa-hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(56px, 9vw, 132px);
   color: var(--white);
@@ -2133,12 +2133,12 @@ body {
 .mesa-hero.visible .lineup:nth-child(2) > span { animation-delay: 0.3s; }
 .mesa-hero.visible .lineup:nth-child(3) > span { animation-delay: 0.5s; }
 .mesa-hero-title em {
-  font-style: italic;
+  font-style: normal;
   color: rgba(212,175,110,0.95);
 }
 .mesa-hero-meta {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-size: 16px;
   color: rgba(255,255,255,0.5);
   text-align: right;
@@ -2149,7 +2149,7 @@ body {
   font-weight: 400;
 }
 
-/* Part 2 — Stats Banner */
+/* Part 2 â€” Stats Banner */
 .mesa-stats {
   background: linear-gradient(180deg, var(--black) 0%, #0a0805 100%);
   padding: 90px 48px;
@@ -2158,7 +2158,7 @@ body {
   position: relative;
 }
 .mesa-stats::before, .mesa-stats::after {
-  content: '◆';
+  content: 'â—†';
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -2184,8 +2184,8 @@ body {
 }
 .mesa-stat:hover { transform: translateY(-6px); }
 .mesa-stat .num {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(72px, 9vw, 132px);
   color: rgba(212,175,110,0.95);
@@ -2227,7 +2227,7 @@ body {
   background: linear-gradient(180deg, transparent, rgba(212,175,110,0.3), transparent);
 }
 
-/* Part 3 — Beige Detail */
+/* Part 3 â€” Beige Detail */
 .mesa-detail {
   background: var(--beige);
   padding: 140px 64px;
@@ -2237,8 +2237,8 @@ body {
 .mesa-detail-numeral {
   position: absolute;
   top: 20px; right: -40px;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(220px, 32vw, 420px);
   color: rgba(154,42,42,0.05);
@@ -2274,7 +2274,7 @@ body {
   background: var(--burgundy);
 }
 .detail-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 200;
   font-size: clamp(40px, 5vw, 76px);
   color: var(--black);
@@ -2283,14 +2283,14 @@ body {
   margin-bottom: 36px;
 }
 .detail-title em {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   color: var(--burgundy);
 }
 .detail-paragraph {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-size: 19px;
   line-height: 1.8;
   color: rgba(0,0,0,0.7);
@@ -2393,8 +2393,8 @@ body {
 .img-stamp {
   position: absolute;
   bottom: 32px; left: 32px;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 96px;
   color: rgba(255,255,255,0.18);
@@ -2439,7 +2439,7 @@ body {
   background: #0e0c09;
 }
 
-/* Bottom fade: transició suau cap a la secció Albert/Cristina */
+/* Bottom fade: transiciÃ³ suau cap a la secciÃ³ Albert/Cristina */
 .philosophy::after {
   content: '';
   position: absolute;
@@ -2503,8 +2503,8 @@ body {
   z-index: 3;
 }
 
-/* Text a centre-esquerra: marge controlat, amp màxim generós,
-   position:relative perquè el ::before s'ancora al text */
+/* Text a centre-esquerra: marge controlat, amp mÃ xim generÃ³s,
+   position:relative perquÃ¨ el ::before s'ancora al text */
 .philo-inner {
   position: relative;
   max-width: min(44%, 560px);
@@ -2513,14 +2513,14 @@ body {
   text-align: left;
 }
 
-/* Cometes decoratives — ancorades al text, no al contenidor */
+/* Cometes decoratives â€” ancorades al text, no al contenidor */
 .philo-inner::before {
   content: '\201C';
   position: absolute;
   top: -24px;
   left: -8px;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-size: clamp(88px, 8vw, 136px);
   line-height: 1;
   color: rgba(201,164,106,0.09);
@@ -2530,8 +2530,8 @@ body {
 }
 
 .philo-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(20px, 2.4vw, 38px);
   line-height: 1.64;
@@ -2543,7 +2543,7 @@ body {
 }
 .philo-frag.accent { color: #C9A46A; font-weight: 300; }
 
-/* Línia separadora, alineada a l'esquerra */
+/* LÃ­nia separadora, alineada a l'esquerra */
 .philo-sep {
   width: 56px;
   height: 1px;
@@ -2554,7 +2554,7 @@ body {
 }
 
 .philo-author {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.30em;
@@ -2575,7 +2575,7 @@ body {
 }
 .philo-frag.in { opacity: 1; transform: none; }
 
-/* Attribution reveal — after last word */
+/* Attribution reveal â€” after last word */
 .philo-attribution.reveal {
   transition:
     opacity  0.75s cubic-bezier(0.4, 0, 0.2, 1) 3.00s,
@@ -2592,7 +2592,7 @@ body {
   overflow: hidden;
   border-top: 1px solid rgba(201,164,106,0.16);
 }
-/* Glow ambient esquerra — calidesa darrere del text */
+/* Glow ambient esquerra â€” calidesa darrere del text */
 .chef-section::before {
   content: '';
   position: absolute;
@@ -2606,7 +2606,7 @@ body {
   z-index: 1;
 }
 
-/* Imatge — posicionada a la dreta, full-height */
+/* Imatge â€” posicionada a la dreta, full-height */
 .chef-photo-wrap {
   position: absolute;
   right: 0; top: 0; bottom: 0;
@@ -2629,7 +2629,7 @@ body {
   object-fit: cover;
   object-position: center 32%;
   display: block;
-  /* tractament editorial: desaturat càlid, lleuger sepia */
+  /* tractament editorial: desaturat cÃ lid, lleuger sepia */
   filter: brightness(0.82) contrast(1.08) saturate(0.52) sepia(0.16);
 }
 
@@ -2649,7 +2649,7 @@ body {
       transparent         20%);
 }
 
-/* Text — esquerra, dins container-max */
+/* Text â€” esquerra, dins container-max */
 .chef-container {
   position: relative;
   z-index: 2;
@@ -2663,7 +2663,7 @@ body {
 
 .chef-eyebrow {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 9px;
   font-weight: 400;
   letter-spacing: 0.42em;
@@ -2673,8 +2673,8 @@ body {
 }
 
 .chef-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(34px, 3.8vw, 58px);
   color: #EDE8DC;
@@ -2694,7 +2694,7 @@ body {
 }
 
 .chef-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(13px, 1.05vw, 14px);
   color: rgba(226,220,209,0.80);
   line-height: 2.0;
@@ -2705,7 +2705,7 @@ body {
 
 .chef-cta {
   display: inline-block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.30em;
@@ -2725,7 +2725,7 @@ body {
   letter-spacing: 0.40em;
 }
 
-/* Chef — mòbil: text a sobre, imatge a sota */
+/* Chef â€” mÃ²bil: text a sobre, imatge a sota */
 @media (max-width: 768px) {
   .chef-section {
     flex-direction: column;
@@ -2782,7 +2782,7 @@ body {
   overflow: hidden;
 }
 
-/* Glow radial daurat — més present */
+/* Glow radial daurat â€” mÃ©s present */
 .home-reserva-cta::before {
   content: '';
   position: absolute;
@@ -2797,7 +2797,7 @@ body {
   z-index: 0;
 }
 
-/* Línia vertical d'entrada des de la part superior */
+/* LÃ­nia vertical d'entrada des de la part superior */
 .home-reserva-cta::after {
   content: '';
   position: absolute;
@@ -2836,7 +2836,7 @@ body {
 }
 .home-reserva-cta p { color: rgba(218,211,199,0.78); }
 
-/* Botó principal amb més pes en aquest context */
+/* BotÃ³ principal amb mÃ©s pes en aquest context */
 .home-reserva-cta .btn-gold {
   padding: 14px 44px;
   letter-spacing: 0.22em;
@@ -2863,7 +2863,7 @@ footer.botic-footer {
   align-items: start;
 }
 .foot-logo {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 200;
   font-size: 36px;
   color: var(--white);
@@ -2871,8 +2871,8 @@ footer.botic-footer {
 }
 .foot-logo .dot { color: var(--burgundy); }
 .foot-tag {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-size: 16px;
   color: rgba(205,197,184,0.76);
 }
@@ -2909,7 +2909,7 @@ footer.botic-footer {
 .dish.expandable {
   cursor: pointer;
   align-items: start;
-  padding-left: 8px; /* no desplaçament en hover per evitar salt de layout */
+  padding-left: 8px; /* no desplaÃ§ament en hover per evitar salt de layout */
 }
 .dish.expandable:hover { padding-left: 8px; }
 
@@ -2934,7 +2934,7 @@ footer.botic-footer {
   color: rgba(212,175,110,0.9);
 }
 
-/* Grid expand trick — sense JS per a la mida */
+/* Grid expand trick â€” sense JS per a la mida */
 .dish-expand {
   grid-column: 1 / -1;
   display: grid;
@@ -2953,8 +2953,8 @@ footer.botic-footer {
   border-left: 1px solid rgba(154,42,42,0.3);
 }
 .dish-expand-list li {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 13px;
   color: rgba(212,175,110,0.72);
@@ -3067,7 +3067,7 @@ footer.botic-footer {
   .home-reserva-cta p { max-width: 310px; }
   .menu-header { padding: 0 24px; }
   .menu-grid { padding: 0 24px; }
-  /* nav fullscreen — mobile layout */
+  /* nav fullscreen â€” mobile layout */
   .nav-fs-layout {
     grid-template-columns: 1fr;
     padding: 88px 24px 0;
@@ -3115,7 +3115,7 @@ footer.botic-footer {
   .cta-symbol { font-size: 8px; }
   .mesa-detail { padding: 60px 24px; }
   .mesa-detail-grid { grid-template-columns: 1fr; gap: 40px; }
-  /* Philosophy mòbil — cita a sobre, Albert visible a sota */
+  /* Philosophy mÃ²bil â€” cita a sobre, Albert visible a sota */
   .philosophy {
     display: flex;
     flex-direction: column;
@@ -3201,7 +3201,7 @@ footer.botic-footer {
 
 /* ====== MULTI-PAGE COMPONENTS ====== */
 
-/* Contenidor centrat per a les pàgines interiors */
+/* Contenidor centrat per a les pÃ gines interiors */
 .container-max {
   max-width: 1280px;
   width: 100%;
@@ -3211,9 +3211,9 @@ footer.botic-footer {
   padding-right: 48px;
 }
 
-/* Labels tipogràfics */
+/* Labels tipogrÃ fics */
 .label {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -3221,7 +3221,7 @@ footer.botic-footer {
   font-weight: 400;
 }
 .label-light {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -3238,7 +3238,7 @@ footer.botic-footer {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -3279,7 +3279,7 @@ footer.botic-footer {
   color: #0C0B09;
 }
 
-/* ── Home intro split ── */
+/* â”€â”€ Home intro split â”€â”€ */
 .home-intro {
   position: relative;
   background: #0e0c09;
@@ -3332,7 +3332,7 @@ footer.botic-footer {
 }
 .home-intro-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.38em;
@@ -3370,7 +3370,7 @@ footer.botic-footer {
   .home-intro-img { animation: none; transform: none; }
 }
 
-/* Feature cards (pàgina d'inici portal) */
+/* Feature cards (pÃ gina d'inici portal) */
 .features-section {
   background: linear-gradient(180deg, #0C0B09 0%, #090806 100%);
   border-top: 1px solid rgba(201,164,106,0.14);
@@ -3387,7 +3387,7 @@ footer.botic-footer {
   align-items: stretch;
 }
 
-/* Scroll reveal: opac fins que la secció sigui visible */
+/* Scroll reveal: opac fins que la secciÃ³ sigui visible */
 .features-section .feature-card {
   opacity: 0;
   transform: translateY(22px);
@@ -3420,8 +3420,8 @@ footer.botic-footer {
   position: absolute;
   right: 28px;
   top: 20px;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-size: 62px;
   line-height: 1;
   color: rgba(201,164,106,.075);
@@ -3446,7 +3446,7 @@ footer.botic-footer {
 .feature-card:hover { background: #161511; }
 
 .feature-tag {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.40em;
   text-transform: uppercase;
@@ -3455,13 +3455,13 @@ footer.botic-footer {
   margin-bottom: 4px;
 }
 .feature-tag::before {
-  content: '—\00a0';
+  content: 'â€”\00a0';
   color: rgba(201,164,106,0.40);
   letter-spacing: 0.05em;
 }
 
 .feature-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: clamp(24px, 2.4vw, 36px);
   color: #F3EEE3;
@@ -3472,7 +3472,7 @@ footer.botic-footer {
 }
 
 .feature-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 13px;
   color: rgba(200,192,180,0.74);
   line-height: 1.82;
@@ -3482,7 +3482,7 @@ footer.botic-footer {
 }
 
 .feature-cta {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.30em;
   text-transform: uppercase;
@@ -3498,7 +3498,7 @@ footer.botic-footer {
   color: #9a2a2a;
 }
 
-/* btn-dark sobre fons clar (pàgina Menús, secció ivori) */
+/* btn-dark sobre fons clar (pÃ gina MenÃºs, secciÃ³ ivori) */
 .btn-dark.menus-btn-dark {
   color: #1A1814;
   border-color: #1A1814;
@@ -3526,9 +3526,9 @@ footer.botic-footer {
   .feature-card:last-child { border-bottom: none; }
 }
 
-/* ====== PÀGINA MENÚS — PREMIUM ====== */
+/* ====== PÃ€GINA MENÃšS â€” PREMIUM ====== */
 
-/* ── Hero ── */
+/* â”€â”€ Hero â”€â”€ */
 
 /* Ken-burns molt lent a la foto de fons */
 .mnu-hero-img {
@@ -3540,7 +3540,7 @@ footer.botic-footer {
   to   { transform: scale(1.00); }
 }
 
-/* Animació entrada */
+/* AnimaciÃ³ entrada */
 .menus-hero-label {
   color: #C9A46A;
   text-shadow: 0 2px 14px rgba(0,0,0,0.80);
@@ -3582,7 +3582,7 @@ footer.botic-footer {
   pointer-events: none;
 }
 
-/* Línia inferior amb gradient daurat */
+/* LÃ­nia inferior amb gradient daurat */
 .mnu-hero-border-line {
   height: 1px;
   background: linear-gradient(90deg,
@@ -3610,7 +3610,7 @@ footer.botic-footer {
   border-right: 1px solid rgba(154,42,42,0.2);
 }
 
-/* Ornament separador (✦ entre línies) */
+/* Ornament separador (âœ¦ entre lÃ­nies) */
 .menus-hero-ornament,
 .mnu-ornament {
   display: flex;
@@ -3632,13 +3632,13 @@ footer.botic-footer {
     rgba(154,42,42,0.5));
 }
 .mnu-orn-glyph {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-size: 11px;
   color: rgba(154,42,42,0.55);
   flex-shrink: 0;
 }
 
-/* ── Selector sticky ── */
+/* â”€â”€ Selector sticky â”€â”€ */
 .mnu-selector-wrap {
   position: sticky;
   top: 124px; /* 36px topbar + 88px nav */
@@ -3691,7 +3691,7 @@ footer.botic-footer {
 .mnu-tab:hover::before,
 .mnu-tab.active::before { transform: translateY(0); }
 
-/* Línia daura a dalt de l'actiu */
+/* LÃ­nia daura a dalt de l'actiu */
 .mnu-tab::after {
   content: '';
   position: absolute;
@@ -3713,7 +3713,7 @@ footer.botic-footer {
 }
 
 .mnu-tab-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -3733,7 +3733,7 @@ footer.botic-footer {
   justify-content: center;
 }
 .mnu-tab-price-value {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: 26px;
   color: rgba(201,164,106,0.65);
@@ -3746,7 +3746,7 @@ footer.botic-footer {
   text-shadow: 0 0 20px rgba(201,164,106,0.35);
 }
 
-/* ── Àrea de contingut ── */
+/* â”€â”€ Ã€rea de contingut â”€â”€ */
 .mnu-content-wrap {
   scroll-margin-top: 220px; /* nav 124px + selector ~80px + marge */
   background: #0C0B09;
@@ -3760,7 +3760,7 @@ footer.botic-footer {
   animation: fadeUp 0.45s ease both;
 }
 
-/* Capçalera del menú actiu */
+/* CapÃ§alera del menÃº actiu */
 .mnu-content-header {
   display: flex;
   align-items: baseline;
@@ -3771,7 +3771,7 @@ footer.botic-footer {
   gap: 20px;
 }
 .mnu-content-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: clamp(28px, 4vw, 44px);
   color: #EDE8DC;
@@ -3779,7 +3779,7 @@ footer.botic-footer {
   line-height: 1;
 }
 .mnu-content-price {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: clamp(24px, 3vw, 36px);
   color: #9a2a2a;
@@ -3793,8 +3793,8 @@ footer.botic-footer {
   display: flex;
   align-items: baseline;
   gap: 14px;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 15px;
   color: rgba(138,130,120,0.7);
@@ -3812,11 +3812,11 @@ footer.botic-footer {
   flex-shrink: 0;
 }
 
-/* ── Accordion ── */
+/* â”€â”€ Accordion â”€â”€ */
 .mnu-sections { border-top: 1px solid #2E2B27; }
 .mnu-section  { border-bottom: 1px solid rgba(46,43,39,0.8); }
 
-/* Trigger — base compartida (mides pròpies es sobreescriuen per nivell) */
+/* Trigger â€” base compartida (mides prÃ²pies es sobreescriuen per nivell) */
 .mnu-section-trigger {
   width: 100%;
   display: flex;
@@ -3829,7 +3829,7 @@ footer.botic-footer {
   text-align: left;
   position: relative;
 }
-/* Línia que creix cap a la dreta en hover/open */
+/* LÃ­nia que creix cap a la dreta en hover/open */
 .mnu-section-trigger::after {
   content: '';
   position: absolute;
@@ -3852,7 +3852,7 @@ footer.botic-footer {
   outline-offset: 4px;
 }
 
-/* Punt decoratiu — base */
+/* Punt decoratiu â€” base */
 .mnu-section-dot {
   width: 5px; height: 5px;
   border-radius: 50%;
@@ -3861,10 +3861,10 @@ footer.botic-footer {
   transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Bloc títol (+ etiqueta opcional de nivell 1) */
+/* Bloc tÃ­tol (+ etiqueta opcional de nivell 1) */
 .mnu-section-titlewrap { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
 .mnu-section-eyebrow {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 9px;
   font-weight: 500;
   letter-spacing: 0.28em;
@@ -3872,9 +3872,9 @@ footer.botic-footer {
   color: rgba(154,42,42,0.55);
 }
 
-/* Títol de secció — base */
+/* TÃ­tol de secciÃ³ â€” base */
 .mnu-section-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: 30px;
   letter-spacing: -0.01em;
@@ -3887,9 +3887,9 @@ footer.botic-footer {
   color: #EDE8DC;
 }
 
-/* Badge nombre de plats — base */
+/* Badge nombre de plats â€” base */
 .mnu-section-count {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.2em;
   color: rgba(201,164,106,0.45);
@@ -3903,7 +3903,7 @@ footer.botic-footer {
   border-color: rgba(201,164,106,0.38);
 }
 
-/* Icona +/− — base */
+/* Icona +/âˆ’ â€” base */
 .mnu-section-icon {
   width: 30px; height: 30px;
   display: flex;
@@ -3913,7 +3913,7 @@ footer.botic-footer {
   color: rgba(201,164,106,0.75);
   font-size: 17px;
   font-weight: 300;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   flex-shrink: 0;
   transition: border-color 0.28s ease, background 0.28s ease,
               color 0.28s ease, transform 0.28s ease, width 0.2s ease, height 0.2s ease;
@@ -3942,7 +3942,7 @@ footer.botic-footer {
   position: relative;
 }
 
-/* Accent vertical dins el cos obert — base */
+/* Accent vertical dins el cos obert â€” base */
 .mnu-section-accent {
   position: absolute;
   top: 0; bottom: 0; left: 0;
@@ -3955,9 +3955,9 @@ footer.botic-footer {
 }
 
 /* ============================================================
-   NIVELL 1 — SECCIÓ PRINCIPAL (Aperitius, Menú, Postres…)
-   Ha de llegir-se com el nivell dominant: més mida, més pes,
-   més respiració i un accent borgonya inequívoc.
+   NIVELL 1 â€” SECCIÃ“ PRINCIPAL (Aperitius, MenÃº, Postresâ€¦)
+   Ha de llegir-se com el nivell dominant: mÃ©s mida, mÃ©s pes,
+   mÃ©s respiraciÃ³ i un accent borgonya inequÃ­voc.
    ============================================================ */
 .mnu-section:not(.mnu-group) { border-bottom: 1px solid rgba(154,42,42,0.20); }
 
@@ -3987,7 +3987,7 @@ footer.botic-footer {
   color: rgba(210,202,192,0.88);
 }
 .mnu-section:not(.mnu-group) > .mnu-section-trigger[aria-expanded="true"] .mnu-section-title {
-  font-style: italic; /* signatura visual exclusiva del nivell 1 */
+  font-style: normal; /* signatura visual exclusiva del nivell 1 */
   color: #F8F3E8;
 }
 
@@ -4023,9 +4023,9 @@ footer.botic-footer {
 }
 
 /* ============================================================
-   NIVELL 2 — GRUP (p.ex. "Bar") — clarament subordinat
-   Indentació real + connector vertical + tipografia i accents
-   deliberadament més apagats que el nivell 1.
+   NIVELL 2 â€” GRUP (p.ex. "Bar") â€” clarament subordinat
+   IndentaciÃ³ real + connector vertical + tipografia i accents
+   deliberadament mÃ©s apagats que el nivell 1.
    ============================================================ */
 .mnu-groups {
   position: relative;
@@ -4059,7 +4059,7 @@ footer.botic-footer {
 }
 
 .mnu-group .mnu-section-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 400;
   font-style: normal; /* serif regular, mai cursiva, al nivell 2 */
   font-size: 19px;
@@ -4111,7 +4111,7 @@ footer.botic-footer {
 .mnu-group .mnu-section-accent { display: none; } /* el connector el dona .mnu-groups::before */
 .mnu-group .mnu-section-inner  { padding-left: 4px; }
 
-/* ── Plats (nivell 3) — base, per a seccions "flat" sense grup ── */
+/* â”€â”€ Plats (nivell 3) â€” base, per a seccions "flat" sense grup â”€â”€ */
 .mnu-dish-list { list-style: none; padding: 4px 0 40px; }
 .mnu-dish {
   display: grid;
@@ -4131,7 +4131,7 @@ footer.botic-footer {
 .mnu-dish::before {
   content: '';
   position: absolute;
-  left: -20px; /* alineat amb l'accent de la secció */
+  left: -20px; /* alineat amb l'accent de la secciÃ³ */
   top: 18px; bottom: 18px;
   width: 2px;
   background: linear-gradient(180deg, #9a2a2a, rgba(154,42,42,0.3));
@@ -4141,9 +4141,9 @@ footer.botic-footer {
 }
 .mnu-dish:hover::before { transform: scaleY(1); }
 
-/* Número ordinal */
+/* NÃºmero ordinal */
 .mnu-dish-num {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.18em;
   color: rgba(201,164,106,0.40);
@@ -4154,10 +4154,10 @@ footer.botic-footer {
 }
 .mnu-dish:hover .mnu-dish-num { color: rgba(201,164,106,0.75); }
 
-/* Nom i descripció */
+/* Nom i descripciÃ³ */
 .mnu-dish-content { display: flex; flex-direction: column; gap: 5px; }
 .mnu-dish-name {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: 22px;
   color: #EDE8DC;
@@ -4167,16 +4167,16 @@ footer.botic-footer {
 }
 .mnu-dish:hover .mnu-dish-name { color: #F8F3E8; }
 .mnu-dish-desc {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 14px;
   color: rgba(138,130,120,0.62);
   line-height: 1.55;
 }
 
-/* Plats dins d'un grup (nivell 3 real, p.ex. sota "Bar") —
-   una mica més endins i deliberadament més discrets que el grup */
+/* Plats dins d'un grup (nivell 3 real, p.ex. sota "Bar") â€”
+   una mica mÃ©s endins i deliberadament mÃ©s discrets que el grup */
 .mnu-group .mnu-dish-list { padding: 0 0 26px 22px; }
 .mnu-group .mnu-dish {
   grid-template-columns: 28px 1fr;
@@ -4189,7 +4189,7 @@ footer.botic-footer {
 .mnu-group .mnu-dish-name { font-size: 17px; color: rgba(220,214,204,0.88); }
 .mnu-group .mnu-dish-desc { font-size: 13px; }
 
-/* ── Ornament separador ── */
+/* â”€â”€ Ornament separador â”€â”€ */
 .mnu-ornament {
   display: flex;
   align-items: center;
@@ -4197,7 +4197,7 @@ footer.botic-footer {
   justify-content: center;
 }
 
-/* ── CTA final ── */
+/* â”€â”€ CTA final â”€â”€ */
 .mnu-cta-section {
   background: linear-gradient(180deg, #0e0c09 0%, #17150f 45%, #0e0c09 100%);
   padding: 120px 0 112px;
@@ -4206,7 +4206,7 @@ footer.botic-footer {
   overflow: hidden;
   border-top: 1px solid rgba(201,164,106,0.20);
 }
-/* Glow radial càlid darrere del títol */
+/* Glow radial cÃ lid darrere del tÃ­tol */
 .mnu-cta-glow {
   position: absolute;
   top: 50%; left: 50%;
@@ -4221,7 +4221,7 @@ footer.botic-footer {
 }
 .mnu-cta-content { position: relative; z-index: 1; }
 
-/* ── Carta de Vinos ── */
+/* â”€â”€ Carta de Vinos â”€â”€ */
 .wine-section {
   background: #0e0c09;
   padding: 120px 0 108px;
@@ -4231,7 +4231,7 @@ footer.botic-footer {
   min-height: 700px;
 }
 
-/* Foto de bodega — panel dret amb transició gradual ampla */
+/* Foto de bodega â€” panel dret amb transiciÃ³ gradual ampla */
 .wine-photo-wrap {
   position: absolute;
   left: 50%; top: 0; bottom: 0;
@@ -4288,7 +4288,7 @@ footer.botic-footer {
 }
 .wine-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.38em;
@@ -4303,7 +4303,7 @@ footer.botic-footer {
   margin-bottom: 40px;
 }
 .wine-stat-num {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: clamp(90px, 11vw, 140px);
   line-height: 0.86;
@@ -4321,7 +4321,7 @@ footer.botic-footer {
   color: rgba(201,164,106,0.80);
 }
 .wine-stat-desc {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -4344,7 +4344,7 @@ footer.botic-footer {
   transform: scaleX(1);
 }
 .wine-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: clamp(40px, 5vw, 64px);
   color: #EDE8DC;
@@ -4366,16 +4366,16 @@ footer.botic-footer {
   background: linear-gradient(90deg, rgba(201,164,106,0.05), rgba(201,164,106,0.45));
 }
 .wine-orn-glyph {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-size: 11px;
   color: rgba(201,164,106,0.55);
   flex-shrink: 0;
 }
 .wine-lead {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: clamp(19px, 2.1vw, 25px);
-  font-style: italic;
+  font-style: normal;
   color: rgba(237,232,220,0.96);
   line-height: 1.60;
   margin-bottom: 28px;
@@ -4383,7 +4383,7 @@ footer.botic-footer {
   border-bottom: 1px solid rgba(201,164,106,0.18);
 }
 .wine-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: clamp(13px, 1.15vw, 14.5px);
   color: rgba(220,214,204,0.90);
@@ -4392,7 +4392,7 @@ footer.botic-footer {
 }
 .wine-body:last-child { margin-bottom: 0; }
 
-/* ── Informació pràctica ── */
+/* â”€â”€ InformaciÃ³ prÃ ctica â”€â”€ */
 .info-section {
   background: #0e0c09;
   padding: 0 0 120px;
@@ -4434,7 +4434,7 @@ footer.botic-footer {
 }
 .info-num {
   display: block;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: 76px;
   line-height: 1;
@@ -4444,7 +4444,7 @@ footer.botic-footer {
   user-select: none;
 }
 .info-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;
   color: rgba(232,226,216,0.96);
@@ -4458,7 +4458,7 @@ footer.botic-footer {
   to   { opacity: 1; transform: translateX(0); }
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 1024px) {
   .mnu-selector { padding: 0 32px; }
   .mnu-section:not(.mnu-group).is-open { margin-left: -16px; padding-left: 16px; }
@@ -4499,7 +4499,7 @@ footer.botic-footer {
   .mnu-hero-corner.tl { top: 96px; left: 24px; }
   .mnu-hero-corner.br { right: 24px; }
   .mnu-cta-section    { padding: 72px 0 64px; }
-  /* Wine i Info en mòbil */
+  /* Wine i Info en mÃ²bil */
   .wine-section       { padding: 80px 0 72px; min-height: unset; }
   .wine-photo-wrap    { width: 100%; }
   .wine-photo-overlay {
@@ -4547,9 +4547,9 @@ footer.botic-footer {
   .soul-img-1           { animation: none; transform: none; }
 }
 
-/* ====== PÀGINA HORARIS ====== */
+/* ====== PÃ€GINA HORARIS ====== */
 
-/* ── Hero ── */
+/* â”€â”€ Hero â”€â”€ */
 .hor-hero {
   position: relative;
   min-height: min(92vh, 820px);
@@ -4601,7 +4601,7 @@ footer.botic-footer {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.38em;
@@ -4618,8 +4618,8 @@ footer.botic-footer {
   flex-shrink: 0;
 }
 .hor-hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(54px, 8vw, 118px);
   color: #fff;
@@ -4630,7 +4630,7 @@ footer.botic-footer {
   animation: fadeUp 1.0s cubic-bezier(0.4,0,0.2,1) 0.36s both;
 }
 .hor-hero-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(13px, 1.2vw, 15px);
   color: rgba(228,222,212,0.88);
   line-height: 1.82;
@@ -4642,13 +4642,13 @@ footer.botic-footer {
   animation: fadeUp 0.7s cubic-bezier(0.4,0,0.2,1) 0.66s both;
 }
 
-/* ── Schedule Section (cream) ── */
+/* â”€â”€ Schedule Section (cream) â”€â”€ */
 .hor-schedule {
   background: #f5f1ea;
   padding: 88px 0 96px;
   position: relative;
 }
-/* Editorial bottom divider — transició cap al calendari */
+/* Editorial bottom divider â€” transiciÃ³ cap al calendari */
 .hor-schedule::after {
   content: '';
   position: absolute;
@@ -4667,7 +4667,7 @@ footer.botic-footer {
 }
 .hor-schedule-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.42em;
@@ -4676,8 +4676,8 @@ footer.botic-footer {
   margin-bottom: 14px;
 }
 .hor-schedule-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(40px, 5vw, 72px);
   color: #1A1612;
@@ -4686,7 +4686,7 @@ footer.botic-footer {
   margin-bottom: 20px;
 }
 .hor-schedule-intro {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   color: rgba(30,26,20,0.68);
   line-height: 1.85;
@@ -4728,8 +4728,8 @@ footer.botic-footer {
     rgba(154,42,42,0.12) 100%);
 }
 .hor-card-num {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-size: clamp(44px, 5.5vw, 72px);
   font-weight: 300;
   color: rgba(154,42,42,0.20);
@@ -4739,7 +4739,7 @@ footer.botic-footer {
   user-select: none;
 }
 .hor-card-tag {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 9px;
   font-weight: 400;
   letter-spacing: 0.44em;
@@ -4749,7 +4749,7 @@ footer.botic-footer {
   display: block;
 }
 .hor-card-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: clamp(26px, 2.8vw, 40px);
   color: #1A1612;
@@ -4780,7 +4780,7 @@ footer.botic-footer {
 .hor-card-row:last-child { border-bottom: none; }
 .hor-card-row.tancat { opacity: 0.28; }
 .hor-row-days {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -4789,16 +4789,16 @@ footer.botic-footer {
   grid-row: 1;
 }
 .hor-row-service {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-size: 17px;
   font-weight: 400;
-  font-style: italic;
+  font-style: normal;
   color: #1A1612;
   grid-column: 1;
   grid-row: 2;
 }
 .hor-row-time {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -4809,7 +4809,7 @@ footer.botic-footer {
   white-space: nowrap;
 }
 
-/* ── Pont editorial cream → dark ── */
+/* â”€â”€ Pont editorial cream â†’ dark â”€â”€ */
 .hor-bridge {
   height: 56px;
   background: linear-gradient(to bottom,
@@ -4820,7 +4820,7 @@ footer.botic-footer {
   position: relative;
 }
 .hor-bridge::after {
-  content: '◆';
+  content: 'â—†';
   position: absolute;
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
@@ -4829,7 +4829,7 @@ footer.botic-footer {
   line-height: 1;
 }
 
-/* ── Calendar Section (dark) ── */
+/* â”€â”€ Calendar Section (dark) â”€â”€ */
 .hor-calendar {
   background: #0e0c09;
   padding: 108px 0 130px;
@@ -4840,7 +4840,7 @@ footer.botic-footer {
 }
 .hor-cal-label {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.44em;
@@ -4849,8 +4849,8 @@ footer.botic-footer {
   margin-bottom: 10px;
 }
 .hor-cal-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(64px, 9vw, 120px);
   color: #EDE8DC;
@@ -4869,7 +4869,7 @@ footer.botic-footer {
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -4899,8 +4899,8 @@ footer.botic-footer {
   padding: 36px 28px 40px;
 }
 .hor-month-name {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: 23px;
   color: rgba(237,232,220,0.96);
@@ -4915,7 +4915,7 @@ footer.botic-footer {
   margin-bottom: 6px;
 }
 .hor-day-headers span {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 9px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -4929,7 +4929,7 @@ footer.botic-footer {
   gap: 2px;
 }
 .hor-day {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 300;
   text-align: center;
@@ -4951,7 +4951,7 @@ footer.botic-footer {
   background: rgba(201,164,106,0.10);
 }
 
-/* ── CTA Reserva ── */
+/* â”€â”€ CTA Reserva â”€â”€ */
 .hor-cta-section {
   background: #111009;
   padding: 108px 48px 112px;
@@ -4974,7 +4974,7 @@ footer.botic-footer {
     transparent 72%);
   pointer-events: none;
 }
-/* Línia vertical d'entrada */
+/* LÃ­nia vertical d'entrada */
 .hor-cta-section::after {
   content: '';
   position: absolute;
@@ -5002,8 +5002,8 @@ footer.botic-footer {
   letter-spacing: 0.38em;
 }
 .hor-cta-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(36px, 4.5vw, 62px);
   color: #EDE8DC;
@@ -5013,7 +5013,7 @@ footer.botic-footer {
   text-shadow: 0 0 48px rgba(201,164,106,0.14), 0 2px 20px rgba(0,0,0,0.50);
 }
 .hor-cta-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   color: rgba(168,160,148,0.90);
   line-height: 1.80;
@@ -5025,7 +5025,7 @@ footer.botic-footer {
   box-shadow: 0 0 28px rgba(154,42,42,0.18);
 }
 
-/* ── Responsive ── */
+/* â”€â”€ Responsive â”€â”€ */
 @media (max-width: 1024px) {
   .hor-months-grid { grid-template-columns: repeat(2, 1fr); }
 }
@@ -5055,7 +5055,7 @@ footer.botic-footer {
   .hor-day          { font-size: 10px; padding: 5px 1px; }
 }
 
-/* ====== FAQ SECTION (Menús) ====== */
+/* ====== FAQ SECTION (MenÃºs) ====== */
 
 .faq-section {
   background: #0a0907;
@@ -5070,7 +5070,7 @@ footer.botic-footer {
 }
 .faq-eyebrow {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 400;
   letter-spacing: 0.44em;
@@ -5079,8 +5079,8 @@ footer.botic-footer {
   margin-bottom: 14px;
 }
 .faq-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(32px, 4vw, 54px);
   color: #EDE8DC;
@@ -5089,7 +5089,7 @@ footer.botic-footer {
   margin-bottom: 14px;
 }
 .faq-subtitle {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 14px;
   color: rgba(218,212,202,0.55);
   line-height: 1.75;
@@ -5127,7 +5127,7 @@ footer.botic-footer {
   outline-offset: 3px;
 }
 .faq-q-text {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 400;
   font-size: clamp(17px, 1.55vw, 20px);
   color: rgba(237,232,220,0.82);
@@ -5139,7 +5139,7 @@ footer.botic-footer {
   color: rgba(201,164,106,0.95);
 }
 
-/* Icon: + becomes − */
+/* Icon: + becomes âˆ’ */
 .faq-icon {
   width: 18px;
   height: 18px;
@@ -5186,7 +5186,7 @@ footer.botic-footer {
   overflow: hidden;
 }
 .faq-answer-text {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(13px, 1.1vw, 14.5px);
   color: rgba(218,212,202,0.70);
   line-height: 1.90;
@@ -5208,12 +5208,12 @@ footer.botic-footer {
   .faq-answer-text { padding-right: 0; font-size: 14px; }
 }
 
-/* ====== SOUL SECTION (Home — seccions fusionades) ====== */
+/* ====== SOUL SECTION (Home â€” seccions fusionades) ====== */
 
-/* ── La mirada del xef / El projecte ──
+/* â”€â”€ La mirada del xef / El projecte â”€â”€
    Dues seccions independents (abans pestanyes d'una mateixa SoulSection).
-   Comparteixen l'estructura foto+overlay+text però ja no es creuen (crossfade):
-   cadascuna és sempre visible en el seu propi lloc de la pàgina. */
+   Comparteixen l'estructura foto+overlay+text perÃ² ja no es creuen (crossfade):
+   cadascuna Ã©s sempre visible en el seu propi lloc de la pÃ gina. */
 .mirada-xef-section,
 .projecte-section {
   position: relative;
@@ -5221,7 +5221,7 @@ footer.botic-footer {
   border-top: 1px solid rgba(201,164,106,0.08);
 }
 
-/* ── Photo (mobile: relative, desktop: absolute) ── */
+/* â”€â”€ Photo (mobile: relative, desktop: absolute) â”€â”€ */
 .soul-photo-wrap {
   position: relative;
   width: 100%;
@@ -5262,7 +5262,7 @@ footer.botic-footer {
       rgba(17,16,9,0.25) 100%);
 }
 
-/* ── Text (mobile: below photo, normal flow) ── */
+/* â”€â”€ Text (mobile: below photo, normal flow) â”€â”€ */
 .soul-panel-inner {
   position: relative;
   padding-top: 48px;
@@ -5274,10 +5274,10 @@ footer.botic-footer {
   margin-left: 0;
 }
 
-/* ── Quote (panel 1) ── */
+/* â”€â”€ Quote (panel 1) â”€â”€ */
 .soul-quote {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(22px, 5vw, 34px);
   color: rgba(237,232,220,0.92);
@@ -5309,7 +5309,7 @@ footer.botic-footer {
   margin-bottom: 16px;
 }
 .soul-author {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.36em;
   text-transform: uppercase;
@@ -5317,10 +5317,10 @@ footer.botic-footer {
   font-weight: 300;
 }
 
-/* ── Project content (panel 2) ── */
+/* â”€â”€ Project content (panel 2) â”€â”€ */
 .soul-eyebrow {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 9px;
   font-weight: 400;
   letter-spacing: 0.42em;
@@ -5329,8 +5329,8 @@ footer.botic-footer {
   margin-bottom: 24px;
 }
 .soul-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(34px, 6vw, 56px);
   color: #EDE8DC;
@@ -5339,7 +5339,7 @@ footer.botic-footer {
   margin-bottom: 28px;
 }
 .soul-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: clamp(13px, 1.1vw, 14px);
   color: rgba(228,222,211,0.80);
   line-height: 2.0;
@@ -5350,7 +5350,7 @@ footer.botic-footer {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.34em;
   text-transform: uppercase;
@@ -5361,7 +5361,7 @@ footer.botic-footer {
   transition: color 0.32s ease, border-color 0.32s ease;
 }
 .soul-cta::after {
-  content: '→';
+  content: 'â†’';
   transition: transform 0.32s ease;
 }
 .soul-cta:hover {
@@ -5370,9 +5370,9 @@ footer.botic-footer {
 }
 .soul-cta:hover::after { transform: translateX(5px); }
 
-/* ── Desktop layout (full-bleed photo + text overlay) ──
-   Cada secció ("La mirada del xef" / "El projecte") ocupa el seu propi
-   bloc a la pàgina, sempre visible (ja no hi ha crossfade entre pestanyes). */
+/* â”€â”€ Desktop layout (full-bleed photo + text overlay) â”€â”€
+   Cada secciÃ³ ("La mirada del xef" / "El projecte") ocupa el seu propi
+   bloc a la pÃ gina, sempre visible (ja no hi ha crossfade entre pestanyes). */
 @media (min-width: 769px) {
   .mirada-xef-section,
   .projecte-section {
@@ -5440,11 +5440,11 @@ footer.botic-footer {
   }
 }
 
-/* ====== PÀGINA RESTAURANT ====== */
+/* ====== PÃ€GINA RESTAURANT ====== */
 
 .rst-eyebrow {
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.32em;
@@ -5459,7 +5459,7 @@ footer.botic-footer {
   margin: 24px 0 32px;
 }
 
-/* ── 1. Hero — cinematogràfic, tipografia partida, parallax de scroll ── */
+/* â”€â”€ 1. Hero â€” cinematogrÃ fic, tipografia partida, parallax de scroll â”€â”€ */
 .rst-hero {
   position: relative;
   height: 100vh;
@@ -5507,7 +5507,7 @@ footer.botic-footer {
   top: 50%;
   transform: translateY(-50%) rotate(180deg);
   writing-mode: vertical-rl;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.42em;
@@ -5543,9 +5543,9 @@ footer.botic-footer {
 }
 .rst-hero-inner-max { position: relative; z-index: 1; padding-bottom: 96px; max-width: 1060px; }
 .rst-hero-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(44px, 9.4vw, 128px);
   line-height: 0.96;
   letter-spacing: -0.015em;
@@ -5561,7 +5561,7 @@ footer.botic-footer {
   animation-delay: calc(var(--i) * 0.11s + 0.3s);
 }
 .rst-hero-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: clamp(13px, 1.3vw, 15px);
   line-height: 1.75;
@@ -5580,7 +5580,7 @@ footer.botic-footer {
   animation: fadeUp 1s ease 1.3s forwards;
 }
 .rst-hero-secondary {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -5612,7 +5612,7 @@ footer.botic-footer {
   50%      { transform: scaleY(1);   opacity: 1; }
 }
 
-/* ── 2. "Bo.TiC a Corçà" — foto a sang + targeta flotant desalineada ── */
+/* â”€â”€ 2. "Bo.TiC a CorÃ§Ã " â€” foto a sang + targeta flotant desalineada â”€â”€ */
 .rst-origin {
   position: relative;
   min-height: 90vh;
@@ -5644,8 +5644,8 @@ footer.botic-footer {
   position: absolute;
   top: -8%;
   right: 0;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(160px, 32vw, 460px);
   line-height: 1;
@@ -5668,7 +5668,7 @@ footer.botic-footer {
 }
 .rst-origin-card.visible { opacity: 1; transform: translateY(0) rotate(0deg); }
 .rst-origin-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: clamp(27px, 3.6vw, 40px);
   line-height: 1.16;
@@ -5677,7 +5677,7 @@ footer.botic-footer {
   margin-top: 4px;
 }
 .rst-origin-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: 14.5px;
   line-height: 1.85;
@@ -5686,7 +5686,7 @@ footer.botic-footer {
   max-width: 460px;
 }
 
-/* ── 3. Arquitectura i espais — 3 fotogrames a sang, cap caixa ── */
+/* â”€â”€ 3. Arquitectura i espais â€” 3 fotogrames a sang, cap caixa â”€â”€ */
 .rst-arch { background: #050403; }
 .rst-arch-header {
   max-width: 620px;
@@ -5694,9 +5694,9 @@ footer.botic-footer {
   margin: 0 auto;
 }
 .rst-arch-heading {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(26px, 3.6vw, 40px);
   color: #EDE8DC;
   line-height: 1.2;
@@ -5729,8 +5729,8 @@ footer.botic-footer {
 .rst-arch-num {
   position: absolute;
   top: 5%;
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
+  font-family: 'Plus Jakarta Sans', serif;
+  font-style: normal;
   font-weight: 300;
   font-size: clamp(110px, 17vw, 260px);
   line-height: 1;
@@ -5747,16 +5747,16 @@ footer.botic-footer {
   padding: 0 24px;
 }
 .rst-arch-title {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(28px, 3.6vw, 44px);
   color: #F8F3E8;
   margin-bottom: 12px;
   text-shadow: 0 8px 30px rgba(0,0,0,0.5);
 }
 .rst-arch-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;
   line-height: 1.8;
@@ -5769,7 +5769,7 @@ footer.botic-footer {
 .rst-arch-frame.align-center .rst-arch-num      { left: 50%; transform: translateX(-50%); text-align: center; }
 .rst-arch-frame.align-center .rst-arch-caption  { left: 50%; transform: translateX(-50%); text-align: center; }
 
-/* ── 4. Galeria — filmstrip horitzontal, secció icònica ── */
+/* â”€â”€ 4. Galeria â€” filmstrip horitzontal, secciÃ³ icÃ²nica â”€â”€ */
 .rst-story { background: #050403; position: relative; }
 .rst-story-scroll { position: relative; height: 500vh; background: #050403; }
 .rst-story-stage {
@@ -5858,25 +5858,25 @@ footer.botic-footer {
 }
 .rst-story.is-intro .rst-story-intro-line { height: 62px; }
 .rst-story-number {
-  display: inline-flex; align-items: center; gap: 14px; font-family: 'Inter', sans-serif;
+  display: inline-flex; align-items: center; gap: 14px; font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px; letter-spacing: .34em; color: rgba(215,177,112,.82);
 }
 .rst-story-number::after { content: ''; width: 48px; height: 1px; background: rgba(215,177,112,.42); }
 .rst-story-copy h3 {
-  margin: 18px 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(52px, 7.2vw, 104px);
-  font-weight: 300; font-style: italic; line-height: .92; color: #F7F1E6; text-shadow: 0 10px 48px rgba(0,0,0,.55);
+  margin: 18px 0; font-family: 'Plus Jakarta Sans', serif; font-size: clamp(52px, 7.2vw, 104px);
+  font-weight: 300; font-style: normal; line-height: .92; color: #F7F1E6; text-shadow: 0 10px 48px rgba(0,0,0,.55);
 }
 .rst-story-scene:first-child .rst-story-copy { width: min(650px, 56vw); }
 .rst-story-scene:first-child .rst-story-copy h3 { font-size: clamp(44px, 5.8vw, 82px); line-height: .98; }
 .rst-story-copy p {
-  max-width: 440px; font-family: 'Inter', sans-serif; font-size: 14px; line-height: 1.8;
+  max-width: 440px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; line-height: 1.8;
   font-weight: 300; color: rgba(237,231,219,.78);
 }
 .rst-story-copy p + p { margin-top: 8px; }
 .rst-story-chrome {
   position: absolute; z-index: 5; right: clamp(28px, 3.5vw, 64px); top: 50%; transform: translateY(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 14px;
-  font-family: 'Inter', sans-serif; font-size: 8px; letter-spacing: .2em; color: rgba(237,231,219,.56);
+  font-family: 'Plus Jakarta Sans', sans-serif; font-size: 8px; letter-spacing: .2em; color: rgba(237,231,219,.56);
 }
 .rst-story-rail { position: relative; width: 1px; height: 160px; background: rgba(255,255,255,.16); }
 .rst-story-rail span {
@@ -5904,9 +5904,9 @@ footer.botic-footer {
 }
 .rst-gallery-label { max-width: 560px; padding: 0 24px 40px; }
 .rst-gallery-heading {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(26px, 3.6vw, 38px);
   color: #EDE8DC;
   margin-top: 4px;
@@ -5944,7 +5944,7 @@ footer.botic-footer {
 }
 .rst-gallery-item:hover .rst-gallery-img { transform: scale(1.05); }
 
-/* ── 5. Reserva — partició en diagonal, no rectangle net ── */
+/* â”€â”€ 5. Reserva â€” particiÃ³ en diagonal, no rectangle net â”€â”€ */
 .rst-reserve {
   position: relative;
   background: #050403;
@@ -5958,7 +5958,7 @@ footer.botic-footer {
   width: 100%;
 }
 .rst-reserve-heading {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
   font-size: clamp(25px, 3.2vw, 34px);
   color: #F8F3E8;
@@ -5972,7 +5972,7 @@ footer.botic-footer {
 }
 .rst-reserve-block:first-of-type { border-top: none; padding-top: 0; }
 .rst-reserve-block-title {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.22em;
@@ -5981,7 +5981,7 @@ footer.botic-footer {
   margin-bottom: 12px;
 }
 .rst-reserve-block-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;
   line-height: 1.8;
@@ -5989,7 +5989,7 @@ footer.botic-footer {
 }
 .rst-reserve-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .rst-reserve-list li {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;
   line-height: 1.7;
@@ -6006,20 +6006,20 @@ footer.botic-footer {
 }
 .rst-reserve-btn { display: inline-block; margin-top: 40px; }
 
-/* ── 6. Equip — asimètric, tipografia que trepitja la foto ── */
+/* â”€â”€ 6. Equip â€” asimÃ¨tric, tipografia que trepitja la foto â”€â”€ */
 .rst-team { background: #0b0a08; padding: 100px 0; border-top: 1px solid rgba(201,164,106,0.08); }
 .rst-team-header { max-width: 620px; margin-bottom: 64px; }
 .rst-team-heading {
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(26px, 3.6vw, 40px);
   color: #EDE8DC;
   margin-top: 4px;
   margin-bottom: 16px;
 }
 .rst-team-sub {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;
   color: rgba(218,212,202,0.62);
@@ -6047,7 +6047,7 @@ footer.botic-footer {
   position: relative;
   z-index: 1;
   display: block;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 10px;
   font-weight: 500;
   letter-spacing: 0.30em;
@@ -6058,16 +6058,16 @@ footer.botic-footer {
 .rst-team-name {
   position: relative;
   z-index: 1;
-  font-family: 'Cormorant Garamond', serif;
+  font-family: 'Plus Jakarta Sans', serif;
   font-weight: 300;
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(38px, 5.6vw, 60px);
   color: #F8F3E8;
   margin: 4px 0 16px 24px;
   text-shadow: 0 8px 26px rgba(0,0,0,0.55);
 }
 .rst-team-body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 300;
   font-size: 14px;
   line-height: 1.8;
@@ -6076,7 +6076,7 @@ footer.botic-footer {
   padding: 0 24px;
 }
 
-/* ── 7. Ticker de moviment + CTA final (reutilitza .home-reserva-cta) ── */
+/* â”€â”€ 7. Ticker de moviment + CTA final (reutilitza .home-reserva-cta) â”€â”€ */
 .rst-ticker {
   background: #0e0c09;
   border-top: 1px solid rgba(201,164,106,0.12);
@@ -6090,7 +6090,7 @@ footer.botic-footer {
   animation: rst-ticker-scroll 30s linear infinite;
 }
 .rst-ticker-track span {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 12px;
   font-weight: 500;
   letter-spacing: 0.3em;
@@ -6110,7 +6110,7 @@ footer.botic-footer {
   gap: 20px;
 }
 
-/* ── Desktop ── */
+/* â”€â”€ Desktop â”€â”€ */
 @media (min-width: 769px) {
   .rst-origin-card { max-width: 620px; margin-left: 6%; }
 
@@ -6135,7 +6135,7 @@ footer.botic-footer {
   .rst-team-photo { height: 460px; }
 }
 
-/* ── Mòbil ── */
+/* â”€â”€ MÃ²bil â”€â”€ */
 @media (max-width: 768px) {
   .rst-hero { height: 92vh; min-height: 560px; }
   .rst-hero-media { inset: 0; transform: translateY(calc(var(--p) * -12px)); }
@@ -6223,7 +6223,7 @@ footer.botic-footer {
   .rst-team-body { padding: 0 20px; }
 }
 
-/* ── Accessibilitat ── */
+/* â”€â”€ Accessibilitat â”€â”€ */
 @media (prefers-reduced-motion: reduce) {
   .rst-hero-media { transform: none; }
   .rst-hero-img,
@@ -6253,8 +6253,8 @@ footer.botic-footer {
   .rst-story-chrome { display: none; }
 }
 
-/* ── Reequilibri de llum: calidesa editorial sense perdre contrast ── */
-/* Els blocs foscos queden reservats per als moments de màxima intensitat. */
+/* â”€â”€ Reequilibri de llum: calidesa editorial sense perdre contrast â”€â”€ */
+/* Els blocs foscos queden reservats per als moments de mÃ xima intensitat. */
 .exp-hero-img { filter: saturate(.86) brightness(.82); }
 .exp-hero-shade { background: linear-gradient(90deg, rgba(5,4,3,.86) 0%, rgba(5,4,3,.58) 31%, rgba(5,4,3,.08) 68%), linear-gradient(0deg, rgba(5,4,3,.70), transparent 58%); }
 .exp-narrative { background: #eee8dd; color: #18130f; }
@@ -6303,11 +6303,11 @@ footer.botic-footer {
   .rst-story-shade { background: linear-gradient(0deg, rgba(5,4,3,.82) 0%, rgba(5,4,3,.42) 42%, rgba(5,4,3,.08) 78%, transparent 100%); }
 }
 
-/* ── Direcció clara: la llum passa a ser el llenguatge principal ── */
+/* â”€â”€ DirecciÃ³ clara: la llum passa a ser el llenguatge principal â”€â”€ */
 :root { --paper: #f2ede3; --paper-deep: #e7dfd1; --ink: #211912; --ink-soft: #665a4d; }
 main { background: var(--paper); color: var(--ink); }
 
-/* Home: tipografia primer, imatge revelada després. */
+/* Home: tipografia primer, imatge revelada desprÃ©s. */
 .hero {
   background: var(--paper);
   min-height: min(860px, 100vh);
@@ -6329,7 +6329,7 @@ main { background: var(--paper); color: var(--ink); }
 .hero-content-wrap { max-width: 1440px; padding-left: clamp(24px, 5vw, 88px); padding-right: clamp(24px, 5vw, 88px); }
 .hero-text { max-width: min(640px, 54vw); margin-left: 0; padding: clamp(22px, 3vw, 46px) clamp(20px, 3vw, 48px) clamp(26px, 3.2vw, 52px) 0; }
 .hero-eyebrow { color: #8c5c30; background: rgba(246,241,232,.68); border-color: rgba(116,80,43,.18); text-shadow: none; }
-.hero-title { color: var(--ink); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(64px, 8.2vw, 126px); text-shadow: none; }
+.hero-title { color: var(--ink); font-family: 'Plus Jakarta Sans', serif; font-style: normal; font-size: clamp(64px, 8.2vw, 126px); text-shadow: none; }
 .hero-sub { color: rgba(33,25,18,.70); max-width: 350px; }
 .hero-btn-primary { background: #8c2c29; border-color: #8c2c29; }
 .hero-btn-secondary { color: var(--ink); border-color: rgba(33,25,18,.30); background: rgba(246,241,232,.38); }
@@ -6342,7 +6342,7 @@ main { background: var(--paper); color: var(--ink); }
 .nav-header:not(.nav-scrolled):not(.nav-menu-is-open) .nav-toggle-line { background: rgba(33,25,18,.74); }
 @keyframes home-media-reveal { to { clip-path: inset(0 0 0 0); } }
 
-/* El territori passa de ser un fons fosc a una escena arquitectònica lleugera. */
+/* El territori passa de ser un fons fosc a una escena arquitectÃ²nica lleugera. */
 .home-intro { background: var(--paper-deep); border-color: rgba(112,83,52,.14); min-height: 650px; }
 .home-intro-img { filter: saturate(.78) brightness(1.06) contrast(.96); transform: scale(1.045); transition: transform 1.6s cubic-bezier(.2,.8,.2,1); }
 .home-intro.visible .home-intro-img { transform: scale(1); }
@@ -6357,7 +6357,7 @@ main { background: var(--paper); color: var(--ink); }
 .home-intro.visible .home-intro-body { opacity: 1; transform: none; }
 @keyframes home-copy-rise { to { transform: translateY(0); opacity: 1; } }
 
-/* Materials clars a la resta de la Home: coure i borgonya només com a accent. */
+/* Materials clars a la resta de la Home: coure i borgonya nomÃ©s com a accent. */
 .features-section { background: #f7f3eb; border-color: rgba(112,83,52,.16); }
 .feature-card, .feature-card:nth-child(2) { background: transparent; border-color: rgba(112,83,52,.18); }
 .feature-card:hover { background: #eee5d7; }
@@ -6377,7 +6377,7 @@ main { background: var(--paper); color: var(--ink); }
 .home-reserva-cta p { color: rgba(54,43,32,.76); }
 .home-reserva-cta::before { background: radial-gradient(ellipse at 50% 34%, rgba(173,119,61,.18), transparent 68%); }
 
-/* Pàgines editorials: fons clars i capes fosques només per donar profunditat a les fotos. */
+/* PÃ gines editorials: fons clars i capes fosques nomÃ©s per donar profunditat a les fotos. */
 .rst-origin, .gst-technique, .exp-hospitality { background: var(--paper-deep); }
 .rst-origin-overlay { background: linear-gradient(0deg, rgba(20,15,11,.43), rgba(20,15,11,.04) 72%); }
 .rst-origin-card { background: rgba(248,244,237,.88); color: var(--ink); }
@@ -6408,11 +6408,11 @@ main { background: var(--paper); color: var(--ink); }
   .home-intro-title-line, .home-intro.visible .home-intro-title-line, .home-intro-body { opacity: 1; transform: none; animation: none; transition: none; }
 }
 
-/* ── Home: una transició contínua entre el xef i la reserva ── */
+/* â”€â”€ Home: una transiciÃ³ contÃ­nua entre el xef i la reserva â”€â”€ */
 .home-reserve-scene { --scene-p: 0; position: relative; }
 
 @media (min-width: 769px) {
-  /* El tancament manté l'efecte d'escena contínua, però amb un ritme més concís. */
+  /* El tancament mantÃ© l'efecte d'escena contÃ­nua, perÃ² amb un ritme mÃ©s concÃ­s. */
   .home-reserve-scene { height: 130svh; background: var(--paper-deep); }
   .home-reserve-scene .mirada-xef-section {
     position: sticky;
@@ -6494,9 +6494,9 @@ main { background: var(--paper); color: var(--ink); }
   .home-reserve-scene .home-reserva-cta .container-max { opacity: 1; transform: none; filter: none; }
 }
 
-/* ── Nova direcció: escenes verticals, no una graella de contingut ── */
+/* â”€â”€ Nova direcciÃ³: escenes verticals, no una graella de contingut â”€â”€ */
 @media (min-width: 769px) {
-  /* A la Home la fotografia és una atmosfera; les tres portes són tipografia. */
+  /* A la Home la fotografia Ã©s una atmosfera; les tres portes sÃ³n tipografia. */
   .projecte-section { min-height: min(870px, 92vh); margin-top: clamp(36px, 6vw, 100px); }
   .home-intro { min-height: min(860px, 92vh); margin-top: clamp(76px, 12vw, 180px); border: 0; }
   .home-intro-content { margin-left: clamp(34px, 12vw, 210px); max-width: min(520px, 42vw); }
@@ -6525,7 +6525,7 @@ main { background: var(--paper); color: var(--ink); }
   .feature-cta { grid-column: 4; white-space: nowrap; }
   .feature-card:hover { background: transparent; padding-left: 18px; }
 
-  /* Gastronomia deixa un sol gest visual per capítol. */
+  /* Gastronomia deixa un sol gest visual per capÃ­tol. */
   .gst-manifest { padding-left: clamp(28px, 9vw, 154px); padding-right: clamp(28px, 9vw, 154px); }
   .gst-manifest-inner { max-width: 1040px; margin: 0; padding: 0; }
   .gst-territory { min-height: 100svh; margin-top: clamp(64px, 10vw, 150px); }
@@ -6540,7 +6540,7 @@ main { background: var(--paper); color: var(--ink); }
   .gst-technique-ghost { display: none; }
   .gst-cta { margin: 0; padding: clamp(120px, 17vw, 240px) 24px; background: #f7f3eb; }
 
-  /* Experiència: text en moviment, fotografia només quan fa avançar el relat. */
+  /* ExperiÃ¨ncia: text en moviment, fotografia nomÃ©s quan fa avanÃ§ar el relat. */
   .exp-narrative { padding: clamp(140px, 18vw, 250px) clamp(28px, 11vw, 190px); }
   .exp-narrative-head { display: block; max-width: 860px; margin: 0 0 clamp(100px, 13vw, 176px); }
   .exp-narrative-head p { max-width: 470px; margin-top: 34px; }
@@ -6559,7 +6559,7 @@ main { background: var(--paper); color: var(--ink); }
   .exp-cellar { min-height: 100svh; margin-top: clamp(94px, 13vw, 190px); }
   .exp-cta { min-height: 82svh; }
 
-  /* El Restaurant ja té un scroll narratiu: l'equip deixa de funcionar com dues targetes. */
+  /* El Restaurant ja tÃ© un scroll narratiu: l'equip deixa de funcionar com dues targetes. */
   .rst-team { padding: clamp(130px, 17vw, 240px) 0; }
   .rst-team .container-max { max-width: 1360px; }
   .rst-team-header { max-width: 760px; margin: 0 0 clamp(80px, 11vw, 160px) clamp(28px, 10vw, 160px); }
@@ -6584,8 +6584,8 @@ main { background: var(--paper); color: var(--ink); }
   .gst-technique-canvas { position: relative; }
 }
 
-/* ====== HOME — direcció editorial clara ======
-   Una única narrativa: vídeo, persones, lloc, tres portes i reserva. */
+/* ====== HOME â€” direcciÃ³ editorial clara ======
+   Una Ãºnica narrativa: vÃ­deo, persones, lloc, tres portes i reserva. */
 .hero {
   min-height: 100svh;
   margin-top: 36px;
@@ -6621,7 +6621,7 @@ main { background: var(--paper); color: var(--ink); }
 .hero-title {
   color: #f7f2e9;
   font-size: clamp(70px, 8.8vw, 138px);
-  font-style: italic;
+  font-style: normal;
   font-weight: 300;
   line-height: .82;
   letter-spacing: -.055em;
@@ -6634,8 +6634,8 @@ main { background: var(--paper); color: var(--ink); }
 .hero-btn-secondary:hover { color: #1b1713; background: #f7f2e9; }
 .scroll-hint { bottom: 30px; }
 
-/* El vídeo del Hero necessita una navegació inequívoca; en desplaçar-se,
-   la capçalera recupera el seu fons fosc habitual. */
+/* El vÃ­deo del Hero necessita una navegaciÃ³ inequÃ­voca; en desplaÃ§ar-se,
+   la capÃ§alera recupera el seu fons fosc habitual. */
 .nav-header:not(.nav-scrolled):not(.nav-menu-is-open) .nav-logo { color: #f7f2e9; }
 .nav-header:not(.nav-scrolled):not(.nav-menu-is-open) .nav-toggle-label { color: rgba(247,242,233,.86); }
 .nav-header:not(.nav-scrolled):not(.nav-menu-is-open) .nav-toggle-line { background: rgba(247,242,233,.82); }
@@ -6674,7 +6674,7 @@ main { background: var(--paper); color: var(--ink); }
 .home-intro-title { color: #211a14; font-size: clamp(48px, 5.6vw, 84px); line-height: .9; }
 .home-intro-body { color: rgba(45,35,26,.74); }
 
-/* Revelació entre capítols: el relat no talla, s'obre. */
+/* RevelaciÃ³ entre capÃ­tols: el relat no talla, s'obre. */
 @media (prefers-reduced-motion: no-preference) {
   .home-scene-reveal {
     clip-path: none;
@@ -6732,7 +6732,7 @@ main { background: var(--paper); color: var(--ink); }
 .mirada-xef-section .soul-panel-content { max-width: min(42%, 500px); margin-left: clamp(28px, 11vw, 176px); }
 .mirada-xef-section .soul-frag.accent { color: #a52f2d; }
 
-/* El xef entra com un canvi de capítol, no com una altra targeta. */
+/* El xef entra com un canvi de capÃ­tol, no com una altra targeta. */
 @media (prefers-reduced-motion: no-preference) {
   .chef-scene .soul-photo-wrap { clip-path: none; transition: clip-path 1.25s cubic-bezier(.2,.82,.18,1); }
   .chef-scene.chef-scene-in .soul-photo-wrap { clip-path: inset(0); }
@@ -6797,7 +6797,7 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 
-/* ====== HOME — LOGOTIP EDITORIAL CENTRAT ====== */
+/* ====== HOME â€” LOGOTIP EDITORIAL CENTRAT ====== */
 .nav-header {
   height: 72px;
   justify-content: flex-end;
@@ -6852,7 +6852,7 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 
-/* ====== HOME — RELAT D'OBERTURA I MOVIMENT SUTIL ====== */
+/* ====== HOME â€” RELAT D'OBERTURA I MOVIMENT SUTIL ====== */
 .soul-passion {
   display: block;
   min-height: 1.4em;
@@ -6902,7 +6902,7 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 
-/* Separador de marca: els dos punts de Bo·TiC entre capítols. */
+/* Separador de marca: els dos punts de BoÂ·TiC entre capÃ­tols. */
 .botic-section-divider {
   display: flex;
   align-items: center;
@@ -6943,13 +6943,13 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 
-/* El separador necessita aire perquè actuï com a pausa de capítol. */
+/* El separador necessita aire perquÃ¨ actuÃ¯ com a pausa de capÃ­tol. */
 .botic-section-divider {
   padding: clamp(28px, 4vw, 52px) 0;
 }
 
 
-/* Els dos punts són el signe de marca, no un detall decoratiu. */
+/* Els dos punts sÃ³n el signe de marca, no un detall decoratiu. */
 .botic-section-divider {
   gap: 22px;
   width: min(390px, 54vw);
@@ -6973,7 +6973,7 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 
-/* El separador incorpora el monograma real B· de Bo·TiC. */
+/* El separador incorpora el monograma real BÂ· de BoÂ·TiC. */
 .botic-section-divider {
   width: min(620px, 76vw);
   gap: clamp(18px, 2.8vw, 38px);
@@ -6991,7 +6991,7 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 
-/* El monograma es carrega directament, evitant diferències de suport SVG. */
+/* El monograma es carrega directament, evitant diferÃ¨ncies de suport SVG. */
 .botic-divider-logo-window {
   position: relative;
   display: block;
@@ -7036,8 +7036,8 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 
-/* ====== HOME — TRES CAPÍTOLS VERTICALS ======
-   Restaurant, cuina i experiència: un relat per imatge, no tres files. */
+/* ====== HOME â€” TRES CAPÃTOLS VERTICALS ======
+   Restaurant, cuina i experiÃ¨ncia: un relat per imatge, no tres files. */
 .features-section {
   padding: clamp(96px, 12vw, 176px) 0;
   background: #f3ede3;
@@ -7168,7 +7168,7 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 
-/* ====== HOME — TRES PORTES VERTICALS, FORMAT EDITORIAL ====== */
+/* ====== HOME â€” TRES PORTES VERTICALS, FORMAT EDITORIAL ====== */
 .features-section {
   padding: clamp(88px, 10vw, 148px) 0;
 }
@@ -7265,7 +7265,7 @@ main { background: var(--paper); color: var(--ink); }
   }
 }
 
-/* ── Tres portes: un únic gest, no un desplaçament aïllat ── */
+/* â”€â”€ Tres portes: un Ãºnic gest, no un desplaÃ§ament aÃ¯llat â”€â”€ */
 .features-intro-title {
   display: flex;
   justify-content: center;
@@ -7277,7 +7277,7 @@ main { background: var(--paper); color: var(--ink); }
   height: auto;
 }
 
-/* La composició comença alineada; el capítol central no ha de "caure". */
+/* La composiciÃ³ comenÃ§a alineada; el capÃ­tol central no ha de "caure". */
 .features-section .feature-card:nth-child(2) {
   transform: none;
 }
@@ -7324,7 +7324,7 @@ main { background: var(--paper); color: var(--ink); }
     transform: scale(1);
   }
 
-  /* Cada peça és una porta: el vel es retira només en acostar-hi el cursor. */
+  /* Cada peÃ§a Ã©s una porta: el vel es retira nomÃ©s en acostar-hi el cursor. */
   @media (min-width: 769px) {
     .features-section .feature-card::before {
       display: block;
@@ -7345,8 +7345,8 @@ main { background: var(--paper); color: var(--ink); }
 
 }
 
-/* ── Home: un paisatge, una signatura ──
-   El territori conserva l'escala; la mirada del xef esdevé una peça editorial. */
+/* â”€â”€ Home: un paisatge, una signatura â”€â”€
+   El territori conserva l'escala; la mirada del xef esdevÃ© una peÃ§a editorial. */
 @media (min-width: 769px) {
   .home-intro {
     min-height: clamp(560px, 66svh, 740px);

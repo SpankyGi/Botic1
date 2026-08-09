@@ -16,8 +16,8 @@ export default {
         'botic-text':    '#1A1814',
       },
       fontFamily: {
-        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
-        sans:  ['Inter', 'system-ui', 'sans-serif'],
+        serif: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+        sans:  ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
     },
   },
