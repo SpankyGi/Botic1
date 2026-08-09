@@ -6695,7 +6695,7 @@ main { background: var(--paper); color: var(--ink); }
 .home-intro-dish .home-intro-img {
   transform: scale(1.04) !important;
   transform-origin: 65% 52%;
-  object-position: 62% center;
+  object-position: 50% 78%;
   transition: none;
 }
 .home-intro-dish .home-intro-overlay {
@@ -6816,7 +6816,7 @@ main { background: var(--paper); color: var(--ink); }
   .home-intro-content { max-width: 100%; }
   .home-intro-overlay { background: linear-gradient(0deg, rgba(243,237,227,.98), rgba(243,237,227,.18) 76%); }
   .home-intro-dish { inset: -9%; transform: none; }
-  .home-intro-dish .home-intro-img { transform: scale(1.08) !important; object-position: 57% center; }
+  .home-intro-dish .home-intro-img { transform: scale(1.08) !important; object-position: 50% 76%; }
   .home-intro-title { font-size: clamp(44px, 13vw, 62px); }
 
   .features-section { padding: 74px 0; }

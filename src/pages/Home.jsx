@@ -128,7 +128,7 @@ export default function Home() {
       <section className="home-intro home-scene-reveal" ref={introRef}>
         <div className="home-intro-photo home-intro-dish" ref={dishRef} aria-hidden="true">
           <img
-            src="/images/botic-maig-2026-webp/alta-cuina-empordanesa-restaurant-botic.webp"
+            src="/images/plat-cenital-botic.jpg"
             alt=""
             className="home-intro-img"
           />
