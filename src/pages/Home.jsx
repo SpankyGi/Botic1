@@ -1,3 +1,4 @@
+import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Hero             from '../components/Hero'
@@ -41,6 +42,35 @@ export default function Home() {
   const ctaRef      = useReveal(0.18)
   const featuresRef = useReveal(0.12)
   const introRef    = useReveal(0.26)
+  const dishRef     = useRef(null)
+
+  useEffect(() => {
+    const dish = dishRef.current
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+    if (!dish || reducedMotion.matches) return
+
+    let frame = 0
+    const updateDishTurn = () => {
+      frame = 0
+      const rect = dish.getBoundingClientRect()
+      const travel = window.innerHeight + rect.height
+      const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / travel))
+      const degrees = -10 + progress * 20
+      dish.style.setProperty('--dish-turn', `${degrees.toFixed(2)}deg`)
+    }
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(updateDishTurn)
+    }
+
+    updateDishTurn()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+      if (frame) cancelAnimationFrame(frame)
+    }
+  }, [])
 
   const FEATURES = [
     {
@@ -96,9 +126,9 @@ export default function Home() {
 
       {/* ── Paisatge i relat ── */}
       <section className="home-intro home-scene-reveal" ref={introRef}>
-        <div className="home-intro-photo" aria-hidden="true">
+        <div className="home-intro-photo home-intro-dish" ref={dishRef} aria-hidden="true">
           <img
-            src="/images/restaurant-emporda-michelin-girona.webp"
+            src="/images/botic-maig-2026-webp/alta-cuina-empordanesa-restaurant-botic.webp"
             alt=""
             className="home-intro-img"
           />

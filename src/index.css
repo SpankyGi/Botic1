@@ -6683,6 +6683,27 @@ main { background: var(--paper); color: var(--ink); }
 .home-intro-title { color: #211a14; font-size: clamp(48px, 5.6vw, 84px); line-height: .9; }
 .home-intro-body { color: rgba(45,35,26,.74); }
 
+/* Un únic plat acompanya el relat: la rotació respon directament al scroll. */
+.home-intro-dish {
+  --dish-turn: -10deg;
+  inset: -12%;
+  width: auto;
+  transform: rotate(var(--dish-turn));
+  transform-origin: 65% 52%;
+  will-change: transform;
+}
+.home-intro-dish .home-intro-img {
+  transform: scale(1.13) !important;
+  transform-origin: 65% 52%;
+  object-position: 62% center;
+  transition: none;
+}
+.home-intro-dish .home-intro-overlay {
+  background:
+    linear-gradient(90deg, rgba(243,237,227,.99) 0%, rgba(243,237,227,.91) 28%, rgba(243,237,227,.46) 53%, rgba(243,237,227,.09) 76%, transparent 94%),
+    linear-gradient(0deg, rgba(48,31,18,.10), transparent 38%);
+}
+
 /* RevelaciÃ³ entre capÃ­tols: el relat no talla, s'obre. */
 @media (prefers-reduced-motion: no-preference) {
   .home-scene-reveal {
@@ -6794,6 +6815,8 @@ main { background: var(--paper); color: var(--ink); }
   .home-intro-inner { padding: 62px 24px; }
   .home-intro-content { max-width: 100%; }
   .home-intro-overlay { background: linear-gradient(0deg, rgba(243,237,227,.98), rgba(243,237,227,.18) 76%); }
+  .home-intro-dish { inset: -9%; transform: none; }
+  .home-intro-dish .home-intro-img { transform: scale(1.08) !important; object-position: 57% center; }
   .home-intro-title { font-size: clamp(44px, 13vw, 62px); }
 
   .features-section { padding: 74px 0; }
@@ -6804,6 +6827,11 @@ main { background: var(--paper); color: var(--ink); }
   .feature-media::after, .feature-entry:nth-child(2) .feature-media::after { background: linear-gradient(90deg, #f3ede3 0%, rgba(243,237,227,.86) 58%, rgba(243,237,227,.3) 100%); }
   .feature-entry.visible .feature-media { opacity: .16; }
   .home-reserva-cta { padding: 78px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-intro-dish { transform: none !important; }
+  .home-intro-dish .home-intro-img { transform: scale(1.08) !important; }
 }
 
 
