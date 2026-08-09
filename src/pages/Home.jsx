@@ -82,7 +82,18 @@ export default function Home() {
 
       <ProjecteSection />
 
-      {/* ── Marquee / paisatge / contingut central ── */}
+      {/* ── Tres portes per descobrir Bo·TiC ── */}
+      <section className="features-section" ref={featuresRef} aria-label={t('home.featuresAria')}>
+        <div className="container-max">
+          <div className="features-grid">
+            {FEATURES.map((feature, i) => (
+              <FeatureEntry key={feature.to} {...feature} index={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Paisatge i relat ── */}
       <section className="home-intro home-scene-reveal" ref={introRef}>
         <div className="home-intro-photo" aria-hidden="true">
           <img
@@ -108,16 +119,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── Feature cards ── */}
-      <section className="features-section" ref={featuresRef} aria-label={t('home.featuresAria')}>
-        <div className="container-max">
-          <div className="features-grid">
-            {FEATURES.map((feature, i) => (
-              <FeatureEntry key={feature.to} {...feature} index={i} />
-            ))}
-          </div>
-        </div>
-      </section>
 
       <ChefSection />
 
