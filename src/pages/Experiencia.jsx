@@ -29,16 +29,29 @@ function ExperienceHero({ t }) {
 function MenuNarrative({ t }) {
   const revealRef = useReveal(0.06)
   const moments = [
-    { num: '01', label: t('experiencia.moment01Label'), text: t('experiencia.moment01Text') },
-    { num: '02', label: t('experiencia.moment02Label'), text: t('experiencia.moment02Text') },
+    {
+      num: '01', label: t('experiencia.moment01Label'), text: t('experiencia.moment01Text'),
+      image: '/images/botic-maig-2026-webp/plat-esparrecs-blancs-restaurant-botic.webp',
+      detail: '/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic.webp',
+    },
+    {
+      num: '02', label: t('experiencia.moment02Label'), text: t('experiencia.moment02Text'),
+      image: '/images/botic-maig-2026-webp/plat-llamantol-restaurant-botic-emporda.webp',
+      detail: '/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp',
+    },
     {
       num: '03',
       label: t('experiencia.moment03Label'),
       text: t('experiencia.moment03Text'),
       image: '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp',
+      detail: '/images/botic-maig-2026-webp/plat-carn-fruits-vermells-botic.webp',
       imageAlt: t('experiencia.moment03ImgAlt'),
     },
-    { num: '04', label: t('experiencia.moment04Label'), text: t('experiencia.moment04Text') },
+    {
+      num: '04', label: t('experiencia.moment04Label'), text: t('experiencia.moment04Text'),
+      image: '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp',
+      detail: '/images/restaurant-botic-corca-emporda-sala-gastronomica.webp',
+    },
   ]
 
   return (
@@ -51,17 +64,21 @@ function MenuNarrative({ t }) {
       <div className="exp-timeline">
         <div className="exp-timeline-axis" aria-hidden="true"><span /></div>
         {moments.map((moment, index) => (
-          <article className={`exp-moment${moment.image ? ' has-image' : ''}`} key={moment.num}>
+          <article className={`exp-moment${index % 2 ? ' is-reversed' : ''}`} key={moment.num}>
             <span className="exp-moment-num">{moment.num}</span>
             <div className="exp-moment-copy">
               <h3>{moment.label}</h3>
               <p>{moment.text}</p>
             </div>
-            {moment.image && (
-              <figure className="exp-moment-media">
-                <img src={moment.image} alt={moment.imageAlt} loading="lazy" />
-              </figure>
-            )}
+            <figure className="exp-moment-gallery">
+              <div className="exp-moment-primary">
+                <img src={moment.image} alt={moment.imageAlt || moment.label} loading="lazy" />
+              </div>
+              <div className="exp-moment-detail" aria-hidden="true">
+                <img src={moment.detail} alt="" loading="lazy" />
+              </div>
+              <figcaption>0{index + 1} / 04</figcaption>
+            </figure>
             <span className="exp-moment-orbit" style={{ '--orbit-scale': 1 + index * .16 }} aria-hidden="true" />
           </article>
         ))}
