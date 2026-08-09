@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion'
 import { LangProvider } from './i18n/LangContext'
 import { ROUTE_SLUGS, LANGS, DEFAULT_LANG } from './i18n/routes'
 
@@ -30,61 +31,84 @@ function LangLayout({ lang, children }) {
   return <LangProvider lang={lang}>{children}</LangProvider>
 }
 
+// Fos + lleuger blur entre pàgines. Es desactiva sol si l'usuari prefereix
+// menys moviment (useReducedMotion de framer-motion llegeix el media query).
+function PageTransition({ children }) {
+  const reduceMotion = useReducedMotion()
+
+if (reduceMotion) return children
+
+return (
+  <motion.div
+    initial={{ opacity: 0, filter: 'blur(6px)' }}
+    animate={{ opacity: 1, filter: 'blur(0px)', transition: { duration: 0.55, ease: [0.19, 1, 0.22, 1] } }}
+    exit={{ opacity: 0, filter: 'blur(6px)', transition: { duration: 0.32, ease: [0.4, 0, 1, 1] } }}
+    >
+    {children}
+  </motion.div>
+  )
+}
+
 // Generate route elements for a given language
 function LangRoutes({ lang }) {
   const s = ROUTE_SLUGS[lang]
-  return (
-    <LangLayout lang={lang}>
-      <Routes>
-        <Route index                  element={<Home />} />
-        <Route path={s.restaurant}    element={<Restaurant />} />
-        <Route path={s.gastronomia}   element={<Gastronomia />} />
-        <Route path={s.menus}         element={<Menus />} />
-        <Route path={s.experiencia}   element={<Experiencia />} />
-        <Route path={s.reserves}      element={<Reserves />} />
-        <Route path={s.horaris}       element={<Horaris />} />
-        <Route path="*"               element={<NotFound />} />
-      </Routes>
-    </LangLayout>
-  )
-}
-
-function AppContent() {
-  return (
-    <>
-      <ScrollToTop />
-      <CustomCursor />
-      <Preloader />
-      <TopBar />
-      <Nav />
-      <FloatingCTAs />
-      <main>
-        <Routes>
-          {/* Root redirect → /ca */}
-          <Route path="/" element={<Navigate to={`/${DEFAULT_LANG}`} replace />} />
-
-          {/* Language-prefixed routes */}
-          {LANGS.map(lang => (
-            <Route key={lang} path={`/${lang}/*`} element={<LangRoutes lang={lang} />} />
-          ))}
-
-          {/* Global 404 */}
-          <Route path="*" element={<NotFound />} />
+    const location = useLocation()
+      
+      return (
+        <LangLayout lang={lang}>
+        <AnimatePresence mode="wait" initial={false}>
+        <Routes location={location} key={location.pathname}>
+        <Route index                  element={<PageTransition><Home /></PageTransition>} />
+        <Route path={s.restaurant}    element={<PageTransition><Restaurant /></PageTransition>} />
+        <Route path={s.gastronomia}   element={<PageTransition><Gastronomia /></PageTransition>} />
+        <Route path={s.menus}         element={<PageTransition><Menus /></PageTransition>} />
+        <Route path={s.experiencia}   element={<PageTransition><Experiencia /></PageTransition>} />
+        <Route path={s.reserves}      element={<PageTransition><Reserves /></PageTransition>} />
+        <Route path={s.horaris}       element={<PageTransition><Horaris /></PageTransition>} />
+        <Route path="*"               element={<PageTransition><NotFound /></PageTransition>} />
         </Routes>
-      </main>
-      <Footer />
-    </>
-  )
+        </AnimatePresence>
+        </LangLayout>
+        )
 }
+</motion.div>
+  function AppContent() {
+    return (
+  <>
+  <ScrollToTop />
+  <CustomCursor />
+  <Preloader />
+  <TopBar />
+  <Nav />
+  <FloatingCTAs />
+  <main>
+  <Routes>
+    {/* Root redirect → /ca */}
+  <Route path="/" element={<Navigate to={`/${DEFAULT_LANG}`} replace />} />
+  
+    {/* Language-prefixed routes */}
+    {LANGS.map(lang => (
+  <Route key={lang} path={`/${lang}/*`} element={<LangRoutes lang={lang} />} />
+  ))}
+  
+    {/* Global 404 */}
+  <Route path="*" element={<NotFound />} />
+  </Routes>
+  </main>
+  <Footer />
+  </>
+)
+  }
 
 export default function App() {
   const { pathname } = useLocation()
-  const currentLang = pathname.split('/').filter(Boolean)[0]
-  const lang = LANGS.includes(currentLang) ? currentLang : DEFAULT_LANG
+const currentLang = pathname.split('/').filter(Boolean)[0]
+const lang = LANGS.includes(currentLang) ? currentLang : DEFAULT_LANG
 
-  return (
-    <LangProvider lang={lang}>
-      <AppContent />
-    </LangProvider>
-  )
-}
+return (
+<LangProvider lang={lang}>
+<AppContent />
+</LangProvider>
+)
+  }
+</>
