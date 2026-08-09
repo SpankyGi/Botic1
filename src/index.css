@@ -6877,6 +6877,16 @@ main { background: var(--paper); color: var(--ink); }
   background: #211a14;
 }
 
+/* A l'inici de la Home, el fons és clar: la marca i el menú han de ser foscos. */
+.nav-header.nav-home:not(.nav-scrolled):not(.nav-menu-is-open) .nav-logo,
+.nav-header.nav-home:not(.nav-scrolled):not(.nav-menu-is-open) .nav-toggle-label {
+  color: #211a14 !important;
+  opacity: 1;
+}
+.nav-header.nav-home:not(.nav-scrolled):not(.nav-menu-is-open) .nav-toggle-line {
+  background: #211a14 !important;
+}
+
 
 /* ====== HOME â€” RELAT D'OBERTURA I MOVIMENT SUTIL ====== */
 .soul-passion {
