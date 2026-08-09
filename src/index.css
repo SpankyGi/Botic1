@@ -6971,3 +6971,21 @@ main { background: var(--paper); color: var(--ink); }
   .botic-divider-mark { gap: 10px; }
   .botic-divider-mark i { width: 11px; height: 11px; }
 }
+
+
+/* El separador incorpora el monograma real B· de Bo·TiC. */
+.botic-section-divider {
+  width: min(620px, 76vw);
+  gap: clamp(18px, 2.8vw, 38px);
+}
+.botic-divider-logo {
+  display: block;
+  width: clamp(148px, 16vw, 228px);
+  height: auto;
+  flex: 0 0 auto;
+}
+.botic-divider-mark { display: none; }
+@media (max-width: 768px) {
+  .botic-section-divider { width: min(330px, 84vw); gap: 16px; }
+  .botic-divider-logo { width: min(160px, 45vw); }
+}
