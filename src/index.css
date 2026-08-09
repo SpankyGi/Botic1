@@ -6686,22 +6686,26 @@ main { background: var(--paper); color: var(--ink); }
 /* Un únic plat acompanya el relat: la rotació respon directament al scroll. */
 .home-intro-dish {
   --dish-turn: -22deg;
-  inset: -40%;
-  width: auto;
-  transform: rotate(var(--dish-turn));
-  transform-origin: 65% 52%;
+  inset: auto clamp(28px, 8vw, 148px) auto auto;
+  top: 50%;
+  width: min(42vw, 650px);
+  height: auto;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 50%;
+  transform: translateY(-50%) rotate(var(--dish-turn));
+  transform-origin: center;
+  box-shadow: 0 26px 58px rgba(59, 38, 20, .20);
   will-change: transform;
 }
 .home-intro-dish .home-intro-img {
-  transform: scale(1.04) !important;
-  transform-origin: 65% 52%;
+  transform: scale(1.42) !important;
+  transform-origin: center;
   object-position: 50% 78%;
   transition: none;
 }
 .home-intro-dish .home-intro-overlay {
-  background:
-    linear-gradient(90deg, rgba(243,237,227,.99) 0%, rgba(243,237,227,.91) 28%, rgba(243,237,227,.46) 53%, rgba(243,237,227,.09) 76%, transparent 94%),
-    linear-gradient(0deg, rgba(48,31,18,.10), transparent 38%);
+  display: none;
 }
 
 /* RevelaciÃ³ entre capÃ­tols: el relat no talla, s'obre. */
@@ -6815,8 +6819,9 @@ main { background: var(--paper); color: var(--ink); }
   .home-intro-inner { padding: 62px 24px; }
   .home-intro-content { max-width: 100%; }
   .home-intro-overlay { background: linear-gradient(0deg, rgba(243,237,227,.98), rgba(243,237,227,.18) 76%); }
-  .home-intro-dish { inset: -9%; transform: none; }
+  .home-intro-dish { inset: 0; top: auto; width: 100%; height: 100%; border-radius: 0; transform: none; box-shadow: none; }
   .home-intro-dish .home-intro-img { transform: scale(1.08) !important; object-position: 50% 76%; }
+  .home-intro-dish .home-intro-overlay { display: block; }
   .home-intro-title { font-size: clamp(44px, 13vw, 62px); }
 
   .features-section { padding: 74px 0; }
@@ -6830,8 +6835,10 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .home-intro-dish { transform: none !important; }
   .home-intro-dish .home-intro-img { transform: scale(1.08) !important; }
+}
+@media (min-width: 769px) and (prefers-reduced-motion: reduce) {
+  .home-intro-dish { transform: translateY(-50%) !important; }
 }
 
 
