@@ -10,7 +10,7 @@ export default function Footer() {
     <footer className="botic-footer">
       <div className="foot-grid">
         <div>
-          <div className="foot-logo">Bo<span className="dot">.</span>TiC</div>
+          <div className="foot-logo">Bo<span className="dot">·</span>TiC</div>
           <div className="foot-tag">{t('footer.tagline')}</div>
         </div>
 

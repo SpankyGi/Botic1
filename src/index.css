@@ -2853,10 +2853,12 @@ body {
 
 /* ====== FOOTER ====== */
 footer.botic-footer {
-  background: linear-gradient(180deg, #080706 0%, #050504 100%);
+  background:
+    radial-gradient(ellipse at 14% 0%, rgba(139, 37, 37, 0.20), transparent 42%),
+    linear-gradient(135deg, #2d1d17 0%, #211510 54%, #160e0b 100%);
   padding: 104px 48px 42px;
-  color: var(--grey);
-  border-top: 1px solid rgba(201,164,106,0.14);
+  color: rgba(247, 242, 233, 0.7);
+  border-top: 1px solid rgba(176, 54, 51, 0.34);
   position: relative;
 }
 .foot-grid {
@@ -2871,21 +2873,21 @@ footer.botic-footer {
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 200;
   font-size: 36px;
-  color: var(--white);
+  color: #f7f2e9;
   margin-bottom: 16px;
 }
-.foot-logo .dot { color: var(--burgundy); }
+.foot-logo .dot { color: #c94743; }
 .foot-tag {
   font-family: 'Plus Jakarta Sans', serif;
   font-style: normal;
   font-size: 16px;
-  color: rgba(205,197,184,0.76);
+  color: rgba(247,242,233,0.62);
 }
 .foot-col h4 {
   font-size: 10px;
   letter-spacing: 0.4em;
   text-transform: uppercase;
-  color: rgba(237,232,220,0.90);
+  color: rgba(239,211,176,0.88);
   margin-bottom: 22px;
   font-weight: 500;
 }
@@ -2898,16 +2900,16 @@ footer.botic-footer {
   display: block;
   transition: color 0.3s;
 }
-.foot-col a:hover { color: #C9A46A; }
+.foot-col a:hover { color: #e2b09d; }
 .foot-bottom {
   max-width: 1400px;
   margin: 64px auto 0;
   padding-top: 28px;
-  border-top: 1px solid rgba(255,255,255,0.10);
+  border-top: 1px solid rgba(247,242,233,0.15);
   display: flex;
   justify-content: space-between;
   font-size: 11px;
-  color: rgba(255,255,255,0.58);
+  color: rgba(247,242,233,0.52);
 }
 
 /* ====== EXPANDABLE DISH ====== */
