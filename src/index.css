@@ -6686,7 +6686,7 @@ main { background: var(--paper); color: var(--ink); }
 /* Un únic plat acompanya el relat: la rotació respon directament al scroll. */
 .home-intro-dish {
   --dish-turn: -22deg;
-  inset: auto clamp(-60px, -3vw, 0px) auto auto;
+  inset: auto clamp(48px, 6vw, 128px) auto auto;
   top: 50%;
   width: min(48vw, 720px);
   height: auto;
