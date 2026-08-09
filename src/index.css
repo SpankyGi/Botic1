@@ -7324,26 +7324,23 @@ main { background: var(--paper); color: var(--ink); }
     transform: scale(1);
   }
 
-  /* Un vel bordeus revela les tres portes amb un sol gest en fer scroll. */
-  .features-section .feature-card::before {
-    display: block;
-    inset: 0;
-    z-index: 1;
-    background: #aa1736;
-    opacity: .93;
-    transform: scaleY(1);
-    /* S'obre des de dalt: és el primer tros de cada pòster que entra a pantalla. */
-    transform-origin: bottom;
-    transition: transform 1.75s cubic-bezier(.76, 0, .24, 1);
-  }
+  /* Cada peça és una porta: el vel es retira només en acostar-hi el cursor. */
+  @media (hover: hover) and (pointer: fine) {
+    .features-section .feature-card::before {
+      display: block;
+      inset: 0;
+      z-index: 1;
+      background: #aa1736;
+      opacity: .93;
+      transform: translateY(0);
+      transition: transform 1.05s cubic-bezier(.76, 0, .24, 1);
+    }
 
-  .features-grid.visible .feature-card::before {
-    transform: scaleY(0);
-  }
-
-  .features-section .feature-card:hover::before,
-  .features-section .feature-card:focus-visible::before {
-    opacity: .93;
+    .features-section .feature-card:hover::before,
+    .features-section .feature-card:focus-visible::before {
+      opacity: .93;
+      transform: translateY(100%);
+    }
   }
 
 }
