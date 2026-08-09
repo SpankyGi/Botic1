@@ -7325,7 +7325,7 @@ main { background: var(--paper); color: var(--ink); }
   }
 
   /* Cada peça és una porta: el vel es retira només en acostar-hi el cursor. */
-  @media (hover: hover) and (pointer: fine) {
+  @media (min-width: 769px) {
     .features-section .feature-card::before {
       display: block;
       inset: 0;
