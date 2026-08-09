@@ -125,14 +125,6 @@ export default function Home() {
 
       {/* ── CTA Reserva ── */}
       <section className="home-reserva-cta">
-        <div className="home-reserva-gallery" aria-hidden="true">
-          <figure>
-            <img src="/images/botic-maig-2026-webp/plat-llamantol-restaurant-botic-emporda.webp" alt="" />
-          </figure>
-          <figure>
-            <img src="/images/botic-maig-2026-webp/detall-postres-maduixes-botic-emporda.webp" alt="" />
-          </figure>
-        </div>
         <div className="container-max reveal" ref={ctaRef}>
           <span className="label block">{t('home.ctaLabel')}</span>
           <ReserveHeading>{t('home.ctaHeading')}</ReserveHeading>
