@@ -4,6 +4,7 @@ import Hero             from '../components/Hero'
 import ProjecteSection  from '../components/ProjecteSection'
 import ChefSection      from '../components/ChefSection'
 import SEO              from '../components/SEO'
+import SectionDivider   from '../components/SectionDivider'
 import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
@@ -81,6 +82,7 @@ export default function Home() {
       <Hero />
 
       <ProjecteSection />
+      <SectionDivider />
 
       {/* ── Tres portes per descobrir Bo·TiC ── */}
       <section className="features-section" ref={featuresRef} aria-label={t('home.featuresAria')}>
@@ -92,6 +94,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <SectionDivider />
 
       {/* ── Paisatge i relat ── */}
       <section className="home-intro home-scene-reveal" ref={introRef}>
