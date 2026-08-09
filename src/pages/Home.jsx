@@ -82,6 +82,9 @@ export default function Home() {
       {/* ── Tres portes per descobrir Bo·TiC ── */}
       <section className="features-section" ref={featuresRef} aria-label={t('home.featuresAria')}>
         <div className="container-max">
+          <h2 className="features-intro-title">
+            <img src="/images/botic-logo-original.png" alt="Bo·TiC" />
+          </h2>
           <div className="features-grid">
             {FEATURES.map((feature, i) => (
               <FeatureEntry key={feature.to} {...feature} index={i} />

@@ -7264,3 +7264,63 @@ main { background: var(--paper); color: var(--ink); }
     transition: none;
   }
 }
+
+/* ── Tres portes: un únic gest, no un desplaçament aïllat ── */
+.features-intro-title {
+  display: flex;
+  justify-content: center;
+  margin: 0 0 clamp(42px, 5vw, 72px);
+}
+.features-intro-title img {
+  display: block;
+  width: clamp(132px, 13vw, 204px);
+  height: auto;
+}
+
+/* La composició comença alineada; el capítol central no ha de "caure". */
+.features-section .feature-card:nth-child(2) {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .features-section .feature-entry,
+  .features-section .feature-entry:nth-child(2) {
+    animation: none;
+  }
+
+  .features-section .feature-card,
+  .features-section .feature-card:nth-child(2) {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity .75s ease,
+      transform .95s cubic-bezier(.22, 1, .36, 1),
+      background .55s ease;
+  }
+
+  .features-section.visible .feature-card,
+  .features-section.visible .feature-card:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .features-section .feature-media,
+  .features-section .feature-entry:nth-child(2) .feature-media {
+    clip-path: inset(9% 0 9% 0);
+    transition: clip-path 1.2s cubic-bezier(.22, 1, .36, 1), opacity .75s ease;
+  }
+
+  .features-section.visible .feature-media,
+  .features-section.visible .feature-entry:nth-child(2) .feature-media {
+    clip-path: inset(0);
+  }
+
+  .features-section .feature-media img {
+    transform: scale(1.06);
+    transition: transform 1.35s cubic-bezier(.22, 1, .36, 1), filter .55s ease;
+  }
+
+  .features-section.visible .feature-media img {
+    transform: scale(1);
+  }
+}
