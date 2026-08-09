@@ -7370,12 +7370,14 @@ main { background: var(--paper); color: var(--ink); }
   .mirada-xef-section .soul-photo-wrap {
     position: relative;
     inset: auto;
-    height: clamp(390px, 39vw, 540px);
+    align-self: stretch;
+    height: 100%;
+    min-height: 100%;
     overflow: hidden;
   }
 
   .mirada-xef-section .soul-img-1 {
-    object-position: 58% center;
+    object-position: 72% center;
     filter: saturate(.62) brightness(.78) contrast(1.04);
   }
 
