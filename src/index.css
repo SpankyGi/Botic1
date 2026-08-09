@@ -7344,4 +7344,24 @@ main { background: var(--paper); color: var(--ink); }
   .features-section .feature-card:focus-visible::before {
     opacity: .93;
   }
+
+  /* Als navegadors compatibles, el vel segueix el propi gest de scroll.
+     Així no pot desaparèixer abans que les portes entrin a la mirada. */
+  @supports (animation-timeline: view()) {
+    .features-section .feature-card::before {
+      animation: botic-doors-veil linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+      transition: none;
+    }
+
+    .features-section.visible .feature-card::before {
+      transform: scaleY(1);
+    }
+
+    @keyframes botic-doors-veil {
+      from { transform: scaleY(1); }
+      to   { transform: scaleY(0); }
+    }
+  }
 }
