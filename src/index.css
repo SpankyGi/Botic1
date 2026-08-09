@@ -6795,3 +6795,58 @@ main { background: var(--paper); color: var(--ink); }
   .feature-entry.visible .feature-media { opacity: .16; }
   .home-reserva-cta { padding: 78px 24px; }
 }
+
+
+/* ====== HOME — LOGOTIP EDITORIAL CENTRAT ====== */
+.nav-header {
+  height: 72px;
+  justify-content: flex-end;
+  transition: height 0.5s cubic-bezier(0.22, 1, 0.36, 1), background 0.5s ease, backdrop-filter 0.5s ease;
+}
+.nav-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 24px;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transition: font-size 0.5s cubic-bezier(0.22, 1, 0.36, 1), letter-spacing 0.5s ease, opacity 0.3s;
+}
+.nav-header.nav-home {
+  height: 104px;
+}
+.nav-header.nav-home .nav-logo {
+  font-size: clamp(32px, 3.25vw, 48px);
+  letter-spacing: 0.12em;
+}
+.nav-header.nav-home.nav-scrolled {
+  height: 70px;
+}
+.nav-header.nav-home.nav-scrolled .nav-logo {
+  font-size: 23px;
+  letter-spacing: 0.1em;
+}
+@media (max-width: 767px) {
+  .nav-header {
+    height: 64px;
+    padding: 0 22px;
+  }
+  .nav-header.nav-home {
+    height: 82px;
+  }
+  .nav-header.nav-home.nav-scrolled {
+    height: 62px;
+  }
+  .nav-header.nav-home .nav-logo {
+    font-size: 30px;
+  }
+  .nav-header.nav-home.nav-scrolled .nav-logo {
+    font-size: 21px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .nav-header,
+  .nav-logo {
+    transition-duration: 0.01ms;
+  }
+}
