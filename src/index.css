@@ -7175,7 +7175,7 @@ main { background: var(--paper); color: var(--ink); }
 
 /* ====== HOME â€” TRES PORTES VERTICALS, FORMAT EDITORIAL ====== */
 .features-section {
-  padding: clamp(42px, 5vw, 68px) 0 clamp(88px, 10vw, 148px);
+  padding: clamp(88px, 10vw, 148px) 0;
 }
 .features-section .container-max {
   max-width: 1440px;
@@ -7191,9 +7191,7 @@ main { background: var(--paper); color: var(--ink); }
 .features-section .feature-card:nth-child(2) {
   min-height: clamp(540px, 52vw, 760px);
   padding: clamp(24px, 2.8vw, 46px);
-  display: grid;
-  grid-template-rows: auto auto 1fr auto auto;
-  align-items: start;
+  justify-content: flex-end;
   background: #25211e;
   transition: transform .65s cubic-bezier(.22, 1, .36, 1), background .55s ease;
 }
@@ -7230,8 +7228,8 @@ main { background: var(--paper); color: var(--ink); }
 .features-section .feature-index { margin-bottom: 14px; }
 .features-section .feature-tag { margin-bottom: 14px; }
 .features-section .feature-title {
-  font-size: clamp(36px, 3.45vw, 60px);
-  line-height: .91;
+  font-size: clamp(44px, 4.4vw, 78px);
+  line-height: .86;
   transition: transform .55s cubic-bezier(.22, 1, .36, 1);
 }
 .features-section .feature-card:hover .feature-title,
@@ -7276,11 +7274,11 @@ main { background: var(--paper); color: var(--ink); }
 .features-intro-title {
   display: flex;
   justify-content: center;
-  margin: 0 0 clamp(28px, 3vw, 46px);
+  margin: 0 0 clamp(42px, 5vw, 72px);
 }
 .features-intro-title img {
   display: block;
-  width: clamp(170px, 15vw, 230px);
+  width: clamp(220px, 20vw, 320px);
   height: auto;
 }
 
