@@ -6947,3 +6947,27 @@ main { background: var(--paper); color: var(--ink); }
 .botic-section-divider {
   padding: clamp(28px, 4vw, 52px) 0;
 }
+
+
+/* Els dos punts són el signe de marca, no un detall decoratiu. */
+.botic-section-divider {
+  gap: 22px;
+  width: min(390px, 54vw);
+}
+.botic-divider-mark {
+  gap: 13px;
+}
+.botic-divider-mark i {
+  width: 13px;
+  height: 13px;
+  background: #b3312e;
+  box-shadow: 0 0 0 5px rgba(179, 49, 46, .08);
+}
+.botic-divider-line {
+  background: rgba(165, 47, 45, .40);
+}
+@media (max-width: 768px) {
+  .botic-section-divider { width: min(260px, 72vw); gap: 16px; }
+  .botic-divider-mark { gap: 10px; }
+  .botic-divider-mark i { width: 11px; height: 11px; }
+}
