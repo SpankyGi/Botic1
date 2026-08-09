@@ -6989,3 +6989,33 @@ main { background: var(--paper); color: var(--ink); }
   .botic-section-divider { width: min(330px, 84vw); gap: 16px; }
   .botic-divider-logo { width: min(160px, 45vw); }
 }
+
+
+/* El monograma es carrega directament, evitant diferències de suport SVG. */
+.botic-divider-logo-window {
+  position: relative;
+  display: block;
+  width: clamp(250px, 25vw, 320px);
+  height: clamp(145px, 14vw, 185px);
+  overflow: hidden;
+  flex: 0 0 auto;
+  background: #212121;
+}
+.botic-divider-logo-window .botic-divider-logo {
+  position: absolute;
+  display: block;
+  width: clamp(500px, 50vw, 640px);
+  max-width: none;
+  height: auto;
+  transform: translate(-28%, -34%);
+}
+@media (max-width: 768px) {
+  .botic-divider-logo-window {
+    width: 190px;
+    height: 112px;
+  }
+  .botic-divider-logo-window .botic-divider-logo {
+    width: 380px;
+    transform: translate(-28%, -34%);
+  }
+}
