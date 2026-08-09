@@ -99,7 +99,7 @@ export default function Nav() {
         role="banner"
       >
         <Link to={routes.home} className="nav-logo" onClick={handleClose}>
-          Bo<span className="nav-logo-dot">.</span>TiC
+          Bo<span className="nav-logo-dot">·</span>TiC
         </Link>
 
         <button

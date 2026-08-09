@@ -6354,7 +6354,7 @@ main { background: var(--paper); color: var(--ink); }
 .home-intro-overlay { background: linear-gradient(90deg, rgba(242,237,227,.98) 0%, rgba(242,237,227,.92) 23%, rgba(242,237,227,.58) 46%, rgba(242,237,227,.08) 70%, transparent 88%); }
 .home-intro-content { max-width: min(51%, 600px); }
 .home-intro-label { color: #95544a; }
-.home-intro-title { color: var(--ink); font-size: clamp(38px, 4.6vw, 68px); overflow: hidden; }
+.home-intro-title { color: var(--ink); font-size: clamp(38px, 4.6vw, 68px); overflow: visible; }
 .home-intro-title-line { display: inline-block; transform: translateY(110%); opacity: 0; }
 .home-intro.visible .home-intro-title-line { animation: home-copy-rise .9s cubic-bezier(.2,.8,.2,1) forwards; }
 .home-intro.visible .home-intro-title-line:nth-child(2) { animation-delay: .14s; }
@@ -6854,6 +6854,27 @@ main { background: var(--paper); color: var(--ink); }
   .nav-logo {
     transition-duration: 0.01ms;
   }
+}
+
+/* Capçalera integrada amb la paleta clara de la Home. */
+.nav-header,
+.nav-header.nav-scrolled {
+  background: rgba(243, 237, 227, .92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(77, 58, 37, .12);
+}
+.nav-header:not(.nav-menu-is-open) .nav-logo,
+.nav-header:not(.nav-menu-is-open) .nav-toggle-label {
+  color: #211a14;
+}
+.nav-header:not(.nav-menu-is-open) .nav-toggle {
+  padding: 10px 13px;
+  border: 1px solid rgba(77, 58, 37, .28);
+  background: rgba(255, 252, 246, .46);
+}
+.nav-header:not(.nav-menu-is-open) .nav-toggle-line {
+  background: #211a14;
 }
 
 
