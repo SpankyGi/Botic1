@@ -6941,3 +6941,9 @@ main { background: var(--paper); color: var(--ink); }
     gap: 12px;
   }
 }
+
+
+/* El separador necessita aire perquè actuï com a pausa de capítol. */
+.botic-section-divider {
+  padding: clamp(28px, 4vw, 52px) 0;
+}
