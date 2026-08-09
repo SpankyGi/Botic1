@@ -6746,6 +6746,8 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 .home-reserva-cta {
+  position: relative;
+  isolation: isolate;
   min-height: 0;
   padding: clamp(86px, 11vw, 142px) 24px;
   background: #e5d9c8;
@@ -6757,6 +6759,20 @@ main { background: var(--paper); color: var(--ink); }
 .home-reserva-cta .label { color: #a52f2d; }
 .home-reserva-cta .btn-gold { background: #a52f2d; border-color: #a52f2d; }
 .home-reserva-cta .container-max.reveal { opacity: 1; transform: none; }
+.home-reserva-cta .container-max { position: relative; z-index: 2; }
+.home-reserva-gallery { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.home-reserva-gallery figure {
+  position: absolute;
+  width: clamp(126px, 12vw, 196px);
+  aspect-ratio: 2 / 3;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(77,58,37,.16);
+  box-shadow: 0 18px 42px rgba(68,45,28,.14);
+}
+.home-reserva-gallery figure:first-child { left: max(5vw, calc(50% - 620px)); top: 14%; transform: rotate(-3deg); }
+.home-reserva-gallery figure:last-child { right: max(5vw, calc(50% - 620px)); bottom: 8%; transform: rotate(3deg); }
+.home-reserva-gallery img { width: 100%; height: 100%; object-fit: cover; filter: saturate(.78) contrast(1.03); }
 .reserve-word { display: inline-block; margin-right: .22em; }
 .reserve-word:last-child { margin-right: 0; }
 @media (prefers-reduced-motion: no-preference) {
@@ -6799,6 +6815,7 @@ main { background: var(--paper); color: var(--ink); }
   .feature-media::after, .feature-entry:nth-child(2) .feature-media::after { background: linear-gradient(90deg, #f3ede3 0%, rgba(243,237,227,.86) 58%, rgba(243,237,227,.3) 100%); }
   .feature-entry.visible .feature-media { opacity: .16; }
   .home-reserva-cta { padding: 78px 24px; }
+  .home-reserva-gallery { display: none; }
 }
 
 
@@ -7391,6 +7408,7 @@ main { background: var(--paper); color: var(--ink); }
   .mirada-xef-section {
     display: grid;
     grid-template-columns: minmax(280px, .78fr) minmax(0, 1.12fr);
+    grid-template-rows: clamp(440px, 42vw, 540px);
     width: min(1120px, calc(100% - clamp(48px, 12vw, 220px)));
     min-height: 0;
     margin: clamp(64px, 10vw, 140px) auto;
