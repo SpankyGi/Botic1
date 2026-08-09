@@ -7344,3 +7344,55 @@ main { background: var(--paper); color: var(--ink); }
   }
 
 }
+
+/* ── Home: un paisatge, una signatura ──
+   El territori conserva l'escala; la mirada del xef esdevé una peça editorial. */
+@media (min-width: 769px) {
+  .home-intro {
+    min-height: clamp(560px, 66svh, 740px);
+  }
+
+  .mirada-xef-section {
+    display: grid;
+    grid-template-columns: minmax(280px, .78fr) minmax(0, 1.12fr);
+    width: min(1120px, calc(100% - clamp(48px, 12vw, 220px)));
+    min-height: 0;
+    margin: clamp(64px, 10vw, 140px) auto;
+    background: #e9e1d5;
+    border: 1px solid rgba(77,58,37,.16);
+  }
+
+  .mirada-xef-section .soul-photo-wrap {
+    position: relative;
+    inset: auto;
+    height: clamp(390px, 39vw, 540px);
+    overflow: hidden;
+  }
+
+  .mirada-xef-section .soul-img-1 {
+    object-position: 58% center;
+    filter: saturate(.62) brightness(.78) contrast(1.04);
+  }
+
+  .mirada-xef-section .soul-overlay-1 {
+    background: linear-gradient(90deg, transparent 45%, rgba(33,26,20,.34));
+  }
+
+  .mirada-xef-section .soul-panel-inner {
+    display: flex;
+    align-items: center;
+    min-height: 0;
+    padding: clamp(48px, 7vw, 96px);
+  }
+
+  .mirada-xef-section .soul-panel-content {
+    max-width: 480px;
+    margin: 0;
+  }
+
+  .mirada-xef-section .soul-quote {
+    margin: 0 0 32px;
+    font-size: clamp(30px, 3.2vw, 48px);
+    line-height: 1.18;
+  }
+}
