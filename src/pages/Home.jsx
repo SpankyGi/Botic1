@@ -55,7 +55,7 @@ export default function Home() {
       const rect = dish.getBoundingClientRect()
       const travel = window.innerHeight + rect.height
       const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / travel))
-      const degrees = -10 + progress * 20
+      const degrees = -22 + progress * 44
       dish.style.setProperty('--dish-turn', `${degrees.toFixed(2)}deg`)
     }
     const onScroll = () => {

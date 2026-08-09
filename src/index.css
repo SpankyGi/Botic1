@@ -6685,15 +6685,15 @@ main { background: var(--paper); color: var(--ink); }
 
 /* Un únic plat acompanya el relat: la rotació respon directament al scroll. */
 .home-intro-dish {
-  --dish-turn: -10deg;
-  inset: -12%;
+  --dish-turn: -22deg;
+  inset: -40%;
   width: auto;
   transform: rotate(var(--dish-turn));
   transform-origin: 65% 52%;
   will-change: transform;
 }
 .home-intro-dish .home-intro-img {
-  transform: scale(1.13) !important;
+  transform: scale(1.04) !important;
   transform-origin: 65% 52%;
   object-position: 62% center;
   transition: none;
