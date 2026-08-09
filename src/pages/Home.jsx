@@ -79,8 +79,6 @@ export default function Home() {
 
       <Hero />
 
-      <ProjecteSection />
-
       {/* ── Tres portes per descobrir Bo·TiC ── */}
       <section className="features-section" ref={featuresRef} aria-label={t('home.featuresAria')}>
         <div className="container-max">
