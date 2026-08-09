@@ -7332,8 +7332,9 @@ main { background: var(--paper); color: var(--ink); }
     background: #aa1736;
     opacity: .93;
     transform: scaleY(1);
-    transform-origin: top;
-    transition: transform 1.15s cubic-bezier(.76, 0, .24, 1);
+    /* S'obre des de dalt: és el primer tros de cada pòster que entra a pantalla. */
+    transform-origin: bottom;
+    transition: transform 1.75s cubic-bezier(.76, 0, .24, 1);
   }
 
   .features-grid.visible .feature-card::before {
