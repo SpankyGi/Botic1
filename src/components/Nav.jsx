@@ -21,6 +21,7 @@ export default function Nav() {
   const routes        = useLangRoutes()
   const switchLang    = useSwitchLang()
   const location      = useLocation()
+  const isHome        = location.pathname === routes.home
 
   const [scrolled,    setScrolled]   = useState(false)
   const [menuOpen,    setMenuOpen]   = useState(false)
@@ -94,7 +95,7 @@ export default function Nav() {
     <>
       {/* ===== HEADER ===== */}
       <header
-        className={`nav-header${scrolled ? ' nav-scrolled' : ''}${menuOpen ? ' nav-menu-is-open' : ''}`}
+        className={`nav-header${isHome ? ' nav-home' : ''}${scrolled ? ' nav-scrolled' : ''}${menuOpen ? ' nav-menu-is-open' : ''}`}
         role="banner"
       >
         <Link to={routes.home} className="nav-logo" onClick={handleClose}>
