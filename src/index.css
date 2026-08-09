@@ -6900,3 +6900,44 @@ main { background: var(--paper); color: var(--ink); }
     animation: none;
   }
 }
+
+
+/* Separador de marca: els dos punts de Bo·TiC entre capítols. */
+.botic-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: min(320px, 42vw);
+  margin: 0 auto;
+  padding: 2px 0;
+  background: #f3ede3;
+  position: relative;
+  z-index: 2;
+}
+.botic-divider-line {
+  height: 1px;
+  flex: 1;
+  background: rgba(119, 78, 46, .24);
+}
+.botic-divider-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.botic-divider-mark i {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #a52f2d;
+  box-shadow: 0 0 0 3px rgba(165, 47, 45, .07);
+}
+.botic-section-divider + .home-intro {
+  margin-top: 0;
+}
+@media (max-width: 768px) {
+  .botic-section-divider {
+    width: min(210px, 55vw);
+    gap: 12px;
+  }
+}
