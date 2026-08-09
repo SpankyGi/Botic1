@@ -1,4 +1,4 @@
-+export default function SectionDivider() {
+export default function SectionDivider() {
   return (
     <div className="botic-section-divider" aria-hidden="true">
       <span className="botic-divider-line" />
