@@ -2,6 +2,16 @@ import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useLangRoutes } from '../i18n/LangContext'
+import { useMagnetic } from '../hooks/useMagnetic'
+
+function MagneticLink({ to, className, children }) {
+  const ref = useMagnetic(0.4, 70)
+  return (
+    <Link ref={ref} to={to} className={`magnetic-btn ${className}`}>
+      <span className="magnetic-btn-label">{children}</span>
+    </Link>
+    )
+}
 
 const BG_VIDEO_SRC    = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1779093224/hero-botic_krjc0b.webm'
 const BG_VIDEO_POSTER = '/images/hero-botic-poster.jpg'
@@ -82,8 +92,8 @@ export default function Hero() {
 
           {/* CTA */}
           <div className="hero-ctas">
-            <Link to={routes.reserves} className="hero-btn-primary">{t('hero.btnPrimary')}</Link>
-            <Link to={routes.menus}    className="hero-btn-secondary">{t('hero.btnSecondary')}</Link>
+            <MagneticLink to={routes.reserves} className="hero-btn-primary">{t('hero.btnPrimary')}</MagneticLink>
+          <MagneticLink to={routes.menus}    className="hero-btn-secondary">{t('hero.btnSecondary')}</MagneticLink>
           </div>
 
         </div>
