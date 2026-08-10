@@ -8771,11 +8771,21 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   text-align: center;
 }
 
-/* Portada: els vels dels tres accessos s'eleven de baix a dalt, de manera
-   que el recorregut sencer és llegible en passar-hi el cursor o enfocar-los. */
+/* Portada: els tres accessos responen amb una respiració editorial — la foto
+   guanya presència i el títol s'eleva lleument, sense cap efecte de cortina. */
 @media (prefers-reduced-motion: no-preference) and (min-width: 769px) {
-  .features-section .feature-card:hover::before,
-  .features-section .feature-card:focus-visible::before {
-    transform: translateY(-100%);
+  .features-section .feature-card::before {
+    display: none;
+  }
+
+  .features-section .feature-card:hover .feature-media,
+  .features-section .feature-card:focus-visible .feature-media {
+    opacity: .66;
+  }
+
+  .features-section .feature-card:hover .feature-media img,
+  .features-section .feature-card:focus-visible .feature-media img {
+    transform: scale(1.08);
+    filter: saturate(.94) brightness(.86);
   }
 }
