@@ -68,6 +68,7 @@ function MenuNarrative({ t }) {
 
   return (
     <section className="exp-narrative" aria-labelledby="exp-menu-title">
+      <span className="exp-narrative-ghost" aria-hidden="true">{t('experiencia.menuGhost')}</span>
       <header className="exp-narrative-head">
         <span className="exp-kicker">{t('experiencia.menuEyebrow')}</span>
         <h2 id="exp-menu-title">{t('experiencia.menuHeading')}</h2>

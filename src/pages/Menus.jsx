@@ -246,6 +246,7 @@ function WineSection({ t }) {
 
   return (
     <section className="wine-section" aria-labelledby="wine-heading">
+      <span className="wine-ghost" aria-hidden="true">{t('menus.wineBackgroundWord')}</span>
       <div className="wine-photo-wrap" aria-hidden="true">
         <img
           src="/images/restaurant-emporda-botic-michelin.webp"
