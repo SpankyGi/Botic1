@@ -7335,7 +7335,7 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 
-/* ====== HOME â€” LOGOTIP EDITORIAL CENTRAT ====== */
+/* ====== CAPÇALERA EDITORIAL COMPARTIDA ====== */
 .nav-header {
   height: 72px;
   justify-content: flex-end;
@@ -7402,46 +7402,43 @@ main { background: var(--paper); color: var(--ink); }
   0%, 100% { filter: drop-shadow(0 1px 1px rgba(75, 21, 19, .14)); }
   50% { filter: drop-shadow(0 2px 4px rgba(164, 35, 45, .3)); }
 }
-.nav-header.nav-home {
+.nav-header {
   height: 104px;
 }
-.nav-header.nav-home .nav-logo {
+.nav-header .nav-logo {
   font-size: clamp(32px, 3.25vw, 48px);
   letter-spacing: 0.12em;
 }
-.nav-header.nav-home .nav-michelin-stars { gap: 12px; }
-.nav-header.nav-home .nav-michelin-stars img { width: clamp(32px, 3.25vw, 48px); height: clamp(32px, 3.25vw, 48px); }
-.nav-header.nav-home.nav-scrolled {
+.nav-header .nav-michelin-stars { gap: 12px; }
+.nav-header .nav-michelin-stars img { width: clamp(32px, 3.25vw, 48px); height: clamp(32px, 3.25vw, 48px); }
+.nav-header.nav-scrolled {
   height: 70px;
 }
-.nav-header.nav-home.nav-scrolled .nav-logo {
+.nav-header.nav-scrolled .nav-logo {
   font-size: 23px;
   letter-spacing: 0.1em;
 }
-.nav-header.nav-home.nav-scrolled .nav-michelin-stars { gap: 8px; }
-.nav-header.nav-home.nav-scrolled .nav-michelin-stars img { width: 23px; height: 23px; }
+.nav-header.nav-scrolled .nav-michelin-stars { gap: 8px; }
+.nav-header.nav-scrolled .nav-michelin-stars img { width: 23px; height: 23px; }
 @media (max-width: 767px) {
   .nav-header {
-    height: 64px;
+    height: 82px;
     padding: 0 22px;
   }
-  .nav-header.nav-home {
-    height: 82px;
-  }
-  .nav-header.nav-home.nav-scrolled {
+  .nav-header.nav-scrolled {
     height: 62px;
   }
-  .nav-header.nav-home .nav-logo {
+  .nav-header .nav-logo {
     font-size: 30px;
   }
-  .nav-header.nav-home.nav-scrolled .nav-logo {
+  .nav-header.nav-scrolled .nav-logo {
     font-size: 21px;
   }
   .nav-michelin-stars { left: 22px; gap: 7px; }
   .nav-michelin-stars img { width: 21px; height: 21px; }
-  .nav-header.nav-home .nav-michelin-stars { gap: 8px; }
-  .nav-header.nav-home .nav-michelin-stars img { width: 30px; height: 30px; }
-  .nav-header.nav-home.nav-scrolled .nav-michelin-stars img { width: 20px; height: 20px; }
+  .nav-header .nav-michelin-stars { gap: 8px; }
+  .nav-header .nav-michelin-stars img { width: 30px; height: 30px; }
+  .nav-header.nav-scrolled .nav-michelin-stars img { width: 20px; height: 20px; }
 }
 @media (max-width: 1180px) {
   .nav-recognitions { display: none; }
@@ -7475,13 +7472,13 @@ main { background: var(--paper); color: var(--ink); }
   background: #211a14;
 }
 
-/* A l'inici de la Home, el fons és clar: la marca i el menú han de ser foscos. */
-.nav-header.nav-home:not(.nav-scrolled):not(.nav-menu-is-open) .nav-logo,
-.nav-header.nav-home:not(.nav-scrolled):not(.nav-menu-is-open) .nav-toggle-label {
+/* Amb el fons ivori compartit, la marca i el menú mantenen el mateix contrast a totes les rutes. */
+.nav-header:not(.nav-menu-is-open) .nav-logo,
+.nav-header:not(.nav-menu-is-open) .nav-toggle-label {
   color: #211a14 !important;
   opacity: 1;
 }
-.nav-header.nav-home:not(.nav-scrolled):not(.nav-menu-is-open) .nav-toggle-line {
+.nav-header:not(.nav-menu-is-open) .nav-toggle-line {
   background: #211a14 !important;
 }
 
