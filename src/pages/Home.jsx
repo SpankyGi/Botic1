@@ -148,28 +148,28 @@ export default function Home() {
           <h2 className="features-intro-title">
             <img src="/images/botic-logo-original.png" alt="Bo·TiC" />
           </h2>
-          <div className="features-stage">
-            <div className="features-grid" ref={featuresRef}>
-              {FEATURES.map((feature, i) => (
-                <FeatureEntry key={feature.to} {...feature} index={i} />
-              ))}
-            </div>
-            <div className="features-portraits" aria-label={t('home.portraitsAria')}>
-              <figure className="feature-portrait feature-portrait-albert">
-                <img
+          <div className="features-grid" ref={featuresRef}>
+            {FEATURES.map((feature, i) => (
+              <FeatureEntry key={feature.to} {...feature} index={i} />
+            ))}
+          </div>
+          <div className="features-portraits" aria-label={t('home.portraitsAria')}>
+            <figure className="feature-portrait feature-portrait-albert">
+              <img
                 src="/images/cristina-albert-botic-emporda-michelin.webp"
                 alt={t('home.albertPortraitAlt')}
                 loading="lazy"
               />
+              <figcaption>{t('home.albertPortraitLabel')}</figcaption>
             </figure>
-              <figure className="feature-portrait feature-portrait-cristina">
-                <img
+            <figure className="feature-portrait feature-portrait-cristina">
+              <img
                 src="/images/cristina-albert-botic-emporda-michelin.webp"
                 alt={t('home.cristinaPortraitAlt')}
                 loading="lazy"
               />
+              <figcaption>{t('home.cristinaPortraitLabel')}</figcaption>
             </figure>
-            </div>
           </div>
         </div>
       </section>
