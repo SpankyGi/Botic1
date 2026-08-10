@@ -7707,6 +7707,82 @@ main { background: var(--paper); color: var(--ink); }
   height: auto;
 }
 
+/* IntroducciÃ³ semÃ ntica: llegible, precisa i amb una sola entrada editorial. */
+.home-seo-intro {
+  max-width: 620px;
+  margin: 0 auto clamp(34px, 4vw, 58px);
+  padding: 0 20px;
+  color: #211a14;
+  text-align: center;
+}
+.home-seo-intro h2 {
+  margin: 0;
+  font: 300 clamp(24px, 2.25vw, 36px)/1.05 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -.035em;
+  opacity: 0;
+  transform: scale(1.075);
+  transition: opacity .72s ease, transform .9s cubic-bezier(.22, 1, .36, 1);
+  transform-origin: center;
+}
+.home-seo-intro p {
+  max-width: 470px;
+  margin: 14px auto 0;
+  color: rgba(33, 26, 20, .66);
+  font: 400 12px/1.65 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: .02em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity .6s .18s ease, transform .65s .18s cubic-bezier(.22, 1, .36, 1);
+}
+.home-seo-intro.visible h2,
+.home-seo-intro.visible p { opacity: 1; transform: none; }
+
+/* A mÃ²bil, Albert i Cristina tanquen les tres portes com una coda lleugera. */
+.mobile-people-coda { display: none; }
+@media (max-width: 768px) {
+  .home-seo-intro { max-width: 350px; margin-bottom: 34px; padding: 0; }
+  .home-seo-intro h2 { font-size: clamp(24px, 7.2vw, 31px); line-height: 1.08; }
+  .home-seo-intro p { margin-top: 12px; font-size: 12px; line-height: 1.58; }
+  .mobile-people-coda {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: 286px;
+    margin: 42px 0 0;
+    padding-top: 8px;
+  }
+  .mobile-person { position: relative; min-width: 0; }
+  .mobile-person img {
+    position: absolute;
+    bottom: 34px;
+    height: 238px;
+    width: auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 76%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 76%, transparent 100%);
+    pointer-events: none;
+    user-select: none;
+  }
+  .mobile-person-albert img { left: 50%; transform: translateX(-50%); }
+  .mobile-person-cristina img { right: 50%; transform: translateX(50%); }
+  .mobile-person-signature {
+    display: grid;
+    gap: 4px;
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+    left: 10px;
+    color: #211a14;
+    font: 500 7px/1 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+  }
+  .mobile-person-signature span:last-child { color: rgba(33, 26, 20, .55); font-size: 6.5px; letter-spacing: .18em; }
+  .mobile-person-cristina .mobile-person-signature { text-align: right; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-seo-intro h2,
+  .home-seo-intro p { opacity: 1; transform: none; transition: none; }
+}
+
 /* Albert acompanya les tres portes des del marge, sense participar en la graella. */
 .home-albert-editorial,
 .home-albert-signature,

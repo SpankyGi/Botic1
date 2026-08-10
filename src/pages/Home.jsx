@@ -110,6 +110,7 @@ export default function Home() {
   const routes      = useLangRoutes()
   const ctaRef      = useReveal(0.18)
   const featuresRef = useReveal(0.12)
+  const seoIntroRef = useReveal(0.24)
   const introRef    = useReveal(0.26)
   const dishRef     = useRef(null)
 
@@ -201,6 +202,10 @@ export default function Home() {
           <span>Sala &amp; sommelier</span>
         </div>
         <div className="container-max">
+          <div className="home-seo-intro reveal" ref={seoIntroRef}>
+            <h2>{t('home.seoIntroHeading')}</h2>
+            <p>{t('home.seoIntroBody')}</p>
+          </div>
           <h2 className="features-intro-title">
             <img src="/images/botic-logo-original.png" alt="Bo·TiC" />
           </h2>
@@ -208,6 +213,22 @@ export default function Home() {
             {FEATURES.map((feature, i) => (
               <FeatureEntry key={feature.to} {...feature} index={i} />
             ))}
+          </div>
+          <div className="mobile-people-coda" aria-label={t('home.peopleCodaAria')}>
+            <div className="mobile-person mobile-person-albert">
+              <img src="/images/albert-sastregener-editorial-transparent.png" alt="" aria-hidden="true" />
+              <div className="mobile-person-signature">
+                <span>{t('home.albertName')}</span>
+                <span>{t('home.albertRole')}</span>
+              </div>
+            </div>
+            <div className="mobile-person mobile-person-cristina">
+              <img src="/images/cristina-editorial-transparent-v2.png" alt="" aria-hidden="true" />
+              <div className="mobile-person-signature">
+                <span>{t('home.cristinaName')}</span>
+                <span>{t('home.cristinaRole')}</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
