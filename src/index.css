@@ -7011,6 +7011,25 @@ main { background: var(--paper); color: var(--ink); }
   }
   .restaurant-page .rst-story-copy h3 { text-shadow: none; }
 }
+
+/* Restaurant — «Taula del xef»: aquesta fotografia és deliberadament fosca.
+   El vel s'hi limita perquè el relat es pugui llegir sense enfosquir la resta. */
+.restaurant-page .rst-story-scene:nth-child(3) .rst-story-shade {
+  background: linear-gradient(0deg, rgba(13, 10, 8, .80) 0%, rgba(13, 10, 8, .52) 43%, rgba(13, 10, 8, .16) 72%, transparent 100%);
+}
+.restaurant-page .rst-story-scene:nth-child(3) .rst-story-copy h3 {
+  color: #fffaf4;
+  text-shadow: 0 5px 28px rgba(0, 0, 0, .56);
+}
+.restaurant-page .rst-story-scene:nth-child(3) .rst-story-copy p { color: rgba(255, 250, 244, .84); }
+.restaurant-page .rst-story-scene:nth-child(3) .rst-story-number { color: rgba(246, 217, 223, .92); }
+.restaurant-page .rst-story-scene:nth-child(3) .rst-story-number::after { background: rgba(246, 217, 223, .62); }
+
+@media (max-width: 768px) {
+  .restaurant-page .rst-story-scene:nth-child(3) .rst-story-shade {
+    background: linear-gradient(0deg, rgba(13, 10, 8, .84) 0%, rgba(13, 10, 8, .54) 48%, rgba(13, 10, 8, .14) 78%, transparent 100%);
+  }
+}
 .home-season-dish figcaption {
   position: absolute;
   right: 22px;
