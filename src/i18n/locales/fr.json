@@ -184,6 +184,7 @@
     "reserveTaxiBody": "Si vous avez besoin d'un taxi pour quitter le restaurant, merci de le signaler lors de la réservation ou à votre arrivée.",
 
     "teamEyebrow": "Équipe",
+    "teamBackground": "ÉQUIPE",
     "teamHeading": "Les personnes derrière l'expérience",
     "teamSub": "Cuisine, salle et hospitalité partagent une même façon de comprendre Bo.TiC.",
     "kitchenLabel": "Chef",
@@ -313,7 +314,6 @@
     "moment04Text": "De petites préparations qui prolongent le plaisir. Un dernier souvenir du menu à emporter chez soi.",
     "menuNote": "Le menu peut varier selon la saison et la disponibilité des produits.",
     "equipEyebrow": "L'équipe",
-    "equipBackground": "ÉQUIPE",
     "equipHeading": "Petite, formée et engagée",
       "equipGhost": "GESTE",
     "equipImgAlt": "Équipe du restaurant Bo.TiC",

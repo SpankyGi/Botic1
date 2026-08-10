@@ -398,6 +398,7 @@ function TeamSection({ t }) {
 
   return (
     <section id="team" className="rst-team" aria-labelledby="team-heading">
+      <span className="rst-team-background-word" aria-hidden="true">{t('restaurant.teamBackground')}</span>
       <div className="container-max">
         <div className="rst-team-header reveal" ref={headerRef}>
           <span className="rst-eyebrow">{t('restaurant.teamEyebrow')}</span>

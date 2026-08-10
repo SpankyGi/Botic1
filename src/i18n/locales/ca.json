@@ -184,6 +184,7 @@
     "reserveTaxiBody": "Si us cal un taxi per marxar del restaurant, indiqueu-ho en fer la reserva o quan hi arribeu.",
 
     "teamEyebrow": "Equip",
+    "teamBackground": "EQUIP",
     "teamHeading": "Les persones darrere l'experiència",
     "teamSub": "Cuina, sala i hospitalitat comparteixen una mateixa manera d'entendre Bo.TiC.",
     "kitchenLabel": "Xef",
@@ -313,7 +314,6 @@
     "moment04Text": "Petites elaboracions que allarguen el plaer. Un últim record del menú per endur-se cap a casa.",
     "menuNote": "El menú pot variar segons la temporada i la disponibilitat del producte.",
     "equipEyebrow": "L'equip",
-    "equipBackground": "EQUIP",
     "equipHeading": "Petit, format i compromès",
       "equipGhost": "GEST",
     "equipImgAlt": "Equip del restaurant Bo.TiC",

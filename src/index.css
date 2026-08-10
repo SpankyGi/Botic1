@@ -8272,8 +8272,25 @@ main { background: var(--paper); color: var(--ink); }
 .restaurant-page .rst-team {
   scroll-margin-top: 72px;
   padding: clamp(120px, 14vw, 210px) 0 clamp(132px, 16vw, 236px);
+  isolation: isolate;
 }
-.restaurant-page .rst-team .container-max { max-width: 1380px; }
+.restaurant-page .rst-team-background-word {
+  position: absolute;
+  z-index: 0;
+  top: clamp(52px, 8vw, 132px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  color: transparent;
+  font: 300 clamp(112px, 18vw, 300px)/.78 'Plus Jakarta Sans', serif;
+  letter-spacing: -.075em;
+  white-space: nowrap;
+  -webkit-text-stroke: 1px rgba(165, 31, 61, .28);
+  text-stroke: 1px rgba(165, 31, 61, .28);
+  pointer-events: none;
+  user-select: none;
+}
+.restaurant-page .rst-team .container-max { position: relative; z-index: 1; max-width: 1380px; }
 .restaurant-page .rst-team-header {
   max-width: 620px;
   margin: 0 0 clamp(74px, 9vw, 132px) clamp(24px, 7vw, 104px);
@@ -8351,6 +8368,12 @@ main { background: var(--paper); color: var(--ink); }
 
 @media (max-width: 768px) {
   .restaurant-page .rst-team { scroll-margin-top: 56px; padding: 92px 0 108px; }
+  .restaurant-page .rst-team-background-word {
+    top: 72px;
+    font-size: clamp(82px, 24vw, 138px);
+    -webkit-text-stroke: 1px rgba(165, 31, 61, .24);
+    text-stroke: 1px rgba(165, 31, 61, .24);
+  }
   .restaurant-page .rst-team-header { margin: 0 28px 54px; }
   .restaurant-page .rst-team-mosaic {
     grid-template-columns: 1fr 1fr;
@@ -8460,27 +8483,6 @@ main { background: var(--paper); color: var(--ink); }
 .mnu-cta-section .btn-cream { color:#211a14; border-color:rgba(33,26,20,.36); background:transparent; }
 .mnu-cta-section .btn-cream:hover { background:#211a14; color:#fffaf4; }
 
-/* Experiència — gest editorial de fons per a la secció d'equip. */
-.exp-hospitality { isolation:isolate; }
-.exp-team-background-word {
-  position:absolute;
-  z-index:0;
-  top:clamp(30px,5vw,88px);
-  left:50%;
-  transform:translateX(-50%);
-  width:max-content;
-  color:transparent;
-  font:300 clamp(112px,19vw,316px)/.78 'Plus Jakarta Sans', serif;
-  letter-spacing:-.075em;
-  white-space:nowrap;
-  -webkit-text-stroke:1px rgba(165,31,61,.28);
-  text-stroke:1px rgba(165,31,61,.28);
-  pointer-events:none;
-  user-select:none;
-}
-.exp-hospitality-images { z-index:1; }
-.exp-hospitality-copy { z-index:2; }
-
 @media (max-width:768px) {
   .mnu-hero { min-height:600px; padding:118px 0 54px; align-items:flex-end; }
   .mnu-hero-img { width:100%; opacity:.44; object-position:50% 72%; }
@@ -8507,10 +8509,4 @@ main { background: var(--paper); color: var(--ink); }
   .wine-section { padding:92px 0; }
   .wine-photo-wrap { width:100%; opacity:.14; }
   .wine-col-left { max-width:100%; }
-  .exp-team-background-word {
-    top:76px;
-    font-size:clamp(82px,24vw,138px);
-    -webkit-text-stroke:1px rgba(165,31,61,.24);
-    text-stroke:1px rgba(165,31,61,.24);
-  }
 }

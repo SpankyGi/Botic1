@@ -137,7 +137,6 @@ function HospitalitySection({ t }) {
   const revealRef = useReveal(0.1)
   return (
     <section className="exp-hospitality" aria-labelledby="exp-team-title">
-      <span className="exp-team-background-word" aria-hidden="true">{t('experiencia.equipBackground')}</span>
       <div className="exp-hospitality-images">
         <figure className="exp-hospitality-main"><img src={TEAM} alt={t('experiencia.equipImgAlt')} loading="lazy" /></figure>
         <figure className="exp-hospitality-detail"><img src={PORTRAIT} alt="" loading="lazy" /></figure>
