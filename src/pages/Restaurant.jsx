@@ -230,7 +230,7 @@ function ScrollArchitectureSection({ t }) {
     },
     {
       num: '03',
-      img: '/images/restaurant-botic-corca-emporda-sala-gastronomica.webp',
+      img: '/images/restaurant-taula-xef-emporda.webp',
       alt: t('restaurant.archRoom2ImgAlt'),
       title: t('restaurant.archRoom2Title'),
       body: t('restaurant.archRoom2Body'),

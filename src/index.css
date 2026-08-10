@@ -6838,26 +6838,6 @@ main { background: var(--paper); color: var(--ink); }
   animation: home-season-enter .7s cubic-bezier(.22, 1, .36, 1) both;
 }
 
-/* Restaurant — sobre el nou hero la pastilla de menú és clara: l'etiqueta
-   manté tinta fosca també en hover i focus, sense canviar la resta de rutes. */
-body:has(.restaurant-page) .nav-header:not(.nav-menu-is-open) .nav-toggle {
-  color: #211a14;
-  background: rgba(255, 252, 246, .92);
-  border-color: rgba(33, 26, 20, .42);
-}
-body:has(.restaurant-page) .nav-header:not(.nav-menu-is-open) .nav-toggle-label,
-body:has(.restaurant-page) .nav-header:not(.nav-menu-is-open) .nav-toggle:hover .nav-toggle-label,
-body:has(.restaurant-page) .nav-header:not(.nav-menu-is-open) .nav-toggle:focus-visible .nav-toggle-label {
-  color: #211a14 !important;
-  opacity: 1;
-  font-weight: 500;
-}
-body:has(.restaurant-page) .nav-header:not(.nav-menu-is-open) .nav-toggle-line { background: #211a14; }
-body:has(.restaurant-page) .nav-header:not(.nav-menu-is-open) .nav-toggle:focus-visible {
-  outline: 2px solid #A51F3D;
-  outline-offset: 3px;
-}
-
 /* Restaurant — la pàgina recupera la llum de la Home. L'scroll narratiu de
    les imatges es manté deliberadament intacte: és el contrapunt fosc del relat. */
 .restaurant-page {
@@ -7046,11 +7026,14 @@ body:has(.restaurant-page) .nav-header:not(.nav-menu-is-open) .nav-toggle:focus-
 .restaurant-page .rst-story-scene:nth-child(3) .rst-story-copy p { color: rgba(255, 250, 244, .84); }
 .restaurant-page .rst-story-scene:nth-child(3) .rst-story-number { color: rgba(246, 217, 223, .92); }
 .restaurant-page .rst-story-scene:nth-child(3) .rst-story-number::after { background: rgba(246, 217, 223, .62); }
+/* Taula del xef — centre lleugerament desplaçat per retenir taula, llum i entrada. */
+.restaurant-page .rst-story-scene:nth-child(3) .rst-story-img { object-position: 54% 55%; }
 
 @media (max-width: 768px) {
   .restaurant-page .rst-story-scene:nth-child(3) .rst-story-shade {
     background: linear-gradient(0deg, rgba(13, 10, 8, .84) 0%, rgba(13, 10, 8, .54) 48%, rgba(13, 10, 8, .14) 78%, transparent 100%);
   }
+  .restaurant-page .rst-story-scene:nth-child(3) .rst-story-img { object-position: 60% 56%; }
 }
 .home-season-dish figcaption {
   position: absolute;
@@ -8242,4 +8225,30 @@ body:has(.restaurant-page) .nav-header:not(.nav-menu-is-open) .nav-toggle:focus-
     font-size: clamp(30px, 3.2vw, 48px);
     line-height: 1.18;
   }
+}
+
+/* Només el control global «Menú» comparteix aquest filet Bo.TiC a totes les
+   rutes. «Reservar» i la resta de CTA conserven la seva jerarquia actual. */
+.nav-header:not(.nav-menu-is-open) .nav-toggle {
+  color: #211a14;
+  background: rgba(255, 252, 246, .92);
+  border-color: rgba(165, 31, 61, .76);
+  transition: background .22s ease, border-color .22s ease, box-shadow .22s ease;
+}
+.nav-header:not(.nav-menu-is-open) .nav-toggle-label,
+.nav-header:not(.nav-menu-is-open) .nav-toggle:hover .nav-toggle-label,
+.nav-header:not(.nav-menu-is-open) .nav-toggle:focus-visible .nav-toggle-label {
+  color: #211a14 !important;
+  opacity: 1;
+  font-weight: 500;
+}
+.nav-header:not(.nav-menu-is-open) .nav-toggle-line { background: #211a14; }
+.nav-header:not(.nav-menu-is-open) .nav-toggle:hover {
+  background: rgba(255, 252, 246, .98);
+  border-color: #A51F3D;
+  box-shadow: 0 3px 12px rgba(165, 31, 61, .10);
+}
+.nav-header:not(.nav-menu-is-open) .nav-toggle:focus-visible {
+  outline: 2px solid #A51F3D;
+  outline-offset: 3px;
 }
