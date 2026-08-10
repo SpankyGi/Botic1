@@ -45,7 +45,7 @@ function RestaurantHero({ t, routes }) {
     <section className="rst-hero" ref={heroRef} aria-label={t('restaurant.heroAria')}>
       <div className="rst-hero-media">
         <img
-          src="/images/restaurant-botic-corca-emporda-exterior-nit.webp"
+          src="/images/restaurant-botic-emporda-hero.webp"
           alt={t('restaurant.heroImgAlt')}
           className="rst-hero-img"
         />
@@ -499,7 +499,7 @@ export default function Restaurant() {
         {
           '@type': 'Restaurant',
           name: 'Bo.TiC',
-          image: `${BASE_URL}/images/restaurant-botic-corca-emporda-exterior-nit.webp`,
+          image: `${BASE_URL}/images/restaurant-botic-emporda-hero.webp`,
           url: `${BASE_URL}${routes.restaurant}`,
           telephone: '+34972630869',
           email: 'restaurant@bo-tic.com',
@@ -536,7 +536,7 @@ export default function Restaurant() {
         title={t('seo.restaurant.title')}
         description={t('seo.restaurant.description')}
         pageKey="restaurant"
-        ogImage={`${BASE_URL}/images/restaurant-botic-corca-emporda-exterior-nit.webp`}
+        ogImage={`${BASE_URL}/images/restaurant-botic-emporda-hero.webp`}
       />
 
       <div className="restaurant-page">
