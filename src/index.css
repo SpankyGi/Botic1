@@ -262,7 +262,7 @@ body .exp-narrative-head p { grid-column: 2; max-width: 460px; color: rgba(54,43
 /* ====== NAV HEADER ====== */
 .nav-header {
   position: fixed;
-  top: 36px; left: 0; right: 0;
+  top: 0; left: 0; right: 0;
   height: 80px;
   display: flex;
   align-items: center;
@@ -1056,7 +1056,7 @@ body .exp-narrative-head p { grid-column: 2; max-width: 460px; color: rgba(54,43
 .hero {
   position: relative;
   min-height: 100vh;
-  margin-top: 36px;
+  margin-top: 0;
   overflow: hidden;
   background: var(--black);
   padding: 80px 0 120px;
@@ -3738,7 +3738,7 @@ footer.botic-footer {
 /* â”€â”€ Selector sticky â”€â”€ */
 .mnu-selector-wrap {
   position: sticky;
-  top: 124px; /* 36px topbar + 88px nav */
+  top: 88px;
   z-index: 40;
   background: linear-gradient(180deg, #1c1a16 0%, #161511 100%);
   border-bottom: 1px solid rgba(154,42,42,0.12);
@@ -6685,7 +6685,7 @@ main { background: var(--paper); color: var(--ink); }
    Una Ãºnica narrativa: vÃ­deo, persones, lloc, tres portes i reserva. */
 .hero {
   min-height: 100svh;
-  margin-top: 36px;
+  margin-top: 0;
   padding: 0;
   display: block;
   background: #11100e;
