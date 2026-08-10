@@ -10,6 +10,7 @@
     "ariaFooter": "Informations de contact",
     "location": "Corçà · Empordà",
     "items": {
+      "home": { "label": "Accueil", "desc": "La page d'accueil de Bo.TiC." },
       "restaurant": { "label": "Restaurant", "desc": "L'espace. La cuisine. Le territoire." },
       "gastronomia": { "label": "Gastronomie", "desc": "Produit, technique et mémoire." },
       "menus": { "label": "Menus", "desc": "L'expérience complète à table." },

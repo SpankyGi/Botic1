@@ -511,6 +511,23 @@ body .exp-narrative { padding: 86px 22px 72px; }
   color: rgba(255, 250, 241, 0.94);
 }
 
+/* L'índex també situa: la pàgina activa queda marcada sense carregar la llista. */
+.nav-fs-link.is-active {
+  position: relative;
+  margin-left: -14px;
+  padding-left: 14px;
+}
+.nav-fs-link.is-active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 16%;
+  bottom: 16%;
+  width: 1px;
+  background: #a51f3d;
+  box-shadow: 0 0 12px rgba(165, 31, 61, .36);
+}
+
 /* RIGHT â€” image zone */
 .nav-fs-right {
   display: flex;

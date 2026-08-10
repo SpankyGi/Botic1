@@ -4,8 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { useLang, useLangRoutes, useSwitchLang } from '../i18n/LangContext'
 import { LANGS } from '../i18n/routes'
 
-const NAV_KEYS = ['restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves', 'horaris']
+const NAV_KEYS = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves', 'horaris']
 const NAV_IMGS = [
+  '/images/plat-cenital-botic.jpg',
   '/images/restaurant-emporda-botic-michelin.webp',
   '/images/albert-sastregener-cuina-emporda-girona.webp',
   '/images/Albert Sastregener-empordà-botic-restaurant.webp',
@@ -13,7 +14,7 @@ const NAV_IMGS = [
   '/images/restaurant-emporda-michelin-girona.webp',
   '/images/restaurant-emporda-botic-michelin.webp',
 ]
-const NAV_IDX = ['01', '02', '03', '04', '05', '06']
+const NAV_IDX = ['00', '01', '02', '03', '04', '05', '06']
 
 export function BoticWordmark({ className = '', ...props }) {
   return (
@@ -60,7 +61,10 @@ export default function Nav() {
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
     if (menuOpen) {
-      setTimeout(() => firstLinkRef.current?.focus(), 750)
+      setTimeout(() => {
+        const activeLink = menuRef.current?.querySelector('.nav-fs-link.is-active')
+        ;(activeLink || firstLinkRef.current)?.focus()
+      }, 750)
     } else {
       openBtnRef.current?.focus()
     }
@@ -179,6 +183,7 @@ export default function Nav() {
                 >
                   <NavLink
                     to={item.to}
+                    end={item.to === routes.home}
                     ref={i === 0 ? firstLinkRef : null}
                     onClick={handleClose}
                     onFocus={() => setActiveImg(i)}
