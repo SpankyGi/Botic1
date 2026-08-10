@@ -104,7 +104,13 @@
     "seasonEyebrow": "Cuisine de saison",
     "seasonHeading": "Le produit, à son moment",
     "seasonLink": "Découvrir les menus",
-    "seasonControlsAria": "Sélectionner un plat de saison",
+    "seasonControlsAria": "Index des créations de saison",
+    "seasonItems": [
+      "Herbes sauvages", "Apéritif", "Thon de côte", "Bouillon marin", "Le geste final",
+      "Poisson de marché", "Langoustines", "Homard", "Asperge blanche", "Viande et fruits rouges",
+      "Fruits de mer", "Fraises", "Douceur de saison", "Racines de l'Empordà", "Poisson et braise",
+      "Salinité", "Fond de mer", "Légumes", "Viande maturée", "Petit fours"
+    ],
     "seasonDish1Name": "Herbes",
     "seasonDish2Name": "Poisson",
     "seasonDish3Name": "Fraises",

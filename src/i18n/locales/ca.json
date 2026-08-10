@@ -104,7 +104,13 @@
     "seasonEyebrow": "Cuina de temporada",
     "seasonHeading": "El moment del producte",
     "seasonLink": "Descobrir els menús",
-    "seasonControlsAria": "Selecciona un plat de temporada",
+    "seasonControlsAria": "Índex de creacions de temporada",
+    "seasonItems": [
+      "Herbes de marge", "Aperitiu", "Tonyina de costa", "Brou marí", "El gest final",
+      "Peix de llotja", "Escamarlans", "Llamàntol", "Espàrrec blanc", "Carn i fruits vermells",
+      "Marisc", "Maduixes", "Dolç de temporada", "Arrel empordanesa", "Peix i brasa",
+      "Salinitat", "Fons de mar", "Verdures", "Carn madura", "Petit fours"
+    ],
     "seasonDish1Name": "Herbes",
     "seasonDish2Name": "Peix",
     "seasonDish3Name": "Maduixes",

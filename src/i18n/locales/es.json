@@ -104,7 +104,13 @@
     "seasonEyebrow": "Cocina de temporada",
     "seasonHeading": "El momento del producto",
     "seasonLink": "Descubrir los menús",
-    "seasonControlsAria": "Selecciona un plato de temporada",
+    "seasonControlsAria": "Índice de creaciones de temporada",
+    "seasonItems": [
+      "Hierbas de campo", "Aperitivo", "Atún de costa", "Caldo marino", "El gesto final",
+      "Pescado de lonja", "Cigalas", "Bogavante", "Espárrago blanco", "Carne y frutos rojos",
+      "Marisco", "Fresas", "Dulce de temporada", "Raíz ampurdanesa", "Pescado y brasa",
+      "Salinidad", "Fondo de mar", "Verduras", "Carne madurada", "Petit fours"
+    ],
     "seasonDish1Name": "Hierbas",
     "seasonDish2Name": "Pescado",
     "seasonDish3Name": "Fresas",

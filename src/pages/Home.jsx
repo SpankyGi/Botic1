@@ -39,12 +39,31 @@ function ReserveHeading({ children }) {
 function SeasonStrip({ t, routes }) {
   const revealRef = useReveal(0.16)
   const [activeDish, setActiveDish] = useState(0)
+  const labels = t('home.seasonItems', { returnObjects: true })
   const dishes = [
-    { image: '/images/botic-maig-2026-webp/amanida-gastronomica-herbes-botic-emporda.webp', alt: t('home.seasonDish1Alt'), label: t('home.seasonDish1Name') },
-    { image: '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp', alt: t('home.seasonDish2Alt'), label: t('home.seasonDish2Name') },
-    { image: '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp', alt: t('home.seasonDish3Alt'), label: t('home.seasonDish3Name') },
-  ]
+    '/images/botic-maig-2026-webp/amanida-gastronomica-herbes-botic-emporda.webp',
+    '/images/botic-maig-2026-webp/presentacio-aperitiu-botic-costa-brava.webp',
+    '/images/botic-maig-2026-webp/tonyina-mar-costa-brava-alta-cuina-botic.webp',
+    '/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp',
+    '/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic.webp',
+    '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp',
+    '/images/botic-maig-2026-webp/escamarlans-marisc-restaurant-botic-emporda.webp',
+    '/images/botic-maig-2026-webp/plat-llamantol-restaurant-botic-emporda.webp',
+    '/images/botic-maig-2026-webp/plat-esparrecs-blancs-restaurant-botic.webp',
+    '/images/botic-maig-2026-webp/plat-carn-fruits-vermells-botic.webp',
+    '/images/botic-maig-2026-webp/detall-postres-maduixes-botic-emporda.webp',
+    '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp',
+    '/images/botic-maig-2026-webp/alta-cuina-empordanesa-restaurant-botic.webp',
+    '/images/plat-cenital-botic.jpg',
+    '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp',
+    '/images/botic-maig-2026-webp/tonyina-mar-costa-brava-alta-cuina-botic.webp',
+    '/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp',
+    '/images/botic-maig-2026-webp/plat-esparrecs-blancs-restaurant-botic.webp',
+    '/images/botic-maig-2026-webp/plat-carn-fruits-vermells-botic.webp',
+    '/images/botic-maig-2026-webp/detall-postres-maduixes-botic-emporda.webp',
+  ].map((image, index) => ({ image, label: labels[index] }))
   const dish = dishes[activeDish]
+  const formatIndex = (index) => String(index + 1).padStart(2, '0')
 
   return (
     <section className="home-season" aria-label={t('home.seasonAria')}>
@@ -60,8 +79,8 @@ function SeasonStrip({ t, routes }) {
 
         <div className="home-season-gallery">
           <figure className="home-season-dish">
-            <img key={dish.image} src={dish.image} alt={dish.alt} loading="lazy" />
-            <figcaption aria-hidden="true">0{activeDish + 1}</figcaption>
+            <img key={dish.image} src={dish.image} alt={dish.label} loading="lazy" />
+            <figcaption aria-hidden="true">{formatIndex(activeDish)}</figcaption>
           </figure>
 
           <div className="home-season-controls" aria-label={t('home.seasonControlsAria')}>
@@ -69,11 +88,13 @@ function SeasonStrip({ t, routes }) {
               <button
                 className={index === activeDish ? 'is-active' : ''}
                 type="button"
-                key={item.image}
+                key={`${item.image}-${index}`}
                 aria-pressed={index === activeDish}
                 onClick={() => setActiveDish(index)}
+                onFocus={() => setActiveDish(index)}
+                onMouseEnter={() => setActiveDish(index)}
               >
-                <span aria-hidden="true">0{index + 1}</span>
+                <span aria-hidden="true">{formatIndex(index)}</span>
                 <span>{item.label}</span>
               </button>
             ))}
