@@ -4,11 +4,11 @@ import { useTranslation } from 'react-i18next'
 import Hero             from '../components/Hero'
 import ChefSection      from '../components/ChefSection'
 import SEO              from '../components/SEO'
-import { useReveal } from '../hooks/useReveal'
+import { useLateReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
 function FeatureEntry({ tag, title, body, to, label, image, index }) {
-  const entryRef = useReveal(0.24)
+  const entryRef = useLateReveal()
 
   return (
     <Link ref={entryRef} to={to} className="feature-card feature-entry" style={{ '--i': index }}>
@@ -49,7 +49,7 @@ function ReserveHeading({ children }) {
 }
 
 function SeasonStrip({ t, routes }) {
-  const revealRef = useReveal(0.16)
+  const revealRef = useLateReveal()
   const [activeDish, setActiveDish] = useState(0)
   const labels = t('home.seasonItems', { returnObjects: true })
   const dishes = [
@@ -120,10 +120,9 @@ function SeasonStrip({ t, routes }) {
 export default function Home() {
   const { t }       = useTranslation()
   const routes      = useLangRoutes()
-  const ctaRef      = useReveal(0.18)
-  const featuresRef = useReveal(0.12)
-  const seoIntroRef = useReveal(0.24)
-  const introRef    = useReveal(0.26)
+  const ctaRef      = useLateReveal()
+  const seoIntroRef = useLateReveal()
+  const introRef    = useLateReveal()
   const dishRef     = useRef(null)
 
   useEffect(() => {
@@ -137,7 +136,10 @@ export default function Home() {
       const rect = dish.getBoundingClientRect()
       const travel = window.innerHeight + rect.height
       const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / travel))
-      const degrees = -22 + progress * 44
+      // El plat conserva presència mentre s'entra al bloc; només gira al
+      // tram final, quan el lector ja n'ha recorregut la major part.
+      const lateProgress = Math.min(1, Math.max(0, (progress - 0.64) / 0.36))
+      const degrees = -22 + lateProgress * 44
       dish.style.setProperty('--dish-turn', `${degrees.toFixed(2)}deg`)
     }
     const onScroll = () => {
@@ -223,7 +225,7 @@ export default function Home() {
             <SeoIntroHeading>{t('home.seoIntroHeading')}</SeoIntroHeading>
             <p>{t('home.seoIntroBody')}</p>
           </div>
-          <div className="features-grid" ref={featuresRef}>
+          <div className="features-grid">
             {FEATURES.map((feature, i) => (
               <FeatureEntry key={feature.to} {...feature} index={i} />
             ))}

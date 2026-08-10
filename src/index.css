@@ -7552,7 +7552,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .features-section .feature-entry:nth-child(2) {
     animation: botic-feature-shift linear both;
     animation-timeline: view();
-    animation-range: entry 0% exit 100%;
+    animation-range: entry 64% exit 100%;
   }
   @keyframes botic-portrait-drift {
     from { transform: scale(1.08) translateY(-2%); }
@@ -8171,8 +8171,8 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
       background .55s ease;
   }
 
-  .features-grid.visible .feature-card,
-  .features-grid.visible .feature-card:nth-child(2) {
+  .features-section .feature-entry.visible.feature-card,
+  .features-section .feature-entry.visible.feature-card:nth-child(2) {
     opacity: 1;
     transform: translateY(0);
   }
@@ -8183,8 +8183,8 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
     transition: clip-path 1.2s cubic-bezier(.22, 1, .36, 1), opacity .75s ease;
   }
 
-  .features-grid.visible .feature-media,
-  .features-grid.visible .feature-entry:nth-child(2) .feature-media {
+  .features-section .feature-entry.visible .feature-media,
+  .features-section .feature-entry.visible.feature-entry:nth-child(2) .feature-media {
     clip-path: inset(0);
   }
 
@@ -8193,7 +8193,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
     transition: transform 1.35s cubic-bezier(.22, 1, .36, 1), filter .55s ease;
   }
 
-  .features-grid.visible .feature-media img {
+  .features-section .feature-entry.visible .feature-media img {
     transform: scale(1);
   }
 

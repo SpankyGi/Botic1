@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 const STEP = 0.55
 
-function useFragReveal(threshold = 0.25) {
+function useFragReveal(threshold = 0.25, rootMargin = '0px') {
   const reduced =
     typeof window !== 'undefined' &&
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -17,7 +17,7 @@ function useFragReveal(threshold = 0.25) {
       ([entry]) => {
         if (entry.isIntersecting) { setActive(true); obs.disconnect() }
       },
-      { threshold }
+      { threshold, rootMargin }
     )
     obs.observe(el)
     return () => obs.disconnect()
@@ -27,8 +27,8 @@ function useFragReveal(threshold = 0.25) {
 
 export default function ChefSection() {
   const { t } = useTranslation()
-  const [quoteRef, quoteActive] = useFragReveal(0.22)
-  const [sceneRef, sceneActive] = useFragReveal(0.14)
+  const [quoteRef, quoteActive] = useFragReveal(0.01, '0px 0px -76% 0px')
+  const [sceneRef, sceneActive] = useFragReveal(0.01, '0px 0px -76% 0px')
 
   const frags = t('soul.frags', { returnObjects: true })
 
