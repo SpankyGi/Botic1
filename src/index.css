@@ -6946,6 +6946,71 @@ main { background: var(--paper); color: var(--ink); }
   .restaurant-page .rst-team-header { margin-bottom: 58px; }
   .restaurant-page .rst-team-photo::after { background: linear-gradient(0deg, rgba(243, 237, 227, .88) 0%, transparent 62%); }
 }
+
+/* Restaurant — la seqüència conserva el seu relat amb scroll, però el marc
+   deixa de ser un teatre negre: el paper editorial també acompanya les fotos. */
+.restaurant-page .rst-story,
+.restaurant-page .rst-story-scroll,
+.restaurant-page .rst-story-stage,
+.restaurant-page .rst-story-scene {
+  background: var(--restaurant-paper);
+}
+
+.restaurant-page .rst-story-shade {
+  background:
+    linear-gradient(90deg, rgba(243, 237, 227, .98) 0%, rgba(243, 237, 227, .98) 22%, rgba(243, 237, 227, .52) 29%, rgba(243, 237, 227, .14) 43%, transparent 64%),
+    linear-gradient(0deg, rgba(243, 237, 227, .16) 0%, transparent 45%);
+}
+
+.restaurant-page .rst-story-scene.layout-split-left .rst-story-shade {
+  background:
+    linear-gradient(270deg, rgba(243, 237, 227, .98) 0%, rgba(243, 237, 227, .98) 25%, rgba(243, 237, 227, .52) 31%, rgba(243, 237, 227, .14) 45%, transparent 66%),
+    linear-gradient(0deg, rgba(243, 237, 227, .16) 0%, transparent 46%);
+}
+
+.restaurant-page .rst-story-scene.layout-fullscreen .rst-story-shade {
+  background: linear-gradient(0deg, rgba(243, 237, 227, .58) 0%, rgba(243, 237, 227, .18) 50%, rgba(243, 237, 227, .06) 100%);
+}
+
+.restaurant-page .rst-story-scene.layout-portrait-right .rst-story-shade {
+  background:
+    linear-gradient(90deg, rgba(243, 237, 227, .98) 0%, rgba(243, 237, 227, .98) 40%, rgba(243, 237, 227, .42) 47%, rgba(243, 237, 227, .10) 61%, transparent 78%),
+    linear-gradient(0deg, rgba(243, 237, 227, .18) 0%, transparent 48%);
+}
+
+.restaurant-page .rst-story-scene.layout-cinematic-end .rst-story-shade {
+  background:
+    linear-gradient(90deg, rgba(243, 237, 227, .98) 0%, rgba(243, 237, 227, .98) 11%, rgba(243, 237, 227, .42) 17%, rgba(243, 237, 227, .10) 31%, transparent 56%),
+    linear-gradient(0deg, rgba(243, 237, 227, .22) 0%, transparent 48%);
+}
+
+.restaurant-page .rst-story-copy h3,
+.restaurant-page .rst-story-intro .rst-arch-heading { color: var(--restaurant-ink); text-shadow: none; }
+.restaurant-page .rst-story-copy p { color: rgba(33, 26, 20, .76); }
+.restaurant-page .rst-story-number,
+.restaurant-page .rst-story-intro .rst-eyebrow { color: var(--restaurant-red); }
+.restaurant-page .rst-story-number::after,
+.restaurant-page .rst-story-intro-line { background: rgba(165, 31, 61, .58); }
+.restaurant-page .rst-story-chrome { color: rgba(33, 26, 20, .62); }
+.restaurant-page .rst-story-rail { background: rgba(33, 26, 20, .18); }
+.restaurant-page .rst-story-rail span { background: var(--restaurant-red); }
+
+.restaurant-page .rst-story.is-intro .rst-story-shade {
+  background:
+    radial-gradient(ellipse 54% 38% at 50% 49%, rgba(243, 237, 227, .90) 0%, rgba(243, 237, 227, .64) 46%, rgba(243, 237, 227, .10) 76%, transparent 100%),
+    linear-gradient(0deg, rgba(243, 237, 227, .24), transparent 50%);
+}
+
+@media (max-width: 768px) {
+  .restaurant-page .rst-story-shade,
+  .restaurant-page .rst-story-scene.layout-split-left .rst-story-shade,
+  .restaurant-page .rst-story-scene.layout-fullscreen .rst-story-shade,
+  .restaurant-page .rst-story-scene.layout-portrait-right .rst-story-shade,
+  .restaurant-page .rst-story-scene.layout-cinematic-end .rst-story-shade {
+    background: linear-gradient(0deg, rgba(243, 237, 227, .70) 0%, rgba(243, 237, 227, .27) 44%, rgba(243, 237, 227, .04) 78%, transparent 100%);
+  }
+  .restaurant-page .rst-story-copy h3 { text-shadow: none; }
+}
 .home-season-dish figcaption {
   position: absolute;
   right: 22px;
