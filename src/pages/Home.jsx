@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next'
 import Hero             from '../components/Hero'
 import ChefSection      from '../components/ChefSection'
 import SEO              from '../components/SEO'
-import { BoticWordmark } from '../components/Nav'
 import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
@@ -216,8 +215,10 @@ export default function Home() {
         </div>
         <div className="container-max">
           <div className="home-seo-intro reveal" ref={seoIntroRef}>
-            <div className="home-seo-logo">
-              <BoticWordmark className="home-seo-wordmark" aria-hidden="true" />
+            <div className="home-seo-logo" aria-hidden="true">
+              <span className="home-seo-symbol-reveal">
+                <img src="/images/botic-logo-original.png" alt="" />
+              </span>
             </div>
             <SeoIntroHeading>{t('home.seoIntroHeading')}</SeoIntroHeading>
             <p>{t('home.seoIntroBody')}</p>

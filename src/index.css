@@ -7716,20 +7716,27 @@ main { background: var(--paper); color: var(--ink); }
   text-align: center;
 }
 .home-seo-logo {
-  width: fit-content;
-  max-width: 100%;
+  position: relative;
+  width: clamp(126px, 11vw, 176px);
+  height: clamp(70px, 5.8vw, 96px);
   margin: 0 auto clamp(20px, 2vw, 30px);
+  overflow: hidden;
 }
-.home-seo-wordmark {
+.home-seo-symbol-reveal {
   display: block;
-  color: #211a14;
-  font: 200 clamp(34px, 3vw, 48px)/1 'Plus Jakarta Sans', sans-serif;
-  letter-spacing: .12em;
-  white-space: nowrap;
+  width: 100%;
+  height: 100%;
   opacity: 0;
   clip-path: inset(0 100% 0 0);
   transform: translateX(-10px);
   transition: clip-path .72s cubic-bezier(.76, 0, .24, 1), opacity .24s ease, transform .72s cubic-bezier(.22, 1, .36, 1);
+}
+.home-seo-symbol-reveal img {
+  display: block;
+  width: 220%;
+  max-width: none;
+  height: auto;
+  transform: translate(-27.5%, -58.5%);
 }
 .home-seo-intro h2 {
   margin: 0;
@@ -7751,7 +7758,7 @@ main { background: var(--paper); color: var(--ink); }
   transform: translateY(10px);
   transition: opacity .6s .42s ease, transform .65s .42s cubic-bezier(.22, 1, .36, 1);
 }
-.home-seo-intro.visible .home-seo-wordmark { opacity: 1; clip-path: inset(0); transform: none; }
+.home-seo-intro.visible .home-seo-symbol-reveal { opacity: 1; clip-path: inset(0); transform: none; }
 .home-seo-intro.visible h2,
 .home-seo-intro.visible p { opacity: 1; transform: none; }
 .home-seo-intro.visible h2 { filter: none; }
@@ -7783,8 +7790,7 @@ main { background: var(--paper); color: var(--ink); }
 .mobile-people-coda { display: none; }
 @media (max-width: 768px) {
   .home-seo-intro { max-width: 350px; margin-bottom: 38px; padding: 0; }
-  .home-seo-logo { margin-bottom: 22px; }
-  .home-seo-wordmark { font-size: 30px; }
+  .home-seo-logo { width: 122px; height: 68px; margin-bottom: 22px; }
   .home-seo-intro h2 { font-size: clamp(24px, 7.2vw, 31px); line-height: 1.08; }
   .home-seo-intro p { margin-top: 12px; font-size: 12px; line-height: 1.58; }
   .mobile-people-coda {
@@ -7823,7 +7829,7 @@ main { background: var(--paper); color: var(--ink); }
   .mobile-person-cristina .mobile-person-signature { text-align: right; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .home-seo-wordmark,
+  .home-seo-symbol-reveal,
   .home-seo-intro h2,
   .home-seo-intro p { opacity: 1; clip-path: none; filter: none; transform: none; transition: none; }
   .home-seo-territory { color: #A51F3D; transition: none; }
