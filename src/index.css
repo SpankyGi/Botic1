@@ -8719,3 +8719,63 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
     width: min(100% - 44px, 560px);
   }
 }
+
+/* Gastronomia: la tècnica recupera una columna de lectura editorial a
+   escriptori; el text es justifica sense penalitzar la composició mòbil. */
+@media (min-width: 769px) {
+  .gst-technique-copy .gst-kicker,
+  .gst-technique-copy h2 {
+    margin-left: 0;
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .gst-technique-copy p {
+    text-align: justify;
+    text-align-last: left;
+    hyphens: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .gst-technique-copy p {
+    text-align: left;
+    text-align-last: auto;
+  }
+}
+
+/* Experiència: el tancament "El ritme de la taula" comparteix un sol eix,
+   amb el titular i les tres reflexions resolts com un únic mòdul central. */
+.exp-pace-inner {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.exp-pace-inner .exp-kicker,
+.exp-pace-inner h2 {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.exp-pace-copy {
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.exp-pace-copy p {
+  text-align: center;
+}
+
+/* Portada: els vels dels tres accessos s'eleven de baix a dalt, de manera
+   que el recorregut sencer és llegible en passar-hi el cursor o enfocar-los. */
+@media (prefers-reduced-motion: no-preference) and (min-width: 769px) {
+  .features-section .feature-card:hover::before,
+  .features-section .feature-card:focus-visible::before {
+    transform: translateY(-100%);
+  }
+}
