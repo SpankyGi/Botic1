@@ -8474,6 +8474,7 @@ main { background: var(--paper); color: var(--ink); }
   .mnu-tab-position { font-size:9px; }
   .mnu-tab-price-value { font-size:31px; }
   .mnu-content-wrap { scroll-margin-top:58px; padding:64px 0 90px; }
+  .mnu-content { padding-left:20px; padding-right:20px; }
   .mnu-content-header { align-items:flex-start; flex-direction:column; gap:13px; }
   .mnu-content-title { font-size:clamp(48px,14vw,65px); }
   .mnu-course-groups { grid-template-columns:1fr; gap:0; }
