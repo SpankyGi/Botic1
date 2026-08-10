@@ -238,7 +238,7 @@ function ScrollArchitectureSection({ t }) {
     },
     {
       num: '04',
-      img: '/images/cristina-albert-botic-emporda-michelin.webp',
+      img: '/images/restaurant-celler-emporda.webp',
       alt: t('restaurant.archRoom3ImgAlt'),
       title: t('restaurant.archRoom3Title'),
       body: t('restaurant.archRoom3Body'),

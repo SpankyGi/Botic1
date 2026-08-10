@@ -7016,6 +7016,8 @@ main { background: var(--paper); color: var(--ink); }
 
 /* Restaurant — «La sala»: el punt focal conserva arcs, taules i finestra. */
 .restaurant-page .rst-story-scene:nth-child(2) .rst-story-img { object-position: 50% 48%; }
+/* Restaurant — «El celler»: la llum càlida de les ampolles queda a la peça. */
+.restaurant-page .rst-story-scene:nth-child(4) .rst-story-img { object-position: 60% 50%; }
 /* Restaurant — «Taula del xef»: aquesta fotografia és deliberadament fosca.
    El vel s'hi limita perquè el relat es pugui llegir sense enfosquir la resta. */
 .restaurant-page .rst-story-scene:nth-child(3) .rst-story-shade {
@@ -7033,6 +7035,7 @@ main { background: var(--paper); color: var(--ink); }
 
 @media (max-width: 768px) {
   .restaurant-page .rst-story-scene:nth-child(2) .rst-story-img { object-position: 60% 50%; }
+  .restaurant-page .rst-story-scene:nth-child(4) .rst-story-img { object-position: 62% 50%; }
   .restaurant-page .rst-story-scene:nth-child(3) .rst-story-shade {
     background: linear-gradient(0deg, rgba(13, 10, 8, .84) 0%, rgba(13, 10, 8, .54) 48%, rgba(13, 10, 8, .14) 78%, transparent 100%);
   }
