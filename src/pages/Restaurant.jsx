@@ -222,7 +222,7 @@ function ScrollArchitectureSection({ t }) {
     },
     {
       num: '02',
-      img: '/images/restaurant-botic-corca-emporda-exterior-nit.webp',
+      img: '/images/restaurant-sala-arcs-emporda.webp',
       alt: t('restaurant.archRoom1ImgAlt'),
       title: t('restaurant.archRoom1Title'),
       body: t('restaurant.archRoom1Body'),
