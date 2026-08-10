@@ -111,12 +111,7 @@
     "ctaHeading": "Assurez votre table",
     "ctaBody": "Le restaurant a une capacité réduite. Nous vous recommandons de réserver à l'avance.",
     "ctaBtn": "Réserver maintenant",
-    "featuresAria": "Découvrez Bo.TiC",
-    "portraitsAria": "Albert et Cristina, l'équipe de Bo.TiC",
-    "albertPortraitAlt": "Albert, responsable de la cuisine de Bo.TiC",
-    "cristinaPortraitAlt": "Cristina, responsable de la salle et du vin de Bo.TiC",
-    "albertPortraitLabel": "Albert · la cuisine",
-    "cristinaPortraitLabel": "Cristina · la salle et le vin"
+    "featuresAria": "Découvrez Bo.TiC"
   },
   "restaurant": {
     "heroAria": "Le restaurant Bo.TiC",
