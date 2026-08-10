@@ -8508,7 +8508,7 @@ main { background: var(--paper); color: var(--ink); }
   .wine-photo-wrap { width:100%; opacity:.14; }
   .wine-col-left { max-width:100%; }
   .exp-team-background-word {
-    top:clamp(18px,7vw,42px);
+    top:76px;
     font-size:clamp(82px,24vw,138px);
     -webkit-text-stroke:1px rgba(165,31,61,.24);
     text-stroke:1px rgba(165,31,61,.24);
