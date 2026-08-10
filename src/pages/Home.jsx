@@ -170,6 +170,8 @@ export default function Home() {
           <div className="home-intro-overlay" />
         </div>
 
+        <span className="home-intro-ghost" aria-hidden="true">ARREL</span>
+
         <div className="container-max home-intro-inner">
           <div className="home-intro-content">
             <span className="home-intro-label">{t('home.introLabel')}</span>
