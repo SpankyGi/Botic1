@@ -15,6 +15,14 @@ const NAV_IMGS = [
 ]
 const NAV_IDX = ['01', '02', '03', '04', '05', '06']
 
+export function BoticWordmark({ className = '', ...props }) {
+  return (
+    <span className={`nav-logo-word ${className}`.trim()} {...props}>
+      Bo<span className="nav-logo-dot">·</span>TiC
+    </span>
+  )
+}
+
 export default function Nav() {
   const { t }         = useTranslation()
   const lang          = useLang()
@@ -103,7 +111,7 @@ export default function Nav() {
           <img src="/images/michelin-star-original.png" alt="" />
         </span>
         <Link to={routes.home} className="nav-logo" onClick={handleClose}>
-          <span className="nav-logo-word">Bo<span className="nav-logo-dot">·</span>TiC</span>
+          <BoticWordmark />
         </Link>
 
         <div className="nav-recognitions" aria-label="Reconeixements de Bo·TiC">

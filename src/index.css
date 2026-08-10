@@ -7710,18 +7710,35 @@ main { background: var(--paper); color: var(--ink); }
 /* IntroducciÃ³ semÃ ntica: llegible, precisa i amb una sola entrada editorial. */
 .home-seo-intro {
   max-width: 620px;
-  margin: 0 auto clamp(34px, 4vw, 58px);
+  margin: 0 auto clamp(42px, 4vw, 64px);
   padding: 0 20px;
   color: #211a14;
   text-align: center;
+}
+.home-seo-logo {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto clamp(20px, 2vw, 30px);
+}
+.home-seo-wordmark {
+  display: block;
+  color: #211a14;
+  font: 200 clamp(34px, 3vw, 48px)/1 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: .12em;
+  white-space: nowrap;
+  opacity: 0;
+  clip-path: inset(0 100% 0 0);
+  transform: translateX(-10px);
+  transition: clip-path .72s cubic-bezier(.76, 0, .24, 1), opacity .24s ease, transform .72s cubic-bezier(.22, 1, .36, 1);
 }
 .home-seo-intro h2 {
   margin: 0;
   font: 300 clamp(24px, 2.25vw, 36px)/1.05 'Plus Jakarta Sans', sans-serif;
   letter-spacing: -.035em;
   opacity: 0;
-  transform: scale(1.075);
-  transition: opacity .72s ease, transform .9s cubic-bezier(.22, 1, .36, 1);
+  filter: blur(5px);
+  transform: scale(1.065);
+  transition: opacity .68s .2s ease, filter .84s .2s ease, transform .9s .2s cubic-bezier(.22, 1, .36, 1);
   transform-origin: center;
 }
 .home-seo-intro p {
@@ -7732,15 +7749,42 @@ main { background: var(--paper); color: var(--ink); }
   letter-spacing: .02em;
   opacity: 0;
   transform: translateY(10px);
-  transition: opacity .6s .18s ease, transform .65s .18s cubic-bezier(.22, 1, .36, 1);
+  transition: opacity .6s .42s ease, transform .65s .42s cubic-bezier(.22, 1, .36, 1);
 }
+.home-seo-intro.visible .home-seo-wordmark { opacity: 1; clip-path: inset(0); transform: none; }
 .home-seo-intro.visible h2,
 .home-seo-intro.visible p { opacity: 1; transform: none; }
+.home-seo-intro.visible h2 { filter: none; }
+.home-seo-territory {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  transition: color .28s 1.04s ease;
+}
+.home-seo-territory::after {
+  position: absolute;
+  right: 0;
+  bottom: -.12em;
+  left: 0;
+  height: 1px;
+  content: '';
+  background: #A51F3D;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .42s 1.08s cubic-bezier(.22, 1, .36, 1);
+}
+.home-seo-intro.visible .home-seo-territory { color: #A51F3D; }
+.home-seo-intro.visible .home-seo-territory::after { transform: scaleX(1); }
+
+/* Es retalla l'aire d'entrada, no la respiració de les tres portes. */
+.features-section { padding-top: clamp(56px, 6vw, 88px); }
 
 /* A mÃ²bil, Albert i Cristina tanquen les tres portes com una coda lleugera. */
 .mobile-people-coda { display: none; }
 @media (max-width: 768px) {
-  .home-seo-intro { max-width: 350px; margin-bottom: 34px; padding: 0; }
+  .home-seo-intro { max-width: 350px; margin-bottom: 38px; padding: 0; }
+  .home-seo-logo { margin-bottom: 22px; }
+  .home-seo-wordmark { font-size: 30px; }
   .home-seo-intro h2 { font-size: clamp(24px, 7.2vw, 31px); line-height: 1.08; }
   .home-seo-intro p { margin-top: 12px; font-size: 12px; line-height: 1.58; }
   .mobile-people-coda {
@@ -7779,8 +7823,11 @@ main { background: var(--paper); color: var(--ink); }
   .mobile-person-cristina .mobile-person-signature { text-align: right; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .home-seo-wordmark,
   .home-seo-intro h2,
-  .home-seo-intro p { opacity: 1; transform: none; transition: none; }
+  .home-seo-intro p { opacity: 1; clip-path: none; filter: none; transform: none; transition: none; }
+  .home-seo-territory { color: #A51F3D; transition: none; }
+  .home-seo-territory::after { transform: scaleX(1); transition: none; }
 }
 
 /* Albert acompanya les tres portes des del marge, sense participar en la graella. */

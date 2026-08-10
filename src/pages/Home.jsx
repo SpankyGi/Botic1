@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import Hero             from '../components/Hero'
 import ChefSection      from '../components/ChefSection'
 import SEO              from '../components/SEO'
+import { BoticWordmark } from '../components/Nav'
 import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
@@ -21,6 +22,18 @@ function FeatureEntry({ tag, title, body, to, label, image, index }) {
       <p className="feature-body">{body}</p>
       <span className="feature-cta">{label} →</span>
     </Link>
+  )
+}
+
+function SeoIntroHeading({ children }) {
+  const match = children.match(/^(.*?)(Empordà)([.!?]?)$/)
+
+  if (!match) return <h2>{children}</h2>
+
+  return (
+    <h2>
+      {match[1]}<span className="home-seo-territory">{match[2]}</span>{match[3]}
+    </h2>
   )
 }
 
@@ -203,12 +216,12 @@ export default function Home() {
         </div>
         <div className="container-max">
           <div className="home-seo-intro reveal" ref={seoIntroRef}>
-            <h2>{t('home.seoIntroHeading')}</h2>
+            <div className="home-seo-logo">
+              <BoticWordmark className="home-seo-wordmark" aria-hidden="true" />
+            </div>
+            <SeoIntroHeading>{t('home.seoIntroHeading')}</SeoIntroHeading>
             <p>{t('home.seoIntroBody')}</p>
           </div>
-          <h2 className="features-intro-title">
-            <img src="/images/botic-logo-original.png" alt="Bo·TiC" />
-          </h2>
           <div className="features-grid" ref={featuresRef}>
             {FEATURES.map((feature, i) => (
               <FeatureEntry key={feature.to} {...feature} index={i} />
