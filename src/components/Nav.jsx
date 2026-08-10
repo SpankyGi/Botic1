@@ -106,6 +106,26 @@ export default function Nav() {
           <span className="nav-logo-word">Bo<span className="nav-logo-dot">·</span>TiC</span>
         </Link>
 
+        <div className="nav-recognitions" aria-label="Reconeixements de Bo·TiC">
+          <span className="nav-recognition"><span className="nav-recognition-michelin">★★</span> Michelin</span>
+          <span className="nav-recognition">{t('topbar.repsol')}</span>
+          <span className="nav-recognition">{t('topbar.nacional')}</span>
+          <span className="nav-recognition">{t('topbar.premisG')}</span>
+          <span className="nav-recognition-divider" aria-hidden="true" />
+          <nav className="nav-recognition-langs" aria-label={t('topbar.languageNav')}>
+            {LANGS.map((targetLang) => (
+              <Link
+                key={targetLang}
+                to={switchLang(targetLang, location.pathname)}
+                className={targetLang === lang ? 'is-active' : ''}
+                lang={targetLang}
+              >
+                {targetLang.toUpperCase()}
+              </Link>
+            ))}
+          </nav>
+        </div>
+
         <button
           ref={openBtnRef}
           className={`nav-toggle${menuOpen ? ' is-open' : ''}`}
