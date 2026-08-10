@@ -8258,3 +8258,12 @@ main { background: var(--paper); color: var(--ink); }
   outline: 2px solid #A51F3D;
   outline-offset: 3px;
 }
+
+/* Restaurant — escena 01: bloc de lectura net a escriptori, sense forçar
+   espais artificials en pantalles petites. */
+@media (min-width: 769px) {
+  .restaurant-page .rst-story-scene:first-child .rst-story-copy p {
+    text-align: justify;
+    text-align-last: left;
+  }
+}
