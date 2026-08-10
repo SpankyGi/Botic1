@@ -196,7 +196,6 @@ export default function Nav() {
                   >
                     <span className="nav-fs-idx">{item.idx}</span>
                     <span className="nav-fs-name">{item.label}</span>
-                    {item.active && <span className="nav-fs-current">{t('nav.current')}</span>}
                     <span className="nav-fs-arrow" aria-hidden="true">
                       <span className="nav-fs-arrow-line" />
                     </span>
