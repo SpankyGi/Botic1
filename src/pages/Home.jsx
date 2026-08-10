@@ -180,6 +180,12 @@ export default function Home() {
 
       {/* ── Tres portes per descobrir Bo·TiC ── */}
       <section className="features-section" aria-label={t('home.featuresAria')}>
+        <img
+          className="home-albert-editorial"
+          src="/images/albert-sastregener-editorial-transparent.png"
+          alt=""
+          aria-hidden="true"
+        />
         <div className="container-max">
           <h2 className="features-intro-title">
             <img src="/images/botic-logo-original.png" alt="Bo·TiC" />

@@ -7707,6 +7707,25 @@ main { background: var(--paper); color: var(--ink); }
   height: auto;
 }
 
+/* Albert acompanya les tres portes des del marge, sense participar en la graella. */
+.home-albert-editorial { display: none; }
+@media (min-width: 1840px) {
+  .features-section { position: relative; isolation: isolate; }
+  .features-section .container-max { position: relative; z-index: 2; }
+  .home-albert-editorial {
+    --albert-editorial-width: clamp(190px, calc((100vw - 1440px) / 2 - 24px), 340px);
+    display: block;
+    position: absolute;
+    z-index: 1;
+    left: max(4px, calc((100vw - 1440px) / 2 - var(--albert-editorial-width) - 16px));
+    bottom: clamp(108px, 8vw, 164px);
+    width: var(--albert-editorial-width);
+    height: auto;
+    pointer-events: none;
+    user-select: none;
+  }
+}
+
 /* La composiciÃ³ comenÃ§a alineada; el capÃ­tol central no ha de "caure". */
 .features-section .feature-card:nth-child(2) {
   transform: none;
