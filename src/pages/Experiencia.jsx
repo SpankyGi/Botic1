@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
-import { useLangRoutes } from '../i18n/LangContext'
 import { useReveal } from '../hooks/useReveal.js'
 
 const CELLAR = '/images/restaurant-emporda-botic-michelin.webp'
@@ -186,7 +185,6 @@ function ExperienceCTA({ t, routes }) {
 
 export default function Experiencia() {
   const { t } = useTranslation()
-  const routes = useLangRoutes()
 
   return (
     <>
@@ -198,9 +196,6 @@ export default function Experiencia() {
       <ExperienceHero t={t} />
       <MenuNarrative t={t} />
       <PaceSection t={t} />
-      <HospitalitySection t={t} />
-      <CellarSection t={t} />
-      <ExperienceCTA t={t} routes={routes} />
     </>
   )
 }

@@ -6664,7 +6664,7 @@ main { background: var(--paper); color: var(--ink); }
   .exp-moment { max-width: 720px; }
   .exp-moment:nth-of-type(even) { margin-left: clamp(80px, 16vw, 260px); }
   .exp-moment.has-image { max-width: 900px; margin-left: clamp(20px, 7vw, 120px); }
-  .exp-pace { margin-top: 0; padding: clamp(128px, 17vw, 240px) clamp(28px, 11vw, 190px); }
+  .exp-pace { margin-top: 0; padding: clamp(128px, 17vw, 240px) clamp(28px, 11vw, 190px) clamp(88px, 10vw, 140px); }
   .exp-pace-inner { margin: 0; max-width: 1080px; }
   .exp-pace-copy { max-width: 840px; grid-template-columns: 1fr 1fr 1fr; }
   .exp-hospitality { display: block; min-height: 0; background: var(--paper-deep); padding-bottom: clamp(98px, 12vw, 180px); }
