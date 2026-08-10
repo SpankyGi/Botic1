@@ -35,14 +35,25 @@ function cleanLines(raw) {
   return raw.split('\n').map(line => line.trim()).filter(Boolean);
 }
 
-function menuBounds(lines, schemas, index) {
+const WINE_SECTION_TITLES = {
+  ca: 'Carta de vins',
+  es: 'Carta de vinos',
+  en: 'Wine List',
+  fr: 'Carte des vins',
+};
+
+function menuBounds(lines, schemas, index, language) {
   const start = lines.indexOf(schemas[index].title);
   const next = index < schemas.length - 1 ? lines.indexOf(schemas[index + 1].title, start + 1) : lines.length;
-  return [start, next === -1 ? lines.length : next];
+  const wineStart = index === schemas.length - 1
+    ? lines.indexOf(WINE_SECTION_TITLES[language], start + 1)
+    : -1;
+  const end = [next, wineStart, lines.length].filter(value => value >= 0);
+  return [start, Math.min(...end)];
 }
 
-function parseMenu(lines, schema, schemas, index) {
-  const [start, end] = menuBounds(lines, schemas, index);
+function parseMenu(lines, schema, schemas, index, language) {
+  const [start, end] = menuBounds(lines, schemas, index, language);
   const cursor = { value: start + 1 };
   return {
     id: schema.id,
@@ -75,6 +86,5 @@ export function getOfficialMenus(lang) {
   const language = SCHEMAS[lang] ? lang : 'ca';
   const schemas = SCHEMAS[language];
   const lines = cleanLines(RAW[language]);
-  return schemas.map((schema, index) => parseMenu(lines, schema, schemas, index));
+  return schemas.map((schema, index) => parseMenu(lines, schema, schemas, index, language));
 }
-

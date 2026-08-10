@@ -488,10 +488,11 @@ export default function Menus() {
 
       <MenusHero t={t} />
 
-      {/* ── Selector de menús ── */}
-      <div className="mnu-selector-wrap" aria-label={t('menus.selectorAria')}>
-        <div className="mnu-selector" role="tablist">
-          {menus.map((m, index) => (
+      <section className="mnu-food-menus" aria-label={t('menus.selectorAria')}>
+        {/* ── Selector de menús ── */}
+        <div className="mnu-selector-wrap">
+          <div className="mnu-selector" role="tablist">
+            {menus.map((m, index) => (
             <button
               key={m.id}
               id={`menu-selector-${m.id}`}
@@ -510,39 +511,42 @@ export default function Menus() {
                 <span className="mnu-tab-price-value">{m.price}</span>
               </span>
             </button>
-          ))}
-        </div>
-      </div>
-
-      {/* ── Contingut del menú actiu ── */}
-      <section
-        ref={contentRef}
-        className="mnu-content-wrap"
-        aria-label={active.title}
-        id={`menu-panel-${active.id}`}
-        role="tabpanel"
-        key={activeId}
-      >
-        <div className="container-max mnu-content">
-          <div className="mnu-content-header">
-            <h2 className="mnu-content-title">{active.title}</h2>
-            <span className="mnu-content-price">{active.price}</span>
+            ))}
           </div>
-
-          {active.note && (
-            <p className="mnu-note" role="note">
-              <span className="mnu-note-icon" aria-hidden="true">◈</span>
-              {active.note}
-            </p>
-          )}
-
-          <MenuCourseList sections={active.sections} menuId={activeId} />
-          <p className="mnu-season-note" role="note">{t('menus.seasonNote')}</p>
         </div>
+
+        {/* ── Contingut del menú actiu ── */}
+        <section
+          ref={contentRef}
+          className="mnu-content-wrap"
+          aria-label={active.title}
+          id={`menu-panel-${active.id}`}
+          role="tabpanel"
+          key={activeId}
+        >
+          <div className="container-max mnu-content">
+            <div className="mnu-content-header">
+              <h2 className="mnu-content-title">{active.title}</h2>
+              <span className="mnu-content-price">{active.price}</span>
+            </div>
+
+            {active.note && (
+              <p className="mnu-note" role="note">
+                <span className="mnu-note-icon" aria-hidden="true">◈</span>
+                {active.note}
+              </p>
+            )}
+
+            <MenuCourseList sections={active.sections} menuId={activeId} />
+            <p className="mnu-season-note" role="note">{t('menus.seasonNote')}</p>
+          </div>
+        </section>
       </section>
 
-      <WineSection t={t} />
-      <InfoSection t={t} />
+      <div className="mnu-wine-stage" id="wine-list">
+        <WineSection t={t} />
+        <InfoSection t={t} />
+      </div>
       <FaqSection  t={t} />
 
       {/* ── CTA final ── */}

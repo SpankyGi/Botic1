@@ -8393,7 +8393,8 @@ main { background: var(--paper); color: var(--ink); }
 .menus-hero-ornament { margin-top:34px; justify-content:flex-start; }
 .mnu-hero-border-line { position:absolute; z-index:2; left:0; right:0; bottom:0; height:1px; background:rgba(165,31,61,.35); }
 
-.mnu-selector-wrap { position:relative; top:auto; z-index:2; background:#e8ded1; border-top:0; border-bottom:1px solid rgba(33,26,20,.14); padding:0; }
+.mnu-food-menus { position:relative; }
+.mnu-selector-wrap { position:sticky; top:72px; z-index:30; background:#e8ded1; border-top:0; border-bottom:1px solid rgba(33,26,20,.14); box-shadow:0 12px 22px rgba(33,26,20,.08); padding:0; }
 .mnu-selector { width:min(1380px,100%); margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); padding:0 clamp(20px,4vw,66px); overflow:visible; }
 .mnu-tab { min-height:174px; position:relative; overflow:hidden; display:grid; grid-template-columns:20px minmax(0,1fr); grid-template-rows:auto auto; align-content:center; column-gap:14px; row-gap:9px; text-align:left; padding:28px clamp(20px,2.4vw,38px); background:transparent; border:0; border-right:1px solid rgba(33,26,20,.14); color:#211a14; }
 .mnu-tab:last-child { border-right:0; }
@@ -8409,7 +8410,7 @@ main { background: var(--paper); color: var(--ink); }
 .mnu-tab:hover .mnu-tab-index,.mnu-tab:hover .mnu-tab-title,.mnu-tab:hover .mnu-tab-position,.mnu-tab:hover .mnu-tab-price-value { color:#fffaf4; position:relative; z-index:1; }
 .mnu-tab:focus-visible { outline:2px solid #A51F3D; outline-offset:-4px; }
 
-.mnu-content-wrap { background:#f3ede3; padding:clamp(76px,10vw,150px) 0 clamp(106px,13vw,185px); scroll-margin-top:72px; animation:mnuContentIn .38s cubic-bezier(.22,1,.36,1) both; }
+.mnu-content-wrap { background:#f3ede3; padding:clamp(76px,10vw,150px) 0 clamp(106px,13vw,185px); scroll-margin-top:278px; animation:mnuContentIn .38s cubic-bezier(.22,1,.36,1) both; }
 @keyframes mnuContentIn { from { opacity:0; transform:translateY(13px); } to { opacity:1; transform:translateY(0); } }
 .mnu-content { max-width:1240px; }
 .mnu-content-header { border-bottom:1px solid rgba(33,26,20,.24); align-items:baseline; padding:0 0 28px; }
@@ -8466,7 +8467,7 @@ main { background: var(--paper); color: var(--ink); }
   .mnu-hero-copy { max-width:100%; padding-top:8px; }
   .menus-hero-title { font-size:clamp(44px,13.5vw,60px); line-height:1.02; max-width:330px; }
   .menus-hero-sub { max-width:270px; font-size:9px; letter-spacing:.17em; }
-  .mnu-selector-wrap { overflow:hidden; }
+  .mnu-selector-wrap { top:62px; overflow:hidden; }
   .mnu-selector { display:flex; overflow-x:auto; padding:0 20px; scrollbar-width:none; }
   .mnu-selector::-webkit-scrollbar { display:none; }
   .mnu-tab { flex:0 0 min(78vw,300px); min-height:138px; padding:21px 18px; border-right:1px solid rgba(33,26,20,.14); }
@@ -8474,7 +8475,7 @@ main { background: var(--paper); color: var(--ink); }
   .mnu-tab-position { font-size:9px; }
   .mnu-tab-price { right:18px; bottom:20px; }
   .mnu-tab-price-value { font-size:31px; }
-  .mnu-content-wrap { scroll-margin-top:58px; padding:64px 0 90px; }
+  .mnu-content-wrap { scroll-margin-top:224px; padding:64px 0 90px; }
   .mnu-content { padding-left:20px; padding-right:20px; }
   .mnu-content-header { align-items:flex-start; flex-direction:column; gap:13px; }
   .mnu-content-title { font-size:clamp(48px,14vw,65px); }
