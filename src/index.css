@@ -6948,17 +6948,17 @@ main { background: var(--paper); color: var(--ink); }
 .nav-logo-word { display: block; }
 .nav-michelin-stars {
   position: absolute;
-  right: calc(100% + 12px);
+  left: 48px;
   top: 50%;
   display: inline-flex;
   align-items: center;
-  gap: 3px;
+  gap: 8px;
   transform: translateY(-50%);
   pointer-events: none;
 }
 .nav-michelin-stars img {
-  width: 13px;
-  height: 13px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
   opacity: 0;
   transform: scale(.45) rotate(-24deg);
@@ -6982,8 +6982,8 @@ main { background: var(--paper); color: var(--ink); }
   font-size: clamp(32px, 3.25vw, 48px);
   letter-spacing: 0.12em;
 }
-.nav-header.nav-home .nav-michelin-stars { right: calc(100% + 16px); gap: 4px; }
-.nav-header.nav-home .nav-michelin-stars img { width: 17px; height: 17px; }
+.nav-header.nav-home .nav-michelin-stars { gap: 12px; }
+.nav-header.nav-home .nav-michelin-stars img { width: clamp(32px, 3.25vw, 48px); height: clamp(32px, 3.25vw, 48px); }
 .nav-header.nav-home.nav-scrolled {
   height: 70px;
 }
@@ -6991,8 +6991,8 @@ main { background: var(--paper); color: var(--ink); }
   font-size: 23px;
   letter-spacing: 0.1em;
 }
-.nav-header.nav-home.nav-scrolled .nav-michelin-stars { right: calc(100% + 11px); gap: 3px; }
-.nav-header.nav-home.nav-scrolled .nav-michelin-stars img { width: 12px; height: 12px; }
+.nav-header.nav-home.nav-scrolled .nav-michelin-stars { gap: 8px; }
+.nav-header.nav-home.nav-scrolled .nav-michelin-stars img { width: 23px; height: 23px; }
 @media (max-width: 767px) {
   .nav-header {
     height: 64px;
@@ -7010,8 +7010,11 @@ main { background: var(--paper); color: var(--ink); }
   .nav-header.nav-home.nav-scrolled .nav-logo {
     font-size: 21px;
   }
-  .nav-header.nav-home .nav-michelin-stars { right: calc(100% + 11px); gap: 3px; }
-  .nav-header.nav-home .nav-michelin-stars img { width: 12px; height: 12px; }
+  .nav-michelin-stars { left: 22px; gap: 7px; }
+  .nav-michelin-stars img { width: 21px; height: 21px; }
+  .nav-header.nav-home .nav-michelin-stars { gap: 8px; }
+  .nav-header.nav-home .nav-michelin-stars img { width: 30px; height: 30px; }
+  .nav-header.nav-home.nav-scrolled .nav-michelin-stars img { width: 20px; height: 20px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .nav-header,
