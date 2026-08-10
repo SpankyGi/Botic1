@@ -6,6 +6,7 @@ import { ROUTE_SLUGS, LANGS, DEFAULT_LANG } from './i18n/routes'
 import CustomCursor  from './components/CustomCursor'
 import Preloader     from './components/Preloader'
 import Nav           from './components/Nav'
+import ScrollProgress from './components/ScrollProgress'
 import FloatingCTAs  from './components/FloatingCTAs'
 import Footer        from './components/Footer'
 
@@ -55,6 +56,7 @@ function AppContent() {
       <CustomCursor />
       <Preloader />
       <Nav />
+      <ScrollProgress />
       <FloatingCTAs />
       <main>
         <Routes>

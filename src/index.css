@@ -30,6 +30,23 @@ body {
   font-weight: 200;
 }
 
+/* ====== SCROLL PROGRESS ====== */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto;
+  height: 3px;
+  pointer-events: none;
+  z-index: 902;
+}
+.scroll-progress__bar {
+  width: 100%;
+  height: 100%;
+  background: var(--burgundy);
+  transform: scaleX(0);
+  transform-origin: left center;
+  will-change: transform;
+}
+
 /* ====== CUSTOM CURSOR ====== */
 .cursor-dot {
   position: fixed;
