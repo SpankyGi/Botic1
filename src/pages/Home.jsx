@@ -190,6 +190,16 @@ export default function Home() {
           <span>Albert Sastregener</span>
           <span>Xef</span>
         </div>
+        <img
+          className="home-cristina-editorial"
+          src="/images/cristina-editorial-transparent-v2.png"
+          alt=""
+          aria-hidden="true"
+        />
+        <div className="home-cristina-signature" aria-hidden="true">
+          <span>Cristina</span>
+          <span>Sala &amp; sommelier</span>
+        </div>
         <div className="container-max">
           <h2 className="features-intro-title">
             <img src="/images/botic-logo-original.png" alt="Bo·TiC" />
