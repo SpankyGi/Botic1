@@ -8267,3 +8267,108 @@ main { background: var(--paper); color: var(--ink); }
     text-align-last: left;
   }
 }
+
+/* Restaurant — l'equip és un mosaic de presències reals, no una graella de targetes. */
+.restaurant-page .rst-team {
+  scroll-margin-top: 72px;
+  padding: clamp(120px, 14vw, 210px) 0 clamp(132px, 16vw, 236px);
+}
+.restaurant-page .rst-team .container-max { max-width: 1380px; }
+.restaurant-page .rst-team-header {
+  max-width: 620px;
+  margin: 0 0 clamp(74px, 9vw, 132px) clamp(24px, 7vw, 104px);
+}
+.restaurant-page .rst-team-mosaic {
+  display: grid;
+  grid-template-columns: minmax(0, 1.28fr) minmax(0, .82fr) minmax(120px, .40fr);
+  grid-template-rows: minmax(260px, 1fr) minmax(220px, .72fr);
+  align-items: start;
+  gap: clamp(12px, 1.8vw, 28px);
+  padding: 0 clamp(16px, 3vw, 48px);
+}
+.restaurant-page .rst-team-primary {
+  width: auto;
+  margin: 0;
+  min-width: 0;
+}
+.restaurant-page .rst-team-primary.kitchen { grid-column: 1; grid-row: 1 / span 2; }
+.restaurant-page .rst-team-primary.sala {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  width: calc(100% - clamp(0px, 4vw, 56px));
+  margin-top: clamp(46px, 7vw, 108px);
+  align-self: end;
+}
+.restaurant-page .rst-team-primary .rst-team-photo {
+  height: min(43vw, 620px);
+  min-height: 430px;
+  overflow: hidden;
+  background: var(--restaurant-paper-deep);
+}
+.restaurant-page .rst-team-primary.sala .rst-team-photo { height: min(36vw, 530px); min-height: 370px; }
+.restaurant-page .rst-team-primary .rst-team-photo::after {
+  height: 34%;
+  background: linear-gradient(0deg, rgba(243, 237, 227, .72) 0%, rgba(243, 237, 227, .04) 72%, transparent 100%);
+}
+.restaurant-page .rst-team-primary .rst-team-img { transition: transform .8s cubic-bezier(.22, 1, .36, 1); }
+.restaurant-page .rst-team-primary:hover .rst-team-img { transform: scale(1.025); }
+.restaurant-page .rst-team-primary.kitchen .rst-team-img { object-position: 68% center; }
+.restaurant-page .rst-team-primary.sala .rst-team-img {
+  object-position: 100% center;
+  transform: scale(1.5);
+  transform-origin: right center;
+}
+.restaurant-page .rst-team-caption { padding: 18px 0 0 clamp(2px, 1vw, 14px); }
+.restaurant-page .rst-team-label {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: .28em;
+}
+.restaurant-page .rst-team-name {
+  margin: 7px 0 11px;
+  font-size: clamp(31px, 3.3vw, 52px);
+  line-height: .98;
+  letter-spacing: -.04em;
+}
+.restaurant-page .rst-team-body {
+  max-width: 410px;
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.restaurant-page .rst-team-detail {
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  background: var(--restaurant-paper-deep);
+}
+.restaurant-page .rst-team-detail img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.restaurant-page .rst-team-detail--plating { grid-column: 3; grid-row: 1; height: min(21vw, 310px); }
+.restaurant-page .rst-team-detail--service { grid-column: 3; grid-row: 2; height: min(16vw, 238px); align-self: end; }
+.restaurant-page .rst-team-detail--plating img { object-position: 55% center; }
+.restaurant-page .rst-team-detail--service img { object-position: 48% center; }
+
+@media (max-width: 768px) {
+  .restaurant-page .rst-team { scroll-margin-top: 56px; padding: 92px 0 108px; }
+  .restaurant-page .rst-team-header { margin: 0 28px 54px; }
+  .restaurant-page .rst-team-mosaic {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    gap: 14px;
+    padding: 0 20px;
+  }
+  .restaurant-page .rst-team-primary.kitchen,
+  .restaurant-page .rst-team-primary.sala { grid-column: 1 / span 2; grid-row: auto; width: 100%; margin: 0; }
+  .restaurant-page .rst-team-primary.sala { width: calc(100% - 12vw); margin-left: auto; margin-top: 26px; }
+  .restaurant-page .rst-team-primary .rst-team-photo { height: min(112vw, 540px); min-height: 0; }
+  .restaurant-page .rst-team-primary.sala .rst-team-photo { height: min(96vw, 460px); min-height: 0; }
+  .restaurant-page .rst-team-primary.kitchen .rst-team-img { object-position: 72% center; }
+  .restaurant-page .rst-team-primary.sala .rst-team-img { object-position: 100% center; }
+  .restaurant-page .rst-team-caption { padding: 15px 0 10px; }
+  .restaurant-page .rst-team-name { font-size: clamp(30px, 9vw, 42px); }
+  .restaurant-page .rst-team-body { font-size: 12px; }
+  .restaurant-page .rst-team-detail { height: min(48vw, 220px); margin-top: 18px; }
+  .restaurant-page .rst-team-detail--plating,
+  .restaurant-page .rst-team-detail--service { grid-column: auto; grid-row: auto; height: min(48vw, 220px); }
+}

@@ -64,7 +64,7 @@ function RestaurantHero({ t, routes }) {
           <p className="rst-hero-sub">{t('restaurant.heroSub')}</p>
           <div className="rst-hero-ctas">
             <Link to={routes.reserves} className="btn-gold">{t('restaurant.bookBtn')}</Link>
-            <a href="#origin" className="rst-hero-secondary">{t('restaurant.heroCtaSecondary')}</a>
+            <a href="#team" className="rst-hero-secondary">{t('restaurant.heroCtaSecondary')}</a>
           </div>
         </div>
       </div>
@@ -397,7 +397,7 @@ function TeamSection({ t }) {
   const salaRef    = useReveal(0.15)
 
   return (
-    <section className="rst-team" aria-labelledby="team-heading">
+    <section id="team" className="rst-team" aria-labelledby="team-heading">
       <div className="container-max">
         <div className="rst-team-header reveal" ref={headerRef}>
           <span className="rst-eyebrow">{t('restaurant.teamEyebrow')}</span>
@@ -405,8 +405,8 @@ function TeamSection({ t }) {
           <p className="rst-team-sub">{t('restaurant.teamSub')}</p>
         </div>
 
-        <div className="rst-team-grid">
-          <div className="rst-team-block kitchen reveal" ref={kitchenRef}>
+        <div className="rst-team-mosaic">
+          <figure className="rst-team-block rst-team-primary kitchen reveal" ref={kitchenRef}>
             <div className="rst-team-photo">
               <img
                 src="/images/albert-sastregener-cuina-emporda-girona.webp"
@@ -415,12 +415,14 @@ function TeamSection({ t }) {
                 loading="lazy"
               />
             </div>
-            <span className="rst-team-label">{t('restaurant.kitchenLabel')}</span>
-            <h3 className="rst-team-name">{t('restaurant.kitchenName')}</h3>
-            <p className="rst-team-body">{t('restaurant.kitchenBody')}</p>
-          </div>
+            <figcaption className="rst-team-caption">
+              <span className="rst-team-label">{t('restaurant.kitchenLabel')}</span>
+              <h3 className="rst-team-name">{t('restaurant.kitchenName')}</h3>
+              <p className="rst-team-body">{t('restaurant.kitchenBody')}</p>
+            </figcaption>
+          </figure>
 
-          <div className="rst-team-block sala reveal" ref={salaRef}>
+          <figure className="rst-team-block rst-team-primary sala reveal" ref={salaRef}>
             <div className="rst-team-photo sala">
               <img
                 src="/images/cristina-albert-botic-emporda-michelin.webp"
@@ -429,10 +431,19 @@ function TeamSection({ t }) {
                 loading="lazy"
               />
             </div>
-            <span className="rst-team-label">{t('restaurant.salaLabel')}</span>
-            <h3 className="rst-team-name">{t('restaurant.salaName')}</h3>
-            <p className="rst-team-body">{t('restaurant.salaBody')}</p>
-          </div>
+            <figcaption className="rst-team-caption">
+              <span className="rst-team-label">{t('restaurant.salaLabel')}</span>
+              <h3 className="rst-team-name">{t('restaurant.salaName')}</h3>
+              <p className="rst-team-body">{t('restaurant.salaBody')}</p>
+            </figcaption>
+          </figure>
+
+          <figure className="rst-team-detail rst-team-detail--plating" aria-hidden="true">
+            <img src="/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic.webp" alt="" loading="lazy" />
+          </figure>
+          <figure className="rst-team-detail rst-team-detail--service" aria-hidden="true">
+            <img src="/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp" alt="" loading="lazy" />
+          </figure>
         </div>
       </div>
     </section>
