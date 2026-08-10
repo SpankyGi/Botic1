@@ -36,6 +36,39 @@ function ReserveHeading({ children }) {
   )
 }
 
+function SeasonStrip({ t, routes }) {
+  const revealRef = useReveal(0.16)
+  const dishes = [
+    { image: '/images/botic-maig-2026-webp/amanida-gastronomica-herbes-botic-emporda.webp', alt: t('home.seasonDish1Alt') },
+    { image: '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp', alt: t('home.seasonDish2Alt') },
+    { image: '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp', alt: t('home.seasonDish3Alt') },
+  ]
+
+  return (
+    <section className="home-season" aria-label={t('home.seasonAria')}>
+      <span className="home-season-ghost" aria-hidden="true">TEMPORADA</span>
+      <div className="home-season-inner reveal" ref={revealRef}>
+        <header className="home-season-head">
+          <div>
+            <span className="home-season-eyebrow">{t('home.seasonEyebrow')}</span>
+            <h2 id="home-season-title">{t('home.seasonHeading')}</h2>
+          </div>
+          <Link to={routes.menus} className="home-season-link">{t('home.seasonLink')} <span aria-hidden="true">→</span></Link>
+        </header>
+
+        <div className="home-season-gallery">
+          {dishes.map((dish, index) => (
+            <figure className={`home-season-dish home-season-dish-${index + 1}`} key={dish.image}>
+              <img src={dish.image} alt={dish.alt} loading="lazy" />
+              <figcaption aria-hidden="true">0{index + 1}</figcaption>
+            </figure>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function Home() {
   const { t }       = useTranslation()
   const routes      = useLangRoutes()
@@ -122,6 +155,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <SeasonStrip t={t} routes={routes} />
 
 
       {/* ── Paisatge i relat ── */}
