@@ -8698,3 +8698,24 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 .mirada-xef-section .soul-frag {
   transition-duration: .95s, .95s;
 }
+
+/* Gastronomia: el manifest de la matèria primera ocupa un eix central;
+   els paràgrafs conserven alineació de lectura dins d'aquest bloc. */
+.gst-manifest-inner {
+  width: min(100% - clamp(48px, 10vw, 176px), 960px);
+  max-width: none;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0;
+  padding-right: 0;
+}
+.gst-manifest .gst-section-head { max-width: 860px; }
+.gst-manifest-word {
+  -webkit-text-stroke: 1px rgba(165, 31, 61, .30);
+  opacity: .88;
+}
+@media (max-width: 768px) {
+  .gst-manifest-inner {
+    width: min(100% - 44px, 560px);
+  }
+}
