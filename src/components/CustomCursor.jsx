@@ -1,12 +1,26 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+const CURSOR_QUERY = '(hover: hover) and (pointer: fine) and (min-width: 769px)'
 
 export default function CustomCursor() {
+  const [enabled, setEnabled] = useState(() =>
+    typeof window !== 'undefined' && window.matchMedia(CURSOR_QUERY).matches
+  )
   const dotRef = useRef(null)
   const outRef = useRef(null)
   const pos    = useRef({ mx: 0, my: 0, ox: 0, oy: 0 })
   const started = useRef(false)
 
   useEffect(() => {
+    const media = window.matchMedia(CURSOR_QUERY)
+    const update = () => setEnabled(media.matches)
+    update()
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
+
+  useEffect(() => {
+    if (!enabled) return
     const dot = dotRef.current
     const out = outRef.current
     if (!dot || !out) return
@@ -48,7 +62,9 @@ export default function CustomCursor() {
       document.body.classList.remove('has-custom-cursor')
       cancelAnimationFrame(rafId)
     }
-  }, [])
+  }, [enabled])
+
+  if (!enabled) return null
 
   return (
     <>
