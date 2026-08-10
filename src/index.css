@@ -7708,22 +7708,43 @@ main { background: var(--paper); color: var(--ink); }
 }
 
 /* Albert acompanya les tres portes des del marge, sense participar en la graella. */
-.home-albert-editorial { display: none; }
+.home-albert-editorial,
+.home-albert-signature { display: none; }
 @media (min-width: 1840px) {
-  .features-section { position: relative; isolation: isolate; }
+  .features-section {
+    --albert-editorial-width: clamp(190px, calc((100vw - 1440px) / 2 - 24px), 380px);
+    --albert-editorial-left: max(4px, calc((100vw - 1440px) / 2 - var(--albert-editorial-width) - 16px));
+    position: relative;
+    isolation: isolate;
+  }
   .features-section .container-max { position: relative; z-index: 2; }
   .home-albert-editorial {
-    --albert-editorial-width: clamp(190px, calc((100vw - 1440px) / 2 - 24px), 340px);
     display: block;
     position: absolute;
     z-index: 1;
-    left: max(4px, calc((100vw - 1440px) / 2 - var(--albert-editorial-width) - 16px));
+    left: var(--albert-editorial-left);
     bottom: clamp(108px, 8vw, 164px);
     width: var(--albert-editorial-width);
     height: auto;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 76%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 76%, transparent 100%);
     pointer-events: none;
     user-select: none;
   }
+  .home-albert-signature {
+    display: grid;
+    gap: 5px;
+    position: absolute;
+    z-index: 2;
+    left: calc(var(--albert-editorial-left) + 12px);
+    bottom: clamp(54px, 4vw, 82px);
+    color: #211a14;
+    font: 500 9px/1 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+  .home-albert-signature span:last-child { color: rgba(33, 26, 20, .55); font-size: 8px; letter-spacing: .24em; }
 }
 
 /* La composiciÃ³ comenÃ§a alineada; el capÃ­tol central no ha de "caure". */

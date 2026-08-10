@@ -186,6 +186,10 @@ export default function Home() {
           alt=""
           aria-hidden="true"
         />
+        <div className="home-albert-signature" aria-hidden="true">
+          <span>Albert Sastregener</span>
+          <span>Xef</span>
+        </div>
         <div className="container-max">
           <h2 className="features-intro-title">
             <img src="/images/botic-logo-original.png" alt="Bo·TiC" />
