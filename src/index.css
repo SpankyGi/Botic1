@@ -8483,6 +8483,23 @@ main { background: var(--paper); color: var(--ink); }
 .mnu-cta-section .btn-cream { color:#211a14; border-color:rgba(33,26,20,.36); background:transparent; }
 .mnu-cta-section .btn-cream:hover { background:#211a14; color:#fffaf4; }
 
+/* Gastronomia — les dues declaracions principals es llegeixen com a gestos centrals. */
+.gst-manifest .gst-section-head {
+  display: block;
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.gst-manifest .gst-section-head .gst-kicker {
+  display: block;
+  margin-bottom: 24px;
+}
+.gst-manifest .gst-section-head h2 { margin: 0 auto; }
+.gst-technique-copy { margin-left: auto; margin-right: auto; }
+.gst-technique-copy .gst-kicker { display: block; text-align: center; }
+.gst-technique-copy h2 { margin-left: auto; margin-right: auto; text-align: center; }
+
 @media (max-width:768px) {
   .mnu-hero { min-height:600px; padding:118px 0 54px; align-items:flex-end; }
   .mnu-hero-img { width:100%; opacity:.44; object-position:50% 72%; }
@@ -8509,4 +8526,6 @@ main { background: var(--paper); color: var(--ink); }
   .wine-section { padding:92px 0; }
   .wine-photo-wrap { width:100%; opacity:.14; }
   .wine-col-left { max-width:100%; }
+  .gst-manifest .gst-section-head { margin-bottom: 58px; }
+  .gst-manifest .gst-section-head .gst-kicker { margin-bottom: 20px; }
 }
