@@ -244,14 +244,6 @@ function ScrollArchitectureSection({ t }) {
       body: t('restaurant.archRoom3Body'),
       layout: 'portrait-right',
     },
-    {
-      num: '05',
-      img: '/images/Albert Sastregener-empordà-botic-restaurant.webp',
-      alt: t('restaurant.archRoom4ImgAlt'),
-      title: t('restaurant.archRoom4Title'),
-      body: t('restaurant.archRoom4Body'),
-      layout: 'cinematic-end',
-    },
   ]
 
   useEffect(() => {

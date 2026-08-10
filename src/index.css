@@ -5887,7 +5887,7 @@ footer.botic-footer {
 
 /* â”€â”€ 4. Galeria â€” filmstrip horitzontal, secciÃ³ icÃ²nica â”€â”€ */
 .rst-story { background: #050403; position: relative; }
-.rst-story-scroll { position: relative; height: 500vh; background: #050403; }
+.rst-story-scroll { position: relative; height: 400vh; background: #050403; }
 .rst-story-stage {
   position: sticky; top: 0; height: 100vh; min-height: 620px;
   overflow: hidden; background: #050403;
