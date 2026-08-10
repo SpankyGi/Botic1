@@ -6827,7 +6827,7 @@ main { background: var(--paper); color: var(--ink); }
   overflow: hidden;
   background: #ddd3c5;
   box-shadow: 0 20px 48px rgba(59, 42, 24, .12);
-  min-height: clamp(510px, 53vw, 760px);
+  height: clamp(510px, 53vw, 760px);
 }
 .home-season-dish img {
   display: block;
@@ -6892,7 +6892,7 @@ main { background: var(--paper); color: var(--ink); }
   .home-season-head h2 { font-size: clamp(48px, 14vw, 68px); }
   .home-season-link { margin-top: 28px; font-size: 9px; }
   .home-season-gallery { grid-template-columns: 1fr; gap: 18px; }
-  .home-season-dish { min-height: 0; aspect-ratio: 4 / 5; }
+  .home-season-dish { height: auto; min-height: 0; aspect-ratio: 4 / 5; }
   .home-season-controls {
     display: flex;
     width: 100%;
