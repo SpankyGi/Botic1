@@ -114,9 +114,7 @@
     "featuresAria": "Discover Bo.TiC",
     "portraitsAria": "Albert and Cristina, the Bo.TiC team",
     "albertPortraitAlt": "Albert, Bo.TiC's kitchen lead",
-    "cristinaPortraitAlt": "Cristina, Bo.TiC's dining room and wine lead",
-    "albertPortraitLabel": "Albert · the kitchen",
-    "cristinaPortraitLabel": "Cristina · the dining room and wine"
+    "cristinaPortraitAlt": "Cristina, Bo.TiC's dining room and wine lead"
   },
   "restaurant": {
     "heroAria": "Bo.TiC restaurant",
