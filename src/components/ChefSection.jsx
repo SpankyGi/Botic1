@@ -27,8 +27,8 @@ function useFragReveal(threshold = 0.25, rootMargin = '0px') {
 
 export default function ChefSection() {
   const { t } = useTranslation()
-  const [quoteRef, quoteActive] = useFragReveal(0.01, '0px 0px -76% 0px')
-  const [sceneRef, sceneActive] = useFragReveal(0.01, '0px 0px -76% 0px')
+  const [quoteRef, quoteActive] = useFragReveal(0.01, '0px 0px -62% 0px')
+  const [sceneRef, sceneActive] = useFragReveal(0.01, '0px 0px -62% 0px')
 
   const frags = t('soul.frags', { returnObjects: true })
 

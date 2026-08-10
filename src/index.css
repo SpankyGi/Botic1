@@ -7559,7 +7559,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .features-section .feature-entry:nth-child(2) {
     animation: botic-feature-shift linear both;
     animation-timeline: view();
-    animation-range: entry 64% exit 100%;
+    animation-range: entry 54% exit 100%;
   }
   @keyframes botic-portrait-drift {
     from { transform: scale(1.08) translateY(-2%); }
@@ -8173,8 +8173,8 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
     opacity: 0;
     transform: translateY(28px);
     transition:
-      opacity .75s ease,
-      transform .95s cubic-bezier(.22, 1, .36, 1),
+      opacity 1.05s ease,
+      transform 1.28s cubic-bezier(.22, 1, .36, 1),
       background .55s ease;
   }
 
@@ -8187,7 +8187,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .features-section .feature-media,
   .features-section .feature-entry:nth-child(2) .feature-media {
     clip-path: inset(9% 0 9% 0);
-    transition: clip-path 1.2s cubic-bezier(.22, 1, .36, 1), opacity .75s ease;
+    transition: clip-path 1.8s cubic-bezier(.22, 1, .36, 1), opacity 1.05s ease;
   }
 
   .features-section .feature-entry.visible .feature-media,
@@ -8197,7 +8197,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 
   .features-section .feature-media img {
     transform: scale(1.06);
-    transition: transform 1.35s cubic-bezier(.22, 1, .36, 1), filter .55s ease;
+    transition: transform 1.85s cubic-bezier(.22, 1, .36, 1), filter .8s ease;
   }
 
   .features-section .feature-entry.visible .feature-media img {
@@ -8694,4 +8694,18 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .nav-header:not(.nav-menu-is-open) .nav-toggle.is-open .nav-toggle-line-1 { transform:translateY(7px) rotate(45deg); width:28px; }
   .nav-header:not(.nav-menu-is-open) .nav-toggle.is-open .nav-toggle-line-2 { transform:translateY(-7px) rotate(-45deg); width:28px; }
   .nav-header:not(.nav-menu-is-open) .nav-toggle.is-open .nav-toggle-lines::after { opacity:0; transform:translateY(-50%) scaleX(0); }
+}
+
+/* Portada: l'efecte arriba abans i amb prou recorregut per llegir-lo. */
+.home-season-inner.reveal {
+  transition: opacity 1.35s ease, transform 1.45s cubic-bezier(.22, 1, .36, 1);
+}
+.home-intro.visible .home-intro-title-line {
+  animation-duration: 1.15s;
+}
+.home-intro-body {
+  transition-duration: 1.08s, 1.08s;
+}
+.mirada-xef-section .soul-frag {
+  transition-duration: .95s, .95s;
 }

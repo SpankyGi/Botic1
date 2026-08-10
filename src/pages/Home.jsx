@@ -138,7 +138,7 @@ export default function Home() {
       const progress = Math.min(1, Math.max(0, (window.innerHeight - rect.top) / travel))
       // El plat conserva presència mentre s'entra al bloc; només gira al
       // tram final, quan el lector ja n'ha recorregut la major part.
-      const lateProgress = Math.min(1, Math.max(0, (progress - 0.64) / 0.36))
+      const lateProgress = Math.min(1, Math.max(0, (progress - 0.54) / 0.46))
       const degrees = -22 + lateProgress * 44
       dish.style.setProperty('--dish-turn', `${degrees.toFixed(2)}deg`)
     }

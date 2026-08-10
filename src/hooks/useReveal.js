@@ -24,9 +24,9 @@ export function useReveal(threshold = 0.05, rootMargin = '0px') {
   return ref
 }
 
-// La franja superior del viewport actua com a "darrer terç" de lectura.
+// La franja superior del viewport actua com a tram final de lectura.
 // També funciona quan el bloc és més alt que la pantalla, com les tres
 // portes de la portada en mòbil.
 export function useLateReveal() {
-  return useReveal(0.01, '0px 0px -76% 0px')
+  return useReveal(0.01, '0px 0px -62% 0px')
 }
