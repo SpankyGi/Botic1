@@ -8372,3 +8372,115 @@ main { background: var(--paper); color: var(--ink); }
   .restaurant-page .rst-team-detail--plating,
   .restaurant-page .rst-team-detail--service { grid-column: auto; grid-row: auto; height: min(48vw, 220px); }
 }
+
+/* Menús — sistema editorial clar sobre paper, amb un únic menú actiu. */
+.mnu-hero {
+  position: relative;
+  min-height: min(720px, 82svh);
+  overflow: hidden;
+  background: #f3ede3;
+  display: flex;
+  align-items: flex-end;
+  padding: 132px 0 clamp(56px, 8vw, 116px);
+}
+.mnu-hero-img { position: absolute; inset: 0 0 0 auto; width: min(56%, 980px); height: 100%; object-fit: cover; object-position: 50% 67%; mix-blend-mode: multiply; opacity: .92; }
+.mnu-hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, #f3ede3 0%, rgba(243,237,227,.98) 38%, rgba(243,237,227,.55) 64%, rgba(243,237,227,.06) 100%); }
+.mnu-hero-inner { position: relative; z-index: 1; width: 100%; }
+.mnu-hero-copy { max-width: min(610px, 51vw); }
+.menus-hero-label { display:block; color:#A51F3D; font:500 10px/1 'Plus Jakarta Sans',sans-serif; letter-spacing:.3em; text-transform:uppercase; margin-bottom:24px; }
+.menus-hero-title { margin:0; color:#211a14; font:300 clamp(45px,5.2vw,82px)/.96 'Plus Jakarta Sans',sans-serif; letter-spacing:-.058em; }
+.menus-hero-sub { margin:25px 0 0; color:rgba(33,26,20,.7); font:500 10px/1.5 'Plus Jakarta Sans',sans-serif; letter-spacing:.22em; text-transform:uppercase; }
+.menus-hero-ornament { margin-top:34px; justify-content:flex-start; }
+.mnu-hero-border-line { position:absolute; z-index:2; left:0; right:0; bottom:0; height:1px; background:rgba(165,31,61,.35); }
+
+.mnu-selector-wrap { position:relative; top:auto; z-index:2; background:#e8ded1; border-top:0; border-bottom:1px solid rgba(33,26,20,.14); padding:0; }
+.mnu-selector { width:min(1380px,100%); margin:0 auto; display:grid; grid-template-columns:repeat(3,1fr); padding:0 clamp(20px,4vw,66px); overflow:visible; }
+.mnu-tab { min-height:174px; position:relative; overflow:hidden; display:grid; grid-template-columns:auto 1fr auto; grid-template-rows:auto auto; align-content:center; column-gap:18px; row-gap:9px; text-align:left; padding:28px clamp(20px,3.3vw,52px); background:transparent; border:0; border-right:1px solid rgba(33,26,20,.14); color:#211a14; }
+.mnu-tab:last-child { border-right:0; }
+.mnu-tab::before { background:#A51F3D; transform:translateY(100%); opacity:1; }
+.mnu-tab::after { display:none; }
+.mnu-tab:hover::before,.mnu-tab.active::before { transform:translateY(0); }
+.mnu-tab-index { grid-row:1 / span 2; color:#A51F3D; align-self:start; font:500 10px/1 'Plus Jakarta Sans',sans-serif; letter-spacing:.14em; }
+.mnu-tab-title { color:#211a14; font:300 clamp(21px,2.1vw,34px)/1 'Plus Jakarta Sans',sans-serif; letter-spacing:-.035em; }
+.mnu-tab-position { color:rgba(33,26,20,.66); font:400 10px/1.35 'Plus Jakarta Sans',sans-serif; letter-spacing:.08em; }
+.mnu-tab-price { grid-row:1 / span 2; grid-column:3; align-self:end; }
+.mnu-tab-price-value { color:#A51F3D; font:300 clamp(25px,2.4vw,39px)/1 'Plus Jakarta Sans',sans-serif; letter-spacing:-.05em; }
+.mnu-tab.active .mnu-tab-index,.mnu-tab.active .mnu-tab-title,.mnu-tab.active .mnu-tab-position,.mnu-tab.active .mnu-tab-price-value,
+.mnu-tab:hover .mnu-tab-index,.mnu-tab:hover .mnu-tab-title,.mnu-tab:hover .mnu-tab-position,.mnu-tab:hover .mnu-tab-price-value { color:#fffaf4; position:relative; z-index:1; }
+.mnu-tab:focus-visible { outline:2px solid #A51F3D; outline-offset:-4px; }
+
+.mnu-content-wrap { background:#f3ede3; padding:clamp(76px,10vw,150px) 0 clamp(106px,13vw,185px); scroll-margin-top:72px; animation:mnuContentIn .38s cubic-bezier(.22,1,.36,1) both; }
+@keyframes mnuContentIn { from { opacity:0; transform:translateY(13px); } to { opacity:1; transform:translateY(0); } }
+.mnu-content { max-width:1240px; }
+.mnu-content-header { border-bottom:1px solid rgba(33,26,20,.24); align-items:baseline; padding:0 0 28px; }
+.mnu-content-title { color:#211a14; font:300 clamp(50px,6.2vw,94px)/.9 'Plus Jakarta Sans',sans-serif; letter-spacing:-.065em; }
+.mnu-content-price { color:#A51F3D; font:300 clamp(32px,3.6vw,52px)/1 'Plus Jakarta Sans',sans-serif; }
+.mnu-note,.mnu-season-note { max-width:630px; margin:25px 0 0; color:rgba(33,26,20,.68); font:400 13px/1.7 'Plus Jakarta Sans',sans-serif; }
+.mnu-note { border-left:1px solid #A51F3D; padding:0 0 0 16px; }
+.mnu-note-icon { display:none; }
+.mnu-course-list { margin-top:clamp(55px,7vw,94px); }
+.mnu-course-section { border-top:1px solid rgba(33,26,20,.18); padding:30px 0 clamp(50px,7vw,84px); }
+.mnu-course-section-head { display:flex; align-items:baseline; gap:20px; margin-bottom:34px; }
+.mnu-course-section-head > span { color:#A51F3D; font:500 10px/1 'Plus Jakarta Sans',sans-serif; letter-spacing:.22em; }
+.mnu-course-section h3 { margin:0; color:#211a14; font:300 clamp(29px,3.2vw,48px)/1 'Plus Jakarta Sans',sans-serif; letter-spacing:-.045em; }
+.mnu-course-groups { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 clamp(42px,7vw,124px); }
+.mnu-course { padding:22px 0 27px; border-top:1px solid rgba(33,26,20,.1); }
+.mnu-course h4 { margin:0 0 14px; color:#A51F3D; font:500 10px/1.2 'Plus Jakarta Sans',sans-serif; letter-spacing:.24em; text-transform:uppercase; }
+.mnu-course ul { list-style:none; padding:0; margin:0; }
+.mnu-course li { display:grid; grid-template-columns:25px 1fr; gap:10px; padding:5px 0; color:#211a14; font:300 clamp(15px,1.2vw,18px)/1.42 'Plus Jakarta Sans',sans-serif; }
+.mnu-course-item-mark { color:rgba(165,31,61,.68); font:500 9px/2 'Plus Jakarta Sans',sans-serif; letter-spacing:.1em; }
+.mnu-season-note { border-top:1px solid rgba(33,26,20,.18); padding-top:22px; }
+
+.wine-section { min-height:0; position:relative; overflow:hidden; padding:clamp(104px,13vw,184px) 0; background:#e8ded1; color:#211a14; }
+.wine-photo-wrap { inset:0 0 0 auto; width:min(42%,720px); height:100%; opacity:.34; }
+.wine-photo-img { filter:grayscale(.22) contrast(.95); }
+.wine-photo-overlay { background:linear-gradient(90deg,#e8ded1 0%,rgba(232,222,209,.58) 66%,rgba(232,222,209,.1)); }
+.wine-inner { position:relative; z-index:1; }
+.wine-col-left { max-width:720px; margin:0; opacity:1; transform:none; }
+.wine-label { color:#A51F3D; }
+.wine-stat { display:flex; align-items:baseline; gap:18px; margin:24px 0; }
+.wine-stat-num,.wine-title { color:#211a14; text-shadow:none; }
+.wine-stat-desc,.wine-lead,.wine-body { color:rgba(33,26,20,.72); }
+.wine-divider { background:#A51F3D; }
+.wine-ornament { justify-content:flex-start; }
+
+.info-section,.faq-section { background:#f3ede3; }
+.info-card { background:transparent; border-color:rgba(33,26,20,.16); }
+.info-num,.faq-eyebrow { color:#A51F3D; }
+.info-text,.faq-title,.faq-q-text { color:#211a14; }
+.faq-subtitle,.faq-answer-text { color:rgba(33,26,20,.7); }
+.faq-item { border-color:rgba(33,26,20,.16); }
+.faq-icon::before,.faq-icon::after { background:#A51F3D; }
+.mnu-cta-section { background:#e8ded1; border-top:1px solid rgba(33,26,20,.14); }
+.mnu-cta-glow { background:radial-gradient(ellipse at 50% 20%,rgba(165,31,61,.14),transparent 62%); }
+.mnu-cta-section h2 { color:#211a14 !important; }
+.mnu-cta-section p { color:rgba(33,26,20,.72) !important; }
+.mnu-cta-section .label { color:#A51F3D; }
+.mnu-cta-section .btn-cream { color:#211a14; border-color:rgba(33,26,20,.36); background:transparent; }
+.mnu-cta-section .btn-cream:hover { background:#211a14; color:#fffaf4; }
+
+@media (max-width:768px) {
+  .mnu-hero { min-height:600px; padding:118px 0 54px; align-items:flex-end; }
+  .mnu-hero-img { width:100%; opacity:.44; object-position:50% 72%; }
+  .mnu-hero-overlay { background:linear-gradient(0deg,#f3ede3 3%,rgba(243,237,227,.86) 52%,rgba(243,237,227,.63) 100%); }
+  .mnu-hero-copy { max-width:100%; }
+  .menus-hero-title { font-size:clamp(44px,13.5vw,60px); max-width:330px; }
+  .menus-hero-sub { max-width:270px; font-size:9px; letter-spacing:.17em; }
+  .mnu-selector-wrap { overflow:hidden; }
+  .mnu-selector { display:flex; overflow-x:auto; padding:0 20px; scrollbar-width:none; }
+  .mnu-selector::-webkit-scrollbar { display:none; }
+  .mnu-tab { flex:0 0 min(78vw,300px); min-height:138px; padding:21px 18px; border-right:1px solid rgba(33,26,20,.14); }
+  .mnu-tab-title { font-size:25px; }
+  .mnu-tab-position { font-size:9px; }
+  .mnu-tab-price-value { font-size:31px; }
+  .mnu-content-wrap { scroll-margin-top:58px; padding:64px 0 90px; }
+  .mnu-content-header { align-items:flex-start; flex-direction:column; gap:13px; }
+  .mnu-content-title { font-size:clamp(48px,14vw,65px); }
+  .mnu-course-groups { grid-template-columns:1fr; gap:0; }
+  .mnu-course-section { padding-top:24px; }
+  .mnu-course-section h3 { font-size:34px; }
+  .mnu-course li { font-size:16px; }
+  .wine-section { padding:92px 0; }
+  .wine-photo-wrap { width:100%; opacity:.14; }
+  .wine-col-left { max-width:100%; }
+}

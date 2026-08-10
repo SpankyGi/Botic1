@@ -3,59 +3,39 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
 import { useLangRoutes } from '../i18n/LangContext'
-import { useMenusData } from '../hooks/useMenusData'
+import { useLang } from '../i18n/LangContext'
+import { getOfficialMenus } from '../data/officialMenus'
 
-const HERO_IMG = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
+const HERO_IMG = '/images/plat-cenital-botic.jpg'
 
 // i18n metadata per menu — titles and notes come from translations
 const MENU_META = [
-  { id: 'degustacio',  titleKey: 'menus.degustacioTitle', noteKey: null,             fallbackPrice: '190 €' },
-  { id: 'chef',        titleKey: 'menus.chefTitle',       noteKey: null,             fallbackPrice: '250 €' },
-  { id: 'esencia',     titleKey: 'menus.esenciaTitle',    noteKey: 'menus.esenciaNote', fallbackPrice: '90 €' },
+  { id: 'degustacio',  titleKey: 'menus.degustacioTitle', positionKey: 'menus.degustacioPosition', noteKey: null,                fallbackPrice: '190 €' },
+  { id: 'chef',        titleKey: 'menus.chefTitle',       positionKey: 'menus.chefPosition',       noteKey: null,                fallbackPrice: '250 €' },
+  { id: 'esencia',     titleKey: 'menus.esenciaTitle',    positionKey: 'menus.esenciaPosition',     noteKey: 'menus.esenciaNote', fallbackPrice: '90 €' },
 ]
 
 /* ── Hero ─────────────────────────────────────────────────── */
 function MenusHero({ t }) {
   return (
-    <section
-      className="relative flex items-end overflow-hidden bg-botic-black pt-24"
-      style={{ minHeight: '72vh' }}
-      aria-label={t('menus.heroAria')}
-    >
+    <section className="mnu-hero" aria-label={t('menus.heroAria')}>
       <img
         src={HERO_IMG}
         alt=""
         aria-hidden="true"
-        className="mnu-hero-img absolute inset-0 w-full h-full object-cover object-center"
-        style={{ objectPosition: '60% 20%' }}
+        className="mnu-hero-img"
       />
-      <div
-        className="absolute inset-0"
-        style={{
-          background: [
-            'linear-gradient(0deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.40) 50%, rgba(0,0,0,0.18) 100%)',
-            'linear-gradient(90deg, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.40) 42%, rgba(0,0,0,0.10) 72%, rgba(0,0,0,0) 100%)',
-          ].join(', '),
-        }}
-      />
-      <div className="absolute bottom-0 left-0 right-0 mnu-hero-border-line" />
+      <div className="mnu-hero-overlay" aria-hidden="true" />
+      <div className="mnu-hero-border-line" />
 
-      <div className="relative z-10 container-max w-full pb-14 md:pb-20">
-        <span className="menus-hero-label label block mb-6">{t('menus.heroLabel')}</span>
-        <h1
-          className="menus-hero-title font-serif font-light italic text-botic-cream"
-          style={{ fontSize: 'clamp(26px, 4.2vw, 58px)', lineHeight: 1.18, maxWidth: '560px' }}
-        >
-          {t('menus.heroTitle')}
-        </h1>
-        <p
-          className="menus-hero-sub font-sans font-light text-botic-cream/65 mt-5"
-          style={{ fontSize: 'clamp(11px, 1.2vw, 13px)', letterSpacing: '0.20em' }}
-        >
-          {t('menus.heroSub')}
-        </p>
+      <div className="container-max mnu-hero-inner">
+        <div className="mnu-hero-copy">
+        <span className="menus-hero-label">{t('menus.heroLabel')}</span>
+        <h1 className="menus-hero-title">{t('menus.heroTitle')}</h1>
+        <p className="menus-hero-sub">{t('menus.heroSub')}</p>
         <div className="menus-hero-ornament">
           <span className="mnu-orn-line" /><span className="mnu-orn-glyph">✦</span><span className="mnu-orn-line" />
+        </div>
         </div>
       </div>
     </section>
@@ -426,36 +406,75 @@ function Ornament() {
 }
 
 /* ── Pàgina principal ─────────────────────────────────────── */
+function MenuCourseList({ sections, menuId }) {
+  return (
+    <div className="mnu-course-list">
+      {sections.map((section, sectionIndex) => (
+        <section className="mnu-course-section" key={`${menuId}-${section.id}`}>
+          <header className="mnu-course-section-head">
+            <span aria-hidden="true">{String(sectionIndex + 1).padStart(2, '0')}</span>
+            <h3>{section.title}</h3>
+          </header>
+          <div className="mnu-course-groups">
+            {section.groups.map((course) => (
+              <article className="mnu-course" key={`${menuId}-${section.id}-${course.id}`}>
+                <h4>{course.title}</h4>
+                <ul>
+                  {course.items.map((item, itemIndex) => (
+                    <li key={`${menuId}-${section.id}-${course.id}-${itemIndex}`}>
+                      <span className="mnu-course-item-mark" aria-hidden="true">{String(itemIndex + 1).padStart(2, '0')}</span>
+                      <span>{item.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  )
+}
+
 export default function Menus() {
   const { t }   = useTranslation()
   const routes  = useLangRoutes()
+  const lang    = useLang()
   const [activeId, setActiveId] = useState('degustacio')
   const contentRef = useRef(null)
 
   // API/cache/fallback data — hook handles fetch, TTL, and language
-  const rawMenus = useMenusData()
 
   // Merge API data with i18n metadata (titles, notes stay in i18n)
   const menus = useMemo(() =>
-    MENU_META.map(({ id, titleKey, noteKey, fallbackPrice }) => {
-      const raw = rawMenus.find(m => m.id === id) || {}
+    MENU_META.map(({ id, titleKey, positionKey, noteKey, fallbackPrice }) => {
+      const raw = getOfficialMenus(lang).find(m => m.id === id) || {}
       return {
         id,
         price:    raw.price || fallbackPrice,
         title:    t(titleKey),
+        position: t(positionKey),
         note:     noteKey ? t(noteKey) : '',
         sections: raw.sections || [],
       }
     }),
-  [rawMenus, t])
+  [lang, t])
 
   const active = menus.find(m => m.id === activeId) ?? menus[0]
 
   const selectMenu = (id) => {
     setActiveId(id)
-    setTimeout(() => {
-      contentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
-    }, 0)
+  }
+
+  const onSelectorKeyDown = (event, currentIndex) => {
+    if (!['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
+    event.preventDefault()
+    const nextIndex = event.key === 'Home' ? 0
+      : event.key === 'End' ? menus.length - 1
+        : (currentIndex + (event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1) + menus.length) % menus.length
+    const next = menus[nextIndex]
+    selectMenu(next.id)
+    requestAnimationFrame(() => document.getElementById(`menu-selector-${next.id}`)?.focus())
   }
 
   return (
@@ -470,20 +489,23 @@ export default function Menus() {
       <MenusHero t={t} />
 
       {/* ── Selector de menús ── */}
-      <div
-        className="mnu-selector-wrap"
-        role="navigation"
-        aria-label={t('menus.selectorAria')}
-      >
-        <div className="mnu-selector">
-          {menus.map((m) => (
+      <div className="mnu-selector-wrap" aria-label={t('menus.selectorAria')}>
+        <div className="mnu-selector" role="tablist">
+          {menus.map((m, index) => (
             <button
               key={m.id}
+              id={`menu-selector-${m.id}`}
               className={`mnu-tab${m.id === activeId ? ' active' : ''}`}
               onClick={() => selectMenu(m.id)}
-              aria-pressed={m.id === activeId}
+              onKeyDown={(event) => onSelectorKeyDown(event, index)}
+              role="tab"
+              aria-selected={m.id === activeId}
+              aria-controls={`menu-panel-${m.id}`}
+              tabIndex={m.id === activeId ? 0 : -1}
             >
+              <span className="mnu-tab-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
               <span className="mnu-tab-title">{m.title}</span>
+              <span className="mnu-tab-position">{m.position}</span>
               <span className="mnu-tab-price">
                 <span className="mnu-tab-price-value">{m.price}</span>
               </span>
@@ -497,6 +519,8 @@ export default function Menus() {
         ref={contentRef}
         className="mnu-content-wrap"
         aria-label={active.title}
+        id={`menu-panel-${active.id}`}
+        role="tabpanel"
         key={activeId}
       >
         <div className="container-max mnu-content">
@@ -512,16 +536,8 @@ export default function Menus() {
             </p>
           )}
 
-          <div className="mnu-sections">
-            {active.sections.map((section) => (
-              <SectionAccordion
-                key={`${activeId}-${section.id}`}
-                section={section}
-                menuId={activeId}
-                t={t}
-              />
-            ))}
-          </div>
+          <MenuCourseList sections={active.sections} menuId={activeId} />
+          <p className="mnu-season-note" role="note">{t('menus.seasonNote')}</p>
         </div>
       </section>
 
