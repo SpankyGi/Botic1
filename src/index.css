@@ -8482,15 +8482,15 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 .wine-ghost {
   position:absolute;
   z-index:1;
-  right:clamp(-22px,2vw,28px);
-  top:53%;
+  left:clamp(28px,7vw,112px);
+  top:55%;
   transform:translateY(-50%);
   color:transparent;
-  font:300 clamp(124px,22vw,370px)/.72 'Plus Jakarta Sans',serif;
+  font:300 clamp(118px,16vw,285px)/.72 'Plus Jakarta Sans',serif;
   letter-spacing:-.085em;
   text-transform:uppercase;
   white-space:nowrap;
-  -webkit-text-stroke:1px rgba(165,31,61,.34);
+  -webkit-text-stroke:1px rgba(165,31,61,.44);
   pointer-events:none;
 }
 .wine-photo-wrap { inset:0 0 0 auto; width:min(42%,720px); height:100%; opacity:.34; }
@@ -8561,7 +8561,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .mnu-course-section h3 { font-size:34px; }
   .mnu-course li { font-size:16px; }
   .wine-section { padding:92px 0; }
-  .wine-ghost { right:-2vw; top:auto; bottom:2%; transform:none; font-size:38vw; -webkit-text-stroke:1px rgba(165,31,61,.24); }
+  .wine-ghost { left:auto; right:-2vw; top:auto; bottom:2%; transform:none; font-size:38vw; -webkit-text-stroke:1px rgba(165,31,61,.24); }
   .wine-photo-wrap { width:100%; opacity:.14; }
   .wine-col-left { max-width:100%; }
   .gst-manifest .gst-section-head { margin-bottom: 58px; }
