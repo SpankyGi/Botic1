@@ -8526,3 +8526,66 @@ main { background: var(--paper); color: var(--ink); }
   .gst-manifest .gst-section-head { margin-bottom: 58px; }
   .gst-manifest .gst-section-head .gst-kicker { margin-bottom: 20px; }
 }
+
+/* Heros interiors — la fotografia conserva profunditat, però es resol cap al
+   mateix ivori editorial de la resta del lloc. L'ombra queda limitada al camp
+   de lectura del text, en lloc d'enfosquir tota l'escena. */
+.exp-hero,
+.gst-hero,
+.hor-hero,
+.restaurant-page .rst-hero { background: #f3ede3; }
+
+.exp-hero-img { filter: saturate(.86) brightness(.88); }
+.gst-hero-img { filter: saturate(.88) brightness(.94); }
+.hor-hero-img { filter: brightness(.91) contrast(1.02) saturate(.90); }
+
+.exp-hero-shade {
+  background:
+    radial-gradient(ellipse 54% 52% at 21% 78%, rgba(28, 18, 14, .56) 0%, rgba(28, 18, 14, .28) 47%, transparent 76%),
+    linear-gradient(90deg, rgba(28, 18, 14, .48) 0%, rgba(28, 18, 14, .24) 34%, rgba(28, 18, 14, .04) 66%, transparent 100%),
+    linear-gradient(0deg, rgba(243, 237, 227, .92) 0%, rgba(243, 237, 227, .40) 28%, transparent 61%);
+}
+
+.gst-hero-shade {
+  background:
+    radial-gradient(ellipse 56% 56% at 19% 78%, rgba(28, 18, 14, .60) 0%, rgba(28, 18, 14, .30) 48%, transparent 78%),
+    linear-gradient(90deg, rgba(28, 18, 14, .52) 0%, rgba(28, 18, 14, .27) 34%, rgba(28, 18, 14, .05) 67%, transparent 100%),
+    linear-gradient(0deg, rgba(243, 237, 227, .90) 0%, rgba(243, 237, 227, .34) 29%, transparent 62%);
+}
+
+.hor-hero-overlay {
+  background:
+    radial-gradient(ellipse 56% 52% at 21% 78%, rgba(28, 18, 14, .54) 0%, rgba(28, 18, 14, .25) 49%, transparent 77%),
+    linear-gradient(90deg, rgba(28, 18, 14, .40) 0%, rgba(28, 18, 14, .15) 48%, transparent 72%),
+    linear-gradient(0deg, rgba(243, 237, 227, .92) 0%, rgba(243, 237, 227, .38) 30%, transparent 62%);
+}
+
+.restaurant-page .rst-hero-overlay {
+  background:
+    radial-gradient(ellipse 54% 54% at 44% 68%, rgba(47, 29, 22, .54) 0%, rgba(21, 13, 10, .28) 48%, transparent 78%),
+    linear-gradient(90deg, rgba(23, 15, 12, .43) 0%, rgba(23, 15, 12, .15) 52%, transparent 100%),
+    linear-gradient(0deg, rgba(243, 237, 227, .84) 0%, rgba(243, 237, 227, .28) 28%, transparent 59%);
+}
+
+@media (max-width:768px) {
+  .exp-hero-shade,
+  .gst-hero-shade,
+  .hor-hero-overlay {
+    background:
+      radial-gradient(ellipse 124% 64% at 50% 84%, rgba(28, 18, 14, .84) 0%, rgba(28, 18, 14, .44) 58%, transparent 88%),
+      linear-gradient(0deg, rgba(243, 237, 227, .94) 0%, rgba(243, 237, 227, .46) 38%, transparent 76%);
+  }
+
+  .restaurant-page .rst-hero-overlay {
+    background:
+      radial-gradient(ellipse 122% 64% at 42% 84%, rgba(39, 24, 18, .82) 0%, rgba(23, 15, 12, .42) 58%, transparent 88%),
+      linear-gradient(0deg, rgba(243, 237, 227, .90) 0%, rgba(243, 237, 227, .35) 40%, transparent 76%);
+  }
+
+  .exp-hero-copy h1,
+  .gst-hero-copy h1,
+  .hor-hero-title,
+  .restaurant-page .rst-hero-title {
+    text-shadow: 0 2px 24px rgba(23, 15, 12, .48);
+  }
+}
