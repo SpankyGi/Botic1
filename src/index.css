@@ -7733,10 +7733,10 @@ main { background: var(--paper); color: var(--ink); }
 }
 .home-seo-symbol-reveal img {
   display: block;
-  width: 220%;
+  width: 200%;
   max-width: none;
   height: auto;
-  transform: translate(-27.5%, -58.5%);
+  transform: translate(-25%, -57%);
 }
 .home-seo-intro h2 {
   margin: 0;
