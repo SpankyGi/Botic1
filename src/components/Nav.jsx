@@ -99,7 +99,11 @@ export default function Nav() {
         role="banner"
       >
         <Link to={routes.home} className="nav-logo" onClick={handleClose}>
-          Bo<span className="nav-logo-dot">·</span>TiC
+          <span className="nav-michelin-stars" aria-hidden="true">
+            <img src="/images/michelin-star-original.png" alt="" />
+            <img src="/images/michelin-star-original.png" alt="" />
+          </span>
+          <span className="nav-logo-word">Bo<span className="nav-logo-dot">·</span>TiC</span>
         </Link>
 
         <button
