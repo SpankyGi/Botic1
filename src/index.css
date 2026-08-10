@@ -6837,6 +6837,115 @@ main { background: var(--paper); color: var(--ink); }
   filter: saturate(.88) contrast(1.02);
   animation: home-season-enter .7s cubic-bezier(.22, 1, .36, 1) both;
 }
+
+/* Restaurant — la pàgina recupera la llum de la Home. L'scroll narratiu de
+   les imatges es manté deliberadament intacte: és el contrapunt fosc del relat. */
+.restaurant-page {
+  --restaurant-paper: #f3ede3;
+  --restaurant-paper-deep: #e8ded1;
+  --restaurant-ink: #211a14;
+  --restaurant-red: #A51F3D;
+  background: var(--restaurant-paper);
+  color: var(--restaurant-ink);
+}
+
+.restaurant-page .rst-hero {
+  min-height: min(850px, 94svh);
+  background: #17110e;
+}
+
+.restaurant-page .rst-hero-img {
+  filter: saturate(.72) brightness(.84) contrast(1.03);
+}
+
+.restaurant-page .rst-hero-overlay {
+  background:
+    radial-gradient(ellipse 54% 54% at 44% 68%, rgba(47, 29, 22, .66) 0%, rgba(21, 13, 10, .42) 46%, transparent 77%),
+    linear-gradient(90deg, rgba(23, 15, 12, .60) 0%, rgba(23, 15, 12, .24) 52%, rgba(23, 15, 12, .08) 100%),
+    linear-gradient(0deg, rgba(23, 15, 12, .52) 0%, transparent 46%);
+}
+
+.restaurant-page .rst-hero-vert { color: rgba(235, 219, 201, .64); }
+.restaurant-page .rst-hero-inner::before {
+  background: radial-gradient(ellipse at 50% 62%, rgba(165, 31, 61, .16) 0%, rgba(165, 31, 61, .055) 35%, transparent 70%);
+}
+.restaurant-page .rst-hero-title { color: #faf5ed; }
+.restaurant-page .rst-hero-sub { color: rgba(250, 245, 237, .76); }
+.restaurant-page .rst-hero .btn-gold,
+.restaurant-page .home-reserva-cta .btn-gold {
+  background: var(--restaurant-red);
+  border-color: var(--restaurant-red);
+  color: #fffaf4;
+}
+.restaurant-page .rst-hero-secondary { color: rgba(250, 245, 237, .76); border-color: rgba(250, 245, 237, .34); }
+.restaurant-page .rst-hero-secondary:hover { color: #fffaf4; border-color: rgba(250, 245, 237, .8); }
+.restaurant-page .rst-hero-scroll span { background: linear-gradient(to bottom, transparent, rgba(250, 245, 237, .72)); }
+
+/* The image-led scroll sequence remains intentionally dark and untouched. */
+.restaurant-page .rst-team {
+  position: relative;
+  background: var(--restaurant-paper);
+  border-top: 1px solid rgba(33, 26, 20, .13);
+}
+.restaurant-page .rst-team::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: clamp(28px, 10vw, 160px);
+  width: min(132px, 16vw);
+  height: 2px;
+  background: var(--restaurant-red);
+}
+.restaurant-page .rst-team-heading { color: var(--restaurant-ink); }
+.restaurant-page .rst-team-sub { color: rgba(33, 26, 20, .70); }
+.restaurant-page .rst-team .rst-eyebrow,
+.restaurant-page .rst-team-label { color: var(--restaurant-red); }
+.restaurant-page .rst-team-photo::after {
+  background: linear-gradient(0deg, rgba(243, 237, 227, .84) 0%, rgba(243, 237, 227, .05) 54%, transparent 100%);
+}
+.restaurant-page .rst-team-name { color: var(--restaurant-ink); text-shadow: none; }
+.restaurant-page .rst-team-body { color: rgba(33, 26, 20, .72); }
+
+.restaurant-page .rst-ticker {
+  background: var(--restaurant-ink);
+  border-top: 0;
+  border-bottom: 0;
+}
+.restaurant-page .rst-ticker-track span { color: rgba(255, 246, 237, .68); }
+.restaurant-page .rst-ticker-track span::first-letter { color: #f6d9df; }
+
+.restaurant-page .home-reserva-cta {
+  background: var(--restaurant-paper-deep);
+  border-top: 1px solid rgba(33, 26, 20, .10);
+}
+.restaurant-page .home-reserva-cta::before {
+  background: radial-gradient(ellipse at 50% 30%, rgba(165, 31, 61, .14), transparent 67%);
+}
+.restaurant-page .home-reserva-cta h2 { color: var(--restaurant-ink); }
+.restaurant-page .home-reserva-cta p { color: rgba(33, 26, 20, .72); }
+.restaurant-page .home-reserva-cta .label { color: var(--restaurant-red); }
+.restaurant-page .home-reserva-cta .btn-cream {
+  color: var(--restaurant-ink);
+  border-color: rgba(33, 26, 20, .32);
+  background: transparent;
+}
+.restaurant-page .home-reserva-cta .btn-cream:hover {
+  background: var(--restaurant-ink);
+  color: #fffaf4;
+}
+
+@media (max-width: 768px) {
+  .restaurant-page .rst-hero { min-height: 620px; }
+  .restaurant-page .rst-hero-overlay {
+    background:
+      radial-gradient(ellipse 105% 54% at 42% 76%, rgba(39, 24, 18, .76) 0%, rgba(23, 15, 12, .50) 53%, transparent 86%),
+      linear-gradient(0deg, rgba(23, 15, 12, .54) 0%, transparent 50%);
+  }
+  .restaurant-page .rst-team { padding-top: 104px; padding-bottom: 112px; }
+  .restaurant-page .rst-team::before { left: 24px; width: 74px; }
+  .restaurant-page .rst-team-header { margin-bottom: 58px; }
+  .restaurant-page .rst-team-photo::after { background: linear-gradient(0deg, rgba(243, 237, 227, .88) 0%, transparent 62%); }
+}
 .home-season-dish figcaption {
   position: absolute;
   right: 22px;

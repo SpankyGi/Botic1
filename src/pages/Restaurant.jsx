@@ -539,10 +539,12 @@ export default function Restaurant() {
         ogImage={`${BASE_URL}/images/restaurant-botic-corca-emporda-exterior-nit.webp`}
       />
 
-      <RestaurantHero t={t} routes={routes} />
-      <ScrollArchitectureSection t={t} />
-      <TeamSection t={t} />
-      <FinalCTA t={t} routes={routes} />
+      <div className="restaurant-page">
+        <RestaurantHero t={t} routes={routes} />
+        <ScrollArchitectureSection t={t} />
+        <TeamSection t={t} />
+        <FinalCTA t={t} routes={routes} />
+      </div>
     </>
   )
 }
