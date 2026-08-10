@@ -72,7 +72,6 @@ function SeasonStrip({ t, routes }) {
                 key={item.image}
                 aria-pressed={index === activeDish}
                 onClick={() => setActiveDish(index)}
-                onMouseEnter={() => setActiveDish(index)}
               >
                 <span aria-hidden="true">0{index + 1}</span>
                 <span>{item.label}</span>
