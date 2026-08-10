@@ -6817,9 +6817,9 @@ main { background: var(--paper); color: var(--ink); }
 .home-season-link:focus-visible { gap: 21px; color: #a52f2d; border-color: #a52f2d; }
 .home-season-gallery {
   display: grid;
-  grid-template-columns: minmax(0, .88fr) minmax(0, 1.36fr) minmax(0, .86fr);
-  align-items: end;
-  gap: clamp(16px, 2.8vw, 44px);
+  grid-template-columns: minmax(0, 1fr) clamp(164px, 16vw, 230px);
+  align-items: stretch;
+  gap: clamp(26px, 5vw, 82px);
 }
 .home-season-dish {
   position: relative;
@@ -6827,29 +6827,57 @@ main { background: var(--paper); color: var(--ink); }
   overflow: hidden;
   background: #ddd3c5;
   box-shadow: 0 20px 48px rgba(59, 42, 24, .12);
+  min-height: clamp(460px, 51vw, 720px);
 }
 .home-season-dish img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(.84) contrast(1.01);
-  transition: transform 1.15s cubic-bezier(.2, .75, .2, 1), filter .7s ease;
+  filter: saturate(.88) contrast(1.02);
+  animation: home-season-enter .7s cubic-bezier(.22, 1, .36, 1) both;
 }
-.home-season-dish:hover img { transform: scale(1.045); filter: saturate(1) contrast(1.03); }
-.home-season-dish-1 { aspect-ratio: 4 / 5; margin-bottom: clamp(0px, 5vw, 80px); }
-.home-season-dish-1 img { object-position: 56% center; }
-.home-season-dish-2 { aspect-ratio: 16 / 11; }
-.home-season-dish-3 { aspect-ratio: 4 / 5; margin-bottom: clamp(22px, 3vw, 50px); }
-.home-season-dish-3 img { object-position: 52% center; }
 .home-season-dish figcaption {
   position: absolute;
-  right: 16px;
-  bottom: 14px;
+  right: 22px;
+  bottom: 18px;
   color: rgba(255, 255, 255, .78);
-  font: 500 8px/1 'Plus Jakarta Sans', sans-serif;
+  font: 500 10px/1 'Plus Jakarta Sans', sans-serif;
   letter-spacing: .24em;
   text-shadow: 0 1px 8px rgba(0, 0, 0, .72);
+}
+.home-season-controls {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  border-top: 1px solid rgba(77, 58, 37, .25);
+}
+.home-season-controls button {
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 10px;
+  width: 100%;
+  padding: 21px 0 20px;
+  border: 0;
+  border-bottom: 1px solid rgba(77, 58, 37, .25);
+  background: transparent;
+  color: rgba(33, 26, 20, .47);
+  cursor: pointer;
+  font: 500 11px/1.2 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: .13em;
+  text-align: left;
+  text-transform: uppercase;
+  transition: color .3s ease, padding-left .35s cubic-bezier(.22, 1, .36, 1);
+}
+.home-season-controls button > :first-child { font-size: 9px; letter-spacing: .18em; }
+.home-season-controls button.is-active,
+.home-season-controls button:hover,
+.home-season-controls button:focus-visible { color: #a51f3d; padding-left: 10px; }
+.home-season-controls button:focus-visible { outline: 1px solid #a51f3d; outline-offset: -1px; }
+@keyframes home-season-enter {
+  from { opacity: 0; transform: scale(1.025); }
+  to { opacity: 1; transform: scale(1); }
 }
 @media (max-width: 768px) {
   .home-season { padding: 88px 0 96px; }
@@ -6859,14 +6887,34 @@ main { background: var(--paper); color: var(--ink); }
   .home-season-eyebrow { margin-bottom: 13px; }
   .home-season-head h2 { font-size: clamp(48px, 14vw, 68px); }
   .home-season-link { margin-top: 28px; font-size: 9px; }
-  .home-season-gallery { grid-template-columns: 1fr 1fr; gap: 12px; }
-  .home-season-dish-1 { aspect-ratio: 4 / 5; margin-bottom: 0; }
-  .home-season-dish-2 { grid-column: 1 / -1; grid-row: 2; aspect-ratio: 16 / 10; }
-  .home-season-dish-3 { aspect-ratio: 4 / 5; margin-bottom: 0; }
+  .home-season-gallery { grid-template-columns: 1fr; gap: 16px; }
+  .home-season-dish { min-height: 0; aspect-ratio: 4 / 5; }
+  .home-season-controls {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: calc(100% - 86px);
+    border-top: 0;
+  }
+  .home-season-controls button {
+    display: block;
+    min-height: 62px;
+    padding: 12px 8px 10px;
+    border-top: 1px solid rgba(77, 58, 37, .25);
+    border-bottom: 1px solid rgba(77, 58, 37, .25);
+    border-right: 1px solid rgba(77, 58, 37, .25);
+    font-size: 9px;
+    letter-spacing: .08em;
+  }
+  .home-season-controls button:last-child { border-right: 0; }
+  .home-season-controls button > span { display: block; }
+  .home-season-controls button > :first-child { margin-bottom: 7px; font-size: 8px; }
+  .home-season-controls button.is-active,
+  .home-season-controls button:hover,
+  .home-season-controls button:focus-visible { padding-left: 8px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .home-season-link,
-  .home-season-dish img { transition: none; }
+  .home-season-dish img { animation: none; }
 }
 
 /* El vÃ­deo del Hero necessita una navegaciÃ³ inequÃ­voca; en desplaÃ§ar-se,

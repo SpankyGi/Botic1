@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Hero             from '../components/Hero'
@@ -38,11 +38,13 @@ function ReserveHeading({ children }) {
 
 function SeasonStrip({ t, routes }) {
   const revealRef = useReveal(0.16)
+  const [activeDish, setActiveDish] = useState(0)
   const dishes = [
-    { image: '/images/botic-maig-2026-webp/amanida-gastronomica-herbes-botic-emporda.webp', alt: t('home.seasonDish1Alt') },
-    { image: '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp', alt: t('home.seasonDish2Alt') },
-    { image: '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp', alt: t('home.seasonDish3Alt') },
+    { image: '/images/botic-maig-2026-webp/amanida-gastronomica-herbes-botic-emporda.webp', alt: t('home.seasonDish1Alt'), label: t('home.seasonDish1Name') },
+    { image: '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp', alt: t('home.seasonDish2Alt'), label: t('home.seasonDish2Name') },
+    { image: '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp', alt: t('home.seasonDish3Alt'), label: t('home.seasonDish3Name') },
   ]
+  const dish = dishes[activeDish]
 
   return (
     <section className="home-season" aria-label={t('home.seasonAria')}>
@@ -57,12 +59,26 @@ function SeasonStrip({ t, routes }) {
         </header>
 
         <div className="home-season-gallery">
-          {dishes.map((dish, index) => (
-            <figure className={`home-season-dish home-season-dish-${index + 1}`} key={dish.image}>
-              <img src={dish.image} alt={dish.alt} loading="lazy" />
-              <figcaption aria-hidden="true">0{index + 1}</figcaption>
-            </figure>
-          ))}
+          <figure className="home-season-dish">
+            <img key={dish.image} src={dish.image} alt={dish.alt} loading="lazy" />
+            <figcaption aria-hidden="true">0{activeDish + 1}</figcaption>
+          </figure>
+
+          <div className="home-season-controls" aria-label={t('home.seasonControlsAria')}>
+            {dishes.map((item, index) => (
+              <button
+                className={index === activeDish ? 'is-active' : ''}
+                type="button"
+                key={item.image}
+                aria-pressed={index === activeDish}
+                onClick={() => setActiveDish(index)}
+                onMouseEnter={() => setActiveDish(index)}
+              >
+                <span aria-hidden="true">0{index + 1}</span>
+                <span>{item.label}</span>
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </section>
