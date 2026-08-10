@@ -6768,7 +6768,7 @@ main { background: var(--paper); color: var(--ink); }
   font: 300 clamp(106px, 20vw, 330px)/.76 'Plus Jakarta Sans', serif;
   letter-spacing: -.075em;
   white-space: nowrap;
-  -webkit-text-stroke: 1px rgba(119, 78, 46, .11);
+  -webkit-text-stroke: 1px rgba(165, 31, 61, .30);
   pointer-events: none;
 }
 .home-season-inner {
