@@ -4,7 +4,9 @@ import { useTranslation } from 'react-i18next'
 import { useLangRoutes } from '../i18n/LangContext'
 
 const BG_VIDEO_SRC    = 'https://res.cloudinary.com/dnij1yhdu/video/upload/v1779093224/hero-botic_krjc0b.webm'
-const BG_VIDEO_POSTER = '/images/hero-botic-poster.jpg'
+// El vídeo és només una capa d'atmosfera. Aquesta imatge existent garanteix
+// que navegadors sense el còdec WebM no quedin amb el fons fosc del hero.
+const BG_VIDEO_POSTER = '/images/restaurant-botic-emporda-hero.webp'
 
 function BgVideo() {
   const videoRef = useRef(null)

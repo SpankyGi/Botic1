@@ -503,29 +503,36 @@ body .exp-narrative { padding: 86px 22px 72px; }
   width: 38px;
 }
 
-/* Active route */
-.nav-fs-link.is-active .nav-fs-idx {
-  color: rgba(154, 42, 42, 0.75);
-}
-.nav-fs-link.is-active .nav-fs-name {
-  color: rgba(255, 250, 241, 0.94);
-}
-
-/* L'índex també situa: la pàgina activa queda marcada sense carregar la llista. */
+/* La secció oberta ha de llegir-se al primer cop d'ull, no només per una
+   línia decorativa: índex vermell i un rètol explícit. */
 .nav-fs-link.is-active {
   position: relative;
-  margin-left: -14px;
-  padding-left: 14px;
+  margin-left: 0;
+  padding-left: 0;
 }
-.nav-fs-link.is-active::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 16%;
-  bottom: 16%;
-  width: 1px;
-  background: #a51f3d;
-  box-shadow: 0 0 12px rgba(165, 31, 61, .36);
+.nav-fs-link.is-active::before { display: none; }
+.nav-fs-link.is-active .nav-fs-idx {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 22px;
+  margin-left: -4px;
+  padding: 0;
+  color: #fffaf4;
+  background: #A51F3D;
+}
+.nav-fs-link.is-active .nav-fs-name { color: #fffaf4; }
+.nav-fs-current {
+  align-self: center;
+  margin-left: 4px;
+  padding: 5px 7px 4px;
+  border: 1px solid rgba(255,250,244,.32);
+  color: rgba(255,250,244,.88);
+  font: 600 7px/1 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
 
 /* RIGHT â€” image zone */
