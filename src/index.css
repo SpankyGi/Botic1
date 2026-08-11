@@ -5682,7 +5682,7 @@ footer.botic-footer {
   margin-bottom: 28px;
   text-shadow: 0 14px 60px rgba(0,0,0,0.45);
 }
-.rst-hw { display: inline-block; overflow: hidden; margin-right: 0.22em; vertical-align: top; }
+.rst-hw { display: inline-block; overflow: hidden; margin-right: 0; vertical-align: top; }
 .rst-hw > span {
   display: inline-block;
   transform: translateY(112%);
@@ -7318,7 +7318,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 .home-reserva-cta .btn-gold { background: #a52f2d; border-color: #a52f2d; }
 .home-reserva-cta .container-max.reveal { opacity: 1; transform: none; }
 .home-reserva-cta .container-max { position: relative; z-index: 2; text-align: center; }
-.reserve-word { display: inline-block; margin-right: .22em; }
+.reserve-word { display: inline-block; margin-right: 0; }
 .reserve-word:last-child { margin-right: 0; }
 @media (prefers-reduced-motion: no-preference) {
   .reserve-word { opacity: 1; transform: none; transition: opacity .62s ease, transform .62s cubic-bezier(.2,.82,.18,1); transition-delay: calc(var(--word, 0) * 70ms); }
@@ -8788,4 +8788,35 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
     transform: scale(1.08);
     filter: saturate(.94) brightness(.86);
   }
+}
+
+/* Accessibilitat global: el focus de teclat ha de mantenir-se sempre visible,
+   també sobre les superfícies fosques on el vermell corporatiu és massa tènue. */
+:focus-visible {
+  outline: 2px solid #d66a68;
+  outline-offset: 4px;
+}
+
+/* Els selectors d'idioma no poden dependre d'una àrea tàctil de text petit. */
+@media (max-width: 768px) {
+  .nav-recognition-langs a,
+  .nav-fs-lang-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* Ajust de lectura, limitat als titulars editorials que combinen paraules
+   completes: recupera espai sense desfer la tensió tipogràfica del sistema. */
+.hero-title,
+.features-section .feature-title,
+.menus-hero-title,
+.rst-hero-title,
+.exp-hero-copy h1,
+.gst-hero-copy h1,
+.hor-hero-title {
+  word-spacing: .08em;
 }

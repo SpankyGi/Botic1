@@ -112,8 +112,8 @@ export default function Nav() {
         role="banner"
       >
         <span className="nav-michelin-stars" role="img" aria-label="Dues estrelles Michelin">
-          <img src="/images/michelin-star-original.png" alt="" />
-          <img src="/images/michelin-star-original.png" alt="" />
+          <img src="/images/michelin-star-original.png" alt="" width="48" height="48" decoding="async" />
+          <img src="/images/michelin-star-original.png" alt="" width="48" height="48" decoding="async" />
         </span>
         <a href={routes.home} className="nav-logo" onClick={handleClose}>
           <BoticWordmark />
@@ -213,7 +213,8 @@ export default function Nav() {
                   src={navItems[0].img}
                   alt=""
                   className="nav-fs-img"
-                  fetchpriority="high"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="nav-fs-img-overlay" />
               </div>
@@ -226,6 +227,7 @@ export default function Nav() {
                     src={item.img}
                     alt=""
                     loading="lazy"
+                    decoding="async"
                     className="nav-fs-img"
                   />
                   <div className="nav-fs-img-overlay" />

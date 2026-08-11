@@ -3,6 +3,7 @@ import { useLang } from '../i18n/LangContext'
 import { ROUTE_SLUGS, LANGS } from '../i18n/routes'
 
 const BASE_URL = 'https://www.bo-tic.com'
+const DEFAULT_OG_IMAGE = `${BASE_URL}/images/restaurant-botic-emporda-hero.webp`
 
 // Map page key to canonical path segment per language
 const PAGE_SLUGS = {
@@ -17,7 +18,7 @@ const PAGE_SLUGS = {
 
 function buildCanonical(lang, pageKey) {
   const slug = pageKey === 'home' ? '' : (ROUTE_SLUGS[lang]?.[pageKey] ?? '')
-  return slug ? `${BASE_URL}/${lang}/${slug}` : `${BASE_URL}/${lang}`
+  return slug ? `${BASE_URL}/${lang}/${slug}/` : `${BASE_URL}/${lang}/`
 }
 
 export default function SEO({ title, description, pageKey, ogImage }) {
@@ -41,7 +42,9 @@ export default function SEO({ title, description, pageKey, ogImage }) {
     setMeta('description', description)
     setMeta('og:title', title, true)
     setMeta('og:description', description, true)
-    if (ogImage) setMeta('og:image', ogImage, true)
+    const image = new URL(ogImage || DEFAULT_OG_IMAGE, BASE_URL).href
+    setMeta('og:image', image, true)
+    setMeta('twitter:image', image)
 
     // Canonical
     const canonical = pageKey ? buildCanonical(lang, pageKey) : null
@@ -53,6 +56,7 @@ export default function SEO({ title, description, pageKey, ogImage }) {
         document.head.appendChild(link)
       }
       link.setAttribute('href', canonical)
+      setMeta('og:url', canonical, true)
     }
 
     // hreflang alternates

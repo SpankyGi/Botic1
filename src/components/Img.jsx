@@ -13,6 +13,7 @@ export default function Img({ src, alt, className = '', containerClass = '', laz
         src={src}
         alt={alt}
         loading={lazy ? 'lazy' : 'eager'}
+        decoding="async"
         className={`img-cover ${className}`}
         onError={handleError}
       />

@@ -484,7 +484,7 @@ export default function Menus() {
         title={t('seo.menus.title')}
         description={t('seo.menus.description')}
         pageKey="menus"
-        ogImage="https://www.bo-tic.com/og-menus.jpg"
+        ogImage="/images/plat-cenital-botic.jpg"
       />
 
       <MenusHero t={t} />

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Hero             from '../components/Hero'
@@ -42,7 +42,10 @@ function ReserveHeading({ children }) {
   return (
     <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl text-botic-cream leading-tight tracking-tight mt-4 mb-6 reserve-title">
       {words.map((word, index) => (
-        <span key={`${word}-${index}`} className="reserve-word">{word}</span>
+        <Fragment key={`${word}-${index}`}>
+          <span className="reserve-word">{word}</span>
+          {index < words.length - 1 ? ' ' : null}
+        </Fragment>
       ))}
     </h2>
   )
@@ -200,6 +203,8 @@ export default function Home() {
           src="/images/albert-sastregener-editorial-transparent.png"
           alt=""
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
         />
         <div className="home-albert-signature" aria-hidden="true">
           <span>Albert Sastregener</span>
@@ -210,6 +215,8 @@ export default function Home() {
           src="/images/cristina-editorial-transparent-v2.png"
           alt=""
           aria-hidden="true"
+          loading="lazy"
+          decoding="async"
         />
         <div className="home-cristina-signature" aria-hidden="true">
           <span>Cristina</span>
@@ -219,7 +226,7 @@ export default function Home() {
           <div className="home-seo-intro reveal" ref={seoIntroRef}>
             <div className="home-seo-logo" aria-hidden="true">
               <span className="home-seo-symbol-reveal">
-                <img src="/images/botic-logo-original.png" alt="" />
+              <img src="/images/botic-logo-original.png" alt="" decoding="async" />
               </span>
             </div>
             <SeoIntroHeading>{t('home.seoIntroHeading')}</SeoIntroHeading>
@@ -232,14 +239,14 @@ export default function Home() {
           </div>
           <div className="mobile-people-coda" aria-label={t('home.peopleCodaAria')}>
             <div className="mobile-person mobile-person-albert">
-              <img src="/images/albert-sastregener-editorial-transparent.png" alt="" aria-hidden="true" />
+              <img src="/images/albert-sastregener-editorial-transparent.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
               <div className="mobile-person-signature">
                 <span>{t('home.albertName')}</span>
                 <span>{t('home.albertRole')}</span>
               </div>
             </div>
             <div className="mobile-person mobile-person-cristina">
-              <img src="/images/cristina-editorial-transparent-v2.png" alt="" aria-hidden="true" />
+              <img src="/images/cristina-editorial-transparent-v2.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
               <div className="mobile-person-signature">
                 <span>{t('home.cristinaName')}</span>
                 <span>{t('home.cristinaRole')}</span>

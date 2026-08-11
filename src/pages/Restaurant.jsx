@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { Fragment, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
@@ -58,7 +58,10 @@ function RestaurantHero({ t, routes }) {
         <div className="container-max rst-hero-inner-max">
           <h1 className="rst-hero-title">
             {words.map((w, i) => (
-              <span className="rst-hw" key={i} style={{ '--i': i }}><span>{w}</span></span>
+              <Fragment key={i}>
+                <span className="rst-hw" style={{ '--i': i }}><span>{w}</span></span>
+                {i < words.length - 1 ? ' ' : null}
+              </Fragment>
             ))}
           </h1>
           <p className="rst-hero-sub">{t('restaurant.heroSub')}</p>
