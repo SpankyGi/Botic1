@@ -1,8 +1,9 @@
-import { Fragment, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import Hero             from '../components/Hero'
 import ChefSection      from '../components/ChefSection'
+import ClosingCTA       from '../components/ClosingCTA'
 import SEO              from '../components/SEO'
 import { useLateReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
@@ -32,21 +33,6 @@ function SeoIntroHeading({ children }) {
   return (
     <h2>
       {match[1]}<span className="home-seo-territory">{match[2]}</span>{match[3]}
-    </h2>
-  )
-}
-
-function ReserveHeading({ children }) {
-  const words = children.split(' ')
-
-  return (
-    <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl text-botic-cream leading-tight tracking-tight mt-4 mb-6 reserve-title">
-      {words.map((word, index) => (
-        <Fragment key={`${word}-${index}`}>
-          <span className="reserve-word">{word}</span>
-          {index < words.length - 1 ? ' ' : null}
-        </Fragment>
-      ))}
     </h2>
   )
 }
@@ -123,7 +109,6 @@ function SeasonStrip({ t, routes }) {
 export default function Home() {
   const { t }       = useTranslation()
   const routes      = useLangRoutes()
-  const ctaRef      = useLateReveal()
   const seoIntroRef = useLateReveal()
   const introRef    = useLateReveal()
   const dishRef     = useRef(null)
@@ -291,17 +276,14 @@ export default function Home() {
       <ChefSection />
 
       {/* ── CTA Reserva ── */}
-      <section className="home-reserva-cta">
-        <div className="container-max reveal" ref={ctaRef}>
-          <span className="label block">{t('home.ctaLabel')}</span>
-          <ReserveHeading>{t('home.ctaHeading')}</ReserveHeading>
-          <p className="font-sans text-sm md:text-base leading-relaxed
-                        max-w-md mx-auto mb-10">
-            {t('home.ctaBody')}
-          </p>
-          <Link to={routes.reserves} className="btn-gold">{t('home.ctaBtn')}</Link>
-        </div>
-      </section>
+      <ClosingCTA
+        id="home-closing-cta"
+        tone="light"
+        eyebrow={t('home.ctaLabel')}
+        heading={t('home.ctaHeading')}
+        primaryTo={routes.reserves}
+        primaryLabel={t('home.ctaBtn')}
+      />
     </>
   )
 }
