@@ -341,7 +341,7 @@
       "heading": "The rhythm of service",
       "intro": "Opening information, updated for each period of the year.",
       "periods": [
-        { "title": "OCTOBER TO MAY", "items": [{ "label": "OPEN FOR LUNCH", "text": "Wednesday to Sunday" }, { "label": "OPEN FOR DINNER", "text": "Friday and Saturday" }] },
+        { "title": "OCTOBER TO MAY", "items": [{ "label": "OPEN FOR LUNCH", "text": "Wednesday to Sunday", "time": "Lunch · 12:45–13:30" }, { "label": "OPEN FOR DINNER", "text": "Friday and Saturday", "time": "Dinner · 19:45–20:30" }] },
         { "title": "JUNE AND SEPTEMBER", "items": [{ "label": "CLOSED", "text": "Sunday evenings\nMondays and Tuesdays all day" }] },
         { "title": "JULY AND AUGUST", "items": [{ "label": "CLOSED", "text": "Mondays and Tuesdays" }] }
       ]

@@ -341,7 +341,7 @@
       "heading": "El ritmo del servicio",
       "intro": "Información de apertura actualizada según el periodo del año.",
       "periods": [
-        { "title": "DE OCTUBRE A MAYO", "items": [{ "label": "ABIERTO A MEDIODÍA", "text": "De miércoles a domingo" }, { "label": "ABIERTO POR LA NOCHE", "text": "Viernes y sábado" }] },
+        { "title": "DE OCTUBRE A MAYO", "items": [{ "label": "ABIERTO A MEDIODÍA", "text": "De miércoles a domingo", "time": "Almuerzo · 12:45–13:30" }, { "label": "ABIERTO POR LA NOCHE", "text": "Viernes y sábado", "time": "Cena · 19:45–20:30" }] },
         { "title": "JUNIO Y SEPTIEMBRE", "items": [{ "label": "CERRADO", "text": "Domingos por la noche\nLunes y martes todo el día" }] },
         { "title": "JULIO Y AGOSTO", "items": [{ "label": "CERRADO", "text": "Lunes y martes" }] }
       ]

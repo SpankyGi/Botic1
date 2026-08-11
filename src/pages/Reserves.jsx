@@ -60,7 +60,7 @@ function OpeningHours({ scheduleRef, t }) {
             <details key={period.title} open={index === 0}>
               <summary><span>{String(index + 1).padStart(2, '0')}</span><strong>{period.title}</strong><i aria-hidden="true" /></summary>
               <div className="booking-hours-content">
-                {period.items.map((item) => <div key={item.label}><h3>{item.label}</h3><p>{item.text}</p></div>)}
+                {period.items.map((item) => <div key={item.label}><h3>{item.label}</h3><p>{item.text}</p>{item.time && <span>{item.time}</span>}</div>)}
               </div>
             </details>
           ))}

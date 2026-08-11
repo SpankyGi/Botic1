@@ -341,7 +341,7 @@
       "heading": "El ritme del servei",
       "intro": "Informació d’obertura actualitzada segons el període de l’any.",
       "periods": [
-        { "title": "D’OCTUBRE A MAIG", "items": [{ "label": "OBERT MIGDIES", "text": "De dimecres a diumenge" }, { "label": "OBERT VESPRES", "text": "Divendres i dissabte" }] },
+        { "title": "D’OCTUBRE A MAIG", "items": [{ "label": "OBERT MIGDIES", "text": "De dimecres a diumenge", "time": "Dinar · 12:45–13:30" }, { "label": "OBERT VESPRES", "text": "Divendres i dissabte", "time": "Sopar · 19:45–20:30" }] },
         { "title": "JUNY I SETEMBRE", "items": [{ "label": "TANCAT", "text": "Diumenges al vespre\nDilluns i dimarts tot el dia" }] },
         { "title": "JULIOL I AGOST", "items": [{ "label": "TANCAT", "text": "Dilluns i dimarts" }] }
       ]

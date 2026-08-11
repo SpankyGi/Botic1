@@ -8366,6 +8366,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 .booking-hours-content { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 34px; max-width: 800px; padding: 0 0 38px 71px; }
 .booking-hours-content h3 { margin: 0 0 8px; color: #A51F3D; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: .20em; line-height: 1.45; text-transform: uppercase; }
 .booking-hours-content p { margin: 0; color: #201611; font-family: 'Plus Jakarta Sans', serif; font-size: clamp(21px,2.4vw,31px); font-weight: 300; line-height: 1.25; white-space: pre-line; }
+.booking-hours-content > div > span { display: block; margin-top: 9px; color: rgba(32,22,17,.58); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: .12em; line-height: 1.45; text-transform: uppercase; }
 .booking-reservation { background: #241814; border-top: 0; }
 .booking-reservation .booking-kicker, .booking-reservation .booking-direct-contact a { color: #e6bac3; }
 .booking-reservation-intro h2, .booking-confirmation h3 { color: #f5f0e7; }
