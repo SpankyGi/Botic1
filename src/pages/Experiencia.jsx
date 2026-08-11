@@ -12,7 +12,19 @@ const TEAM = '/images/cristina-albert-botic-emporda-michelin.webp'
 function ExperienceHero({ t }) {
   return (
     <section className="exp-hero" aria-labelledby="exp-hero-title">
-      <img src={CELLAR} alt={t('experiencia.vinsHeading')} className="exp-hero-img" />
+      <video
+        className="exp-hero-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={CELLAR}
+        aria-hidden="true"
+      >
+        <source media="(max-width: 768px)" src="/images/experiencia-botic-emporda-mobile.webm" type="video/webm" />
+        <source src="/images/experiencia-botic-emporda.webm" type="video/webm" />
+      </video>
       <div className="exp-hero-shade" aria-hidden="true" />
       <div className="exp-hero-copy">
         <span className="exp-kicker">{t('experiencia.heroEyebrow')}</span>
