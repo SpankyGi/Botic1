@@ -6,7 +6,7 @@ import { useLangRoutes } from '../i18n/LangContext'
 import { useLang } from '../i18n/LangContext'
 import { getOfficialMenus } from '../data/officialMenus'
 
-const HERO_IMG = '/images/plat-cenital-botic.jpg'
+const HERO_IMG = '/images/home-hero/restaurant-botic-emporda-plat-signatura-01.webp'
 
 // i18n metadata per menu — titles and notes come from translations
 const MENU_META = [
@@ -33,9 +33,6 @@ function MenusHero({ t }) {
         <span className="menus-hero-label">{t('menus.heroLabel')}</span>
         <h1 className="menus-hero-title">{t('menus.heroTitle')}</h1>
         <p className="menus-hero-sub">{t('menus.heroSub')}</p>
-        <div className="menus-hero-ornament">
-          <span className="mnu-orn-line" /><span className="mnu-orn-glyph">✦</span><span className="mnu-orn-line" />
-        </div>
         </div>
       </div>
     </section>
