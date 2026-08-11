@@ -10,6 +10,11 @@ RewriteRule ^fr/horaires/?$ /fr/reservations/ [R=301,L]
 # Redirect bare root to /ca/
 RewriteRule ^$ /ca/ [R=301,L]
 
+<IfModule mod_mime.c>
+  AddType video/webm .webm
+  AddType video/mp4 .mp4
+</IfModule>
+
 # Les rutes vàlides es publiquen com HTML estàtic durant el build. Les URL
 # inexistents reben un 404 real, en comptes de l'esquelet buit de la SPA.
 ErrorDocument 404 /404.html
