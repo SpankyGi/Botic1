@@ -2,16 +2,17 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useLangRoutes } from '../i18n/LangContext'
+import ResponsiveImage from './ResponsiveImage'
 
 const HERO_STILLS = [
-  { src: '/images/home-hero/restaurant-botic-emporda-aperitiu-08.webp', tone: 'dark' },
-  { src: '/images/home-hero/restaurant-botic-emporda-hortalisses-02.webp', tone: 'light' },
-  { src: '/images/home-hero/restaurant-botic-emporda-plat-temporada-01.webp', tone: 'dark' },
-  { src: '/images/home-hero/restaurant-botic-emporda-plat-signatura-01.webp', tone: 'dark' },
-  { src: '/images/home-hero/restaurant-botic-emporda-plat-mar-02.webp', tone: 'light' },
-  { src: '/images/home-hero/restaurant-botic-emporda-postres-fruita-01.webp', tone: 'dark' },
-  { src: '/images/home-hero/restaurant-botic-emporda-hortalisses-03.webp', tone: 'light' },
-  { src: '/images/home-hero/restaurant-botic-emporda-aperitiu-02.webp', tone: 'light' },
+  { src: '/images/home-hero/restaurant-botic-emporda-aperitiu-08.webp', mobileSrc: '/images/home-hero/restaurant-botic-emporda-aperitiu-08-mobile.webp', tone: 'dark' },
+  { src: '/images/home-hero/restaurant-botic-emporda-hortalisses-02.webp', mobileSrc: '/images/home-hero/restaurant-botic-emporda-hortalisses-02-mobile.webp', tone: 'light' },
+  { src: '/images/home-hero/restaurant-botic-emporda-plat-temporada-01.webp', mobileSrc: '/images/home-hero/restaurant-botic-emporda-plat-temporada-01-mobile.webp', tone: 'dark' },
+  { src: '/images/home-hero/restaurant-botic-emporda-plat-signatura-01.webp', mobileSrc: '/images/home-hero/restaurant-botic-emporda-plat-signatura-01-mobile.webp', tone: 'dark' },
+  { src: '/images/home-hero/restaurant-botic-emporda-plat-mar-02.webp', mobileSrc: '/images/home-hero/restaurant-botic-emporda-plat-mar-02-mobile.webp', tone: 'light' },
+  { src: '/images/home-hero/restaurant-botic-emporda-postres-fruita-01.webp', mobileSrc: '/images/home-hero/restaurant-botic-emporda-postres-fruita-01-mobile.webp', tone: 'dark' },
+  { src: '/images/home-hero/restaurant-botic-emporda-hortalisses-03.webp', mobileSrc: '/images/home-hero/restaurant-botic-emporda-hortalisses-03-mobile.webp', tone: 'light' },
+  { src: '/images/home-hero/restaurant-botic-emporda-aperitiu-02.webp', mobileSrc: '/images/home-hero/restaurant-botic-emporda-aperitiu-02-mobile.webp', tone: 'light' },
 ]
 
 function HeroBrand({ pulseKey, tone }) {
@@ -32,9 +33,10 @@ function HeroGallery({ activeIndex }) {
   return (
     <div className="hero-gallery" aria-hidden="true">
       {HERO_STILLS.map((still, index) => (
-        <img
+        <ResponsiveImage
           className={index === activeIndex ? 'hero-gallery-image is-active' : 'hero-gallery-image'}
           src={still.src}
+          mobileSrc={still.mobileSrc}
           alt=""
           key={still.src}
           decoding="async"

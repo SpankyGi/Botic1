@@ -2,12 +2,19 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO.jsx'
 import ClosingCTA from '../components/ClosingCTA.jsx'
+import ResponsiveImage from '../components/ResponsiveImage.jsx'
 import { useReveal } from '../hooks/useReveal.js'
 import { useLangRoutes } from '../i18n/LangContext'
 
 const CELLAR = '/images/restaurant-emporda-botic-michelin.webp'
 const PORTRAIT = '/images/albert-sastregener-cuina-emporda-girona.webp'
 const TEAM = '/images/cristina-albert-botic-emporda-michelin.webp'
+const mobileImage = (src) => src.replace(/\.webp$/, '-mobile.webp')
+const responsivePoster = (src) => (
+  typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
+    ? mobileImage(src)
+    : src
+)
 
 function ExperienceHero({ t }) {
   return (
@@ -19,7 +26,7 @@ function ExperienceHero({ t }) {
         loop
         playsInline
         preload="metadata"
-        poster={CELLAR}
+        poster={responsivePoster(CELLAR)}
         aria-hidden="true"
       >
         <source media="(max-width: 768px)" src="/images/experiencia-botic-emporda-mobile.webm" type="video/webm" />
@@ -51,7 +58,7 @@ function MenuNarrative({ t }) {
       images: [
         '/images/botic-maig-2026-webp/plat-llamantol-restaurant-botic-emporda.webp',
         '/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp',
-        '/images/plat-cenital-botic.jpg',
+        '/images/plat-cenital-botic.webp',
       ],
     },
     {
@@ -101,9 +108,9 @@ function MenuNarrative({ t }) {
         {moments.map((moment, index) => (
           <article className={`exp-gallery-slide${index === activeMoment ? ' is-active' : ''}`} key={moment.num} aria-hidden={index !== activeMoment}>
             <div className="exp-gallery-images">
-              <figure className="exp-gallery-main"><img src={moment.images[0]} alt={moment.label} loading={index === 0 ? 'eager' : 'lazy'} /></figure>
-              <figure className="exp-gallery-side"><img src={moment.images[1]} alt="" loading="lazy" /></figure>
-              <figure className="exp-gallery-detail"><img src={moment.images[2]} alt="" loading="lazy" /></figure>
+              <figure className="exp-gallery-main"><ResponsiveImage src={moment.images[0]} mobileSrc={mobileImage(moment.images[0])} alt={moment.label} loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} /></figure>
+              <figure className="exp-gallery-side"><ResponsiveImage src={moment.images[1]} mobileSrc={mobileImage(moment.images[1])} alt="" loading="lazy" /></figure>
+              <figure className="exp-gallery-detail"><ResponsiveImage src={moment.images[2]} mobileSrc={mobileImage(moment.images[2])} alt="" loading="lazy" /></figure>
               <span className="exp-gallery-count" aria-hidden="true">{moment.num} / 04</span>
             </div>
             <div className="exp-gallery-copy">
@@ -147,8 +154,8 @@ function HospitalitySection({ t }) {
   return (
     <section className="exp-hospitality" aria-labelledby="exp-team-title">
       <div className="exp-hospitality-images">
-        <figure className="exp-hospitality-main"><img src={TEAM} alt={t('experiencia.equipImgAlt')} loading="lazy" /></figure>
-        <figure className="exp-hospitality-detail"><img src={PORTRAIT} alt="" loading="lazy" /></figure>
+        <figure className="exp-hospitality-main"><ResponsiveImage src={TEAM} mobileSrc={mobileImage(TEAM)} alt={t('experiencia.equipImgAlt')} loading="lazy" /></figure>
+        <figure className="exp-hospitality-detail"><ResponsiveImage src={PORTRAIT} mobileSrc={mobileImage(PORTRAIT)} alt="" loading="lazy" /></figure>
         <span aria-hidden="true">{t('experiencia.equipGhost')}</span>
       </div>
       <div className="exp-hospitality-copy reveal" ref={revealRef}>
@@ -166,7 +173,7 @@ function CellarSection({ t }) {
   const revealRef = useReveal(0.12)
   return (
     <section className="exp-cellar" aria-labelledby="exp-cellar-title">
-      <img src={CELLAR} alt={t('experiencia.vinsHeading')} loading="lazy" />
+      <ResponsiveImage src={CELLAR} mobileSrc={mobileImage(CELLAR)} alt={t('experiencia.vinsHeading')} loading="lazy" />
       <div className="exp-cellar-shade" aria-hidden="true" />
       <div className="exp-cellar-copy reveal" ref={revealRef}>
         <span className="exp-kicker">{t('experiencia.vinsEyebrow')}</span>

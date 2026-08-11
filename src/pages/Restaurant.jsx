@@ -3,10 +3,12 @@ import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
 import ClosingCTA from '../components/ClosingCTA'
+import ResponsiveImage from '../components/ResponsiveImage'
 import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
 const BASE_URL = 'https://www.bo-tic.com'
+const mobileImage = (src) => src.replace(/\.webp$/, '-mobile.webp')
 
 /* Scroll progress (0→1 durant el primer viewport) per al parallax del hero.
    Es manté com a variable CSS; no s'activa si l'usuari prefereix menys moviment. */
@@ -45,10 +47,12 @@ function RestaurantHero({ t, routes }) {
   return (
     <section className="rst-hero" ref={heroRef} aria-label={t('restaurant.heroAria')}>
       <div className="rst-hero-media">
-        <img
+        <ResponsiveImage
           src="/images/restaurant-botic-emporda-hero.webp"
+          mobileSrc="/images/restaurant-botic-emporda-hero-mobile.webp"
           alt={t('restaurant.heroImgAlt')}
           className="rst-hero-img"
+          fetchpriority="high"
         />
       </div>
       <div className="rst-hero-overlay" aria-hidden="true" />
@@ -84,8 +88,9 @@ function OriginSection({ t }) {
 
   return (
     <section id="origin" className="rst-origin" aria-labelledby="origin-heading">
-      <img
+      <ResponsiveImage
         src="/images/restaurant-emporda-michelin-girona.webp"
+        mobileSrc="/images/restaurant-emporda-michelin-girona-mobile.webp"
         alt={t('restaurant.originImgAlt')}
         className="rst-origin-bg"
         loading="lazy"
@@ -113,7 +118,7 @@ function ArchFrame({ num, img, alt, title, body, align }) {
 
   return (
     <div className={`rst-arch-frame align-${align}`} ref={ref}>
-      <img src={img} alt={alt} className="rst-arch-img" loading="lazy" />
+      <ResponsiveImage src={img} mobileSrc={mobileImage(img)} alt={alt} className="rst-arch-img" loading="lazy" />
       <div className="rst-arch-overlay" aria-hidden="true" />
       <span className="rst-arch-num" aria-hidden="true">{num}</span>
       <div className="rst-arch-caption">
@@ -201,7 +206,7 @@ function GallerySection({ t }) {
       <div className="rst-gallery-track" ref={trackRef}>
         {IMAGES.map((img, i) => (
           <div key={img.src} className={`rst-gallery-item item-${i + 1}`}>
-            <img src={img.src} alt={img.alt} className="rst-gallery-img" loading="lazy" />
+            <ResponsiveImage src={img.src} mobileSrc={mobileImage(img.src)} alt={img.alt} className="rst-gallery-img" loading="lazy" />
           </div>
         ))}
       </div>
@@ -288,7 +293,7 @@ function ScrollArchitectureSection({ t }) {
                 key={scene.num}
                 className={`rst-story-scene layout-${scene.layout}${index === activeScene ? ' is-active' : ''}${index < activeScene ? ' is-past' : ''}`}
               >
-                <img src={scene.img} alt={scene.alt} className="rst-story-img" loading={index === 0 ? 'eager' : 'lazy'} />
+                <ResponsiveImage src={scene.img} mobileSrc={mobileImage(scene.img)} alt={scene.alt} className="rst-story-img" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} />
                 <div className="rst-story-shade" aria-hidden="true" />
                 <div className="rst-story-copy">
                   <span className="rst-story-number">{scene.num}</span>
@@ -334,7 +339,7 @@ function GalleryEpilogue({ t }) {
       <div className="rst-gallery-epilogue">
         {images.map((image, index) => (
           <figure className={`rst-gallery-epilogue-item item-${index + 1}`} key={image.src}>
-            <img src={image.src} alt={image.alt} loading="lazy" />
+            <ResponsiveImage src={image.src} mobileSrc={mobileImage(image.src)} alt={image.alt} loading="lazy" />
           </figure>
         ))}
       </div>
@@ -348,8 +353,9 @@ function ReserveSection({ t, routes }) {
   return (
     <section className="rst-reserve" aria-labelledby="reserve-heading">
       <div className="rst-reserve-photo">
-        <img
+        <ResponsiveImage
           src="/images/restaurant-emporda-botic-michelin.webp"
+          mobileSrc="/images/restaurant-emporda-botic-michelin-mobile.webp"
           alt={t('restaurant.reserveImgAlt')}
           className="rst-reserve-img"
           loading="lazy"
@@ -405,8 +411,9 @@ function TeamSection({ t }) {
         <div className="rst-team-mosaic">
           <figure className="rst-team-block rst-team-primary kitchen reveal" ref={kitchenRef}>
             <div className="rst-team-photo">
-              <img
+              <ResponsiveImage
                 src="/images/albert-sastregener-cuina-emporda-girona.webp"
+                mobileSrc="/images/albert-sastregener-cuina-emporda-girona-mobile.webp"
                 alt={t('restaurant.kitchenImgAlt')}
                 className="rst-team-img"
                 loading="lazy"
@@ -421,8 +428,9 @@ function TeamSection({ t }) {
 
           <figure className="rst-team-block rst-team-primary sala reveal" ref={salaRef}>
             <div className="rst-team-photo sala">
-              <img
+              <ResponsiveImage
                 src="/images/cristina-botic-sommelier-girona.webp"
+                mobileSrc="/images/cristina-botic-sommelier-girona-mobile.webp"
                 alt={t('restaurant.salaImgAlt')}
                 className="rst-team-img"
                 loading="lazy"
@@ -436,10 +444,10 @@ function TeamSection({ t }) {
           </figure>
 
           <figure className="rst-team-detail rst-team-detail--plating" aria-hidden="true">
-            <img src="/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic.webp" alt="" loading="lazy" />
+            <ResponsiveImage src="/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic.webp" mobileSrc="/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic-mobile.webp" alt="" loading="lazy" />
           </figure>
           <figure className="rst-team-detail rst-team-detail--service" aria-hidden="true">
-            <img src="/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp" alt="" loading="lazy" />
+            <ResponsiveImage src="/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp" mobileSrc="/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic-mobile.webp" alt="" loading="lazy" />
           </figure>
         </div>
       </div>

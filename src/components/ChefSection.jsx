@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef, Fragment } from 'react'
 import { useTranslation } from 'react-i18next'
+import ResponsiveImage from './ResponsiveImage'
 
 const STEP = 0.55
 
@@ -39,8 +40,9 @@ export default function ChefSection() {
       aria-label={t('soul.tab1')}
     >
       <div className="soul-photo-wrap">
-        <img
+        <ResponsiveImage
           src="/images/albert-sastregener-cuina-emporda-girona.webp"
+          mobileSrc="/images/albert-sastregener-cuina-emporda-girona-mobile.webp"
           alt=""
           className="soul-photo-img soul-img-1"
         />

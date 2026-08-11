@@ -5,6 +5,7 @@ import Hero             from '../components/Hero'
 import ChefSection      from '../components/ChefSection'
 import ClosingCTA       from '../components/ClosingCTA'
 import SEO              from '../components/SEO'
+import ResponsiveImage  from '../components/ResponsiveImage'
 import { useLateReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
@@ -14,7 +15,7 @@ function FeatureEntry({ tag, title, body, to, label, image, index }) {
   return (
     <Link ref={entryRef} to={to} className="feature-card feature-entry" style={{ '--i': index }}>
       <span className="feature-media" aria-hidden="true">
-        <img src={image} alt="" />
+        <ResponsiveImage src={image} mobileSrc={image.replace('.webp', '-mobile.webp')} alt="" loading="lazy" />
       </span>
       <span className="feature-index" aria-hidden="true">0{index + 1}</span>
       <span className="feature-tag">{tag}</span>
@@ -55,7 +56,7 @@ function SeasonStrip({ t, routes }) {
     '/images/botic-maig-2026-webp/detall-postres-maduixes-botic-emporda.webp',
     '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp',
     '/images/botic-maig-2026-webp/alta-cuina-empordanesa-restaurant-botic.webp',
-    '/images/plat-cenital-botic.jpg',
+    '/images/plat-cenital-botic.webp',
     '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp',
     '/images/botic-maig-2026-webp/tonyina-mar-costa-brava-alta-cuina-botic.webp',
     '/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp',
@@ -80,7 +81,7 @@ function SeasonStrip({ t, routes }) {
 
         <div className="home-season-gallery">
           <figure className="home-season-dish">
-            <img key={dish.image} src={dish.image} alt={dish.label} loading="lazy" />
+            <ResponsiveImage key={dish.image} src={dish.image} mobileSrc={dish.image.replace('.webp', '-mobile.webp')} alt={dish.label} loading="lazy" />
             <figcaption aria-hidden="true">{formatIndex(activeDish)}</figcaption>
           </figure>
 
@@ -247,8 +248,9 @@ export default function Home() {
       {/* ── Paisatge i relat ── */}
       <section className="home-intro home-scene-reveal" ref={introRef}>
         <div className="home-intro-photo home-intro-dish" ref={dishRef} aria-hidden="true">
-          <img
-            src="/images/plat-cenital-botic.jpg"
+          <ResponsiveImage
+            src="/images/plat-cenital-botic.webp"
+            mobileSrc="/images/plat-cenital-botic-mobile.webp"
             alt=""
             className="home-intro-img"
           />

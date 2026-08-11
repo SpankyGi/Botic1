@@ -2,6 +2,7 @@ import { useState, useId, useRef, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
 import ClosingCTA from '../components/ClosingCTA'
+import ResponsiveImage from '../components/ResponsiveImage'
 import { useLangRoutes } from '../i18n/LangContext'
 import { useLang } from '../i18n/LangContext'
 import { getOfficialMenus } from '../data/officialMenus'
@@ -19,8 +20,9 @@ const MENU_META = [
 function MenusHero({ t }) {
   return (
     <section className="mnu-hero" aria-label={t('menus.heroAria')}>
-      <img
+      <ResponsiveImage
         src={HERO_IMG}
+        mobileSrc="/images/home-hero/restaurant-botic-emporda-plat-signatura-01-mobile.webp"
         alt=""
         aria-hidden="true"
         className="mnu-hero-img"
@@ -245,8 +247,9 @@ function WineSection({ t }) {
     <section className="wine-section" aria-labelledby="wine-heading">
       <span className="wine-ghost" aria-hidden="true">{t('menus.wineBackgroundWord')}</span>
       <div className="wine-photo-wrap" aria-hidden="true">
-        <img
+        <ResponsiveImage
           src="/images/restaurant-emporda-botic-michelin.webp"
+          mobileSrc="/images/restaurant-emporda-botic-michelin-mobile.webp"
           alt=""
           className="wine-photo-img"
         />
@@ -473,7 +476,7 @@ export default function Menus() {
         title={t('seo.menus.title')}
         description={t('seo.menus.description')}
         pageKey="menus"
-        ogImage="/images/plat-cenital-botic.jpg"
+        ogImage="/images/plat-cenital-botic.webp"
       />
 
       <MenusHero t={t} />

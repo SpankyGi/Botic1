@@ -942,8 +942,8 @@ body .exp-narrative { padding: 86px 22px 72px; }
 .gst-principle p { max-width: 760px; color: rgba(34,27,20,.72); font: 300 clamp(15px, 1.3vw, 18px)/1.8 'Plus Jakarta Sans', sans-serif; }
 
 .gst-territory { position: relative; min-height: 110svh; overflow: hidden; background: #080604; display: flex; align-items: flex-end; }
-.gst-territory > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 3s cubic-bezier(.2,.7,.2,1); }
-.gst-territory:hover > img { transform: scale(1.01); }
+.gst-territory > img, .gst-territory > .responsive-picture > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 3s cubic-bezier(.2,.7,.2,1); }
+.gst-territory:hover > img, .gst-territory:hover > .responsive-picture > img { transform: scale(1.01); }
 .gst-territory-shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(5,4,3,.95) 0%, rgba(5,4,3,.46) 42%, rgba(5,4,3,.08) 78%), linear-gradient(90deg, rgba(5,4,3,.42), transparent 56%); }
 .gst-territory-copy { position: relative; z-index: 2; width: 100%; padding: 0 clamp(28px, 7vw, 116px) clamp(110px, 15vh, 160px); }
 .gst-territory-copy h2 {
@@ -1027,7 +1027,7 @@ body .exp-narrative { padding: 86px 22px 72px; }
   .gst-principle p { font-size: 13px; line-height: 1.7; }
 
   .gst-territory { min-height: 105svh; }
-  .gst-territory > img { object-position: 54% center; }
+  .gst-territory > img, .gst-territory > .responsive-picture > img { object-position: 54% center; }
   .gst-territory-copy { padding: 0 22px 94px; }
   .gst-territory-copy h2 { margin: 14px 0 26px; font-size: clamp(54px, 17vw, 76px); }
   .gst-territory-copy > div { grid-template-columns: 1fr; gap: 14px; }
@@ -1060,7 +1060,7 @@ body .exp-narrative { padding: 86px 22px 72px; }
 
 @media (prefers-reduced-motion: reduce) {
   .gst-hero-video, .gst-scroll-cue span { animation: none; }
-  .gst-territory > img, .gst-technique-main img, .gst-dish img { transition: none; }
+  .gst-territory > img, .gst-territory > .responsive-picture > img, .gst-technique-main img, .gst-dish img { transition: none; }
   .gst-dishes-intro i { animation: none; }
   .gst-technique-detail img { transition:none; opacity:0; }
   .gst-technique-detail img:first-child { opacity:1; }
@@ -9582,3 +9582,5 @@ footer.botic-footer {
     color: rgba(33, 26, 20, .87);
   }
 }
+/* Keep responsive image sources transparent to the existing layout rules. */
+.responsive-picture { display: contents; }

@@ -3,10 +3,11 @@ import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useLang, useLangRoutes, useSwitchLang } from '../i18n/LangContext'
 import { LANGS } from '../i18n/routes'
+import ResponsiveImage from './ResponsiveImage'
 
 const NAV_KEYS = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves']
 const NAV_IMGS = [
-  '/images/plat-cenital-botic.jpg',
+  '/images/plat-cenital-botic.webp',
   '/images/restaurant-emporda-botic-michelin.webp',
   '/images/albert-sastregener-cuina-emporda-girona.webp',
   '/images/Albert Sastregener-empordà-botic-restaurant.webp',
@@ -208,8 +209,9 @@ export default function Nav() {
           <div className="nav-fs-right" aria-hidden="true">
             <div className="nav-fs-img-wrap">
               <div className={`nav-fs-img-panel${activeImg === null ? ' is-active' : ''}`}>
-                <img
+                <ResponsiveImage
                   src={navItems[0].img}
+                  mobileSrc={navItems[0].img.replace('.webp', '-mobile.webp')}
                   alt=""
                   className="nav-fs-img"
                   loading="lazy"
@@ -222,8 +224,9 @@ export default function Nav() {
                   key={item.to}
                   className={`nav-fs-img-panel${activeImg === i ? ' is-active' : ''}`}
                 >
-                  <img
+                  <ResponsiveImage
                     src={item.img}
+                    mobileSrc={item.img.replace('.webp', '-mobile.webp')}
                     alt=""
                     loading="lazy"
                     decoding="async"

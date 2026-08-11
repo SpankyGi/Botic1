@@ -8,7 +8,7 @@ import { DEFAULT_LANG, LANGS, ROUTE_SLUGS, slugToKey } from './i18n/routes.js'
 export const BASE_URL = 'https://www.bo-tic.com'
 const DEFAULT_OG_IMAGE = `${BASE_URL}/images/restaurant-botic-emporda-hero.webp`
 const OG_IMAGES = {
-  menus: `${BASE_URL}/images/plat-cenital-botic.jpg`,
+  menus: `${BASE_URL}/images/plat-cenital-botic.webp`,
   restaurant: DEFAULT_OG_IMAGE,
 }
 

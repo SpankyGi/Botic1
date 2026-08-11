@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
 import ClosingCTA from '../components/ClosingCTA.jsx'
+import ResponsiveImage from '../components/ResponsiveImage.jsx'
 import { useLangRoutes } from '../i18n/LangContext'
 import { useReveal } from '../hooks/useReveal.js'
 
@@ -11,6 +12,12 @@ const CHEF_PORTRAIT = '/images/albert-sastregener-cuina-emporda-girona.webp'
 const TERRITORY = '/images/restaurant-emporda-michelin-girona.webp'
 const TECHNIQUE_IMAGE_ROOT = '/images/gastronomia-technique'
 const TECHNIQUE_ACTION = `${TECHNIQUE_IMAGE_ROOT}/restaurant-botic-emporda-preparacio-xef-02.webp`
+const mobileImage = (src) => src.replace(/\.webp$/, '-mobile.webp')
+const responsivePoster = (src) => (
+  typeof window !== 'undefined' && window.matchMedia('(max-width: 768px)').matches
+    ? mobileImage(src)
+    : src
+)
 
 const TECHNIQUE_DETAIL_SEQUENCE = [
   { file: 'restaurant-botic-emporda-preparacio-xef-01.webp', alt: 'galleryAlt2', shape: 'landscape' },
@@ -32,7 +39,7 @@ function GastronomyHero({ t, routes }) {
         loop
         playsInline
         preload="metadata"
-        poster={CHEF_ACTION}
+        poster={responsivePoster(CHEF_ACTION)}
         aria-hidden="true"
       >
         <source media="(max-width: 768px)" src="/images/producte-gastronomia-botic-emporda-mobile.webm" type="video/webm" />
@@ -85,7 +92,7 @@ function TerritorySection({ t }) {
   const revealRef = useReveal(0.12)
   return (
     <section className="gst-territory" aria-labelledby="gst-territory-title">
-      <img src={TERRITORY} alt={t('gastronomia.territorImgAlt')} loading="lazy" />
+      <ResponsiveImage src={TERRITORY} mobileSrc={mobileImage(TERRITORY)} alt={t('gastronomia.territorImgAlt')} loading="lazy" />
       <div className="gst-territory-shade" aria-hidden="true" />
       <div className="gst-territory-copy reveal" ref={revealRef}>
         <span className="gst-kicker">{t('gastronomia.territorEyebrow')}</span>
@@ -118,7 +125,7 @@ function TechniqueSection({ t }) {
       <div className="gst-technique-stage">
         <div className="gst-technique-canvas">
         <figure className="gst-technique-main">
-          <img src={TECHNIQUE_ACTION} alt={t('gastronomia.galleryAlt2')} loading="lazy" />
+          <ResponsiveImage src={TECHNIQUE_ACTION} mobileSrc={mobileImage(TECHNIQUE_ACTION)} alt={t('gastronomia.galleryAlt2')} loading="lazy" />
         </figure>
         <figure
           className="gst-technique-detail"
@@ -133,10 +140,11 @@ function TechniqueSection({ t }) {
           }}
         >
           {DESKTOP_GALLERY.map((dish, index) => (
-            <img
+            <ResponsiveImage
               key={dish.file}
               className={index === galleryIndex ? 'is-active' : ''}
               src={`${TECHNIQUE_IMAGE_ROOT}/${dish.file}`}
+              mobileSrc={mobileImage(`${TECHNIQUE_IMAGE_ROOT}/${dish.file}`)}
               alt={t(`gastronomia.${dish.alt}`)}
               loading="lazy"
             />
@@ -157,14 +165,14 @@ function TechniqueSection({ t }) {
           <p>{t('gastronomia.tecnicaP1')}</p>
           <p>{t('gastronomia.tecnicaP2')}</p>
         </div>
-        <img className="gst-technique-signature" src={CHEF_PORTRAIT} alt={t('gastronomia.producteImgAlt')} loading="lazy" />
+        <ResponsiveImage className="gst-technique-signature" src={CHEF_PORTRAIT} mobileSrc={mobileImage(CHEF_PORTRAIT)} alt={t('gastronomia.producteImgAlt')} loading="lazy" />
       </div>
       <div className="gst-dishes gst-dishes-mobile" aria-label={t('gastronomia.galleryAria')}>
         <div className="gst-dishes-intro" aria-hidden="true"><span>01</span><i /><span>{String(TECHNIQUE_DETAIL_SEQUENCE.length).padStart(2, '0')}</span></div>
         <div className="gst-dishes-grid">
           {TECHNIQUE_DETAIL_SEQUENCE.map((dish, index) => (
             <figure className="gst-dish" key={dish.file}>
-              <img src={`${TECHNIQUE_IMAGE_ROOT}/${dish.file}`} alt={t(`gastronomia.${dish.alt}`)} loading="lazy" />
+              <ResponsiveImage src={`${TECHNIQUE_IMAGE_ROOT}/${dish.file}`} mobileSrc={mobileImage(`${TECHNIQUE_IMAGE_ROOT}/${dish.file}`)} alt={t(`gastronomia.${dish.alt}`)} loading="lazy" />
               <figcaption aria-hidden="true">{String(index + 1).padStart(2, '0')}</figcaption>
             </figure>
           ))}
