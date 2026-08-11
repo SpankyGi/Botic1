@@ -486,6 +486,14 @@
     "attribution": "— Albert Sastregener · Chef",
     "portraitAlt": "Albert Sastregener et Cristina Torrent, chef et sommelière de Bo.TiC"
   },
+  "closingCta": {
+    "restaurant": { "eyebrow": "RÉSERVATION", "heading": "Une table dont on se souvient.", "primary": "RÉSERVER UNE TABLE" },
+    "gastronomy": { "eyebrow": "BO·TIC", "heading": "La cuisine se vit à table.", "primary": "DÉCOUVRIR LES MENUS", "secondary": "RÉSERVER UNE TABLE" },
+    "menus": { "eyebrow": "EXPÉRIENCE", "heading": "Choisissez votre parcours.", "primary": "RÉSERVER UNE TABLE" },
+    "experience": { "eyebrow": "RÉSERVATION", "heading": "Une expérience qui commence à table.", "primary": "RÉSERVER UNE TABLE" },
+    "reserves": { "eyebrow": "RÉSERVATION", "heading": "Une expérience qui commence à table.", "primary": "RÉSERVER UNE TABLE" },
+    "team": { "eyebrow": "BO·TIC", "heading": "Venez le vivre de près.", "primary": "RÉSERVER UNE TABLE" }
+  },
   "floating": {
     "call": "Appeler",
     "book": "Réserver"

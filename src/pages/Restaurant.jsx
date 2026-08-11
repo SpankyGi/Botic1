@@ -2,6 +2,7 @@ import { Fragment, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
+import ClosingCTA from '../components/ClosingCTA'
 import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
@@ -446,50 +447,16 @@ function TeamSection({ t }) {
   )
 }
 
-/* ── 7. CTA final — ticker de moviment + estil ja existent ────── */
-function FinalTicker({ t }) {
-  const words = [
-    t('restaurant.heroEyebrow'),
-    t('restaurant.originEyebrow'),
-    t('restaurant.archEyebrow'),
-    t('restaurant.galleryEyebrow'),
-    t('restaurant.teamEyebrow'),
-  ]
-  const line = words.join('   ·   ') + '   ·   '
-
-  return (
-    <div className="rst-ticker" aria-hidden="true">
-      <div className="rst-ticker-track">
-        <span>{line}</span>
-        <span>{line}</span>
-      </div>
-    </div>
-  )
-}
-
 function FinalCTA({ t, routes }) {
-  const ref = useReveal(0.18)
-
   return (
-    <>
-      <FinalTicker t={t} />
-      <section className="home-reserva-cta">
-        <div className="container-max reveal" ref={ref}>
-          <span className="label block">{t('restaurant.finalEyebrow')}</span>
-          <h2 className="font-serif font-light text-4xl md:text-5xl lg:text-6xl
-                         text-botic-cream leading-tight tracking-tight mt-4 mb-6">
-            {t('restaurant.finalHeading')}
-          </h2>
-          <p className="font-sans text-sm md:text-base leading-relaxed max-w-md mx-auto mb-10">
-            {t('restaurant.finalBody')}
-          </p>
-          <div className="rst-final-ctas">
-            <Link to={routes.reserves} className="btn-gold">{t('restaurant.bookBtn')}</Link>
-            <Link to={routes.menus} className="btn-cream">{t('restaurant.finalBtnMenus')}</Link>
-          </div>
-        </div>
-      </section>
-    </>
+    <ClosingCTA
+      id="restaurant-closing-cta"
+      tone="dark"
+      eyebrow={t('closingCta.restaurant.eyebrow')}
+      heading={t('closingCta.restaurant.heading')}
+      primaryTo={routes.reserves}
+      primaryLabel={t('closingCta.restaurant.primary')}
+    />
   )
 }
 

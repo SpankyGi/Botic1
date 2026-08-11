@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
+import ClosingCTA from '../components/ClosingCTA.jsx'
 import { useReveal } from '../hooks/useReveal.js'
+import { useLangRoutes } from '../i18n/LangContext'
 
 const CELLAR = '/images/restaurant-emporda-botic-michelin.webp'
-const CHEF = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
 const PORTRAIT = '/images/albert-sastregener-cuina-emporda-girona.webp'
 const TEAM = '/images/cristina-albert-botic-emporda-michelin.webp'
 
@@ -178,23 +178,9 @@ function CellarSection({ t }) {
   )
 }
 
-function ExperienceCTA({ t, routes }) {
-  return (
-    <section className="exp-cta">
-      <img src={CHEF} alt="" aria-hidden="true" loading="lazy" />
-      <div className="exp-cta-shade" aria-hidden="true" />
-      <div className="exp-cta-copy">
-        <span className="exp-kicker">{t('experiencia.ctaEyebrow')}</span>
-        <h2>{t('experiencia.ctaHeading')}</h2>
-        <p>{t('experiencia.ctaBody')}</p>
-        <Link className="btn-gold" to={routes.reserves}>{t('experiencia.ctaBtn')}</Link>
-      </div>
-    </section>
-  )
-}
-
 export default function Experiencia() {
   const { t } = useTranslation()
+  const routes = useLangRoutes()
 
   return (
     <>
@@ -206,6 +192,14 @@ export default function Experiencia() {
       <ExperienceHero t={t} />
       <MenuNarrative t={t} />
       <PaceSection t={t} />
+      <ClosingCTA
+        id="experience-closing-cta"
+        tone="light"
+        eyebrow={t('closingCta.experience.eyebrow')}
+        heading={t('closingCta.experience.heading')}
+        primaryTo={routes.reserves}
+        primaryLabel={t('closingCta.experience.primary')}
+      />
     </>
   )
 }

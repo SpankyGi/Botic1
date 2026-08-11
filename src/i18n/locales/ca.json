@@ -486,6 +486,14 @@
     "attribution": "— Albert Sastregener · Xef",
     "portraitAlt": "Albert Sastregener i Cristina Torrent, xef i sommelier de Bo.TiC"
   },
+  "closingCta": {
+    "restaurant": { "eyebrow": "RESERVA", "heading": "Una taula per recordar.", "primary": "RESERVAR TAULA" },
+    "gastronomy": { "eyebrow": "BO·TIC", "heading": "La cuina es viu a taula.", "primary": "DESCOBRIR ELS MENÚS", "secondary": "RESERVAR TAULA" },
+    "menus": { "eyebrow": "EXPERIÈNCIA", "heading": "Tria el teu recorregut.", "primary": "RESERVAR TAULA" },
+    "experience": { "eyebrow": "RESERVA", "heading": "Una experiència que comença a taula.", "primary": "RESERVAR TAULA" },
+    "reserves": { "eyebrow": "RESERVA", "heading": "Una experiència que comença a taula.", "primary": "RESERVAR TAULA" },
+    "team": { "eyebrow": "BO·TIC", "heading": "Vine a viure-ho de prop.", "primary": "RESERVAR TAULA" }
+  },
   "floating": {
     "call": "Trucar",
     "book": "Reserva"

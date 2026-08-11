@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
+import ClosingCTA from '../components/ClosingCTA.jsx'
 import { useLangRoutes } from '../i18n/LangContext'
 import { useReveal } from '../hooks/useReveal'
 
@@ -147,6 +148,14 @@ export default function Reserves() {
           <div className="booking-map-wrap"><iframe title={t('reserves.addressLabel')} src="https://www.google.com/maps?q=Carrer%20dels%20Forns%207%2C%2017121%20Cor%C3%A7%C3%A0%2C%20Girona&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div>
         </div>
       </section>
+      <ClosingCTA
+        id="reserves-closing-cta"
+        tone="dark"
+        eyebrow={t('closingCta.reserves.eyebrow')}
+        heading={t('closingCta.reserves.heading')}
+        primaryTo="#reserva"
+        primaryLabel={t('closingCta.reserves.primary')}
+      />
     </div>
   )
 }

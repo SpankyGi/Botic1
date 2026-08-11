@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
+import ClosingCTA from '../components/ClosingCTA.jsx'
 import { useLangRoutes } from '../i18n/LangContext'
 import { useReveal } from '../hooks/useReveal.js'
 
@@ -175,15 +176,16 @@ function TechniqueSection({ t }) {
 
 function GastronomyCTA({ t, routes }) {
   return (
-    <section className="gst-cta">
-      <span className="gst-kicker">{t('gastronomia.ctaEyebrow')}</span>
-      <h2>{t('gastronomia.ctaHeading')}</h2>
-      <p>{t('gastronomia.ctaBody')}</p>
-      <div className="gst-cta-actions">
-        <Link className="btn-gold" to={routes.reserves}>{t('gastronomia.ctaBtn')}</Link>
-        <Link className="gst-cta-secondary" to={routes.experiencia}>{t('gastronomia.ctaSecondary')}</Link>
-      </div>
-    </section>
+    <ClosingCTA
+      id="gastronomy-closing-cta"
+      tone="light"
+      eyebrow={t('closingCta.gastronomy.eyebrow')}
+      heading={t('closingCta.gastronomy.heading')}
+      primaryTo={routes.menus}
+      primaryLabel={t('closingCta.gastronomy.primary')}
+      secondaryTo={routes.reserves}
+      secondaryLabel={t('closingCta.gastronomy.secondary')}
+    />
   )
 }
 

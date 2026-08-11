@@ -10,7 +10,7 @@ export default function FloatingCTAs() {
   const [isHidden, setIsHidden] = useState(false)
 
   useEffect(() => {
-    const targets = [...document.querySelectorAll('.home-reserva-cta, footer.botic-footer')]
+    const targets = [...document.querySelectorAll('.home-reserva-cta, .closing-cta, footer.botic-footer')]
     if (!targets.length) return undefined
 
     const visibleTargets = new Set()

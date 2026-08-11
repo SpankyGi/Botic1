@@ -1,7 +1,7 @@
 import { useState, useId, useRef, useEffect, useMemo } from 'react'
-import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
+import ClosingCTA from '../components/ClosingCTA'
 import { useLangRoutes } from '../i18n/LangContext'
 import { useLang } from '../i18n/LangContext'
 import { getOfficialMenus } from '../data/officialMenus'
@@ -395,14 +395,6 @@ function FaqSection({ t }) {
   )
 }
 
-function Ornament() {
-  return (
-    <div className="mnu-ornament" aria-hidden="true">
-      <span className="mnu-orn-line" /><span className="mnu-orn-glyph">✦</span><span className="mnu-orn-line" />
-    </div>
-  )
-}
-
 /* ── Pàgina principal ─────────────────────────────────────── */
 function MenuCourseList({ sections, menuId }) {
   return (
@@ -547,29 +539,14 @@ export default function Menus() {
       </div>
       <FaqSection  t={t} />
 
-      {/* ── CTA final ── */}
-      <section className="mnu-cta-section" aria-labelledby="menus-cta-heading">
-        <div className="mnu-cta-glow" aria-hidden="true" />
-        <div className="container-max mnu-cta-content">
-          <Ornament />
-          <span className="label block mt-8 mb-4">{t('menus.ctaLabel')}</span>
-          <h2
-            id="menus-cta-heading"
-            className="font-serif font-light text-4xl md:text-5xl lg:text-6xl
-                       text-botic-cream leading-tight tracking-tight mb-4"
-          >
-            {t('menus.ctaHeading')}
-          </h2>
-          <p className="font-sans text-sm md:text-base text-botic-muted leading-relaxed
-                        max-w-md mx-auto mb-10">
-            {t('menus.ctaBody')}
-          </p>
-          <div className="flex flex-wrap gap-4 justify-center">
-            <Link to={routes.reserves} className="btn-gold">{t('menus.ctaBook')}</Link>
-            <a href="tel:+34972630869" className="btn-cream">{t('menus.ctaContact')}</a>
-          </div>
-        </div>
-      </section>
+      <ClosingCTA
+        id="menus-closing-cta"
+        tone="dark"
+        eyebrow={t('closingCta.menus.eyebrow')}
+        heading={t('closingCta.menus.heading')}
+        primaryTo={routes.reserves}
+        primaryLabel={t('closingCta.menus.primary')}
+      />
     </>
   )
 }
