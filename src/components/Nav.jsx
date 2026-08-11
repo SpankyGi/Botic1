@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useLang, useLangRoutes, useSwitchLang } from '../i18n/LangContext'
 import { LANGS } from '../i18n/routes'
 
-const NAV_KEYS = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves', 'horaris']
+const NAV_KEYS = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves']
 const NAV_IMGS = [
   '/images/plat-cenital-botic.jpg',
   '/images/restaurant-emporda-botic-michelin.webp',
@@ -12,9 +12,8 @@ const NAV_IMGS = [
   '/images/Albert Sastregener-empordà-botic-restaurant.webp',
   '/images/cristina-albert-botic-emporda-michelin.webp',
   '/images/restaurant-emporda-michelin-girona.webp',
-  '/images/restaurant-emporda-botic-michelin.webp',
 ]
-const NAV_IDX = ['00', '01', '02', '03', '04', '05', '06']
+const NAV_IDX = ['00', '01', '02', '03', '04', '05']
 
 export function BoticWordmark({ className = '', ...props }) {
   return (

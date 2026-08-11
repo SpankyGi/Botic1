@@ -16,7 +16,6 @@ import Gastronomia   from './pages/Gastronomia'
 import Experiencia   from './pages/Experiencia'
 import Menus         from './pages/Menus'
 import Reserves      from './pages/Reserves'
-import Horaris       from './pages/Horaris'
 import NotFound      from './pages/NotFound'
 
 function ScrollToTop() {
@@ -42,7 +41,7 @@ function LangRoutes({ lang }) {
         <Route path={s.menus}         element={<Menus />} />
         <Route path={s.experiencia}   element={<Experiencia />} />
         <Route path={s.reserves}      element={<Reserves />} />
-        <Route path={s.horaris}       element={<Horaris />} />
+        <Route path={s.horaris}       element={<Navigate to={`../${s.reserves.split('/').pop()}`} relative="path" replace />} />
         <Route path="*"               element={<NotFound />} />
       </Routes>
     </LangLayout>

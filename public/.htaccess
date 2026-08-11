@@ -1,6 +1,12 @@
 Options -MultiViews
 RewriteEngine On
 
+# Legacy hours URLs now belong to the single reservations-and-hours page.
+RewriteRule ^ca/horaris/?$ /ca/reserves/ [R=301,L]
+RewriteRule ^es/horarios/?$ /es/reservas/ [R=301,L]
+RewriteRule ^en/hours/?$ /en/reservations/ [R=301,L]
+RewriteRule ^fr/horaires/?$ /fr/reservations/ [R=301,L]
+
 # Redirect bare root to /ca/
 RewriteRule ^$ /ca/ [R=301,L]
 

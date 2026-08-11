@@ -15,7 +15,7 @@
       "gastronomia": { "label": "Gastronomy", "desc": "Product, technique and memory." },
       "menus": { "label": "Menus", "desc": "The complete experience at the table." },
       "experiencia": { "label": "Experience", "desc": "Albert and Cristina. The project." },
-      "reserves": { "label": "Reservations", "desc": "Reserve your table." },
+      "reserves": { "label": "Reservations & opening hours", "desc": "Reserve your table and consult opening hours." },
       "horaris": { "label": "Hours", "desc": "Check our availability." }
     }
   },
@@ -77,8 +77,8 @@
       "description": "The gastronomic experience at Bo.TiC: tasting menu, dining room, team and hospitality. Michelin restaurant in Corçà, Girona. Fine dining in the Empordà."
     },
     "reserves": {
-      "title": "Reservations · Bo.TiC · Gastronomic Restaurant Corçà",
-      "description": "Book a table at Bo.TiC restaurant in Corçà, Girona. Phone, email, address and opening hours. Michelin gastronomic restaurant in the Empordà."
+      "title": "Reservations & opening hours · Bo.TiC · Gastronomic Restaurant Corçà",
+      "description": "Book a table at Bo.TiC, a gastronomic restaurant in Corçà, and consult kitchen hours, service days, contact details and directions."
     },
     "horaris": {
       "title": "Hours & Calendar · Bo.TiC · Gastronomic Restaurant · Corçà",
@@ -333,8 +333,8 @@
     "ctaBtn": "Book a table"
   },
   "reserves": {
-    "heroLabel": "Reservations",
-    "heroHeading": "Join us at the table",
+    "heroLabel": "Reservations & opening hours",
+    "heroHeading": "Reservations & opening hours",
     "addressLabel": "Address",
     "addressLine1": "Carrer dels Forns, 7",
     "addressLine2": "17121 Corçà (Girona)",

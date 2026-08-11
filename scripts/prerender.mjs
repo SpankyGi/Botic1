@@ -9,10 +9,10 @@ const serverEntry = pathToFileURL(join(root, 'dist-ssr', 'entry-server.js')).hre
 const { getStaticSeo, render } = await import(serverEntry)
 const template = await readFile(join(dist, 'index.html'), 'utf8')
 
-const routes = LANGS.flatMap(lang => [
-  `/${lang}/`,
-  ...Object.values(ROUTE_SLUGS[lang]).map(slug => `/${lang}/${slug}/`),
-])
+const pageKeys = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves']
+const routes = LANGS.flatMap(lang => pageKeys.map(pageKey => (
+  pageKey === 'home' ? `/${lang}/` : `/${lang}/${ROUTE_SLUGS[lang][pageKey]}/`
+)))
 
 const escapeHtml = value => String(value)
   .replaceAll('&', '&amp;')
@@ -54,7 +54,6 @@ for (const route of routes) {
   await writeFile(outputFile, output)
 }
 
-const pageKeys = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves', 'horaris']
 const sitemapEntries = pageKeys.flatMap(pageKey => LANGS.map(lang => {
   const seo = getStaticSeo(`/${lang}/${pageKey === 'home' ? '' : ROUTE_SLUGS[lang][pageKey]}/`)
   const alternates = [

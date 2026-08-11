@@ -15,7 +15,7 @@
       "gastronomia": { "label": "Gastronomie", "desc": "Produit, technique et mémoire." },
       "menus": { "label": "Menus", "desc": "L'expérience complète à table." },
       "experiencia": { "label": "Expérience", "desc": "Albert et Cristina. Le projet." },
-      "reserves": { "label": "Réservations", "desc": "Réservez votre table." },
+      "reserves": { "label": "Réservations et horaires", "desc": "Réservez votre table et consultez les horaires." },
       "horaris": { "label": "Horaires", "desc": "Consultez nos disponibilités." }
     }
   },
@@ -77,8 +77,8 @@
       "description": "L'expérience gastronomique de Bo.TiC : menu dégustation, salle, équipe et hospitalité. Restaurant Michelin à Corçà, Gérone. Haute cuisine de l'Empordà."
     },
     "reserves": {
-      "title": "Réservations · Bo.TiC · Restaurant Gastronomique Corçà",
-      "description": "Réservez une table au restaurant Bo.TiC de Corçà, Gérone. Téléphone, email, adresse et horaires. Restaurant gastronomique Michelin en Empordà."
+      "title": "Réservations et horaires · Bo.TiC · Restaurant Gastronomique Corçà",
+      "description": "Réservez une table à Bo.TiC, restaurant gastronomique à Corçà, et consultez les horaires de cuisine, jours de service, contact et accès."
     },
     "horaris": {
       "title": "Horaires et Calendrier · Bo.TiC · Restaurant Gastronomique · Corçà",
@@ -333,8 +333,8 @@
     "ctaBtn": "Réserver une table"
   },
   "reserves": {
-    "heroLabel": "Réservations",
-    "heroHeading": "Venez à table",
+    "heroLabel": "Réservations et horaires",
+    "heroHeading": "Réservations et horaires",
     "addressLabel": "Adresse",
     "addressLine1": "Carrer dels Forns, 7",
     "addressLine2": "17121 Corçà (Gérone)",
