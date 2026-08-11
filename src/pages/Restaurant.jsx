@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
 import ClosingCTA from '../components/ClosingCTA'
@@ -422,7 +422,7 @@ function TeamSection({ t }) {
           <figure className="rst-team-block rst-team-primary sala reveal" ref={salaRef}>
             <div className="rst-team-photo sala">
               <img
-                src="/images/cristina-albert-botic-emporda-michelin.webp"
+                src="/images/cristina-botic-sommelier-girona.webp"
                 alt={t('restaurant.salaImgAlt')}
                 className="rst-team-img"
                 loading="lazy"
@@ -464,6 +464,19 @@ function FinalCTA({ t, routes }) {
 export default function Restaurant() {
   const { t }  = useTranslation()
   const routes = useLangRoutes()
+  const location = useLocation()
+
+  // Els enllaços del footer arriben a l'equip també després d'una navegació
+  // interna del router, quan el desplaçament natiu per hash no s'executa.
+  useEffect(() => {
+    if (location.hash !== '#team') return undefined
+
+    const frame = requestAnimationFrame(() => {
+      document.getElementById('team')?.scrollIntoView({ block: 'start' })
+    })
+
+    return () => cancelAnimationFrame(frame)
+  }, [location.hash])
 
   // Schema.org: Restaurant + BreadcrumbList (dades reals ja usades a Footer/Reserves)
   useEffect(() => {

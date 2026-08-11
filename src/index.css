@@ -8485,11 +8485,8 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 .restaurant-page .rst-team-primary .rst-team-img { transition: transform .8s cubic-bezier(.22, 1, .36, 1); }
 .restaurant-page .rst-team-primary:hover .rst-team-img { transform: scale(1.025); }
 .restaurant-page .rst-team-primary.kitchen .rst-team-img { object-position: 68% center; }
-.restaurant-page .rst-team-primary.sala .rst-team-img {
-  object-position: 100% center;
-  transform: scale(1.5);
-  transform-origin: right center;
-}
+.restaurant-page .rst-team-primary.sala .rst-team-img { object-position: 36% center; }
+#team { scroll-margin-top: 96px; }
 .restaurant-page .rst-team-caption { padding: 18px 0 0 clamp(2px, 1vw, 14px); }
 .restaurant-page .rst-team-label {
   margin: 0;
@@ -8542,7 +8539,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .restaurant-page .rst-team-primary .rst-team-photo { height: min(112vw, 540px); min-height: 0; }
   .restaurant-page .rst-team-primary.sala .rst-team-photo { height: min(96vw, 460px); min-height: 0; }
   .restaurant-page .rst-team-primary.kitchen .rst-team-img { object-position: 72% center; }
-  .restaurant-page .rst-team-primary.sala .rst-team-img { object-position: 100% center; }
+  .restaurant-page .rst-team-primary.sala .rst-team-img { object-position: 36% center; }
   .restaurant-page .rst-team-caption { padding: 15px 0 10px; }
   .restaurant-page .rst-team-name { font-size: clamp(30px, 9vw, 42px); }
   .restaurant-page .rst-team-body { font-size: 12px; }
