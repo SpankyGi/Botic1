@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useLocation } from 'react-router-dom'
 
 const MIN_MS  = 2500   // temps mínim visible
 const MAX_MS  = 5000   // seguretat: màxim d'espera del vídeo
@@ -11,8 +12,10 @@ const alreadySeen = () =>
 
 export default function Preloader() {
   const { t }   = useTranslation()
+  const { pathname } = useLocation()
   const [phase, setPhase] = useState(() => alreadySeen() ? 'done' : 'visible')
   const startRef = useRef(Date.now())
+  const isHome = /^\/(?:ca|es|en|fr)?\/?$/.test(pathname)
 
   useEffect(() => {
     if (phase !== 'visible') return
@@ -54,8 +57,16 @@ export default function Preloader() {
         Bo<span className="pre-dot">.</span>TiC
       </div>
 
-      <div className="pre-bar-wrap">
-        <div className="pre-bar" />
+      <div className="pre-progress-seal">
+        <div className="pre-bar-wrap">
+          <div className="pre-bar" />
+        </div>
+        {isHome && (
+          <div className="pre-michelin-stars" role="img" aria-label="Dues estrelles Michelin">
+            <img src="/images/michelin-star-original.png" alt="" width="34" height="34" decoding="async" />
+            <img src="/images/michelin-star-original.png" alt="" width="34" height="34" decoding="async" />
+          </div>
+        )}
       </div>
 
       <p className="pre-claim">{t('footer.tagline')}</p>
