@@ -19,6 +19,10 @@ export function useLangRoutes() {
     experiencia: `/${lang}/${slugs.experiencia}`,
     reserves:    `/${lang}/${slugs.reserves}`,
     horaris:     `/${lang}/${slugs.horaris}`,
+    legal:       `/${lang}/${slugs.legal}`,
+    privacy:     `/${lang}/${slugs.privacy}`,
+    cookies:     `/${lang}/${slugs.cookies}`,
+    preferences: `/${lang}/${slugs.preferences}`,
   }
 }
 

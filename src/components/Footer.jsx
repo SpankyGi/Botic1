@@ -72,9 +72,10 @@ export default function Footer() {
         <div className="footer-bottom">
           <span>{t('footer.copyright')}</span>
           <nav aria-label={t('footer.legalLinksLabel')}>
-            <Link to={routes.home}>{t('footer.legal')}</Link>
-            <Link to={routes.home}>{t('footer.privacy')}</Link>
-            <Link to={routes.home}>{t('footer.cookies')}</Link>
+            <Link to={routes.legal}>{t('footer.legal')}</Link>
+            <Link to={routes.privacy}>{t('footer.privacy')}</Link>
+            <Link to={routes.cookies}>{t('footer.cookies')}</Link>
+            <button type="button" className="footer-cookie-preferences" onClick={() => window.dispatchEvent(new Event('botic:cookie-preferences'))}>{t('footer.cookiePreferences')}</button>
             <span>{t('footer.credit')}</span>
             <a href="https://ovproduccions.com" target="_blank" rel="noopener noreferrer">OV Produccions</a>
           </nav>

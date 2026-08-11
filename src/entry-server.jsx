@@ -11,6 +11,12 @@ const OG_IMAGES = {
   menus: `${BASE_URL}/images/plat-cenital-botic.webp`,
   restaurant: DEFAULT_OG_IMAGE,
 }
+const LEGAL_SEO = {
+  ca: { legal: ['Avís legal · Bo.TiC', 'Informació legal de Bo.TiC.'], privacy: ['Política de privacitat · Bo.TiC', 'Informació sobre el tractament de dades personals a Bo.TiC.'], cookies: ['Política de cookies · Bo.TiC', 'Informació sobre les cookies i preferències de consentiment de Bo.TiC.'] },
+  es: { legal: ['Aviso legal · Bo.TiC', 'Información legal de Bo.TiC.'], privacy: ['Política de privacidad · Bo.TiC', 'Información sobre el tratamiento de datos personales en Bo.TiC.'], cookies: ['Política de cookies · Bo.TiC', 'Información sobre cookies y preferencias de consentimiento de Bo.TiC.'] },
+  en: { legal: ['Legal notice · Bo.TiC', 'Legal information for Bo.TiC.'], privacy: ['Privacy policy · Bo.TiC', 'Information about personal-data processing at Bo.TiC.'], cookies: ['Cookie policy · Bo.TiC', 'Information about cookies and consent preferences at Bo.TiC.'] },
+  fr: { legal: ['Mentions légales · Bo.TiC', 'Informations légales de Bo.TiC.'], privacy: ['Politique de confidentialité · Bo.TiC', 'Informations sur le traitement des données personnelles chez Bo.TiC.'], cookies: ['Politique de cookies · Bo.TiC', 'Informations sur les cookies et préférences de consentement de Bo.TiC.'] },
+}
 
 function routeDetails(url) {
   const parts = url.split('?')[0].split('/').filter(Boolean)
@@ -27,7 +33,8 @@ function pathFor(lang, pageKey) {
 export function getStaticSeo(url) {
   const { lang, pageKey } = routeDetails(url)
   const translation = i18n.getResourceBundle(lang, 'translation')
-  const content = translation?.seo?.[pageKey] || translation?.seo?.home
+  const legal = LEGAL_SEO[lang]?.[pageKey]
+  const content = legal ? { title: legal[0], description: legal[1] } : (translation?.seo?.[pageKey] || translation?.seo?.home)
   const canonical = `${BASE_URL}${pathFor(lang, pageKey)}`
 
   return {

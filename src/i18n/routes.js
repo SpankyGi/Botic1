@@ -11,6 +11,7 @@ export const ROUTE_SLUGS = {
     experiencia: 'experiencia',
     reserves:    'reserves',
     horaris:     'horaris',
+    legal: 'avis-legal', privacy: 'privacitat', cookies: 'cookies', preferences: 'preferencies-cookies',
   },
   es: {
     restaurant:  'restaurante',
@@ -19,6 +20,7 @@ export const ROUTE_SLUGS = {
     experiencia: 'experiencia',
     reserves:    'reservas',
     horaris:     'horarios',
+    legal: 'aviso-legal', privacy: 'privacidad', cookies: 'cookies', preferences: 'preferencias-cookies',
   },
   fr: {
     restaurant:  'restaurant',
@@ -27,6 +29,7 @@ export const ROUTE_SLUGS = {
     experiencia: 'experience',
     reserves:    'reservations',
     horaris:     'horaires',
+    legal: 'mentions-legales', privacy: 'confidentialite', cookies: 'cookies', preferences: 'preferences-cookies',
   },
   en: {
     restaurant:  'restaurant',
@@ -35,6 +38,7 @@ export const ROUTE_SLUGS = {
     experiencia: 'experience',
     reserves:    'reservations',
     horaris:     'hours',
+    legal: 'legal-notice', privacy: 'privacy', cookies: 'cookies', preferences: 'cookie-preferences',
   },
 }
 

@@ -9,7 +9,7 @@ const serverEntry = pathToFileURL(join(root, 'dist-ssr', 'entry-server.js')).hre
 const { getStaticSeo, render } = await import(serverEntry)
 const template = await readFile(join(dist, 'index.html'), 'utf8')
 
-const pageKeys = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves']
+const pageKeys = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves', 'legal', 'privacy', 'cookies']
 const routes = LANGS.flatMap(lang => pageKeys.map(pageKey => (
   pageKey === 'home' ? `/${lang}/` : `/${lang}/${ROUTE_SLUGS[lang][pageKey]}/`
 )))
