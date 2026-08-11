@@ -33,7 +33,19 @@ const DESKTOP_GALLERY = [
 function GastronomyHero({ t, routes }) {
   return (
     <section className="gst-hero" aria-labelledby="gst-hero-title">
-      <img className="gst-hero-img" src={CHEF_ACTION} alt={t('gastronomia.heroImgAlt')} />
+      <video
+        className="gst-hero-video"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        poster={CHEF_ACTION}
+        aria-hidden="true"
+      >
+        <source media="(max-width: 768px)" src="/images/producte-gastronomia-botic-emporda-mobile.webm" type="video/webm" />
+        <source src="/images/producte-gastronomia-botic-emporda.webm" type="video/webm" />
+      </video>
       <div className="gst-hero-shade" aria-hidden="true" />
       <div className="gst-hero-grain" aria-hidden="true" />
       <div className="gst-hero-copy">

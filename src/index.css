@@ -868,7 +868,7 @@ body .exp-narrative { padding: 86px 22px 72px; }
   position: relative; min-height: 100svh; overflow: hidden; background: #050403;
   display: flex; align-items: flex-end; isolation: isolate;
 }
-.gst-hero-img {
+.gst-hero-video {
   position: absolute; z-index: -3; inset: 0; width: 100%; height: 100%; object-fit: cover;
   object-position: 66% center; transform: scale(1.025); animation: gstHeroIn 2.4s cubic-bezier(.16,.8,.2,1) both;
 }
@@ -987,7 +987,7 @@ body .exp-narrative { padding: 86px 22px 72px; }
 
 @media (max-width: 768px) {
   .gst-hero { min-height: 92svh; }
-  .gst-hero-img { object-position: 63% center; }
+  .gst-hero-video { object-position: 63% center; }
   .gst-hero-shade { background: linear-gradient(0deg, rgba(5,4,3,.96) 0%, rgba(5,4,3,.50) 55%, rgba(5,4,3,.16) 100%); }
   .gst-hero-copy { width: auto; margin: 0 22px 72px; }
   .gst-hero-copy h1 { font-size: clamp(52px, 16vw, 76px); line-height: .9; }
@@ -1036,7 +1036,7 @@ body .exp-narrative { padding: 86px 22px 72px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .gst-hero-img, .gst-scroll-cue span { animation: none; }
+  .gst-hero-video, .gst-scroll-cue span { animation: none; }
   .gst-territory > img, .gst-technique-main img, .gst-dish img { transition: none; }
   .gst-dishes-intro i { animation: none; }
   .gst-technique-detail img { transition:none; opacity:0; }
