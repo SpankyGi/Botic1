@@ -204,8 +204,8 @@ export default function Home() {
           decoding="async"
         />
         <div className="home-cristina-signature" aria-hidden="true">
-          <span>Cristina</span>
-          <span>Sala &amp; sommelier</span>
+          <span>{t('home.cristinaName')}</span>
+          <span>{t('home.cristinaRole')}</span>
         </div>
         <div className="container-max">
           <div className="home-seo-intro reveal" ref={seoIntroRef}>
