@@ -8,27 +8,18 @@ import { useReveal } from '../hooks/useReveal.js'
 const CHEF_ACTION = '/images/Albert Sastregener-empordà-botic-restaurant.webp'
 const CHEF_PORTRAIT = '/images/albert-sastregener-cuina-emporda-girona.webp'
 const TERRITORY = '/images/restaurant-emporda-michelin-girona.webp'
-const DISH_IMAGE_ROOT = '/images/botic-maig-2026-webp'
-const TECHNIQUE_ACTION = `${DISH_IMAGE_ROOT}/xef-acabant-plat-restaurant-botic.webp`
+const TECHNIQUE_IMAGE_ROOT = '/images/gastronomia-technique'
+const TECHNIQUE_ACTION = `${TECHNIQUE_IMAGE_ROOT}/restaurant-botic-emporda-preparacio-xef-02.webp`
 
-const DISH_SEQUENCE = [
-  { file: 'presentacio-aperitiu-botic-costa-brava.webp', alt: 'galleryAlt2', shape: 'portrait' },
-  { file: 'amanida-gastronomica-herbes-botic-emporda.webp', alt: 'galleryAlt1', shape: 'landscape' },
-  { file: 'plat-peix-costa-brava-emporda-botic.webp', alt: 'galleryAlt3', shape: 'feature' },
-  { file: 'tonyina-mar-costa-brava-alta-cuina-botic.webp', alt: 'galleryAlt3', shape: 'dark' },
-  { file: 'plat-carn-fruits-vermells-botic.webp', alt: 'galleryAlt3', shape: 'landscape' },
-  { file: 'postres-maduixes-menu-degustacio-botic.webp', alt: 'galleryAlt4', shape: 'portrait' },
+const TECHNIQUE_DETAIL_SEQUENCE = [
+  { file: 'restaurant-botic-emporda-preparacio-xef-01.webp', alt: 'galleryAlt2', shape: 'landscape' },
+  { file: 'restaurant-botic-emporda-plat-signatura-01.webp', alt: 'galleryAlt3', shape: 'landscape' },
+  { file: 'restaurant-botic-emporda-preparacio-xef-03.webp', alt: 'galleryAlt3', shape: 'landscape' },
+  { file: 'restaurant-botic-emporda-preparacio-xef-04.webp', alt: 'galleryAlt2', shape: 'landscape' },
+  { file: 'restaurant-botic-emporda-preparacio-xef-06.webp', alt: 'galleryAlt1', shape: 'landscape' },
 ]
 
-const DESKTOP_GALLERY = [
-  { file: 'xef-servint-brou-plat-peix-botic.webp', alt: 'galleryAlt2' },
-  ...DISH_SEQUENCE,
-  { file: 'escamarlans-marisc-restaurant-botic-emporda.webp', alt: 'galleryAlt3' },
-  { file: 'plat-llamantol-restaurant-botic-emporda.webp', alt: 'galleryAlt3' },
-  { file: 'plat-esparrecs-blancs-restaurant-botic.webp', alt: 'galleryAlt1' },
-  { file: 'detall-postres-maduixes-botic-emporda.webp', alt: 'galleryAlt4' },
-  { file: 'alta-cuina-empordanesa-restaurant-botic.webp', alt: 'galleryAlt3' },
-]
+const DESKTOP_GALLERY = TECHNIQUE_DETAIL_SEQUENCE
 
 function GastronomyHero({ t, routes }) {
   return (
@@ -144,7 +135,7 @@ function TechniqueSection({ t }) {
             <img
               key={dish.file}
               className={index === galleryIndex ? 'is-active' : ''}
-              src={`${DISH_IMAGE_ROOT}/${dish.file}`}
+              src={`${TECHNIQUE_IMAGE_ROOT}/${dish.file}`}
               alt={t(`gastronomia.${dish.alt}`)}
               loading="lazy"
             />
@@ -168,11 +159,11 @@ function TechniqueSection({ t }) {
         <img className="gst-technique-signature" src={CHEF_PORTRAIT} alt={t('gastronomia.producteImgAlt')} loading="lazy" />
       </div>
       <div className="gst-dishes gst-dishes-mobile" aria-label={t('gastronomia.galleryAria')}>
-        <div className="gst-dishes-intro" aria-hidden="true"><span>01</span><i /><span>06</span></div>
+        <div className="gst-dishes-intro" aria-hidden="true"><span>01</span><i /><span>{String(TECHNIQUE_DETAIL_SEQUENCE.length).padStart(2, '0')}</span></div>
         <div className="gst-dishes-grid">
-          {DISH_SEQUENCE.map((dish, index) => (
+          {TECHNIQUE_DETAIL_SEQUENCE.map((dish, index) => (
             <figure className="gst-dish" key={dish.file}>
-              <img src={`${DISH_IMAGE_ROOT}/${dish.file}`} alt={t(`gastronomia.${dish.alt}`)} loading="lazy" />
+              <img src={`${TECHNIQUE_IMAGE_ROOT}/${dish.file}`} alt={t(`gastronomia.${dish.alt}`)} loading="lazy" />
               <figcaption aria-hidden="true">{String(index + 1).padStart(2, '0')}</figcaption>
             </figure>
           ))}
