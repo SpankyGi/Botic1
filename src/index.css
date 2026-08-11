@@ -9145,7 +9145,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 .mnu-tab {
   min-height: 126px;
   display: grid;
-  grid-template-columns: 24px minmax(0,1fr) auto;
+  grid-template-columns: 24px minmax(0,1fr);
   grid-template-rows: auto auto auto;
   align-content: center;
   column-gap: 14px;
@@ -9199,13 +9199,21 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 .mnu-tab-position { grid-column: 2; grid-row: 2; color: rgba(33,26,20,.62); }
 .mnu-tab-price {
   position: static;
-  grid-column: 3;
-  grid-row: 1 / span 3;
-  justify-self: end;
-  align-self: center;
+  right: auto;
+  bottom: auto;
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: start;
+  align-self: start;
+  margin-top: 2px;
   white-space: nowrap;
 }
-.mnu-tab-price-value { color: #A51F3D; font-size: clamp(25px,2.1vw,36px); }
+.mnu-tab-price-value {
+  color: #A51F3D;
+  font-size: clamp(18px,1.3vw,22px);
+  line-height: 1;
+  letter-spacing: -.035em;
+}
 .mnu-tab:hover .mnu-tab-title { color: #A51F3D; transform: translateX(4px); }
 .mnu-tab.active .mnu-tab-index,
 .mnu-tab.active .mnu-tab-title,
@@ -9234,12 +9242,12 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .mnu-tab {
     flex: 0 0 min(82vw, 320px);
     min-height: 124px;
-    grid-template-columns: 20px minmax(0,1fr) auto;
+    grid-template-columns: 20px minmax(0,1fr);
     padding: 21px 18px;
   }
   .mnu-tab-title { font-size: 23px; }
   .mnu-tab-position { font-size: 9px; }
-  .mnu-tab-price-value { font-size: 30px; }
+  .mnu-tab-price-value { font-size: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
