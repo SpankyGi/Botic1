@@ -8928,12 +8928,8 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   display: block;
   width: 100%;
   height: auto;
-  overflow: visible;
   filter: drop-shadow(0 5px 18px rgba(0,0,0,.13));
 }
-.hero-brand-b { fill: #fffaf4; transition: fill .75s ease; }
-.hero-brand-dot { fill: #A51F3D; }
-.hero--light .hero-brand-b { fill: #211a14; }
 .hero-brand--pulse { animation: home-hero-brand-breathe 1.45s cubic-bezier(.2,.7,.2,1) both; }
 @keyframes home-hero-brand-breathe {
   0% { transform: scale(1); }
@@ -8957,7 +8953,6 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 @media (prefers-reduced-motion: reduce) {
   .hero-gallery-image,
   .hero-gallery-shade,
-  .hero-brand-b,
   .hero-brand--pulse { animation: none; transition: none; }
   .hero-gallery-image { transform: none; }
   .hero-brand-motion {

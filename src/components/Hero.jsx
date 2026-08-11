@@ -14,14 +14,16 @@ const HERO_STILLS = [
   { src: '/images/home-hero/restaurant-botic-emporda-aperitiu-02.webp', tone: 'light' },
 ]
 
-function HeroBrand({ pulseKey }) {
+function HeroBrand({ pulseKey, tone }) {
   return (
     <div className="hero-brand-stage" aria-hidden="true">
-      <svg key={pulseKey} className="hero-brand hero-brand--pulse" viewBox="50 0 425 240" focusable="false">
-        <path className="hero-brand-b" d="M76 30V220H166C222 220 248 188 248 151C248 120 231 98 204 91C228 81 239 59 239 41C239 11 216 0 176 0H76V30ZM87 11H172C209 11 229 28 229 57C229 88 207 106 172 106H87V11ZM87 117H174C216 117 238 136 238 168C238 199 215 209 174 209H87V117Z" />
-        <circle className="hero-brand-dot" cx="344" cy="156" r="50" />
-        <circle className="hero-brand-dot" cx="438" cy="75" r="31" />
-      </svg>
+      <img
+        key={pulseKey}
+        className="hero-brand hero-brand--pulse"
+        src={tone === 'dark' ? '/images/botic-hero-symbol-light.png' : '/images/botic-hero-symbol-dark.png'}
+        alt=""
+        decoding="async"
+      />
     </div>
   )
 }
@@ -104,7 +106,7 @@ export default function Hero() {
     <section ref={heroRef} className={`hero hero--${activeStill.tone}`}>
       <HeroGallery activeIndex={activeIndex} />
       <div ref={brandRef} className="hero-brand-motion">
-        <HeroBrand pulseKey={activeIndex} />
+        <HeroBrand pulseKey={activeIndex} tone={activeStill.tone} />
       </div>
 
       <div className="hero-content-wrap">
