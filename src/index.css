@@ -9518,3 +9518,44 @@ footer.botic-footer {
   .footer-column a,
   .footer-bottom a { transition: none; }
 }
+
+/* Restaurant — en mòbil el títol de la seqüència no pot quedar superposat
+   sobre la primera escena. Es presenta com a interludi editorial propi i les
+   escenes mantenen un pla de lectura net sobre la fotografia. */
+@media (max-width: 768px) {
+  .restaurant-page .rst-story-stage {
+    display: flex;
+    flex-direction: column;
+  }
+  .restaurant-page .rst-story-intro,
+  .restaurant-page .rst-story.is-intro .rst-story-intro {
+    position: relative;
+    z-index: 1;
+    order: -1;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: auto;
+    margin: 0;
+    padding: 72px 24px 48px;
+    background: var(--restaurant-paper);
+    transform: none;
+    text-align: left;
+  }
+  .restaurant-page .rst-story-intro .rst-arch-heading {
+    max-width: 11ch;
+    color: var(--restaurant-ink);
+  }
+  .restaurant-page .rst-story-scenes { width: 100%; }
+  .restaurant-page .rst-story-scene:first-child .rst-story-shade {
+    background: linear-gradient(0deg, rgba(243, 237, 227, .97) 0%, rgba(243, 237, 227, .88) 54%, rgba(243, 237, 227, .22) 100%);
+  }
+  .restaurant-page .rst-story-scene:first-child .rst-story-copy {
+    bottom: 28px;
+    left: 20px;
+    right: 20px;
+  }
+  .restaurant-page .rst-story-scene:first-child .rst-story-copy p {
+    color: rgba(33, 26, 20, .87);
+  }
+}
