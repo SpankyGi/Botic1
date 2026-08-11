@@ -30,9 +30,6 @@ function ExperienceHero({ t }) {
         <span className="exp-kicker">{t('experiencia.heroEyebrow')}</span>
         <h1 id="exp-hero-title">{t('experiencia.heroHeading')}</h1>
       </div>
-      <div className="exp-hero-clock" aria-hidden="true">
-        <span /><i /><b />
-      </div>
       <span className="exp-hero-whisper" aria-hidden="true">{t('experiencia.heroWhisper')}</span>
     </section>
   )
