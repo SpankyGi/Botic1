@@ -8317,6 +8317,76 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   }
 }
 
+/* Reserva i horaris: versió editorial clara */
+.booking-page {
+  --booking-ink: #f5f0e7;
+  --booking-deep: #241814;
+  --booking-brown: #eee4d7;
+  --booking-cream: #1c1511;
+  --booking-muted: rgba(28, 21, 17, .66);
+  --booking-line: rgba(28, 21, 17, .16);
+  background: var(--booking-ink);
+  color: var(--booking-cream);
+}
+.booking-kicker { color: #A51F3D; }
+.booking-hero {
+  min-height: min(63vh, 580px);
+  background:
+    radial-gradient(ellipse at 80% 18%, rgba(165,31,61,.10), transparent 42%),
+    linear-gradient(120deg, #f7f3ec 0%, #f0e6da 100%);
+}
+.booking-hero::before { opacity: .2; background: repeating-linear-gradient(120deg, transparent 0 8px, rgba(70,35,30,.035) 9px 10px); }
+.booking-hero h1 { color: #201611; }
+.booking-hero p { color: rgba(32,22,17,.68); }
+.booking-primary-cta { color: #fff; }
+.booking-primary-cta:hover, .booking-primary-cta:focus-visible { color: #7e1830; background: transparent; }
+.booking-practical { background: #f7f3ec; border-top-color: rgba(28,21,17,.09); }
+.booking-section-heading h2, .booking-practical-grid h3, .booking-notes h3 { color: #201611; }
+.booking-practical-grid { border-color: rgba(28,21,17,.15); }
+.booking-practical-grid article { border-color: rgba(28,21,17,.15); }
+.booking-practical-grid article > span { color: #A51F3D; }
+.booking-practical-grid p, .booking-notes p { color: rgba(32,22,17,.68); }
+.booking-practical-grid a { color: #8f1b35; }
+.booking-notes article { border-left-color: rgba(165,31,61,.68); }
+.booking-notes li { color: rgba(32,22,17,.68); border-color: rgba(28,21,17,.15); }
+.booking-notes li span { color: #A51F3D; }
+.booking-schedule { background: #eee4d7; border-top-color: rgba(28,21,17,.10); }
+.booking-schedule .booking-section-heading p { color: rgba(32,22,17,.66); }
+.booking-hours-details { border-top: 1px solid rgba(28,21,17,.18); border-bottom: 1px solid rgba(28,21,17,.18); }
+.booking-hours-details details { border-top: 1px solid rgba(28,21,17,.18); }
+.booking-hours-details details:first-child { border-top: 0; }
+.booking-hours-details summary { display: grid; grid-template-columns: 56px 1fr 26px; align-items: center; gap: 15px; min-height: 104px; cursor: pointer; list-style: none; }
+.booking-hours-details summary::-webkit-details-marker { display: none; }
+.booking-hours-details summary > span { color: #A51F3D; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; letter-spacing: .18em; }
+.booking-hours-details summary > strong { color: #201611; font-family: 'Plus Jakarta Sans', serif; font-size: clamp(29px,4vw,55px); font-weight: 300; letter-spacing: -.03em; }
+.booking-hours-details summary > i { width: 18px; height: 18px; position: relative; display: block; }
+.booking-hours-details summary > i::before, .booking-hours-details summary > i::after { content: ''; position: absolute; top: 8px; left: 0; width: 18px; height: 1px; background: #A51F3D; transition: transform .25s ease; }
+.booking-hours-details summary > i::after { transform: rotate(90deg); }
+.booking-hours-details details[open] summary > i::after { transform: rotate(0); }
+.booking-hours-content { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 34px; max-width: 800px; padding: 0 0 38px 71px; }
+.booking-hours-content h3 { margin: 0 0 8px; color: #A51F3D; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 10px; font-weight: 500; letter-spacing: .20em; line-height: 1.45; text-transform: uppercase; }
+.booking-hours-content p { margin: 0; color: #201611; font-family: 'Plus Jakarta Sans', serif; font-size: clamp(21px,2.4vw,31px); font-weight: 300; line-height: 1.25; white-space: pre-line; }
+.booking-reservation { background: #241814; border-top: 0; }
+.booking-reservation .booking-kicker, .booking-reservation .booking-direct-contact a { color: #e6bac3; }
+.booking-reservation-intro h2, .booking-confirmation h3 { color: #f5f0e7; }
+.booking-reservation-intro > p, .booking-form-note, .booking-confirmation p { color: rgba(245,240,231,.68); }
+.booking-form-wrap { border-top-color: #bd576d; }
+.booking-form-wrap label { color: #e6bac3; }
+.booking-field { color: #f5f0e7; border-bottom-color: rgba(245,240,231,.22); }
+.booking-field::placeholder { color: rgba(245,240,231,.42); }
+.booking-location { background: #f5f0e7; }
+.booking-location h2, .booking-location address { color: #201611; }
+.booking-location p { color: rgba(32,22,17,.66); }
+.booking-location .booking-map-link { color: #8f1b35; }
+.booking-location .booking-map-link:hover, .booking-location .booking-map-link:focus-visible { color: #fff; }
+.booking-map-wrap { border-color: rgba(28,21,17,.20); filter: saturate(.74) contrast(.92); }
+@media (max-width: 600px) {
+  .booking-hero { min-height: 450px; }
+  .booking-hours-details summary { grid-template-columns: 38px 1fr 18px; min-height: 82px; gap: 9px; }
+  .booking-hours-details summary > strong { font-size: 27px; }
+  .booking-hours-content { grid-template-columns: 1fr; gap: 24px; padding: 0 0 30px 47px; }
+}
+
 /* Només el control global «Menú» comparteix aquest filet Bo.TiC a totes les
    rutes. «Reservar» i la resta de CTA conserven la seva jerarquia actual. */
 .nav-header:not(.nav-menu-is-open) .nav-toggle {

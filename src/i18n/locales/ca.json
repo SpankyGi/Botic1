@@ -335,6 +335,17 @@
   "reserves": {
     "heroLabel": "Reserva i horaris",
     "heroHeading": "Reserva i horaris",
+    "heroIntro": "Reserveu la vostra experiència a taula i consulteu els horaris de servei segons la temporada.",
+    "schedule": {
+      "eyebrow": "Horari",
+      "heading": "El ritme del servei",
+      "intro": "Informació d’obertura actualitzada segons el període de l’any.",
+      "periods": [
+        { "title": "D’OCTUBRE A MAIG", "items": [{ "label": "OBERT MIGDIES", "text": "De dimecres a diumenge" }, { "label": "OBERT VESPRES", "text": "Divendres i dissabte" }] },
+        { "title": "JUNY I SETEMBRE", "items": [{ "label": "TANCAT", "text": "Diumenges al vespre\nDilluns i dimarts tot el dia" }] },
+        { "title": "JULIOL I AGOST", "items": [{ "label": "TANCAT", "text": "Dilluns i dimarts" }] }
+      ]
+    },
     "addressLabel": "Adreça",
     "addressLine1": "Carrer dels Forns, 7",
     "addressLine2": "17121 Corçà (Girona)",

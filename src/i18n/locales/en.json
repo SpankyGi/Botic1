@@ -335,6 +335,17 @@
   "reserves": {
     "heroLabel": "Reservations & opening hours",
     "heroHeading": "Reservations & opening hours",
+    "heroIntro": "Book your experience at the table and consult service hours by season.",
+    "schedule": {
+      "eyebrow": "Opening hours",
+      "heading": "The rhythm of service",
+      "intro": "Opening information, updated for each period of the year.",
+      "periods": [
+        { "title": "OCTOBER TO MAY", "items": [{ "label": "OPEN FOR LUNCH", "text": "Wednesday to Sunday" }, { "label": "OPEN FOR DINNER", "text": "Friday and Saturday" }] },
+        { "title": "JUNE AND SEPTEMBER", "items": [{ "label": "CLOSED", "text": "Sunday evenings\nMondays and Tuesdays all day" }] },
+        { "title": "JULY AND AUGUST", "items": [{ "label": "CLOSED", "text": "Mondays and Tuesdays" }] }
+      ]
+    },
     "addressLabel": "Address",
     "addressLine1": "Carrer dels Forns, 7",
     "addressLine2": "17121 Corçà (Girona)",
