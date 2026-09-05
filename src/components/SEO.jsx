@@ -14,6 +14,9 @@ const PAGE_SLUGS = {
   experiencia: ROUTE_SLUGS,
   reserves:    ROUTE_SLUGS,
   horaris:     ROUTE_SLUGS,
+  prive:       ROUTE_SLUGS,
+  priveCelebrations: ROUTE_SLUGS,
+  priveCorporate: ROUTE_SLUGS,
 }
 
 function buildCanonical(lang, pageKey) {

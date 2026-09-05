@@ -18,6 +18,7 @@ import Menus         from './pages/Menus'
 import Reserves      from './pages/Reserves'
 import NotFound      from './pages/NotFound'
 import Legal         from './pages/Legal'
+import Prive, { PriveCelebrations, PriveCorporate } from './pages/Prive'
 import CookieConsent from './consent/CookieConsent'
 
 function ScrollToTop() {
@@ -43,6 +44,9 @@ function LangRoutes({ lang }) {
         <Route path={s.menus}         element={<Menus />} />
         <Route path={s.experiencia}   element={<Experiencia />} />
         <Route path={s.reserves}      element={<Reserves />} />
+        <Route path={s.prive}         element={<Prive />} />
+        <Route path={s.priveCelebrations} element={<PriveCelebrations />} />
+        <Route path={s.priveCorporate} element={<PriveCorporate />} />
         <Route path={s.horaris}       element={<Navigate to={`../${s.reserves.split('/').pop()}`} relative="path" replace />} />
         <Route path={s.legal}         element={<Legal type="legal" />} />
         <Route path={s.privacy}       element={<Legal type="privacy" />} />

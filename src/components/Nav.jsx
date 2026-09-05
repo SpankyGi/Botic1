@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { useLang, useLangRoutes, useSwitchLang } from '../i18n/LangContext'
 import { LANGS } from '../i18n/routes'
 import ResponsiveImage from './ResponsiveImage'
+import PriveWordmark from './PriveWordmark'
 
 const NAV_KEYS = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves']
 const NAV_IMGS = [
@@ -31,6 +32,7 @@ export default function Nav() {
   const switchLang    = useSwitchLang()
   const location      = useLocation()
   const isHome        = location.pathname === routes.home
+  const isPrive       = location.pathname === routes.prive || location.pathname.startsWith(`${routes.prive}/`)
 
   const [scrolled,    setScrolled]   = useState(false)
   const [menuOpen,    setMenuOpen]   = useState(false)
@@ -139,22 +141,31 @@ export default function Nav() {
           </nav>
         </div>
 
-        <button
-          ref={openBtnRef}
-          className={`nav-toggle${menuOpen ? ' is-open' : ''}`}
-          onClick={() => setMenuOpen(o => !o)}
-          aria-label={menuOpen ? t('nav.ariaClose') : t('nav.ariaOpen')}
-          aria-expanded={menuOpen}
-          aria-controls="nav-fullscreen"
-        >
-          <span className="nav-toggle-label" aria-hidden="true">
-            {menuOpen ? t('nav.close') : t('nav.menu')}
-          </span>
-          <span className="nav-toggle-lines" aria-hidden="true">
-            <span className="nav-toggle-line nav-toggle-line-1" />
-            <span className="nav-toggle-line nav-toggle-line-2" />
-          </span>
-        </button>
+        <div className="nav-actions">
+          <Link
+            to={routes.prive}
+            className={`nav-prive-link${isPrive ? ' is-active' : ''}`}
+            aria-current={isPrive ? 'page' : undefined}
+          >
+            <PriveWordmark compact />
+          </Link>
+          <button
+            ref={openBtnRef}
+            className={`nav-toggle${menuOpen ? ' is-open' : ''}`}
+            onClick={() => setMenuOpen(o => !o)}
+            aria-label={menuOpen ? t('nav.ariaClose') : t('nav.ariaOpen')}
+            aria-expanded={menuOpen}
+            aria-controls="nav-fullscreen"
+          >
+            <span className="nav-toggle-label" aria-hidden="true">
+              {menuOpen ? t('nav.close') : t('nav.menu')}
+            </span>
+            <span className="nav-toggle-lines" aria-hidden="true">
+              <span className="nav-toggle-line nav-toggle-line-1" />
+              <span className="nav-toggle-line nav-toggle-line-2" />
+            </span>
+          </button>
+        </div>
       </header>
 
       {/* ===== FULLSCREEN MENU ===== */}
@@ -203,6 +214,14 @@ export default function Nav() {
                 </li>
               ))}
             </ul>
+            <Link
+              to={routes.prive}
+              onClick={handleClose}
+              tabIndex={menuOpen ? 0 : -1}
+              className={`nav-fs-prive${isPrive ? ' is-active' : ''}`}
+            >
+              <PriveWordmark compact /> <i aria-hidden="true">→</i>
+            </Link>
           </nav>
 
           {/* RIGHT — image panels */}

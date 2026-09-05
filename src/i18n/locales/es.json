@@ -97,6 +97,9 @@
       "title": "Reservas y horarios · Bo.TiC · Restaurante Gastronómico Corçà",
       "description": "Reservad mesa en Bo.TiC, restaurante gastronómico en Corçà, y consultad los horarios de cocina, días de servicio, contacto y cómo llegar."
     },
+    "prive": { "title": "Chef privado y alta gastronomía en Costa Brava | Bo·TiC Privé", "description": "Chef a domicilio, cenas privadas y catering de alta gastronomía Bo·TiC para casas, villas y fincas de Girona, Empordà y Costa Brava." },
+    "priveCelebrations": { "title": "Celebraciones privadas y bodas íntimas en el Empordà | Bo·TiC Privé", "description": "Bodas íntimas, aniversarios y celebraciones privadas en el Empordà con una experiencia gastronómica creada por Bo·TiC." },
+    "priveCorporate": { "title": "Eventos de empresa en el Empordà | Bo·TiC Privé", "description": "Reuniones directivas, presentaciones y celebraciones de empresa en Corçà con la gastronomía y hospitalidad de Bo·TiC." },
     "horaris": {
       "title": "Horarios y Calendario · Bo.TiC · Restaurante Gastronómico · Corçà",
       "description": "Consulta los horarios y el calendario de apertura de Bo.TiC, restaurante con 2 estrellas Michelin en Corçà (Girona). Reserva mesa con antelación."

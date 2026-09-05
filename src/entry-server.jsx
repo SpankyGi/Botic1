@@ -10,6 +10,9 @@ const DEFAULT_OG_IMAGE = `${BASE_URL}/images/restaurant-botic-emporda-hero.webp`
 const OG_IMAGES = {
   menus: `${BASE_URL}/images/plat-cenital-botic.webp`,
   restaurant: DEFAULT_OG_IMAGE,
+  prive: `${BASE_URL}/images/restaurant-botic-corca-emporda-sala-gastronomica.webp`,
+  priveCelebrations: `${BASE_URL}/images/restaurant-sala-arcs-emporda.webp`,
+  priveCorporate: `${BASE_URL}/images/restaurant-taula-xef-emporda.webp`,
 }
 const LEGAL_SEO = {
   ca: { legal: ['Avís legal · Bo.TiC', 'Informació legal de Bo.TiC.'], privacy: ['Política de privacitat · Bo.TiC', 'Informació sobre el tractament de dades personals a Bo.TiC.'], cookies: ['Política de cookies · Bo.TiC', 'Informació sobre les cookies i preferències de consentiment de Bo.TiC.'] },
@@ -21,7 +24,7 @@ const LEGAL_SEO = {
 function routeDetails(url) {
   const parts = url.split('?')[0].split('/').filter(Boolean)
   const lang = LANGS.includes(parts[0]) ? parts[0] : DEFAULT_LANG
-  const pageKey = parts[1] ? slugToKey(lang, parts[1]) : 'home'
+  const pageKey = parts[1] ? slugToKey(lang, parts.slice(1).join('/')) : 'home'
   return { lang, pageKey: pageKey || 'home' }
 }
 
