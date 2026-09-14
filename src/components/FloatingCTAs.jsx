@@ -28,9 +28,9 @@ export default function FloatingCTAs() {
 
   return (
     <div className={`float-ctas${isHidden ? ' is-hidden' : ''}`}>
-      <a href="tel:+34972630869" className="cta-circle small hover-trigger">
+      <a href="https://bo-tic.myrestoo.net/ca/tienda" className="cta-circle small hover-trigger">
         <span className="cta-symbol" aria-hidden="true">↗</span>
-        <span>{t('floating.call')}</span>
+        <span>{t('floating.gift')}</span>
       </a>
       <Link to={routes.reserves} className="cta-circle hover-trigger">
         <span className="cta-symbol" aria-hidden="true">●</span>

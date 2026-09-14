@@ -524,7 +524,7 @@
     "team": { "eyebrow": "BO·TIC", "heading": "Venez le vivre de près.", "primary": "RÉSERVER UNE TABLE" }
   },
   "floating": {
-    "call": "Appeler",
+    "gift": "Offrir",
     "book": "Réserver"
   }
 }

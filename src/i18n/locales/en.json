@@ -524,7 +524,7 @@
     "team": { "eyebrow": "BO·TIC", "heading": "Come experience it up close.", "primary": "BOOK A TABLE" }
   },
   "floating": {
-    "call": "Call",
+    "gift": "Gift",
     "book": "Reserve"
   }
 }

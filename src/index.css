@@ -1081,6 +1081,7 @@ body .exp-narrative { padding: 86px 22px 72px; }
   color: var(--white);
   text-decoration: none;
   font-size: 11px; letter-spacing: 0.18em;
+  font-family: 'Plus Jakarta Sans', sans-serif;
   text-transform: uppercase;
   font-weight: 400;
   cursor: pointer;
