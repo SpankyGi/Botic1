@@ -494,6 +494,13 @@
     ]
   },
   "hero": {
+    "galleryLabel": "Bo.TiC culinary gallery",
+    "previousImage": "Previous photograph",
+    "nextImage": "Next photograph",
+    "showImage": "Show photograph {{number}}",
+    "playSlides": "Play slideshow",
+    "pauseSlides": "Pause slideshow",
+
     "word1": "Produce",
     "word2": "and memory",
     "sub": "Contemporary signature cuisine rooted in seasonal produce and the landscape of Empordà.",

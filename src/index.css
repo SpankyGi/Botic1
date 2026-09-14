@@ -8962,8 +8962,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   word-spacing: .08em;
 }
 
-/* Home — la marca condueix la seqüència de plats. Les imatges funcionen com
-   a escenografia: no és un carrusel ni introdueix cap control de navegació. */
+/* Home — la marca condueix la seqüència de plats. */
 .hero {
   isolation: isolate;
   background: #15120f;
@@ -9696,3 +9695,43 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 @media(max-width:768px){ .restaurant-page .rst-team-primary.head-chef,.restaurant-page .rst-team-primary.sommelier { width:92%; } }
 
 .booking-practical-grid h3 { margin-top: 0; }
+/* Hero cinematic — layered reveal, slow camera movement and compact controls. */
+.hero--cinema .hero-slide { position: absolute; inset: 0; visibility: hidden; z-index: 0; overflow: hidden; }
+.hero--cinema .hero-slide.is-previous { visibility: visible; z-index: 1; }
+.hero--cinema .hero-slide.is-active { visibility: visible; z-index: 2; animation: hero-curtain 1.35s cubic-bezier(.76,0,.24,1) both; }
+.hero--cinema .hero-gallery-image { opacity: 1; transform: scale(1.07); transition: none; will-change: auto; }
+.hero--cinema .hero-slide.is-active .hero-gallery-image { animation: hero-camera 8s cubic-bezier(.15,.45,.3,1) both; }
+.hero--cinema .hero-slide.is-previous .hero-gallery-image { transform: scale(1.015); }
+.hero--cinema .hero-gallery-shade { z-index: 3; }
+.hero--cinema .hero-brand--pulse { animation: none; }
+.hero--cinema .hero-title, .hero--cinema .hero-sub, .hero--cinema .hero-eyebrow { transition: color 1s ease, text-shadow 1s ease; }
+@keyframes hero-curtain { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+@keyframes hero-camera { from { transform: scale(1.07) translateX(-.6%); } to { transform: scale(1.015) translateX(0); } }
+.hero-slider-controls { position: absolute; z-index: 8; bottom: 36px; right: max(5vw, 132px); display: flex; align-items: center; gap: 8px; padding: 6px 10px; color: #fffaf4; background: rgba(19,16,14,.46); border: 1px solid rgba(255,255,255,.18); border-radius: 3px; backdrop-filter: blur(14px); overflow: hidden; }
+.hero-slider-controls button { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
+.hero-slider-controls button:focus-visible { outline: 1px solid #fffaf4; outline-offset: -2px; }
+.hero-slider-controls .hero-slider-arrow { font-size: 20px; font-weight: 300; }
+.hero-slider-controls .hero-slider-play { border-left: 1px solid rgba(255,255,255,.2); margin-left: 4px; font-size: 16px; }
+.hero-slider-dots { display: flex; align-items: center; }
+.hero-slider-controls .hero-slider-dot { width: 23px; }
+.hero-slider-dot span { width: 4px; height: 4px; border-radius: 50%; background: rgba(255,250,244,.45); transition: transform .4s, background .4s; }
+.hero-slider-dot.is-active span { background: #c82c4f; transform: scale(1.8); box-shadow: 0 0 0 4px rgba(165,31,61,.18); }
+.hero-slider-progress { position: absolute; height: 1px; bottom: 0; left: 0; right: 0; background: #c82c4f; transform: scaleX(0); transform-origin: left; }
+.hero--cinema.is-playing .hero-slider-progress { animation: hero-slide-time var(--slide-duration) linear forwards; }
+@keyframes hero-slide-time { to { transform: scaleX(1); } }
+@media (max-width: 768px) {
+  .hero--cinema .hero-content-wrap { padding-bottom: 112px; }
+  .hero-slider-controls { right: auto; left: 24px; bottom: 28px; gap: 3px; padding: 2px 5px; }
+  .hero-slider-controls .hero-slider-dot { width: 20px; }
+  .hero--cinema .scroll-hint { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero--cinema .hero-slide.is-active, .hero--cinema .hero-slide.is-active .hero-gallery-image, .hero--cinema .hero-slider-progress { animation: none; }
+  .hero--cinema .hero-gallery-image, .hero--cinema .hero-slide.is-previous .hero-gallery-image { transform: none; }
+}
+/* Keep the symbol clear of the headline on small screens. */
+@media (max-width: 768px) {
+  .hero--cinema .hero-brand-motion { top: 32%; width: min(76vw, 320px); }
+  .hero--cinema.hero--light .hero-gallery-shade { background: linear-gradient(0deg, rgba(250,247,241,.96), rgba(250,247,241,.82) 24%, transparent 66%); }
+  .hero--cinema.hero--dark .hero-gallery-shade { background: linear-gradient(0deg, rgba(10,7,5,.86), rgba(10,7,5,.5) 28%, transparent 64%); }
+}

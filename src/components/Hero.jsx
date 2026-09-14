@@ -21,7 +21,7 @@ function HeroBrand({ pulseKey, tone }) {
       <img
         key={pulseKey}
         className="hero-brand hero-brand--pulse"
-        src={tone === 'dark' ? '/images/botic-hero-symbol-light.png' : '/images/botic-hero-symbol-dark.png'}
+        src={tone === 'dark' ? '/images/botic-hero-symbol-light.svg' : '/images/botic-hero-symbol-dark.svg'}
         alt=""
         decoding="async"
       />
@@ -29,19 +29,22 @@ function HeroBrand({ pulseKey, tone }) {
   )
 }
 
-function HeroGallery({ activeIndex }) {
+const SLIDE_MS = 6500
+
+function HeroGallery({ activeIndex, previousIndex }) {
   return (
     <div className="hero-gallery" aria-hidden="true">
       {HERO_STILLS.map((still, index) => (
+        <div key={still.src} className={`hero-slide${index === activeIndex ? ' is-active' : ''}${index === previousIndex ? ' is-previous' : ''}`}>
         <ResponsiveImage
-          className={index === activeIndex ? 'hero-gallery-image is-active' : 'hero-gallery-image'}
+          className="hero-gallery-image"
           src={still.src}
           mobileSrc={still.mobileSrc}
           alt=""
-          key={still.src}
           decoding="async"
-          fetchpriority={index === 0 ? 'high' : 'auto'}
+          fetchpriority={index === 0 ? 'high' : 'low'}
         />
+        </div>
       ))}
       <div className="hero-gallery-shade" />
     </div>
@@ -63,18 +66,49 @@ export default function Hero() {
   const heroRef = useRef(null)
   const brandRef = useRef(null)
   const [activeIndex, setActiveIndex] = useState(0)
+  const [previousIndex, setPreviousIndex] = useState(null)
+  const [paused, setPaused] = useState(false)
+  const [reducedMotion, setReducedMotion] = useState(false)
+  const [inView, setInView] = useState(true)
+  const [pageVisible, setPageVisible] = useState(true)
+  const touchStart = useRef(null)
+  const lastChange = useRef(0)
   const activeStill = HERO_STILLS[activeIndex]
+  const playing = !paused && !reducedMotion && inView && pageVisible
+
+  const selectSlide = (next) => {
+    if (next === activeIndex || Date.now() - lastChange.current < 1400) return
+    lastChange.current = Date.now()
+    setPreviousIndex(activeIndex)
+    setActiveIndex(next)
+  }
 
   useEffect(() => {
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (reducedMotion.matches) return undefined
-
-    const timer = window.setInterval(() => {
-      setActiveIndex((current) => (current + 1) % HERO_STILLS.length)
-    }, 4000)
-
-    return () => window.clearInterval(timer)
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)')
+    const updateMotion = () => setReducedMotion(media.matches)
+    const updateVisibility = () => setPageVisible(!document.hidden)
+    updateMotion()
+    updateVisibility()
+    media.addEventListener('change', updateMotion)
+    document.addEventListener('visibilitychange', updateVisibility)
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.2 })
+    observer.observe(heroRef.current)
+    return () => {
+      media.removeEventListener('change', updateMotion)
+      document.removeEventListener('visibilitychange', updateVisibility)
+      observer.disconnect()
+    }
   }, [])
+
+  useEffect(() => {
+    if (!playing) return undefined
+    const timer = window.setTimeout(() => {
+      lastChange.current = Date.now()
+      setPreviousIndex(activeIndex)
+      setActiveIndex((activeIndex + 1) % HERO_STILLS.length)
+    }, SLIDE_MS)
+    return () => window.clearTimeout(timer)
+  }, [activeIndex, playing])
 
   useEffect(() => {
     const hero = heroRef.current
@@ -105,8 +139,20 @@ export default function Hero() {
   }, [])
 
   return (
-    <section ref={heroRef} className={`hero hero--${activeStill.tone}`}>
-      <HeroGallery activeIndex={activeIndex} />
+    <section ref={heroRef} className={`hero hero--${activeStill.tone} hero--cinema${playing ? ' is-playing' : ''}`}
+      aria-label={t('hero.galleryLabel')}
+      onTouchStart={event => { const touch = event.touches[0]; touchStart.current = { x: touch.clientX, y: touch.clientY } }}
+      onTouchEnd={event => {
+        if (!touchStart.current) return
+        const dx = event.changedTouches[0].clientX - touchStart.current.x
+        const dy = event.changedTouches[0].clientY - touchStart.current.y
+        touchStart.current = null
+        if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.5) {
+          setPaused(true)
+          selectSlide((activeIndex + (dx < 0 ? 1 : -1) + HERO_STILLS.length) % HERO_STILLS.length)
+        }
+      }}>
+      <HeroGallery activeIndex={activeIndex} previousIndex={previousIndex} />
       <div ref={brandRef} className="hero-brand-motion">
         <HeroBrand pulseKey={activeIndex} tone={activeStill.tone} />
       </div>
@@ -126,6 +172,19 @@ export default function Hero() {
         </div>
       </div>
 
+      <div className="hero-slider-controls" role="group" aria-label={t('hero.galleryLabel')}
+        onFocus={event => { if (!event.target.classList.contains('hero-slider-play') && !event.currentTarget.contains(event.relatedTarget)) setPaused(true) }}>
+        <button type="button" className="hero-slider-arrow" aria-label={t('hero.previousImage')} onClick={() => selectSlide((activeIndex - 1 + HERO_STILLS.length) % HERO_STILLS.length)}>←</button>
+        <div className="hero-slider-dots">
+          {HERO_STILLS.map((still, index) => <button key={still.src} type="button"
+            className={`hero-slider-dot${index === activeIndex ? ' is-active' : ''}`}
+            aria-label={t('hero.showImage', { number: index + 1 })} aria-pressed={index === activeIndex}
+            onClick={() => selectSlide(index)}><span /></button>)}
+        </div>
+        <button type="button" className="hero-slider-arrow" aria-label={t('hero.nextImage')} onClick={() => selectSlide((activeIndex + 1) % HERO_STILLS.length)}>→</button>
+        {!reducedMotion && <button type="button" className="hero-slider-play" aria-label={t(paused ? 'hero.playSlides' : 'hero.pauseSlides')} onClick={() => setPaused(value => !value)}>{paused ? '▷' : 'Ⅱ'}</button>}
+        <span key={`${activeIndex}-${playing}`} className="hero-slider-progress" aria-hidden="true" style={{ '--slide-duration': `${SLIDE_MS}ms` }} />
+      </div>
       <ScrollHint t={t} />
     </section>
   )

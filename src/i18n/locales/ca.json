@@ -494,6 +494,13 @@
     ]
   },
   "hero": {
+    "galleryLabel": "Galeria gastronòmica del Bo.TiC",
+    "previousImage": "Fotografia anterior",
+    "nextImage": "Fotografia següent",
+    "showImage": "Mostrar fotografia {{number}}",
+    "playSlides": "Reprendre la presentació",
+    "pauseSlides": "Pausar la presentació",
+
     "word1": "Producte",
     "word2": "i memòria",
     "sub": "Cuina d’autor contemporània, arrelada al producte de temporada i al paisatge de l’Empordà.",

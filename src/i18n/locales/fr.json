@@ -494,6 +494,13 @@
     ]
   },
   "hero": {
+    "galleryLabel": "Galerie gastronomique de Bo.TiC",
+    "previousImage": "Photographie précédente",
+    "nextImage": "Photographie suivante",
+    "showImage": "Afficher la photographie {{number}}",
+    "playSlides": "Reprendre le diaporama",
+    "pauseSlides": "Mettre le diaporama en pause",
+
     "word1": "Produit",
     "word2": "et mémoire",
     "sub": "Cuisine d’auteur contemporaine, ancrée dans les produits de saison et le paysage de l’Empordà.",
