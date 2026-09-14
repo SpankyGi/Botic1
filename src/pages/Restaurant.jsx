@@ -399,6 +399,7 @@ function TeamSection({ t }) {
   const kitchenRef = useReveal(0.15)
   const salaRef    = useReveal(0.15)
   const sommelierRef = useReveal(0.15)
+  const headChefRef = useReveal(0.15)
 
   return (
     <section id="team" className="rst-team" aria-labelledby="team-heading">
@@ -428,6 +429,16 @@ function TeamSection({ t }) {
             </figcaption>
           </figure>
 
+          <figure className="rst-team-block rst-team-primary head-chef reveal" ref={headChefRef}>
+            <div className="rst-team-photo">
+              <ResponsiveImage src="/images/alexandra-cap-cuina-botic.webp" mobileSrc="/images/alexandra-cap-cuina-botic-mobile.webp" alt={t('restaurant.headChefImgAlt')} className="rst-team-img" loading="lazy" />
+            </div>
+            <figcaption className="rst-team-caption">
+              <span className="rst-team-label">{t('restaurant.headChefLabel')}</span>
+              <h3 className="rst-team-name">Alexandra</h3>
+            </figcaption>
+          </figure>
+
           <figure className="rst-team-block rst-team-primary sala reveal" ref={salaRef}>
             <div className="rst-team-photo sala">
               <ResponsiveImage
@@ -451,7 +462,7 @@ function TeamSection({ t }) {
             </div>
             <figcaption className="rst-team-caption">
               <span className="rst-team-label">{t('restaurant.sommelierLabel')}</span>
-              <h3 className="rst-team-name">Aga</h3>
+              <h3 className="rst-team-name">Aga Ogórek</h3>
               <p className="rst-team-body">{t('restaurant.sommelierBody')}</p>
             </figcaption>
           </figure>
