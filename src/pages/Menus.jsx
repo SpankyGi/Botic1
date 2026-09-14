@@ -405,10 +405,10 @@ function FaqSection({ t }) {
 function MenuCourseList({ sections, menuId }) {
   return (
     <div className="mnu-course-list">
-      {sections.map((section, sectionIndex) => (
+      {sections.map((section) => (
         <section className="mnu-course-section" key={`${menuId}-${section.id}`}>
           <header className="mnu-course-section-head">
-            <span aria-hidden="true">{String(sectionIndex + 1).padStart(2, '0')}</span>
+            <span className="mnu-course-section-mark" aria-hidden="true" />
             <h3>{section.title}</h3>
           </header>
           <div className="mnu-course-groups">
@@ -418,7 +418,7 @@ function MenuCourseList({ sections, menuId }) {
                 <ul>
                   {course.items.map((item, itemIndex) => (
                     <li key={`${menuId}-${section.id}-${course.id}-${itemIndex}`}>
-                      <span className="mnu-course-item-mark" aria-hidden="true">{String(itemIndex + 1).padStart(2, '0')}</span>
+                      <span className="mnu-course-item-mark" aria-hidden="true" />
                       <span>{item.name}</span>
                     </li>
                   ))}
