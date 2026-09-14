@@ -336,6 +336,8 @@ function FaqSection({ t }) {
     { q: t('menus.faqQ5'), a: t('menus.faqA5') },
     { q: t('menus.faqQ6'), a: t('menus.faqA6') },
     { q: t('menus.faqQ7'), a: t('menus.faqA7') },
+    { q: t('menus.faqQ8'), a: t('menus.faqA8') },
+    { q: t('menus.faqQ9'), a: t('menus.faqA9') },
   ]
 
   useEffect(() => {
