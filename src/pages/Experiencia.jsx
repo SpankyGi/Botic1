@@ -67,9 +67,9 @@ function MenuNarrative({ t }) {
       label: t('experiencia.moment03Label'),
       text: t('experiencia.moment03Text'),
       images: [
-        '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp',
-        '/images/botic-maig-2026-webp/plat-carn-fruits-vermells-botic.webp',
-        '/images/botic-maig-2026-webp/alta-cuina-empordanesa-restaurant-botic.webp',
+        '/images/restaurant-botic-emporda-detall-marca-01.webp',
+        '/images/restaurant-botic-emporda-creacio-culinaria-01.webp',
+        '/images/restaurant-botic-emporda-postres-signatura-02.webp',
       ],
     },
     {
