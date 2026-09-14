@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
+import { Link, useLocation } from 'react-router-dom'
 import { LANGS } from '../i18n/routes'
 
 const MESSAGES = {
@@ -9,14 +10,13 @@ const MESSAGES = {
 }
 
 export default function NotFound() {
-  const pathLang = typeof window !== 'undefined'
-    ? window.location.pathname.split('/')[1]
-    : 'ca'
+  const pathLang = useLocation().pathname.split('/')[1]
   const lang = LANGS.includes(pathLang) ? pathLang : 'ca'
   const { heading, body, home } = MESSAGES[lang]
 
   return (
     <section className="bg-botic-black min-h-screen flex items-center justify-center">
+      <SEO title={`${heading} · Bo.TiC`} description={body} noindex />
       <div className="container-max text-center py-32">
         <span className="font-serif text-8xl text-botic-gold/30 block mb-8">404</span>
         <h1 className="font-serif font-light text-4xl md:text-5xl text-botic-cream mb-6 tracking-tight">

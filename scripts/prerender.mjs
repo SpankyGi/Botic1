@@ -28,6 +28,7 @@ function withStaticHead(html, seo) {
   const staticHead = `
     <link rel="canonical" href="${seo.canonical}">
     ${alternateLinks}
+    <meta property="og:locale" content="${{ca: 'ca_ES', es: 'es_ES', en: 'en_GB', fr: 'fr_FR'}[seo.lang]}">
     <meta property="og:url" content="${seo.canonical}">
     <meta property="og:image" content="${seo.ogImage}">
     <meta property="og:image:alt" content="Bo.TiC · Restaurant gastronòmic a Corçà">
@@ -36,6 +37,7 @@ function withStaticHead(html, seo) {
     <meta name="twitter:image" content="${seo.ogImage}">`
 
   return html
+    .replace(/<meta name="robots"[^>]*>/, `<meta name="robots" content="${seo.noindex ? 'noindex, follow' : 'index, follow'}">`)
     .replace(/<html lang="[^"]*">/, `<html lang="${seo.lang}">`)
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(seo.title)}</title>`)
     .replace(/<meta\s+name="description"[\s\S]*?\/>/, `<meta name="description" content="${escapeHtml(seo.description)}">`)
@@ -54,7 +56,15 @@ for (const route of routes) {
   await writeFile(outputFile, output)
 }
 
-const sitemapEntries = pageKeys.flatMap(pageKey => LANGS.map(lang => {
+for (const lang of LANGS) {
+  const route = `/${lang}/${ROUTE_SLUGS[lang].preferences}/`
+  const seo = { ...getStaticSeo(`/${lang}/${ROUTE_SLUGS[lang].cookies}/`), noindex: true }
+  const output = withStaticHead(template, seo).replace('<div id="root"></div>', `<div id="root">${await render(route)}</div>`)
+  await mkdir(join(dist, route), { recursive: true })
+  await writeFile(join(dist, route, 'index.html'), output)
+}
+
+const sitemapEntries = pageKeys.filter(key => !['legal', 'privacy'].includes(key)).flatMap(pageKey => LANGS.map(lang => {
   const seo = getStaticSeo(`/${lang}/${pageKey === 'home' ? '' : ROUTE_SLUGS[lang][pageKey]}/`)
   const alternates = [
     ...seo.alternates.map(({ lang: alternateLang, href }) => `    <xhtml:link rel="alternate" hreflang="${alternateLang}" href="${href}"/>`),
@@ -66,7 +76,10 @@ const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://w
 await writeFile(join(dist, 'sitemap.xml'), sitemap)
 
 const notFoundHtml = withStaticHead(template, getStaticSeo('/ca/'))
-  .replace('<meta name="robots" content="index, follow" />', '<meta name="robots" content="noindex, follow">')
+  .replace(/<meta name="robots"[^>]*>/, '<meta name="robots" content="noindex, follow">')
+  .replace(/<link rel="(?:canonical|alternate)"[^>]*>/g, '')
+  .replace(/<meta property="og:url"[^>]*>/g, '')
+  .replace(/<title>[\s\S]*?<\/title>/, '<title>Pàgina no trobada · Bo.TiC</title>')
   .replace('<div id="root"></div>', `<div id="root">${await render('/ca/pagina-no-trobada/')}</div>`)
 await writeFile(join(dist, '404.html'), notFoundHtml)
 

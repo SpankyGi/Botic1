@@ -2,45 +2,55 @@ import { useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useLocation } from 'react-router-dom'
 
-const MIN_MS  = 2500   // temps mínim visible
-const MAX_MS  = 5000   // seguretat: màxim d'espera del vídeo
+const MIN_MS  = 350   // temps mínim visible
+const MAX_MS  = 1500   // seguretat: màxim d'espera de la primera imatge
 const FADE_MS =  700   // durada del fade-out
 
-const alreadySeen = () =>
-  typeof sessionStorage !== 'undefined' &&
-  sessionStorage.getItem('botic_preloader_done') === '1'
+const alreadySeen = () => {
+  try { return typeof sessionStorage !== 'undefined' && sessionStorage.getItem('botic_preloader_done') === '1' } catch { return false }
+}
 
 export default function Preloader() {
   const { t }   = useTranslation()
   const { pathname } = useLocation()
-  const [phase, setPhase] = useState(() => alreadySeen() ? 'done' : 'visible')
-  const startRef = useRef(Date.now())
   const isHome = /^\/(?:ca|es|en|fr)?\/?$/.test(pathname)
+  const [phase, setPhase] = useState(() => !isHome || alreadySeen() ? 'done' : 'visible')
+  const startRef = useRef(Date.now())
 
   useEffect(() => {
     if (phase !== 'visible') return
 
     let fading = false
+    let fadeTimer
+    let readyTimer
 
     const beginFade = () => {
       if (fading) return
       fading = true
       setPhase('fading')
-      sessionStorage.setItem('botic_preloader_done', '1')
-      setTimeout(() => setPhase('done'), FADE_MS)
+      try { sessionStorage.setItem('botic_preloader_done', '1') } catch {}
+      fadeTimer = setTimeout(() => setPhase('done'), FADE_MS)
     }
 
-    const onVideoReady = () => {
+    const onImageReady = () => {
       const elapsed   = Date.now() - startRef.current
       const remaining = Math.max(0, MIN_MS - elapsed)
-      setTimeout(beginFade, remaining)
+      readyTimer = setTimeout(beginFade, remaining)
     }
 
-    window.addEventListener('hero-video-ready', onVideoReady)
+    const firstImage = document.querySelector('.hero-gallery-image')
+    if (!firstImage || firstImage.complete) onImageReady()
+    else {
+      firstImage.addEventListener('load', onImageReady, { once: true })
+      firstImage.addEventListener('error', onImageReady, { once: true })
+    }
     const maxTimer = setTimeout(beginFade, MAX_MS)
 
     return () => {
-      window.removeEventListener('hero-video-ready', onVideoReady)
+      firstImage?.removeEventListener('load', onImageReady)
+      firstImage?.removeEventListener('error', onImageReady)
+      clearTimeout(readyTimer)
+      clearTimeout(fadeTimer)
       clearTimeout(maxTimer)
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps

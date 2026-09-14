@@ -2,26 +2,15 @@ import { useEffect } from 'react'
 import { useLang } from '../i18n/LangContext'
 import { ROUTE_SLUGS, LANGS } from '../i18n/routes'
 
-const BASE_URL = 'https://www.bo-tic.com'
+const BASE_URL = 'https://bo-tic.com'
 const DEFAULT_OG_IMAGE = `${BASE_URL}/images/restaurant-botic-emporda-hero.webp`
-
-// Map page key to canonical path segment per language
-const PAGE_SLUGS = {
-  home:        { ca: '', es: '', fr: '', en: '' },
-  restaurant:  ROUTE_SLUGS,
-  gastronomia: ROUTE_SLUGS,
-  menus:       ROUTE_SLUGS,
-  experiencia: ROUTE_SLUGS,
-  reserves:    ROUTE_SLUGS,
-  horaris:     ROUTE_SLUGS,
-}
 
 function buildCanonical(lang, pageKey) {
   const slug = pageKey === 'home' ? '' : (ROUTE_SLUGS[lang]?.[pageKey] ?? '')
   return slug ? `${BASE_URL}/${lang}/${slug}/` : `${BASE_URL}/${lang}/`
 }
 
-export default function SEO({ title, description, pageKey, ogImage }) {
+export default function SEO({ title, description, pageKey, ogImage, noindex = false }) {
   const lang = useLang()
 
   useEffect(() => {
@@ -40,11 +29,19 @@ export default function SEO({ title, description, pageKey, ogImage }) {
     }
 
     setMeta('description', description)
+    setMeta('robots', noindex ? 'noindex, follow' : 'index, follow')
+    setMeta('twitter:title', title)
+    setMeta('twitter:description', description)
+    setMeta('og:locale', { ca: 'ca_ES', es: 'es_ES', en: 'en_GB', fr: 'fr_FR' }[lang], true)
     setMeta('og:title', title, true)
     setMeta('og:description', description, true)
     const image = new URL(ogImage || DEFAULT_OG_IMAGE, BASE_URL).href
     setMeta('og:image', image, true)
     setMeta('twitter:image', image)
+
+    if (!pageKey) {
+      document.querySelectorAll('link[rel="canonical"], link[rel="alternate"][hreflang], meta[property="og:url"]').forEach(el => el.remove())
+    }
 
     // Canonical
     const canonical = pageKey ? buildCanonical(lang, pageKey) : null
@@ -80,7 +77,7 @@ export default function SEO({ title, description, pageKey, ogImage }) {
       xdef.setAttribute('href', buildCanonical('ca', pageKey))
       document.head.appendChild(xdef)
     }
-  }, [title, description, pageKey, lang, ogImage])
+  }, [title, description, pageKey, lang, ogImage, noindex])
 
   return null
 }

@@ -5,7 +5,7 @@ import i18n from './i18n/index.js'
 import App from './App.jsx'
 import { DEFAULT_LANG, LANGS, ROUTE_SLUGS, slugToKey } from './i18n/routes.js'
 
-export const BASE_URL = 'https://www.bo-tic.com'
+export const BASE_URL = 'https://bo-tic.com'
 const DEFAULT_OG_IMAGE = `${BASE_URL}/images/restaurant-botic-emporda-hero.webp`
 const OG_IMAGES = {
   menus: `${BASE_URL}/images/plat-cenital-botic.webp`,
@@ -40,6 +40,7 @@ export function getStaticSeo(url) {
   return {
     lang,
     pageKey,
+    noindex: ['legal', 'privacy'].includes(pageKey),
     title: content.title,
     description: content.description,
     canonical,

@@ -35,7 +35,7 @@
     "gallery": "Galeria",
     "team": "Equip",
     "visitTitle": "Visita’ns",
-    "addressLine1": "C/ dels Forns, 7",
+    "addressLine1": "Av. Costa Brava, 6",
     "addressLine2": "17121 Corçà · Girona",
     "directions": "Com arribar-hi",
     "reserve": "Reservar una taula",
@@ -376,7 +376,7 @@
       ]
     },
     "addressLabel": "Adreça",
-    "addressLine1": "Carrer dels Forns, 7",
+    "addressLine1": "Av. Costa Brava, 6",
     "addressLine2": "17121 Corçà (Girona)",
     "mapLink": "Veure al mapa →",
     "phoneLabel": "Telèfon",

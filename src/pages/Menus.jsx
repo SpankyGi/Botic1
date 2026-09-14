@@ -342,8 +342,7 @@ function FaqSection({ t }) {
     { q: t('menus.faqQ9'), a: t('menus.faqA9') },
   ]
 
-  useEffect(() => {
-    const schema = {
+  const schema = {
       '@context': 'https://schema.org',
       '@type': 'FAQPage',
       mainEntity: FAQS.map(({ q, a }) => ({
@@ -352,18 +351,11 @@ function FaqSection({ t }) {
         acceptedAnswer: { '@type': 'Answer', text: a },
       })),
     }
-    const script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.id = 'faq-schema'
-    script.textContent = JSON.stringify(schema)
-    document.head.appendChild(script)
-    return () => { document.getElementById('faq-schema')?.remove() }
-  }, []) // eslint-disable-line react-hooks/exhaustive-deps
-
   const toggle = (i) => setOpenIdx(prev => prev === i ? null : i)
 
   return (
     <section className="faq-section" aria-labelledby="faq-heading">
+      <script id="faq-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
       <div className="container-max">
         <header className="faq-header">
           <span className="faq-eyebrow">{t('menus.faqEyebrow')}</span>

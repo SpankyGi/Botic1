@@ -38,7 +38,7 @@ export default function Footer() {
             <a href="tel:+34972630869">+34 972 63 08 69</a>
             <a href="mailto:restaurant@bo-tic.com">restaurant@bo-tic.com</a>
             <a
-              href="https://maps.google.com/?q=Carrer+dels+Forns+7,+Cor%C3%A7%C3%A0,+Girona"
+              href="https://maps.google.com/?q=Avinguda+Costa+Brava+6,+Cor%C3%A7%C3%A0,+Girona"
               target="_blank"
               rel="noopener noreferrer"
             >

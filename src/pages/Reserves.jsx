@@ -145,9 +145,9 @@ export default function Reserves() {
             <h2 id="booking-location-title">{t('reserves.footerHeading')}</h2>
             <address><span>{t('reserves.addressLine1')}</span><span>{t('reserves.addressLine2')}</span></address>
             <p>{t('reserves.distanceNote')}</p>
-            <a className="booking-map-link" href="https://maps.google.com/?q=Carrer+dels+Forns+7,+Corçà,+Girona" target="_blank" rel="noopener noreferrer">{t('reserves.openMaps')}</a>
+            <a className="booking-map-link" href="https://maps.google.com/?q=Avinguda+Costa+Brava+6,+Corçà,+Girona" target="_blank" rel="noopener noreferrer">{t('reserves.openMaps')}</a>
           </header>
-          <div className="booking-map-wrap"><iframe title={t('reserves.addressLabel')} src="https://www.google.com/maps?q=Carrer%20dels%20Forns%207%2C%2017121%20Cor%C3%A7%C3%A0%2C%20Girona&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div>
+          <div className="booking-map-wrap"><iframe title={t('reserves.addressLabel')} src="https://www.google.com/maps?q=Avinguda%20Costa%20Brava%206%2C%2017121%20Cor%C3%A7%C3%A0%2C%20Girona&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" /></div>
         </div>
       </section>
       <ClosingCTA

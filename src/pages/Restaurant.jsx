@@ -8,7 +8,7 @@ import ResponsiveImage from '../components/ResponsiveImage'
 import { useReveal } from '../hooks/useReveal'
 import { useLangRoutes } from '../i18n/LangContext'
 
-const BASE_URL = 'https://www.bo-tic.com'
+const BASE_URL = 'https://bo-tic.com'
 const mobileImage = (src) => src.replace(/\.webp$/, '-mobile.webp')
 
 /* Scroll progress (0→1 durant el primer viewport) per al parallax del hero.
@@ -516,21 +516,23 @@ export default function Restaurant() {
   }, [location.hash])
 
   // Schema.org: Restaurant + BreadcrumbList (dades reals ja usades a Footer/Reserves)
-  useEffect(() => {
-    const schema = {
+  const schema = {
       '@context': 'https://schema.org',
       '@graph': [
         {
           '@type': 'Restaurant',
+          '@id': `${BASE_URL}/#restaurant`,
+          menu: `${BASE_URL}${routes.menus}/`,
+          acceptsReservations: `${BASE_URL}${routes.reserves}/`,
           name: 'Bo.TiC',
           image: `${BASE_URL}/images/restaurant-botic-emporda-hero.webp`,
-          url: `${BASE_URL}${routes.restaurant}`,
+          url: `${BASE_URL}${routes.restaurant}/`,
           telephone: '+34972630869',
           email: 'restaurant@bo-tic.com',
           priceRange: '€€€€',
           address: {
             '@type': 'PostalAddress',
-            streetAddress: 'Carrer dels Forns, 7',
+            streetAddress: 'Av. Costa Brava, 6',
             addressLocality: 'Corçà',
             postalCode: '17121',
             addressRegion: 'Girona',
@@ -540,22 +542,16 @@ export default function Restaurant() {
         {
           '@type': 'BreadcrumbList',
           itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Bo.TiC', item: `${BASE_URL}${routes.home}` },
-            { '@type': 'ListItem', position: 2, name: t('restaurant.heroEyebrow'), item: `${BASE_URL}${routes.restaurant}` },
+            { '@type': 'ListItem', position: 1, name: 'Bo.TiC', item: `${BASE_URL}${routes.home}/` },
+            { '@type': 'ListItem', position: 2, name: t('restaurant.heroEyebrow'), item: `${BASE_URL}${routes.restaurant}/` },
           ],
         },
       ],
     }
-    const script = document.createElement('script')
-    script.type = 'application/ld+json'
-    script.id = 'restaurant-schema'
-    script.textContent = JSON.stringify(schema)
-    document.head.appendChild(script)
-    return () => { document.getElementById('restaurant-schema')?.remove() }
-  }, [t, routes])
 
   return (
     <>
+      <script id="restaurant-schema" type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, '\\u003c') }} />
       <SEO
         title={t('seo.restaurant.title')}
         description={t('seo.restaurant.description')}

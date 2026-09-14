@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.bo-tic.com/sitemap.xml
+Sitemap: https://bo-tic.com/sitemap.xml

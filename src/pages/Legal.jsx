@@ -17,5 +17,5 @@ export default function Legal({ type }) {
     const timer = window.setTimeout(() => window.dispatchEvent(new Event('botic:cookie-preferences')), 0)
     return () => window.clearTimeout(timer)
   }, [type])
-  return <><SEO title={title} description={lead} pageKey={contentType} /><main className="legal-page"><div className="container-max"><span>BO·TIC</span><h1>{type === 'preferences' ? t('footer.cookiePreferences') : title}</h1><p className="legal-lead">{lead}</p><div className="legal-rule" /><p>{details}</p>{contentType === 'cookies' && <button className="legal-preferences" onClick={() => window.dispatchEvent(new Event('botic:cookie-preferences'))}>{t('footer.cookiePreferences')}</button>}</div></main></>
+  return <><SEO title={title} description={lead} pageKey={contentType} noindex={contentType !== 'cookies' || type === 'preferences'} /><main className="legal-page"><div className="container-max"><span>BO·TIC</span><h1>{type === 'preferences' ? t('footer.cookiePreferences') : title}</h1><p className="legal-lead">{lead}</p><div className="legal-rule" /><p>{details}</p>{contentType === 'cookies' && <button className="legal-preferences" onClick={() => window.dispatchEvent(new Event('botic:cookie-preferences'))}>{t('footer.cookiePreferences')}</button>}</div></main></>
 }

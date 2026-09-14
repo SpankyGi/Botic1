@@ -47,7 +47,7 @@ export default function Contacte() {
       <SEO
         title="Contacte i Reserves · Bo.TiC · Restaurant Gastronòmic Corçà"
         description="Reserveu taula al restaurant Bo.TiC de Corçà, Girona. Telèfon, email, adreça i horaris. Restaurant gastronòmic Michelin a l'Empordà."
-        canonical="https://www.bo-tic.com/contacte"
+        canonical="https://bo-tic.com/contacte"
       />
 
       {/* ── Header de pàgina ── */}
@@ -70,10 +70,10 @@ export default function Contacte() {
             <div>
               <ContactItem label="Adreça">
                 <address className="not-italic">
-                  <p>Carrer dels Forns, 7</p>
+                  <p>Av. Costa Brava, 6</p>
                   <p>17121 Corçà (Girona)</p>
                   <a
-                    href="https://maps.google.com/?q=Carrer+dels+Forns+7,+Corçà,+Girona"
+                    href="https://maps.google.com/?q=Avinguda+Costa+Brava+6,+Corçà,+Girona"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-block mt-3 text-[11px] tracking-[0.2em] uppercase
@@ -125,7 +125,7 @@ export default function Contacte() {
                   aria-label="Mapa de localització del restaurant Bo.TiC"
                 >
                   <a
-                    href="https://maps.google.com/?q=Carrer+dels+Forns+7,+Corçà,+Girona"
+                    href="https://maps.google.com/?q=Avinguda+Costa+Brava+6,+Corçà,+Girona"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-gold !py-2.5 !px-6"
