@@ -27,7 +27,6 @@ export default function Footer() {
             <Link to={routes.menus}>{t('footer.menus')}</Link>
             <Link to={routes.experiencia}>{t('footer.experiencia')}</Link>
             <a href={`${routes.restaurant}#team`}>{t('footer.team')}</a>
-            <Link to={routes.prive} className="footer-prive-link">Bo·TiC Privé</Link>
           </nav>
 
           <section className="footer-column footer-visit">

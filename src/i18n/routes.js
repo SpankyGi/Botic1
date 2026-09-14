@@ -11,9 +11,6 @@ export const ROUTE_SLUGS = {
     experiencia: 'experiencia',
     reserves:    'reserves',
     horaris:     'horaris',
-    prive:       'botic-prive',
-    priveCelebrations: 'botic-prive/celebracions',
-    priveCorporate: 'botic-prive/esdeveniments-empresa',
     legal: 'avis-legal', privacy: 'privacitat', cookies: 'cookies', preferences: 'preferencies-cookies',
   },
   es: {
@@ -23,9 +20,6 @@ export const ROUTE_SLUGS = {
     experiencia: 'experiencia',
     reserves:    'reservas',
     horaris:     'horarios',
-    prive:       'botic-prive',
-    priveCelebrations: 'botic-prive/celebraciones',
-    priveCorporate: 'botic-prive/eventos-empresa',
     legal: 'aviso-legal', privacy: 'privacidad', cookies: 'cookies', preferences: 'preferencias-cookies',
   },
   fr: {
@@ -35,9 +29,6 @@ export const ROUTE_SLUGS = {
     experiencia: 'experience',
     reserves:    'reservations',
     horaris:     'horaires',
-    prive:       'botic-prive',
-    priveCelebrations: 'botic-prive/celebrations-privees',
-    priveCorporate: 'botic-prive/evenements-entreprise',
     legal: 'mentions-legales', privacy: 'confidentialite', cookies: 'cookies', preferences: 'preferences-cookies',
   },
   en: {
@@ -47,9 +38,6 @@ export const ROUTE_SLUGS = {
     experiencia: 'experience',
     reserves:    'reservations',
     horaris:     'hours',
-    prive:       'botic-prive',
-    priveCelebrations: 'botic-prive/private-celebrations',
-    priveCorporate: 'botic-prive/corporate-events',
     legal: 'legal-notice', privacy: 'privacy', cookies: 'cookies', preferences: 'cookie-preferences',
   },
 }
@@ -65,7 +53,7 @@ export function switchLangUrl(currentPath, fromLang, toLang) {
   // currentPath e.g. "/ca/restaurant" or "/ca"
   const parts = currentPath.split('/').filter(Boolean) // ['ca', 'restaurant']
   if (parts.length === 0) return `/${toLang}`
-  const slugPart = parts.slice(1).join('/') // 'restaurant' o 'botic-prive/celebracions'
+  const slugPart = parts[1] // 'restaurant'
   if (!slugPart) return `/${toLang}`
   const pageKey = slugToKey(fromLang, slugPart)
   if (!pageKey) return `/${toLang}`
