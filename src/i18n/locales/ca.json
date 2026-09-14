@@ -95,7 +95,7 @@
     },
     "reserves": {
       "title": "Reserva i horaris · Bo.TiC · Restaurant Gastronòmic Corçà",
-      "description": "Reserveu taula a Bo.TiC, restaurant gastronòmic a Corçà, i consulteu els horaris de cuina, dies de servei, contacte i com arribar."
+      "description": "Reserveu taula al Bo.TiC, restaurant gastronòmic a Corçà, i consulteu els horaris de cuina, dies de servei, contacte i com arribar."
     },
     "horaris": {
       "title": "Horaris i Calendari · Bo.TiC · Restaurant Gastronòmic · Corçà",
@@ -247,7 +247,7 @@
     "tecnicaEyebrow": "La tècnica",
       "tecnicaHeading": "Aplicada amb mesura",
       "tecnicaGhost": "GEST",
-    "tecnicaP1": "La tècnica no és un fi en si mateixa. A Bo.TiC la tècnica és un mitjà: una manera d'expressar millor el que el producte ja porta dins. La cuina moderna ens ha donat eines extraordinàries, però l'únic criteri per aplicar-les és si milloren o no allò que volem posar al plat.",
+    "tecnicaP1": "La tècnica no és un fi en si mateixa. Al Bo.TiC la tècnica és un mitjà: una manera d'expressar millor el que el producte ja porta dins. La cuina moderna ens ha donat eines extraordinàries, però l'únic criteri per aplicar-les és si milloren o no allò que volem posar al plat.",
     "tecnicaP2": "No hi ha ostentació tècnica gratuïta. Cada preparació ha de tenir sentit en el context del menú, de la temporada i de l'ingredient principal. La senzillesa aparent és, gairebé sempre, la resolució tècnica més exigent.",
     "ctaEyebrow": "El menú",
     "ctaHeading": "Viviu l'experiència completa",
@@ -313,16 +313,16 @@
     "ctaContact": "Contactar"
   },
   "experiencia": {
-    "heroAria": "L'experiència a Bo.TiC",
+    "heroAria": "L'experiència al Bo.TiC",
     "heroImgAlt": "Sala del restaurant Bo.TiC durant el servei",
     "heroEyebrow": "L'experiència",
       "heroHeading": "Un ritme propi. Un relat complet.",
       "heroWhisper": "TEMPS · RITME · HOSPITALITAT",
     "ritmeEyebrow": "El ritme de la taula",
     "ritmeHeading": "Sense pressa. Amb intensitat.",
-    "ritmeP1": "Una taula a Bo.TiC segueix el seu propi ritme. No hi ha pressa. El menú degustació s'entén com un relat que comença, s'estableix, sorprèn i tanca.",
+    "ritmeP1": "Una taula al Bo.TiC segueix el seu propi ritme. No hi ha pressa. El menú degustació s'entén com un relat que comença, s'estableix, sorprèn i tanca.",
     "ritmeP2": "L'equip de sala acompanya aquest procés amb naturalitat i coneixement, sense excés de protocol ni distàncies innecessàries. Cada plat arriba quan ha d'arribar. Cada explicació es dona quan afegeix valor.",
-    "ritmeP3": "La durada d'un servei a Bo.TiC és variable. Deixem que l'experiència prengui el temps que necessita.",
+    "ritmeP3": "La durada d'un servei al Bo.TiC és variable. Deixem que l'experiència prengui el temps que necessita.",
     "salaImgAlt": "Sala del restaurant Bo.TiC preparada per al servei",
     "menuEyebrow": "El menú",
     "menuHeading": "Una estructura pensada com un relat",
