@@ -8,13 +8,14 @@ import ResponsiveImage from './ResponsiveImage'
 
 const NAV_KEYS = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves']
 const NAV_IMGS = [
-  '/images/plat-cenital-botic.webp',
-  '/images/restaurant-emporda-botic-michelin.webp',
-  '/images/albert-sastregener-cuina-emporda-girona.webp',
-  '/images/Albert Sastregener-empordà-botic-restaurant.webp',
-  '/images/cristina-albert-botic-emporda-michelin.webp',
-  '/images/restaurant-emporda-michelin-girona.webp',
+  '/images/navigation/inici.webp',
+  '/images/restaurant-sala-arcs-emporda.webp',
+  '/images/navigation/gastronomia.webp',
+  '/images/navigation/menus.webp',
+  '/images/navigation/experiencia.webp',
+  '/images/navigation/reserva.webp',
 ]
+const NAV_POSITIONS = ['center', 'center', 'center 84%', 'center 84%', 'center 65%', 'center']
 
 export function BoticWordmark({ className = '', ...props }) {
   return (
@@ -44,8 +45,9 @@ export default function Nav() {
     label: t(`nav.items.${key}.label`),
     desc:  t(`nav.items.${key}.desc`),
     img:   NAV_IMGS[i],
-    active: location.pathname === routes[key],
+    active: location.pathname.replace(/\/$/, '') === routes[key].replace(/\/$/, ''),
   }))
+  const displayedImg = activeImg ?? Math.max(0, navItems.findIndex(item => item.active))
   const currentPageKey = Object.keys(routes).find((key) => routes[key] === location.pathname.replace(/\/$/, ''))
   const currentPageLabel = currentPageKey
     ? t(['legal', 'privacy', 'cookies', 'preferences'].includes(currentPageKey)
@@ -54,7 +56,7 @@ export default function Nav() {
     : ''
 
   // Close on route change
-  useEffect(() => { setMenuOpen(false) }, [location.pathname])
+  useEffect(() => { setMenuOpen(false); setActiveImg(null) }, [location.pathname])
 
   // Scroll listener
   useEffect(() => {
@@ -66,15 +68,16 @@ export default function Nav() {
   // Body scroll lock + focus management
   useEffect(() => {
     document.body.style.overflow = menuOpen ? 'hidden' : ''
+    let focusTimer
     if (menuOpen) {
-      setTimeout(() => {
+      focusTimer = setTimeout(() => {
         const activeLink = menuRef.current?.querySelector('.nav-fs-link.is-active')
         ;(activeLink || firstLinkRef.current)?.focus()
       }, 750)
     } else {
       openBtnRef.current?.focus()
     }
-    return () => { document.body.style.overflow = '' }
+    return () => { clearTimeout(focusTimer); document.body.style.overflow = '' }
   }, [menuOpen])
 
   // Escape key
@@ -169,12 +172,23 @@ export default function Nav() {
       <div
         id="nav-fullscreen"
         ref={menuRef}
-        className={`nav-fs${menuOpen ? ' is-open' : ''}`}
+        className={`nav-fs nav-fs--immersive${menuOpen ? ' is-open' : ''}`}
         aria-hidden={!menuOpen}
         role="dialog"
         aria-label={t('nav.ariaDialog')}
         aria-modal="true"
       >
+        <div className="nav-fs-photos" aria-hidden="true">
+          {menuOpen && navItems.map((item, i) => (
+            <div key={item.to}
+              className={`nav-fs-photo${displayedImg === i ? ' is-active' : ''}`}
+              style={{ '--photo-position': NAV_POSITIONS[i] }}>
+              <ResponsiveImage src={item.img}
+                mobileSrc={item.img.replace('.webp', '-mobile.webp')}
+                alt="" className="nav-fs-photo-image" decoding="async" />
+            </div>
+          ))}
+        </div>
         <div className="nav-fs-bg" aria-hidden="true" />
 
         <div className="nav-fs-layout">
@@ -188,7 +202,6 @@ export default function Nav() {
                   className={`nav-fs-item${activeImg !== null && activeImg !== i ? ' is-sibling' : ''}`}
                   style={{ '--stagger': `${300 + i * 65}ms` }}
                   onMouseEnter={() => setActiveImg(i)}
-                  onMouseLeave={() => setActiveImg(null)}
                 >
                   <NavLink
                     to={item.to}
@@ -196,7 +209,6 @@ export default function Nav() {
                     ref={i === 0 ? firstLinkRef : null}
                     onClick={handleClose}
                     onFocus={() => setActiveImg(i)}
-                    onBlur={() => setActiveImg(null)}
                     tabIndex={menuOpen ? 0 : -1}
                     className={({ isActive }) =>
                       `nav-fs-link${isActive ? ' is-active' : ''}`
@@ -213,39 +225,9 @@ export default function Nav() {
             </ul>
           </nav>
 
-          {/* RIGHT — image panels */}
-          <div className="nav-fs-right" aria-hidden="true">
-            <div className="nav-fs-img-wrap">
-              <div className={`nav-fs-img-panel${activeImg === null ? ' is-active' : ''}`}>
-                <ResponsiveImage
-                  src={navItems[0].img}
-                  mobileSrc={navItems[0].img.replace('.webp', '-mobile.webp')}
-                  alt=""
-                  className="nav-fs-img"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="nav-fs-img-overlay" />
-              </div>
-              {navItems.map((item, i) => (
-                <div
-                  key={item.to}
-                  className={`nav-fs-img-panel${activeImg === i ? ' is-active' : ''}`}
-                >
-                  <ResponsiveImage
-                    src={item.img}
-                    mobileSrc={item.img.replace('.webp', '-mobile.webp')}
-                    alt=""
-                    loading="lazy"
-                    decoding="async"
-                    className="nav-fs-img"
-                  />
-                  <div className="nav-fs-img-overlay" />
-                  <p className="nav-fs-img-desc">{item.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
+          <p className="nav-fs-caption" key={displayedImg} aria-hidden="true">
+            {navItems[displayedImg].desc}
+          </p>
         </div>
 
         {/* BOTTOM footer */}
