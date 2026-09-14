@@ -9736,4 +9736,4 @@ svg.botic-item-dot.is-muted { opacity:.3; }
   .hero--cinema.hero--dark .hero-gallery-shade { background: linear-gradient(0deg, rgba(10,7,5,.86), rgba(10,7,5,.5) 28%, transparent 64%); }
 }
 
-.booking-schedule-label { font-size: clamp(18px, 1.8vw, 24px); font-weight: 500; letter-spacing: .14em; color: #8f1b35; }
+.booking-schedule-label, .booking-info-label { font-size: clamp(18px, 1.8vw, 24px); font-weight: 500; letter-spacing: .14em; color: #8f1b35; }

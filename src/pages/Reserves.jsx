@@ -12,7 +12,7 @@ function PracticalInfo({ practicalRef, routes, t }) {
     <section className="booking-practical reveal" ref={practicalRef} aria-labelledby="booking-practical-title">
       <div className="container-max">
         <header className="booking-section-heading booking-section-heading-left">
-          <span className="booking-kicker"><BrandDot /> {t('reserves.infoEyebrow')}</span>
+          <span className="booking-kicker booking-info-label">{t('reserves.infoEyebrow')}</span>
           <h2 id="booking-practical-title">{t('reserves.infoHeading')}</h2>
         </header>
         <div className="booking-practical-grid">
