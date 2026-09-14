@@ -57,9 +57,9 @@ function MenuNarrative({ t }) {
     {
       num: '02', label: t('experiencia.moment02Label'), text: t('experiencia.moment02Text'),
       images: [
-        '/images/botic-maig-2026-webp/plat-llamantol-restaurant-botic-emporda.webp',
-        '/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp',
-        '/images/plat-cenital-botic.webp',
+        '/images/restaurant-botic-emporda-plat-bosc-01.webp',
+        '/images/restaurant-botic-emporda-plat-pasta-01.webp',
+        '/images/restaurant-botic-emporda-plat-carn-01.webp',
       ],
     },
     {
