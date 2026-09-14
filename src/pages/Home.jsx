@@ -1,3 +1,4 @@
+import BrandDot from '../components/BrandDot'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -17,7 +18,7 @@ function FeatureEntry({ tag, title, body, to, label, image, index }) {
       <span className="feature-media" aria-hidden="true">
         <ResponsiveImage src={image} mobileSrc={image.replace('.webp', '-mobile.webp')} alt="" loading="lazy" />
       </span>
-      <span className="feature-index" aria-hidden="true">0{index + 1}</span>
+      <span className="feature-index" aria-hidden="true"><BrandDot /></span>
       <span className="feature-tag">{tag}</span>
       <h3 className="feature-title">{title}</h3>
       <p className="feature-body">{body}</p>
@@ -65,7 +66,6 @@ function SeasonStrip({ t, routes }) {
     '/images/botic-maig-2026-webp/detall-postres-maduixes-botic-emporda.webp',
   ].map((image, index) => ({ image, label: labels[index] }))
   const dish = dishes[activeDish]
-  const formatIndex = (index) => String(index + 1).padStart(2, '0')
 
   return (
     <section className="home-season" aria-label={t('home.seasonAria')}>
@@ -82,7 +82,7 @@ function SeasonStrip({ t, routes }) {
         <div className="home-season-gallery">
           <figure className="home-season-dish">
             <ResponsiveImage key={dish.image} src={dish.image} mobileSrc={dish.image.replace('.webp', '-mobile.webp')} alt={dish.label} loading="lazy" />
-            <figcaption aria-hidden="true">{formatIndex(activeDish)}</figcaption>
+            <figcaption aria-hidden="true"><BrandDot /></figcaption>
           </figure>
 
           <div className="home-season-controls" aria-label={t('home.seasonControlsAria')}>
@@ -96,7 +96,7 @@ function SeasonStrip({ t, routes }) {
                 onFocus={() => setActiveDish(index)}
                 onMouseEnter={() => setActiveDish(index)}
               >
-                <span aria-hidden="true">{formatIndex(index)}</span>
+                <span aria-hidden="true"><BrandDot /></span>
                 <span>{item.label}</span>
               </button>
             ))}

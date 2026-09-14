@@ -1,3 +1,4 @@
+import BrandDot from '../components/BrandDot'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -11,22 +12,22 @@ function PracticalInfo({ practicalRef, routes, t }) {
     <section className="booking-practical reveal" ref={practicalRef} aria-labelledby="booking-practical-title">
       <div className="container-max">
         <header className="booking-section-heading booking-section-heading-left">
-          <span className="booking-kicker">01 · {t('reserves.infoEyebrow')}</span>
+          <span className="booking-kicker"><BrandDot /> {t('reserves.infoEyebrow')}</span>
           <h2 id="booking-practical-title">{t('reserves.infoHeading')}</h2>
         </header>
         <div className="booking-practical-grid">
           <article>
-            <span>01</span><h3>{t('reserves.restaurantTitle')}</h3>
+            <span><BrandDot /></span><h3>{t('reserves.restaurantTitle')}</h3>
             <p>{t('reserves.restaurantPets')}</p><p>{t('reserves.restaurantHours')}</p><p>{t('reserves.restaurantParking')}</p>
             <a href="https://www.google.com/maps/d/viewer?mid=13ycz7ovNLHKlPEOouM13aNPLOzpPzv4&ll=41.98827961281014%2C3.016173340973789&z=17" target="_blank" rel="noopener noreferrer">{t('reserves.restaurantParkingLink')} →</a>
           </article>
           <article>
-            <span>02</span><h3>{t('reserves.menusTitle')}</h3>
+            <span><BrandDot /></span><h3>{t('reserves.menusTitle')}</h3>
             <p>{t('reserves.menusAllergies')}</p><p>{t('reserves.menusFullTable')}</p>
             <Link to={routes.menus}>{t('reserves.menusLink')} →</Link>
           </article>
           <article>
-            <span>03</span><h3>{t('reserves.childrenTitle')}</h3>
+            <span><BrandDot /></span><h3>{t('reserves.childrenTitle')}</h3>
             <p>{t('reserves.childrenConduct')}</p><p>{t('reserves.childrenStroller')}</p><p>{t('reserves.childrenHighchairs')}</p>
           </article>
         </div>
@@ -38,7 +39,7 @@ function PracticalInfo({ practicalRef, routes, t }) {
           <article>
             <span className="booking-kicker">{t('reserves.cancellationTitle')}</span>
             <h3>{t('reserves.cancellationNotice')}</h3>
-            <ol>{['cancellationGrace', 'cancellationHow', 'cancellationConfirm', 'cancellationCharge'].map((key, index) => <li key={key}><span>0{index + 1}</span>{t(`reserves.${key}`)}</li>)}</ol>
+            <ol>{['cancellationGrace', 'cancellationHow', 'cancellationConfirm', 'cancellationCharge'].map((key) => <li key={key}><span><BrandDot /></span>{t(`reserves.${key}`)}</li>)}</ol>
           </article>
         </div>
       </div>
@@ -52,7 +53,7 @@ function OpeningHours({ scheduleRef, t }) {
     <section className="booking-schedule reveal" ref={scheduleRef} aria-labelledby="booking-schedule-title">
       <div className="container-max">
         <header className="booking-section-heading">
-          <span className="booking-kicker">02 · {t('reserves.schedule.eyebrow')}</span>
+          <span className="booking-kicker"><BrandDot /> {t('reserves.schedule.eyebrow')}</span>
           <h2 id="booking-schedule-title">{t('reserves.schedule.heading')}</h2>
           <p>{t('reserves.schedule.intro')}</p>
           <p><strong>{t('reserves.schedule.holidaysLabel')}</strong> {t('reserves.schedule.holidaysText')}</p>
@@ -60,7 +61,7 @@ function OpeningHours({ scheduleRef, t }) {
         <div className="booking-hours-details">
           {periods.map((period, index) => (
             <details key={period.title} open={index === 0}>
-              <summary><span>{String(index + 1).padStart(2, '0')}</span><strong>{period.title}</strong><i aria-hidden="true" /></summary>
+              <summary><span><BrandDot /></span><strong>{period.title}</strong><i aria-hidden="true" /></summary>
               <div className="booking-hours-content">
                 {period.items.map((item) => <div key={item.label}><h3>{item.label}</h3><p>{item.text}</p>{item.time && <span>{item.time}</span>}</div>)}
               </div>
@@ -82,7 +83,7 @@ function ReservationForm({ reservationRef, t }) {
     <section className="booking-reservation reveal" id="reserva" ref={reservationRef}>
       <div className="container-max booking-reservation-grid">
         <header className="booking-reservation-intro">
-          <span className="booking-kicker">03 · {t('reserves.heroLabel')}</span>
+          <span className="booking-kicker"><BrandDot /> {t('reserves.heroLabel')}</span>
           <h2>{t('reserves.formHeading')}</h2>
           <p>{t('reserves.formIntro')}</p>
           <div className="booking-direct-contact"><a href="tel:+34972630869">+34 972 630 869</a><a href="mailto:reserves@bo-tic.com">reserves@bo-tic.com</a></div>
@@ -140,7 +141,7 @@ export default function Reserves() {
       <section className="booking-location reveal" ref={locationRef} aria-labelledby="booking-location-title">
         <div className="container-max booking-location-grid">
           <header>
-            <span className="booking-kicker">04 · {t('reserves.addressLabel')}</span>
+            <span className="booking-kicker"><BrandDot /> {t('reserves.addressLabel')}</span>
             <h2 id="booking-location-title">{t('reserves.footerHeading')}</h2>
             <address><span>{t('reserves.addressLine1')}</span><span>{t('reserves.addressLine2')}</span></address>
             <p>{t('reserves.distanceNote')}</p>

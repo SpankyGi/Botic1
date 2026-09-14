@@ -1,3 +1,4 @@
+import BrandDot from './BrandDot'
 import { useEffect, useRef } from 'react'
 import { useReveal } from '../hooks/useReveal'
 
@@ -65,7 +66,7 @@ function MesaHero() {
             <span className="lineup"><span>experiencia</span></span>
           </h2>
           <div className="mesa-hero-meta">
-            <strong>★ Capítulo 04</strong><br />
+            <strong><BrandDot /></strong><br />
             La intimidad
           </div>
         </div>
@@ -84,7 +85,7 @@ function MesaStats() {
     <div className="mesa-stats">
       <div className="mesa-stats-grid">
         <div className="mesa-stat reveal" ref={s1}>
-          <div className="num">04</div>
+          <div className="num"><BrandDot /></div>
           <div className="label">
             <strong>Comensales</strong>
             máximo · íntimo
@@ -122,7 +123,7 @@ function MesaDetail() {
 
   return (
     <div className="mesa-detail">
-      <div className="mesa-detail-numeral" aria-hidden="true">04</div>
+      <div className="mesa-detail-numeral" aria-hidden="true"><BrandDot /></div>
       <div className="mesa-detail-grid">
 
         <div className="mesa-detail-text reveal" ref={textRef}>

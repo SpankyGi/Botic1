@@ -9646,3 +9646,35 @@ footer.botic-footer {
   .cookie-panel-actions button,
   .legal-preferences { min-height: 44px; }
 }
+
+/* Shared Bo.TiC markers replace decorative item numbering. */
+svg.botic-item-dot { display:inline-block; width:10px; height:10px; min-width:10px; flex-shrink:0; vertical-align:middle; fill:#A51F3D; stroke:none; }
+svg.botic-item-dot.is-muted { opacity:.3; }
+.info-num, .hor-card-num, .rst-arch-num, .mesa-detail-numeral { font-size:16px; line-height:1; }
+.info-num > .botic-item-dot, .hor-card-num > .botic-item-dot, .rst-arch-num > .botic-item-dot { width:16px; height:16px; }
+.hor-card-num { margin-bottom:18px; }
+.booking-kicker > .botic-item-dot { margin-right:10px; }
+.booking-notes li { grid-template-columns:10px 1fr; }
+.mnu-tab.is-active .botic-item-dot { stroke:#f3ede3; stroke-width:1; }
+
+.nav-page-context { position:absolute; left:48px; top:50%; transform:translateY(-50%); display:flex; align-items:center; gap:18px; max-width:calc(50% - 150px); }
+.nav-page-context .nav-michelin-stars { position:static; transform:none; flex-shrink:0; }
+.nav-current-page { color:#A51F3D; font:500 10px/1.4 'Plus Jakarta Sans',sans-serif; letter-spacing:.12em; text-transform:uppercase; }
+.restaurant-page .rst-team-mosaic { grid-template-columns:minmax(0,1.1fr) repeat(2,minmax(0,1fr)); grid-template-rows:auto; }
+.restaurant-page .rst-team-primary.sala { width:100%; }
+.restaurant-page .rst-team-primary.sommelier { grid-column:3; grid-row:1 / span 2; margin-top:40px; }
+.restaurant-page .rst-team-primary.sommelier .rst-team-photo { height:min(36vw,530px); min-height:370px; }
+.restaurant-page .rst-team-primary.sommelier .rst-team-img { object-position:60% center; }
+@media(max-width:768px) {
+ .nav-page-context { left:18px; max-width:105px; flex-direction:column; align-items:flex-start; gap:5px; }
+ .nav-current-page { font-size:8px; line-height:1.25; letter-spacing:.04em; }
+ .nav-header .nav-page-context .nav-michelin-stars img { width:22px; height:22px; }
+ .nav-header.nav-scrolled .nav-page-context .nav-michelin-stars img { width:16px; height:16px; }
+ .restaurant-page .rst-team-mosaic { grid-template-columns:1fr; }
+ .restaurant-page .rst-team-primary.kitchen,.restaurant-page .rst-team-primary.sala,.restaurant-page .rst-team-primary.sommelier { grid-column:1; grid-row:auto; width:100%; margin:0 0 32px; }
+ .restaurant-page .rst-team-primary.sommelier .rst-team-photo { height:auto; aspect-ratio:4 / 5; min-height:0; }
+}
+
+.nav-fs-link.is-active .nav-fs-idx { background:transparent; }
+.nav-fs-link.is-active .botic-item-dot { outline:1px solid #A51F3D; outline-offset:4px; border-radius:50%; }
+.nav-header.nav-menu-is-open .nav-current-page { color:#f3ede3; }

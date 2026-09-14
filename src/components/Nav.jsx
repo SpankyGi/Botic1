@@ -1,3 +1,4 @@
+import BrandDot from './BrandDot'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -14,7 +15,6 @@ const NAV_IMGS = [
   '/images/cristina-albert-botic-emporda-michelin.webp',
   '/images/restaurant-emporda-michelin-girona.webp',
 ]
-const NAV_IDX = ['00', '01', '02', '03', '04', '05']
 
 export function BoticWordmark({ className = '', ...props }) {
   return (
@@ -43,10 +43,15 @@ export default function Nav() {
     to:    routes[key],
     label: t(`nav.items.${key}.label`),
     desc:  t(`nav.items.${key}.desc`),
-    idx:   NAV_IDX[i],
     img:   NAV_IMGS[i],
     active: location.pathname === routes[key],
   }))
+  const currentPageKey = Object.keys(routes).find((key) => routes[key] === location.pathname.replace(/\/$/, ''))
+  const currentPageLabel = currentPageKey
+    ? t(['legal', 'privacy', 'cookies', 'preferences'].includes(currentPageKey)
+      ? `footer.${currentPageKey === 'preferences' ? 'cookiePreferences' : currentPageKey}`
+      : `nav.items.${currentPageKey}.label`)
+    : ''
 
   // Close on route change
   useEffect(() => { setMenuOpen(false) }, [location.pathname])
@@ -111,10 +116,13 @@ export default function Nav() {
         className={`nav-header${isHome ? ' nav-home' : ''}${scrolled ? ' nav-scrolled' : ''}${menuOpen ? ' nav-menu-is-open' : ''}`}
         role="banner"
       >
+        <div className="nav-page-context">
         <span className="nav-michelin-stars" role="img" aria-label="Dues estrelles Michelin">
           <img src="/images/michelin-star-original.png" alt="" width="48" height="48" decoding="async" />
           <img src="/images/michelin-star-original.png" alt="" width="48" height="48" decoding="async" />
         </span>
+        {currentPageLabel && <span className="nav-current-page" aria-current="page">{currentPageLabel}</span>}
+        </div>
         <a href={routes.home} className="nav-logo" onClick={handleClose}>
           <BoticWordmark />
         </a>
@@ -194,7 +202,7 @@ export default function Nav() {
                       `nav-fs-link${isActive ? ' is-active' : ''}`
                     }
                   >
-                    <span className="nav-fs-idx">{item.idx}</span>
+                    <span className="nav-fs-idx"><BrandDot /></span>
                     <span className="nav-fs-name">{item.label}</span>
                     <span className="nav-fs-arrow" aria-hidden="true">
                       <span className="nav-fs-arrow-line" />

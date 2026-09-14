@@ -1,3 +1,4 @@
+import BrandDot from '../components/BrandDot'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
@@ -53,7 +54,7 @@ function GastronomyHero({ t, routes }) {
         <p>{t('gastronomia.heroSub')}</p>
         <Link className="gst-text-link" to={routes.experiencia}>{t('gastronomia.ctaSecondary')}</Link>
       </div>
-      <span className="gst-hero-index" aria-hidden="true">01 / 04</span>
+      <span className="gst-hero-index" aria-hidden="true"><BrandDot /></span>
       <div className="gst-scroll-cue" aria-hidden="true"><span /></div>
     </section>
   )
@@ -78,7 +79,7 @@ function ProductManifest({ t }) {
         <div className="gst-principles">
           {principles.map((principle) => (
             <article className="gst-principle" key={principle.number}>
-              <span>{principle.number}</span>
+              <span><BrandDot /></span>
               <p>{principle.text}</p>
             </article>
           ))}
@@ -152,9 +153,9 @@ function TechniqueSection({ t }) {
           <button className="gst-gallery-arrow gst-gallery-prev" type="button" onClick={() => changeGallery(-1)} aria-label={t('gastronomia.galleryPrev')}><span aria-hidden="true">←</span></button>
           <button className="gst-gallery-arrow gst-gallery-next" type="button" onClick={() => changeGallery(1)} aria-label={t('gastronomia.galleryNext')}><span aria-hidden="true">→</span></button>
           <figcaption aria-live="polite">
-            <span>{String(galleryIndex + 1).padStart(2, '0')}</span>
+            <span><BrandDot /></span>
             <i><b style={{ transform: `scaleX(${(galleryIndex + 1) / galleryTotal})` }} /></i>
-            <span>{String(galleryTotal).padStart(2, '0')}</span>
+            <span><BrandDot /></span>
           </figcaption>
         </figure>
         <span className="gst-technique-ghost" aria-hidden="true">{t('gastronomia.tecnicaGhost')}</span>
@@ -168,12 +169,12 @@ function TechniqueSection({ t }) {
         <ResponsiveImage className="gst-technique-signature" src={CHEF_PORTRAIT} mobileSrc={mobileImage(CHEF_PORTRAIT)} alt={t('gastronomia.producteImgAlt')} loading="lazy" />
       </div>
       <div className="gst-dishes gst-dishes-mobile" aria-label={t('gastronomia.galleryAria')}>
-        <div className="gst-dishes-intro" aria-hidden="true"><span>01</span><i /><span>{String(TECHNIQUE_DETAIL_SEQUENCE.length).padStart(2, '0')}</span></div>
+        <div className="gst-dishes-intro" aria-hidden="true"><span><BrandDot /></span><i /><span><BrandDot /></span></div>
         <div className="gst-dishes-grid">
           {TECHNIQUE_DETAIL_SEQUENCE.map((dish, index) => (
             <figure className="gst-dish" key={dish.file}>
               <ResponsiveImage src={`${TECHNIQUE_IMAGE_ROOT}/${dish.file}`} mobileSrc={mobileImage(`${TECHNIQUE_IMAGE_ROOT}/${dish.file}`)} alt={t(`gastronomia.${dish.alt}`)} loading="lazy" />
-              <figcaption aria-hidden="true">{String(index + 1).padStart(2, '0')}</figcaption>
+              <figcaption aria-hidden="true"><BrandDot /></figcaption>
             </figure>
           ))}
         </div>

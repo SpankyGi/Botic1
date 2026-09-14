@@ -1,3 +1,4 @@
+import BrandDot from '../components/BrandDot'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO.jsx'
@@ -100,7 +101,7 @@ function MenuNarrative({ t }) {
               onClick={() => goToMoment(index)}
               aria-current={index === activeMoment ? 'step' : undefined}
             >
-              <span>{moment.num}</span><b>{moment.label}</b>
+              <span><BrandDot /></span><b>{moment.label}</b>
             </button>
           ))}
         </nav>
@@ -111,10 +112,10 @@ function MenuNarrative({ t }) {
               <figure className="exp-gallery-main"><ResponsiveImage src={moment.images[0]} mobileSrc={mobileImage(moment.images[0])} alt={moment.label} loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} /></figure>
               <figure className="exp-gallery-side"><ResponsiveImage src={moment.images[1]} mobileSrc={mobileImage(moment.images[1])} alt="" loading="lazy" /></figure>
               <figure className="exp-gallery-detail"><ResponsiveImage src={moment.images[2]} mobileSrc={mobileImage(moment.images[2])} alt="" loading="lazy" /></figure>
-              <span className="exp-gallery-count" aria-hidden="true">{moment.num} / 04</span>
+              <span className="exp-gallery-count" aria-hidden="true"><BrandDot /></span>
             </div>
             <div className="exp-gallery-copy">
-              <span className="exp-gallery-number">{moment.num}</span>
+              <span className="exp-gallery-number"><BrandDot /></span>
               <h3>{moment.label}</h3>
               <p>{moment.text}</p>
             </div>
@@ -123,7 +124,7 @@ function MenuNarrative({ t }) {
         </div>
         <div className="exp-gallery-controls">
           <button type="button" onClick={() => goToMoment(activeMoment - 1)} aria-label="Anterior">←</button>
-          <span>{String(activeMoment + 1).padStart(2, '0')} <i /> 04</span>
+          <span aria-hidden="true">{moments.map((moment, index) => <BrandDot key={moment.num} active={index === activeMoment} />)}</span>
           <button type="button" onClick={() => goToMoment(activeMoment + 1)} aria-label="Següent">→</button>
         </div>
       </div>

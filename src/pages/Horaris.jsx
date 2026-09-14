@@ -1,3 +1,4 @@
+import BrandDot from '../components/BrandDot'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
@@ -102,7 +103,7 @@ export default function Horaris() {
           <div className="hor-cards-grid">
             {SEASONS_DATA.map(({ num, tag, title, rows }, i) => (
               <div key={num} className="hor-card" style={{ '--i': i }}>
-                <span className="hor-card-num" aria-hidden="true">{num}</span>
+                <span className="hor-card-num" aria-hidden="true"><BrandDot /></span>
                 <span className="hor-card-tag">{tag}</span>
                 <h3 className="hor-card-title">{title}</h3>
                 <div className="hor-card-sep" aria-hidden="true" />

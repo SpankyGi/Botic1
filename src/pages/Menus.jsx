@@ -1,3 +1,4 @@
+import BrandDot from '../components/BrandDot'
 import { useState, useId, useRef, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 import SEO from '../components/SEO'
@@ -81,7 +82,7 @@ function GroupAccordion({ group, sectionId, menuId }) {
                 style={{ animationDelay: `${60 + i * 55}ms` }}
               >
                 <span className="mnu-dish-num" aria-hidden="true">
-                  {String(i + 1).padStart(2, '0')}
+                  <BrandDot />
                 </span>
                 <div className="mnu-dish-content">
                   <h4 className="mnu-dish-name">{item.name}</h4>
@@ -152,7 +153,7 @@ function SectionAccordion({ section, menuId, t }) {
                   style={{ animationDelay: `${60 + i * 55}ms` }}
                 >
                   <span className="mnu-dish-num" aria-hidden="true">
-                    {String(i + 1).padStart(2, '0')}
+                    <BrandDot />
                   </span>
                   <div className="mnu-dish-content">
                     <h4 className="mnu-dish-name">{item.name}</h4>
@@ -315,7 +316,7 @@ function InfoSection({ t }) {
         <div className={`info-grid${gridVisible ? ' revealed' : ''}`} ref={gridRef}>
           {INFO_ITEMS.map(({ num, text }, i) => (
             <div key={num} className="info-card" style={{ '--i': i }}>
-              <span className="info-num" aria-hidden="true">{num}</span>
+              <span className="info-num" aria-hidden="true"><BrandDot /></span>
               <p className="info-text">{text}</p>
             </div>
           ))}
@@ -500,7 +501,7 @@ export default function Menus() {
               aria-controls={`menu-panel-${m.id}`}
               tabIndex={m.id === activeId ? 0 : -1}
             >
-              <span className="mnu-tab-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+              <span className="mnu-tab-index" aria-hidden="true"><BrandDot /></span>
               <span className="mnu-tab-title">{m.title}</span>
               <span className="mnu-tab-position">{m.position}</span>
               <span className="mnu-tab-price">

@@ -1,3 +1,4 @@
+import BrandDot from '../components/BrandDot'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -120,7 +121,7 @@ function ArchFrame({ num, img, alt, title, body, align }) {
     <div className={`rst-arch-frame align-${align}`} ref={ref}>
       <ResponsiveImage src={img} mobileSrc={mobileImage(img)} alt={alt} className="rst-arch-img" loading="lazy" />
       <div className="rst-arch-overlay" aria-hidden="true" />
-      <span className="rst-arch-num" aria-hidden="true">{num}</span>
+      <span className="rst-arch-num" aria-hidden="true"><BrandDot /></span>
       <div className="rst-arch-caption">
         <h3 className="rst-arch-title">{title}</h3>
         <p className="rst-arch-body">{body}</p>
@@ -296,7 +297,7 @@ function ScrollArchitectureSection({ t }) {
                 <ResponsiveImage src={scene.img} mobileSrc={mobileImage(scene.img)} alt={scene.alt} className="rst-story-img" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} />
                 <div className="rst-story-shade" aria-hidden="true" />
                 <div className="rst-story-copy">
-                  <span className="rst-story-number">{scene.num}</span>
+                  <span className="rst-story-number"><BrandDot /></span>
                   <h3>{scene.title}</h3>
                   {(Array.isArray(scene.body) ? scene.body : [scene.body]).map((paragraph, paragraphIndex) => (
                     <p key={paragraphIndex}>{paragraph}</p>
@@ -313,9 +314,9 @@ function ScrollArchitectureSection({ t }) {
           </div>
 
           <div className="rst-story-chrome" aria-hidden="true">
-            <span>{String(activeScene + 1).padStart(2, '0')}</span>
+            <span><BrandDot /></span>
             <div className="rst-story-rail"><span style={{ height: `${((activeScene + 1) / scenes.length) * 100}%` }} /></div>
-            <span>{String(scenes.length).padStart(2, '0')}</span>
+            <span><BrandDot /></span>
           </div>
         </div>
       </div>
@@ -397,6 +398,7 @@ function TeamSection({ t }) {
   const headerRef  = useReveal(0.15)
   const kitchenRef = useReveal(0.15)
   const salaRef    = useReveal(0.15)
+  const sommelierRef = useReveal(0.15)
 
   return (
     <section id="team" className="rst-team" aria-labelledby="team-heading">
@@ -443,11 +445,15 @@ function TeamSection({ t }) {
             </figcaption>
           </figure>
 
-          <figure className="rst-team-detail rst-team-detail--plating" aria-hidden="true">
-            <ResponsiveImage src="/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic.webp" mobileSrc="/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic-mobile.webp" alt="" loading="lazy" />
-          </figure>
-          <figure className="rst-team-detail rst-team-detail--service" aria-hidden="true">
-            <ResponsiveImage src="/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic.webp" mobileSrc="/images/botic-maig-2026-webp/xef-servint-brou-plat-peix-botic-mobile.webp" alt="" loading="lazy" />
+          <figure className="rst-team-block rst-team-primary sommelier reveal" ref={sommelierRef}>
+            <div className="rst-team-photo">
+              <ResponsiveImage src="/images/aga-sommelier-botic.webp" mobileSrc="/images/aga-sommelier-botic-mobile.webp" alt={t('restaurant.sommelierImgAlt')} className="rst-team-img" loading="lazy" />
+            </div>
+            <figcaption className="rst-team-caption">
+              <span className="rst-team-label">{t('restaurant.sommelierLabel')}</span>
+              <h3 className="rst-team-name">Aga</h3>
+              <p className="rst-team-body">{t('restaurant.sommelierBody')}</p>
+            </figcaption>
           </figure>
         </div>
       </div>

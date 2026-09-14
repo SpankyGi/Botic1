@@ -1,3 +1,4 @@
+import BrandDot from './BrandDot'
 import { useState, useEffect, useRef } from 'react'
 import { useReveal } from '../hooks/useReveal'
 
@@ -35,7 +36,7 @@ function Dish({ num, name, description, visible, animDelay }) {
       onClick={hasDesc ? () => setOpen(o => !o) : undefined}
       aria-expanded={hasDesc ? open : undefined}
     >
-      <span className="dish-num">{num}</span>
+      <span className="dish-num"><BrandDot /></span>
 
       {hasDesc ? (
         <div className="dish-name-wrap">
