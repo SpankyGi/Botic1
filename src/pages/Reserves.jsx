@@ -53,7 +53,7 @@ function OpeningHours({ scheduleRef, t }) {
     <section className="booking-schedule reveal" ref={scheduleRef} aria-labelledby="booking-schedule-title">
       <div className="container-max">
         <header className="booking-section-heading">
-          <span className="booking-kicker"><BrandDot /> {t('reserves.schedule.eyebrow')}</span>
+          <span className="booking-kicker booking-schedule-label">{t('reserves.schedule.eyebrow')}</span>
           <h2 id="booking-schedule-title">{t('reserves.schedule.heading')}</h2>
           <p>{t('reserves.schedule.intro')}</p>
           <p><strong>{t('reserves.schedule.holidaysLabel')}</strong> {t('reserves.schedule.holidaysText')}</p>
