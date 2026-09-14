@@ -218,11 +218,6 @@ export default function Home() {
             <SeoIntroHeading>{t('home.seoIntroHeading')}</SeoIntroHeading>
             <p>{t('home.seoIntroBody')}</p>
           </div>
-          <div className="features-grid">
-            {FEATURES.map((feature, i) => (
-              <FeatureEntry key={feature.to} {...feature} index={i} />
-            ))}
-          </div>
           <div className="mobile-people-coda" aria-label={t('home.peopleCodaAria')}>
             <div className="mobile-person mobile-person-albert">
               <img src="/images/albert-sastregener-editorial-transparent.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
@@ -238,6 +233,11 @@ export default function Home() {
                 <span>{t('home.cristinaRole')}</span>
               </div>
             </div>
+          </div>
+          <div className="features-grid">
+            {FEATURES.map((feature, i) => (
+              <FeatureEntry key={feature.to} {...feature} index={i} />
+            ))}
           </div>
         </div>
       </section>

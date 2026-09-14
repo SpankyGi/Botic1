@@ -8047,7 +8047,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     min-height: 286px;
-    margin: 42px 0 0;
+    margin: 0 0 42px;
     padding-top: 8px;
   }
   .mobile-person { position: relative; min-width: 0; }
