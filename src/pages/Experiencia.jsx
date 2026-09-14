@@ -49,9 +49,9 @@ function MenuNarrative({ t }) {
     {
       num: '01', label: t('experiencia.moment01Label'), text: t('experiencia.moment01Text'),
       images: [
-        '/images/botic-maig-2026-webp/plat-esparrecs-blancs-restaurant-botic.webp',
-        '/images/botic-maig-2026-webp/xef-acabant-plat-restaurant-botic.webp',
-        '/images/botic-maig-2026-webp/escamarlans-marisc-restaurant-botic-emporda.webp',
+        '/images/restaurant-botic-emporda-aperitiu-06.webp',
+        '/images/restaurant-botic-emporda-coctel-01.webp',
+        '/images/restaurant-botic-emporda-aperitiu-03.webp',
       ],
     },
     {
