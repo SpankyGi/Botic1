@@ -9685,3 +9685,10 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 .restaurant-page .rst-team-primary .rst-team-photo,.restaurant-page .rst-team-primary.sala .rst-team-photo,.restaurant-page .rst-team-primary.sommelier .rst-team-photo { height:auto; min-height:0; aspect-ratio:4 / 5; }
 .restaurant-page .rst-team-primary.head-chef .rst-team-img { object-position:50% center; }
 @media(max-width:768px){ .restaurant-page .rst-team-mosaic { grid-template-columns:1fr; gap:48px; } }
+
+.restaurant-page .rst-team-group { grid-column:1 / -1; margin:0; width:100%; }
+.restaurant-page .rst-team-group img { display:block; width:100%; height:auto; }
+
+.restaurant-page .rst-team-primary.head-chef,.restaurant-page .rst-team-primary.sommelier { width:86%; justify-self:center; }
+.restaurant-page .rst-team-primary.head-chef .rst-team-name,.restaurant-page .rst-team-primary.sommelier .rst-team-name { font-size:clamp(28px,2.7vw,42px); }
+@media(max-width:768px){ .restaurant-page .rst-team-primary.head-chef,.restaurant-page .rst-team-primary.sommelier { width:92%; } }

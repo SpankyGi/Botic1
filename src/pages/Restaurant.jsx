@@ -429,15 +429,7 @@ function TeamSection({ t }) {
             </figcaption>
           </figure>
 
-          <figure className="rst-team-block rst-team-primary head-chef reveal" ref={headChefRef}>
-            <div className="rst-team-photo">
-              <ResponsiveImage src="/images/alexandra-cap-cuina-botic.webp" mobileSrc="/images/alexandra-cap-cuina-botic-mobile.webp" alt={t('restaurant.headChefImgAlt')} className="rst-team-img" loading="lazy" />
-            </div>
-            <figcaption className="rst-team-caption">
-              <span className="rst-team-label">{t('restaurant.headChefLabel')}</span>
-              <h3 className="rst-team-name">Alexandra</h3>
-            </figcaption>
-          </figure>
+
 
           <figure className="rst-team-block rst-team-primary sala reveal" ref={salaRef}>
             <div className="rst-team-photo sala">
@@ -456,6 +448,16 @@ function TeamSection({ t }) {
             </figcaption>
           </figure>
 
+          <figure className="rst-team-block rst-team-primary head-chef reveal" ref={headChefRef}>
+            <div className="rst-team-photo">
+              <ResponsiveImage src="/images/alexandra-cap-cuina-botic.webp" mobileSrc="/images/alexandra-cap-cuina-botic-mobile.webp" alt={t('restaurant.headChefImgAlt')} className="rst-team-img" loading="lazy" />
+            </div>
+            <figcaption className="rst-team-caption">
+              <span className="rst-team-label">{t('restaurant.headChefLabel')}</span>
+              <h3 className="rst-team-name">Alexandra</h3>
+            </figcaption>
+          </figure>
+
           <figure className="rst-team-block rst-team-primary sommelier reveal" ref={sommelierRef}>
             <div className="rst-team-photo">
               <ResponsiveImage src="/images/aga-sommelier-botic.webp" mobileSrc="/images/aga-sommelier-botic-mobile.webp" alt={t('restaurant.sommelierImgAlt')} className="rst-team-img" loading="lazy" />
@@ -465,6 +467,16 @@ function TeamSection({ t }) {
               <h3 className="rst-team-name">Aga Ogórek</h3>
               <p className="rst-team-body">{t('restaurant.sommelierBody')}</p>
             </figcaption>
+          </figure>
+          <figure className="rst-team-group">
+            <ResponsiveImage
+              src="/images/equip-botic-grup.webp"
+              mobileSrc="/images/equip-botic-grup-mobile.webp"
+              alt={t('restaurant.teamGroupAlt')}
+              width="1920"
+              height="1288"
+              loading="lazy"
+            />
           </figure>
         </div>
       </div>
