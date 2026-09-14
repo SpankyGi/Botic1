@@ -935,11 +935,11 @@ body .exp-narrative { padding: 86px 22px 72px; }
 }
 .gst-principles { border-top: 1px solid rgba(70,52,34,.24); }
 .gst-principle {
-  display: grid; grid-template-columns: .5fr 1.5fr; gap: 40px; padding: 34px 0;
+  display: grid; grid-template-columns: 10px minmax(0,1fr); gap: 18px; padding: 34px 0;
   border-bottom: 1px solid rgba(70,52,34,.18); align-items: start;
 }
-.gst-principle > span { color: #a52f2d; font: 500 10px/1 'Plus Jakarta Sans', sans-serif; letter-spacing: .26em; }
-.gst-principle p { max-width: 760px; color: rgba(34,27,20,.72); font: 300 clamp(15px, 1.3vw, 18px)/1.8 'Plus Jakarta Sans', sans-serif; }
+.gst-principle > span { display:flex; padding-top:calc(clamp(15px, 1.3vw, 18px) * .9 - 5px); }
+.gst-principle p { margin:0; max-width: 760px; color: rgba(34,27,20,.72); font: 300 clamp(15px, 1.3vw, 18px)/1.8 'Plus Jakarta Sans', sans-serif; }
 
 .gst-territory { position: relative; min-height: 110svh; overflow: hidden; background: #080604; display: flex; align-items: flex-end; }
 .gst-territory > img, .gst-territory > .responsive-picture > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transform: scale(1.04); transition: transform 3s cubic-bezier(.2,.7,.2,1); }
@@ -1023,7 +1023,8 @@ body .exp-narrative { padding: 86px 22px 72px; }
   .gst-manifest-inner { padding: 0 22px; }
   .gst-section-head { grid-template-columns: 1fr; gap: 28px; margin-bottom: 58px; }
   .gst-section-head h2 { margin-top: 0; font-size: clamp(52px, 16vw, 72px); }
-  .gst-principle { grid-template-columns: 42px 1fr; gap: 10px; padding: 26px 0; }
+  .gst-principle { grid-template-columns: 10px minmax(0,1fr); gap: 14px; padding: 26px 0; }
+  .gst-principle > span { padding-top:6.05px; }
   .gst-principle p { font-size: 13px; line-height: 1.7; }
 
   .gst-territory { min-height: 105svh; }
