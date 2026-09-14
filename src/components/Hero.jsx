@@ -15,16 +15,19 @@ const HERO_STILLS = [
   { src: '/images/home-hero/restaurant-botic-emporda-aperitiu-02.webp', mobileSrc: '/images/home-hero/restaurant-botic-emporda-aperitiu-02-mobile.webp', tone: 'light' },
 ]
 
+// Original vector geometry: animate the two brand dots independently.
+const BRAND_LETTER = 'M22 16H120C170 16 198 43 198 88C198 119 183 141 155 149C193 157 212 183 212 223C212 272 180 300 130 300H22Z M34 29V144H120C161 144 186 124 186 88C186 50 162 29 120 29Z M34 157V287H130C175 287 200 265 200 223C200 181 174 157 130 157Z'
+
 function HeroBrand({ pulseKey, tone }) {
   return (
-    <div className="hero-brand-stage" aria-hidden="true">
-      <img
-        key={pulseKey}
-        className="hero-brand hero-brand--pulse"
-        src={tone === 'dark' ? '/images/botic-hero-symbol-light.svg' : '/images/botic-hero-symbol-dark.svg'}
-        alt=""
-        decoding="async"
-      />
+    <div className={`hero-brand-stage hero-brand-stage--${tone}`} aria-hidden="true">
+      <svg key={pulseKey} className="hero-brand hero-brand--signature" viewBox="0 0 520 320" focusable="false">
+        <path className="hero-brand-letter-echo" fill="currentColor" fillRule="evenodd" d={BRAND_LETTER} />
+        <path className="hero-brand-letter-reveal" fill="currentColor" fillRule="evenodd" d={BRAND_LETTER} />
+        <circle className="hero-brand-ripple" cx="343.268" cy="221.807" r="66.065" />
+        <circle className="hero-brand-dot hero-brand-dot--large" cx="343.268" cy="221.807" r="66.065" />
+        <circle className="hero-brand-dot hero-brand-dot--small" cx="466.106" cy="111.248" r="33.129" />
+      </svg>
     </div>
   )
 }

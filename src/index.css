@@ -9640,7 +9640,46 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 .hero--cinema .hero-slide.is-active .hero-gallery-image { animation: hero-camera 8s cubic-bezier(.15,.45,.3,1) both; }
 .hero--cinema .hero-slide.is-previous .hero-gallery-image { transform: scale(1.015); }
 .hero--cinema .hero-gallery-shade { z-index: 3; }
-.hero--cinema .hero-brand--pulse { animation: none; }
+/* Bo.TiC signature: two beats, an expanding echo, then the letter revealed
+   in the same direction as the photographic curtain. Settles after 1.8s. */
+.hero-brand-stage--dark { color: #fffaf4; }
+.hero-brand-stage--light { color: #211a14; }
+.hero-brand-stage { transition: color 1.1s ease; }
+.hero-brand--signature { overflow: visible; }
+.hero-brand-letter-echo { animation: hero-signature-echo 1.65s ease both; }
+.hero-brand-letter-reveal { animation: hero-signature-reveal 1.65s cubic-bezier(.22,.68,.18,1) both; }
+.hero-brand-dot { fill: #a51f3d; transform-box: fill-box; transform-origin: center; }
+.hero-brand-dot--large { animation: hero-signature-beat 1.65s cubic-bezier(.22,.68,.18,1) both; }
+.hero-brand-dot--small { animation: hero-signature-answer 1.65s cubic-bezier(.22,.68,.18,1) both; }
+.hero-brand-ripple { fill: none; stroke: #a51f3d; stroke-width: 1; transform-box: fill-box; transform-origin: center; opacity: 0; animation: hero-signature-ripple 1.8s ease-out both; }
+@keyframes hero-signature-echo {
+  0%, 18% { opacity: .18; }
+  72%, 100% { opacity: 0; }
+}
+@keyframes hero-signature-reveal {
+  0%, 14% { clip-path: inset(0 0 0 100%); }
+  82%, 100% { clip-path: inset(0); }
+}
+@keyframes hero-signature-beat {
+  0% { transform: scale(.82); }
+  24% { transform: scale(1.07); }
+  56%, 100% { transform: scale(1); }
+}
+@keyframes hero-signature-answer {
+  0%, 12% { transform: translate(-12px, 10px) scale(.55); opacity: .35; }
+  42% { transform: translate(0, 0) scale(1.12); opacity: 1; }
+  74%, 100% { transform: translate(0, 0) scale(1); opacity: 1; }
+}
+@keyframes hero-signature-ripple {
+  0%, 10% { transform: scale(.94); opacity: 0; }
+  26% { opacity: .48; }
+  100% { transform: scale(1.55); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-brand-stage { transition: none; }
+  .hero-brand--signature > * { animation: none; }
+  .hero-brand-letter-echo, .hero-brand-ripple { display: none; }
+}
 .hero--cinema .hero-title, .hero--cinema .hero-sub, .hero--cinema .hero-eyebrow { transition: color 1s ease, text-shadow 1s ease; }
 @keyframes hero-curtain { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
 @keyframes hero-camera { from { transform: scale(1.07) translateX(-.6%); } to { transform: scale(1.015) translateX(0); } }
