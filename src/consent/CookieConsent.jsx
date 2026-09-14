@@ -1,3 +1,4 @@
+import { getTracking, clearTrackingCookies } from '../analytics/client'
 import { createContext, useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useLang, useLangRoutes } from '../i18n/LangContext'
@@ -12,48 +13,6 @@ const COPY = {
   fr: { intro: 'Nous utilisons des cookies nécessaires au fonctionnement du site et, avec votre consentement, des cookies d’analyse et de marketing pour comprendre son utilisation et améliorer l’expérience.', link: 'Politique de cookies', accept: 'Tout accepter', reject: 'Refuser', rejectAll: 'Tout refuser', configure: 'Configurer', title: 'Préférences de cookies', save: 'Accepter la sélection', necessary: 'Nécessaires', analytics: 'Analyse', marketing: 'Marketing', necessaryText: 'Fonctionnement technique, sécurité, langue et mémorisation de votre choix.', analyticsText: 'Google Analytics 4 et Microsoft Clarity pour comprendre l’usage du site.', marketingText: 'Meta Pixel pour mesurer les campagnes marketing.', always: 'Toujours actives', close: 'Fermer les préférences' },
 }
 
-function updateGoogleConsent(consent) {
-  window.dataLayer = window.dataLayer || []
-  window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments) }
-  window.gtag('consent', 'update', {
-    analytics_storage: consent.analytics ? 'granted' : 'denied',
-    ad_storage: consent.marketing ? 'granted' : 'denied',
-    ad_user_data: consent.marketing ? 'granted' : 'denied',
-    ad_personalization: consent.marketing ? 'granted' : 'denied',
-  })
-}
-
-function addScript(id, src) {
-  if (!src || document.getElementById(id)) return
-  const script = document.createElement('script')
-  script.id = id
-  script.async = true
-  script.src = src
-  document.head.appendChild(script)
-}
-
-function loadOptionalServices(consent) {
-  updateGoogleConsent(consent)
-  const gaId = import.meta.env.VITE_GA4_ID
-  const clarityId = import.meta.env.VITE_CLARITY_ID
-  const metaId = import.meta.env.VITE_META_PIXEL_ID
-  if (consent.analytics && gaId) {
-    addScript('botic-ga4', `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(gaId)}`)
-    window.gtag('js', new Date())
-    window.gtag('config', gaId, { anonymize_ip: true })
-  }
-  if (consent.analytics && clarityId && !window.clarity) {
-    window.clarity = (...args) => { (window.clarity.q = window.clarity.q || []).push(args) }
-    addScript('botic-clarity', `https://www.clarity.ms/tag/${encodeURIComponent(clarityId)}`)
-  }
-  if (consent.marketing && metaId && !window.fbq) {
-    window.fbq = (...args) => { (window.fbq.q = window.fbq.q || []).push(args) }
-    window.fbq('init', metaId)
-    window.fbq('track', 'PageView')
-    addScript('botic-meta-pixel', 'https://connect.facebook.net/en_US/fbevents.js')
-  }
-}
-
 export function useCookiePreferences() { return useContext(ConsentContext) }
 
 export default function CookieConsent() {
@@ -66,10 +25,9 @@ export default function CookieConsent() {
   const panelRef = useRef(null)
 
   useEffect(() => {
-    window.dataLayer = window.dataLayer || []
-    window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments) }
-    window.gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' })
-    if (stored) loadOptionalServices(stored)
+    const tracking = getTracking()
+    if (stored) tracking.applyConsent(stored)
+    tracking.page(window.location.pathname)
   }, []) // initial default must precede every optional integration
 
   useEffect(() => {
@@ -87,8 +45,16 @@ export default function CookieConsent() {
 
   const save = (value) => {
     const next = { analytics: Boolean(value.analytics), marketing: Boolean(value.marketing), updatedAt: new Date().toISOString() }
-    localStorage.setItem(KEY, JSON.stringify(next))
-    setStored(next); setChoices(next); setOpen(false); loadOptionalServices(next)
+    try { localStorage.setItem(KEY, JSON.stringify(next)) } catch { /* Session-only choice when storage is unavailable. */ }
+    const tracking = getTracking()
+    const revoked = (stored?.analytics && !next.analytics) || (stored?.marketing && !next.marketing)
+    tracking.applyConsent(next)
+    setStored(next); setChoices(next); setOpen(false)
+    if (revoked) {
+      clearTrackingCookies()
+      if (tracking.started) { window.location.reload(); return }
+    }
+    tracking.page(window.location.pathname)
   }
   const context = { openPreferences: () => { setChoices(stored || { analytics: false, marketing: false }); setOpen(true) } }
 

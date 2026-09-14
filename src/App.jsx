@@ -19,6 +19,7 @@ import Reserves      from './pages/Reserves'
 import NotFound      from './pages/NotFound'
 import Legal         from './pages/Legal'
 import CookieConsent from './consent/CookieConsent'
+import Analytics from './analytics/Analytics'
 
 function ScrollToTop() {
   const { pathname } = useLocation()
@@ -79,6 +80,7 @@ function AppContent() {
       </main>
       <Footer />
       <CookieConsent />
+      <Analytics />
     </>
   )
 }
