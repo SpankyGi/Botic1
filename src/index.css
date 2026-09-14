@@ -9706,3 +9706,18 @@ svg.botic-item-dot.is-muted { opacity:.3; }
   .nav-fs-photo, .nav-fs-photo-image { transition: none; transform: none; }
   .nav-fs-caption { animation: none; }
 }
+
+.booking-hero--photo { background: #103242; }
+.booking-hero-photo { position: absolute; inset: 0; }
+.booking-hero-photo .responsive-picture { display: block; width: 100%; height: 100%; }
+.booking-hero-photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 55%; }
+.booking-hero--photo::before { z-index: 1; opacity: 1; background: linear-gradient(90deg,rgba(4,20,29,.8),rgba(4,20,29,.45) 48%,rgba(4,20,29,.08)),linear-gradient(0deg,rgba(4,20,29,.35),transparent 60%); }
+.booking-hero--photo h1 { color: #fffaf4; }
+.booking-hero--photo p { color: rgba(255,250,244,.9); }
+.booking-hero--photo .booking-kicker { color: #fffaf4; }
+.booking-hero--photo .booking-primary-cta:hover,
+.booking-hero--photo .booking-primary-cta:focus-visible { color: #fffaf4; border-color: #fffaf4; }
+@media(max-width:600px) {
+  .booking-hero-photo img { object-position: 62% center; }
+  .booking-hero--photo::before { background: linear-gradient(90deg,rgba(4,20,29,.78),rgba(4,20,29,.35)),linear-gradient(0deg,rgba(4,20,29,.35),transparent); }
+}

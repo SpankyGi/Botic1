@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
+import ResponsiveImage from '../components/ResponsiveImage'
 import ClosingCTA from '../components/ClosingCTA.jsx'
 import { useLangRoutes } from '../i18n/LangContext'
 import { useReveal } from '../hooks/useReveal'
@@ -125,7 +126,12 @@ export default function Reserves() {
   return (
     <div className="booking-page">
       <SEO title={t('seo.reserves.title')} description={t('seo.reserves.description')} pageKey="reserves" />
-      <section className="booking-hero">
+      <section className="booking-hero booking-hero--photo">
+        <div className="booking-hero-photo" aria-hidden="true">
+          <ResponsiveImage src="/images/navigation/reserva.webp"
+            mobileSrc="/images/navigation/reserva-mobile.webp"
+            alt="" width="2500" height="1666" fetchpriority="high" decoding="async" />
+        </div>
         <div className="container-max booking-hero-inner">
           <span className="booking-kicker">Bo.TiC · Corçà · Empordà</span>
           <h1>{t('reserves.heroHeading')}</h1>
