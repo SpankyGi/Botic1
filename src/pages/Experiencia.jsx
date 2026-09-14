@@ -75,9 +75,9 @@ function MenuNarrative({ t }) {
     {
       num: '04', label: t('experiencia.moment04Label'), text: t('experiencia.moment04Text'),
       images: [
-        '/images/botic-maig-2026-webp/plat-peix-costa-brava-emporda-botic.webp',
-        '/images/restaurant-botic-corca-emporda-sala-gastronomica.webp',
-        '/images/restaurant-botic-corca-emporda-interior.webp',
+        '/images/restaurant-botic-emporda-detall-restaurant-01.webp',
+        '/images/restaurant-botic-emporda-detall-marca-02.webp',
+        '/images/restaurant-botic-emporda-postres-signatura-01.webp',
       ],
     },
   ]

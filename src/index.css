@@ -9694,3 +9694,5 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 .restaurant-page .rst-team-primary.head-chef,.restaurant-page .rst-team-primary.sommelier { width:86%; justify-self:center; }
 .restaurant-page .rst-team-primary.head-chef .rst-team-name,.restaurant-page .rst-team-primary.sommelier .rst-team-name { font-size:clamp(28px,2.7vw,42px); }
 @media(max-width:768px){ .restaurant-page .rst-team-primary.head-chef,.restaurant-page .rst-team-primary.sommelier { width:92%; } }
+
+.booking-practical-grid h3 { margin-top: 0; }

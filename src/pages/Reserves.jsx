@@ -17,17 +17,17 @@ function PracticalInfo({ practicalRef, routes, t }) {
         </header>
         <div className="booking-practical-grid">
           <article>
-            <span><BrandDot /></span><h3>{t('reserves.restaurantTitle')}</h3>
+            <h3>{t('reserves.restaurantTitle')}</h3>
             <p>{t('reserves.restaurantPets')}</p><p>{t('reserves.restaurantHours')}</p><p>{t('reserves.restaurantParking')}</p>
             <a href="https://www.google.com/maps/d/viewer?mid=13ycz7ovNLHKlPEOouM13aNPLOzpPzv4&ll=41.98827961281014%2C3.016173340973789&z=17" target="_blank" rel="noopener noreferrer">{t('reserves.restaurantParkingLink')} →</a>
           </article>
           <article>
-            <span><BrandDot /></span><h3>{t('reserves.menusTitle')}</h3>
+            <h3>{t('reserves.menusTitle')}</h3>
             <p>{t('reserves.menusAllergies')}</p><p>{t('reserves.menusFullTable')}</p>
             <Link to={routes.menus}>{t('reserves.menusLink')} →</Link>
           </article>
           <article>
-            <span><BrandDot /></span><h3>{t('reserves.childrenTitle')}</h3>
+            <h3>{t('reserves.childrenTitle')}</h3>
             <p>{t('reserves.childrenConduct')}</p><p>{t('reserves.childrenStroller')}</p><p>{t('reserves.childrenHighchairs')}</p>
           </article>
         </div>
