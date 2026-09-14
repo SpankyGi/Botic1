@@ -239,7 +239,8 @@ function useCountUp(target, duration = 1200) {
 
 /* ── WineSection ───────────────────────────────────────────── */
 function WineSection({ t }) {
-  const { count, ref: statRef } = useCountUp(900, 1250)
+  const lang = useLang()
+  const { count, ref: statRef } = useCountUp(1000, 1250)
   const [colRef,  colVisible]   = useReveal(0.12)
   const [divRef,  divVisible]   = useReveal(0.50)
 
@@ -262,8 +263,8 @@ function WineSection({ t }) {
           <span className="wine-label">{t('menus.wineLabel')}</span>
 
           <div className="wine-stat" ref={statRef}>
-            <span className="wine-stat-num" aria-label={`${t('menus.wineStatDesc').replace('$1', '900+')}`}>
-              {count}<span className="wine-stat-plus" aria-hidden="true">+</span>
+            <span className="wine-stat-num" aria-label={`${(1000).toLocaleString(lang)}+ ${t('menus.wineStatDesc')}`}>
+              {count.toLocaleString(lang)}<span className="wine-stat-plus" aria-hidden="true">+</span>
             </span>
             <span
               className="wine-stat-desc"
@@ -538,9 +539,9 @@ export default function Menus() {
         </section>
       </section>
 
+      <InfoSection t={t} />
       <div className="mnu-wine-stage" id="wine-list">
         <WineSection t={t} />
-        <InfoSection t={t} />
       </div>
       <FaqSection  t={t} />
 
