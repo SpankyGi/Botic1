@@ -55,6 +55,7 @@ function OpeningHours({ scheduleRef, t }) {
           <span className="booking-kicker">02 · {t('reserves.schedule.eyebrow')}</span>
           <h2 id="booking-schedule-title">{t('reserves.schedule.heading')}</h2>
           <p>{t('reserves.schedule.intro')}</p>
+          <p><strong>{t('reserves.schedule.holidaysLabel')}</strong> {t('reserves.schedule.holidaysText')}</p>
         </header>
         <div className="booking-hours-details">
           {periods.map((period, index) => (

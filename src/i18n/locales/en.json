@@ -357,6 +357,8 @@
       "eyebrow": "Opening hours",
       "heading": "The rhythm of service",
       "intro": "Opening information, updated for each period of the year.",
+      "holidaysLabel": "Holiday closures:",
+      "holidaysText": "The restaurant will be closed for the last 15 days of February, the last week of June and the last 15 days of November.",
       "periods": [
         { "title": "OCTOBER TO MAY", "items": [{ "label": "OPEN FOR LUNCH", "text": "Wednesday to Sunday", "time": "Lunch · 12:45–13:30" }, { "label": "OPEN FOR DINNER", "text": "Friday and Saturday", "time": "Dinner · 19:45–20:30" }] },
         { "title": "JUNE AND SEPTEMBER", "items": [{ "label": "CLOSED", "text": "Sunday evenings\nMondays and Tuesdays all day" }] },
