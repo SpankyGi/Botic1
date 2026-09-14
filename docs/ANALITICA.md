@@ -1,21 +1,25 @@
 # Activació de l’analítica del Bo.TiC
 
-Estat: codi preparat, mesurament desactivat. GA4 verificat al compte: Bo.TiC / bo-tic.com, propietat 521273336, flux web 13351810979, ID G-MNGEY9EKP7. Falta crear/configurar el contenidor GTM i validar amb Tag Assistant i GA4 DebugView. El compte de Google obert no tenia comptes GTM accessibles el 14/09/2026. No hi ha una reserva completada mesurada: MyRestoo requereix una integració pròpia.
+Estat 14/09/2026: GTM `GTM-TLXRXFPC` creat i versió 2 «BoTiC - GA4 amb consentiment» publicada (7 etiquetes, 6 activadors, 6 variables). GA4 existent: Bo.TiC / bo-tic.com, propietat 521273336, flux 13351810979, ID `G-MNGEY9EKP7`. La nova web està configurada per activar-lo exclusivament a bo-tic.com i www.bo-tic.com amb consentiment. No s’ha desplegat la nova web al domini.
+
+Validació: proves automatitzades de consentiment i deduplicació, build i auditoria SEO correctes. Prova controlada al navegador contra el contenidor publicat: cap petició inicial; després d’acceptar, una page_view inicial, una per nova ruta malgrat repetir-la i gift_click amb destination=myrestoo. En rebutjar, no es genera un segon clic. Les peticions /g/collect s’han observat cap a G-MNGEY9EKP7. Les proves han produït unes poques dades identificables com /analytics-check/ i títol «BoTiC Analytics verification»; excloure-les dels informes. No s’ha verificat DebugView ni la recepció final en informes. La previsualització normal continua exclosa, també després d’acceptar cookies.
+
+GA4: desactivades les visites automàtiques per historial i les interaccions automàtiques amb formularis; es mantenen les altres opcions de mesurament millorada existents. No hi ha reserva completada mesurada: MyRestoo requereix una integració pròpia. En publicar la nova web cal repetir la comprovació al domini real amb Tag Assistant i Temps real / DebugView.
 
 ## Configuració de compilació
-Crear `.env.local` o variables del procés de compilació:
+El fitxer versionat `.env.production` conté els identificadors públics. Les variables del procés o `.env.local` els poden sobreescriure:
 
 ```
 VITE_ANALYTICS_ENABLED=true
-VITE_GTM_ID=identificador real GTM
+VITE_GTM_ID=GTM-TLXRXFPC
 ```
 
 Tornar a compilar. Les variables Vite són públiques i queden incorporades a la compilació. Sense identificadors vàlids no es carrega cap servei. Localhost i dominis de proves estan exclosos llevat de `VITE_ANALYTICS_DEBUG=true` explícit per a validació. Retirar aquest indicador abans de publicar.
 
 Si hi ha GTM, NO s’injecta GA4 directament encara que hi hagi VITE_GA4_ID. Si s’opta per GA4 directe, ometre GTM i configurar VITE_GA4_ID. Es desactiva el page_view automàtic al config.
 
-## Configurar el contenidor GTM
-1. Crear una etiqueta Google amb l’ID GA4 real, `send_page_view=false`. Activar-la en l’esdeveniment personalitzat `botic_page_view`, una vegada per pàgina. Exigir `analytics_storage` concedit i variable de capa de dades `botic_analytics` igual a true.
+## Configuració del contenidor GTM (còpia importable: gtm-botic.json)
+1. Crear una etiqueta Google amb l’ID GA4 real, `send_page_view=false`. Executar-la com a etiqueta de configuració seqüenciada abans de cada etiqueta GA4, una vegada per càrrega de pàgina, amb `analytics_storage` concedit. Els activadors de les etiquetes GA4 exigeixen també `botic_analytics=true`.
 2. Crear variables de capa de dades: page_location, page_path, page_referrer, language, destination, botic_analytics, botic_marketing.
 3. Crear etiquetes GA4 d’esdeveniment amb aquests mapatges exactes:
 

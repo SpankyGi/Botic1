@@ -19,7 +19,7 @@ export function createTracking({ win, doc, gtmId = '', gaId = '', enabled = fals
   let started = false
   let lastPage = ''
   win.dataLayer = win.dataLayer || []
-  const gtag = (...args) => win.dataLayer.push(args)
+  function gtag() { win.dataLayer.push(arguments) }
   win.gtag = gtag
   const states = (choice) => ({
     analytics_storage: choice.analytics ? 'granted' : 'denied',
