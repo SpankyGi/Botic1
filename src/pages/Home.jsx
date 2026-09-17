@@ -186,7 +186,7 @@ export default function Home() {
       <section className="features-section" aria-label={t('home.featuresAria')}>
         <img
           className="home-albert-editorial"
-          src="/images/albert-sastregener-editorial-transparent.png"
+          src="/images/albert-sastregener-editorial-transparent.webp" srcSet="/images/albert-sastregener-editorial-transparent-mobile.webp 480w, /images/albert-sastregener-editorial-transparent.webp 906w" sizes="(max-width: 768px) 45vw, 480px"
           alt=""
           aria-hidden="true"
           loading="lazy"
@@ -198,7 +198,7 @@ export default function Home() {
         </div>
         <img
           className="home-cristina-editorial"
-          src="/images/cristina-editorial-transparent-v2.png"
+          src="/images/cristina-editorial-transparent-v2.webp" srcSet="/images/cristina-editorial-transparent-v2-mobile.webp 480w, /images/cristina-editorial-transparent-v2.webp 818w" sizes="(max-width: 768px) 45vw, 480px"
           alt=""
           aria-hidden="true"
           loading="lazy"
@@ -212,7 +212,7 @@ export default function Home() {
           <div className="home-seo-intro reveal" ref={seoIntroRef}>
             <div className="home-seo-logo" aria-hidden="true">
               <span className="home-seo-symbol-reveal">
-              <img src="/images/botic-logo-original.png" alt="" decoding="async" />
+              <img src="/images/botic-logo-original.webp" alt="" decoding="async" />
               </span>
             </div>
             <SeoIntroHeading>{t('home.seoIntroHeading')}</SeoIntroHeading>
@@ -220,14 +220,14 @@ export default function Home() {
           </div>
           <div className="mobile-people-coda" aria-label={t('home.peopleCodaAria')}>
             <div className="mobile-person mobile-person-albert">
-              <img src="/images/albert-sastregener-editorial-transparent.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <img src="/images/albert-sastregener-editorial-transparent.webp" srcSet="/images/albert-sastregener-editorial-transparent-mobile.webp 480w, /images/albert-sastregener-editorial-transparent.webp 906w" sizes="(max-width: 768px) 45vw, 480px" alt="" aria-hidden="true" loading="lazy" decoding="async" />
               <div className="mobile-person-signature">
                 <span>{t('home.albertName')}</span>
                 <span>{t('home.albertRole')}</span>
               </div>
             </div>
             <div className="mobile-person mobile-person-cristina">
-              <img src="/images/cristina-editorial-transparent-v2.png" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <img src="/images/cristina-editorial-transparent-v2.webp" srcSet="/images/cristina-editorial-transparent-v2-mobile.webp 480w, /images/cristina-editorial-transparent-v2.webp 818w" sizes="(max-width: 768px) 45vw, 480px" alt="" aria-hidden="true" loading="lazy" decoding="async" />
               <div className="mobile-person-signature">
                 <span>{t('home.cristinaName')}</span>
                 <span>{t('home.cristinaRole')}</span>

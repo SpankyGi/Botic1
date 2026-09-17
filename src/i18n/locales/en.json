@@ -150,7 +150,7 @@
   },
   "restaurant": {
     "heroAria": "Bo.TiC restaurant",
-    "heroImgAlt": "Architectural interior of Bo.TiC restaurant in Corçà, stone and wood",
+    "heroImgAlt": "Illuminated facade of Bo.TiC restaurant at night in Corçà, Empordà.",
     "heroEyebrow": "The restaurant",
     "heroHeading": "A unique space in the heart of the Empordà",
     "heroSub": "Bo.TiC occupies a restored former workshop in Corçà, where architecture, light and gastronomy build a singular experience.",
@@ -207,7 +207,8 @@
     "teamGroupAlt": "The Bo.TiC team outside the restaurant entrance.",
     "sommelierLabel": "Sommelier",
     "headChefLabel": "Head chef",
-    "headChefImgAlt": "Alexandra, head chef at Bo.TiC.",
+    "headChefImgAlt": "Alexandra Roncati, head chef at Bo.TiC.",
+    "headChefBody": "She coordinates the kitchen’s day-to-day work, bringing precision to every preparation and care to every detail.",
     "sommelierImgAlt": "Aga Ogórek, Bo.TiC sommelier, in the restaurant’s wine cellar.",
     "sommelierBody": "Wine as part of the dining experience.",
     "teamSub": "Kitchen, dining room and hospitality share the same way of understanding Bo.TiC.",

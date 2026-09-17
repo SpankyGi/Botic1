@@ -50,7 +50,7 @@ export default function PhilosophyStrip() {
           className="philo-photo-img philo-photo-desktop"
         />
         <img
-          src="/images/albert-sastregener-cuina-emporda.webp"
+          src="/images/albert-sastregener-cuina-emporda-girona-mobile.webp"
           alt=""
           className="philo-photo-img philo-photo-mobile"
         />

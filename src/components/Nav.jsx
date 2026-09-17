@@ -121,8 +121,8 @@ export default function Nav() {
       >
         <div className="nav-page-context">
         <span className="nav-michelin-stars" role="img" aria-label="Dues estrelles Michelin">
-          <img src="/images/michelin-star-original.png" alt="" width="48" height="48" decoding="async" />
-          <img src="/images/michelin-star-original.png" alt="" width="48" height="48" decoding="async" />
+          <img src="/images/michelin-star-original.webp" alt="" width="48" height="48" decoding="async" />
+          <img src="/images/michelin-star-original.webp" alt="" width="48" height="48" decoding="async" />
         </span>
         {currentPageLabel && <span className="nav-current-page" aria-current="page">{currentPageLabel}</span>}
         </div>

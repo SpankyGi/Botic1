@@ -6904,8 +6904,8 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 }
 
 .restaurant-page .rst-hero-img {
-  object-position: center 38%;
-  filter: saturate(.72) brightness(.84) contrast(1.03);
+  object-position: center 62%;
+  filter: brightness(.95);
 }
 
 .restaurant-page .rst-hero-overlay {
@@ -6986,7 +6986,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 
 @media (max-width: 768px) {
   .restaurant-page .rst-hero { min-height: 620px; }
-  .restaurant-page .rst-hero-img { object-position: 55% 50%; }
+  .restaurant-page .rst-hero-img { object-position: 60% 50%; }
   .restaurant-page .rst-hero-overlay {
     background:
       radial-gradient(ellipse 105% 54% at 42% 76%, rgba(39, 24, 18, .76) 0%, rgba(23, 15, 12, .50) 53%, transparent 86%),

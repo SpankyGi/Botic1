@@ -73,8 +73,8 @@ export default function Preloader() {
         </div>
         {isHome && (
           <div className="pre-michelin-stars" role="img" aria-label="Dues estrelles Michelin">
-            <img src="/images/michelin-star-original.png" alt="" width="34" height="34" decoding="async" />
-            <img src="/images/michelin-star-original.png" alt="" width="34" height="34" decoding="async" />
+            <img src="/images/michelin-star-original.webp" alt="" width="34" height="34" decoding="async" />
+            <img src="/images/michelin-star-original.webp" alt="" width="34" height="34" decoding="async" />
           </div>
         )}
       </div>

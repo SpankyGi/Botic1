@@ -150,7 +150,7 @@
   },
   "restaurant": {
     "heroAria": "Le restaurant Bo.TiC",
-    "heroImgAlt": "Intérieur architectural du restaurant Bo.TiC à Corçà, pierre et bois",
+    "heroImgAlt": "Façade éclairée de nuit du restaurant Bo.TiC à Corçà, dans l’Empordà.",
     "heroEyebrow": "Le restaurant",
     "heroHeading": "Un espace unique au cœur de l'Empordà",
     "heroSub": "Bo.TiC occupe un ancien atelier réhabilité à Corçà, où l'architecture, la lumière et la gastronomie construisent une expérience singulière.",
@@ -207,7 +207,8 @@
     "teamGroupAlt": "L’équipe de Bo.TiC devant l’entrée du restaurant.",
     "sommelierLabel": "Sommelière",
     "headChefLabel": "Cheffe de cuisine",
-    "headChefImgAlt": "Alexandra, cheffe de cuisine de Bo.TiC.",
+    "headChefImgAlt": "Alexandra Roncati, cheffe de cuisine de Bo.TiC.",
+    "headChefBody": "Elle coordonne le quotidien de la cuisine, avec précision dans chaque préparation et soin dans chaque détail.",
     "sommelierImgAlt": "Aga Ogórek, sommelière de Bo.TiC, dans la cave du restaurant.",
     "sommelierBody": "Le vin au cœur de l’expérience gastronomique.",
     "teamSub": "Cuisine, salle et hospitalité partagent une même façon de comprendre Bo.TiC.",

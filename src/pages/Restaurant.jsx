@@ -49,8 +49,8 @@ function RestaurantHero({ t, routes }) {
     <section className="rst-hero" ref={heroRef} aria-label={t('restaurant.heroAria')}>
       <div className="rst-hero-media">
         <ResponsiveImage
-          src="/images/restaurant-botic-emporda-hero.webp"
-          mobileSrc="/images/restaurant-botic-emporda-hero-mobile.webp"
+          src="/images/restaurant-botic-corca-emporda-facana-nit.webp"
+          mobileSrc="/images/restaurant-botic-corca-emporda-facana-nit-mobile.webp"
           alt={t('restaurant.heroImgAlt')}
           className="rst-hero-img"
           fetchpriority="high"
@@ -454,7 +454,8 @@ function TeamSection({ t }) {
             </div>
             <figcaption className="rst-team-caption">
               <span className="rst-team-label">{t('restaurant.headChefLabel')}</span>
-              <h3 className="rst-team-name">Alexandra</h3>
+              <h3 className="rst-team-name">Alexandra Roncati</h3>
+              <p className="rst-team-body">{t('restaurant.headChefBody')}</p>
             </figcaption>
           </figure>
 
@@ -525,7 +526,7 @@ export default function Restaurant() {
           menu: `${BASE_URL}${routes.menus}/`,
           acceptsReservations: `${BASE_URL}${routes.reserves}/`,
           name: 'Bo.TiC',
-          image: `${BASE_URL}/images/restaurant-botic-emporda-hero.webp`,
+          image: `${BASE_URL}/images/restaurant-botic-corca-emporda-facana-nit.webp`,
           url: `${BASE_URL}${routes.restaurant}/`,
           telephone: '+34972630869',
           email: 'restaurant@bo-tic.com',
@@ -556,7 +557,7 @@ export default function Restaurant() {
         title={t('seo.restaurant.title')}
         description={t('seo.restaurant.description')}
         pageKey="restaurant"
-        ogImage={`${BASE_URL}/images/restaurant-botic-emporda-hero.webp`}
+        ogImage={`${BASE_URL}/images/restaurant-botic-corca-emporda-facana-nit.webp`}
       />
 
       <div className="restaurant-page">

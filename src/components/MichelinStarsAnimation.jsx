@@ -40,7 +40,7 @@ export default function MichelinStarsAnimation() {
             <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
           </filter>
           <symbol id="michelin-star-original" viewBox="0 0 2560 2795" preserveAspectRatio="xMidYMid meet">
-            <image href="/images/michelin-star-original.png" width="2560" height="2795" />
+            <image href="/images/michelin-star-original.webp" width="2560" height="2795" />
           </symbol>
         </defs>
 

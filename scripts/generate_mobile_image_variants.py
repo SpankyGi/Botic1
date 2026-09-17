@@ -1,6 +1,6 @@
 """Generate lightweight, mobile-oriented WebP derivatives for editorial photos.
 
-Source images remain untouched. Transparent PNG/SVG branding assets are outside
+Source images remain untouched. Transparent WebP/SVG branding assets are outside
 this task by design. Run from the project root with the bundled Python runtime.
 """
 
@@ -58,12 +58,11 @@ def make_mobile(source: Path) -> tuple[Path, tuple[int, int]]:
 
 
 def convert_plat_cenital() -> tuple[Path, Path]:
-    source = ROOT / "plat-cenital-botic.jpg"
+    source = ROOT / "plat-cenital-botic.webp"
     desktop = ROOT / "plat-cenital-botic.webp"
     mobile = ROOT / "plat-cenital-botic-mobile.webp"
     with Image.open(source) as opened:
         image = ImageOps.exif_transpose(opened).convert("RGB")
-        image.save(desktop, "WEBP", quality=84, method=6)
         ImageOps.fit(image, (900, 1350), method=METHOD, centering=(0.5, 0.5)).save(
             mobile, "WEBP", quality=QUALITY, method=6
         )
@@ -73,7 +72,7 @@ def convert_plat_cenital() -> tuple[Path, Path]:
 def should_convert(path: Path) -> bool:
     if path.suffix.lower() != ".webp" or path.stem.endswith("-mobile"):
         return False
-    if path.name in NON_PHOTO_WEBPS:
+    if path.name in NON_PHOTO_WEBPS or "editorial-transparent" in path.name:
         return False
     return not path.name.startswith("michelin-") and not path.name.startswith("botic-")
 
