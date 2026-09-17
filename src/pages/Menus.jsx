@@ -396,10 +396,7 @@ function FaqSection({ t }) {
 
 /* ── Pàgina principal ─────────────────────────────────────── */
 function MenuCourseList({ sections, menuId }) {
-  const [openCourse, setOpenCourse] = useState(() => {
-    const first = sections.find(section => section.groups.length)
-    return first ? `${first.id}-${first.groups[0].id}` : null
-  })
+  const [openCourse, setOpenCourse] = useState(null)
   return (
     <div className="mnu-course-list">
       {sections.map((section) => (
@@ -546,7 +543,6 @@ export default function Menus() {
           <div className="container-max mnu-content">
             <div className="mnu-content-header">
               <h2 className="mnu-content-title">{active.title}</h2>
-              <span className="mnu-content-price">{active.price}</span>
             </div>
 
             {active.note && (
