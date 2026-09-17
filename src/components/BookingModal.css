@@ -1,0 +1,12 @@
+.booking-modal { position:fixed; inset:0; margin:auto; width:min(620px,calc(100% - 32px)); max-height:calc(100dvh - 40px); padding:0; border:0; background:#f7f3eb; color:#241b16; overflow:auto; box-shadow:0 24px 100px #0006; }
+.booking-modal::backdrop { background:rgba(24,16,12,.76); backdrop-filter:blur(6px); }
+.booking-modal-header { position:sticky; top:0; z-index:1; display:flex; justify-content:space-between; align-items:center; gap:20px; padding:22px 28px; background:#f7f3eb; border-bottom:1px solid #dfd5c8; }
+.booking-modal-header span { font:500 10px/1.5 'Plus Jakarta Sans',sans-serif; letter-spacing:.25em; color:#a51f3d; }
+.booking-modal-header h2 { margin:6px 0 0; font:400 26px/1.2 'Plus Jakarta Sans',sans-serif; letter-spacing:-.035em; }
+.booking-modal-header button { width:44px; height:44px; flex-shrink:0; border:0; background:none; color:inherit; font:300 32px/1 sans-serif; cursor:pointer; }
+.booking-modal-header button:focus-visible { outline:2px solid #a51f3d; outline-offset:2px; }
+.booking-modal .restoo-booking { padding:16px 24px 24px; }
+.booking-modal .restoo-booking-host { scroll-margin-top:100px; }
+.booking-modal .restoo-booking-host:has(iframe) { padding:12px; }
+.booking-modal .restoo-booking-fallback,.booking-modal .restoo-booking > [role=status] { color:#645950; }
+@media(max-width:600px) { .booking-modal { width:100%; height:100dvh; max-height:100dvh; margin:0; } .booking-modal-header { padding:16px 20px; } .booking-modal .restoo-booking { padding:12px 12px 24px; } }

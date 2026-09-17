@@ -1,5 +1,4 @@
 import BrandDot from '../components/BrandDot'
-import RestooBooking from '../components/RestooBooking'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
@@ -85,7 +84,8 @@ function ReservationForm({ reservationRef, t }) {
           <div className="booking-direct-contact"><a href="tel:+34972630869">+34 972 630 869</a><a href="mailto:restaurant@bo-tic.com">restaurant@bo-tic.com</a></div>
         </header>
         <div className="booking-form-wrap">
-          <RestooBooking lang={lang} />
+          <a className="booking-primary-cta" href="#reserva">{t('common.bookTable')}</a>
+          <noscript><a href={`https://bo-tic.myrestoo.net/${lang}/reservar`}>{t('common.bookTable')} ↗</a></noscript>
         </div>
       </div>
     </section>

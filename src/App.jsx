@@ -9,6 +9,7 @@ import Preloader     from './components/Preloader'
 import Nav           from './components/Nav'
 import ScrollProgress from './components/ScrollProgress'
 import FloatingCTAs  from './components/FloatingCTAs'
+import BookingModal from './components/BookingModal'
 import Footer        from './components/Footer'
 
 import Home          from './pages/Home'
@@ -68,6 +69,7 @@ function AppContent() {
       <Nav />
       <ScrollProgress />
       <FloatingCTAs />
+      <BookingModal />
       <main>
         <Routes>
           {/* Root redirect → /ca */}
