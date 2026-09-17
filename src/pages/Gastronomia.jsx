@@ -40,11 +40,11 @@ function GastronomyHero({ t, routes }) {
         loop
         playsInline
         preload="metadata"
-        poster={responsivePoster(CHEF_ACTION)}
+        poster={responsivePoster('/images/sabors-gastronomia-botic-poster.webp')}
         aria-hidden="true"
       >
-        <source media="(max-width: 768px)" src="/images/producte-gastronomia-botic-emporda-mobile.webm" type="video/webm" />
-        <source src="/images/producte-gastronomia-botic-emporda.webm" type="video/webm" />
+        <source media="(max-width: 768px)" src="/images/sabors-gastronomia-botic-emporda-mobile.webm" type="video/webm" />
+        <source src="/images/sabors-gastronomia-botic-emporda.webm" type="video/webm" />
       </video>
       <div className="gst-hero-shade" aria-hidden="true" />
       <div className="gst-hero-grain" aria-hidden="true" />
