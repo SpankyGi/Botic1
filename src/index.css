@@ -9767,3 +9767,16 @@ svg.botic-item-dot.is-muted { opacity:.3; }
   .booking-hero-photo img { object-position: 62% center; }
   .booking-hero--photo::before { background: linear-gradient(90deg,rgba(4,20,29,.78),rgba(4,20,29,.35)),linear-gradient(0deg,rgba(4,20,29,.35),transparent); }
 }
+
+/* Public content retained from the previous site for incoming links. */
+.legacy-content { padding-top: 160px; padding-bottom: 100px; }
+.legacy-content h1 { font-size: clamp(2.6rem, 6vw, 5.8rem); line-height: 1.08; margin-bottom: 28px; }
+.legacy-content p { max-width: 760px; line-height: 1.8; margin-bottom: 32px; }
+.legacy-intro { font-size: 1.25rem; }
+.legacy-chef-image { display: block; width: 100%; max-height: 650px; object-fit: cover; margin-bottom: 32px; }
+.legacy-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 48px; }
+.legacy-grid section { border-top: 1px solid rgba(50,35,25,.2); padding: 24px 0; }
+.legacy-grid h2 { font-size: 1.4rem; margin-bottom: 20px; }
+.legacy-content a { color: #a32b32; text-decoration: underline; text-underline-offset: 5px; }
+.legacy-actions { display: flex; flex-wrap: wrap; gap: 28px; }
+@media (max-width: 768px) { .legacy-content { padding-top: 120px; } .legacy-grid { grid-template-columns: 1fr; gap: 12px; } }

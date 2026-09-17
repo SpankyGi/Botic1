@@ -1,0 +1,118 @@
+{
+  "copy": {
+    "ca": {
+      "chefTable": [
+        "Taula del Xef",
+        "Una experiència a prop de la cuina del Bo.TiC, a Corçà.",
+        "Una taula per a un màxim de quatre persones, on se serveix exclusivament el Menú del Xef. Una proposta de cuina creativa inspirada en la tradició empordanesa, amb el producte, el celler i el servei com a protagonistes."
+      ],
+      "videos": [
+        "Vídeos",
+        "Descobreix la cuina, la sala i la història del Bo.TiC en vídeo."
+      ],
+      "identity": [
+        "Identitat",
+        "Material gràfic i llibre d’identitat del Bo.TiC."
+      ],
+      "watch": "Veure el vídeo",
+      "download": "Descarregar PDF",
+      "reserve": "Reservar la Taula del Xef",
+      "menu": "Veure els menús"
+    },
+    "es": {
+      "chefTable": [
+        "Mesa del Chef",
+        "Una experiencia cerca de la cocina de Bo.TiC, en Corçà.",
+        "Una mesa para un máximo de cuatro personas, donde se sirve exclusivamente el Menú del Chef. Una propuesta de cocina creativa inspirada en la tradición ampurdanesa, con el producto, la bodega y el servicio como protagonistas."
+      ],
+      "videos": [
+        "Vídeos",
+        "Descubre la cocina, la sala y la historia de Bo.TiC en vídeo."
+      ],
+      "identity": [
+        "Identidad",
+        "Material gráfico y libro de identidad de Bo.TiC."
+      ],
+      "watch": "Ver el vídeo",
+      "download": "Descargar PDF",
+      "reserve": "Reservar la Mesa del Chef",
+      "menu": "Ver los menús"
+    },
+    "en": {
+      "chefTable": [
+        "Chef’s Table",
+        "An experience close to the kitchen at Bo.TiC in Corçà.",
+        "A table for up to four guests, serving exclusively the Chef’s Menu. Creative cuisine inspired by the traditions of Empordà, with ingredients, wine and service at the heart of the experience."
+      ],
+      "videos": [
+        "Videos",
+        "Discover the kitchen, dining room and history of Bo.TiC on film."
+      ],
+      "identity": [
+        "Identity",
+        "Bo.TiC brand book and graphic materials."
+      ],
+      "watch": "Watch the video",
+      "download": "Download PDF",
+      "reserve": "Book the Chef’s Table",
+      "menu": "Explore the menus"
+    },
+    "fr": {
+      "chefTable": [
+        "La table du chef",
+        "Une expérience au plus près de la cuisine du Bo.TiC, à Corçà.",
+        "Une table pour quatre personnes maximum, où seul le Menu du Chef est servi. Une cuisine créative inspirée de la tradition de l’Empordà, avec les produits, les vins et le service au cœur de l’expérience."
+      ],
+      "videos": [
+        "Vidéos",
+        "Découvrez la cuisine, la salle et l’histoire du Bo.TiC en vidéo."
+      ],
+      "identity": [
+        "Identité",
+        "Livre d’identité et ressources graphiques du Bo.TiC."
+      ],
+      "watch": "Voir la vidéo",
+      "download": "Télécharger le PDF",
+      "reserve": "Réserver la table du chef",
+      "menu": "Découvrir les menus"
+    }
+  },
+  "videos": [
+    {
+      "title": "Micro Menú Snacks · 2026",
+      "url": "https://player.vimeo.com/video/1154797772?h=d2d811400c&title=0&byline=0&portrait=0"
+    },
+    {
+      "title": "Sabors · 2025",
+      "url": "https://player.vimeo.com/video/1071065447?h=496b41a7cd&title=0&byline=0&portrait=0"
+    },
+    {
+      "title": "A day in life · 2023",
+      "url": "https://player.vimeo.com/video/875445873?h=d2d811400c&title=0&byline=0&portrait=0"
+    },
+    {
+      "title": "La sala · 2022",
+      "url": "https://player.vimeo.com/video/708734989?h=496b41a7cd&title=0&byline=0&portrait=0"
+    },
+    {
+      "title": "Gràcies · 2020",
+      "url": "https://player.vimeo.com/video/497178568?h=52725aa78d&title=0&byline=0&portrait=0"
+    },
+    {
+      "title": "Felicitats · 2020",
+      "url": "https://player.vimeo.com/video/491133705?h=cc03f1e1ce&title=0&bylin"
+    },
+    {
+      "title": "The chef’s table · 2019",
+      "url": "https://player.vimeo.com/video/380210615?h=454febdcc1&title=0&byline=0&portrait=0"
+    },
+    {
+      "title": "La tradició per l’evolució · 2017",
+      "url": "https://player.vimeo.com/video/251472917?h=beffa22e34&title=0&byline=0&portrait=0"
+    },
+    {
+      "title": "Cuina de l’Empordanet · 2017",
+      "url": "https://player.vimeo.com/video/231713034?h=e740e5d499&title=0&byline=0&portrait=0"
+    }
+  ]
+}

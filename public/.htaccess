@@ -10,6 +10,13 @@ RewriteRule ^restaurant/?$ /ca/restaurant/ [R=301,L]
 RewriteRule ^menus/?$ /ca/menus/ [R=301,L]
 RewriteRule ^horari/?$ /ca/reserves/ [R=301,L]
 
+# Additional URLs discovered in the production sitemap and language navigation.
+RewriteRule ^taula-del-xef/?$ /ca/taula-del-xef/ [R=301,L]
+RewriteRule ^videos/?$ /ca/videos/ [R=301,L]
+RewriteRule ^identitat/?$ /ca/identitat/ [R=301,L]
+RewriteRule ^en/opening-hours/?$ /en/reservations/ [R=301,L]
+RewriteRule ^(?:sitemap_index|page-sitemap|wp-sitemap)\.xml$ /sitemap.xml [R=301,L]
+
 # Legacy hours URLs now belong to the single reservations-and-hours page.
 RewriteRule ^ca/horaris/?$ /ca/reserves/ [R=301,L]
 RewriteRule ^es/horarios/?$ /es/reservas/ [R=301,L]

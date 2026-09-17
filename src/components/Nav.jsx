@@ -245,7 +245,7 @@ export default function Nav() {
             </div>
             <div className="nav-fs-footer-col nav-fs-footer-col--center">
               <a
-                href="https://www.instagram.com/restaurantbotic"
+                href="https://www.instagram.com/restaurantbo.tic/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="nav-fs-footer-link"

@@ -1,11 +1,10 @@
 import BrandDot from '../components/BrandDot'
-import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
 import ResponsiveImage from '../components/ResponsiveImage'
 import ClosingCTA from '../components/ClosingCTA.jsx'
-import { useLangRoutes } from '../i18n/LangContext'
+import { useLang, useLangRoutes } from '../i18n/LangContext'
 import { useReveal } from '../hooks/useReveal'
 
 function PracticalInfo({ practicalRef, routes, t }) {
@@ -75,40 +74,17 @@ function OpeningHours({ scheduleRef, t }) {
 }
 
 function ReservationForm({ reservationRef, t }) {
-  const [sent, setSent] = useState(false)
-  const [form, setForm] = useState({ nom: '', email: '', telefon: '', persones: '2', data: '', missatge: '' })
-  const handleChange = (event) => setForm((current) => ({ ...current, [event.target.name]: event.target.value }))
-  const handleSubmit = (event) => { event.preventDefault(); setSent(true) }
-
+  const lang = useLang()
   return (
     <section className="booking-reservation reveal" id="reserva" ref={reservationRef}>
       <div className="container-max booking-reservation-grid">
         <header className="booking-reservation-intro">
           <span className="booking-kicker"><BrandDot /> {t('reserves.heroLabel')}</span>
-          <h2>{t('reserves.formHeading')}</h2>
-          <p>{t('reserves.formIntro')}</p>
-          <div className="booking-direct-contact"><a href="tel:+34972630869">+34 972 630 869</a><a href="mailto:reserves@bo-tic.com">reserves@bo-tic.com</a></div>
+          <h2>{t('common.bookTable')}</h2>
+          <div className="booking-direct-contact"><a href="tel:+34972630869">+34 972 630 869</a><a href="mailto:restaurant@bo-tic.com">restaurant@bo-tic.com</a></div>
         </header>
         <div className="booking-form-wrap">
-          {sent ? (
-            <div className="booking-confirmation" role="status"><span aria-hidden="true">✦</span><h3>{t('reserves.confirmHeading')}</h3><p>{t('reserves.confirmBody')}</p></div>
-          ) : (
-            <form onSubmit={handleSubmit} name="reserves" method="POST" data-netlify="true" aria-label={t('reserves.formAria')}>
-              <input type="hidden" name="form-name" value="reserves" />
-              <div className="booking-form-row">
-                <label><span>{t('reserves.fieldName')}</span><input className="booking-field" name="nom" type="text" required value={form.nom} onChange={handleChange} placeholder={t('reserves.placeholderName')} /></label>
-                <label><span>{t('reserves.fieldPhone')}</span><input className="booking-field" name="telefon" type="tel" required value={form.telefon} onChange={handleChange} placeholder={t('reserves.placeholderPhone')} /></label>
-              </div>
-              <label><span>{t('reserves.fieldEmail')}</span><input className="booking-field" name="email" type="email" required value={form.email} onChange={handleChange} placeholder={t('reserves.placeholderEmail')} /></label>
-              <div className="booking-form-row">
-                <label><span>{t('reserves.fieldDate')}</span><input className="booking-field [color-scheme:dark]" name="data" type="date" required value={form.data} onChange={handleChange} /></label>
-                <label><span>{t('reserves.fieldGuests')}</span><select className="booking-field [color-scheme:dark]" name="persones" value={form.persones} onChange={handleChange}>{[1, 2, 3, 4, 5, 6, 7, 8].map((number) => <option key={number} value={number}>{number} {number === 1 ? t('common.person') : t('common.persons')}</option>)}<option value="9+">{t('common.group')}</option></select></label>
-              </div>
-              <label><span>{t('reserves.fieldMessage')}</span><textarea className="booking-field" name="missatge" rows="4" value={form.missatge} onChange={handleChange} placeholder={t('reserves.placeholderMessage')} /></label>
-              <button className="booking-primary-cta" type="submit">{t('reserves.submitBtn')}</button>
-              <p className="booking-form-note">{t('reserves.formNote')}</p>
-            </form>
-          )}
+          <a className="booking-primary-cta" href={`https://bo-tic.myrestoo.net/${lang}/reservar`}>{t('common.bookTable')} ↗</a>
         </div>
       </div>
     </section>

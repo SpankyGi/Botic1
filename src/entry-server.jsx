@@ -1,3 +1,4 @@
+import legacyContent from './data/legacyContent.json'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
@@ -9,7 +10,7 @@ export const BASE_URL = 'https://bo-tic.com'
 const DEFAULT_OG_IMAGE = `${BASE_URL}/images/restaurant-botic-emporda-hero.webp`
 const OG_IMAGES = {
   menus: `${BASE_URL}/images/plat-cenital-botic.webp`,
-  restaurant: DEFAULT_OG_IMAGE,
+  restaurant: `${BASE_URL}/images/restaurant-botic-corca-emporda-facana-nit.webp`,
 }
 const LEGAL_SEO = {
   ca: { legal: ['Avís legal · Bo.TiC', 'Informació legal de Bo.TiC.'], privacy: ['Política de privacitat · Bo.TiC', 'Informació sobre el tractament de dades personals al Bo.TiC.'], cookies: ['Política de cookies · Bo.TiC', 'Informació sobre les cookies i preferències de consentiment de Bo.TiC.'] },
@@ -33,8 +34,8 @@ function pathFor(lang, pageKey) {
 export function getStaticSeo(url) {
   const { lang, pageKey } = routeDetails(url)
   const translation = i18n.getResourceBundle(lang, 'translation')
-  const legal = LEGAL_SEO[lang]?.[pageKey]
-  const content = legal ? { title: legal[0], description: legal[1] } : (translation?.seo?.[pageKey] || translation?.seo?.home)
+  const legal = LEGAL_SEO[lang]?.[pageKey] || legacyContent.copy[lang]?.[pageKey]
+  const content = legal ? { title: LEGAL_SEO[lang]?.[pageKey] ? legal[0] : `${legal[0]} · Bo.TiC`, description: legal[1] } : (translation?.seo?.[pageKey] || translation?.seo?.home)
   const canonical = `${BASE_URL}${pathFor(lang, pageKey)}`
 
   return {

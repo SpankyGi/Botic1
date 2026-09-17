@@ -1,3 +1,6 @@
+import legacyContent from '../data/legacyContent.json'
+import { useLang } from '../i18n/LangContext'
+import { ROUTE_SLUGS } from '../i18n/routes'
 import { useTranslation } from 'react-i18next'
 import { useLangRoutes } from '../i18n/LangContext'
 import { Link } from 'react-router-dom'
@@ -7,6 +10,7 @@ import { useReveal } from '../hooks/useReveal'
 export default function Footer() {
   const { t } = useTranslation()
   const routes = useLangRoutes()
+  const lang = useLang()
   const footerRef = useReveal(0.06)
 
   return (
@@ -26,6 +30,7 @@ export default function Footer() {
             <Link to={routes.gastronomia}>{t('footer.gastronomia')}</Link>
             <Link to={routes.menus}>{t('footer.menus')}</Link>
             <Link to={routes.experiencia}>{t('footer.experiencia')}</Link>
+            {["chefTable", "videos", "identity"].map(key => <Link key={key} to={`/${lang}/${ROUTE_SLUGS[lang][key]}/`}>{legacyContent.copy[lang][key][0]}</Link>)}
             <a href={`${routes.restaurant}#team`}>{t('footer.team')}</a>
           </nav>
 
@@ -50,20 +55,21 @@ export default function Footer() {
           <section className="footer-column footer-recognitions">
             <h2>{t('footer.recognitionsTitle')}</h2>
             <ul aria-label={t('footer.recognitionsTitle')}>
-              <li>{t('footer.michelin')}</li>
-              <li>{t('footer.repsol')}</li>
-              <li>{t('footer.nationalGastronomy')}</li>
-              <li>{t('footer.premisG')}</li>
+              <li><a href="https://guide.michelin.com/es/es/catalunya/corca/restaurante/bo-tic" target="_blank" rel="noopener noreferrer">{t('footer.michelin')}</a></li>
+              <li><a href="https://www.guiarepsol.com/es/fichas/restaurante/botic-9041/" target="_blank" rel="noopener noreferrer">{t('footer.repsol')}</a></li>
+              <li><a href="https://acgn.cat/premis-nacionals-de-gastronomia/" target="_blank" rel="noopener noreferrer">{t('footer.nationalGastronomy')}</a></li>
+              <li><a href="https://b2b.costabrava.org/premi-g/premi-honorific-juli-soler-i-lobo/" target="_blank" rel="noopener noreferrer">{t('footer.premisG')}</a></li>
             </ul>
             <div className="footer-follow">
               <span>{t('footer.followTitle')}</span>
               <div>
-                <a href="https://www.instagram.com/restaurantbotic" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/restaurantbo.tic/" target="_blank" rel="noopener noreferrer">
                   {t('common.instagram')}
                 </a>
-                <a href="https://www.facebook.com/restaurantbotic" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/RestaurantBo.TiC" target="_blank" rel="noopener noreferrer">
                   {t('common.facebook')}
                 </a>
+                <a href="https://x.com/restaurantBoTiC" target="_blank" rel="noopener noreferrer">X</a>
               </div>
             </div>
           </section>

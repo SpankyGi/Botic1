@@ -1,3 +1,4 @@
+import LegacyContent from './pages/LegacyContent'
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { LangProvider } from './i18n/LangContext'
@@ -38,6 +39,9 @@ function LangRoutes({ lang }) {
   return (
     <LangLayout lang={lang}>
       <Routes>
+        <Route path={s.chefTable} element={<LegacyContent pageKey="chefTable" />} />
+        <Route path={s.videos} element={<LegacyContent pageKey="videos" />} />
+        <Route path={s.identity} element={<LegacyContent pageKey="identity" />} />
         <Route index                  element={<Home />} />
         <Route path={s.restaurant}    element={<Restaurant />} />
         <Route path={s.gastronomia}   element={<Gastronomia />} />

@@ -5,6 +5,7 @@ export const DEFAULT_LANG = 'ca'
 // Page keys → slug per language
 export const ROUTE_SLUGS = {
   ca: {
+    chefTable: 'taula-del-xef', videos: 'videos', identity: 'identitat',
     restaurant:  'restaurant',
     gastronomia: 'gastronomia',
     menus:       'menus',
@@ -14,6 +15,7 @@ export const ROUTE_SLUGS = {
     legal: 'avis-legal', privacy: 'privacitat', cookies: 'cookies', preferences: 'preferencies-cookies',
   },
   es: {
+    chefTable: 'mesa-del-chef', videos: 'videos', identity: 'identidad',
     restaurant:  'restaurante',
     gastronomia: 'gastronomia',
     menus:       'menus',
@@ -23,6 +25,7 @@ export const ROUTE_SLUGS = {
     legal: 'aviso-legal', privacy: 'privacidad', cookies: 'cookies', preferences: 'preferencias-cookies',
   },
   fr: {
+    chefTable: 'la-table-du-chef', videos: 'videos', identity: 'identite',
     restaurant:  'restaurant',
     gastronomia: 'gastronomie',
     menus:       'menus',
@@ -32,6 +35,7 @@ export const ROUTE_SLUGS = {
     legal: 'mentions-legales', privacy: 'confidentialite', cookies: 'cookies', preferences: 'preferences-cookies',
   },
   en: {
+    chefTable: 'chefs-table', videos: 'videos', identity: 'identity',
     restaurant:  'restaurant',
     gastronomia: 'gastronomy',
     menus:       'menus',

@@ -1,0 +1,252 @@
+[
+  {
+    "source": "/",
+    "target": "/ca/",
+    "status": "301"
+  },
+  {
+    "source": "/en/",
+    "target": "/en/",
+    "status": "200"
+  },
+  {
+    "source": "/es/",
+    "target": "/es/",
+    "status": "200"
+  },
+  {
+    "source": "/fr/",
+    "target": "/fr/",
+    "status": "200"
+  },
+  {
+    "source": "/en/chefs-table/",
+    "target": "/en/chefs-table/",
+    "status": "200"
+  },
+  {
+    "source": "/en/menus/",
+    "target": "/en/menus/",
+    "status": "200"
+  },
+  {
+    "source": "/en/opening-hours/",
+    "target": "/en/reservations/",
+    "status": "301"
+  },
+  {
+    "source": "/en/restaurant/",
+    "target": "/en/restaurant/",
+    "status": "200"
+  },
+  {
+    "source": "/en/videos/",
+    "target": "/en/videos/",
+    "status": "200"
+  },
+  {
+    "source": "/es/horarios/",
+    "target": "/es/reservas/",
+    "status": "301"
+  },
+  {
+    "source": "/es/menus/",
+    "target": "/es/menus/",
+    "status": "200"
+  },
+  {
+    "source": "/es/mesa-del-chef/",
+    "target": "/es/mesa-del-chef/",
+    "status": "200"
+  },
+  {
+    "source": "/es/restaurante/",
+    "target": "/es/restaurante/",
+    "status": "200"
+  },
+  {
+    "source": "/es/videos/",
+    "target": "/es/videos/",
+    "status": "200"
+  },
+  {
+    "source": "/fr/horaires/",
+    "target": "/fr/reservations/",
+    "status": "301"
+  },
+  {
+    "source": "/fr/la-table-du-chef/",
+    "target": "/fr/la-table-du-chef/",
+    "status": "200"
+  },
+  {
+    "source": "/fr/menus/",
+    "target": "/fr/menus/",
+    "status": "200"
+  },
+  {
+    "source": "/fr/restaurant/",
+    "target": "/fr/restaurant/",
+    "status": "200"
+  },
+  {
+    "source": "/fr/videos/",
+    "target": "/fr/videos/",
+    "status": "200"
+  },
+  {
+    "source": "/horari/",
+    "target": "/ca/reserves/",
+    "status": "301"
+  },
+  {
+    "source": "/menus/",
+    "target": "/ca/menus/",
+    "status": "301"
+  },
+  {
+    "source": "/restaurant/",
+    "target": "/ca/restaurant/",
+    "status": "301"
+  },
+  {
+    "source": "/taula-del-xef",
+    "target": "/ca/taula-del-xef/",
+    "status": "301"
+  },
+  {
+    "source": "/taula-del-xef/",
+    "target": "/ca/taula-del-xef/",
+    "status": "301"
+  },
+  {
+    "source": "/videos/",
+    "target": "/ca/videos/",
+    "status": "301"
+  },
+  {
+    "source": "/botiga/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/cistella/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/el-meu-compte/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/finalitza-la-compra/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/identitat/",
+    "target": "/ca/identitat/",
+    "status": "301"
+  },
+  {
+    "source": "/reemborsaments_devolucions/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/el-meu-compte/lost-password/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/en/cart/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/en/identity/",
+    "target": "/en/identity/",
+    "status": "200"
+  },
+  {
+    "source": "/en/my-account/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/en/shop/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/es/carrito/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/es/identidad/",
+    "target": "/es/identidad/",
+    "status": "200"
+  },
+  {
+    "source": "/es/mi-cuenta/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/es/tienda/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/fr/boutique/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/fr/identite/",
+    "target": "/fr/identite/",
+    "status": "200"
+  },
+  {
+    "source": "/fr/mon-compte/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/fr/panier/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/pdf/BrandBook_Bo.TiC.pdf",
+    "target": "/pdf/BrandBook_Bo.TiC.pdf",
+    "status": "200"
+  },
+  {
+    "source": "/pdf/logo_Bo.TiC_Baseline.pdf",
+    "target": "/pdf/logo_Bo.TiC_Baseline.pdf",
+    "status": "200"
+  },
+  {
+    "source": "/pdf/logo_Bo.TiC_Curt.pdf",
+    "target": "/pdf/logo_Bo.TiC_Curt.pdf",
+    "status": "200"
+  },
+  {
+    "source": "/en/my-account/lost-password/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/es/mi-cuenta/lost-password/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  },
+  {
+    "source": "/fr/mon-compte/lost-password/",
+    "target": null,
+    "status": "DECISION_REQUIRED"
+  }
+]

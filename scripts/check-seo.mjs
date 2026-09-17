@@ -4,7 +4,7 @@ import { LANGS, ROUTE_SLUGS } from '../src/i18n/routes.js'
 
 // Check actual built HTML, not just the React source or client-side metadata.
 const base = 'https://bo-tic.com'
-const pages = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves', 'legal', 'privacy', 'cookies', 'preferences']
+const pages = ['home', 'chefTable', 'videos', 'identity', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves', 'legal', 'privacy', 'cookies', 'preferences']
 const titles = new Set()
 const sitemap = await readFile('dist/sitemap.xml', 'utf8')
 const attrs = tag => Object.fromEntries([...tag.matchAll(/([\w:-]+)="([^"]*)"/g)].map(m => [m[1], m[2]]))
@@ -65,5 +65,5 @@ for (const lang of LANGS) {
 const notFound = await readFile('dist/404.html', 'utf8')
 assert(metas(notFound).some(m => m.name === 'robots' && m.content.startsWith('noindex')))
 assert(!links(notFound).some(l => l.rel === 'canonical' || l.hreflang))
-assert.equal((sitemap.match(/<loc>/g) || []).length, 28)
-console.log(`SEO checks passed: ${count} localized pages, 28 sitemap URLs, 404, assets, links and JSON-LD.`)
+assert.equal((sitemap.match(/<loc>/g) || []).length, pages.filter(key => !['legal', 'privacy', 'preferences'].includes(key)).length * LANGS.length)
+console.log(`SEO checks passed: ${count} localized pages, ${(sitemap.match(/<loc>/g) || []).length} sitemap URLs, 404, assets, links and JSON-LD.`)
