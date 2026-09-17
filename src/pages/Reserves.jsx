@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import SEO from '../components/SEO.jsx'
 import ResponsiveImage from '../components/ResponsiveImage'
 import ClosingCTA from '../components/ClosingCTA.jsx'
-import { useLang, useLangRoutes } from '../i18n/LangContext'
+import { useLangRoutes } from '../i18n/LangContext'
 import { useReveal } from '../hooks/useReveal'
 
 function PracticalInfo({ practicalRef, routes, t }) {
@@ -73,31 +73,11 @@ function OpeningHours({ scheduleRef, t }) {
   )
 }
 
-function ReservationForm({ reservationRef, t }) {
-  const lang = useLang()
-  return (
-    <section className="booking-reservation reveal" id="reserva" ref={reservationRef}>
-      <div className="container-max booking-reservation-grid">
-        <header className="booking-reservation-intro">
-          <span className="booking-kicker"><BrandDot /> {t('reserves.heroLabel')}</span>
-          <h2>{t('common.bookTable')}</h2>
-          <div className="booking-direct-contact"><a href="tel:+34972630869">+34 972 630 869</a><a href="mailto:restaurant@bo-tic.com">restaurant@bo-tic.com</a></div>
-        </header>
-        <div className="booking-form-wrap">
-          <a className="booking-primary-cta" href="#reserva">{t('common.bookTable')}</a>
-          <noscript><a href={`https://bo-tic.myrestoo.net/${lang}/reservar`}>{t('common.bookTable')} ↗</a></noscript>
-        </div>
-      </div>
-    </section>
-  )
-}
-
 export default function Reserves() {
   const { t } = useTranslation()
   const routes = useLangRoutes()
   const practicalRef = useReveal(0.12)
   const scheduleRef = useReveal(0.12)
-  const reservationRef = useReveal(0.12)
   const locationRef = useReveal(0.12)
 
   return (
@@ -119,7 +99,6 @@ export default function Reserves() {
 
       <PracticalInfo practicalRef={practicalRef} routes={routes} t={t} />
       <OpeningHours scheduleRef={scheduleRef} t={t} />
-      <ReservationForm reservationRef={reservationRef} t={t} />
 
       <section className="booking-location reveal" ref={locationRef} aria-labelledby="booking-location-title">
         <div className="container-max booking-location-grid">
