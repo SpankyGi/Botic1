@@ -9,3 +9,5 @@ Idiomes: ca/es/en/fr. Enllaç alternatiu al portal en una pestanya nova si el na
 Cal validar l'enviament final del portal anterior dins del modal abans de considerar resolt el problema de reserves. No s'ha de confondre la càrrega del formulari amb una reserva confirmada.
 
 Validació en Chrome (17/09/2026): portal anterior dins del modal local, 4 adults diumenge 20/09 a les 13:00, Menú del Xef Sala. Enviament de dades expressament autoritzat: supera el pas que fallava a v2 i arriba a la garantia de cancel·lació de Stripe (400 euros). No s'ha confirmat ni garantit la reserva: pas financer deixat al titular. Compilació correcta (48 rutes).
+
+Xecs regal: els enllaços al portal /{lang}/tienda obren el mateix diàleg amb títol i textos propis en els quatre idiomes, sense avís de grups. Verificat catàleg i fitxa Menú del Xef dins del modal, sense compra. Avís de reserves de més de 6 persones reforçat amb fons granat, distintiu +6 i correu destacat. Els enllaços alternatius en pestanya nova no són interceptats.

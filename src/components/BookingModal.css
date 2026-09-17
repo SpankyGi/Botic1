@@ -11,12 +11,14 @@
 .booking-modal .restoo-booking-fallback,.booking-modal .restoo-booking > [role=status] { color:#645950; }
 @media(max-width:600px) { .booking-modal { width:100%; height:100dvh; max-height:100dvh; margin:0; } .booking-modal-header { padding:16px 20px; } .booking-modal .restoo-booking { padding:12px 12px 24px; } }
 
-.booking-group-notice { margin:20px 24px 0; padding:18px 20px; background:#f1e2df; border-left:4px solid #a51f3d; color:#421c25; font:400 15px/1.6 'Plus Jakarta Sans',sans-serif; }
-.booking-group-notice h3 { margin:0 0 6px; font:700 18px/1.35 'Plus Jakarta Sans',sans-serif; }
+.booking-group-notice { display:flex; align-items:flex-start; gap:16px; margin:20px 24px 0; padding:24px; background:#8c1832; border:2px solid #8c1832; color:#fff; font:500 15px/1.6 'Plus Jakarta Sans',sans-serif; }
+.booking-group-notice > div { min-width:0; }
+.booking-group-badge { display:grid; place-items:center; flex:0 0 56px; height:56px; border:2px solid #fff9; border-radius:50%; font:700 26px/1 'Plus Jakarta Sans',sans-serif; }
+.booking-group-notice h3 { margin:0 0 10px; color:#fff; font:700 23px/1.25 'Plus Jakarta Sans',sans-serif; }
 .booking-group-notice p { margin:0; }
-.booking-group-notice a { display:inline-block; color:#8c1832; font-weight:700; text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
+.booking-group-notice a { display:block; margin-top:12px; padding:10px 12px; background:#fff; color:#8c1832; font-weight:700; text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
 .booking-group-notice a:focus-visible { outline:2px solid #a51f3d; outline-offset:4px; }
-@media(max-width:600px) { .booking-group-notice { margin:16px 12px 0; padding:16px; } }
+@media(max-width:600px) { .booking-group-notice { margin:16px 12px 0; padding:18px 16px; gap:12px; } .booking-group-badge { flex-basis:42px; height:42px; font-size:21px; } .booking-group-notice h3 { font-size:20px; } }
 
 .booking-modal .restoo-booking-host:has(.restoo-legacy-frame) { padding:0; }
 .restoo-legacy-frame { display:block; width:100%; height:720px; height:max(540px,75dvh); border:0; background:#fff; }

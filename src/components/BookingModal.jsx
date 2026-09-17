@@ -7,6 +7,12 @@ import RestooBooking from './RestooBooking'
 import './BookingModal.css'
 
 const CLOSE = { ca: 'Tancar reserves', es: 'Cerrar reservas', en: 'Close reservations', fr: 'Fermer les réservations' }
+const GIFT = {
+  ca: ['Xecs regal', 'Tancar xecs regal'],
+  es: ['Cheques regalo', 'Cerrar cheques regalo'],
+  en: ['Gift vouchers', 'Close gift vouchers'],
+  fr: ['Chèques cadeaux', 'Fermer les chèques cadeaux'],
+}
 const GROUP_NOTICE = {
   ca: ['Taules de més de 6 persones', 'És obligatori sol·licitar la reserva per correu electrònic a:'],
   es: ['Mesas de más de 6 personas', 'Es obligatorio solicitar la reserva por correo electrónico a:'],
@@ -25,20 +31,22 @@ export default function BookingModal() {
     const click = (event) => {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
       const link = event.target.closest?.('a[href]')
-      if (!link || !RESERVATION_PAGE.test(window.location.pathname)) return
+      if (!link || link.target === '_blank') return
       const url = new URL(link.href, window.location.href)
-      if (url.origin !== window.location.origin || url.pathname !== window.location.pathname || url.hash !== '#reserva') return
+      const gift = url.origin === 'https://bo-tic.myrestoo.net' && /^\/(ca|es|en|fr)\/tienda\/?$/.test(url.pathname)
+      const booking = RESERVATION_PAGE.test(window.location.pathname) && url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash === '#reserva'
+      if (!gift && !booking) return
       event.preventDefault()
       // React Router respects defaultPrevented; menu close handlers can still run.
-      setOpen(true)
+      setOpen(gift ? 'gift' : 'booking')
     }
     document.addEventListener('click', click, true)
     return () => document.removeEventListener('click', click, true)
   }, [])
-  return open ? <ReservationDialog lang={lang} title={t('common.bookTable')} onClose={() => setOpen(false)} /> : null
+  return open ? <ReservationDialog lang={lang} mode={open} title={open === 'gift' ? GIFT[lang][0] : t('common.bookTable')} onClose={() => setOpen(false)} /> : null
 }
 
-function ReservationDialog({ lang, title, onClose }) {
+function ReservationDialog({ lang, mode, title, onClose }) {
   const ref = useRef(null)
   const groupNotice = GROUP_NOTICE[lang] || GROUP_NOTICE.ca
   useEffect(() => {
@@ -61,12 +69,15 @@ function ReservationDialog({ lang, title, onClose }) {
       if (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom) onClose()
     }}>
     <header className="booking-modal-header"><div><span>BO·TIC</span><h2 id="booking-modal-title">{title}</h2></div>
-      <button type="button" onClick={onClose} aria-label={CLOSE[lang]}>×</button>
+      <button type="button" onClick={onClose} aria-label={mode === 'gift' ? GIFT[lang][1] : CLOSE[lang]}>×</button>
     </header>
-    <aside className="booking-group-notice" aria-labelledby="booking-group-title">
+    {mode === 'booking' && <aside className="booking-group-notice" aria-labelledby="booking-group-title">
+      <span className="booking-group-badge" aria-hidden="true">+6</span>
+      <div>
       <h3 id="booking-group-title">{groupNotice[0]}</h3>
       <p>{groupNotice[1]} <a href="mailto:restaurant@bo-tic.com">restaurant@bo-tic.com</a></p>
-    </aside>
-    <RestooBooking lang={lang} />
+      </div>
+    </aside>}
+    <RestooBooking lang={lang} mode={mode} />
   </dialog>, document.body)
 }
