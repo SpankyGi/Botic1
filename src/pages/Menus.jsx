@@ -541,10 +541,6 @@ export default function Menus() {
           key={activeId}
         >
           <div className="container-max mnu-content">
-            <div className="mnu-content-header">
-              <h2 className="mnu-content-title">{active.title}</h2>
-            </div>
-
             {active.note && (
               <p className="mnu-note" role="note">
                 <span className="mnu-note-icon" aria-hidden="true">◈</span>
