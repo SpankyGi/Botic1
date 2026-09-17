@@ -7,6 +7,12 @@ import RestooBooking from './RestooBooking'
 import './BookingModal.css'
 
 const CLOSE = { ca: 'Tancar reserves', es: 'Cerrar reservas', en: 'Close reservations', fr: 'Fermer les réservations' }
+const GROUP_NOTICE = {
+  ca: ['Taules de més de 6 persones', 'És obligatori sol·licitar la reserva per correu electrònic a:'],
+  es: ['Mesas de más de 6 personas', 'Es obligatorio solicitar la reserva por correo electrónico a:'],
+  en: ['Tables of more than 6 guests', 'Reservations must be requested by email at:'],
+  fr: ['Tables de plus de 6 personnes', 'La réservation doit obligatoirement être demandée par e-mail à :'],
+}
 const RESERVATION_PAGE = /^\/(ca\/reserves|es\/reservas|en\/reservations|fr\/reservations)\/?$/
 
 export default function BookingModal() {
@@ -34,6 +40,7 @@ export default function BookingModal() {
 
 function ReservationDialog({ lang, title, onClose }) {
   const ref = useRef(null)
+  const groupNotice = GROUP_NOTICE[lang] || GROUP_NOTICE.ca
   useEffect(() => {
     const dialog = ref.current
     const focus = document.activeElement
@@ -56,6 +63,10 @@ function ReservationDialog({ lang, title, onClose }) {
     <header className="booking-modal-header"><div><span>BO·TIC</span><h2 id="booking-modal-title">{title}</h2></div>
       <button type="button" onClick={onClose} aria-label={CLOSE[lang]}>×</button>
     </header>
+    <aside className="booking-group-notice" aria-labelledby="booking-group-title">
+      <h3 id="booking-group-title">{groupNotice[0]}</h3>
+      <p>{groupNotice[1]} <a href="mailto:restaurant@bo-tic.com">restaurant@bo-tic.com</a></p>
+    </aside>
     <RestooBooking lang={lang} />
   </dialog>, document.body)
 }
