@@ -396,6 +396,10 @@ function FaqSection({ t }) {
 
 /* ── Pàgina principal ─────────────────────────────────────── */
 function MenuCourseList({ sections, menuId }) {
+  const [openCourse, setOpenCourse] = useState(() => {
+    const first = sections.find(section => section.groups.length)
+    return first ? `${first.id}-${first.groups[0].id}` : null
+  })
   return (
     <div className="mnu-course-list">
       {sections.map((section) => (
@@ -405,10 +409,21 @@ function MenuCourseList({ sections, menuId }) {
             <h3>{section.title}</h3>
           </header>
           <div className="mnu-course-groups">
-            {section.groups.map((course) => (
+            {section.groups.map((course) => {
+              const courseKey = `${section.id}-${course.id}`
+              const isOpen = openCourse === courseKey
+              const panelId = `course-${menuId}-${courseKey}`
+              return (
               <article className="mnu-course" key={`${menuId}-${section.id}-${course.id}`}>
-                <h4>{course.title}</h4>
-                <ul>
+                <h4>
+                  <button type="button" className="mnu-course-toggle"
+                    id={`${panelId}-toggle`} aria-expanded={isOpen} aria-controls={panelId}
+                    onClick={() => setOpenCourse(isOpen ? null : courseKey)}>
+                    <span>{course.title}</span>
+                    <span className="mnu-course-toggle-icon" aria-hidden="true">{isOpen ? '−' : '+'}</span>
+                  </button>
+                </h4>
+                <ul id={panelId} aria-labelledby={`${panelId}-toggle`} hidden={!isOpen}>
                   {course.items.map((item, itemIndex) => (
                     <li key={`${menuId}-${section.id}-${course.id}-${itemIndex}`}>
                       <span className="mnu-course-item-mark" aria-hidden="true" />
@@ -417,7 +432,8 @@ function MenuCourseList({ sections, menuId }) {
                   ))}
                 </ul>
               </article>
-            ))}
+              )
+            })}
           </div>
         </section>
       ))}
@@ -431,6 +447,7 @@ export default function Menus() {
   const lang    = useLang()
   const [activeId, setActiveId] = useState('degustacio')
   const contentRef = useRef(null)
+  const selectorRef = useRef(null)
 
   // API/cache/fallback data — hook handles fetch, TTL, and language
 
@@ -453,6 +470,19 @@ export default function Menus() {
 
   const selectMenu = (id) => {
     setActiveId(id)
+    // Wait for the selected panel to render before measuring its position.
+    requestAnimationFrame(() => {
+      const content = contentRef.current
+      const selector = selectorRef.current
+      if (!content || !selector) return
+      const stickyTop = parseFloat(window.getComputedStyle(selector).top) || 0
+      const top = window.scrollY + content.getBoundingClientRect().top
+        - stickyTop - selector.getBoundingClientRect().height
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+      })
+    })
   }
 
   const onSelectorKeyDown = (event, currentIndex) => {
@@ -463,7 +493,7 @@ export default function Menus() {
         : (currentIndex + (event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1) + menus.length) % menus.length
     const next = menus[nextIndex]
     selectMenu(next.id)
-    requestAnimationFrame(() => document.getElementById(`menu-selector-${next.id}`)?.focus())
+    requestAnimationFrame(() => document.getElementById(`menu-selector-${next.id}`)?.focus({ preventScroll: true }))
   }
 
   return (
@@ -479,7 +509,7 @@ export default function Menus() {
 
       <section className="mnu-food-menus" aria-label={t('menus.selectorAria')}>
         {/* ── Selector de menús ── */}
-        <div className="mnu-selector-wrap">
+        <div className="mnu-selector-wrap" ref={selectorRef}>
           <div className="mnu-selector" role="tablist">
             {menus.map((m, index) => (
             <button
