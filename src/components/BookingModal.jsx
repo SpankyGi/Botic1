@@ -7,7 +7,7 @@ import RestooBooking from './RestooBooking'
 import './BookingModal.css'
 
 const CLOSE = { ca: 'Tancar reserves', es: 'Cerrar reservas', en: 'Close reservations', fr: 'Fermer les réservations' }
-const TRIGGERS = '.cta-circle, .hero-btn-primary, .closing-cta__primary, .closing-cta__secondary, .footer-reserve-link, .nav-fs-reserva, .booking-primary-cta, .btn-gold, .hor-hero-cta, .legacy-actions a'
+const RESERVATION_PAGE = /^\/(ca\/reserves|es\/reservas|en\/reservations|fr\/reservations)\/?$/
 
 export default function BookingModal() {
   const [open, setOpen] = useState(false)
@@ -19,9 +19,9 @@ export default function BookingModal() {
     const click = (event) => {
       if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return
       const link = event.target.closest?.('a[href]')
-      if (!link?.matches(TRIGGERS)) return
+      if (!link || !RESERVATION_PAGE.test(window.location.pathname)) return
       const url = new URL(link.href, window.location.href)
-      if (url.origin !== window.location.origin || !(url.hash === '#reserva' || /^\/(ca\/reserves|es\/reservas|en\/reservations|fr\/reservations)\/?$/.test(url.pathname))) return
+      if (url.origin !== window.location.origin || url.pathname !== window.location.pathname || url.hash !== '#reserva') return
       event.preventDefault()
       // React Router respects defaultPrevented; menu close handlers can still run.
       setOpen(true)

@@ -14,4 +14,6 @@ Validació: compilació i comprovacions SEO/migració/analítica; formulari real
 
 Els textos legals continuen pendents de les dades del titular; s'ha corregit la descripció tècnica de cookies perquè reflecteixi el formulari incrustat i les eines realment activades.
 
-Actualització modal: els botons de reserva obren el calendari sense abandonar la pàgina. Tancament amb botó, Escape o fons exterior, retorn del focus i bloqueig del desplaçament de la pàgina. Verificat en Chrome: càrrega del calendari, tancament i reobertura, URL conservada. La simulació de viewport mòbil no es va aplicar al navegador i resta pendent la comprovació visual en un dispositiu real.
+Actualització modal: els enllaços de reserva de la web naveguen a la pàgina de reserves; només els enllaços locals #reserva dins d’aquesta pàgina obren el calendari en una finestra. Tancament amb botó, Escape o fons exterior, retorn del focus i bloqueig del desplaçament de la pàgina. Verificat en Chrome: càrrega del calendari, tancament i reobertura, URL conservada. La simulació de viewport mòbil no es va aplicar al navegador i resta pendent la comprovació visual en un dispositiu real.
+
+Correcció de navegació: prova local Inici → Reservar → /ca/reserves → Reservar taula → diàleg. A Hostinger, verificat 3 adults → 18/09/2026 → dinar → Menú del Xef a la Sala → 12:45 → formulari complet de dades personals, sense introduir dades ni confirmar. Error d’acció no permesa comunicat pel client encara no reproduït; pendent URL exacta del cas.
