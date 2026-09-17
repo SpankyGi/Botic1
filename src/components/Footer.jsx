@@ -28,10 +28,11 @@ export default function Footer() {
             <h2>{t('footer.exploreTitle')}</h2>
             <Link to={routes.restaurant}>{t('footer.restaurant')}</Link>
             <Link to={routes.gastronomia}>{t('footer.gastronomia')}</Link>
-            <Link to={routes.menus}>{t('footer.menus')}</Link>
             <Link to={routes.experiencia}>{t('footer.experiencia')}</Link>
-            {["chefTable", "videos", "identity"].map(key => <Link key={key} to={`/${lang}/${ROUTE_SLUGS[lang][key]}/`}>{legacyContent.copy[lang][key][0]}</Link>)}
+            <Link to={routes.menus}>{t('footer.menus')}</Link>
+            <Link to={`/${lang}/${ROUTE_SLUGS[lang].chefTable}/`}>{legacyContent.copy[lang].chefTable[0]}</Link>
             <a href={`${routes.restaurant}#team`}>{t('footer.team')}</a>
+            {["videos", "identity"].map(key => <Link key={key} to={`/${lang}/${ROUTE_SLUGS[lang][key]}/`}>{legacyContent.copy[lang][key][0]}</Link>)}
           </nav>
 
           <section className="footer-column footer-visit">
