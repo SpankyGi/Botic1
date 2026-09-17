@@ -34,7 +34,7 @@ export default function BookingModal() {
       if (!link || link.target === '_blank') return
       const url = new URL(link.href, window.location.href)
       const gift = url.origin === 'https://bo-tic.myrestoo.net' && /^\/(ca|es|en|fr)\/tienda\/?$/.test(url.pathname)
-      const booking = RESERVATION_PAGE.test(window.location.pathname) && url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash === '#reserva'
+      const booking = (url.origin === 'https://bo-tic.myrestoo.net' && /^\/(ca|es|en|fr)\/reservar\/?$/.test(url.pathname)) || (RESERVATION_PAGE.test(window.location.pathname) && url.origin === window.location.origin && url.pathname === window.location.pathname && url.hash === '#reserva')
       if (!gift && !booking) return
       event.preventDefault()
       // React Router respects defaultPrevented; menu close handlers can still run.

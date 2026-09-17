@@ -9812,3 +9812,16 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 .careers-availability { padding:18px 20px; margin:0 0 22px; border-left:3px solid #a51f3d; background:#f1e2df; font:400 14px/1.7 'Plus Jakarta Sans',sans-serif; }
 .careers-availability p { margin:0 0 10px; }
 .careers-email { color:#8e2038; font-weight:600; text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
+
+/* Floating actions echo the hero mark: large lower-left dot, small upper-right dot. */
+.float-ctas { width:162px; height:152px; display:block; pointer-events:none; }
+.float-ctas .cta-circle { position:absolute; left:0; bottom:0; width:96px; height:96px; background:#a51f3d; font-size:11px; letter-spacing:.06em; font-weight:600; pointer-events:auto; }
+.float-ctas .cta-circle.small { left:auto; bottom:auto; top:0; right:0; width:48px; height:48px; font-size:8px; letter-spacing:.01em; background:#a51f3d; }
+.float-ctas .cta-circle:focus-visible { outline:3px solid #fff; outline-offset:4px; box-shadow:0 0 0 7px #a51f3d; }
+.float-ctas.is-hidden .cta-circle { pointer-events:none; }
+@media(max-width:600px) {
+  .float-ctas { width:136px; height:128px; }
+  .float-ctas .cta-circle { width:80px; height:80px; font-size:10px; }
+  .float-ctas .cta-circle.small { width:44px; height:44px; font-size:7px; }
+}
+@media(prefers-reduced-motion:reduce) { .float-ctas,.float-ctas .cta-circle,.float-ctas .cta-circle::before { transition:none; } }

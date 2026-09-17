@@ -1,11 +1,10 @@
-import { Link, useLocation } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { useLang, useLangRoutes } from '../i18n/LangContext'
+import { useLang } from '../i18n/LangContext'
 import { useEffect, useState } from 'react'
 
 export default function FloatingCTAs() {
   const { t } = useTranslation()
-  const routes = useLangRoutes()
   const lang = useLang()
   const { pathname } = useLocation()
   const [isHidden, setIsHidden] = useState(false)
@@ -30,13 +29,11 @@ export default function FloatingCTAs() {
   return (
     <div className={`float-ctas${isHidden ? ' is-hidden' : ''}`}>
       <a href={`https://bo-tic.myrestoo.net/${lang}/tienda`} className="cta-circle small hover-trigger">
-        <span className="cta-symbol" aria-hidden="true">↗</span>
         <span>{t('floating.gift')}</span>
       </a>
-      <Link to={routes.reserves} className="cta-circle hover-trigger">
-        <span className="cta-symbol" aria-hidden="true">●</span>
+      <a href={`https://bo-tic.myrestoo.net/${lang}/reservar`} className="cta-circle hover-trigger">
         <span>{t('floating.book')}</span>
-      </Link>
+      </a>
     </div>
   )
 }
