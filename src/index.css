@@ -9780,3 +9780,9 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 .legacy-content a { color: #a32b32; text-decoration: underline; text-underline-offset: 5px; }
 .legacy-actions { display: flex; flex-wrap: wrap; gap: 28px; }
 @media (max-width: 768px) { .legacy-content { padding-top: 120px; } .legacy-grid { grid-template-columns: 1fr; gap: 12px; } }
+
+.restoo-booking-host { scroll-margin-top: 110px; min-width: 0; background: #fff; color: #211b18; }
+.restoo-booking-host:has(iframe) { min-height: 500px; padding: clamp(16px, 3vw, 32px); }
+.restoo-booking-fallback, .restoo-booking > [role="status"] { color: #e6bac3; }
+.restoo-booking-fallback { font-size: 13px; line-height: 1.7; margin-top: 22px; }
+.restoo-booking-fallback a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }

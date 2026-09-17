@@ -49,6 +49,7 @@ export default function CookieConsent() {
     const tracking = getTracking()
     const revoked = (stored?.analytics && !next.analytics) || (stored?.marketing && !next.marketing)
     tracking.applyConsent(next)
+    window.dispatchEvent(new CustomEvent('botic:consent-changed', { detail: next }))
     setStored(next); setChoices(next); setOpen(false)
     if (revoked) {
       clearTrackingCookies()
