@@ -17,3 +17,6 @@
 .booking-group-notice a { display:inline-block; color:#8c1832; font-weight:700; text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
 .booking-group-notice a:focus-visible { outline:2px solid #a51f3d; outline-offset:4px; }
 @media(max-width:600px) { .booking-group-notice { margin:16px 12px 0; padding:16px; } }
+
+.booking-modal .restoo-booking-host:has(.restoo-legacy-frame) { padding:0; }
+.restoo-legacy-frame { display:block; width:100%; height:720px; height:max(540px,75dvh); border:0; background:#fff; }

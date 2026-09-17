@@ -1,19 +1,11 @@
-# Reserves integrades amb Restoo
+# Reserves amb Restoo
 
-Integració del 17/09/2026 segons https://restoo.mintlify.app/es/widget/migration-embedded-install i les pàgines advanced-installation i consent.
+Actualització 17/09/2026: el widget nou s'ha desactivat després de reproduir «No està permès realitzar aquesta acció» en enviar dades personals autoritzades. No s'ha rebut confirmació de reserva. La causa del rebuig no està identificada.
 
-- Compte: `bo-tic`. Càrrega del mòdul oficial `https://bo-tic.myrestoo.net/js/restoo-widget` en obrir la finestra de reserves.
-- Formulari INLINE dins d’un diàleg modal natiu, idioma ca/es/en/fr segons la pàgina. Instància estable `botic-reservations` per conservar els enllaços profunds de Restoo.
-- Es neteja el contenidor en tancar la finestra o sortir de la ruta; Restoo elimina les instàncies desconnectades en tornar a muntar. No s'utilitzen mètodes de destrucció no documentats.
-- Enllaç alternatiu al portal allotjat sempre disponible, també sense JavaScript. Les dades i els pagaments es gestionen al formulari de Restoo, no al servidor del web.
-- Es respecta la decisió d'analítica del banner i els seus canvis. Publicitat i record opcional del client desactivats; seguretat activa. Cap acceptació d'analítica és necessària per reservar.
-- GA4/GTM de Restoo desactivats fora de bo-tic.com/www.bo-tic.com. En producció es conserven les destinacions configurades al compte de Restoo: encara cal verificar-les amb el titular abans de donar per mesurades les reserves completades.
-- No s'ha creat cap reserva real ni s'han introduït dades personals durant les proves.
+La finestra pròpia es conserva, inclòs l'avís de taules de més de 6 persones per correu a restaurant@bo-tic.com. Ara carrega en un iframe el portal anterior https://bo-tic.myrestoo.net/{lang}/reservar, el mateix destí enllaçat per la web actual. Els enllaços generals continuen portant a la pàgina de reserves i els botons locals #reserva obren la finestra.
 
-Validació: compilació i comprovacions SEO/migració/analítica; formulari real en Chrome en català a escriptori i castellà a 390 px, consulta de data i servei, navegació a Restaurant i retorn. El navegador integrat de Codex deixava els iframes externs en blanc; Chrome carregava correctament el calendari. La confirmació final i el pagament no s'han provat.
+Idiomes: ca/es/en/fr. Enllaç alternatiu al portal en una pestanya nova si el navegador impedeix el funcionament incrustat. Les dades de reserva es tracten a Restoo. No es carrega Restoo.js ni es transmet consentiment o configuració d'analítica mitjançant la seva API nova; el portal anterior gestiona les seves pròpies preferències. No es dona per verificada cap conversió de reserva completada.
 
-Els textos legals continuen pendents de les dades del titular; s'ha corregit la descripció tècnica de cookies perquè reflecteixi el formulari incrustat i les eines realment activades.
+Cal validar l'enviament final del portal anterior dins del modal abans de considerar resolt el problema de reserves. No s'ha de confondre la càrrega del formulari amb una reserva confirmada.
 
-Actualització modal: els enllaços de reserva de la web naveguen a la pàgina de reserves; només els enllaços locals #reserva dins d’aquesta pàgina obren el calendari en una finestra. Tancament amb botó, Escape o fons exterior, retorn del focus i bloqueig del desplaçament de la pàgina. Verificat en Chrome: càrrega del calendari, tancament i reobertura, URL conservada. La simulació de viewport mòbil no es va aplicar al navegador i resta pendent la comprovació visual en un dispositiu real.
-
-Correcció de navegació: prova local Inici → Reservar → /ca/reserves → Reservar taula → diàleg. A Hostinger, verificat 3 adults → 18/09/2026 → dinar → Menú del Xef a la Sala → 12:45 → formulari complet de dades personals, sense introduir dades ni confirmar. Error d’acció no permesa comunicat pel client encara no reproduït; pendent URL exacta del cas.
+Validació en Chrome (17/09/2026): portal anterior dins del modal local, 4 adults diumenge 20/09 a les 13:00, Menú del Xef Sala. Enviament de dades expressament autoritzat: supera el pas que fallava a v2 i arriba a la garantia de cancel·lació de Stripe (400 euros). No s'ha confirmat ni garantit la reserva: pas financer deixat al titular. Compilació correcta (48 rutes).
