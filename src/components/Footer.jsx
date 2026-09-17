@@ -1,4 +1,6 @@
 import legacyContent from '../data/legacyContent.json'
+import { useState } from 'react'
+import CareersDialog, { CAREERS_COPY } from './CareersDialog'
 import { useLang } from '../i18n/LangContext'
 import { ROUTE_SLUGS } from '../i18n/routes'
 import { useTranslation } from 'react-i18next'
@@ -12,6 +14,7 @@ export default function Footer() {
   const routes = useLangRoutes()
   const lang = useLang()
   const footerRef = useReveal(0.06)
+  const [careersOpen, setCareersOpen] = useState(false)
 
   return (
     <footer className="botic-footer">
@@ -32,6 +35,7 @@ export default function Footer() {
             <Link to={routes.menus}>{t('footer.menus')}</Link>
             <Link to={`/${lang}/${ROUTE_SLUGS[lang].chefTable}/`}>{legacyContent.copy[lang].chefTable[0]}</Link>
             <a href={`${routes.restaurant}#team`}>{t('footer.team')}</a>
+            <button type="button" className="footer-careers-link" onClick={() => setCareersOpen(true)}>{CAREERS_COPY[lang].title}</button>
             {["videos", "identity"].map(key => <Link key={key} to={`/${lang}/${ROUTE_SLUGS[lang][key]}/`}>{legacyContent.copy[lang][key][0]}</Link>)}
           </nav>
 
@@ -88,6 +92,7 @@ export default function Footer() {
           </nav>
         </div>
       </div>
+      {careersOpen && <CareersDialog lang={lang} privacyUrl={routes.privacy} onClose={() => setCareersOpen(false)} />}
     </footer>
   )
 }

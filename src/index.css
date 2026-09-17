@@ -9786,3 +9786,29 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 .restoo-booking-fallback, .restoo-booking > [role="status"] { color: #e6bac3; }
 .restoo-booking-fallback { font-size: 13px; line-height: 1.7; margin-top: 22px; }
 .restoo-booking-fallback a { color: inherit; text-decoration: underline; text-underline-offset: 4px; }
+.footer-careers-link { display:block; padding:0; border:0; background:none; color:rgba(255,248,237,.82); font:300 13px/1.72 'Plus Jakarta Sans',sans-serif; text-align:left; cursor:pointer; }
+.footer-careers-link:hover { color:#fff8ed; }
+.footer-careers-link:focus-visible { outline:1px solid #a51f3d; outline-offset:4px; }
+.careers-dialog { box-sizing:border-box; position:fixed; inset:0; margin:auto; width:min(620px,calc(100% - 32px)); max-height:calc(100dvh - 32px); overflow:auto; padding:clamp(26px,5vw,48px); border:1px solid #d9d0c4; background:#f7f3eb; color:#241b16; box-shadow:0 24px 100px #0005; }
+.careers-dialog::backdrop { background:rgba(24,16,12,.75); backdrop-filter:blur(5px); }
+.careers-close { position:absolute; top:12px; right:14px; border:0; background:none; color:inherit; font:300 30px/1 sans-serif; width:40px; height:40px; cursor:pointer; }
+.careers-brand { color:#a51f3d; font:500 10px/1.5 'Plus Jakarta Sans',sans-serif; letter-spacing:.2em; }
+.careers-dialog h2 { font:400 clamp(30px,5vw,44px)/1.15 'Plus Jakarta Sans',sans-serif; letter-spacing:-.045em; margin:16px 0 18px; padding-right:15px; }
+.careers-intro { font:300 14px/1.8 'Plus Jakarta Sans',sans-serif; color:#645950; margin-bottom:26px; }
+.careers-dialog form { display:grid; gap:17px; }
+.careers-dialog label { display:grid; gap:8px; font:500 12px/1.5 'Plus Jakarta Sans',sans-serif; }
+.careers-fields { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.careers-dialog input,.careers-dialog textarea { box-sizing:border-box; width:100%; min-width:0; border:1px solid #cfc4b7; border-radius:0; padding:12px; background:#fffcf7; color:#241b16; font:400 16px/1.5 'Plus Jakarta Sans',sans-serif; }
+.careers-dialog textarea { resize:vertical; min-height:110px; }
+.careers-dialog input:focus,.careers-dialog textarea:focus { outline:2px solid #a51f3d; outline-offset:2px; }
+.careers-submit { padding:15px 22px; border:1px solid #a51f3d; background:#a51f3d; color:white; font:500 13px/1.5 'Plus Jakarta Sans',sans-serif; cursor:pointer; }
+.careers-submit:disabled { opacity:.6; cursor:wait; }
+.careers-note { margin:0; font:400 11px/1.7 'Plus Jakarta Sans',sans-serif; color:#645950; }
+.careers-privacy { color:#8e2038; text-decoration:underline; text-underline-offset:3px; }
+.careers-feedback { color:#8e2038; font:400 14px/1.7 'Plus Jakarta Sans',sans-serif; }
+.careers-honey { position:absolute; left:-10000px; width:1px; height:1px; overflow:hidden; }
+@media(max-width:520px) { .careers-fields { grid-template-columns:1fr; } .careers-dialog { padding:28px 22px; } }
+
+.careers-availability { padding:18px 20px; margin:0 0 22px; border-left:3px solid #a51f3d; background:#f1e2df; font:400 14px/1.7 'Plus Jakarta Sans',sans-serif; }
+.careers-availability p { margin:0 0 10px; }
+.careers-email { color:#8e2038; font-weight:600; text-decoration:underline; text-underline-offset:3px; overflow-wrap:anywhere; }
