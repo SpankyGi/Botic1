@@ -1,6 +1,26 @@
 Options -MultiViews
 RewriteEngine On
 
+# Only preview hosts are excluded from indexing; never propagate noindex to production.
+<IfModule mod_headers.c>
+  Header always set X-Robots-Tag "noindex, nofollow" "expr=%{HTTP_HOST} =~ /(?i)\.hostingersite\.com$/"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+  Header always set Content-Security-Policy "upgrade-insecure-requests; frame-ancestors 'self'"
+  Header always set Strict-Transport-Security "max-age=31536000" "expr=%{HTTPS} == 'on' && %{HTTP_HOST} =~ /(?i)^(www\.)?bo-tic\.com$/"
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+  <FilesMatch "^index-[A-Za-z0-9_-]+\.(js|css)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
+# Redirect explicit directory indexes only when requested by the visitor.
+RewriteCond %{THE_REQUEST} \s/+([^?\ ]*/)?index\.html(?:[?\ ]|$) [NC]
+RewriteRule ^(.*)index\.html$ /$1 [R=301,L]
+
 # Keep the established production host. Preview domains are unaffected.
 RewriteCond %{HTTP_HOST} ^www\.bo-tic\.com$ [NC]
 RewriteRule ^ https://bo-tic.com%{REQUEST_URI} [R=301,L]

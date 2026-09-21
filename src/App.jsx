@@ -5,7 +5,7 @@ import { LangProvider } from './i18n/LangContext'
 import { ROUTE_SLUGS, LANGS, DEFAULT_LANG } from './i18n/routes'
 
 import CustomCursor  from './components/CustomCursor'
-import Preloader     from './components/Preloader'
+import { useTranslation } from 'react-i18next'
 import Nav           from './components/Nav'
 import ScrollProgress from './components/ScrollProgress'
 import FloatingCTAs  from './components/FloatingCTAs'
@@ -61,16 +61,17 @@ function LangRoutes({ lang }) {
 }
 
 function AppContent() {
+  const { t } = useTranslation()
   return (
     <>
       <ScrollToTop />
       <CustomCursor />
-      <Preloader />
+      <a className="skip-link" href="#main-content">{t('common.skipContent')}</a>
       <Nav />
       <ScrollProgress />
       <FloatingCTAs />
       <BookingModal />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Routes>
           {/* Root redirect → /ca */}
           <Route path="/" element={<Navigate to={`/${DEFAULT_LANG}`} replace />} />

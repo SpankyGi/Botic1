@@ -54,6 +54,7 @@
     "legalLinksLabel": "Informació legal"
   },
   "common": {
+    "skipContent": "Salta al contingut",
     "bookTable": "Reservar taula",
     "bookNow": "Reservar ara",
     "contact": "Contactar",
@@ -105,7 +106,7 @@
   "home": {
     "introLabel": "Bo.TiC · Corçà · Empordà",
     "introHeading": "Cuina amb arrel.\nExperiència sense igual.",
-    "introBody": "Bo.TiC és un restaurant gastronòmic de referència a l'Empordà. Dos estels Michelin, una masia rehabilitada i una cuina que entén el territori com a primera matèria.",
+    "introBody": "Bo.TiC és un restaurant gastronòmic de referència a l'Empordà. Dues estrelles Michelin, una antiga fusteria de carruatges restaurada i una cuina que entén el territori com a primera matèria.",
     "seoIntroHeading": "Bo.TiC, restaurant gastronòmic a Corçà, al cor de l’Empordà.",
     "seoIntroBody": "Cuina de producte i temporada, amb arrel, tècnica i una mirada contemporània.",
     "peopleCodaAria": "Albert i Cristina, equip de Bo.TiC",
@@ -115,7 +116,7 @@
     "cristinaRole": "Sala i sommelier",
     "featRestaurantTag": "El Restaurant",
     "featRestaurantTitle": "Un espai pensat per a la taula",
-    "featRestaurantBody": "Una masia del segle XVIII al nucli de Corçà. Pedra, fusta i llum natural al servei de la gastronomia.",
+    "featRestaurantBody": "Una antiga fusteria de carruatges, restaurada el 2017, a Corçà. Pedra, fusta i llum natural al servei de la gastronomia.",
     "featRestaurantLabel": "Descobrir",
     "featGastroTag": "Gastronomia",
     "featGastroTitle": "El producte és la primera decisió",
@@ -304,7 +305,7 @@
     "faqQ4": "Cal fer reserva?",
     "faqA4": "Sí, és obligatori reservar amb antelació per assegurar la disponibilitat i preparar la vostra experiència amb la màxima cura.",
     "faqQ5": "On es troba Bo.TiC?",
-    "faqA5": "Bo.TiC es troba a Corçà, a l'Empordà, en una masia rehabilitada on conviuen el territori, la cuina d'autor i l'hospitalitat.",
+    "faqA5": "Bo.TiC es troba a Corçà, a l'Empordà, en una antiga fusteria de carruatges restaurada on conviuen el territori, la cuina d'autor i l'hospitalitat.",
     "faqQ6": "Hi ha opció de maridatge?",
     "faqA6": "Sí, podeu acompanyar el menú amb una selecció del nostre celler, amb més de 1.000 referències. Les recomanacions comencen pels vins de proximitat i s’amplien cap a altres territoris, segons els plats i les vostres preferències.",
     "faqQ7": "Quina és la diferència entre els menús?",

@@ -17,7 +17,7 @@ export default function LegacyContent({ pageKey }) {
   const [title, description, body] = copy[pageKey]
   return (
     <article className="legacy-content container-max">
-      <SEO title={`${title} · Bo.TiC`} description={description} pageKey={pageKey} />
+      <SEO title={copy.seo[pageKey]} description={description} pageKey={pageKey} />
       <h1>{title}</h1>
       <p className="legacy-intro">{description}</p>
       {pageKey === 'chefTable' && <>

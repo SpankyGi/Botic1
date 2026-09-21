@@ -35,10 +35,15 @@ function HeroBrand({ pulseKey, tone }) {
 const SLIDE_MS = 6500
 
 function HeroGallery({ activeIndex, previousIndex }) {
+  const [readyNext, setReadyNext] = useState(null)
+  useEffect(() => {
+    const timer = setTimeout(() => setReadyNext((activeIndex + 1) % HERO_STILLS.length), 3000)
+    return () => clearTimeout(timer)
+  }, [activeIndex])
   return (
     <div className="hero-gallery" aria-hidden="true">
-      {HERO_STILLS.map((still, index) => (
-        <div key={still.src} className={`hero-slide${index === activeIndex ? ' is-active' : ''}${index === previousIndex ? ' is-previous' : ''}`}>
+      {HERO_STILLS.map((still, index) => (index === activeIndex || index === previousIndex || index === readyNext) && (
+        <div key={still.src} className={`hero-slide${index === activeIndex ? ' is-active' : ''}${index === previousIndex ? ' is-previous' : ''}${previousIndex === null ? ' is-initial' : ''}`}>
         <ResponsiveImage
           className="hero-gallery-image"
           src={still.src}
@@ -164,7 +169,7 @@ export default function Hero() {
         <div className="hero-text">
           <div className="hero-eyebrow">{t('hero.awardLine')}</div>
           <h1 className="hero-title">
-            <span className="word"><span>{t('hero.word1')}</span></span>
+            <span className="word"><span>{t('hero.word1')}</span></span>{' '}
             <span className="word"><span>{t('hero.word2')}</span></span>
           </h1>
           <p className="hero-sub">{t('hero.sub')}</p>

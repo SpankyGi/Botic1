@@ -1,3 +1,4 @@
+import { restaurantEntity } from '../components/RestaurantSchema'
 import BrandDot from '../components/BrandDot'
 import { Fragment, useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
@@ -520,31 +521,12 @@ export default function Restaurant() {
   const schema = {
       '@context': 'https://schema.org',
       '@graph': [
-        {
-          '@type': 'Restaurant',
-          '@id': `${BASE_URL}/#restaurant`,
-          menu: `${BASE_URL}${routes.menus}/`,
-          acceptsReservations: `${BASE_URL}${routes.reserves}/`,
-          name: 'Bo.TiC',
-          image: `${BASE_URL}/images/restaurant-botic-corca-emporda-facana-nit.webp`,
-          url: `${BASE_URL}${routes.restaurant}/`,
-          telephone: '+34972630869',
-          email: 'restaurant@bo-tic.com',
-          priceRange: '€€€€',
-          address: {
-            '@type': 'PostalAddress',
-            streetAddress: 'Av. Costa Brava, 6',
-            addressLocality: 'Corçà',
-            postalCode: '17121',
-            addressRegion: 'Girona',
-            addressCountry: 'ES',
-          },
-        },
+        restaurantEntity(routes),
         {
           '@type': 'BreadcrumbList',
           itemListElement: [
-            { '@type': 'ListItem', position: 1, name: 'Bo.TiC', item: `${BASE_URL}${routes.home}/` },
-            { '@type': 'ListItem', position: 2, name: t('restaurant.heroEyebrow'), item: `${BASE_URL}${routes.restaurant}/` },
+            { '@type': 'ListItem', position: 1, name: 'Bo.TiC', item: `${BASE_URL}${routes.home}` },
+            { '@type': 'ListItem', position: 2, name: t('restaurant.heroEyebrow'), item: `${BASE_URL}${routes.restaurant}` },
           ],
         },
       ],

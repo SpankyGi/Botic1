@@ -1,4 +1,5 @@
 import BrandDot from '../components/BrandDot'
+import RestaurantSchema from '../components/RestaurantSchema'
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
@@ -178,6 +179,7 @@ export default function Home() {
         pageKey="home"
       />
 
+      <RestaurantSchema />
       <Hero />
 
       {/* ── Tres portes per descobrir Bo·TiC ── */}
@@ -185,8 +187,7 @@ export default function Home() {
         <img
           className="home-albert-editorial"
           src="/images/albert-sastregener-editorial-transparent.webp" srcSet="/images/albert-sastregener-editorial-transparent-mobile.webp 480w, /images/albert-sastregener-editorial-transparent.webp 906w" sizes="(max-width: 768px) 45vw, 480px"
-          alt=""
-          aria-hidden="true"
+          alt={t('home.albertName')}
           loading="lazy"
           decoding="async"
         />
@@ -197,8 +198,7 @@ export default function Home() {
         <img
           className="home-cristina-editorial"
           src="/images/cristina-editorial-transparent-v2.webp" srcSet="/images/cristina-editorial-transparent-v2-mobile.webp 480w, /images/cristina-editorial-transparent-v2.webp 818w" sizes="(max-width: 768px) 45vw, 480px"
-          alt=""
-          aria-hidden="true"
+          alt={t('home.cristinaName')}
           loading="lazy"
           decoding="async"
         />
@@ -218,14 +218,14 @@ export default function Home() {
           </div>
           <div className="mobile-people-coda" aria-label={t('home.peopleCodaAria')}>
             <div className="mobile-person mobile-person-albert">
-              <img src="/images/albert-sastregener-editorial-transparent.webp" srcSet="/images/albert-sastregener-editorial-transparent-mobile.webp 480w, /images/albert-sastregener-editorial-transparent.webp 906w" sizes="(max-width: 768px) 45vw, 480px" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <img src="/images/albert-sastregener-editorial-transparent.webp" srcSet="/images/albert-sastregener-editorial-transparent-mobile.webp 480w, /images/albert-sastregener-editorial-transparent.webp 906w" sizes="(max-width: 768px) 45vw, 480px" alt={t('home.albertName')} loading="lazy" decoding="async" />
               <div className="mobile-person-signature">
                 <span>{t('home.albertName')}</span>
                 <span>{t('home.albertRole')}</span>
               </div>
             </div>
             <div className="mobile-person mobile-person-cristina">
-              <img src="/images/cristina-editorial-transparent-v2.webp" srcSet="/images/cristina-editorial-transparent-v2-mobile.webp 480w, /images/cristina-editorial-transparent-v2.webp 818w" sizes="(max-width: 768px) 45vw, 480px" alt="" aria-hidden="true" loading="lazy" decoding="async" />
+              <img src="/images/cristina-editorial-transparent-v2.webp" srcSet="/images/cristina-editorial-transparent-v2-mobile.webp 480w, /images/cristina-editorial-transparent-v2.webp 818w" sizes="(max-width: 768px) 45vw, 480px" alt={t('home.cristinaName')} loading="lazy" decoding="async" />
               <div className="mobile-person-signature">
                 <span>{t('home.cristinaName')}</span>
                 <span>{t('home.cristinaRole')}</span>
@@ -262,7 +262,7 @@ export default function Home() {
             <span className="home-intro-label">{t('home.introLabel')}</span>
             <h2 className="font-serif font-light leading-tight tracking-tight home-intro-title">
               {t('home.introHeading').split('\n').map((line, i) => (
-                <span className="home-intro-title-line" key={i}>{line}{i === 0 && <br />}</span>
+                <span className="home-intro-title-line" key={i}>{line}{i === 0 && <> <br /></>}</span>
               ))}
             </h2>
             <p className="font-sans home-intro-body">

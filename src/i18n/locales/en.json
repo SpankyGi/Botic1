@@ -54,6 +54,7 @@
     "legalLinksLabel": "Legal information"
   },
   "common": {
+    "skipContent": "Skip to content",
     "bookTable": "Book a table",
     "bookNow": "Book now",
     "contact": "Contact",
@@ -105,7 +106,7 @@
   "home": {
     "introLabel": "Bo.TiC · Corçà · Empordà",
     "introHeading": "Rooted cuisine.\nAn unmatched experience.",
-    "introBody": "Bo.TiC is a reference gastronomic restaurant in the Empordà. Two Michelin stars, a restored farmhouse and a cuisine that understands the territory as its primary ingredient.",
+    "introBody": "Bo.TiC is a reference gastronomic restaurant in the Empordà. Two Michelin stars, a restored former carriage workshop and a cuisine that understands the territory as its primary ingredient.",
     "seoIntroHeading": "Bo.TiC, a gastronomic restaurant in Corçà, at the heart of Empordà.",
     "seoIntroBody": "Ingredient-led, seasonal cuisine with roots, technique and a contemporary outlook.",
     "peopleCodaAria": "Albert and Cristina, Bo.TiC team",
@@ -115,7 +116,7 @@
     "cristinaRole": "Front of house & sommelier",
     "featRestaurantTag": "The Restaurant",
     "featRestaurantTitle": "A space designed for the table",
-    "featRestaurantBody": "An 18th-century farmhouse in the heart of Corçà. Stone, wood and natural light in service of gastronomy.",
+    "featRestaurantBody": "A former carriage workshop in Corçà, restored in 2017. Stone, wood and natural light in service of gastronomy.",
     "featRestaurantLabel": "Discover",
     "featGastroTag": "Gastronomy",
     "featGastroTitle": "The product is the first decision",
@@ -304,7 +305,7 @@
     "faqQ4": "Is a reservation necessary?",
     "faqA4": "Yes, advance booking is required to ensure availability and allow us to prepare your experience with the utmost care.",
     "faqQ5": "Where is Bo.TiC located?",
-    "faqA5": "Bo.TiC is located in Corçà, in the Empordà, in a restored farmhouse where territory, chef's cuisine and hospitality come together.",
+    "faqA5": "Bo.TiC is located in Corçà, in the Empordà, in a restored former carriage workshop where territory, chef's cuisine and hospitality come together.",
     "faqQ6": "Is there a wine pairing option?",
     "faqA6": "Yes, you can accompany your menu with a selection from our cellar of over 1,000 wines. Our recommendations begin with local wines and extend to regions further afield, guided by the dishes and your preferences.",
     "faqQ7": "What is the difference between the menus?",

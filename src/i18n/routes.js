@@ -56,11 +56,11 @@ export function slugToKey(lang, slug) {
 export function switchLangUrl(currentPath, fromLang, toLang) {
   // currentPath e.g. "/ca/restaurant" or "/ca"
   const parts = currentPath.split('/').filter(Boolean) // ['ca', 'restaurant']
-  if (parts.length === 0) return `/${toLang}`
+  if (parts.length === 0) return `/${toLang}/`
   const slugPart = parts[1] // 'restaurant'
-  if (!slugPart) return `/${toLang}`
+  if (!slugPart) return `/${toLang}/`
   const pageKey = slugToKey(fromLang, slugPart)
-  if (!pageKey) return `/${toLang}`
+  if (!pageKey) return `/${toLang}/`
   const newSlug = ROUTE_SLUGS[toLang][pageKey]
-  return `/${toLang}/${newSlug}`
+  return `/${toLang}/${newSlug}/`
 }

@@ -12,17 +12,17 @@ export function useLangRoutes() {
   const lang = useLang()
   const slugs = ROUTE_SLUGS[lang] || ROUTE_SLUGS[DEFAULT_LANG]
   return {
-    home:        `/${lang}`,
-    restaurant:  `/${lang}/${slugs.restaurant}`,
-    gastronomia: `/${lang}/${slugs.gastronomia}`,
-    menus:       `/${lang}/${slugs.menus}`,
-    experiencia: `/${lang}/${slugs.experiencia}`,
-    reserves:    `/${lang}/${slugs.reserves}`,
-    horaris:     `/${lang}/${slugs.horaris}`,
-    legal:       `/${lang}/${slugs.legal}`,
-    privacy:     `/${lang}/${slugs.privacy}`,
-    cookies:     `/${lang}/${slugs.cookies}`,
-    preferences: `/${lang}/${slugs.preferences}`,
+    home:        `/${lang}/`,
+    restaurant:  `/${lang}/${slugs.restaurant}/`,
+    gastronomia: `/${lang}/${slugs.gastronomia}/`,
+    menus:       `/${lang}/${slugs.menus}/`,
+    experiencia: `/${lang}/${slugs.experiencia}/`,
+    reserves:    `/${lang}/${slugs.reserves}/`,
+    horaris:     `/${lang}/${slugs.horaris}/`,
+    legal:       `/${lang}/${slugs.legal}/`,
+    privacy:     `/${lang}/${slugs.privacy}/`,
+    cookies:     `/${lang}/${slugs.cookies}/`,
+    preferences: `/${lang}/${slugs.preferences}/`,
   }
 }
 

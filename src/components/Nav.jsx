@@ -31,7 +31,7 @@ export default function Nav() {
   const routes        = useLangRoutes()
   const switchLang    = useSwitchLang()
   const location      = useLocation()
-  const isHome        = location.pathname === routes.home
+  const isHome        = location.pathname.replace(/\/$/, '') === routes.home.replace(/\/$/, '')
 
   const [scrolled,    setScrolled]   = useState(false)
   const [menuOpen,    setMenuOpen]   = useState(false)

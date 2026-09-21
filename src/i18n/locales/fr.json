@@ -54,6 +54,7 @@
     "legalLinksLabel": "Informations légales"
   },
   "common": {
+    "skipContent": "Aller au contenu",
     "bookTable": "Réserver une table",
     "bookNow": "Réserver maintenant",
     "contact": "Contacter",
@@ -105,7 +106,7 @@
   "home": {
     "introLabel": "Bo.TiC · Corçà · Empordà",
     "introHeading": "Cuisine de terroir.\nUne expérience sans pareille.",
-    "introBody": "Bo.TiC est un restaurant gastronomique de référence en Empordà. Deux étoiles Michelin, une ferme réhabilitée et une cuisine qui comprend le territoire comme matière première.",
+    "introBody": "Bo.TiC est un restaurant gastronomique de référence en Empordà. Deux étoiles Michelin, un ancien atelier de carrosserie restauré et une cuisine qui comprend le territoire comme matière première.",
     "seoIntroHeading": "Bo.TiC, restaurant gastronomique à Corçà, au cœur de l’Empordà.",
     "seoIntroBody": "Une cuisine de produit et de saison, ancrée, technique et contemporaine.",
     "peopleCodaAria": "Albert et Cristina, l’équipe de Bo.TiC",
@@ -115,7 +116,7 @@
     "cristinaRole": "Salle & sommellerie",
     "featRestaurantTag": "Le Restaurant",
     "featRestaurantTitle": "Un espace pensé pour la table",
-    "featRestaurantBody": "Une ferme du XVIIIe siècle au cœur de Corçà. Pierre, bois et lumière naturelle au service de la gastronomie.",
+    "featRestaurantBody": "Un ancien atelier de carrosserie à Corçà, restauré en 2017. Pierre, bois et lumière naturelle au service de la gastronomie.",
     "featRestaurantLabel": "Découvrir",
     "featGastroTag": "Gastronomie",
     "featGastroTitle": "Le produit est la première décision",
@@ -304,7 +305,7 @@
     "faqQ4": "Est-il nécessaire de réserver ?",
     "faqA4": "Oui, la réservation à l’avance est obligatoire afin de garantir la disponibilité et de préparer votre expérience avec le plus grand soin.",
     "faqQ5": "Où se trouve Bo.TiC ?",
-    "faqA5": "Bo.TiC est situé à Corçà, en Empordà, dans une ferme réhabilitée où coexistent territoire, cuisine d'auteur et hospitalité.",
+    "faqA5": "Bo.TiC est situé à Corçà, en Empordà, dans un ancien atelier de carrosserie restauré où coexistent territoire, cuisine d'auteur et hospitalité.",
     "faqQ6": "Y a-t-il une option d'accords mets-vins ?",
     "faqA6": "Oui, vous pouvez accompagner votre menu d’une sélection de notre cave, qui compte plus de 1 000 références. Nos recommandations commencent par les vins locaux et s’étendent à d’autres terroirs, selon les plats et vos préférences.",
     "faqQ7": "Quelle est la différence entre les menus ?",

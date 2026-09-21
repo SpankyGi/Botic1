@@ -156,7 +156,7 @@ function HospitalitySection({ t }) {
     <section className="exp-hospitality" aria-labelledby="exp-team-title">
       <div className="exp-hospitality-images">
         <figure className="exp-hospitality-main"><ResponsiveImage src={TEAM} mobileSrc={mobileImage(TEAM)} alt={t('experiencia.equipImgAlt')} loading="lazy" /></figure>
-        <figure className="exp-hospitality-detail"><ResponsiveImage src={PORTRAIT} mobileSrc={mobileImage(PORTRAIT)} alt="" loading="lazy" /></figure>
+        <figure className="exp-hospitality-detail"><ResponsiveImage src={PORTRAIT} mobileSrc={mobileImage(PORTRAIT)} alt="Albert Sastregener" loading="lazy" /></figure>
         <span aria-hidden="true">{t('experiencia.equipGhost')}</span>
       </div>
       <div className="exp-hospitality-copy reveal" ref={revealRef}>

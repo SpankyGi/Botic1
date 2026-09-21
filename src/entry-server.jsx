@@ -35,7 +35,7 @@ export function getStaticSeo(url) {
   const { lang, pageKey } = routeDetails(url)
   const translation = i18n.getResourceBundle(lang, 'translation')
   const legal = LEGAL_SEO[lang]?.[pageKey] || legacyContent.copy[lang]?.[pageKey]
-  const content = legal ? { title: LEGAL_SEO[lang]?.[pageKey] ? legal[0] : `${legal[0]} · Bo.TiC`, description: legal[1] } : (translation?.seo?.[pageKey] || translation?.seo?.home)
+  const content = legal ? { title: LEGAL_SEO[lang]?.[pageKey] ? legal[0] : legacyContent.copy[lang].seo[pageKey], description: legal[1] } : (translation?.seo?.[pageKey] || translation?.seo?.home)
   const canonical = `${BASE_URL}${pathFor(lang, pageKey)}`
 
   return {

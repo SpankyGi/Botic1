@@ -9825,3 +9825,13 @@ svg.botic-item-dot.is-muted { opacity:.3; }
   .float-ctas .cta-circle.small { width:44px; height:44px; font-size:7px; }
 }
 @media(prefers-reduced-motion:reduce) { .float-ctas,.float-ctas .cta-circle,.float-ctas .cta-circle::before { transition:none; } }
+
+/* Launch audit: immediate hero paint, keyboard access and readable controls. */
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 200 500; font-display: swap; src: url('/fonts/plus-jakarta-sans-latin.woff2') format('woff2'); unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: 'Plus Jakarta Sans'; font-style: normal; font-weight: 200 500; font-display: swap; src: url('/fonts/plus-jakarta-sans-latin-ext.woff2') format('woff2'); unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+.hero--cinema .hero-slide.is-initial.is-active { animation: none; }
+.hero-slider-controls .hero-slider-dot { min-width: 24px; min-height: 36px; }
+.skip-link { position: fixed; z-index: 100000; top: 12px; left: 12px; padding: 12px 20px; background: #fffaf4; color: #211812; transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+.features-section .feature-tag, .features-section .feature-body { color: #fffaf4; }
+.features-section .feature-media::after, .features-section .feature-entry:nth-child(2) .feature-media::after { background: linear-gradient(0deg,rgba(15,13,11,.94),rgba(15,13,11,.60) 60%,rgba(15,13,11,.35)); }
