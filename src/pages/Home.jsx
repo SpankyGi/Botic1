@@ -210,7 +210,7 @@ export default function Home() {
           <div className="home-seo-intro reveal" ref={seoIntroRef}>
             <div className="home-seo-logo" aria-hidden="true">
               <span className="home-seo-symbol-reveal">
-              <img src="/images/botic-logo-original.webp" alt="" decoding="async" />
+              <img src="/images/botic-logo-original.webp" alt="" width="1081" height="682" decoding="async" />
               </span>
             </div>
             <SeoIntroHeading>{t('home.seoIntroHeading')}</SeoIntroHeading>
