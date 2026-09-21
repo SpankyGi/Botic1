@@ -131,9 +131,9 @@
     "seasonLink": "Découvrir les menus",
     "seasonControlsAria": "Index des créations de saison",
     "seasonItems": [
-      "Herbes sauvages", "Apéritif", "Thon de côte", "Bouillon marin", "Le geste final",
-      "Poisson de marché", "Langoustines", "Homard", "Asperge blanche", "Viande et fruits rouges",
-      "Fruits de mer", "Fraises", "Douceur de saison", "Racines de l'Empordà", "Poisson et braise",
+      "Salade de tomates", "El llaminer", "Thon", "Mérou", "Tendons de veau",
+      "Cabillaud", "Crevette", "Poulet et homard", "Asperge blanche", "Canard",
+      "Fruits de mer", "Fraises à la crème", "Agneau", "Racines de l'Empordà", "Poisson et braise",
       "Salinité", "Fond de mer", "Légumes", "Viande maturée", "Petit fours"
     ],
     "seasonDish1Name": "Herbes",
