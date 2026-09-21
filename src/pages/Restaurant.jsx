@@ -455,7 +455,7 @@ function TeamSection({ t }) {
             </div>
             <figcaption className="rst-team-caption">
               <span className="rst-team-label">{t('restaurant.headChefLabel')}</span>
-              <h3 className="rst-team-name">Alexandra Roncati</h3>
+              <h3 className="rst-team-name">Alessandra Rocati</h3>
               <p className="rst-team-body">{t('restaurant.headChefBody')}</p>
             </figcaption>
           </figure>
