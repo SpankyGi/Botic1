@@ -55,7 +55,7 @@ function SeasonStrip({ t, routes }) {
     '/images/botic-maig-2026-webp/plat-llamantol-restaurant-botic-emporda.webp',
     '/images/botic-maig-2026-webp/plat-esparrecs-blancs-restaurant-botic.webp',
     '/images/botic-maig-2026-webp/plat-carn-fruits-vermells-botic.webp',
-    '/images/producte-setembre-2026/restaurant-botic-emporda-plat-temporada-01.webp',
+    '/images/producte-setembre-2026/lluc-restaurant-botic-emporda.webp',
     '/images/botic-maig-2026-webp/postres-maduixes-menu-degustacio-botic.webp',
     '/images/botic-maig-2026-webp/alta-cuina-empordanesa-restaurant-botic.webp',
     '/images/producte-setembre-2026/restaurant-botic-emporda-plat-temporada-02.webp',
@@ -79,7 +79,7 @@ function SeasonStrip({ t, routes }) {
         </header>
 
         <div className="home-season-gallery">
-          <figure className="home-season-dish">
+          <figure className={`home-season-dish${dish.image.endsWith('/lluc-restaurant-botic-emporda.webp') ? ' home-season-dish--full-photo' : ''}`}>
             <ResponsiveImage key={dish.image} src={dish.image} mobileSrc={dish.image.replace('.webp', '-mobile.webp')} alt={dish.label} loading="lazy" />
             <figcaption aria-hidden="true"><BrandDot /></figcaption>
           </figure>

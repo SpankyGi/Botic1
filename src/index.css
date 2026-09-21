@@ -6852,6 +6852,8 @@ main { background: var(--paper); color: var(--ink); }
   box-shadow: 0 20px 48px rgba(59, 42, 24, .12);
   height: clamp(510px, 53vw, 760px);
 }
+.home-season-dish--full-photo { background: #eee; }
+.home-season-dish.home-season-dish--full-photo img { object-fit: contain; animation: none; }
 .home-season-dish img {
   display: block;
   width: 100%;
