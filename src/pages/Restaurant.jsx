@@ -416,8 +416,8 @@ function TeamSection({ t }) {
           <figure className="rst-team-block rst-team-primary kitchen reveal" ref={kitchenRef}>
             <div className="rst-team-photo">
               <ResponsiveImage
-                src="/images/albert-sastregener-cuina-emporda-girona.webp"
-                mobileSrc="/images/albert-sastregener-cuina-emporda-girona-mobile.webp"
+                src="/images/albert-sastregener-xef-botic-equip.webp"
+                mobileSrc="/images/albert-sastregener-xef-botic-equip-mobile.webp"
                 alt={t('restaurant.kitchenImgAlt')}
                 className="rst-team-img"
                 loading="lazy"
