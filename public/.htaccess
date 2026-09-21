@@ -26,6 +26,7 @@ RewriteCond %{HTTP_HOST} ^www\.bo-tic\.com$ [NC]
 RewriteRule ^ https://bo-tic.com%{REQUEST_URI} [R=301,L]
 
 # Existing public pages must keep their incoming links after migration.
+RewriteRule ^wp-content/uploads/sb-instagram-feed-images/568675773_18505317565071061_2232430570051798181_nfull\.webp$ /images/legacy/botic-instagram-18505317565071061.webp [R=301,L]
 RewriteRule ^restaurant/?$ /ca/restaurant/ [R=301,L]
 RewriteRule ^menus/?$ /ca/menus/ [R=301,L]
 RewriteRule ^horari/?$ /ca/reserves/ [R=301,L]

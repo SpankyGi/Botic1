@@ -1,5 +1,10 @@
 [
   {
+    "source": "/wp-content/uploads/sb-instagram-feed-images/568675773_18505317565071061_2232430570051798181_nfull.webp",
+    "target": "/images/legacy/botic-instagram-18505317565071061.webp",
+    "status": "301"
+  },
+  {
     "source": "/wp-content/uploads/2024/11/Botic-10-scaled.webp",
     "target": "/images/legacy/botic-botic-10-scaled.webp",
     "status": "301"
