@@ -66,8 +66,10 @@ function MenuNarrative({ t }) {
       num: '03',
       label: t('experiencia.moment03Label'),
       text: t('experiencia.moment03Text'),
+      mainAlt: t('experiencia.moment03ImgAlt'),
+      galleryClass: ' exp-gallery-images--sweet',
       images: [
-        '/images/restaurant-botic-emporda-detall-marca-01.webp',
+        '/images/galeta-botic-postres-experiencia.webp',
         '/images/restaurant-botic-emporda-creacio-culinaria-01.webp',
         '/images/restaurant-botic-emporda-postres-signatura-02.webp',
       ],
@@ -108,8 +110,8 @@ function MenuNarrative({ t }) {
         <div className="exp-gallery-stage" aria-live="polite">
         {moments.map((moment, index) => (
           <article className={`exp-gallery-slide${index === activeMoment ? ' is-active' : ''}`} key={moment.num} aria-hidden={index !== activeMoment}>
-            <div className="exp-gallery-images">
-              <figure className="exp-gallery-main"><ResponsiveImage src={moment.images[0]} mobileSrc={mobileImage(moment.images[0])} alt={moment.label} loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} /></figure>
+            <div className={`exp-gallery-images${moment.galleryClass || ''}`}>
+              <figure className="exp-gallery-main"><ResponsiveImage src={moment.images[0]} mobileSrc={mobileImage(moment.images[0])} alt={moment.mainAlt || moment.label} loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} /></figure>
               <figure className="exp-gallery-side"><ResponsiveImage src={moment.images[1]} mobileSrc={mobileImage(moment.images[1])} alt="" loading="lazy" /></figure>
               <figure className="exp-gallery-detail"><ResponsiveImage src={moment.images[2]} mobileSrc={mobileImage(moment.images[2])} alt="" loading="lazy" /></figure>
               <span className="exp-gallery-count" aria-hidden="true"><BrandDot /></span>
