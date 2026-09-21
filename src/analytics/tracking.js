@@ -18,6 +18,26 @@ export function createTracking({ win, doc, gtmId = '', gaId = '', enabled = fals
   let consent = { analytics: false, marketing: false }
   let started = false
   let lastPage = ''
+  let lastLocation = ''
+  // Keep campaign attribution without forwarding arbitrary query parameters
+  // (booking details, email addresses, tokens) to Analytics.
+  const campaignKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_id', 'utm_term', 'utm_content', 'gclid', 'dclid', 'gbraid', 'wbraid']
+  const landingSearch = new URLSearchParams(win.location.search || '')
+  function safeLocation(pathname, search) {
+    const url = new URL(pathname, win.location.origin)
+    url.search = ''
+    url.hash = ''
+    for (const key of campaignKeys) {
+      const value = search.get(key)
+      if (value) url.searchParams.set(key, value)
+    }
+    return url.href
+  }
+  let landingReferrer = ''
+  try {
+    const ref = new URL(doc.referrer)
+    if (['https:', 'http:'].includes(ref.protocol)) landingReferrer = ref.origin + ref.pathname
+  } catch { /* Direct visits have no referrer. */ }
   win.dataLayer = win.dataLayer || []
   function gtag() { win.dataLayer.push(arguments) }
   win.gtag = gtag
@@ -31,7 +51,7 @@ export function createTracking({ win, doc, gtmId = '', gaId = '', enabled = fals
   function applyConsent(choice) {
     consent = { analytics: choice.analytics === true, marketing: choice.marketing === true }
     gtag('consent', 'update', states(consent))
-    if (!consent.analytics) lastPage = ''
+    if (!consent.analytics) { lastPage = ''; lastLocation = '' }
     if (!enabled || (!gtm && !ga)) return
     win.dataLayer.push({ event: 'botic_consent', botic_analytics: consent.analytics, botic_marketing: consent.marketing })
     if (started || (!consent.analytics && !(gtm && consent.marketing))) return
@@ -55,12 +75,14 @@ export function createTracking({ win, doc, gtmId = '', gaId = '', enabled = fals
   }
   function page(pathname) {
     if (!consent.analytics || !started || pathname === lastPage) return
-    const previous = lastPage
+    const previous = lastLocation
+    const location = safeLocation(pathname, lastPage ? new URLSearchParams(win.location.search || '') : landingSearch)
     lastPage = pathname
+    lastLocation = location
     event('page_view', {
-      page_location: win.location.origin + pathname,
+      page_location: location,
       page_path: pathname,
-      page_referrer: previous ? win.location.origin + previous : '',
+      page_referrer: previous || landingReferrer,
       language: pathname.split('/')[1] || 'ca',
     })
   }

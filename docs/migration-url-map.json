@@ -126,23 +126,23 @@
   },
   {
     "source": "/botiga/",
-    "target": null,
-    "status": "DECISION_REQUIRED"
+    "target": "https://bo-tic.myrestoo.net/ca/tienda",
+    "status": "301"
   },
   {
     "source": "/cistella/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/el-meu-compte/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/finalitza-la-compra/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/identitat/",
@@ -152,17 +152,17 @@
   {
     "source": "/reemborsaments_devolucions/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/el-meu-compte/lost-password/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/en/cart/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/en/identity/",
@@ -172,17 +172,17 @@
   {
     "source": "/en/my-account/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/en/shop/",
-    "target": null,
-    "status": "DECISION_REQUIRED"
+    "target": "https://bo-tic.myrestoo.net/en/tienda",
+    "status": "301"
   },
   {
     "source": "/es/carrito/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/es/identidad/",
@@ -192,17 +192,17 @@
   {
     "source": "/es/mi-cuenta/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/es/tienda/",
-    "target": null,
-    "status": "DECISION_REQUIRED"
+    "target": "https://bo-tic.myrestoo.net/es/tienda",
+    "status": "301"
   },
   {
     "source": "/fr/boutique/",
-    "target": null,
-    "status": "DECISION_REQUIRED"
+    "target": "https://bo-tic.myrestoo.net/fr/tienda",
+    "status": "301"
   },
   {
     "source": "/fr/identite/",
@@ -212,12 +212,12 @@
   {
     "source": "/fr/mon-compte/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/fr/panier/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/pdf/BrandBook_Bo.TiC.pdf",
@@ -237,16 +237,16 @@
   {
     "source": "/en/my-account/lost-password/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/es/mi-cuenta/lost-password/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   },
   {
     "source": "/fr/mon-compte/lost-password/",
     "target": null,
-    "status": "DECISION_REQUIRED"
+    "status": "410"
   }
 ]

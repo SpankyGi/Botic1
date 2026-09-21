@@ -1,3 +1,17 @@
+# Actualització executada — 21/09/2026
+
+Aquest apartat substitueix els pendents històrics que es detallen més avall quan hi ha discrepància.
+
+- Autoritzada la retirada de la botiga antiga: 4 URL de botiga redirigeixen amb 301 a Restoo en l’idioma corresponent; 14 URL de comptes, compra, cistella i devolucions retornen 410. Cap dada de WordPress s’ha esborrat. El mapa JSON és la font actual.
+- 23 imatges originals recuperades, convertides a WebP i preservades amb redireccions exactes. Només queda fora el placeholder del connector d’Instagram. Mapa: migration-image-map.json.
+- Search Console i GA4 vinculats correctament el 21/09: propietat https://bo-tic.com/, flux 13351810979.
+- Atribució: conservats els paràmetres de campanya permesos i la procedència inicial; exclosos paràmetres arbitraris i fragments. Proves de consentiment i navegació SPA superades.
+- 19 imatges existents optimitzades: de 6500,8 a 5146,2 KiB, aproximadament un 21% menys. Comparacions visuals revisades. Les 6 variants mòbils revisades queden sota 150 KiB; algunes fotografies grans d’escriptori mantenen 360–454 KiB per preservar detall.
+- Pendents que depenen del domini: certificat, host canònic, resposta robots efectiva, sitemap a Search Console, preservació de verificació, prova Analytics/Tag Assistant en producció i conversions completades de Restoo.
+- Encara cal contrastar URL òrfenes amb exportacions històriques de Search Console. La migració no garanteix absència de fluctuacions de posicionament.
+
+---
+
 # Migració SEO de bo-tic.com — 17/09/2026
 
 ## Abast i límits

@@ -44,3 +44,21 @@ assert.equal(classifyLink('https://bo-tic.com/es/reservas', 'https://bo-tic.com'
 assert.equal(classifyLink('https://bo-tic.myrestoo.net.evil.test/ca', 'https://bo-tic.com'), null)
 assert.equal(classifyLink('https://www.google.com/maps/d/viewer?mid=test', 'https://bo-tic.com').event, 'directions_click')
 console.log('Analytics checks passed: consent gating, withdrawal, SPA deduplication, GTM/GA exclusivity, disabled mode, click classification.')
+const campaignWin = { location: { origin: 'https://bo-tic.com', search: '?utm_source=instagram&utm_medium=social&utm_campaign=autumn&email=private&token=secret' } }
+const campaignDoc = { referrer: 'https://www.google.com/search?q=private', createElement: () => ({}), head: { appendChild() {} } }
+const campaign = createTracking({ win: campaignWin, doc: campaignDoc, enabled: true, gtmId: 'GTM-ABC123' })
+campaign.page('/ca/')
+assert.equal(campaignWin.dataLayer.some(x => x.event === 'botic_page_view'), false)
+campaign.applyConsent({ analytics: true })
+campaign.page('/ca/')
+const landing = campaignWin.dataLayer.find(x => x.event === 'botic_page_view')
+assert.equal(landing.page_location, 'https://bo-tic.com/ca/?utm_source=instagram&utm_medium=social&utm_campaign=autumn')
+assert.equal(landing.page_referrer, 'https://www.google.com/search')
+campaignWin.location.search = ''
+campaign.page('/ca/menus/')
+const next = campaignWin.dataLayer.filter(x => x.event === 'botic_page_view').at(-1)
+assert.equal(next.page_location, 'https://bo-tic.com/ca/menus/')
+assert.equal(next.page_referrer, landing.page_location)
+assert.equal(JSON.stringify(campaignWin.dataLayer).includes('secret'), false)
+assert.equal(JSON.stringify(campaignWin.dataLayer).includes('private'), false)
+console.log('Campaign attribution and referrer tests passed without forwarding arbitrary query parameters.')
