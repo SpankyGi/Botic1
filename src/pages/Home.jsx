@@ -62,9 +62,10 @@ function SeasonStrip({ t, routes }) {
     '/images/producte-setembre-2026/restaurant-botic-emporda-plat-temporada-03.webp',
     '/images/producte-setembre-2026/restaurant-botic-emporda-plat-temporada-04.webp',
     '/images/producte-setembre-2026/restaurant-botic-emporda-plat-temporada-05.webp',
-    '/images/producte-setembre-2026/restaurant-botic-emporda-plat-temporada-06.webp',
+    '/images/producte-setembre-2026/el-bar-aperitius-restaurant-botic-emporda.webp',
   ].map((image, index) => ({ image, label: labels[index] }))
   const dish = dishes[activeDish]
+  const showFullPhoto = /\/(lluc-restaurant-botic-emporda|el-bar-aperitius-restaurant-botic-emporda)\.webp$/.test(dish.image)
 
   return (
     <section className="home-season" aria-label={t('home.seasonAria')}>
@@ -79,7 +80,7 @@ function SeasonStrip({ t, routes }) {
         </header>
 
         <div className="home-season-gallery">
-          <figure className={`home-season-dish${dish.image.endsWith('/lluc-restaurant-botic-emporda.webp') ? ' home-season-dish--full-photo' : ''}`}>
+          <figure className={`home-season-dish${showFullPhoto ? ' home-season-dish--full-photo' : ''}`}>
             <ResponsiveImage key={dish.image} src={dish.image} mobileSrc={dish.image.replace('.webp', '-mobile.webp')} alt={dish.label} loading="lazy" />
             <figcaption aria-hidden="true"><BrandDot /></figcaption>
           </figure>
