@@ -62,8 +62,6 @@ function SeasonStrip({ t, routes }) {
     '/images/producte-setembre-2026/restaurant-botic-emporda-plat-temporada-04.webp',
     '/images/producte-setembre-2026/restaurant-botic-emporda-plat-temporada-05.webp',
     '/images/producte-setembre-2026/restaurant-botic-emporda-plat-temporada-06.webp',
-    '/images/botic-maig-2026-webp/plat-carn-fruits-vermells-botic.webp',
-    '/images/botic-maig-2026-webp/detall-postres-maduixes-botic-emporda.webp',
   ].map((image, index) => ({ image, label: labels[index] }))
   const dish = dishes[activeDish]
 
