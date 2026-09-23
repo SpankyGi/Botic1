@@ -7497,13 +7497,6 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .nav-header .nav-michelin-stars img { width: 30px; height: 30px; }
   .nav-header.nav-scrolled .nav-michelin-stars img { width: 20px; height: 20px; }
 }
-/* Keep the centered wordmark clear of the right-hand header content. */
-@media (max-width: 1500px) {
-  .nav-recognition, .nav-recognition-divider { display: none; }
-}
-@media (max-width: 1180px) {
-  .nav-recognitions { display: none; }
-}
 @media (prefers-reduced-motion: reduce) {
   .nav-header,
   .nav-logo {
@@ -9847,3 +9840,22 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 .skip-link:focus { transform: translateY(0); }
 .features-section .feature-tag, .features-section .feature-body { color: #fffaf4; }
 .features-section .feature-media::after, .features-section .feature-entry:nth-child(2) .feature-media::after { background: linear-gradient(0deg,rgba(15,13,11,.94),rgba(15,13,11,.60) 60%,rgba(15,13,11,.35)); }
+
+/* Awards keep their own row when the full desktop header no longer fits. */
+.nav-awards { display:flex; align-items:center; gap:clamp(10px,1vw,18px); }
+@media(max-width:1500px) {
+  .nav-header { height:130px; padding-bottom:26px; }
+  .nav-header.nav-scrolled { height:96px; }
+  .nav-page-context { top:calc(50% - 13px); }
+  .nav-awards { position:absolute; bottom:9px; left:16px; right:16px; justify-content:center; gap:18px; }
+  .nav-recognition-divider { display:none; }
+}
+@media(max-width:1180px) {
+  .nav-recognition-langs { display:none; }
+  .nav-recognitions { margin-right:0; }
+}
+@media(max-width:767px) {
+  .nav-header { height:108px; }
+  .nav-header.nav-scrolled { height:88px; }
+  .nav-awards { gap:10px; font-size:7px; letter-spacing:.04em; }
+}

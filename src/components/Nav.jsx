@@ -131,10 +131,11 @@ export default function Nav() {
         </a>
 
         <div className="nav-recognitions" aria-label="Reconeixements de Bo·TiC">
-          <span className="nav-recognition"><span className="nav-recognition-michelin">★★</span> Michelin</span>
+          <div className="nav-awards"><span className="nav-recognition"><span className="nav-recognition-michelin">★★</span> Michelin</span>
           <span className="nav-recognition">{t('topbar.repsol')}</span>
           <span className="nav-recognition">{t('topbar.nacional')}</span>
           <span className="nav-recognition">{t('topbar.premisG')}</span>
+          </div>
           <span className="nav-recognition-divider" aria-hidden="true" />
           <nav className="nav-recognition-langs" aria-label={t('topbar.languageNav')}>
             {LANGS.map((targetLang) => (
