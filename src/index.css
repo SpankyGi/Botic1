@@ -9,6 +9,8 @@
    ==================================================== */
 
 :root {
+  /* Preserve the authored palette when browsers offer automatic darkening. */
+  color-scheme: only light;
   --beige: #e8e0d3;
   --beige-dark: #d8cfbf;
   --black: #0a0a0a;
