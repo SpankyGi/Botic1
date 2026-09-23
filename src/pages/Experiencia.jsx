@@ -71,7 +71,7 @@ function MenuNarrative({ t }) {
       images: [
         '/images/galeta-botic-postres-experiencia.webp',
         '/images/restaurant-botic-emporda-creacio-culinaria-01.webp',
-        '/images/restaurant-botic-emporda-postres-signatura-02.webp',
+        '/images/dit-botic-postres-experiencia.webp',
       ],
     },
     {
