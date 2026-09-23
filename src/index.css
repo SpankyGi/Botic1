@@ -9696,7 +9696,7 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 .hero--cinema .hero-title, .hero--cinema .hero-sub, .hero--cinema .hero-eyebrow { transition: color 1s ease, text-shadow 1s ease; }
 @keyframes hero-curtain { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
 @keyframes hero-camera { from { transform: scale(1.07) translateX(-.6%); } to { transform: scale(1.015) translateX(0); } }
-.hero-slider-controls { position: absolute; z-index: 8; bottom: 36px; right: max(5vw, 132px); display: flex; align-items: center; gap: 8px; padding: 6px 10px; color: #fffaf4; background: rgba(19,16,14,.46); border: 1px solid rgba(255,255,255,.18); border-radius: 3px; backdrop-filter: blur(14px); overflow: hidden; }
+.hero-slider-controls { position: absolute; z-index: 8; bottom: 36px; right: max(5vw, 214px); display: flex; align-items: center; gap: 8px; padding: 6px 10px; color: #fffaf4; background: rgba(19,16,14,.46); border: 1px solid rgba(255,255,255,.18); border-radius: 3px; backdrop-filter: blur(14px); overflow: hidden; }
 .hero-slider-controls button { display: grid; place-items: center; width: 36px; height: 36px; padding: 0; border: 0; background: transparent; color: inherit; font: inherit; cursor: pointer; }
 .hero-slider-controls button:focus-visible { outline: 1px solid #fffaf4; outline-offset: -2px; }
 .hero-slider-controls .hero-slider-arrow { font-size: 20px; font-weight: 300; }
