@@ -1,9 +1,10 @@
+import legacyContent from '../data/legacyContent.json'
 import BrandDot from './BrandDot'
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { NavLink, Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useLang, useLangRoutes, useSwitchLang } from '../i18n/LangContext'
-import { LANGS } from '../i18n/routes'
+import { LANGS, slugToKey } from '../i18n/routes'
 import ResponsiveImage from './ResponsiveImage'
 
 const NAV_KEYS = ['home', 'restaurant', 'gastronomia', 'menus', 'experiencia', 'reserves']
@@ -48,12 +49,12 @@ export default function Nav() {
     active: location.pathname.replace(/\/$/, '') === routes[key].replace(/\/$/, ''),
   }))
   const displayedImg = activeImg ?? Math.max(0, navItems.findIndex(item => item.active))
-  const currentPageKey = Object.keys(routes).find((key) => routes[key] === location.pathname.replace(/\/$/, ''))
-  const currentPageLabel = currentPageKey
+  const currentPageKey = isHome ? 'home' : slugToKey(lang, location.pathname.split('/').filter(Boolean)[1])
+  const currentPageLabel = legacyContent.copy[lang]?.[currentPageKey]?.[0] || (currentPageKey
     ? t(['legal', 'privacy', 'cookies', 'preferences'].includes(currentPageKey)
       ? `footer.${currentPageKey === 'preferences' ? 'cookiePreferences' : currentPageKey}`
       : `nav.items.${currentPageKey}.label`)
-    : ''
+    : '')
 
   // Close on route change
   useEffect(() => { setMenuOpen(false); setActiveImg(null) }, [location.pathname])
