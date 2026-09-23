@@ -7497,6 +7497,10 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .nav-header .nav-michelin-stars img { width: 30px; height: 30px; }
   .nav-header.nav-scrolled .nav-michelin-stars img { width: 20px; height: 20px; }
 }
+/* Keep the centered wordmark clear of the right-hand header content. */
+@media (max-width: 1500px) {
+  .nav-recognition, .nav-recognition-divider { display: none; }
+}
 @media (max-width: 1180px) {
   .nav-recognitions { display: none; }
 }
