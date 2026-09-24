@@ -10,7 +10,9 @@
     "ariaFooter": "Contact information",
     "location": "Corçà · Empordà",
     "items": {
-      "home": { "label": "Home", "desc": "The Bo.TiC homepage." },
+      "home": {
+    "seasonGhost": "SEASON",
+    "introGhost": "ROOTS", "label": "Home", "desc": "The Bo.TiC homepage." },
       "restaurant": { "label": "Restaurant", "desc": "The space. The kitchen. The territory." },
       "gastronomia": { "label": "Gastronomy", "desc": "Product, technique and memory." },
       "menus": { "label": "Menus", "desc": "The complete experience at the table." },
@@ -54,6 +56,9 @@
     "legalLinksLabel": "Legal information"
   },
   "common": {
+    "michelinStars": "Two Michelin stars",
+    "previous": "Previous",
+    "next": "Next",
     "skipContent": "Skip to content",
     "bookTable": "Book a table",
     "bookNow": "Book now",

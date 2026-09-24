@@ -125,9 +125,9 @@ function MenuNarrative({ t }) {
         ))}
         </div>
         <div className="exp-gallery-controls">
-          <button type="button" onClick={() => goToMoment(activeMoment - 1)} aria-label="Anterior">←</button>
+          <button type="button" onClick={() => goToMoment(activeMoment - 1)} aria-label={t('common.previous')}>←</button>
           <span aria-hidden="true">{moments.map((moment, index) => <BrandDot key={moment.num} active={index === activeMoment} />)}</span>
-          <button type="button" onClick={() => goToMoment(activeMoment + 1)} aria-label="Següent">→</button>
+          <button type="button" onClick={() => goToMoment(activeMoment + 1)} aria-label={t('common.next')}>→</button>
         </div>
       </div>
     </section>

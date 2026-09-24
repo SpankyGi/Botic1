@@ -121,7 +121,7 @@ export default function Nav() {
         role="banner"
       >
         <div className="nav-page-context">
-        <span className="nav-michelin-stars" role="img" aria-label="Dues estrelles Michelin">
+        <span className="nav-michelin-stars" role="img" aria-label={t('common.michelinStars')}>
           <img src="/images/michelin-star-original.webp" alt="" width="48" height="48" decoding="async" />
           <img src="/images/michelin-star-original.webp" alt="" width="48" height="48" decoding="async" />
         </span>
@@ -131,7 +131,7 @@ export default function Nav() {
           <BoticWordmark />
         </a>
 
-        <div className="nav-recognitions" aria-label="Reconeixements de Bo·TiC">
+        <div className="nav-recognitions" aria-label={t('footer.recognitionsTitle')}>
           <div className="nav-awards"><span className="nav-recognition"><span className="nav-recognition-michelin">★★</span> Michelin</span>
           <span className="nav-recognition">{t('topbar.repsol')}</span>
           <span className="nav-recognition">{t('topbar.nacional')}</span>

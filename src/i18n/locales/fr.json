@@ -10,7 +10,9 @@
     "ariaFooter": "Informations de contact",
     "location": "Corçà · Empordà",
     "items": {
-      "home": { "label": "Accueil", "desc": "La page d'accueil de Bo.TiC." },
+      "home": {
+    "seasonGhost": "SAISON",
+    "introGhost": "RACINES", "label": "Accueil", "desc": "La page d'accueil de Bo.TiC." },
       "restaurant": { "label": "Restaurant", "desc": "L'espace. La cuisine. Le territoire." },
       "gastronomia": { "label": "Gastronomie", "desc": "Produit, technique et mémoire." },
       "menus": { "label": "Menus", "desc": "L'expérience complète à table." },
@@ -54,6 +56,9 @@
     "legalLinksLabel": "Informations légales"
   },
   "common": {
+    "michelinStars": "Deux étoiles Michelin",
+    "previous": "Précédent",
+    "next": "Suivant",
     "skipContent": "Aller au contenu",
     "bookTable": "Réserver une table",
     "bookNow": "Réserver maintenant",
@@ -132,10 +137,10 @@
     "seasonLink": "Découvrir les menus",
     "seasonControlsAria": "Index des créations de saison",
     "seasonItems": [
-      "Salade de tomates", "El llaminer", "Thon", "Mérou", "Tendons de veau",
+      "Salade de tomates", "Le gourmand", "Thon", "Mérou", "Tendons de veau",
       "Cabillaud", "Crevette", "Poulet et homard", "Asperge blanche", "Canard",
       "Merlu", "Fraises à la crème", "Agneau", "Oursin", "Agrumes",
-      "Biscuit", "Petits pois", "El Bar"
+      "Biscuit", "Petits pois", "Le bar"
     ],
     "seasonDish1Name": "Herbes",
     "seasonDish2Name": "Poisson",

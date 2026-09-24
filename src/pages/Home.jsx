@@ -69,7 +69,7 @@ function SeasonStrip({ t, routes }) {
 
   return (
     <section className="home-season" aria-label={t('home.seasonAria')}>
-      <span className="home-season-ghost" aria-hidden="true">TEMPORADA</span>
+      <span className="home-season-ghost" aria-hidden="true">{t('home.seasonGhost')}</span>
       <div className="home-season-inner reveal" ref={revealRef}>
         <header className="home-season-head">
           <div>
@@ -194,7 +194,7 @@ export default function Home() {
         />
         <div className="home-albert-signature" aria-hidden="true">
           <span>Albert Sastregener</span>
-          <span>Xef</span>
+          <span>{t('home.albertRole')}</span>
         </div>
         <img
           className="home-cristina-editorial"
@@ -256,7 +256,7 @@ export default function Home() {
           <div className="home-intro-overlay" />
         </div>
 
-        <span className="home-intro-ghost" aria-hidden="true">ARREL</span>
+        <span className="home-intro-ghost" aria-hidden="true">{t('home.introGhost')}</span>
 
         <div className="container-max home-intro-inner">
           <div className="home-intro-content">
