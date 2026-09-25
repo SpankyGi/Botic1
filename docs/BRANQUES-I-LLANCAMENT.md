@@ -9,7 +9,11 @@ El commit `dd8a13d` retira de `main` la incorporació de Privé mitjançant una 
 
 ## Treball posterior
 
-Fer els ajustos del restaurant a `main`. Traslladar a la branca de proves només els commits compartits que calguin. No fusionar tota la principal a proves sense revisar la reversió de Privé.
+Des del 25 de setembre de 2026, preparar les modificacions del restaurant en una branca de treball creada des de `origin/main`. Publicar els commits a aquesta branca per revisar-los. Fusionar-los a `main` només després de la validació explícita de l’usuari; l’autorització anterior de publicar directament queda substituïda per aquest flux.
+
+La millora actual del selector de menús es prepara a `proves/millora-selector-menus`. Crear una branca nova per a cada modificació futura, sempre des de la versió actualitzada de `main`.
+
+La branca `proves/botic-prive` és independent: traslladar-hi només els commits compartits que calguin. No fusionar-hi tota la principal sense revisar la reversió de Privé.
 
 Per integrar Privé en el futur, preparar una branca d'integració des de `main`, revertir `dd8a13d` i incorporar els ajustos posteriors de proves. Una fusió de la branca original per si sola no recupera els canvis revertits.
 
