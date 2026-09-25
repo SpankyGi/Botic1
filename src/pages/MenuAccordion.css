@@ -26,3 +26,10 @@
  .mnu-accordion-price { font-size:26px; }
  .mnu-accordion-panel { padding:16px 4px 30px; }
 }
+
+/* Narrow screens use the accordion; desktop keeps the original menu tabs. */
+.mnu-desktop-menus { display:none; }
+@media (min-width:1025px) {
+  .mnu-desktop-menus { display:block; }
+  .mnu-food-menus.mnu-accordion { display:none; }
+}

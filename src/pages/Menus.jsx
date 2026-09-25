@@ -439,6 +439,96 @@ function MenuCourseList({ sections, menuId }) {
   )
 }
 
+function DesktopMenuSelector({ menus, t }) {
+  const [activeId, setActiveId] = useState('degustacio')
+  const contentRef = useRef(null)
+  const selectorRef = useRef(null)
+
+  const active = menus.find(m => m.id === activeId) ?? menus[0]
+
+  const selectMenu = (id) => {
+    setActiveId(id)
+    // Wait for the selected panel to render before measuring its position.
+    requestAnimationFrame(() => {
+      const content = contentRef.current
+      const selector = selectorRef.current
+      if (!content || !selector) return
+      const stickyTop = parseFloat(window.getComputedStyle(selector).top) || 0
+      const top = window.scrollY + content.getBoundingClientRect().top
+        - stickyTop - selector.getBoundingClientRect().height
+      window.scrollTo({
+        top: Math.max(0, top),
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+      })
+    })
+  }
+
+  const onSelectorKeyDown = (event, currentIndex) => {
+    if (!['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
+    event.preventDefault()
+    const nextIndex = event.key === 'Home' ? 0
+      : event.key === 'End' ? menus.length - 1
+        : (currentIndex + (event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1) + menus.length) % menus.length
+    const next = menus[nextIndex]
+    selectMenu(next.id)
+    requestAnimationFrame(() => document.getElementById(`desktop-menu-selector-${next.id}`)?.focus({ preventScroll: true }))
+  }
+
+  return (
+      <section className="mnu-food-menus mnu-desktop-menus" aria-label={t('menus.selectorAria')}>
+        {/* ── Selector de menús ── */}
+        <div className="mnu-selector-wrap" ref={selectorRef}>
+          <div className="mnu-selector" role="tablist">
+            {menus.map((m, index) => (
+            <button
+              key={m.id}
+              id={`desktop-menu-selector-${m.id}`}
+              className={`mnu-tab${m.id === activeId ? ' active' : ''}`}
+              onClick={() => selectMenu(m.id)}
+              onKeyDown={(event) => onSelectorKeyDown(event, index)}
+              role="tab"
+              aria-selected={m.id === activeId}
+              aria-controls={`desktop-menu-panel-${m.id}`}
+              tabIndex={m.id === activeId ? 0 : -1}
+            >
+              <span className="mnu-tab-index" aria-hidden="true"><BrandDot /></span>
+              <span className="mnu-tab-title">{m.title}</span>
+              <span className="mnu-tab-position">{m.position}</span>
+              <span className="mnu-tab-price">
+                <span className="mnu-tab-price-value">{m.price}</span>
+              </span>
+            </button>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Contingut del menú actiu ── */}
+        <section
+          ref={contentRef}
+          className="mnu-content-wrap"
+          aria-label={active.title}
+          id={`desktop-menu-panel-${active.id}`}
+          role="tabpanel"
+          aria-labelledby={`desktop-menu-selector-${active.id}`}
+          key={activeId}
+        >
+          <div className="container-max mnu-content">
+            {active.note && (
+              <p className="mnu-note" role="note">
+                <span className="mnu-note-icon" aria-hidden="true">◈</span>
+                {active.note}
+              </p>
+            )}
+
+            <MenuCourseList sections={active.sections} menuId={`desktop-${activeId}`} />
+            <p className="mnu-season-note" role="note">{t('menus.seasonNote')}</p>
+          </div>
+        </section>
+      </section>
+
+  )
+}
+
 export default function Menus() {
   const { t }   = useTranslation()
   const routes  = useLangRoutes()
@@ -490,6 +580,8 @@ export default function Menus() {
       />
 
       <MenusHero t={t} />
+
+      <DesktopMenuSelector menus={menus} t={t} />
 
       <section className="mnu-food-menus mnu-accordion" aria-label={t('menus.selectorAria')} ref={selectorRef}>
         <div className="container-max">
