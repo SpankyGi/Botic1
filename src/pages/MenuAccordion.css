@@ -1,0 +1,28 @@
+.mnu-accordion { padding: clamp(28px,4vw,60px) 0; background:#f3ede3; scroll-margin-top:150px; }
+.mnu-accordion-intro { margin:0 0 24px; color:#675c53; font-size:14px; line-height:1.6; }
+.mnu-accordion-item { border-top:1px solid #cfc3b5; }
+.mnu-accordion-item:last-child { border-bottom:1px solid #cfc3b5; }
+.mnu-accordion-heading { margin:0; }
+.mnu-accordion-trigger { display:grid; grid-template-columns:16px minmax(0,1fr) auto auto; gap:24px; align-items:center; width:100%; padding:30px 20px; border:0; background:transparent; color:#211a14; text-align:left; cursor:pointer; scroll-margin-top:150px; }
+.mnu-accordion-name { font:300 clamp(24px,3vw,42px)/1.15 'Plus Jakarta Sans',sans-serif; letter-spacing:-.04em; }
+.mnu-accordion-position { display:block; margin-top:9px; font:400 12px/1.5 'Plus Jakarta Sans',sans-serif; letter-spacing:.02em; color:#675c53; }
+.mnu-accordion-price { font:300 clamp(24px,2.7vw,36px)/1.2 'Plus Jakarta Sans',sans-serif; color:#a51f3d; white-space:nowrap; }
+.mnu-accordion-action { display:flex; align-items:center; gap:20px; font:500 11px/1.4 'Plus Jakarta Sans',sans-serif; text-transform:uppercase; letter-spacing:.08em; color:#a51f3d; }
+.mnu-accordion-action > span { font-size:28px; font-weight:300; }
+.mnu-accordion-trigger:hover { background:#eae0d3; }
+.is-open > .mnu-accordion-heading .mnu-accordion-trigger { background:#eae0d3; }
+.mnu-accordion-trigger:focus-visible,.mnu-accordion-return:focus-visible { outline:2px solid #a51f3d; outline-offset:-3px; }
+.mnu-accordion-panel { padding:24px clamp(12px,4vw,64px) 36px; }
+.mnu-accordion-panel .mnu-course-list { margin-top:20px; }
+.mnu-accordion-return { border:1px solid #a51f3d; padding:14px 20px; background:transparent; color:#a51f3d; font:500 13px/1.4 'Plus Jakarta Sans',sans-serif; cursor:pointer; margin-top:24px; }
+.mnu-accordion-return:hover { background:#a51f3d; color:#fffaf4; }
+.mnu-accordion [hidden] { display:none; }
+@media(max-width:768px) {
+ .mnu-accordion,.mnu-accordion-trigger { scroll-margin-top:115px; }
+ .mnu-accordion-trigger { grid-template-columns:12px minmax(0,1fr) auto; gap:12px; padding:22px 4px; }
+ .mnu-accordion-action { grid-column:2 / 4; justify-content:space-between; }
+ .mnu-accordion-name { font-size:25px; }
+ .mnu-accordion-position { font-size:11px; }
+ .mnu-accordion-price { font-size:26px; }
+ .mnu-accordion-panel { padding:16px 4px 30px; }
+}

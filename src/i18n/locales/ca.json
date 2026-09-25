@@ -269,6 +269,10 @@
     "ctaSecondary": "L'experiència"
   },
   "menus": {
+    "accordionIntro": "Trieu el vostre menú. Obriu-lo per descobrir els plats.",
+    "viewMenu": "Veure menú",
+    "closeMenu": "Tancar menú",
+    "otherMenus": "Veure els altres menús",
     "heroAria": "Menús de Bo.TiC",
     "heroLabel": "MENÚS BO·TIC",
     "heroTitle": "Tres maneres de viure Bo·TiC.",

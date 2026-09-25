@@ -269,6 +269,10 @@
     "ctaSecondary": "L'expérience"
   },
   "menus": {
+    "accordionIntro": "Choisissez votre menu. Ouvrez-le pour découvrir les plats.",
+    "viewMenu": "Voir le menu",
+    "closeMenu": "Fermer le menu",
+    "otherMenus": "Voir les autres menus",
     "heroAria": "Menus de Bo.TiC",
     "heroLabel": "MENUS BO·TIC",
     "heroTitle": "Trois façons de vivre Bo·TiC.",

@@ -269,6 +269,10 @@
     "ctaSecondary": "The experience"
   },
   "menus": {
+    "accordionIntro": "Choose your menu. Open it to discover the dishes.",
+    "viewMenu": "View menu",
+    "closeMenu": "Close menu",
+    "otherMenus": "View the other menus",
     "heroAria": "Bo.TiC menus",
     "heroLabel": "BO·TIC MENUS",
     "heroTitle": "Three ways to experience Bo·TiC.",

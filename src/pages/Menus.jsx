@@ -1,3 +1,4 @@
+import './MenuAccordion.css'
 import BrandDot from '../components/BrandDot'
 import { useState, useId, useRef, useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
@@ -442,8 +443,7 @@ export default function Menus() {
   const { t }   = useTranslation()
   const routes  = useLangRoutes()
   const lang    = useLang()
-  const [activeId, setActiveId] = useState('degustacio')
-  const contentRef = useRef(null)
+  const [activeId, setActiveId] = useState(null)
   const selectorRef = useRef(null)
 
   // API/cache/fallback data — hook handles fetch, TTL, and language
@@ -463,34 +463,21 @@ export default function Menus() {
     }),
   [lang, t])
 
-  const active = menus.find(m => m.id === activeId) ?? menus[0]
-
   const selectMenu = (id) => {
-    setActiveId(id)
-    // Wait for the selected panel to render before measuring its position.
+    setActiveId(current => current === id ? null : id)
     requestAnimationFrame(() => {
-      const content = contentRef.current
-      const selector = selectorRef.current
-      if (!content || !selector) return
-      const stickyTop = parseFloat(window.getComputedStyle(selector).top) || 0
-      const top = window.scrollY + content.getBoundingClientRect().top
-        - stickyTop - selector.getBoundingClientRect().height
-      window.scrollTo({
-        top: Math.max(0, top),
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+      document.getElementById(`menu-selector-${id}`)?.scrollIntoView({
+        block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
       })
     })
   }
-
-  const onSelectorKeyDown = (event, currentIndex) => {
-    if (!['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return
-    event.preventDefault()
-    const nextIndex = event.key === 'Home' ? 0
-      : event.key === 'End' ? menus.length - 1
-        : (currentIndex + (event.key === 'ArrowDown' || event.key === 'ArrowRight' ? 1 : -1) + menus.length) % menus.length
-    const next = menus[nextIndex]
-    selectMenu(next.id)
-    requestAnimationFrame(() => document.getElementById(`menu-selector-${next.id}`)?.focus({ preventScroll: true }))
+  const returnToMenus = () => {
+    const previous = activeId
+    setActiveId(null)
+    requestAnimationFrame(() => {
+      document.getElementById(`menu-selector-${previous}`)?.focus({ preventScroll: true })
+      selectorRef.current?.scrollIntoView({ block: 'start', behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' })
+    })
   }
 
   return (
@@ -504,54 +491,32 @@ export default function Menus() {
 
       <MenusHero t={t} />
 
-      <section className="mnu-food-menus" aria-label={t('menus.selectorAria')}>
-        {/* ── Selector de menús ── */}
-        <div className="mnu-selector-wrap" ref={selectorRef}>
-          <div className="mnu-selector" role="tablist">
-            {menus.map((m, index) => (
-            <button
-              key={m.id}
-              id={`menu-selector-${m.id}`}
-              className={`mnu-tab${m.id === activeId ? ' active' : ''}`}
-              onClick={() => selectMenu(m.id)}
-              onKeyDown={(event) => onSelectorKeyDown(event, index)}
-              role="tab"
-              aria-selected={m.id === activeId}
-              aria-controls={`menu-panel-${m.id}`}
-              tabIndex={m.id === activeId ? 0 : -1}
-            >
-              <span className="mnu-tab-index" aria-hidden="true"><BrandDot /></span>
-              <span className="mnu-tab-title">{m.title}</span>
-              <span className="mnu-tab-position">{m.position}</span>
-              <span className="mnu-tab-price">
-                <span className="mnu-tab-price-value">{m.price}</span>
-              </span>
-            </button>
-            ))}
-          </div>
+      <section className="mnu-food-menus mnu-accordion" aria-label={t('menus.selectorAria')} ref={selectorRef}>
+        <div className="container-max">
+          <p className="mnu-accordion-intro">{t('menus.accordionIntro')}</p>
+          {menus.map(m => {
+            const isOpen = activeId === m.id
+            return <section className={`mnu-accordion-item${isOpen ? ' is-open' : ''}`} key={m.id}>
+              <h2 className="mnu-accordion-heading">
+                <button type="button" id={`menu-selector-${m.id}`} className="mnu-accordion-trigger"
+                  aria-expanded={isOpen} aria-controls={`menu-panel-${m.id}`} onClick={() => selectMenu(m.id)}>
+                  <span className="mnu-accordion-dot" aria-hidden="true"><BrandDot /></span>
+                  <span className="mnu-accordion-name">{m.title}<span className="mnu-accordion-position">{m.position}</span></span>
+                  <span className="mnu-accordion-price">{m.price}</span>
+                  <span className="mnu-accordion-action">{t(isOpen ? 'menus.closeMenu' : 'menus.viewMenu')}<span aria-hidden="true">{isOpen ? '−' : '+'}</span></span>
+                </button>
+              </h2>
+              <div id={`menu-panel-${m.id}`} role="region" aria-labelledby={`menu-selector-${m.id}`} hidden={!isOpen}>
+                <div className="mnu-accordion-panel">
+                  {m.note && <p className="mnu-note" role="note">{m.note}</p>}
+                  <MenuCourseList sections={m.sections} menuId={m.id} />
+                  <p className="mnu-season-note" role="note">{t('menus.seasonNote')}</p>
+                  <button type="button" className="mnu-accordion-return" onClick={returnToMenus}>↑ {t('menus.otherMenus')}</button>
+                </div>
+              </div>
+            </section>
+          })}
         </div>
-
-        {/* ── Contingut del menú actiu ── */}
-        <section
-          ref={contentRef}
-          className="mnu-content-wrap"
-          aria-label={active.title}
-          id={`menu-panel-${active.id}`}
-          role="tabpanel"
-          key={activeId}
-        >
-          <div className="container-max mnu-content">
-            {active.note && (
-              <p className="mnu-note" role="note">
-                <span className="mnu-note-icon" aria-hidden="true">◈</span>
-                {active.note}
-              </p>
-            )}
-
-            <MenuCourseList sections={active.sections} menuId={activeId} />
-            <p className="mnu-season-note" role="note">{t('menus.seasonNote')}</p>
-          </div>
-        </section>
       </section>
 
       <InfoSection t={t} />
