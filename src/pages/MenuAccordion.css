@@ -33,3 +33,31 @@
   .mnu-desktop-menus { display:block; }
   .mnu-food-menus.mnu-accordion { display:none; }
 }
+/* Keep the open menu identifiable while reading, within its own section. */
+@media (max-width:1024px) {
+  .mnu-accordion-item.is-open > .mnu-accordion-heading {
+    position:sticky;
+    top:96px;
+    z-index:25;
+    background:#eae0d3;
+    box-shadow:0 5px 12px rgba(33,26,20,.08);
+  }
+  .mnu-accordion-item.is-open .mnu-accordion-trigger {
+    grid-template-columns:12px minmax(0,1fr) auto;
+    gap:6px 12px;
+    padding:12px 10px;
+  }
+  .mnu-accordion-item.is-open .mnu-accordion-name { font-size:22px; }
+  .mnu-accordion-item.is-open .mnu-accordion-price { font-size:23px; }
+  .mnu-accordion-item.is-open .mnu-accordion-position { display:none; }
+  .mnu-accordion-item.is-open .mnu-accordion-action {
+    grid-column:2 / 4;
+    justify-content:space-between;
+    font-size:10px;
+  }
+  .mnu-accordion-item.is-open .mnu-accordion-action > span { font-size:22px; line-height:1; }
+  .mnu-accordion-item.is-open .mnu-course-toggle { scroll-margin-top:195px; }
+}
+@media (max-width:767px) {
+  .mnu-accordion-item.is-open > .mnu-accordion-heading { top:88px; }
+}
