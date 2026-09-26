@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import RestooWidget from './RestooWidget'
 
 const COPY = {
   ca: ['Carregant les reserves…', 'Si el formulari no es carrega, podeu reservar directament a Restoo.', 'Obrir les reserves'],
@@ -42,11 +43,7 @@ export default function RestooBooking({ lang, mode = 'booking' }) {
   }
   return <div className="restoo-booking">
     {loading && <p role="status">{copy[0]}</p>}
-    <div className="restoo-booking-host">
-      <iframe key={`${lang}-${mode}`} className="restoo-legacy-frame" src={bookingUrl}
-        title={copy[2]} loading="eager" allow="payment"
-        onLoad={() => setLoading(false)} />
-    </div>
+    <RestooWidget lang={lang} title={copy[2]} onReady={() => setLoading(false)} />
     <p className="restoo-booking-fallback">{copy[1]} <a href={bookingUrl} target="_blank" rel="noopener noreferrer">{copy[2]} ↗</a></p>
   </div>
 }
