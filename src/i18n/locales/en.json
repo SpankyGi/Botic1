@@ -10,9 +10,7 @@
     "ariaFooter": "Contact information",
     "location": "Corçà · Empordà",
     "items": {
-      "home": {
-    "seasonGhost": "SEASON",
-    "introGhost": "ROOTS", "label": "Home", "desc": "The Bo.TiC homepage." },
+      "home": { "label": "Home", "desc": "The Bo.TiC homepage." },
       "restaurant": { "label": "Restaurant", "desc": "The space. The kitchen. The territory." },
       "gastronomia": { "label": "Gastronomy", "desc": "Product, technique and memory." },
       "menus": { "label": "Menus", "desc": "The complete experience at the table." },
@@ -109,6 +107,8 @@
     }
   },
   "home": {
+    "seasonGhost": "SEASON",
+    "introGhost": "ROOTS",
     "introLabel": "Bo.TiC · Corçà · Empordà",
     "introHeading": "Rooted cuisine.\nAn unmatched experience.",
     "introBody": "Bo.TiC is a reference gastronomic restaurant in the Empordà. Two Michelin stars, a restored former carriage workshop and a cuisine that understands the territory as its primary ingredient.",

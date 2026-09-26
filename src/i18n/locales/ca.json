@@ -10,9 +10,7 @@
     "ariaFooter": "Informació de contacte",
     "location": "Corçà · Empordà",
     "items": {
-      "home": {
-    "seasonGhost": "TEMPORADA",
-    "introGhost": "ARREL", "label": "Inici", "desc": "La portada de Bo.TiC." },
+      "home": { "label": "Inici", "desc": "La portada de Bo.TiC." },
       "restaurant": { "label": "Restaurant", "desc": "L'espai. La cuina. El territori." },
       "gastronomia": { "label": "Gastronomia", "desc": "Producte, tècnica i memòria." },
       "menus": { "label": "Menús", "desc": "L'experiència completa a taula." },
@@ -109,6 +107,8 @@
     }
   },
   "home": {
+    "seasonGhost": "TEMPORADA",
+    "introGhost": "ARREL",
     "introLabel": "Bo.TiC · Corçà · Empordà",
     "introHeading": "Cuina amb arrel.\nExperiència sense igual.",
     "introBody": "Bo.TiC és un restaurant gastronòmic de referència a l'Empordà. Dues estrelles Michelin, una antiga fusteria de carruatges restaurada i una cuina que entén el territori com a primera matèria.",

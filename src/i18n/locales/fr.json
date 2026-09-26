@@ -10,9 +10,7 @@
     "ariaFooter": "Informations de contact",
     "location": "Corçà · Empordà",
     "items": {
-      "home": {
-    "seasonGhost": "SAISON",
-    "introGhost": "RACINES", "label": "Accueil", "desc": "La page d'accueil de Bo.TiC." },
+      "home": { "label": "Accueil", "desc": "La page d'accueil de Bo.TiC." },
       "restaurant": { "label": "Restaurant", "desc": "L'espace. La cuisine. Le territoire." },
       "gastronomia": { "label": "Gastronomie", "desc": "Produit, technique et mémoire." },
       "menus": { "label": "Menus", "desc": "L'expérience complète à table." },
@@ -109,6 +107,8 @@
     }
   },
   "home": {
+    "seasonGhost": "SAISON",
+    "introGhost": "RACINES",
     "introLabel": "Bo.TiC · Corçà · Empordà",
     "introHeading": "Cuisine de terroir.\nUne expérience sans pareille.",
     "introBody": "Bo.TiC est un restaurant gastronomique de référence en Empordà. Deux étoiles Michelin, un ancien atelier de carrosserie restauré et une cuisine qui comprend le territoire comme matière première.",
