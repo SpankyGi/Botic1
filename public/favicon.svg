@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-  <rect width="100" height="100" fill="#0C0B09"/>
-  <text x="50" y="70" text-anchor="middle" fill="#C4A96A"
-    font-family="Georgia,serif" font-size="48" font-weight="300"
-    letter-spacing="-2">B</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" fill="#f4efe5"/><g transform="translate(12 108) scale(.94)"><path fill="#1c1c1b" fill-rule="evenodd" d="M22 16H120C170 16 198 43 198 88C198 119 183 141 155 149C193 157 212 183 212 223C212 272 180 300 130 300H22Z M34 29V144H120C161 144 186 124 186 88C186 50 162 29 120 29Z M34 157V287H130C175 287 200 265 200 223C200 181 174 157 130 157Z"/><circle cx="343.268" cy="221.807" r="66.065" fill="#a51f3d"/><circle cx="466.106" cy="111.248" r="33.129" fill="#a51f3d"/></g></svg>
