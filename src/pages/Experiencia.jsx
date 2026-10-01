@@ -144,6 +144,7 @@ function PaceSection({ t }) {
         <h2 id="exp-pace-title">{t('experiencia.ritmeHeading')}</h2>
         <div className="exp-pace-copy">
           <p>{t('experiencia.ritmeP1')}</p>
+          <p>{t('experiencia.ritmeTeam')}</p>
           <p>{t('experiencia.ritmeP2')}</p>
           </div>
         <dl className="exp-pace-hours">
