@@ -9859,3 +9859,19 @@ svg.botic-item-dot.is-muted { opacity:.3; }
   .nav-header.nav-scrolled { height:88px; }
   .nav-awards { gap:10px; font-size:7px; letter-spacing:.04em; }
 }
+/* Experience service hours */
+.exp-pace .exp-pace-inner h2 { margin-bottom: clamp(36px, 5vw, 64px); }
+.exp-pace .exp-pace-copy { display: block; max-width: 650px; border: 0; padding: 0; }
+.exp-pace .exp-pace-copy p { font-size: 15px; line-height: 1.9; color: #65594e; }
+.exp-pace .exp-pace-copy p + p { margin-top: 18px; }
+.exp-pace-hours { display: grid; grid-template-columns: 1fr 1fr; max-width: 650px; margin: 38px auto 0; padding: 30px 0; border-top: 1px solid rgba(70,52,34,.22); border-bottom: 1px solid rgba(70,52,34,.22); }
+.exp-pace-hours > div + div { border-left: 1px solid rgba(70,52,34,.22); }
+.exp-pace-hours dt { color: #8c233b; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; margin-bottom: 14px; }
+.exp-pace-hours dd { margin: 0; font-size: clamp(20px, 2.4vw, 30px); font-weight: 300; letter-spacing: -.04em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.exp-pace-note { max-width: 590px; margin: 22px auto 0; }
+.exp-pace-note p { font-size: 13px; line-height: 1.8; color: #65594e; text-wrap: pretty; }
+@media (max-width: 480px) {
+ .exp-pace-hours { gap: 0; padding: 24px 0; }
+ .exp-pace-hours dd { font-size: 20px; }
+ .exp-pace-hours dt { letter-spacing: .15em; }
+}

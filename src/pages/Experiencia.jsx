@@ -138,13 +138,19 @@ function PaceSection({ t }) {
   const revealRef = useReveal(0.12)
   return (
     <section className="exp-pace" aria-labelledby="exp-pace-title">
-      <div className="exp-pace-time" aria-hidden="true">—</div>
+
       <div className="exp-pace-inner reveal" ref={revealRef}>
         <span className="exp-kicker">{t('experiencia.ritmeEyebrow')}</span>
         <h2 id="exp-pace-title">{t('experiencia.ritmeHeading')}</h2>
         <div className="exp-pace-copy">
           <p>{t('experiencia.ritmeP1')}</p>
           <p>{t('experiencia.ritmeP2')}</p>
+          </div>
+        <dl className="exp-pace-hours">
+          <div><dt>{t('experiencia.ritmeLunch')}</dt><dd><time dateTime="12:45">12:45</time><span aria-hidden="true"> — </span><time dateTime="16:45">16:45</time></dd></div>
+          <div><dt>{t('experiencia.ritmeDinner')}</dt><dd><time dateTime="19:45">19:45</time><span aria-hidden="true"> — </span><time dateTime="23:45">23:45</time></dd></div>
+        </dl>
+        <div className="exp-pace-note">
           <p>{t('experiencia.ritmeP3')}</p>
         </div>
       </div>
