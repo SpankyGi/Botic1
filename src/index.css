@@ -9859,6 +9859,11 @@ svg.botic-item-dot.is-muted { opacity:.3; }
   .nav-header.nav-scrolled { height:88px; }
   .nav-awards { gap:10px; font-size:7px; letter-spacing:.04em; }
 }
+.footer-column .footer-pds { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin-top: 22px; padding-top: 22px; border-top: 1px solid rgba(255,248,237,.18); text-decoration: none; }
+.footer-pds img { display: block; width: 150px; height: auto; filter: invert(1); opacity: .9; margin-bottom: 4px; }
+.footer-pds-recipient { font-size: 12px; letter-spacing: .04em; }
+.footer-pds-award { max-width: 260px; font-size: 12px; line-height: 1.65; color: rgba(255,248,237,.72); }
+
 /* Experience service hours */
 .exp-pace .exp-pace-inner h2 { margin-bottom: clamp(36px, 5vw, 64px); }
 .exp-pace .exp-pace-copy { display: block; max-width: 650px; border: 0; padding: 0; }

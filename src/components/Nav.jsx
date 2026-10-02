@@ -136,6 +136,7 @@ export default function Nav() {
           <span className="nav-recognition">{t('topbar.repsol')}</span>
           <span className="nav-recognition">{t('topbar.nacional')}</span>
           <span className="nav-recognition">{t('topbar.premisG')}</span>
+          <span className="nav-recognition" title={t('footer.pdsAward')}>PdS 2025</span>
           </div>
           <span className="nav-recognition-divider" aria-hidden="true" />
           <nav className="nav-recognition-langs" aria-label={t('topbar.languageNav')}>

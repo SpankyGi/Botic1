@@ -65,6 +65,11 @@ export default function Footer() {
               <li><a href="https://acgn.cat/premis-nacionals-de-gastronomia/" target="_blank" rel="noopener noreferrer">{t('footer.nationalGastronomy')}</a></li>
               <li><a href="https://b2b.costabrava.org/premi-g/premi-honorific-juli-soler-i-lobo/" target="_blank" rel="noopener noreferrer">{t('footer.premisG')}</a></li>
             </ul>
+            <a className="footer-pds" href="https://professionalsdesala.com/" target="_blank" rel="noopener noreferrer">
+              <img src="/images/professionals-de-sala.png" alt="PdS · Professionals de Sala" width="300" height="102" loading="lazy" decoding="async" />
+              <span className="footer-pds-recipient">Cristina Torrent · 2025</span>
+              <span className="footer-pds-award">{t('footer.pdsAward')}</span>
+            </a>
             <div className="footer-follow">
               <span>{t('footer.followTitle')}</span>
               <div>
