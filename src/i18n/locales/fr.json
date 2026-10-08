@@ -79,8 +79,8 @@
   },
   "seo": {
     "home": {
-      "title": "Bo.TiC · Restaurant Gastronomique · Corçà · Empordà",
-      "description": "Bo.TiC, restaurant gastronomique 2 étoiles Michelin à Corçà (Gérone). Cuisine de terroir, produits locaux et expérience gastronomique unique en Empordà."
+      "title": "Bo.TiC · Restaurant deux étoiles Michelin dans l’Empordà",
+      "description": "Bo.TiC, deux étoiles Michelin à Corçà, près de Gérone. Une vision gastronomique personnelle, liée aux produits de saison et aux paysages du Baix Empordà."
     },
     "restaurant": {
       "title": "Le Restaurant · Bo.TiC Corçà · Espace et Concept",
@@ -114,7 +114,7 @@
     "introHeading": "Cuisine de terroir.\nUne expérience sans pareille.",
     "introBody": "Bo.TiC est un restaurant gastronomique de référence en Empordà. Deux étoiles Michelin, un ancien atelier de carrosserie restauré et une cuisine qui comprend le territoire comme matière première.",
     "seoIntroHeading": "Bo.TiC, restaurant gastronomique à Corçà, au cœur de l’Empordà.",
-    "seoIntroBody": "Une cuisine de produit et de saison, ancrée, technique et contemporaine.",
+    "seoIntroBody": "Deux étoiles Michelin et une cuisine créative inspirée des produits de saison et des paysages du Baix Empordà.",
     "peopleCodaAria": "Albert et Cristina, l’équipe de Bo.TiC",
     "albertName": "Albert Sastregener",
     "albertRole": "Chef",
@@ -166,7 +166,7 @@
 
     "originEyebrow": "Bo.TiC à Corçà",
     "originHeading": "Un ancien atelier de carrosserie transformé en restaurant",
-    "originP1": "Bo.TiC se trouve à Corçà, un lieu incomparable au cœur du Baix Empordà.",
+    "originP1": "À Corçà, au cœur du Baix Empordà, Bo.TiC invite à découvrir le territoire à travers sa cuisine et son hospitalité.",
     "originP2": "Le restaurant occupe un ancien atelier de carrosserie de plus de 110 ans, réhabilité en 2017 pour en retrouver la valeur architecturale et devenir l'espace actuel.",
     "originP3": "Pierre, bois, métal et lumière se combinent pour créer un espace entièrement pensé pour l'expérience gastronomique.",
     "originImgAlt": "Paysage de l'Empordà autour de Corçà",
@@ -277,7 +277,7 @@
     "heroAria": "Menus de Bo.TiC",
     "heroLabel": "MENUS BO·TIC",
     "heroTitle": "Trois façons de vivre Bo·TiC.",
-    "heroSub": "Du parcours le plus complet à une sélection de midi : produit, mémoire et cuisine d’auteur.",
+    "heroSub": "Menus dégustation à Corçà, au cœur de l’Empordà. Trois parcours de cuisine d’auteur, au fil des produits et des saisons.",
     "selectorAria": "Sélectionnez un menu",
     "degustacioTitle": "Menu Dégustation",
     "degustacioPosition": "Le parcours complet",

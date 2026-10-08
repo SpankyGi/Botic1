@@ -79,8 +79,8 @@
   },
   "seo": {
     "home": {
-      "title": "Bo.TiC · Gastronomic Restaurant · Corçà · Empordà",
-      "description": "Bo.TiC, 2-Michelin-star gastronomic restaurant in Corçà (Girona). Rooted cuisine, local produce and a unique gastronomic experience in the Empordà."
+      "title": "Bo.TiC · Two Michelin Stars in Empordà · Corçà",
+      "description": "Bo.TiC, a restaurant with two Michelin stars in Corçà, Girona. A personal culinary vision shaped by seasonal produce and the landscape of the Baix Empordà."
     },
     "restaurant": {
       "title": "The Restaurant · Bo.TiC Corçà · Space and Concept",
@@ -114,7 +114,7 @@
     "introHeading": "Rooted cuisine.\nAn unmatched experience.",
     "introBody": "Bo.TiC is a reference gastronomic restaurant in the Empordà. Two Michelin stars, a restored former carriage workshop and a cuisine that understands the territory as its primary ingredient.",
     "seoIntroHeading": "Bo.TiC, a gastronomic restaurant in Corçà, at the heart of Empordà.",
-    "seoIntroBody": "Ingredient-led, seasonal cuisine with roots, technique and a contemporary outlook.",
+    "seoIntroBody": "Two Michelin stars and creative cuisine shaped by seasonal produce and the landscape of the Baix Empordà.",
     "peopleCodaAria": "Albert and Cristina, Bo.TiC team",
     "albertName": "Albert Sastregener",
     "albertRole": "Chef",
@@ -166,7 +166,7 @@
 
     "originEyebrow": "Bo.TiC in Corçà",
     "originHeading": "A former carriage workshop turned restaurant",
-    "originP1": "Bo.TiC is located in Corçà, an unbeatable spot in the heart of the Baix Empordà.",
+    "originP1": "In Corçà, at the heart of the Baix Empordà, Bo.TiC invites you to discover the region through its cuisine and hospitality.",
     "originP2": "The restaurant occupies a former carriage workshop over 110 years old, restored in 2017 to recover its architectural value and become the space it is today.",
     "originP3": "Stone, wood, metal and light combine to create a space designed entirely for the gastronomic experience.",
     "originImgAlt": "Empordà landscape around Corçà",
@@ -277,7 +277,7 @@
     "heroAria": "Bo.TiC menus",
     "heroLabel": "BO·TIC MENUS",
     "heroTitle": "Three ways to experience Bo·TiC.",
-    "heroSub": "From the most complete journey to a lunchtime selection: produce, memory and signature cuisine.",
+    "heroSub": "Tasting menus in Corçà, at the heart of Empordà. Three culinary journeys shaped by seasonal produce and a personal creative vision.",
     "selectorAria": "Select a menu",
     "degustacioTitle": "Tasting Menu",
     "degustacioPosition": "The complete journey",
