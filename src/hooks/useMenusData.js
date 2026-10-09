@@ -4,8 +4,6 @@ import { getCachedMenus, setCachedMenus } from '../services/menusCache'
 import { loadConfig } from '../services/config'
 import fallback from '../data/generated/menus.json'
 
-// Module-level flag: prevents React 18 StrictMode from firing two concurrent fetches
-let fetchInProgress = false
 
 function validateApiData(data) {
   if (!data || typeof data !== 'object') throw new Error('Resposta no és un objecte')
@@ -31,14 +29,14 @@ function validateApiData(data) {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-const _ok   = v => v !== false && String(v).toUpperCase() !== 'FALSE'
+const _ok   = v => v !== false && !['FALSE', 'FALS', '0'].includes(String(v).toUpperCase())
 const _name = (item, lang) => item[`name_${lang}`] || item.name_ca || ''
 const _sort = (a, b) => (Number(a.order) || 0) - (Number(b.order) || 0)
 
 function _mapDish(d, lang) {
   return {
-    name:        d[`name_${lang}`]        || d.name_ca        || '',
-    description: d[`description_${lang}`] || d.description_ca || '',
+    name:        d[`name_${lang}`]        ?? d.name_ca        ?? '',
+    description: d[`description_${lang}`] ?? d.description_ca ?? '',
     allergens:   d.allergens  || '',
     supplement:  d.supplement || '',
   }
@@ -51,7 +49,8 @@ function _mapGroup(group, menuId, lang, dishes) {
     items: dishes
       .filter(d => d.menu_id === menuId && d.group_id === group.id && _ok(d.active))
       .sort(_sort)
-      .map(d => _mapDish(d, lang)),
+      .map(d => _mapDish(d, lang))
+      .filter(d => d.name || d.description),
   }
 }
 
@@ -98,7 +97,7 @@ export function normalizeMenus(data, lang) {
         })
       }
 
-      return { id: menu.id, price: menu.price || '', sections: resolvedSections }
+      return { id: menu.id, title: _name(menu, lang), price: menu.price || '', sections: resolvedSections }
     })
 }
 
@@ -107,13 +106,11 @@ export function normalizeMenus(data, lang) {
 export function useMenusData() {
   const lang = useLang()
 
-  const [rawData, setRawData] = useState(() => getCachedMenus() || fallback)
+  const [rawData, setRawData] = useState(fallback)
 
   useEffect(() => {
-    if (getCachedMenus()) return   // cache vàlida — no cal fetch
-    if (fetchInProgress)  return   // StrictMode guard
-
-    fetchInProgress = true
+    const cached = getCachedMenus()
+    if (cached) { setRawData(cached); return }
     let cancelled = false
     const ctrl  = new AbortController()
     const timer = setTimeout(() => ctrl.abort(), 8000)
@@ -144,14 +141,12 @@ export function useMenusData() {
       })
       .finally(() => {
         clearTimeout(timer)
-        fetchInProgress = false
       })
 
     return () => {
       cancelled = true
       ctrl.abort()
       clearTimeout(timer)
-      fetchInProgress = false
     }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 

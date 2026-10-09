@@ -7,7 +7,7 @@ import ClosingCTA from '../components/ClosingCTA'
 import ResponsiveImage from '../components/ResponsiveImage'
 import { useLangRoutes } from '../i18n/LangContext'
 import { useLang } from '../i18n/LangContext'
-import { getOfficialMenus } from '../data/officialMenus'
+import { useMenusData } from '../hooks/useMenusData'
 
 const HERO_IMG = '/images/home-hero/restaurant-botic-emporda-plat-signatura-01.webp'
 
@@ -536,22 +536,24 @@ export default function Menus() {
   const [activeId, setActiveId] = useState(null)
   const selectorRef = useRef(null)
 
-  // API/cache/fallback data — hook handles fetch, TTL, and language
+  const cmsMenus = useMenusData()
 
   // Merge API data with i18n metadata (titles, notes stay in i18n)
   const menus = useMemo(() =>
-    MENU_META.map(({ id, titleKey, positionKey, noteKey, fallbackPrice }) => {
-      const raw = getOfficialMenus(lang).find(m => m.id === id) || {}
+    cmsMenus.map(raw => {
+      const meta = MENU_META.find(m => m.id === raw.id)
+      if (!meta) return null
+      const { id, titleKey, positionKey, noteKey, fallbackPrice } = meta
       return {
         id,
         price:    raw.price || fallbackPrice,
-        title:    t(titleKey),
+        title:    raw.title || t(titleKey),
         position: t(positionKey),
         note:     noteKey ? t(noteKey) : '',
         sections: raw.sections || [],
       }
-    }),
-  [lang, t])
+    }).filter(Boolean),
+  [cmsMenus, t])
 
   const selectMenu = (id) => {
     setActiveId(current => current === id ? null : id)

@@ -22,7 +22,8 @@ export function loadConfig() {
       const cfg = await r.json()
       const url = (cfg?.menusApiUrl ?? '').trim()
       if (!url.startsWith('https://')) return null
-      return { menusApiUrl: url }
+      const adminUrl = (cfg?.adminApiUrl ?? '').trim()
+      return { menusApiUrl: url, adminApiUrl: adminUrl.startsWith('https://script.google.com/macros/s/') ? adminUrl : '' }
     } catch {
       return null
     } finally {

@@ -83,5 +83,12 @@ const notFoundHtml = withStaticHead(template, getStaticSeo('/ca/'))
   .replace('<div id="root"></div>', `<div id="root">${await render('/ca/pagina-no-trobada/')}</div>`)
 await writeFile(join(dist, '404.html'), notFoundHtml)
 
+const adminHtml = template
+  .replace(/<meta name="robots"[^>]*>/, '<meta name="robots" content="noindex, nofollow">')
+  .replace(/<title>[\s\S]*?<\/title>/, '<title>Administració · Bo.TiC</title>')
+  .replace('<div id="root"></div>', `<div id="root">${await render('/admin/')}</div>`)
+await mkdir(join(dist, 'admin'), { recursive: true })
+await writeFile(join(dist, 'admin', 'index.html'), adminHtml)
+
 await rm(join(root, 'dist-ssr'), { recursive: true, force: true })
 console.log(`Prerendered ${routes.length} routes.`)

@@ -47,7 +47,7 @@ var C = {
 };
 
 // Pestanyes que disparen actualització de versió quan s'editen
-var PESTANYES_VIGILADES = [PESTANYES.MENUS, PESTANYES.SECCIONS, PESTANYES.GRUPS, PESTANYES.PLATS];
+var PESTANYES_VIGILADES = [PESTANYES.MENUS, PESTANYES.SECCIONS, PESTANYES.GRUPS, PESTANYES.PLATS, 'avisos'];
 
 // ─────────────────────────────────────────────────────────────────────────────
 // MENÚ PERSONALITZAT
@@ -850,7 +850,8 @@ function construir_json_menus_() {
     menus:    menusOut,
     sections: seccionsOut,
     groups:   grupsOut,
-    dishes:   platsOut
+    dishes:   platsOut,
+    notices: typeof adminReadNotices_ === 'function' ? adminReadNotices_() : []
   };
 }
 
