@@ -54,6 +54,13 @@ export default function Footer() {
             >
               {t('footer.directions')}
             </a>
+            <a
+              href="https://www.google.com/maps/d/viewer?mid=13ycz7ovNLHKlPEOouM13aNPLOzpPzv4&ll=41.98827961281014%2C3.016173340973789&z=17"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {t('reserves.restaurantParkingLink')}
+            </a>
             <Link to={routes.reserves} className="footer-reserve-link">{t('footer.reserve')}</Link>
           </section>
 
