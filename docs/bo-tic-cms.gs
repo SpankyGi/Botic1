@@ -867,7 +867,9 @@ function doGet(e) {
         .createTextOutput(JSON.stringify({ error: true, message: 'API desactivada temporalment.' }))
         .setMimeType(ContentService.MimeType.JSON);
     }
-    var json = construir_json_menus_();
+    var json = e && e.parameter && e.parameter.resource === 'notices'
+      ? { notices: adminReadNotices_() }
+      : construir_json_menus_();
     return ContentService
       .createTextOutput(JSON.stringify(json))
       .setMimeType(ContentService.MimeType.JSON);

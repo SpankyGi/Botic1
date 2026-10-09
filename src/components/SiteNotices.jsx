@@ -3,9 +3,17 @@ import { useLang } from '../i18n/LangContext'
 import { loadConfig } from '../services/config'
 import { activeNotices } from '../services/notices'
 import './SiteNotices.css'
+const cacheKey = 'botic_notices_v1'
+function cachedNotices() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null')
+    if (cached && Date.now() - cached.savedAt < 10 * 60 * 1000 && Array.isArray(cached.notices)) return cached.notices
+  } catch { /* Storage is unavailable during prerender or private browsing. */ }
+  return []
+}
 export default function SiteNotices() {
   const lang = useLang()
-  const [notices, setNotices] = useState([])
+  const [notices, setNotices] = useState(cachedNotices)
   const bannerRef = useRef(null)
   const spacerRef = useRef(null)
   const visible = activeNotices(notices)
@@ -34,11 +42,6 @@ export default function SiteNotices() {
     let stopped = false
     let controller
     let retry
-    const cacheKey = 'botic_notices_v1'
-    try {
-      const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null')
-      if (cached && Date.now() - cached.savedAt < 10 * 60 * 1000 && Array.isArray(cached.notices)) setNotices(cached.notices)
-    } catch { /* Storage may be unavailable. */ }
     const refresh = async () => {
       controller = new AbortController()
       const timer = setTimeout(() => controller.abort(), 30000)
@@ -46,7 +49,9 @@ export default function SiteNotices() {
       try {
         const cfg = await loadConfig()
         if (stopped || !cfg?.menusApiUrl) return
-        const response = await fetch(cfg.menusApiUrl, { signal: controller.signal, cache: 'no-store' })
+        const url = new URL(cfg.menusApiUrl)
+        url.searchParams.set('resource', 'notices')
+        const response = await fetch(url, { signal: controller.signal, cache: 'no-store' })
         if (!response.ok) throw new Error('No es poden carregar els avisos')
         const data = await response.json()
         if (!Array.isArray(data.notices)) throw new Error('Resposta d’avisos no vàlida')
