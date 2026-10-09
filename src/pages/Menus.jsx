@@ -474,6 +474,7 @@ function DesktopMenuSelector({ menus, t }) {
     requestAnimationFrame(() => document.getElementById(`desktop-menu-selector-${next.id}`)?.focus({ preventScroll: true }))
   }
 
+  if (!active) return null
   return (
       <section className="mnu-food-menus mnu-desktop-menus" aria-label={t('menus.selectorAria')}>
         {/* ── Selector de menús ── */}
@@ -483,13 +484,13 @@ function DesktopMenuSelector({ menus, t }) {
             <button
               key={m.id}
               id={`desktop-menu-selector-${m.id}`}
-              className={`mnu-tab${m.id === activeId ? ' active' : ''}`}
+              className={`mnu-tab${m.id === active.id ? ' active' : ''}`}
               onClick={() => selectMenu(m.id)}
               onKeyDown={(event) => onSelectorKeyDown(event, index)}
               role="tab"
-              aria-selected={m.id === activeId}
+              aria-selected={m.id === active.id}
               aria-controls={`desktop-menu-panel-${m.id}`}
-              tabIndex={m.id === activeId ? 0 : -1}
+              tabIndex={m.id === active.id ? 0 : -1}
             >
               <span className="mnu-tab-index" aria-hidden="true"><BrandDot /></span>
               <span className="mnu-tab-title">{m.title}</span>

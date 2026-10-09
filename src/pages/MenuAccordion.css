@@ -37,7 +37,7 @@
 @media (max-width:1024px) {
   .mnu-accordion-item.is-open > .mnu-accordion-heading {
     position:sticky;
-    top:96px;
+    top:calc(96px + var(--site-notice-height, 0px));
     z-index:25;
     background:#eae0d3;
     box-shadow:0 5px 12px rgba(33,26,20,.08);
@@ -59,5 +59,5 @@
   .mnu-accordion-item.is-open .mnu-course-toggle { scroll-margin-top:195px; }
 }
 @media (max-width:767px) {
-  .mnu-accordion-item.is-open > .mnu-accordion-heading { top:88px; }
+  .mnu-accordion-item.is-open > .mnu-accordion-heading { top:calc(88px + var(--site-notice-height, 0px)); }
 }

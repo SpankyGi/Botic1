@@ -1,0 +1,22 @@
+.site-notices-space { height: 110px; }
+.site-notices {
+  position: fixed;
+  top: 110px;
+  left: 0;
+  right: 0;
+  z-index: 899;
+  margin: 0;
+  padding: 14px 24px;
+  background: #831a35;
+  color: #fff;
+  text-align: center;
+  font: 400 14px/1.5 'Plus Jakarta Sans', sans-serif;
+}
+.site-notices p { margin: 4px auto; max-width: 1000px; white-space: pre-line; overflow-wrap: anywhere; }
+body .mnu-selector-wrap { top: calc(72px + var(--site-notice-height, 0px)); }
+@media (max-width: 768px) {
+  body .mnu-selector-wrap { top: calc(62px + var(--site-notice-height, 0px)); }
+}
+@media (max-width: 768px) {
+  .site-notices { padding: 10px 16px; font-size: 12px; }
+}

@@ -1,6 +1,6 @@
 /** Add as a separate Apps Script file alongside bo-tic-cms.gs.
  * Set BOTIC_ADMIN_USER and BOTIC_ADMIN_PASSWORD in Script Properties yourself.
- * Use a unique generated password (at least 20 characters). Never commit it.
+ * Use a unique password (at least 9 characters). Never commit it.
  * No setup function resets or seeds existing menu sheets.
  */
 var ADMIN_FIELDS = {
@@ -41,7 +41,8 @@ function doPost(e) {
     var props = PropertiesService.getScriptProperties();
     var user = props.getProperty('BOTIC_ADMIN_USER');
     var password = props.getProperty('BOTIC_ADMIN_PASSWORD');
-    if (!user || !password || password.length < 20) throw new Error('Accés pendent de configurar.');
+    if (!user || !password) throw new Error('Accés pendent de configurar.');
+    if (password.length < 9) throw new Error('La contrasenya configurada ha de tenir almenys 9 caràcters.');
     lock.waitLock(10000);
     var cache = CacheService.getScriptCache();
     if (body.action === 'login') {

@@ -9585,11 +9585,19 @@ footer.botic-footer {
     min-height: 44px;
   }
 
-  .footer-column a,
   .footer-bottom a,
   .footer-cookie-preferences {
     display: inline-flex;
     align-items: center;
+  }
+
+  .footer-column > a,
+  .footer-column > .footer-careers-link {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    max-width: 100%;
+    overflow-wrap: anywhere;
   }
 
   .cookie-banner button,

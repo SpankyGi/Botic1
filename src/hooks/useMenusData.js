@@ -113,7 +113,7 @@ export function useMenusData() {
     if (cached) { setRawData(cached); return }
     let cancelled = false
     const ctrl  = new AbortController()
-    const timer = setTimeout(() => ctrl.abort(), 8000)
+    const timer = setTimeout(() => ctrl.abort(), 30000)
 
     loadConfig()
       .then(cfg => {

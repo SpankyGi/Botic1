@@ -25,5 +25,5 @@ export function setCachedMenus(data) {
 }
 
 export function clearMenusCache() {
-  try { localStorage.removeItem(CACHE_KEY) } catch {}
+  try { localStorage.removeItem(CACHE_KEY); localStorage.removeItem('botic_notices_v1') } catch {}
 }
