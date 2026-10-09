@@ -14,30 +14,34 @@ function cachedNotices() {
 export default function SiteNotices() {
   const lang = useLang()
   const [notices, setNotices] = useState(cachedNotices)
-  const bannerRef = useRef(null)
-  const spacerRef = useRef(null)
+  const dialogRef = useRef(null)
+  const [dismissed, setDismissed] = useState(() => {
+    try { return sessionStorage.getItem('botic_notice_dismissed') || '' } catch { return '' }
+  })
   const visible = activeNotices(notices)
-  const hasNotice = visible.length > 0
+  const signature = JSON.stringify(visible.map(n => [n.id, n.inici, n.fi, n.nom_ca, n.nom_es, n.nom_en, n.nom_fr]))
+  const isOpen = visible.length > 0 && signature !== dismissed
+  const copy = {
+    ca: { title: 'Informació per a la vostra visita', close: 'Tancar', button: 'Entès' },
+    es: { title: 'Información para vuestra visita', close: 'Cerrar', button: 'Entendido' },
+    en: { title: 'Information for your visit', close: 'Close', button: 'Got it' },
+    fr: { title: 'Informations pour votre visite', close: 'Fermer', button: 'Bien compris' },
+  }[lang] || { title: 'Informació per a la vostra visita', close: 'Tancar', button: 'Entès' }
+  const dismiss = () => {
+    setDismissed(signature)
+    try { sessionStorage.setItem('botic_notice_dismissed', signature) } catch { /* Optional session memory. */ }
+  }
   useEffect(() => {
-    if (!hasNotice) return
-    const header = document.querySelector('.nav-header')
-    const banner = bannerRef.current
-    const spacer = spacerRef.current
-    if (!header || !banner || !spacer) return
-    const initialHeaderHeight = header.getBoundingClientRect().height
-    const update = () => {
-      const headerHeight = header.getBoundingClientRect().height
-      const noticeHeight = banner.getBoundingClientRect().height
-      banner.style.top = `${headerHeight}px`
-      spacer.style.height = `${initialHeaderHeight + noticeHeight}px`
-      document.documentElement.style.setProperty('--site-notice-height', `${noticeHeight}px`)
+    const dialog = dialogRef.current
+    if (!isOpen || !dialog) return
+    const previousOverflow = document.body.style.overflow
+    dialog.showModal()
+    document.body.style.overflow = 'hidden'
+    return () => {
+      dialog.close()
+      document.body.style.overflow = previousOverflow
     }
-    const observer = new ResizeObserver(update)
-    observer.observe(header)
-    observer.observe(banner)
-    update()
-    return () => { observer.disconnect(); document.documentElement.style.removeProperty('--site-notice-height') }
-  }, [hasNotice])
+  }, [isOpen])
   useEffect(() => {
     let stopped = false
     let controller
@@ -66,6 +70,14 @@ export default function SiteNotices() {
     refresh()
     return () => { stopped = true; controller?.abort(); clearTimeout(retry) }
   }, [])
-  if (!visible.length) return null
-  return <><div ref={spacerRef} className="site-notices-space" aria-hidden="true" /><aside ref={bannerRef} className="site-notices" aria-label={{ca:'Avisos',es:'Avisos',en:'Notices',fr:'Informations'}[lang]}>{visible.map(n => <p key={n.id}>{n[`nom_${lang}`] || n.nom_ca}</p>)}</aside></>
+  if (!isOpen) return null
+  return (
+    <dialog ref={dialogRef} className="site-notice-dialog" aria-labelledby="site-notice-title" onCancel={(event) => { event.preventDefault(); dismiss() }}>
+      <button type="button" className="site-notice-close" aria-label={copy.close} onClick={dismiss} autoFocus>×</button>
+      <span className="site-notice-brand">Bo·TiC</span>
+      <h2 id="site-notice-title">{copy.title}</h2>
+      <div className="site-notice-content">{visible.map(n => <p key={n.id}>{n[`nom_${lang}`] || n.nom_ca}</p>)}</div>
+      <button type="button" className="site-notice-confirm" onClick={dismiss}>{copy.button}</button>
+    </dialog>
+  )
 }

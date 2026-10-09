@@ -1,22 +1,21 @@
-.site-notices-space { height: 110px; }
-.site-notices {
-  position: fixed;
-  top: 110px;
-  left: 0;
-  right: 0;
-  z-index: 899;
-  margin: 0;
-  padding: 14px 24px;
-  background: #831a35;
-  color: #fff;
+.site-notice-dialog {
+  box-sizing: border-box;
+  width: min(560px, calc(100% - 32px));
+  max-height: calc(100dvh - 40px);
+  margin: auto;
+  padding: 52px 40px 36px;
+  overflow-y: auto;
+  border: 1px solid #d6c7b6;
+  background: #f4efe5;
+  color: #29241f;
+  box-shadow: 0 24px 90px #0005;
   text-align: center;
-  font: 400 14px/1.5 'Plus Jakarta Sans', sans-serif;
 }
-.site-notices p { margin: 4px auto; max-width: 1000px; white-space: pre-line; overflow-wrap: anywhere; }
-body .mnu-selector-wrap { top: calc(72px + var(--site-notice-height, 0px)); }
-@media (max-width: 768px) {
-  body .mnu-selector-wrap { top: calc(62px + var(--site-notice-height, 0px)); }
-}
-@media (max-width: 768px) {
-  .site-notices { padding: 10px 16px; font-size: 12px; }
-}
+.site-notice-dialog::backdrop { background: rgb(24 17 15 / 65%); backdrop-filter: blur(4px); }
+.site-notice-brand { display: block; margin-bottom: 24px; color: #831a35; font-size: 18px; letter-spacing: .24em; }
+.site-notice-dialog h2 { margin: 0 0 24px; font-size: clamp(26px, 5vw, 34px); line-height: 1.15; font-weight: 400; }
+.site-notice-content p { margin: 0 0 16px; white-space: pre-line; overflow-wrap: anywhere; font-size: 16px; line-height: 1.7; }
+.site-notice-close { position: absolute; top: 8px; right: 8px; width: 44px; height: 44px; border: 0; background: transparent; color: #831a35; font-size: 30px; cursor: pointer; }
+.site-notice-confirm { min-height: 44px; margin-top: 16px; padding: 12px 36px; border: 1px solid #831a35; background: #831a35; color: #fff; cursor: pointer; font: inherit; }
+.site-notice-dialog button:focus-visible { outline: 2px solid #831a35; outline-offset: 4px; }
+@media (max-width: 480px) { .site-notice-dialog { padding: 48px 24px 28px; } }
