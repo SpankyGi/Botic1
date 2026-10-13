@@ -8048,6 +8048,8 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
   .home-seo-logo { width: 122px; height: 68px; margin-bottom: 22px; }
   .home-seo-intro h2 { font-size: clamp(24px, 7.2vw, 31px); line-height: 1.08; }
   .home-seo-intro p { margin-top: 12px; font-size: 12px; line-height: 1.58; }
+}
+@media (max-width: 1199px) {
   .mobile-people-coda {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -8096,7 +8098,7 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
 .home-albert-signature,
 .home-cristina-editorial,
 .home-cristina-signature { display: none; }
-@media (min-width: 1840px) {
+@media (min-width: 1200px) {
   .features-section {
     --albert-editorial-width: clamp(190px, calc((100vw - 1440px) / 2 - 24px), 380px);
     --albert-editorial-left: max(4px, calc((100vw - 1440px) / 2 - var(--albert-editorial-width) - 16px));
@@ -8159,6 +8161,43 @@ body .exp-narrative .exp-gallery-shell { position:relative; z-index:1; }
     pointer-events: none;
   }
   .home-cristina-signature span:last-child { color: rgba(33, 26, 20, .55); font-size: 8px; letter-spacing: .24em; }
+}
+
+/* Reserve real side columns for the portraits on laptops. */
+@media (min-width: 1200px) and (max-width: 1839px) {
+  .features-section {
+    --albert-editorial-width: 11vw;
+    --albert-editorial-left: 1vw;
+    --people-bottom: calc(clamp(88px, 10vw, 148px) + (clamp(540px, 43vw, 700px) - 21.076vw) / 2);
+  }
+  .home-albert-editorial,
+  .home-cristina-editorial { bottom: var(--people-bottom); }
+  .features-section .container-max {
+    width: 76%;
+    padding-inline: 16px;
+  }
+  .features-section .features-grid { gap: clamp(16px, 1.5vw, 26px); }
+  .features-section .feature-card,
+  .features-section .feature-card:nth-child(2),
+  .features-section .feature-card:hover,
+  .features-section .feature-card:focus-visible {
+    min-height: clamp(540px, 43vw, 700px);
+    padding: clamp(20px, 1.8vw, 32px);
+  }
+  .features-section .feature-title { font-size: clamp(36px, 3.2vw, 58px); }
+  .home-albert-signature,
+  .home-cristina-signature {
+    width: var(--albert-editorial-width);
+    bottom: calc(var(--people-bottom) - 38px);
+    font-size: 8px;
+    line-height: 1.5;
+    letter-spacing: .1em;
+  }
+  .home-albert-signature { left: var(--albert-editorial-left); }
+  .home-cristina-signature { right: var(--albert-editorial-left); }
+}
+@media (min-width: 769px) and (max-width: 1199px) {
+  .mobile-people-coda { max-width: 540px; margin-inline: auto; }
 }
 
 /* La composiciÃ³ comenÃ§a alineada; el capÃ­tol central no ha de "caure". */
