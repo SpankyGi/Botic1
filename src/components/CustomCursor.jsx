@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-const CURSOR_QUERY = '(hover: hover) and (pointer: fine) and (min-width: 769px)'
+const CURSOR_QUERY = '(hover: hover) and (pointer: fine) and (min-width: 769px) and (prefers-reduced-motion: no-preference)'
 
 export default function CustomCursor() {
   const [enabled, setEnabled] = useState(() =>
@@ -24,6 +24,20 @@ export default function CustomCursor() {
     const dot = dotRef.current
     const out = outRef.current
     if (!dot || !out) return
+    started.current = false
+    let rafId = null
+
+    const loop = () => {
+      rafId = null
+      const { mx, my } = pos.current
+      pos.current.ox += (mx - pos.current.ox) * 0.18
+      pos.current.oy += (my - pos.current.oy) * 0.18
+      const settled = Math.abs(mx - pos.current.ox) < 0.1 && Math.abs(my - pos.current.oy) < 0.1
+      if (settled) { pos.current.ox = mx; pos.current.oy = my }
+      dot.style.transform = `translate3d(${mx}px, ${my}px, 0) translate(-50%, -50%)`
+      out.style.transform = `translate3d(${pos.current.ox}px, ${pos.current.oy}px, 0) translate(-50%, -50%)`
+      if (!settled) rafId = requestAnimationFrame(loop)
+    }
 
     const onMove = (e) => {
       if (!started.current) {
@@ -33,21 +47,17 @@ export default function CustomCursor() {
       }
       pos.current.mx = e.clientX
       pos.current.my = e.clientY
+      if (rafId === null && !document.hidden) rafId = requestAnimationFrame(loop)
     }
     document.addEventListener('mousemove', onMove)
 
-    let rafId
-    const loop = () => {
-      const { mx, my } = pos.current
-      pos.current.ox += (mx - pos.current.ox) * 0.18
-      pos.current.oy += (my - pos.current.oy) * 0.18
-      dot.style.left = mx + 'px'
-      dot.style.top  = my + 'px'
-      out.style.left = pos.current.ox + 'px'
-      out.style.top  = pos.current.oy + 'px'
-      rafId = requestAnimationFrame(loop)
+    const onVisibility = () => {
+      if (document.hidden && rafId !== null) {
+        cancelAnimationFrame(rafId)
+        rafId = null
+      }
     }
-    rafId = requestAnimationFrame(loop)
+    document.addEventListener('visibilitychange', onVisibility)
 
     // Event delegation — funciona amb elements afegits dinàmicament
     const onOver = (e) => {
@@ -59,8 +69,9 @@ export default function CustomCursor() {
     return () => {
       document.removeEventListener('mousemove', onMove)
       document.removeEventListener('mouseover', onOver)
+      document.removeEventListener('visibilitychange', onVisibility)
       document.body.classList.remove('has-custom-cursor')
-      cancelAnimationFrame(rafId)
+      if (rafId !== null) cancelAnimationFrame(rafId)
     }
   }, [enabled])
 

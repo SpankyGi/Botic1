@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef } from 'react'
 
 export default function ScrollProgress() {
-  const [progress, setProgress] = useState(0)
+  const barRef = useRef(null)
 
   useEffect(() => {
     let frameId
@@ -13,7 +13,7 @@ export default function ScrollProgress() {
         ? Math.min(100, Math.max(0, (window.scrollY / scrollableHeight) * 100))
         : 0
 
-      setProgress(nextProgress)
+      if (barRef.current) barRef.current.style.transform = `scaleX(${nextProgress / 100})`
     }
 
     const requestUpdate = () => {
@@ -33,7 +33,7 @@ export default function ScrollProgress() {
 
   return (
     <div className="scroll-progress" aria-hidden="true">
-      <div className="scroll-progress__bar" style={{ transform: `scaleX(${progress / 100})` }} />
+      <div ref={barRef} className="scroll-progress__bar" />
     </div>
   )
 }

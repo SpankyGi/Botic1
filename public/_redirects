@@ -1,4 +1,7 @@
 /restaurant /ca/restaurant/ 301
+/reservation-multipage /ca/reserves/ 301
+/reservation-multipage/ /ca/reserves/ 301
+/index.php /ca/ 301
 /restaurant/ /ca/restaurant/ 301
 /menus /ca/menus/ 301
 /menus/ /ca/menus/ 301

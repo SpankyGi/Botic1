@@ -295,7 +295,7 @@ function ScrollArchitectureSection({ t }) {
                 key={scene.num}
                 className={`rst-story-scene layout-${scene.layout}${index === activeScene ? ' is-active' : ''}${index < activeScene ? ' is-past' : ''}`}
               >
-                <ResponsiveImage src={scene.img} mobileSrc={mobileImage(scene.img)} alt={scene.alt} className="rst-story-img" loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} />
+                <ResponsiveImage src={scene.img} mobileSrc={mobileImage(scene.img)} alt={scene.alt} className="rst-story-img" loading="lazy" decoding="async" />
                 <div className="rst-story-shade" aria-hidden="true" />
                 <div className="rst-story-copy">
                   <span className="rst-story-number"><BrandDot /></span>
