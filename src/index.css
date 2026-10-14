@@ -52,6 +52,7 @@ body {
 /* ====== CUSTOM CURSOR ====== */
 .cursor-dot {
   position: fixed;
+  left: 0; top: 0;
   width: 6px; height: 6px;
   background: var(--burgundy);
   border-radius: 50%;
@@ -63,6 +64,7 @@ body {
 }
 .cursor-out {
   position: fixed;
+  left: 0; top: 0;
   width: 32px; height: 32px;
   border: 1px solid rgba(154,42,42,0.28);
   border-radius: 50%;

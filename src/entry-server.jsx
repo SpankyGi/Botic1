@@ -4,6 +4,7 @@ import { renderToString } from 'react-dom/server'
 import { StaticRouter } from 'react-router-dom/server'
 import i18n from './i18n/index.js'
 import App from './App.jsx'
+import Admin from './pages/Admin.jsx'
 import { DEFAULT_LANG, LANGS, ROUTE_SLUGS, slugToKey } from './i18n/routes.js'
 
 export const BASE_URL = 'https://bo-tic.com'
@@ -54,13 +55,14 @@ export function getStaticSeo(url) {
 }
 
 export async function render(url) {
+  const Root = /^\/admin(?:\/|$)/.test(url) ? Admin : App
   const { lang } = routeDetails(url)
   if (i18n.language !== lang) await i18n.changeLanguage(lang)
 
   return renderToString(
     <React.StrictMode>
       <StaticRouter location={url}>
-        <App />
+        <Root />
       </StaticRouter>
     </React.StrictMode>,
   )

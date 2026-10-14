@@ -111,7 +111,7 @@ function MenuNarrative({ t }) {
         {moments.map((moment, index) => (
           <article className={`exp-gallery-slide${index === activeMoment ? ' is-active' : ''}`} key={moment.num} aria-hidden={index !== activeMoment}>
             <div className={`exp-gallery-images${moment.galleryClass || ''}`}>
-              <figure className="exp-gallery-main"><ResponsiveImage src={moment.images[0]} mobileSrc={mobileImage(moment.images[0])} alt={moment.mainAlt || moment.label} loading={index === 0 ? 'eager' : 'lazy'} fetchpriority={index === 0 ? 'high' : 'auto'} /></figure>
+              <figure className="exp-gallery-main"><ResponsiveImage src={moment.images[0]} mobileSrc={mobileImage(moment.images[0])} alt={moment.mainAlt || moment.label} loading="lazy" decoding="async" /></figure>
               <figure className="exp-gallery-side"><ResponsiveImage src={moment.images[1]} mobileSrc={mobileImage(moment.images[1])} alt="" loading="lazy" /></figure>
               <figure className="exp-gallery-detail"><ResponsiveImage src={moment.images[2]} mobileSrc={mobileImage(moment.images[2])} alt="" loading="lazy" /></figure>
               <span className="exp-gallery-count" aria-hidden="true"><BrandDot /></span>

@@ -6,6 +6,9 @@ import App from './App.jsx'
 import './index.css'
 
 async function bootstrap() {
+  // The administration bundle and styles are only needed on its own route.
+  const isAdmin = /^\/admin(?:\/|$)/.test(window.location.pathname)
+  const Root = isAdmin ? (await import('./pages/Admin.jsx')).default : App
   const lang = window.location.pathname.split('/').filter(Boolean)[0]
   if (['ca', 'es', 'en', 'fr'].includes(lang) && i18n.language !== lang) {
     await i18n.changeLanguage(lang)
@@ -14,7 +17,7 @@ async function bootstrap() {
   const app = (
     <React.StrictMode>
       <BrowserRouter>
-        <App />
+        <Root />
       </BrowserRouter>
     </React.StrictMode>
   )

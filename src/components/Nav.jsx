@@ -37,6 +37,7 @@ export default function Nav() {
   const [scrolled,    setScrolled]   = useState(false)
   const [menuOpen,    setMenuOpen]   = useState(false)
   const [activeImg,   setActiveImg]  = useState(null)
+  const [visitedImages, setVisitedImages] = useState([])
   const openBtnRef   = useRef(null)
   const firstLinkRef = useRef(null)
   const menuRef      = useRef(null)
@@ -49,6 +50,9 @@ export default function Nav() {
     active: location.pathname.replace(/\/$/, '') === routes[key].replace(/\/$/, ''),
   }))
   const displayedImg = activeImg ?? Math.max(0, navItems.findIndex(item => item.active))
+  useEffect(() => {
+    if (menuOpen) setVisitedImages(images => images.includes(displayedImg) ? images : [...images, displayedImg])
+  }, [menuOpen, displayedImg])
   const currentPageKey = isHome ? 'home' : slugToKey(lang, location.pathname.split('/').filter(Boolean)[1])
   const currentPageLabel = legacyContent.copy[lang]?.[currentPageKey]?.[0] || (currentPageKey
     ? t(['legal', 'privacy', 'cookies', 'preferences'].includes(currentPageKey)
@@ -186,9 +190,9 @@ export default function Nav() {
             <div key={item.to}
               className={`nav-fs-photo${displayedImg === i ? ' is-active' : ''}`}
               style={{ '--photo-position': NAV_POSITIONS[i] }}>
-              <ResponsiveImage src={item.img}
+              {(displayedImg === i || visitedImages.includes(i)) && <ResponsiveImage src={item.img}
                 mobileSrc={item.img.replace('.webp', '-mobile.webp')}
-                alt="" className="nav-fs-photo-image" decoding="async" />
+                alt="" className="nav-fs-photo-image" decoding="async" />}
             </div>
           ))}
         </div>

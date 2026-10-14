@@ -22,7 +22,6 @@ import NotFound      from './pages/NotFound'
 import Legal         from './pages/Legal'
 import CookieConsent from './consent/CookieConsent'
 import Analytics from './analytics/Analytics'
-import Admin from './pages/Admin'
 import SiteNotices from './components/SiteNotices'
 
 function ScrollToTop() {
@@ -97,7 +96,6 @@ function AppContent() {
 
 export default function App() {
   const { pathname } = useLocation()
-  if (pathname === '/admin' || pathname.startsWith('/admin/')) return <Admin />
   const currentLang = pathname.split('/').filter(Boolean)[0]
   const lang = LANGS.includes(currentLang) ? currentLang : DEFAULT_LANG
 
