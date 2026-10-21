@@ -104,3 +104,10 @@ RewriteRule ^en/my\-account/lost\-password/?$ - [G,L]
 RewriteRule ^es/mi\-cuenta/lost\-password/?$ - [G,L]
 RewriteRule ^fr/mon\-compte/lost\-password/?$ - [G,L]
 ErrorDocument 410 /404.html
+
+# Extend only the existing frame-ancestors rule for the authorized portfolio.
+# All other Content-Security-Policy directives remain unchanged.
+<IfModule mod_headers.c>
+  Header edit Content-Security-Policy "frame-ancestors 'self'" "frame-ancestors 'self' https://ovproduccions.com https://www.ovproduccions.com https://mediumpurple-oyster-329897.hostingersite.com"
+  Header always edit Content-Security-Policy "frame-ancestors 'self'" "frame-ancestors 'self' https://ovproduccions.com https://www.ovproduccions.com https://mediumpurple-oyster-329897.hostingersite.com"
+</IfModule>
