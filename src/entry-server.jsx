@@ -1,7 +1,7 @@
 import legacyContent from './data/legacyContent.json'
 import React from 'react'
 import { renderToString } from 'react-dom/server'
-import { StaticRouter } from 'react-router-dom/server'
+import { StaticRouter } from 'react-router-dom'
 import i18n from './i18n/index.js'
 import App from './App.jsx'
 import Admin from './pages/Admin.jsx'
