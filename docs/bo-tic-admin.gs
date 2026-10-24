@@ -21,23 +21,45 @@ function adminEqual_(a, b) {
   for (var i = 0; i < x.length; i++) diff |= x.charCodeAt(i) ^ y.charCodeAt(i);
   return diff === 0;
 }
-function adminSnapshot_() {
+function adminRowRevision_(row) {
+  var clean = {};
+  Object.keys(row).filter(function(k) { return k !== '_revision'; }).sort().forEach(function(k) { clean[k] = row[k]; });
+  return adminDigest_(JSON.stringify(clean));
+}
+function adminRows_(ss, name) {
+  var sheet = ss.getSheetByName(name);
+  if (!sheet) return [];
+  var grid = sheet.getDataRange().getValues(), headers = grid.shift();
+  return grid.filter(function(r) { return r[0]; }).map(function(r) {
+    var row = {}; headers.forEach(function(h, i) { row[String(h).trim()] = r[i]; });
+    return row;
+  });
+}
+function adminSnapshot_(ss) {
+  ss = ss || SpreadsheetApp.getActiveSpreadsheet();
   var data = {};
   Object.keys(ADMIN_FIELDS).forEach(function(name) {
-    data[name] = llegir_dades_pestanya_(name).filter(function(r) { return r.id; });
+    data[name] = adminRows_(ss, name);
   });
-  // Revision covers direct spreadsheet edits, not just the version counter.
-  return { data: data, revision: adminDigest_(JSON.stringify(data)) };
+  var revision = adminDigest_(JSON.stringify(data));
+  Object.keys(data).forEach(function(name) { data[name].forEach(function(row) { row._revision = adminRowRevision_(row); }); });
+  return { data: data, revision: revision, protocol: 2 };
 }
 function adminReadNotices_() {
   return llegir_dades_pestanya_('avisos').filter(function(r) { return r.id && es_actiu_(r.actiu); });
 }
 function doPost(e) {
-  var lock = LockService.getScriptLock();
   try {
     var raw = (e && e.postData && e.postData.contents) || '{}';
     if (raw.length > 40000) throw new Error('Petició massa gran.');
-    var body = JSON.parse(raw);
+    return adminJson_(adminHandle_(JSON.parse(raw)));
+  } catch (error) { return adminJson_({ ok: false, error: String(error.message || error) }); }
+}
+// The optional spreadsheet is only used by server-side tests, never from a request.
+function adminHandle_(body, ss) {
+  ss = ss || SpreadsheetApp.getActiveSpreadsheet();
+  var lock = LockService.getScriptLock();
+  try {
     var props = PropertiesService.getScriptProperties();
     var user = props.getProperty('BOTIC_ADMIN_USER');
     var password = props.getProperty('BOTIC_ADMIN_PASSWORD');
@@ -55,15 +77,17 @@ function doPost(e) {
       cache.remove('botic-login-failures');
       var token = Utilities.getUuid() + Utilities.getUuid();
       cache.put('botic-session-' + adminDigest_(token), adminDigest_(user + password), 3600);
-      return adminJson_({ ok: true, token: token, snapshot: adminSnapshot_() });
+      return { ok: true, token: token, snapshot: adminSnapshot_(ss) };
     }
     var key = 'botic-session-' + adminDigest_(String(body.token || ''));
-    if (cache.get(key) !== adminDigest_(user + password)) throw new Error('Sessió caducada. Torna a entrar.');
-    if (body.action === 'logout') { cache.remove(key); return adminJson_({ ok: true }); }
-    if (body.action === 'read') return adminJson_({ ok: true, snapshot: adminSnapshot_() });
+    if (cache.get(key) !== adminDigest_(user + password)) return { ok: false, code: 'SESSION_EXPIRED', error: 'La sessió ha caducat. Torna a identificar-te; conservem els teus textos.' };
+    if (body.action === 'logout') { cache.remove(key); return { ok: true }; }
+    if (body.action === 'read') {
+      var savedReceipt = body.requestId && /^[a-f0-9-]{36}$/i.test(body.requestId) ? props.getProperty('botic-save-' + ss.getId() + '-' + body.requestId) : null;
+      return { ok: true, snapshot: adminSnapshot_(ss), receipt: savedReceipt ? { requestId: body.requestId, state: JSON.parse(savedReceipt).state } : null };
+    }
     if (body.action !== 'save') throw new Error('Acció desconeguda.');
-    var snapshot = adminSnapshot_();
-    if (body.revision !== snapshot.revision) throw new Error('Les dades han canviat. Recarrega abans de desar.');
+    var snapshot = adminSnapshot_(ss);
     var table = String(body.table || '');
     if (!Object.prototype.hasOwnProperty.call(ADMIN_FIELDS, table)) throw new Error('Taula no vàlida.');
     var row = snapshot.data[table].find(function(r) { return r.id === body.id; });
@@ -85,22 +109,66 @@ function doPost(e) {
     var next = Object.assign({}, row, values);
     if (table === 'avisos' && next.inici && next.fi && next.fi < next.inici) throw new Error('La data final és anterior a la inicial.');
     if (table === 'avisos' && next.actiu === 'CERT' && !String(next.nom_ca || '').trim()) throw new Error('Escriu el text de l’avís.');
-    var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(table);
+    var receiptKey, receipt, fingerprint;
+    if (body.requestId) {
+      if (!/^[a-f0-9-]{36}$/i.test(body.requestId)) throw new Error('Identificador de desament no vàlid.');
+      if (typeof body.createdAt !== 'number' || Date.now() - body.createdAt > 86400000 || body.createdAt > Date.now() + 300000) throw new Error('Aquest intent de desament ha caducat. Revisa les dades abans de tornar-ho a provar.');
+      receiptKey = 'botic-save-' + ss.getId() + '-' + body.requestId;
+      fingerprint = adminDigest_(JSON.stringify({ owner: user, table: table, id: body.id, values: values, recordRevision: body.recordRevision, createdAt: body.createdAt }));
+      var stored = props.getProperty(receiptKey);
+      receipt = stored ? JSON.parse(stored) : null;
+      if (receipt && receipt.fingerprint !== fingerprint) throw new Error('Aquest identificador ja correspon a un altre canvi.');
+      if (receipt && receipt.state === 'done') return { ok: true, requestId: body.requestId, snapshot: snapshot };
+      // A crash after the row write must be recovered without writing it again.
+      if (receipt && adminValuesMatch_(row, values)) {
+        receipt.state = 'done'; props.setProperty(receiptKey, JSON.stringify(receipt));
+        return { ok: true, requestId: body.requestId, snapshot: snapshot };
+      }
+    }
+    var expected = receipt ? receipt.before : body.recordRevision;
+    if (expected ? expected !== row._revision : body.revision !== snapshot.revision) return { ok: false, code: 'CONFLICT', snapshot: snapshot, error: 'Aquest registre ha canviat en una altra sessió. Conservem els teus textos. Cancel·la i obre el registre actualitzat per revisar-lo.' };
+    if (receiptKey && !receipt) {
+      // Durable receipts contain hashes only, never passwords or menu text.
+      var all = props.getProperties(), receiptCount = 0;
+      Object.keys(all).filter(function(k) { return k.indexOf('botic-save-') === 0; }).forEach(function(k) {
+        if (Date.now() - JSON.parse(all[k]).createdAt > 86400000) props.deleteProperty(k); else receiptCount++;
+      });
+      if (receiptCount >= 500) throw new Error('S’ha arribat al límit de desaments del dia. Contacta amb el suport.');
+      receipt = { fingerprint: fingerprint, before: row._revision, state: 'pending', createdAt: body.createdAt };
+      props.setProperty(receiptKey, JSON.stringify(receipt));
+    }
+    var sheet = ss.getSheetByName(table);
     var grid = sheet.getDataRange().getValues(), headers = grid[0];
     var index = grid.findIndex(function(r, i) { return i > 0 && r[0] === body.id; });
     if (index < 1) throw new Error('Registre no trobat.');
+    var range = sheet.getRange(index + 1, 1, 1, headers.length);
+    var formulas = range.getFormulas()[0];
+    var updated = grid[index].map(function(v, i) { return formulas[i] || v; });
     Object.keys(values).forEach(function(field) {
       var col = headers.indexOf(field);
       if (col < 0) throw new Error('Columna no trobada.');
       // Text format for dates avoids timezone shifts when reading back.
       if (field === 'inici' || field === 'fi') sheet.getRange(index + 1, col + 1).setNumberFormat('@');
-      sheet.getRange(index + 1, col + 1).setValue(values[field]);
+      updated[col] = values[field];
     });
-    if (table === 'plats') sheet.getRange(index + 1, headers.indexOf('actualitzat_el') + 1).setValue(new Date());
-    actualitzar_versio_interna_(SpreadsheetApp.getActiveSpreadsheet().getSheetByName('configuracio'));
+    if (table === 'plats' && headers.indexOf('actualitzat_el') >= 0) updated[headers.indexOf('actualitzat_el')] = new Date();
+    // One row write avoids leaving half of a translated dish updated.
+    range.setValues([updated]);
     SpreadsheetApp.flush();
-    return adminJson_({ ok: true, snapshot: adminSnapshot_() });
+    var after = adminSnapshot_(ss);
+    var saved = after.data[table].find(function(r) { return r.id === body.id; });
+    if (!adminValuesMatch_(saved, values)) throw new Error('No s’ha pogut verificar el canvi. Conserva els textos i torna-ho a comprovar.');
+    if (receiptKey) { receipt.state = 'done'; props.setProperty(receiptKey, JSON.stringify(receipt)); }
+    // The public feed reads live rows; its version counter is only a cache hint.
+    try { actualitzar_versio_interna_(ss.getSheetByName('configuracio')); } catch (ignored) {}
+    return { ok: true, requestId: body.requestId || null, snapshot: after };
   } catch (error) {
-    return adminJson_({ ok: false, error: String(error.message || error) });
+    return { ok: false, error: String(error.message || error), uncertain: !!receiptKey };
   } finally { if (lock.hasLock()) lock.releaseLock(); }
+}
+function adminValuesMatch_(row, values) {
+  return !!row && Object.keys(values).every(function(k) {
+    if (k === 'actiu') return (row[k] === true || row[k] === 'CERT') === (values[k] === true || values[k] === 'CERT');
+    return String(row[k] == null ? '' : row[k]) === String(values[k] == null ? '' : values[k]);
+  });
 }
