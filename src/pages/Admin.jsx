@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { adminRequest } from '../services/adminApi'
+import { adminRequest, saveAdminRecord } from '../services/adminApi'
 import { clearMenusCache } from '../services/menusCache'
 import './Admin.css'
 
@@ -65,7 +65,13 @@ export default function Admin() {
     run(async () => { const result = await adminRequest({ action: 'login', user: fields.get('user'), password: fields.get('password') }); form.reset(); setSession(result.token); setSnapshot(result.snapshot) })
   }
   const save = (table, id, values) => run(async () => {
-    const result = await adminRequest({ action: 'save', token: session, revision: snapshot.revision, table, id, values })
+    let result
+    try {
+      result = await saveAdminRecord({ action: 'save', token: session, revision: snapshot.revision, table, id, values })
+    } catch (error) {
+      if (error.snapshot) setSnapshot(error.snapshot)
+      throw error
+    }
     setSnapshot(result.snapshot); setEdit(null); clearMenusCache(); setMessage('Canvis desats i confirmats a Google Sheets.')
   })
   const choose = (table, record) => { setEdit({ table, record }); setError(''); setMessage('') }
