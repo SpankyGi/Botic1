@@ -34,12 +34,13 @@ function HeroBrand({ pulseKey, tone }) {
 
 const SLIDE_MS = 6500
 
-function HeroGallery({ activeIndex, previousIndex }) {
+function HeroGallery({ activeIndex, previousIndex, playing }) {
   const [readyNext, setReadyNext] = useState(null)
   useEffect(() => {
+    if (!playing) return undefined
     const timer = setTimeout(() => setReadyNext((activeIndex + 1) % HERO_STILLS.length), 3000)
     return () => clearTimeout(timer)
-  }, [activeIndex])
+  }, [activeIndex, playing])
   return (
     <div className="hero-gallery" aria-hidden="true">
       {HERO_STILLS.map((still, index) => (index === activeIndex || index === previousIndex || index === readyNext) && (
@@ -160,7 +161,7 @@ export default function Hero() {
           selectSlide((activeIndex + (dx < 0 ? 1 : -1) + HERO_STILLS.length) % HERO_STILLS.length)
         }
       }}>
-      <HeroGallery activeIndex={activeIndex} previousIndex={previousIndex} />
+      <HeroGallery activeIndex={activeIndex} previousIndex={previousIndex} playing={playing} />
       <div ref={brandRef} className="hero-brand-motion">
         <HeroBrand pulseKey={activeIndex} tone={activeStill.tone} />
       </div>

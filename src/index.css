@@ -9758,10 +9758,13 @@ svg.botic-item-dot.is-muted { opacity:.3; }
 @keyframes hero-slide-time { to { transform: scaleX(1); } }
 @media (max-width: 768px) {
   .hero--cinema .hero-content-wrap { padding-bottom: 112px; }
+  .hero--cinema .hero-slide.is-active { animation: hero-mobile-fade .45s ease-out both; }
+  .hero--cinema .hero-slide.is-active .hero-gallery-image { animation: none; transform: scale(1.015); }
   .hero-slider-controls { right: auto; left: 24px; bottom: 28px; gap: 3px; padding: 2px 5px; }
   .hero-slider-controls .hero-slider-dot { width: 20px; }
   .hero--cinema .scroll-hint { display: none; }
 }
+@keyframes hero-mobile-fade { from { opacity: 0; } to { opacity: 1; } }
 @media (prefers-reduced-motion: reduce) {
   .hero--cinema .hero-slide.is-active, .hero--cinema .hero-slide.is-active .hero-gallery-image, .hero--cinema .hero-slider-progress { animation: none; }
   .hero--cinema .hero-gallery-image, .hero--cinema .hero-slide.is-previous .hero-gallery-image { transform: none; }

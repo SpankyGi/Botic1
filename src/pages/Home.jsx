@@ -116,8 +116,8 @@ export default function Home() {
 
   useEffect(() => {
     const dish = dishRef.current
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
-    if (!dish || reducedMotion.matches) return
+    const animateDish = window.matchMedia('(min-width: 769px) and (prefers-reduced-motion: no-preference)')
+    if (!dish) return
 
     let frame = 0
     const updateDishTurn = () => {
@@ -135,13 +135,28 @@ export default function Home() {
       if (!frame) frame = requestAnimationFrame(updateDishTurn)
     }
 
-    updateDishTurn()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    window.addEventListener('resize', onScroll)
-    return () => {
+    const stop = () => {
       window.removeEventListener('scroll', onScroll)
       window.removeEventListener('resize', onScroll)
       if (frame) cancelAnimationFrame(frame)
+      frame = 0
+    }
+    const updateMotion = () => {
+      if (!animateDish.matches) {
+        stop()
+        dish.style.removeProperty('--dish-turn')
+        return
+      }
+      window.addEventListener('scroll', onScroll, { passive: true })
+      window.addEventListener('resize', onScroll)
+      onScroll()
+    }
+
+    updateMotion()
+    animateDish.addEventListener('change', updateMotion)
+    return () => {
+      stop()
+      animateDish.removeEventListener('change', updateMotion)
     }
   }, [])
 
@@ -252,6 +267,8 @@ export default function Home() {
             mobileSrc="/images/plat-cenital-botic-mobile.webp"
             alt=""
             className="home-intro-img"
+            loading="lazy"
+            decoding="async"
           />
           <div className="home-intro-overlay" />
         </div>
