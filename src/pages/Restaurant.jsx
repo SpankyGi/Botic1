@@ -495,6 +495,8 @@ function FinalCTA({ t, routes }) {
       heading={t('closingCta.restaurant.heading')}
       primaryTo={routes.reserves}
       primaryLabel={t('closingCta.restaurant.primary')}
+      secondaryTo={routes.menus}
+      secondaryLabel={t('restaurant.finalBtnMenus')}
     />
   )
 }
