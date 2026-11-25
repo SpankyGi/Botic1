@@ -64,7 +64,7 @@ for (const lang of LANGS) {
   await writeFile(join(dist, route, 'index.html'), output)
 }
 
-const sitemapEntries = pageKeys.filter(key => !['legal', 'privacy'].includes(key)).flatMap(pageKey => LANGS.map(lang => {
+const sitemapEntries = pageKeys.filter(key => !['legal', 'privacy', 'cookies'].includes(key)).flatMap(pageKey => LANGS.map(lang => {
   const seo = getStaticSeo(`/${lang}/${pageKey === 'home' ? '' : ROUTE_SLUGS[lang][pageKey]}/`)
   const alternates = [
     ...seo.alternates.map(({ lang: alternateLang, href }) => `    <xhtml:link rel="alternate" hreflang="${alternateLang}" href="${href}"/>`),

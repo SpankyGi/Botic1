@@ -192,36 +192,4 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://bo-tic.com/fr/reservations/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://bo-tic.com/ca/reserves/"/>
   </url>
-  <url>
-    <loc>https://bo-tic.com/ca/cookies/</loc>
-    <xhtml:link rel="alternate" hreflang="ca" href="https://bo-tic.com/ca/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://bo-tic.com/es/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://bo-tic.com/en/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://bo-tic.com/fr/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://bo-tic.com/ca/cookies/"/>
-  </url>
-  <url>
-    <loc>https://bo-tic.com/es/cookies/</loc>
-    <xhtml:link rel="alternate" hreflang="ca" href="https://bo-tic.com/ca/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://bo-tic.com/es/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://bo-tic.com/en/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://bo-tic.com/fr/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://bo-tic.com/ca/cookies/"/>
-  </url>
-  <url>
-    <loc>https://bo-tic.com/en/cookies/</loc>
-    <xhtml:link rel="alternate" hreflang="ca" href="https://bo-tic.com/ca/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://bo-tic.com/es/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://bo-tic.com/en/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://bo-tic.com/fr/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://bo-tic.com/ca/cookies/"/>
-  </url>
-  <url>
-    <loc>https://bo-tic.com/fr/cookies/</loc>
-    <xhtml:link rel="alternate" hreflang="ca" href="https://bo-tic.com/ca/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://bo-tic.com/es/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://bo-tic.com/en/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://bo-tic.com/fr/cookies/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://bo-tic.com/ca/cookies/"/>
-  </url>
 </urlset>

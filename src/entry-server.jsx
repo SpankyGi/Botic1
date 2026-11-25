@@ -42,7 +42,7 @@ export function getStaticSeo(url) {
   return {
     lang,
     pageKey,
-    noindex: ['legal', 'privacy'].includes(pageKey),
+    noindex: ['legal', 'privacy', 'cookies'].includes(pageKey),
     title: content.title,
     description: content.description,
     canonical,

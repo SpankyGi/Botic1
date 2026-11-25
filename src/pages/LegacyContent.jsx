@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useLang, useLangRoutes } from '../i18n/LangContext'
 import SEO from '../components/SEO'
 import ResponsiveImage from '../components/ResponsiveImage'
@@ -14,6 +15,7 @@ const documents = [
 ]
 
 export default function LegacyContent({ pageKey }) {
+  const { t } = useTranslation()
   const lang = useLang()
   const routes = useLangRoutes()
   const copy = content.copy[lang]
@@ -26,7 +28,11 @@ export default function LegacyContent({ pageKey }) {
       {pageKey === 'chefTable' && <>
         <ResponsiveImage src="/images/restaurant-taula-xef-emporda.webp" mobileSrc="/images/restaurant-taula-xef-emporda-mobile.webp" alt={title} className="legacy-chef-image" />
         <p>{body}</p>
-        <div className="legacy-actions"><Link to={routes.menus}>{copy.menu} →</Link><Link to={routes.reserves}>{copy.reserve} →</Link></div>
+        <div className="legacy-actions">
+          <Link to={routes.restaurant}>{t('nav.items.restaurant.label')} →</Link>
+          <Link to={routes.menus}>{copy.menu} →</Link>
+          <Link to={routes.reserves}>{copy.reserve} →</Link>
+        </div>
       </>}
       {pageKey === 'videos' && <div className="legacy-grid">
         {content.videos.map((video, index) => <section key={video.url}>

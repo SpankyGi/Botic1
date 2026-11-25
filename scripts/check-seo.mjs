@@ -36,7 +36,7 @@ for (const lang of LANGS) {
       assert.equal(new URL(alternate.href).origin, base)
       assert(await exists(`dist${new URL(alternate.href).pathname}index.html`), `${path}: missing alternate`)
     }
-    const noindex = ['legal', 'privacy', 'preferences'].includes(key)
+    const noindex = ['legal', 'privacy', 'cookies', 'preferences'].includes(key)
     assert.equal(meta.find(m => m.name === 'robots')?.content, noindex ? 'noindex, follow' : 'index, follow', `${path}: robots`)
     assert.equal(sitemap.includes(`<loc>${base}${path}</loc>`), !noindex, `${path}: sitemap eligibility`)
     for (const image of [...html.matchAll(/<img\b[^>]*>/g)].map(m => attrs(m[0]))) {
@@ -65,5 +65,5 @@ for (const lang of LANGS) {
 const notFound = await readFile('dist/404.html', 'utf8')
 assert(metas(notFound).some(m => m.name === 'robots' && m.content.startsWith('noindex')))
 assert(!links(notFound).some(l => l.rel === 'canonical' || l.hreflang))
-assert.equal((sitemap.match(/<loc>/g) || []).length, pages.filter(key => !['legal', 'privacy', 'preferences'].includes(key)).length * LANGS.length)
+assert.equal((sitemap.match(/<loc>/g) || []).length, pages.filter(key => !['legal', 'privacy', 'cookies', 'preferences'].includes(key)).length * LANGS.length)
 console.log(`SEO checks passed: ${count} localized pages, ${(sitemap.match(/<loc>/g) || []).length} sitemap URLs, 404, assets, links and JSON-LD.`)
