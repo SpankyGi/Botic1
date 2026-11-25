@@ -13,6 +13,7 @@ export default function Footer() {
   const { t } = useTranslation()
   const routes = useLangRoutes()
   const lang = useLang()
+  const creditLocale = lang === 'ca' || lang === 'es' ? lang : 'en'
   const footerRef = useReveal(0.06)
   const [careersOpen, setCareersOpen] = useState(false)
 
@@ -100,7 +101,7 @@ export default function Footer() {
             <Link to={routes.cookies}>{t('footer.cookies')}</Link>
             <button type="button" className="footer-cookie-preferences" onClick={() => window.dispatchEvent(new Event('botic:cookie-preferences'))}>{t('footer.cookiePreferences')}</button>
             <span>{t('footer.credit')}</span>
-            <a href="https://ovproduccions.com" target="_blank" rel="noopener noreferrer">OV Produccions</a>
+            <a href={`https://www.ovproduccions.com/${creditLocale}/web-seo/`} target="_blank" rel="noopener noreferrer">OV Produccions</a>
           </nav>
         </div>
       </div>
