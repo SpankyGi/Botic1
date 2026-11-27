@@ -216,6 +216,8 @@ export default function Experiencia() {
         heading={t('closingCta.experience.heading')}
         primaryTo={routes.reserves}
         primaryLabel={t('closingCta.experience.primary')}
+        secondaryTo={routes.menus}
+        secondaryLabel={t('closingCta.gastronomy.primary')}
       />
     </>
   )
